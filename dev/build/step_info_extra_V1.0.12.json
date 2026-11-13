@@ -1,0 +1,68 @@
+{
+ "box-all": [
+  "Boxy + Mismatch: every rectangle is used",
+  "Every piece is a different rectangle, and the board has exactly as many tiles as all the rectangles still possible put together. So each of those rectangles is used once, and each needs a place on the board.",
+  null,
+  null
+ ],
+ "gd-clash": [
+  "Gemini and Delta: never the same two pieces",
+  "A Gemini wall has two pieces of the same shape on its sides and a Delta wall two pieces of different shapes, so a Gemini wall and a Delta wall are always between different pairs of pieces.",
+  null,
+  null
+ ],
+ "mingle-area-place": [
+  "Size Separation: a place for the piece",
+  "Touching pieces always have different sizes. This piece has a known size, and the solver listed every place it can take where it touches no other piece of that size. They all agree on this edge.",
+  null,
+  null
+ ],
+ "hetero-place": [
+  "Heterogeneous: a place for the piece",
+  "With Heterogeneous, touching pieces always have different sizes. This piece has a known size, and the solver listed every place it can take where it touches no other piece of that size. They all agree on this edge.",
+  null,
+  null
+ ],
+ "area-place": [
+  "Area number: every place the piece fits",
+  "The solver listed every place where the piece of this area number still fits with its size. They all agree on this edge.",
+  null,
+  null
+ ],
+ "mingle-area-single": [
+  "Size Separation: one size for every piece",
+  null,
+  null,
+  "Only one size is possible, and touching pieces always have different sizes, so no two pieces touch: every edge left is open."
+ ],
+ "mingle-shape-single": [
+  "Mingle Shape: one shape for every piece",
+  null,
+  null,
+  "Only one shape is possible, and touching pieces always have different shapes, so no two pieces touch: every edge left is open."
+ ],
+ "hetero-single": [
+  "Heterogeneous: one size for every piece",
+  null,
+  null,
+  "Only one size is possible, and with Heterogeneous touching pieces always have different sizes, so no two pieces touch: every edge left is open."
+ ],
+ "mingle-area-corner": [
+  "Size Separation: never three walls at a corner",
+  "Only two sizes are possible and touching pieces have different sizes, so three pieces never meet at one corner: a corner never has exactly three walls. The walls already at this corner leave one choice.",
+  null,
+  null
+ ],
+ "mingle-shape-corner": [
+  "Mingle Shape: never three walls at a corner",
+  "Only two shapes are possible and touching pieces have different shapes, so three pieces never meet at one corner: a corner never has exactly three walls. The walls already at this corner leave one choice.",
+  null,
+  null
+ ],
+ "hetero-corner": [
+  "Heterogeneous: never three walls at a corner",
+  "Only two sizes are possible and with Heterogeneous touching pieces have different sizes, so three pieces never meet at one corner: a corner never has exactly three walls. The walls already at this corner leave one choice.",
+  null,
+  null
+ ]
+}

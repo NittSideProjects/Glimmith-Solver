@@ -130,5 +130,17 @@
   "The solver listed every piece that fits all the compass numbers, the size and the walls already decided. Tiles that none of them holds are cut off by walls; tiles that all of them hold are joined.",
   "The solver listed every piece that fits all the compass numbers, the size and the walls already decided. Every one of them leaves this tile out, so there is a wall.",
   "The solver listed every piece that fits all the compass numbers, the size and the walls already decided. Every one of them holds this tile, so the two tiles are in one piece."
+ ],
+ "match-size": [
+  "Match: one size for every piece",
+  "Every piece has the same shape, so the same size, and only some sizes still work for the whole board.",
+  "Every piece has the same shape, so the same size, and only some sizes still work for the whole board. Joined, these two groups would have a size outside those, so there is a wall between them.",
+  null
+ ],
+ "mismatch-count": [
+  "Mismatch: enough different shapes",
+  "Every piece has a different shape, and each size has only so many shapes, so only some piece sizes still work for the whole board.",
+  "Every piece has a different shape, and each size has only so many shapes, so only some piece sizes still work for the whole board. Joined, these two groups would have a size outside those, so there is a wall between them.",
+  null
  ]
 }

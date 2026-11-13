@@ -53,7 +53,7 @@ const FN = {
   rules: ['BOOLEAN_RULE_LABELS', 'addSizeRule', 'renderRuleChips'],
   solver: ['parseLimitInput', 'n', 's', 'readSolverLimits', 'fmtDuration', 'createProgressTracker', 'updateSlowNote', 'pctNote', 'runSolver', 'readDeduceSettings', 'runDeduce',
            'underLimits', 'assuming', 'finishSolver', 'note', 'capNote', 'runGuessLayer', 'exp', 'fileSolutionNote'],
-  steps: ['STEP_INFO', 'STEP_WHY_EXTRA', 'out', 'stepTexts', 'stepTextsBase', 'meta', 'mark', 'what', 'lead', 'concl', 'title', 'other', 'res', 'makeFinalStep', 'view', 'renderStepsView', 'replayDeductionTrace'],
+  steps: ['STEP_INFO', 'STEP_WHY_EXTRA', 'out', 'stepTexts', 'stepTextsBase', 'meta', 'mark', 'what', 'lead', 'concl', 'title', 'other', 'res', 'exampleContents', 'exampleCard', 'openExamplePop', 'renderExample', 'miniShapes', 'NUM', 'makeFinalStep', 'view', 'renderStepsView', 'replayDeductionTrace'],
   custom: ['setCustomRules'],
 };
 const fnSection = new Map(); for(const [k, fs_] of Object.entries(FN)) for(const f of fs_) fnSection.set(f, k);

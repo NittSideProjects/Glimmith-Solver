@@ -2,7 +2,7 @@
 // node ui_test_delwall_V1.0.8.js [page.html]
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
-const file = process.argv[2] || '../glimmith_solver_V1.0.11.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.12.html';
 
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };

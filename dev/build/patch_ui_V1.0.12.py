@@ -92,9 +92,7 @@ src = rep(src, "  function stepsGo(i){", r"""  // ---- V1.0.12: rule examples --
       const svg = renderStepSVG({ groupTint: st.groupTint || null, factTiles: st.kind === 'fact' ? st.facts.flatMap(f => [f.a, f.b]) : null, walls, links,
         shapes: st.closed || [], fresh: new Set(st.edges.map(e => e.spot.key)), probe: null, pieces: null, searchWalls: null, diff: null, label: 'Example' });
       const t = stepTexts(st, idx, steps.length - 1);
-      const NUM = { precision: 'Precision', min: 'Minimum', max: 'Maximum' };
-      const on = Object.entries(ex.r || {}).filter(([k, v]) => v && v !== null && v !== false).map(([k, v]) => BOOLEAN_RULE_LABELS[k] || ((NUM[k] || k) + (v === true ? '' : ' ' + v)));
-      return { svg, title: t.title, text: t.text, rules: on, unique: !!ex.u, tiles: p.active.flat().filter(Boolean).length };
+      return { svg, title: t.title, text: t.text, unique: !!ex.u, tiles: p.active.flat().filter(Boolean).length };
     } catch(e){ return null; }
     finally { puzzle = savedPuzzle; sizeRules = savedRules; stepsList = savedList; }
   }

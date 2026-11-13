@@ -1,13 +1,13 @@
-{ "size": [
-  { "why": "author: boards of 2 tiles are too small to show the logic", "step": 2, "rec": { "puzzle": { "w": 4, "h": 2, "active": [[1, 0, 0, 0], [1, 1, 1, 1]], "areaNumbers": [["0,0", 2], ["3,1", 2]]
+{ "_alias": { "min-grow": "grow", "min-reach": "reach"
+ }, "_remove": { "stamp-shape": "author: nobody can read the reason from a 1x1 polyomino; no board with a bigger one was found"
+ }, "size": [
+  { "why": "author's puzzle", "step": 3, "rec": { "puzzle": { "w": 4, "h": 2, "active": [[0, 1, 1, 0], [1, 1, 1, 1]], "areaNumbers": [["3,1", 3], ["0,1", 3]]
     }
    }
   }], "grow": [
   { "why": "author's puzzle", "step": 2, "rec": { "puzzle": { "w": 4, "h": 3, "active": [[0, 0, 1, 1], [1, 1, 1, 1], [0, 0, 1, 1]], "areaNumbers": [["0,1", 4]]
     }
    }
-  }], "min-grow": [
-  { "why": "author: the earlier link h:0,0 is true but makes the step less clear", "from": 0, "hide": ["h:0,0"]
   }], "reach": [
   { "why": "author's puzzle", "step": 3, "rec": { "puzzle": { "w": 4, "h": 3, "active": [[1, 0, 1, 1], [1, 1, 1, 1], [1, 0, 1, 1]], "areaNumbers": [["0,2", 5]]
     }
@@ -17,7 +17,7 @@
     }
    }
   }], "rose-pair": [
-  { "why": "author: the earlier wall and link are not the focus", "from": 0, "hide": ["h:1,0", "h:1,1"]
+  { "why": "author: the earlier wall and link are not the focus, and no piece colour either: the rule does not need them", "from": 0, "hide": ["h:1,0", "h:1,1"], "plain": true
   }], "rose-cut": [
   { "why": "author's idea: a passage two tiles wide that the roses have to go through", "step": 1, "rec": { "puzzle": { "w": 5, "h": 2, "active": [[1, 1, 1, 1, 1], [1, 1, 1, 1, 1]], "roses": [["0,0", 1], ["0,1", 1], ["4,1", 1], ["2,0", 2], ["3,0", 2], ["4,0", 2]]
     }

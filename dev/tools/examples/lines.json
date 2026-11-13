@@ -12,7 +12,7 @@
 "rose-region": "A closed-in area with one rose of each type is one piece.",
 "stamp-place": "Edges outside every place the polyomino's shape fits are walls, edges inside all of them are open.",
 "stamp-size": "A polyomino's piece is never bigger than its shape.",
-"stamp-shape": "A polyomino's piece never leaves its shape.",
+"stamp-shape": "Two polyominoes of different shapes are in different pieces.",
 "stamp-pair": "Two polyominoes of the same shape that one shape cannot cover are in different pieces.",
 "shape-fit": "A group has to stay inside the polyomino's shape.",
 "bank-fit": "A group has to stay inside one of the bank shapes.",

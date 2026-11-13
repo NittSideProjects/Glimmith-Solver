@@ -1,7 +1,7 @@
 // V1.0.3 page: Gems O'Plenty with its two open roses made dead ends (hand walls from the stored solution): wally-ends solves it with no search.
 // node ui_test_wallyends_V1.0.3.js [page]
 const { JSDOM } = require('jsdom'); const fs = require('fs');
-const file = process.argv[2] || '../glimmith_solver_V1.0.15.html', pz = process.argv[3] || 'workshop_wally/gems_all_roses_dead_ends.glimmith.json';
+const file = process.argv[2] || '../glimmith_solver_V1.0.16.html', pz = process.argv[3] || 'workshop_wally/gems_all_roses_dead_ends.glimmith.json';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

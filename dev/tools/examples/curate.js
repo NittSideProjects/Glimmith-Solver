@@ -2,6 +2,8 @@
 //   { rec, step }   a hand-made puzzle (record: puzzle, rules, bank, ban) and the step of the step view to show (1 = first step)
 //   { from, hide }  the generated board number `from` (0 = first), kept as it is
 //   hide            edges decided by earlier steps that are left out of the picture (they are true, but not what the example is about)
+//   plain           no piece colours either
+//   _alias { rule: other rule }   the step of `rule` shows the example of `other rule`;   _remove { rule: why }   no example
 // node curate.js <core.js> <fuzzlib.js> <examples in (to_page.js output)> <examples out>
 'use strict';
 const fs = require('fs'), path = require('path');
@@ -9,6 +11,10 @@ const [, , corePath, libPath, inPath, outPath] = process.argv;
 const S = require(corePath), L = require(libPath), X = require('./lib.js');
 const ex = JSON.parse(fs.readFileSync(inPath, 'utf8')), cur = JSON.parse(fs.readFileSync(path.join(__dirname, 'curated.json'), 'utf8'));
 const lines = JSON.parse(fs.readFileSync(path.join(__dirname, 'lines.json'), 'utf8'));
+const alias = cur._alias || {}, remove = cur._remove || {}; delete cur._alias; delete cur._remove;
+// _alias: a rule whose step shows the example of another rule (it has none of its own); _remove: a rule left without an example
+for(const k of Object.keys(alias).concat(Object.keys(remove))) delete ex[k];
+for(const [k, to] of Object.entries(alias)) if(!ex[to] && !cur[to]) throw new Error(k + ': no example for ' + to);
 for(const [key, list] of Object.entries(cur)){
   const old = ex[key] ? ex[key].x : [];
   const cases = list.map(c => {
@@ -22,6 +28,7 @@ for(const [key, list] of Object.entries(cur)){
       if(c.step) out.s = c.step;
     } else { out = old[c.from]; if(!out) throw new Error(key + ': no generated board ' + c.from); }
     if(c.hide) out.h = c.hide;
+    if(c.plain) out.c = 1;
     return out;
   });
   ex[key] = { d: lines[key], x: cases };

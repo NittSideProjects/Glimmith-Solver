@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.15.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.16.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -13,6 +13,14 @@ is sent anywhere.
   Chrome and Edge remember the folders, so later imports are one click; other browsers ask for the folder each time.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
 
+## V1.0.16
+
+Second round of the author's remarks on the rule examples. "Forced growth (Minimum)" and "Reach (Minimum)" open the example of
+"Forced growth" and "Reach" instead of having their own; "Polyomino: shape" has no example (none readable was found), so 92 rules
+are numbered. "Too big for the size rules" uses the author's puzzle; "Roses: one of each type per piece" shows no piece colours.
+The step "Polyominoes of the same shape, far apart" is now titled "Two polyominoes of the same shape, two pieces". Page only, core
+v99. Tests: `ui_test_examples_V1.0.16.js`.
+
 ## V1.0.15
 
 The author's first remarks on the rule examples (rules 1 to 16). His own puzzles for Forced growth, Reach, Roses: the way to a missing
@@ -20,12 +28,12 @@ rose and Must still fit a bank shape; bigger hand-made boards for Too big for th
 tiles wide), Polyomino: size, Polyominoes of the same shape and Must still fit the shape. An example can show a chosen step of its
 puzzle and leave out edges of earlier steps that are not its point (`dev/tools/examples/curated.json`, `curate.js`, `find.js`,
 `show.js`). The step titles, step texts and example lines say "polyomino" where they said "stamp" (the "why" texts inside the solver
-core still say "stamp": they change with the next core). Page only, core v99. Tests: `ui_test_examples_V1.0.15.js`.
+core still say "stamp": they change with the next core). Page only, core v99. Tests: `ui_test_examples_V1.0.16.js`.
 
 ## V1.0.14
 
 The rule examples are numbered: every rule has its number in front of its title in both pop-ups, and every board its own number above
-it (12.1, 12.2, ...). Page only, core v99. Tests: `ui_test_examples_V1.0.15.js`.
+it (12.1, 12.2, ...). Page only, core v99. Tests: `ui_test_examples_V1.0.16.js`.
 
 ## V1.0.13
 
@@ -35,7 +43,7 @@ with several kinds of cases shows up to four boards side by side ("Walls that co
 cuts, a Gemini wall, an Inequality wall). The pop-up is a one-line explanation and the boards; under a board only what it cannot show
 is named (rules that are on, shape bank, Omits). 95 rules, 125 boards, found by `dev/tools/examples/tiny.js` + `minimize.js`. Titles
 for two steps that showed their internal name (ban-fit, range-count). Page only, core v99.
-Tests: `ui_test_examples_V1.0.15.js`.
+Tests: `ui_test_examples_V1.0.16.js`.
 
 ## V1.0.12
 
@@ -131,14 +139,14 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.15.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.16.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v99.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/test_*.js`, `dev/fuzz_*.js` | Solver tests. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |
 | `dev/ui_test_*.js` | Page tests (jsdom). |
 | `dev/tools/run_corpus.js` | Times the solver on every puzzle of a corpus and writes a report. |
 | `dev/game_puzzles*`, `dev/user_puzzles`, `dev/puzzles` | Puzzles used by the tools and tests. |
-| `dev/build/` | The changes since V1 as scripts: `patch_core94.py` + `patch_ui_V1.0.1.py` (V1 -> V1.0.1), `patch_core95.py` + `patch_ui_V1.0.2.py` (V1.0.1 -> V1.0.2), `patch_core96.py` + `patch_ui_V1.0.3.py` (V1.0.2 -> V1.0.3), `patch_ui_V1.0.4.py` (V1.0.3 -> V1.0.4, page only), `patch_core97.py` + `patch_ui_V1.0.5.py` (V1.0.4 -> V1.0.5), `patch_core98.py` + `patch_ui_V1.0.6.py` (V1.0.5 -> V1.0.6), `patch_ui_V1.0.7.py` (V1.0.6 -> V1.0.7, page only), `patch_ui_V1.0.8.py` (V1.0.7 -> V1.0.8, page only), `patch_core99.py` + `patch_ui_V1.0.9.py` (V1.0.8 -> V1.0.9), `patch_ui_V1.0.10.py` + `rewrites_V1.0.10.json` (V1.0.9 -> V1.0.10, page only), `patch_ui_V1.0.11.py` (V1.0.10 -> V1.0.11, page only), `patch_ui_V1.0.12.py` + `rule_examples_V1.0.12.json` + `step_info_extra_V1.0.12.json` (V1.0.11 -> V1.0.12, page only); `patch_ui_V1.0.13.py` + `rule_examples_V1.0.13.json` (V1.0.12 -> V1.0.13, page only); `patch_ui_V1.0.14.py` (V1.0.13 -> V1.0.14, page only); `patch_ui_V1.0.15.py` + `rule_examples_V1.0.15.json` (V1.0.14 -> V1.0.15, page only). |
+| `dev/build/` | The changes since V1 as scripts: `patch_core94.py` + `patch_ui_V1.0.1.py` (V1 -> V1.0.1), `patch_core95.py` + `patch_ui_V1.0.2.py` (V1.0.1 -> V1.0.2), `patch_core96.py` + `patch_ui_V1.0.3.py` (V1.0.2 -> V1.0.3), `patch_ui_V1.0.4.py` (V1.0.3 -> V1.0.4, page only), `patch_core97.py` + `patch_ui_V1.0.5.py` (V1.0.4 -> V1.0.5), `patch_core98.py` + `patch_ui_V1.0.6.py` (V1.0.5 -> V1.0.6), `patch_ui_V1.0.7.py` (V1.0.6 -> V1.0.7, page only), `patch_ui_V1.0.8.py` (V1.0.7 -> V1.0.8, page only), `patch_core99.py` + `patch_ui_V1.0.9.py` (V1.0.8 -> V1.0.9), `patch_ui_V1.0.10.py` + `rewrites_V1.0.10.json` (V1.0.9 -> V1.0.10, page only), `patch_ui_V1.0.11.py` (V1.0.10 -> V1.0.11, page only), `patch_ui_V1.0.12.py` + `rule_examples_V1.0.12.json` + `step_info_extra_V1.0.12.json` (V1.0.11 -> V1.0.12, page only); `patch_ui_V1.0.13.py` + `rule_examples_V1.0.13.json` (V1.0.12 -> V1.0.13, page only); `patch_ui_V1.0.14.py` (V1.0.13 -> V1.0.14, page only); `patch_ui_V1.0.15.py` + `rule_examples_V1.0.15.json` (V1.0.14 -> V1.0.15, page only); `patch_ui_V1.0.16.py` + `rule_examples_V1.0.16.json` (V1.0.15 -> V1.0.16, page only). |
 | `dev/tools/steptiming/`, `dev/results/step_timing_v94.md` | Time of each propagation step over the campaign (what the V1.0.2 order is based on). |
 | `dev/workshop_wally/` | The 21 Wally puzzles of the Steam workshop collection as one export file (Wally switched on: the game files can not say it), and their results. Run with `node tools/run_export.js workshop_wally/wally_workshop_21.glimmith.json 60 2`. |
 | `docs/handoffs/` | Development notes, oldest to newest. `HANDOFF_V1.0.5.md` is the last summary. |

@@ -1,7 +1,7 @@
 // v90 page: custom rules Links (L on a wall spot) and Heterogeneous (+ Wally from v89): placing, drawing, saving, solving.
-// node ui_test_custom90.js ../glimmith_solver_V1.0.12.html
+// node ui_test_custom90.js ../glimmith_solver_V1.0.13.html
 const { JSDOM } = require('jsdom'); const fs = require('fs');
-const file = process.argv[2] || '../glimmith_solver_V1.0.12.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.13.html';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

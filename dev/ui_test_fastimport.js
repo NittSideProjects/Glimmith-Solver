@@ -1,8 +1,8 @@
 // Fast import: the game's puzzle folders read as they are. (1) a browser without folder handles: <input webkitdirectory>;
 // (2) Chrome / Edge: showDirectoryPicker handles (mocked here), remembered for one-click imports.
-// node ui_test_fastimport.js ../glimmith_solver_V1.0.12.html   (needs fixtures/folders.zip and the unzip command)
+// node ui_test_fastimport.js ../glimmith_solver_V1.0.13.html   (needs fixtures/folders.zip and the unzip command)
 const { JSDOM } = require('jsdom'); const fs = require('fs'), path = require('path'), cp = require('child_process'), os = require('os');
-const file = process.argv[2] || '../glimmith_solver_V1.0.12.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.13.html';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

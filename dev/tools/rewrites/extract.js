@@ -160,7 +160,7 @@ const out = [];
       if (/^(rgba?|hsla?|var|url|translate|rotate|scale|calc)\(/.test(t)) return false;
       if (/^[\w-]+\s*:\s*[^ ]+;?(\s*[\w-]+\s*:\s*[^;]+;?)*$/.test(t) && !/ [a-z]+ [a-z]+ /.test(t)) return false; // css
       if (/^[\w.#\[\]=":\s>*~+-]+$/.test(t) && /(^|[\s>,])[.#\[][a-z]/i.test(t) && !/ [a-z]{3,} [a-z]{3,}/.test(t)) return false; // selectors
-      if (/^(M|L|C|Z|m|l|c|z|A|a)[\d .,-]+/.test(t)) return false;                        // svg path
+      if (/^(M|L|C|Z|m|l|c|z|A|a)\s*-?\d[\d .,-]*/.test(t)) return false;                 // svg path ("A group ..." is text)
       if (/^(\d+(\.\d+)?(px|em|%|s|ms)?\s*)+$/.test(t)) return false;
       if (/^(application|text|image)\/[\w.+-]+$/.test(t)) return false;
       return true;

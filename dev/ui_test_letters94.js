@@ -1,7 +1,7 @@
 // v94 page: far-apart tiles known to be one piece get a step of their own and a small letter on every tile of that piece.
-// node ui_test_letters94.js ../glimmith_solver_V1.0.12.html /path/to/Open-Traveling-Salesman.glimmith.json
+// node ui_test_letters94.js ../glimmith_solver_V1.0.13.html /path/to/Open-Traveling-Salesman.glimmith.json
 const { JSDOM } = require('jsdom'); const fs = require('fs');
-const file = process.argv[2] || '../glimmith_solver_V1.0.12.html', pz = process.argv[3];
+const file = process.argv[2] || '../glimmith_solver_V1.0.13.html', pz = process.argv[3];
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

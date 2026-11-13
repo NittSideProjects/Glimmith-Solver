@@ -1,10 +1,10 @@
 // v40 UI: the "Final search" select. The same real puzzle (Zone3/1397a, unique; the old whole-piece search alone times out on it) is solved in the page
 // under each setting; every setting that finishes must say Unique, the new default must finish fast, and the select is locked while a solve runs.
-//   usage: NODE_PATH=<dir with jsdom> node ui_test_edge40.js ../glimmith_solver_V1.0.9.html
+//   usage: NODE_PATH=<dir with jsdom> node ui_test_edge40.js ../glimmith_solver_V1.0.10.html
 const fs = require('fs'), path = require('path');
 const { JSDOM } = require('jsdom');
 const PZ = require('./loadpz.js');
-const file = process.argv[2] || '../glimmith_solver_V1.0.9.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.10.html';
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { console.log((cond ? 'ok  ' : 'FAIL') + ' ' + name); if(cond) pass++; else { fail++; console.log('   ->', JSON.stringify(extra)); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));

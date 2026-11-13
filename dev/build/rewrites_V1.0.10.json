@@ -1,0 +1,506 @@
+[
+ {
+  "id": "T0001",
+  "start": 139,
+  "end": 195,
+  "old": "Artisan of Glimmith — Puzzle Editor and Deduction Solver",
+  "new": "Artisan of Glimmith Solver"
+ },
+ {
+  "id": "T0004",
+  "start": 25158,
+  "end": 25278,
+  "old": "Draw or import puzzles, and use the solver at the bottom of the page to check for uniqueness and see the deduction path.",
+  "new": "Draw/import puzzles, then use the solver at the bottom of the page to check for uniqueness and see the deduction path !"
+ },
+ {
+  "id": "T0009",
+  "start": 25716,
+  "end": 25750,
+  "old": "This project was made by nittneuk.",
+  "new": "This project is made by nittneuk."
+ },
+ {
+  "id": "T0010",
+  "start": 25762,
+  "end": 25820,
+  "old": "Special thanks to ham for ideas on the solver improvement.",
+  "new": "Special thanks to ham for ideas as well as making the SAT solver"
+ },
+ {
+  "id": "T0011",
+  "start": 25832,
+  "end": 25917,
+  "old": "Special thanks to the creators of the Artisan of Glimmith for making an amazing game.",
+  "new": "Special thanks to the creators of the Artisan of Glimmith for making such an amazing game!"
+ },
+ {
+  "id": "T0019",
+  "start": 26837,
+  "end": 26907,
+  "old": "title=\"Start a fresh empty puzzle. The current one stays in the list.\"",
+  "new": "title=\"Make a new empty puzzle\""
+ },
+ {
+  "id": "T0021",
+  "start": 26973,
+  "end": 27128,
+  "old": "title=\"A puzzle file, a zip with puzzles, a zip of folders that contain puzzles, or a file saved with Export puzzle (you can also drop them on this panel)\"",
+  "new": "title=\"Import puzzle files, either just one puzzle or multiple with a zip\""
+ },
+ {
+  "id": "T0023",
+  "start": 27203,
+  "end": 27334,
+  "old": "title=\"Import every puzzle from the game's own folders (Steam workshop puzzles and the puzzles you made), without zipping anything\"",
+  "new": "title=\"Import every puzzle from the steam folder or the appdata one. Should be where most puzzles are kept for most people\""
+ },
+ {
+  "id": "T0027",
+  "start": 27546,
+  "end": 27661,
+  "old": "title=\"Save this puzzle (grid, clues, rules, shape bank) as a file you can import again here or on another machine\"",
+  "new": "title=\"To save or send this puzzle, works with custom rules !\""
+ },
+ {
+  "id": "T0029",
+  "start": 27748,
+  "end": 27799,
+  "old": "title=\"Save every puzzle in the list into one file\"",
+  "new": "title=\"To save every puzzle, works with custom rules !\""
+ },
+ {
+  "id": "T0031",
+  "start": 27897,
+  "end": 27958,
+  "old": "title=\"Draw the solution that is stored in the imported file\"",
+  "new": "title=\"Show at the bottom what solution was stored, THIS ISNT THE SOLVER.\""
+ },
+ {
+  "id": "T0035",
+  "start": 28420,
+  "end": 28436,
+  "old": "Workshop puzzles",
+  "new": "The puzzle you downloaded"
+ },
+ {
+  "id": "T0037",
+  "start": 28536,
+  "end": 28567,
+  "old": "zip this : <code>4160210</code>",
+  "new": "open this : <code>4160210</code>"
+ },
+ {
+  "id": "T0039",
+  "start": 28807,
+  "end": 28823,
+  "old": "Your own puzzles",
+  "new": "The puzzle you made"
+ },
+ {
+  "id": "T0041",
+  "start": 28893,
+  "end": 28925,
+  "old": "zip this : <code>workshop</code>",
+  "new": "open this : <code>workshop</code>"
+ },
+ {
+  "id": "T0042",
+  "start": 29144,
+  "end": 29248,
+  "old": "Tip: paste the path into the address bar of the folder window. Puzzles already in the list are skipped. ",
+  "new": "Simply paste the path into the address bar of the folder window. Don't worry about duplicates, they are skipped by default "
+ },
+ {
+  "id": "T0051",
+  "start": 31625,
+  "end": 31636,
+  "old": "Clear walls",
+  "new": "Clear all walls"
+ },
+ {
+  "id": "T0052",
+  "start": 31698,
+  "end": 31711,
+  "old": "Clear symbols",
+  "new": "Clear all symbols"
+ },
+ {
+  "id": "T0064",
+  "start": 32714,
+  "end": 32752,
+  "old": "<kbd>1–4</kbd>watchtower (on a corner)",
+  "new": "watchtower"
+ },
+ {
+  "id": "T0074",
+  "start": 34567,
+  "end": 34587,
+  "old": "No shapes forced yet",
+  "new": "No shapes added yet"
+ },
+ {
+  "id": "T0077",
+  "start": 34970,
+  "end": 34990,
+  "old": "No shapes banned yet",
+  "new": "No shapes added yet"
+ },
+ {
+  "id": "T0086",
+  "start": 36834,
+  "end": 37341,
+  "old": "The solver decides the puzzle edge by edge, either by deduction logic (see below), or by going edge by edge. For every edge between two tiles that has no wall already, it runs a very short search under each assumption: “a wall goes here” and “these two tiles are in the same piece”. If one assumption runs out of possibilities completely, the other one is certain. The idea being that a puzzle solvable by deduction would have a spot where you can easily find a way forward, and the solver tries to find it.",
+  "new": "The solver decides the puzzle by finding the correct state for every edge (link or wall). Either by deduction logic, by going neighbors to neighbors, or by testing links between far away symbols. The global idea being that a puzzle solvable by deduction would have a breakthrough spot. The solver is designed to find it by attacking the puzzle with those approaches."
+ },
+ {
+  "id": "T0087",
+  "start": 37379,
+  "end": 37869,
+  "old": "If the edge by edge isn’t enough the solver skips to a final solve and does an exhaustive search on the half done puzzle, hopefully finding an impossibility or a solution. The time percentage for the final solve is an estimate, not a truth. If the solver has trouble finding a solution after a minute, the puzzle probably requires a global thinking that the solver can’t find. If that is the case, please send your puzzle to nittneuk on discord so I can try to implement a reasoning for it.",
+  "new": "If it can't find a breakthrough in the current puzzle state, the solver skips to a final solve and does an exhaustive search on the half done puzzle, hopefully finding an impossibility or a solution. If the solver has trouble finding a solution after a minute of exhaustive search, the puzzle probably requires a global thinking that the solver can’t find. If that is the case, please send your puzzle to me! (nittneuk on discord) so I can try to implement a reasoning for puzzle of it's kind."
+ },
+ {
+  "id": "T0096",
+  "start": 39028,
+  "end": 39187,
+  "old": "title=\"Off: every open edge gets its narrow test before the exhaustive search starts (slower on some puzzles, but the step by step reasoning goes all the way)\"",
+  "new": "title=\"Off: solve becomes slower as the solver doesn't skip when it reallze exhaustive would finish it fast. However in some case can lead to step by step being clearer\""
+ },
+ {
+  "id": "T0097",
+  "start": 39238,
+  "end": 39294,
+  "old": " Ignore 100ms edge by edge if exhaustive would be faster",
+  "new": " Ignore edge by edge if exhaustive whould be faster"
+ },
+ {
+  "id": "T0330",
+  "start": 180241,
+  "end": 180285,
+  "old": "'the rose types do not appear equally often'",
+  "new": "`rose windows are uneven, there are more of one type.`"
+ },
+ {
+  "id": "T0331",
+  "start": 180304,
+  "end": 180352,
+  "old": "'two roses of the same type end up in one piece'",
+  "new": "`two roses of the same type are forced to be in one piece`"
+ },
+ {
+  "id": "T0332",
+  "start": 180577,
+  "end": 180651,
+  "old": "'more rose pieces must squeeze through a narrow passage than it has tiles'",
+  "new": "`more rose pieces must squeeze through a narrow passage than that passage has tiles`"
+ },
+ {
+  "id": "T0333",
+  "start": 180671,
+  "end": 180719,
+  "old": "'an area number has no place left for its piece'",
+  "new": "`an area number has no place left to satisfy it's size`"
+ },
+ {
+  "id": "T0334",
+  "start": 180824,
+  "end": 180904,
+  "old": "'two difference walls with different numbers end up between the same two pieces'",
+  "new": "`two piece are forced to go over two difference walls, and those two have different numbers`"
+ },
+ {
+  "id": "T0336",
+  "start": 181018,
+  "end": 181092,
+  "old": "'the rose groups can not be split into pieces with one rose of every type'",
+  "new": "`the rose groups can't be split into pieces with one rose of every type`"
+ },
+ {
+  "id": "T0338",
+  "start": 181187,
+  "end": 181255,
+  "old": "'more pieces need a few rectangle shapes than there are such shapes'",
+  "new": "`There is a group of n tiles that can only hold n-1 possible rectangle shapes, one of them will break`"
+ },
+ {
+  "id": "T0339",
+  "start": 181272,
+  "end": 181355,
+  "old": "'every rectangle that fits is used exactly once, and one of them has no place left'",
+  "new": "`the total puzzle area tells us every rectangle that can be used must be used, but one of them has no placement left`"
+ },
+ {
+  "id": "T0340",
+  "start": 181376,
+  "end": 181484,
+  "old": "'every way to place the piece of an area number (or the copy across a gemini wall) leads to a contradiction'",
+  "new": "`an area number (or its copy across a gemini) has no possible way to be placed`"
+ },
+ {
+  "id": "T0341",
+  "start": 181503,
+  "end": 181594,
+  "old": "'the board holds two pieces, and no way of splitting the tiles between them fits the clues'",
+  "new": "`knowing the puzzle is exaclty 2 shapes, there isn't a way to group the tiles and fit the clues.`"
+ },
+ {
+  "id": "T0342",
+  "start": 181617,
+  "end": 181675,
+  "old": "'more pieces need a few shapes than there are such shapes'",
+  "new": "`There is a group of n tiles that can only hold n-1 possible shapes, one of them will break`"
+ },
+ {
+  "id": "T0344",
+  "start": 181758,
+  "end": 181856,
+  "old": "'the two pieces of a gemini wall have no shape in common (or a delta wall, the same single shape)'",
+  "new": "`a shape near a gemini is a shape that the other side can't be, or a delta that the other side must be`"
+ },
+ {
+  "id": "T0457",
+  "start": 740338,
+  "end": 740391,
+  "old": "'identical to another puzzle in this import, skipped'",
+  "new": "`Duplicate puzzle got skipped`"
+ },
+ {
+  "id": "T0464",
+  "start": 774802,
+  "end": 774836,
+  "old": "'Draw a shape in the editor first'",
+  "new": "`Draw a shape first`"
+ },
+ {
+  "id": "T0465",
+  "start": 778942,
+  "end": 779024,
+  "old": "\"That shape is already banned (turned and flipped copies count as the same shape)\"",
+  "new": "`That shape is already inside the pool`"
+ },
+ {
+  "id": "T0466",
+  "start": 779276,
+  "end": 779378,
+  "old": "`Banned shape ${banIdCounter} (${norm.length} tile${norm.length!==1?'s':''}): no piece may contain it`",
+  "new": "`Added Shape ${banIdCounter} (${norm.length} tile${norm.length!==1?'s':''})`"
+ },
+ {
+  "id": "T0470",
+  "start": 780177,
+  "end": 780199,
+  "old": "'No shapes banned yet'",
+  "new": "`No shapes added yet`"
+ },
+ {
+  "id": "T0471",
+  "start": 780574,
+  "end": 780598,
+  "old": "'Allow this shape again'",
+  "new": "`Remove shape from the pool`"
+ },
+ {
+  "id": "T0474",
+  "start": 782313,
+  "end": 782335,
+  "old": "'No shapes forced yet'",
+  "new": "`No shapes added yet`"
+ },
+ {
+  "id": "T0475",
+  "start": 782703,
+  "end": 782717,
+  "old": "'Remove shape'",
+  "new": "`Remove shape from the pool`"
+ },
+ {
+  "id": "T0486",
+  "start": 785111,
+  "end": 785138,
+  "old": "'Enter a size of 1 or more'",
+  "new": "`Enter a valid size`"
+ },
+ {
+  "id": "T0487",
+  "start": 785258,
+  "end": 785328,
+  "old": "\"Precision can't be combined with Minimum/Maximum — remove them first\"",
+  "new": "`Precision can't be combined with Minimum/Maximum, remove them first`"
+ },
+ {
+  "id": "T0488",
+  "start": 785472,
+  "end": 785532,
+  "old": "\"Minimum can't be combined with Precision — remove it first\"",
+  "new": "`Minimum can't be combined with Precision, remove it first`"
+ },
+ {
+  "id": "T0489",
+  "start": 785656,
+  "end": 785716,
+  "old": "\"Maximum can't be combined with Precision — remove it first\"",
+  "new": "`Maximum can't be combined with Precision, remove it first`"
+ },
+ {
+  "id": "T0490",
+  "start": 785867,
+  "end": 785928,
+  "old": "'Minimum is greater than maximum — no shape can satisfy both'",
+  "new": "`Minimum is greater than maximum, no shape can satisfy both`"
+ },
+ {
+  "id": "T0494",
+  "start": 787124,
+  "end": 787193,
+  "old": "' (empty: the minimum is above the maximum, no piece can satisfy it)'",
+  "new": "` (empty: the minimum is above the maximum)`"
+ },
+ {
+  "id": "T0498",
+  "start": 788580,
+  "end": 788629,
+  "old": "'No rules — any piece size and shape is allowed.'",
+  "new": "`No rules yet`"
+ },
+ {
+  "id": "T0501",
+  "start": 795432,
+  "end": 795502,
+  "old": "`${label} must be a whole number of 1 or more (or empty for no limit)`",
+  "new": "`${label} must be a number (or empty for no limit)`"
+ },
+ {
+  "id": "T0508",
+  "start": 797408,
+  "end": 797527,
+  "old": "\"no percentage: the first piece alone has too many possibilities to count (a max region size / amount would narrow it)\"",
+  "new": "`no percentage: the first piece alone has too many possibilities to count`"
+ },
+ {
+  "id": "T0511",
+  "start": 798572,
+  "end": 798742,
+  "old": "`It's been ${Math.round(SLOW_NOTICE_MS / 1000)} s — this might take longer than expected. The search keeps going until it is finished; you may stop it early with Cancel.`",
+  "new": "`It's been ${Math.round(SLOW_NOTICE_MS / 1000)} s — this might take longer than expected. The search keeps going until it is finished; you may stop it early with Cancel. Please contact nittneuk on discord to tell him about this puzzle`"
+ },
+ {
+  "id": "T0522",
+  "start": 817376,
+  "end": 817420,
+  "old": "sec(finalMs) + ' being an exhaustive search'",
+  "new": "`${sec(finalMs)} being the final search`"
+ },
+ {
+  "id": "T0543",
+  "start": 820245,
+  "end": 820264,
+  "old": "'Solution A (of 2)'",
+  "new": "`Solution A`"
+ },
+ {
+  "id": "T0544",
+  "start": 820314,
+  "end": 820333,
+  "old": "'Solution B (of 2)'",
+  "new": "`Solution B`"
+ },
+ {
+  "id": "T0545",
+  "start": 820410,
+  "end": 820466,
+  "old": "` (stopped at ${ALL_SOLUTIONS_CAP} — there may be more)`",
+  "new": "` (stopped at ${ALL_SOLUTIONS_CAP}, there may be more)`"
+ },
+ {
+  "id": "T0546",
+  "start": 820469,
+  "end": 820507,
+  "old": "' — all of them (the search finished)'",
+  "new": "`, all of them (the search finished)`"
+ },
+ {
+  "id": "T0556",
+  "start": 829444,
+  "end": 829670,
+  "old": "`Found a valid tiling (checked by the exact solver) after ${sec(st.firstMs)}, but the search was stopped before it could check that no other tiling exists — so uniqueness is NOT confirmed. Run Check Uniqueness for that.${exp}`",
+  "new": "`Found a valid tiling (checked by the exact solver) after ${sec(st.firstMs)}, but the search was stopped before it could check that no other tiling exists, uniqueness is NOT confirmed.`"
+ },
+ {
+  "id": "T0797",
+  "start": 894040,
+  "end": 894069,
+  "old": "'Solution stored in the file'",
+  "new": "`The file's known solution`"
+ },
+ {
+  "id": "T0799",
+  "start": 897982,
+  "end": 898005,
+  "old": "\"Exemple Puzzle Unique\"",
+  "new": "`Example Puzzle Unique`"
+ },
+ {
+  "id": "T0800",
+  "start": 899048,
+  "end": 899075,
+  "old": "\"Exemple Puzzle Non Unique\"",
+  "new": "`Example Puzzle Non Unique`"
+ },
+ {
+  "id": "T0811",
+  "start": 908218,
+  "end": 908333,
+  "old": "\" ⚠ It is NOT the solution stored in the imported file: the solver and the file disagree, so one of them is wrong.\"",
+  "new": "` ⚠ It is NOT the solution stored in the imported file: the solver and the file disagree, so one of them is wrong. Please contact nittneuk (nittneuk on discord) about this if you think the mistake is on the solver`"
+ },
+ {
+  "id": "T0827",
+  "start": 914884,
+  "end": 914943,
+  "old": "`Imported ${fresh.length} puzzles — pick one from the list`",
+  "new": "`Imported ${fresh.length} puzzles`"
+ },
+ {
+  "id": "T0833",
+  "start": 918022,
+  "end": 918132,
+  "old": "'Choose each folder once. After that, Fast import reads both in one click (your browser may ask to allow it).'",
+  "new": "`Choose each folder once. After that, Fast import reads both in one click (if your browser is compatible).`"
+ },
+ {
+  "id": "T0834",
+  "start": 918141,
+  "end": 918275,
+  "old": "'Choose a folder to import every puzzle in it. This browser can not remember folders (Chrome and Edge can), so you pick it each time.'",
+  "new": "`Choose your folder to import the puzzles. Your browser can't remember folders (Chrome and Edge can), so you will need to pick it each time.`"
+ },
+ {
+  "id": "T0847",
+  "start": 927855,
+  "end": 927935,
+  "old": "'this file was saved by a newer version of the editor; reading what can be read'",
+  "new": "`this file was saved by a version of the editor not supported yet. Please verify the import went well`"
+ },
+ {
+  "id": "T0850",
+  "start": 937247,
+  "end": 937297,
+  "old": "'Links are a custom rule: show custom rules first'",
+  "new": "`Links are a custom rule: show custom rules first (bottom of the page)`"
+ },
+ {
+  "id": "T0851",
+  "start": 938068,
+  "end": 938099,
+  "old": "'Use ← or → on a vertical wall'",
+  "new": "`← or → works on vertical walls only`"
+ },
+ {
+  "id": "T0852",
+  "start": 938102,
+  "end": 938135,
+  "old": "'Use ↑ or ↓ on a horizontal wall'",
+  "new": "`↑ or ↓ works on horizontal walls only`"
+ }
+]

@@ -1,8 +1,8 @@
 // Fast import: the game's puzzle folders read as they are. (1) a browser without folder handles: <input webkitdirectory>;
 // (2) Chrome / Edge: showDirectoryPicker handles (mocked here), remembered for one-click imports.
-// node ui_test_fastimport.js ../glimmith_solver_V1.0.9.html   (needs fixtures/folders.zip and the unzip command)
+// node ui_test_fastimport.js ../glimmith_solver_V1.0.10.html   (needs fixtures/folders.zip and the unzip command)
 const { JSDOM } = require('jsdom'); const fs = require('fs'), path = require('path'), cp = require('child_process'), os = require('os');
-const file = process.argv[2] || '../glimmith_solver_V1.0.9.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.10.html';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
@@ -28,7 +28,7 @@ const settle = async P => { for(let i = 0; i < 200; i++){ await sleep(50); if(P.
   const before = names(P).length;
   P.$('fastImportBtn').click(); await sleep(50);
   check('first click opens the folder box with both locations', !P.$('fastImportBox').hidden && /4160210/.test(P.$('fastImportBox').textContent) && /Geri\\Saved/.test(P.$('fastImportBox').textContent));
-  check('says this browser can not remember', /can not remember/.test(P.$('fastImportIntro').textContent) && P.$('fastRunBtn').hidden);
+  check('says this browser can not remember', /can't remember/.test(P.$('fastImportIntro').textContent) && P.$('fastRunBtn').hidden);
   const mk = rel => { const f = new P.window.File([rd(rel)], path.basename(rel)); Object.defineProperty(f, 'webkitRelativePath', { value: '4160210/' + rel }); return f; };
   const inp = P.$('fastDirInput'); Object.defineProperty(inp, 'files', { value: [mk('x1/puzzle'), mk('x1/metadata'), mk('x2/puzzle'), mk('x2/metadata'), mk('x2/preview.png'), mk('readme.txt')], configurable: true });
   inp.dispatchEvent(new P.window.Event('change')); await settle(P);

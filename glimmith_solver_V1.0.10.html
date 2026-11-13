@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Artisan of Glimmith — Puzzle Editor and Deduction Solver</title>
+<title>Artisan of Glimmith Solver</title>
 <script>try{var t=localStorage.getItem('glimmithTheme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 <style>
   :root{
@@ -338,15 +338,15 @@
     <div>
       <p class="eyebrow">Artisan of Glimmith</p>
       <h1>Puzzle Editor and Deduction Solver</h1>
-      <p class="subtitle">Draw or import puzzles, and use the solver at the bottom of the page to check for uniqueness and see the deduction path.</p>
+      <p class="subtitle">Draw/import puzzles, then use the solver at the bottom of the page to check for uniqueness and see the deduction path !</p>
     </div>
     <div class="top-right"><span id="saveStatus">Loading…</span><button type="button" id="creditsBtn" class="subtle" aria-haspopup="dialog">Credits</button><button type="button" id="themeBtn" class="subtle" aria-label="Switch between light and dark mode">Dark mode</button></div>
   </header>
   <dialog id="creditsDialog" class="credits-dialog" aria-labelledby="creditsTitle">
     <h2 id="creditsTitle">Credits</h2>
-    <p>This project was made by nittneuk.</p>
-    <p>Special thanks to ham for ideas on the solver improvement.</p>
-    <p>Special thanks to the creators of the Artisan of Glimmith for making an amazing game.</p>
+    <p>This project is made by nittneuk.</p>
+    <p>Special thanks to ham for ideas as well as making the SAT solver</p>
+    <p>Special thanks to the creators of the Artisan of Glimmith for making such an amazing game!</p>
     <p>This project was made with the assistance of AI. While I did have a significant impact on the final product, if you prefer to stay away from AI in general I recommend ham's SAT solver, which you can find online.</p>
     <div class="credits-actions"><button type="button" id="creditsClose">Close</button></div>
   </dialog>
@@ -362,13 +362,13 @@
           <label for="puzzleSelect">Puzzle</label>
           <select id="puzzleSelect" aria-label="Choose which puzzle to work on"></select>
         </div>
-        <button id="newPuzzleBtn" type="button" title="Start a fresh empty puzzle. The current one stays in the list.">New puzzle</button>
-        <button id="importBtn" type="button" title="A puzzle file, a zip with puzzles, a zip of folders that contain puzzles, or a file saved with Export puzzle (you can also drop them on this panel)">Import puzzles…</button>
-        <button id="fastImportBtn" type="button" title="Import every puzzle from the game's own folders (Steam workshop puzzles and the puzzles you made), without zipping anything">Fast import</button>
+        <button id="newPuzzleBtn" type="button" title="Make a new empty puzzle">New puzzle</button>
+        <button id="importBtn" type="button" title="Import puzzle files, either just one puzzle or multiple with a zip">Import puzzles…</button>
+        <button id="fastImportBtn" type="button" title="Import every puzzle from the steam folder or the appdata one. Should be where most puzzles are kept for most people">Fast import</button>
         <button id="fastFoldersBtn" type="button" class="subtle" hidden title="Choose or forget the folders Fast import reads">Folders…</button>
-        <button id="exportBtn" type="button" title="Save this puzzle (grid, clues, rules, shape bank) as a file you can import again here or on another machine">Export puzzle</button>
-        <button id="exportAllBtn" type="button" class="subtle" title="Save every puzzle in the list into one file">Export all</button>
-        <button id="showFileSolutionBtn" type="button" class="subtle" hidden title="Draw the solution that is stored in the imported file">File's solution</button>
+        <button id="exportBtn" type="button" title="To save or send this puzzle, works with custom rules !">Export puzzle</button>
+        <button id="exportAllBtn" type="button" class="subtle" title="To save every puzzle, works with custom rules !">Export all</button>
+        <button id="showFileSolutionBtn" type="button" class="subtle" hidden title="Show at the bottom what solution was stored, THIS ISNT THE SOLVER.">File's solution</button>
         <button id="deletePuzzleBtn" type="button" class="subtle" title="Remove this puzzle from the list">Delete</button>
         <input type="file" id="importFile" multiple hidden>
         <input type="file" id="fastDirInput" webkitdirectory multiple hidden>
@@ -376,14 +376,14 @@
       <div id="fastImportBox" class="fast-import" hidden>
         <p id="fastImportIntro"></p>
         <div class="fast-row" data-slot="steam">
-          <div><b>Workshop puzzles</b> <code>C:\Program Files (x86)\Steam\steamapps\workshop\content</code><br><span class="fast-zip">zip this : <code>4160210</code></span><span class="fast-status" id="fastStatus_steam"></span></div>
+          <div><b>The puzzle you downloaded</b> <code>C:\Program Files (x86)\Steam\steamapps\workshop\content</code><br><span class="fast-zip">open this : <code>4160210</code></span><span class="fast-status" id="fastStatus_steam"></span></div>
           <button type="button" class="subtle" id="fastPick_steam">Choose folder…</button>
         </div>
         <div class="fast-row" data-slot="own">
-          <div><b>Your own puzzles</b> <code>%LOCALAPPDATA%\Geri\Saved</code><br><span class="fast-zip">zip this : <code>workshop</code></span><span class="fast-status" id="fastStatus_own"></span></div>
+          <div><b>The puzzle you made</b> <code>%LOCALAPPDATA%\Geri\Saved</code><br><span class="fast-zip">open this : <code>workshop</code></span><span class="fast-status" id="fastStatus_own"></span></div>
           <button type="button" class="subtle" id="fastPick_own">Choose folder…</button>
         </div>
-        <p class="hint" style="margin:6px 0 0;">Tip: paste the path into the address bar of the folder window. Puzzles already in the list are skipped. <button type="button" class="link-btn" id="fastBlockedLink">Folder blocked?</button></p>
+        <p class="hint" style="margin:6px 0 0;">Simply paste the path into the address bar of the folder window. Don't worry about duplicates, they are skipped by default <button type="button" class="link-btn" id="fastBlockedLink">Folder blocked?</button></p>
         <div class="fast-blocked" id="fastBlocked" hidden>
           <p><b>Did your browser say it "can't open this folder because it contains system files"?</b> Chrome and Edge do not let a page remember folders inside Program Files or AppData, and both game folders are there. You can still read them once: the browser asks for the folder each time, and it may say it will upload the files, but they stay on your computer.</p>
           <div class="fast-actions"><button type="button" class="subtle" id="fastOnce_steam">Read the workshop folder once</button><button type="button" class="subtle" id="fastOnce_own">Read your own puzzles once</button></div>
@@ -406,8 +406,8 @@
           <span class="stepper"><button type="button" class="step" data-for="puzzleH" data-d="-1" aria-label="One less">&minus;</button><input id="puzzleH" type="number" min="1" max="20" value="10"><button type="button" class="step" data-for="puzzleH" data-d="1" aria-label="One more">+</button></span>
         </div>
         <button id="resetPuzzleBtn" class="subtle">Reset grid</button>
-        <button id="clearWallsBtn" class="subtle">Clear walls</button>
-        <button id="clearMarkersBtn" class="subtle">Clear symbols</button>
+        <button id="clearWallsBtn" class="subtle">Clear all walls</button>
+        <button id="clearMarkersBtn" class="subtle">Clear all symbols</button>
       </div>
 
       <svg id="puzzleSvg" class="grid-svg" xmlns="http://www.w3.org/2000/svg">
@@ -430,7 +430,7 @@
         <span><kbd>P</kbd>polyomino</span>
         <span><kbd>#</kbd>palisade</span>
         <span><kbd>X</kbd>compass</span>
-        <span><kbd>1–4</kbd>watchtower (on a corner)</span>
+        <span>watchtower</span>
         <span><kbd>1–99</kbd>area number</span>
         <span><kbd>Ctrl</kbd>pocket size</span>
         <span class="custom-only custom-rule"><kbd>L</kbd>link (on a wall spot)</span>
@@ -465,7 +465,7 @@
 
       <h2 id="bankTitle">Shape Bank (0)</h2>
       <div id="bankList" class="bank-list">
-        <div class="empty-note">No shapes forced yet</div>
+        <div class="empty-note">No shapes added yet</div>
       </div>
 
       <div id="banSection" class="custom-only">
@@ -473,7 +473,7 @@
         <h2 id="banTitle">Omits (0) </h2>
         <p class="hint">No piece may contain a banned shape: if some placement of it (turned or flipped) fits completely inside a piece, that piece is not allowed.</p>
         <div id="banList" class="ban-list">
-          <div class="empty-note">No shapes banned yet</div>
+          <div class="empty-note">No shapes added yet</div>
         </div>
       </div>
     </aside>
@@ -516,8 +516,8 @@
     <h2>Solver <button type="button" class="info-btn" data-info="solverInfo" aria-label="How this works">i</button></h2>
     <div class="info-popover" id="solverInfo" hidden>
       <p>Checks whether the puzzle is impossible, unique, or non unique.</p>
-      <p style="margin-top:8px;">The solver decides the puzzle edge by edge, either by deduction logic (see below), or by going edge by edge. For every edge between two tiles that has no wall already, it runs a very short search under each assumption: “a wall goes here” and “these two tiles are in the same piece”. If one assumption runs out of possibilities completely, the other one is certain. The idea being that a puzzle solvable by deduction would have a spot where you can easily find a way forward, and the solver tries to find it.</p>
-      <p style="margin-top:8px;">If the edge by edge isn’t enough the solver skips to a final solve and does an exhaustive search on the half done puzzle, hopefully finding an impossibility or a solution. The time percentage for the final solve is an estimate, not a truth. If the solver has trouble finding a solution after a minute, the puzzle probably requires a global thinking that the solver can’t find. If that is the case, please send your puzzle to nittneuk on discord so I can try to implement a reasoning for it.</p>
+      <p style="margin-top:8px;">The solver decides the puzzle by finding the correct state for every edge (link or wall). Either by deduction logic, by going neighbors to neighbors, or by testing links between far away symbols. The global idea being that a puzzle solvable by deduction would have a breakthrough spot. The solver is designed to find it by attacking the puzzle with those approaches.</p>
+      <p style="margin-top:8px;">If it can't find a breakthrough in the current puzzle state, the solver skips to a final solve and does an exhaustive search on the half done puzzle, hopefully finding an impossibility or a solution. If the solver has trouble finding a solution after a minute of exhaustive search, the puzzle probably requires a global thinking that the solver can’t find. If that is the case, please send your puzzle to me! (nittneuk on discord) so I can try to implement a reasoning for puzzle of it's kind.</p>
       <p id="solverPctLine" style="margin-top:8px;">This solver has been tested on the base game puzzles, it took under 10 min to prove all of them were unique.</p>
     </div>
     <div class="controls limits-row" style="display:none" hidden>
@@ -535,7 +535,7 @@
       <button id="cancelSolveBtn" class="subtle" style="display:none;">Cancel</button>
       <button id="skipScanBtn" class="subtle" style="display:none;">Skip to final solve</button>
       <label class="checkfield"><input type="checkbox" id="findAllChk"> Find all solutions (slower, stops at 200)</label>
-      <label class="checkfield" title="Off: every open edge gets its narrow test before the exhaustive search starts (slower on some puzzles, but the step by step reasoning goes all the way)"><input type="checkbox" id="quickFinalChk" checked> Ignore 100ms edge by edge if exhaustive would be faster</label>
+      <label class="checkfield" title="Off: solve becomes slower as the solver doesn't skip when it reallze exhaustive would finish it fast. However in some case can lead to step by step being clearer"><input type="checkbox" id="quickFinalChk" checked> Ignore edge by edge if exhaustive whould be faster</label>
     </div>
     <div class="controls guess-row" id="guessRow" hidden>
       <button id="guessBtn" class="subtle">Solve with buffer guess layer (experimental)</button>
@@ -2515,25 +2515,25 @@
   //       stopScan() (return true to skip straight to the final stage)
   // what each 'impossible' tag means (shown when the deduction proves there is no tiling)
   const WHY_TEXT = {
-    'rose-count': 'the rose types do not appear equally often',
-    'rose-pair': 'two roses of the same type end up in one piece',
+    'rose-count': `rose windows are uneven, there are more of one type.`,
+    'rose-pair': `two roses of the same type are forced to be in one piece`,
     'rose-grow': 'a piece cannot reach a rose it still needs',
     'rose-reach': 'a piece cannot reach a rose it still needs',
     'rose-region': 'a region closed in by walls has the wrong number of roses',
-    'rose-cut': 'more rose pieces must squeeze through a narrow passage than it has tiles',
-    'area-place': 'an area number has no place left for its piece',
+    'rose-cut': `more rose pieces must squeeze through a narrow passage than that passage has tiles`,
+    'area-place': `an area number has no place left to satisfy it's size`,
     'gd-clash': 'a gemini wall and a delta wall end up between the same two pieces',
-    'diff-clash': 'two difference walls with different numbers end up between the same two pieces',
+    'diff-clash': `two piece are forced to go over two difference walls, and those two have different numbers`,
     'diff-small': 'the few small pieces (one per shape) can not reach every difference wall',
-    'rose-cover': 'the rose groups can not be split into pieces with one rose of every type',
+    'rose-cover': `the rose groups can't be split into pieces with one rose of every type`,
     'label': 'some tile can not belong to the piece of any symbol / number',
-    'box-hall': 'more pieces need a few rectangle shapes than there are such shapes',
-    'box-all': 'every rectangle that fits is used exactly once, and one of them has no place left',
-    'place-probe': 'every way to place the piece of an area number (or the copy across a gemini wall) leads to a contradiction',
-    'two-piece': 'the board holds two pieces, and no way of splitting the tiles between them fits the clues',
-    'mismatch-hall': 'more pieces need a few shapes than there are such shapes',
+    'box-hall': `There is a group of n tiles that can only hold n-1 possible rectangle shapes, one of them will break`,
+    'box-all': `the total puzzle area tells us every rectangle that can be used must be used, but one of them has no placement left`,
+    'place-probe': `an area number (or its copy across a gemini) has no possible way to be placed`,
+    'two-piece': `knowing the puzzle is exaclty 2 shapes, there isn't a way to group the tiles and fit the clues.`,
+    'mismatch-hall': `There is a group of n tiles that can only hold n-1 possible shapes, one of them will break`,
     'cmp-box': 'no rectangle fits the numbers of a compass',
-    'gemini-place': 'the two pieces of a gemini wall have no shape in common (or a delta wall, the same single shape)',
+    'gemini-place': `a shape near a gemini is a shape that the other side can't be, or a delta that the other side must be`,
     'region-merge': 'two groups must be one piece: as two pieces they would need more tiles than their closed-in region has',
     'size-cut': 'a part cut off by one tile can not be covered by pieces of the one size every piece has',
     'stamp-size': 'a polyomino stamp does not fit the size rules or another symbol',
@@ -11451,7 +11451,7 @@
       let parsed;
       try{ parsed = parsePuzzleFile(text); } catch(e){ problems.push({ source: label, message: e.message }); continue; }
       const sig = importHash(text.replace(/\r/g, ''));
-      if(seen.has(sig)){ problems.push({ source: label, message: 'identical to another puzzle in this import, skipped', duplicate: true }); continue; }
+      if(seen.has(sig)){ problems.push({ source: label, message: `Duplicate puzzle got skipped`, duplicate: true }); continue; }
       seen.add(sig);
       const mf = metaByDir.get(f.container + '|' + dirOf(f.path));
       let meta = null;
@@ -12044,7 +12044,7 @@
     const existing = puzzle.polyominoes.get(key);
     if(norm.length === 0){
       if(existing){ puzzle.polyominoes.delete(key); renderPuzzle(); scheduleSave(); }
-      else showToast('Draw a shape in the editor first');
+      else showToast(`Draw a shape first`);
       return;
     }
     const newCanonical = canonicalShapeKey(norm);
@@ -12139,13 +12139,13 @@
     const norm = getNormalizedShapeEditorCells();
     if(norm.length === 0){ showToast('Draw a shape first'); return; }
     const key = canonicalShapeKey(norm);
-    if(banShapes.some(s => canonicalShapeKey(s.cells) === key)){ showToast("That shape is already banned (turned and flipped copies count as the same shape)"); return; }
+    if(banShapes.some(s => canonicalShapeKey(s.cells) === key)){ showToast(`That shape is already inside the pool`); return; }
     const maxC = Math.max(...norm.map(p=>p[0])), maxR = Math.max(...norm.map(p=>p[1]));
     banIdCounter += 1;
     banShapes.push({ id: banIdCounter, w: maxC+1, h: maxR+1, cells: norm });
     renderBan();
     scheduleSave();
-    showToast(`Banned shape ${banIdCounter} (${norm.length} tile${norm.length!==1?'s':''}): no piece may contain it`);
+    showToast(`Added Shape ${banIdCounter} (${norm.length} tile${norm.length!==1?'s':''})`);
   }
   function deleteBan(id){
     banShapes = banShapes.filter(s => s.id !== id);
@@ -12160,7 +12160,7 @@
     if(banShapes.length === 0){
       const note = document.createElement('div');
       note.className = 'empty-note';
-      note.textContent = 'No shapes banned yet';
+      note.textContent = `No shapes added yet`;
       banList.appendChild(note);
       updateDebug();
       return;
@@ -12170,7 +12170,7 @@
       card.className = 'ban-card';
       const removeBtn = document.createElement('button');
       removeBtn.className = 'remove'; removeBtn.type = 'button'; removeBtn.textContent = '\u2715';
-      removeBtn.title = 'Allow this shape again';
+      removeBtn.title = `Remove shape from the pool`;
       removeBtn.addEventListener('click', () => deleteBan(shape.id));
       card.appendChild(removeBtn);
       const cs = 14, W = shape.w*cs + 4, H = shape.h*cs + 4;
@@ -12202,7 +12202,7 @@
     if(bank.length === 0){
       const note = document.createElement('div');
       note.className = 'empty-note';
-      note.textContent = 'No shapes forced yet';
+      note.textContent = `No shapes added yet`;
       bankList.appendChild(note);
       updateDebug();
       return;
@@ -12212,7 +12212,7 @@
       card.className = 'shape-card';
       const removeBtn = document.createElement('button');
       removeBtn.className = 'remove'; removeBtn.type = 'button'; removeBtn.textContent = '✕';
-      removeBtn.title = 'Remove shape';
+      removeBtn.title = `Remove shape from the pool`;
       removeBtn.addEventListener('click', () => deleteShape(shape.id));
       card.appendChild(removeBtn);
       const cs = 14;
@@ -12262,23 +12262,23 @@
 
     const valueInput = document.getElementById('ruleValue');
     const raw = parseInt(valueInput.value, 10);
-    if(!Number.isFinite(raw) || raw < 1){ showToast('Enter a size of 1 or more'); return; }
+    if(!Number.isFinite(raw) || raw < 1){ showToast(`Enter a valid size`); return; }
 
     if(type === 'precision'){
       if(sizeRules.min != null || sizeRules.max != null){
-        showToast("Precision can't be combined with Minimum/Maximum — remove them first");
+        showToast(`Precision can't be combined with Minimum/Maximum, remove them first`);
         return;
       }
       sizeRules.precision = raw;
     } else if(type === 'minimum'){
-      if(sizeRules.precision != null){ showToast("Minimum can't be combined with Precision — remove it first"); return; }
+      if(sizeRules.precision != null){ showToast(`Minimum can't be combined with Precision, remove it first`); return; }
       sizeRules.min = raw;
     } else if(type === 'maximum'){
-      if(sizeRules.precision != null){ showToast("Maximum can't be combined with Precision — remove it first"); return; }
+      if(sizeRules.precision != null){ showToast(`Maximum can't be combined with Precision, remove it first`); return; }
       sizeRules.max = raw;
     }
     if(sizeRules.min != null && sizeRules.max != null && sizeRules.min > sizeRules.max){
-      showToast('Minimum is greater than maximum — no shape can satisfy both');
+      showToast(`Minimum is greater than maximum, no shape can satisfy both`);
     } else if(sizeRules.min != null && sizeRules.max != null && (type === 'minimum' || type === 'maximum')){
       showToast(`Range ${sizeRules.min}\u2013${sizeRules.max}: pieces have ${sizeRules.min} to ${sizeRules.max} tiles`);
     }
@@ -12301,7 +12301,7 @@
     if(sizeRules.precision != null) entries.push(['precision', `Precision = ${sizeRules.precision}`]);
     if(sizeRules.min != null && sizeRules.max != null){
       const empty = sizeRules.min > sizeRules.max;
-      entries.push(['range', `Range ${sizeRules.min}\u2013${sizeRules.max}`, `Minimum ${sizeRules.min} and Maximum ${sizeRules.max}: every piece has ${sizeRules.min} to ${sizeRules.max} tiles` + (empty ? ' (empty: the minimum is above the maximum, no piece can satisfy it)' : ''), empty]);
+      entries.push(['range', `Range ${sizeRules.min}\u2013${sizeRules.max}`, `Minimum ${sizeRules.min} and Maximum ${sizeRules.max}: every piece has ${sizeRules.min} to ${sizeRules.max} tiles` + (empty ? ` (empty: the minimum is above the maximum)` : ''), empty]);
     } else {
       if(sizeRules.min != null) entries.push(['min', `Minimum = ${sizeRules.min}`]);
       if(sizeRules.max != null) entries.push(['max', `Maximum = ${sizeRules.max}`]);
@@ -12321,7 +12321,7 @@
       const note = document.createElement('span');
       note.className = 'hint';
       note.style.margin = '0';
-      note.textContent = 'No rules — any piece size and shape is allowed.';
+      note.textContent = `No rules yet`;
       container.appendChild(note);
       updateDebug();
       return;
@@ -12481,7 +12481,7 @@
     if(raw === '') return { value: null };
     if(!/^\d+$/.test(raw) || Number(raw) < 1){
       input.setAttribute('aria-invalid', 'true');
-      showToast(`${label} must be a whole number of 1 or more (or empty for no limit)`);
+      showToast(`${label} must be a number (or empty for no limit)`);
       return { error: true };
     }
     return { value: Number(raw) };
@@ -12520,7 +12520,7 @@
       pct(){ return sawEstimate ? Math.round(shown * 100) : null; },
       line(elapsedMs){
         if(!sawEstimate){
-          return elapsedMs < 600 ? '' : "no percentage: the first piece alone has too many possibilities to count (a max region size / amount would narrow it)";
+          return elapsedMs < 600 ? '' : `no percentage: the first piece alone has too many possibilities to count`;
         }
         let s = `~${Math.round(shown * 100)}% (estimate)`;
         const el = elapsedMs / 1000;
@@ -12542,7 +12542,7 @@
   function updateSlowNote(ms){
     const el = document.getElementById('solverSlowNote');
     if(ms >= SLOW_NOTICE_MS){
-      if(el.hidden){ el.textContent = `It's been ${Math.round(SLOW_NOTICE_MS / 1000)} s — this might take longer than expected. The search keeps going until it is finished; you may stop it early with Cancel.`; el.hidden = false; }
+      if(el.hidden){ el.textContent = `It's been ${Math.round(SLOW_NOTICE_MS / 1000)} s — this might take longer than expected. The search keeps going until it is finished; you may stop it early with Cancel. Please contact nittneuk on discord to tell him about this puzzle`; el.hidden = false; }
     } else if(!el.hidden){ el.hidden = true; el.textContent = ''; }
   }
   function hideProgressBar(){
@@ -12882,7 +12882,7 @@
     const verdict = (outcome === 'exhausted' || outcome === 'cap-reached')
       ? (solutions.length === 0 ? 'impossible' : solutions.length === 1 ? 'unique' : 'non-unique') : null;
     document.getElementById('deduceSummary').textContent = verdict                       // v88 page: the verdict is in the status line already
-      ? `It took ${sec(totalMs)} with ${finalMs > 0 ? sec(finalMs) + ' being an exhaustive search' : 'no exhaustive search needed'}.`
+      ? `It took ${sec(totalMs)} with ${finalMs > 0 ? `${sec(finalMs)} being the final search` : 'no exhaustive search needed'}.`
       : `It ran ${sec(totalMs)}.`;
   }
 
@@ -12923,10 +12923,10 @@
       // "find all solutions" is on and the search finished: say plainly that these two are ALL of them
       const diff = computeDiffCells(solutions[0], solutions[1], puzzle.w, puzzle.h);
       setSolverStatus('Not unique — exactly 2 different tilings, and these are all of them (the search finished). Differences are ringed below.' + fileSolutionNote(solutions));
-      addSolutionCard(solutions[0], 'Solution A (of 2)', 420, diff);
-      addSolutionCard(solutions[1], 'Solution B (of 2)', 420, diff);
+      addSolutionCard(solutions[0], `Solution A`, 420, diff);
+      addSolutionCard(solutions[1], `Solution B`, 420, diff);
     } else {
-      const capNote = outcome === 'cap-reached' ? ` (stopped at ${ALL_SOLUTIONS_CAP} — there may be more)` : ' — all of them (the search finished)';
+      const capNote = outcome === 'cap-reached' ? ` (stopped at ${ALL_SOLUTIONS_CAP}, there may be more)` : `, all of them (the search finished)`;
       setSolverStatus(`Not unique — ${solutions.length} distinct tilings found${capNote}.` + fileSolutionNote(solutions));
       solutions.forEach((p,i) => addSolutionCard(p, `Solution ${i+1}`, 220));
     }
@@ -13088,7 +13088,7 @@
       finishSolver('cap-reached', solutions, false);
       document.getElementById('solverStatus').textContent += exp;
     } else {
-      setSolverStatus(`Found a valid tiling (checked by the exact solver) after ${sec(st.firstMs)}, but the search was stopped before it could check that no other tiling exists — so uniqueness is NOT confirmed. Run Check Uniqueness for that.${exp}`);
+      setSolverStatus(`Found a valid tiling (checked by the exact solver) after ${sec(st.firstMs)}, but the search was stopped before it could check that no other tiling exists, uniqueness is NOT confirmed.`);
       addSolutionCard(solutions[0], 'Tiling found by the guess layer', 520);
     }
     document.getElementById('deduceSummary').textContent =
@@ -13129,26 +13129,26 @@
     'size': ['Size limits', null, 'Joining these two groups would make a piece bigger than the size rules allow, so there is a wall between them.', null],
     'grow': ['Forced growth', null, null, 'This group of tiles is still too small to be a finished piece and only one edge leads out of it, so the piece has to grow through that edge.'],
     'min-grow': ['Forced growth (Minimum)', null, null, 'This group is below the Minimum piece size and only one edge leads out of it, so the piece has to grow through that edge.'],
-    'reach': ['Reach', null, null, 'If this edge were a wall, the group could not reach enough tiles to become a big enough piece, so the tiles are in one piece.'],
-    'min-reach': ['Reach (Minimum)', null, null, 'If this edge were a wall, the group could not reach the Minimum number of tiles, so the tiles are in one piece.'],
+    'reach': ['Reach', null, null, 'The group needs this edge to reach enough tiles for a big enough piece, so the two tiles are in one piece.'],
+    'min-reach': ['Reach (Minimum)', null, null, 'The group needs this edge to reach the Minimum number of tiles, so the two tiles are in one piece.'],
     'rose-grow': ['Roses: keep growing', null, null, 'This group of tiles still lacks a rose type and has only one way out, so it has to grow through that edge.'],
-    'rose-reach': ['Roses: must still reach one', null, null, 'A wall here would leave the group no way to reach a rose it still needs (or only one that is too far away for the size limit), so the tiles are joined.'],
-    'rose-pair': ['Roses: same type never together', null, 'Both sides already hold a rose of the same type, and a piece holds only one of each type, so there is a wall between them.', null],
+    'rose-reach': ['Roses: must still reach one', null, null, 'The group still needs a rose, and this edge is its only way to one within the size limit, so the tiles are joined.'],
+    'rose-pair': ['Roses: one of each type per piece', null, 'Both sides already hold a rose of the same type, and a piece holds only one of each type, so there is a wall between them.', null],
     'rose-cut': ['Roses: narrow passage', 'A few tiles cut a part of the board off. The roses in that part need as many different pieces to leave it as the passage has tiles, so every tile of the passage belongs to its own one of those pieces: two of them are never one piece, each one joins the part directly, and each of those pieces finds the roses it needs inside the part. That decides this edge.', null, null],
     'rose-region': ['Roses: closed-in area', 'An area closed in by walls holds as many roses of each type as it has pieces, and an area with one rose of each type is a single piece. Counting the roses here decides this edge.', null, null],
     'stamp-place': ['Stamp: where can the shape go?', null, "The solver tried every position of the stamp's shape that still works. This edge lies outside all of them, so it is a wall.", "The solver tried every position of the stamp's shape that still works. This edge lies inside all of them, so the tiles are in one piece."],
     'stamp-size': ['Stamp: size', null, "Joining these groups would not fit the size of the stamp, so there is a wall between them.", null],
     'stamp-shape': ['Stamp: shape', null, "Joining these groups would clash with the shape of a stamp, so there is a wall between them.", null],
-    'stamp-pair': ['Stamps too far apart', null, 'Two stamps of the same shape can only share a piece if one placement of the shape covers both tiles. None does, so there is a wall.', null],
+    'stamp-pair': ['Stamps too far apart', null, 'Two stamps of the same shape can only share a piece if one placement of the shape covers both tiles. Every placement leaves one of them out, so there is a wall.', null],
     'shape-fit': ['Must still fit the shape', null, "Joining these groups would give tiles that cannot sit inside the stamp's shape, so there is a wall between them.", null],
-    'bank-fit': ['Must still fit a bank shape', null, 'No shape of the bank can hold these tiles together, so there is a wall between them.', null],
+    'bank-fit': ['Must still fit a bank shape', null, 'Every bank shape is too small or the wrong shape to hold these tiles together, so there is a wall between them.', null],
     'bank-place': ['Shape bank: where can the shape go?', null, 'The solver tried every placement of every bank shape (all turns and flips) that still fits around this group. This edge is outside every placement, so it is a wall.', 'The solver tried every placement of every bank shape (all turns and flips) that still fits around this group. This edge is inside every placement, so the tiles are in one piece.'],
     'bank-region': ['Shape bank: closed-in area', "An area closed in by walls has to be covered by pieces of the bank's sizes. The only way to do that decides this edge.", null, null],
     'bank-bend': ['Shape bank: every shape has a bend', 'Every shape of the bank has a bend, so every piece must contain one. That decides this edge.', null, null],
     'bank-block': ['Shape bank: every shape has a 2x2 block', 'Every shape of the bank contains a 2x2 block, so every piece must reach one. That decides this edge.', null, null],
     'bridge-count': ['Counting behind a single connection', null,
       'The board hangs together by a single connection. If one piece crossed it, the rest of each side could not be covered by whole pieces of the allowed size, so it is a wall.',
-      'The board hangs together by a single connection. If it were a wall, each side would have to be covered by whole pieces of the allowed size, and that is impossible, so one piece crosses it.'],
+      'The board hangs together by a single connection. The two sides only work out with one piece crossing it, so the tiles are joined.'],
     'area-sum': ['Area numbers add up to every tile', 'The numbers of this region add up to all its tiles, so no piece without a number can exist: every tile ends up in a numbered piece. That decides this edge.', null, null],
     'area-region': ['Area numbers in a closed-in area', 'The area numbers inside this region closed in by walls leave only one possibility for this edge.', null, null],
     'area-rel': ['Walls that compare sizes', 'The walls that compare sizes (<, >, \u00b1N, same) only leave the pieces on each side some sizes. That decides this edge.', null, null],
@@ -13161,17 +13161,17 @@
     'match-fit': ['Match: one shape for every group', null, 'The common shape has to fit every group. Joining these two groups would leave no shape that fits, so there is a wall.', null],
     'match-mismatch': ['Match and Mismatch together', null, null, 'Every piece the same and every piece different can only both be true with a single piece, so the whole board is one piece.'],
     'mismatch-place': ['Mismatch: a place for the pinned shape', null, 'This group can only be one particular shape, and the solver tried every place for it. This edge lies outside all of them, so it is a wall.', 'This group can only be one particular shape, and the solver tried every place for it. This edge lies inside all of them, so the tiles are in one piece.'],
-    'mismatch-stamp': ['Mismatch: same stamp, one piece', null, null, 'Two stamps of the same shape cannot be two pieces (no two pieces may share a shape), so they are one piece.'],
-    'mismatch-link': ['Mismatch: same pinned shape, one piece', null, null, 'Two groups that can only be the same shape cannot be two pieces (no two pieces may share a shape), so they are one piece.'],
-    'mingle-area-link': ['Size Separation: same size side by side', null, null, 'Two neighbouring tiles whose pieces are pinned to the same size cannot have a wall between them, because two touching pieces would be equal.'],
-    'mingle-shape-link': ['Mingle Shape: same shape side by side', null, null, 'Two neighbouring tiles whose pieces are pinned to the same shape cannot have a wall between them, because two touching pieces would be equal.'],
-    'mingle-area-merge': ['Size Separation: no size in common', null, 'These two groups have no size in common, so they cannot be one piece and there is a wall between them.', null],
-    'mingle-shape-merge': ['Mingle Shape: no shape in common', null, 'These two groups have no shape in common, so they cannot be one piece and there is a wall between them.', null],
+    'mismatch-stamp': ['Mismatch: same stamp, one piece', null, null, 'Two stamps of the same shape are in one piece, because no two pieces share a shape.'],
+    'mismatch-link': ['Mismatch: same pinned shape, one piece', null, null, 'These two groups can only be the same shape, and no two pieces share a shape, so they are one piece.'],
+    'mingle-area-link': ['Size Separation: same size side by side', null, null, 'The pieces of these two neighbouring tiles are pinned to the same size, and touching pieces always differ in size, so the two tiles are in one piece.'],
+    'mingle-shape-link': ['Mingle Shape: same shape side by side', null, null, 'The pieces of these two neighbouring tiles are pinned to the same shape, and touching pieces always differ in shape, so the two tiles are in one piece.'],
+    'mingle-area-merge': ['Size Separation: different sizes', null, 'These two groups can only end up with different sizes, so they are different pieces, with a wall between them.', null],
+    'mingle-shape-merge': ['Mingle Shape: different shapes', null, 'These two groups can only end up with different shapes, so they are different pieces, with a wall between them.', null],
     'mingle-area-parity': ['Size Separation: two sizes alternate', 'With only two possible sizes, neighbouring pieces must alternate like a chessboard. The chain of walls between these tiles decides this edge.', null, null],
     'mingle-shape-parity': ['Mingle Shape: two shapes alternate', 'With only two possible shapes, neighbouring pieces must alternate like a chessboard. The chain of walls between these tiles decides this edge.', null, null],
     'solitude-grow': ['Solitude: keep growing', null, null, 'This group has no symbol yet and only one way out, so it has to grow through that edge.'],
-    'solitude-reach': ['Solitude: must still reach a symbol', null, null, 'A wall here would cut the group off from every symbol it could still reach, so the tiles are joined.'],
-    'solitude-pair': ['Solitude: two symbols never together', null, 'Two symbols can never share a piece, so there is a wall between them.', null],
+    'solitude-reach': ['Solitude: must still reach a symbol', null, null, 'This edge is the group\u2019s only way to a symbol it can still reach, so the tiles are joined.'],
+    'solitude-pair': ['Solitude: one symbol per piece', null, 'Each piece holds one symbol, so these two symbols are in different pieces, with a wall between them.', null],
     'solitude-region': ['Solitude: closed-in area', 'An area closed in by walls holds one symbol per piece, and with exactly one symbol it is a single piece. That decides this edge.', null, null],
     'boxy-place': ['Boxy: where can the rectangle go?', null, 'The solver tried every rectangle of an allowed size that holds the tiles known so far. This edge is outside all of them, so it is a wall.', 'The solver tried every rectangle of an allowed size that holds the tiles known so far. This edge is inside all of them, so the tiles are in one piece.'],
     'boxy-line': ['Boxy: a prime size is a strip', 'A piece with a prime number of tiles is a straight strip, which decides the edges next to tiles that are already in a row.', null, null],
@@ -13199,12 +13199,12 @@
     'tower-wall': ['Watchtower', null, 'The number on the watchtower at this corner needs this edge to be a wall (a 4 needs four walls, a 2 exactly two, and so on).', null],
     'tower-link': ['Watchtower', null, null, 'The number on the watchtower at this corner needs this edge to be open (a 1 links all the tiles round its corner).'],
     'tower-wrap': ['Watchtower: no wrapping round the corner', 'No piece may wrap round this watchtower corner, which decides this edge.', null, null],
-    'compass': ['Compass: reach', null, null, 'Without this edge the compass piece could not reach enough tiles on one of its sides, so the tiles are joined.'],
-    'cmp-block': ['Compass: out of reach', null, 'A tile the compass piece can never reach lies across this open edge, so it is a wall.', null],
+    'compass': ['Compass: reach', null, null, 'The compass piece needs this edge to reach enough tiles on one of its sides, so the tiles are joined.'],
+    'cmp-block': ['Compass: out of reach', null, 'The tile across this edge is out of the compass piece\u2019s reach, so there is a wall.', null],
     'cmp-budget': ['Compass: the way to a rose', 'A compass number is exact, so the piece has only that many tiles left on that side. Every way from the compass to a rose it still needs passes tiles on that side, and each one uses up the count. Without this edge the piece could not reach any such rose within its numbers, so this decides the edge.', null, null],
     'diff-clash': ['Difference: two numbers, two pieces', 'One piece touches two Difference walls with different numbers (a Gemini wall counts as 0). The pieces across them would have to differ from it by both numbers at once, so they are two different pieces. That decides this edge.', null, null],
     'diff-small': ['Difference: the few small pieces', 'Every Difference wall of N has a piece of at most (Maximum - N) tiles on one side. With Mismatch each shape is used once, so there are only a few such small pieces. The solver tried every way to place them so that each of those walls has one on a side, and all the ways agree on this edge.', null, null],
-    'rose-cover': ['Roses: who goes with whom', 'Every piece holds one rose of each type. The solver listed every way to split the groups of roses into such pieces. In none of them are these two groups in the same piece, so they are different pieces. That decides this edge.', null, null],
+    'rose-cover': ['Roses: who goes with whom', 'Every piece holds one rose of each type. The solver listed every way to split the groups of roses into such pieces. In every one of them these two groups end up in different pieces. That decides this edge.', null, null],
     'label': ['Every tile belongs to one symbol', 'Every piece holds exactly one symbol (Solitude), one rose of each type, or one of the area numbers that fill the board, so every tile belongs to the piece of exactly one of them. The solver keeps, for each tile, the symbols it can still belong to: walls and Inequality / Difference walls take some away, and so does distance from the symbol. These two tiles can no longer belong to the same symbol (wall), or both belong to the same one (link).', null, null],
     'box-hall': ['Boxy + Mismatch: shapes taken', 'Every piece is a different rectangle. Some pieces can only be a few rectangles, and as many of them as there are such rectangles take all of them (for example four ends that can only be 1x1 to 1x4). Every other piece loses those rectangles. What the rectangles left for this piece agree on decides this edge.', null, null],
     'mismatch-hall': ['Mismatch: few shapes, all taken', 'Every piece has a different shape and the pieces are small, so there are only a few shapes. Some pieces can only be a few of them, and as many of those pieces as there are such shapes take all of them; every other piece loses them. What the shapes left for this piece agree on decides this edge.', null, null],
@@ -13213,12 +13213,15 @@
     'gemini-place': ['Gemini / Delta: the shapes on both sides', 'The solver listed every piece each side of a Gemini wall can still become. Both sides must have the same shape, so each keeps only the shapes the other can have too (a Delta wall: a side left with one shape takes it from the other). Every piece left for this side agrees on this edge.', null, null],
     'region-merge': ['Two groups, one piece', 'An area closed in by walls has only so many tiles. The solver tried every way to split its big groups into pieces, with the sizes the Inequality walls ask for; in every way that fits, these two groups are in the same piece. So they are one piece, even where they do not touch yet.', null, null],
     'size-cut': ['One size, one narrow tile', 'Every piece has the same size here. This tile is the only way into a part of the board, so only its own piece can reach in from outside, and it must take exactly what is left of that part after whole pieces: none (then this edge is a wall) or some (then, with one way in, this edge is a link).', null, null],
-    'cmp-wrap': ['Compass: the piece has to go this way', null, null, 'Without this tile or edge the region would have too few tiles on some side (or in total) for the compass numbers, so it is part of the piece.'],
-    'cmp-place': ['Compass: every way the piece can be', null, 'The solver searched for every piece that fits all the compass numbers, the size and the decided walls. None holds this tile, so it is cut off by a wall.', 'The solver searched for every piece that fits all the compass numbers, the size and the decided walls. Every one holds this tile, so it is joined.'],
+    'cmp-wrap': ['Compass: the piece has to go this way', null, null, 'The compass piece needs this tile (or edge) to have enough tiles on some side, or in total, so it is part of the piece.'],
+    'cmp-place': ['Compass: every way the piece can be', null, 'The solver searched for every piece that fits all the compass numbers, the size and the decided walls. Every one of them leaves this tile out, so there is a wall.', 'The solver searched for every piece that fits all the compass numbers, the size and the decided walls. Every one holds this tile, so it is joined.'],
     'cmp-crowd': ['Compass: too many compasses', 'However the compasses here are split into pieces, they would need more tiles than are available. That decides this edge.', null, null],
-    'cmp-excl': ['Compass: a tile that cannot be in the piece', 'Assuming this tile is in the piece of a compass breaks something, so it is kept out.', null, null],
-    'hetero-size': ['Heterogeneous: a size is used once', 'A finished piece already has this size, so no other piece can have it. That decides this edge.', null, null],
+    'cmp-excl': ['Compass: this tile stays out', 'Putting this tile in the compass piece would break a rule, so it belongs to another piece.', null, null],
+    'hetero-size': ['Heterogeneous: a size is used once', 'A finished piece already has this size, and each size is used only once. That decides this edge.', null, null],
   };
+  // V1.0.10: the walls that follow from two clues (or two groups) proven to be in different pieces
+  STEP_INFO['clue-apart'] = ['Two clues, two pieces', null, 'These two clues are in different pieces (the solver tried them in one piece, and the rules could not all be met that way), so there is a wall between their groups.', null];
+  STEP_INFO['pair-apart'] = ['Two groups, two pieces', null, 'These two groups are in different pieces (the solver tried them as one piece, and the rules could not all be met that way), so there is a wall between them.', null];
   for(const k of Object.keys(STEP_INFO)) if(k.startsWith('mingle-area-')){                  // v90: Size Separation logic, run for Heterogeneous
     const v = STEP_INFO[k].slice(); if(typeof v[0] === 'string') v[0] = v[0].replace('Size Separation', 'Heterogeneous'); STEP_INFO['hetero-' + k.slice(12)] = v;
   }
@@ -13437,26 +13440,28 @@
       if(st.rule === 'label-join'){                                      // V1.0.6: core v98
         const what = sizeRules.solitude ? 'one symbol' : (puzzle.roses && puzzle.roses.size ? 'one rose of each type' : 'one of the area numbers');
         return { kicker: 'Rule', title: 'Only one piece it can be in',
-          text: `Every piece holds exactly ${what}. The ringed tiles can not end up in any other piece, so they are in one piece, even though they do not touch yet.${mark}`, meta };
+          text: `Every piece holds exactly ${what}. The ringed tiles have only one piece left they can belong to, so they are in that piece, even though they do not touch yet.${mark}`, meta };
       }
       if(st.rule === 'split-cut') return { kicker: 'Rule', title: 'The only way to connect',
         text: `The parts of one piece that do not touch yet still have to meet, and every way to connect them passes through the ringed tile${n > 1 ? 's' : ''}, so ${n > 1 ? 'they belong' : 'it belongs'} to that piece.${mark}`, meta };
       if(st.rule !== 'clue-join' && st.rule !== 'pair-join') return { kicker: 'Rule', title: 'Far apart, but one piece',
         text: `The rules already used show that the ringed tiles are in one piece, even though they do not touch yet.${mark}`, meta };
-      return { kicker: 'Proof by contradiction', title: 'Far apart, but one piece',
-        text: `Suppose the ringed tiles were in different pieces. Following the rules from there leads to a contradiction, so they are in one piece, even though they do not touch yet.${mark}`, meta };
+      return { kicker: 'Checked by trying the other way', title: 'Far apart, but one piece',
+        text: `The ringed tiles are in one piece, even though they do not touch yet: the solver tried them in different pieces, and the rules could not all be met that way.${mark}`, meta };
     }
-    if(st.kind === 'probe' || st.kind === 'search'){
-      const assumed = st.value === 'wall' ? 'same' : 'wall';
-      const lead = assumed === 'wall' ? 'Suppose there were a wall at the outlined edge.' : 'Suppose the two tiles on either side of the outlined edge were in the same piece (no wall between them).';
-      const concl = st.value === 'same' ? 'So there is no wall: the two tiles are in one piece.' : 'So there must be a wall between the two tiles.';
+    if(st.kind === 'probe' || st.kind === 'search'){                   // V1.0.10: what is true first, then what the other way gave
+      const same = st.value === 'same';
+      const title = same ? 'These two tiles are in one piece' : 'There is a wall here';
+      const concl = same ? 'The two tiles at the outlined edge are in one piece.' : 'There is a wall at the outlined edge.';
+      const other = same ? 'a wall there' : 'the two tiles in one piece';
       if(st.kind === 'probe'){
-        const why = stepWhyText(st.why);
-        return { kicker: 'Proof by contradiction', title: assumed === 'wall' ? 'A wall here is impossible' : 'No wall here is impossible',
-          text: `${lead} ${why ? `Following the rules from there, this breaks: ${why}.` : 'Following the rules from there leads to a contradiction.'} ${concl}`, meta };
+        let why = stepWhyText(st.why).trim().replace(/\.+$/, '');
+        if(/^[A-Z][a-z]/.test(why)) why = why[0].toLowerCase() + why.slice(1);
+        return { kicker: 'Checked by trying the other way', title,
+          text: `${concl} The solver tried ${other} instead and found that ${why || 'the rules could not all be met'}.`, meta };
       }
-      return { kicker: 'Proof by exhaustive search', title: assumed === 'wall' ? 'A wall here is impossible' : 'No wall here is impossible',
-        text: `${lead} The solver searched every way to continue around this spot and none works. This is a brute-force check, so there is no short rule to quote. ${concl}`, meta };
+      return { kicker: 'Checked by search', title,
+        text: `${concl} The solver tried every way to go on with ${other} instead, and none of them works out. This is a brute-force check, so there is no short rule to quote.`, meta };
     }
     // a rule
     const info = STEP_INFO[st.rule];
@@ -13469,8 +13474,8 @@
     }
     if(!body){
       const why = stepWhyText(st.rule);
-      body = onlyLinks ? (why ? `A wall here would break a rule (${why}), so these tiles are in one piece.` : 'These tiles have to be in one piece.')
-                       : (why ? `Joining these groups would break a rule (${why}), so there is a wall between them.` : 'This follows from the rules already used.');
+      body = onlyLinks ? (why ? `These tiles are in one piece: a wall here would break a rule (${why}).` : 'These tiles are in one piece.')
+                       : (why ? `There is a wall between these groups: joining them would break a rule (${why}).` : 'This follows from the rules already used.');
     }
     if(info && nWall === 0 && nLink === 0 && info[3]) body = info[3];
     return { kicker: st.follows ? 'Follows from the proof above' : 'Rule', title, text: body, meta };
@@ -13808,7 +13813,7 @@
   // ================= PUZZLE LIBRARY (v22) : several puzzles, import, switch =================
 
   const K_LIBRARY = 'glimmith:library:v1';
-  const FILE_SOLUTION_LABEL = 'Solution stored in the file';
+  const FILE_SOLUTION_LABEL = `The file's known solution`;
   // items: { id, name, kind:'main'|'imported', author, difficulty, folder, source, sig, w, h, warnings, solutionWalls, state }
   // `state` is only authoritative while the item is NOT the active one; the live variables above are the active puzzle.
   let library = { activeId: 'main', nextId: 1, items: [{ id: 'main', name: 'My puzzle', kind: 'main', state: null }] };
@@ -13860,7 +13865,7 @@
   }
   // v77: starter puzzles (the user's examples, starters/ in the project). Added once per browser (library.startersSeen), after "My puzzle"
   // and the user's own puzzles, before the roadblocks; deleting one keeps it deleted.
-  const STARTER_PUZZLES = [{"id":"starter-unique","name":"Exemple Puzzle Unique","state":{"puzzle":{"w":14,"h":7,"active":[[1,0,0,1,1,0,0,1,1,1,1,1,1,0],[1,0,0,1,1,1,0,1,1,1,1,0,1,0],[1,0,0,1,1,1,0,1,1,1,1,0,1,0],[1,0,0,1,1,1,1,1,1,1,1,0,1,0],[1,0,0,1,1,0,1,1,1,1,1,0,1,0],[1,0,0,1,1,0,1,1,1,1,1,0,1,0],[1,1,1,1,1,0,0,1,1,1,1,1,1,1]],"walls":[["v:3,6","gemini"],["v:3,5","wall"],["v:3,4","wall"],["v:3,2","wall"],["v:3,1","wall"],["v:3,0","gemini"],["v:7,0","gemini"],["v:7,1","wall"],["v:7,2","wall"],["v:7,6","gemini"],["v:7,5","wall"],["v:7,4","wall"],["v:9,0","gemini"],["v:9,1","wall"],["v:9,5","wall"],["v:9,6","gemini"],["v:9,2","wall"],["v:9,4","wall"],["v:7,3","wall"],["v:9,3","wall"],["v:3,3","wall"]],"roses":[],"polyominoes":[],"areaNumbers":[],"palisades":[],"compasses":[],"watchtowers":[]},"shapeBank":[],"banShapes":[],"sizeRules":{"precision":null,"min":6,"max":null,"mismatch":false,"match":false,"mingleShape":false,"mingleArea":false,"solitude":false,"boxy":false,"nonBoxy":false,"bricky":false,"loopy":false},"solverLimits":{"maxRegions":null,"maxRegionSize":null}}},{"id":"starter-non-unique","name":"Exemple Puzzle Non Unique","state":{"puzzle":{"w":20,"h":7,"active":[[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0],[1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0],[1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,0],[1,0,0,0,1,0,1,0,1,0,0,1,1,0,0,1,1,0,0,0],[1,0,0,0,1,0,1,1,1,0,0,1,1,0,0,1,1,0,0,0],[1,0,0,0,1,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0]],"walls":[["v:7,2","wall"],["v:7,0","delta"],["v:3,2","wall"],["v:11,0","delta"],["v:11,2","wall"],["v:11,4","wall"],["v:11,5","wall"],["v:11,6","wall"],["v:11,3","wall"],["v:15,0","delta"],["v:15,2","wall"],["v:15,3","wall"],["v:15,4","wall"],["v:15,5","wall"],["v:15,6","wall"],["v:7,5","wall"],["v:3,3","wall"],["v:3,0","delta"],["v:7,3","wall"],["v:3,1","wall"],["v:7,1","wall"],["v:11,1","wall"],["v:15,1","wall"]],"roses":[],"polyominoes":[],"areaNumbers":[],"palisades":[],"compasses":[],"watchtowers":[]},"shapeBank":[],"banShapes":[],"sizeRules":{"precision":3,"min":null,"max":null,"mismatch":false,"match":false,"mingleShape":false,"mingleArea":false,"solitude":false,"boxy":false,"nonBoxy":false,"bricky":false,"loopy":false},"solverLimits":{"maxRegions":null,"maxRegionSize":null}}}];
+  const STARTER_PUZZLES = [{"id":"starter-unique","name":`Example Puzzle Unique`,"state":{"puzzle":{"w":14,"h":7,"active":[[1,0,0,1,1,0,0,1,1,1,1,1,1,0],[1,0,0,1,1,1,0,1,1,1,1,0,1,0],[1,0,0,1,1,1,0,1,1,1,1,0,1,0],[1,0,0,1,1,1,1,1,1,1,1,0,1,0],[1,0,0,1,1,0,1,1,1,1,1,0,1,0],[1,0,0,1,1,0,1,1,1,1,1,0,1,0],[1,1,1,1,1,0,0,1,1,1,1,1,1,1]],"walls":[["v:3,6","gemini"],["v:3,5","wall"],["v:3,4","wall"],["v:3,2","wall"],["v:3,1","wall"],["v:3,0","gemini"],["v:7,0","gemini"],["v:7,1","wall"],["v:7,2","wall"],["v:7,6","gemini"],["v:7,5","wall"],["v:7,4","wall"],["v:9,0","gemini"],["v:9,1","wall"],["v:9,5","wall"],["v:9,6","gemini"],["v:9,2","wall"],["v:9,4","wall"],["v:7,3","wall"],["v:9,3","wall"],["v:3,3","wall"]],"roses":[],"polyominoes":[],"areaNumbers":[],"palisades":[],"compasses":[],"watchtowers":[]},"shapeBank":[],"banShapes":[],"sizeRules":{"precision":null,"min":6,"max":null,"mismatch":false,"match":false,"mingleShape":false,"mingleArea":false,"solitude":false,"boxy":false,"nonBoxy":false,"bricky":false,"loopy":false},"solverLimits":{"maxRegions":null,"maxRegionSize":null}}},{"id":"starter-non-unique","name":`Example Puzzle Non Unique`,"state":{"puzzle":{"w":20,"h":7,"active":[[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],[1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0],[1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,0],[1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,0],[1,0,0,0,1,0,1,0,1,0,0,1,1,0,0,1,1,0,0,0],[1,0,0,0,1,0,1,1,1,0,0,1,1,0,0,1,1,0,0,0],[1,0,0,0,1,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0]],"walls":[["v:7,2","wall"],["v:7,0","delta"],["v:3,2","wall"],["v:11,0","delta"],["v:11,2","wall"],["v:11,4","wall"],["v:11,5","wall"],["v:11,6","wall"],["v:11,3","wall"],["v:15,0","delta"],["v:15,2","wall"],["v:15,3","wall"],["v:15,4","wall"],["v:15,5","wall"],["v:15,6","wall"],["v:7,5","wall"],["v:3,3","wall"],["v:3,0","delta"],["v:7,3","wall"],["v:3,1","wall"],["v:7,1","wall"],["v:11,1","wall"],["v:15,1","wall"]],"roses":[],"polyominoes":[],"areaNumbers":[],"palisades":[],"compasses":[],"watchtowers":[]},"shapeBank":[],"banShapes":[],"sizeRules":{"precision":3,"min":null,"max":null,"mismatch":false,"match":false,"mingleShape":false,"mingleArea":false,"solitude":false,"boxy":false,"nonBoxy":false,"bricky":false,"loopy":false},"solverLimits":{"maxRegions":null,"maxRegionSize":null}}}];
   function addStarters(){
     const seen = new Set(library.startersSeen || []), known = new Set(library.items.map(i => i.sig || stateSig(i.state)).filter(Boolean));
     let added = 0;
@@ -14014,7 +14019,7 @@
     const target = tilingSignature(fileSolutionPieces(it));
     const idx = solutions.findIndex(p => tilingSignature(p) === target);
     if(solutions.length === 1) return idx === 0 ? " ✓ It is the solution stored in the imported file."
-      : " ⚠ It is NOT the solution stored in the imported file: the solver and the file disagree, so one of them is wrong.";
+      : ` ⚠ It is NOT the solution stored in the imported file: the solver and the file disagree, so one of them is wrong. Please contact nittneuk (nittneuk on discord) about this if you think the mistake is on the solver`;
     if(idx < 0) return " The solution stored in the imported file is not among the tilings shown.";
     return idx < 2 && solutions.length === 2 ? ` The solution stored in the imported file is Solution ${idx ? 'B' : 'A'}.` : ` The solution stored in the imported file is solution ${idx + 1} of these.`;
   }
@@ -14109,7 +14114,7 @@
       if(!lines.length) lines.push({ text: 'No problems.', bad: false });
       showImportReport('Import report: ' + bits.join(', '), lines);
       if(assumed.length) showAssumedRules(assumed);
-      showToast(fresh.length > 1 ? `Imported ${fresh.length} puzzles — pick one from the list` : fresh.length === 1 ? `Imported “${library.items[library.items.length - 1].name}”` : 'Nothing new to import');
+      showToast(fresh.length > 1 ? `Imported ${fresh.length} puzzles` : fresh.length === 1 ? `Imported “${library.items[library.items.length - 1].name}”` : 'Nothing new to import');
     } catch(e){
       showImportReport('Import failed', [{ text: String(e && e.message || e), bad: true }]);
     } finally {
@@ -14158,8 +14163,8 @@
   function fastRender(){
     const remember = fastCanRemember();
     document.getElementById('fastImportIntro').textContent = remember
-      ? 'Choose each folder once. After that, Fast import reads both in one click (your browser may ask to allow it).'
-      : 'Choose a folder to import every puzzle in it. This browser can not remember folders (Chrome and Edge can), so you pick it each time.';
+      ? `Choose each folder once. After that, Fast import reads both in one click (if your browser is compatible).`
+      : `Choose your folder to import the puzzles. Your browser can't remember folders (Chrome and Edge can), so you will need to pick it each time.`;
     for(const slot of FAST_SLOTS){ const st = document.getElementById('fastStatus_' + slot); st.textContent = fastDirs[slot] ? '\u2713 ' + fastDirs[slot].name : ''; }
     document.getElementById('fastRunBtn').hidden = !remember || !(fastDirs.steam || fastDirs.own);
     document.getElementById('fastForgetBtn').hidden = !remember || !(fastDirs.steam || fastDirs.own);
@@ -14269,7 +14274,7 @@
     try{ const txt = new TextDecoder().decode(input.bytes).replace(/^\uFEFF/, ''); if(txt.trimStart()[0] !== '{') return null; o = JSON.parse(txt); } catch(e){ return null; }
     if(!o || o.format !== EXPORT_FORMAT) return null;
     const items = [], problems = [];
-    if(!Number.isInteger(o.version) || o.version > EXPORT_VERSION){ problems.push({ source: input.name, message: 'this file was saved by a newer version of the editor; reading what can be read' }); }
+    if(!Number.isInteger(o.version) || o.version > EXPORT_VERSION){ problems.push({ source: input.name, message: `this file was saved by a version of the editor not supported yet. Please verify the import went well` }); }
     if(!Array.isArray(o.puzzles) || !o.puzzles.length){ problems.push({ source: input.name, message: 'the file holds no puzzles' }); return { items, problems }; }
     o.puzzles.forEach((pz, i) => {
       const n = normalizeState(pz && pz.state), label = `${input.name}${o.puzzles.length > 1 ? ' #' + (i + 1) : ''}`;
@@ -14447,7 +14452,7 @@
         };
         if(key === 'd' || key === 'g'){ e.preventDefault(); toggle(key === 'd' ? 'delta' : 'gemini'); return; }
         if(key === 'l'){                                                    // v90: custom rule Links
-          if(!document.body.classList.contains('show-custom')){ showToast('Links are a custom rule: show custom rules first'); return; }
+          if(!document.body.classList.contains('show-custom')){ showToast(`Links are a custom rule: show custom rules first (bottom of the page)`); return; }
           e.preventDefault(); toggle('link'); return;
         }
         if(['arrowleft','arrowright','arrowup','arrowdown'].includes(key)){
@@ -14460,7 +14465,7 @@
           if(orient === 'h' && key === 'arrowup')    kind = 'lt';
           if(orient === 'h' && key === 'arrowdown')  kind = 'gt';
           if(kind) toggle(kind);
-          else showToast(orient === 'v' ? 'Use ← or → on a vertical wall' : 'Use ↑ or ↓ on a horizontal wall');
+          else showToast(orient === 'v' ? `← or → works on vertical walls only` : `↑ or ↓ works on horizontal walls only`);
           return;
         }
         if(/^[0-9]$/.test(key)){ e.preventDefault(); toggle(`diff${key}`); return; }

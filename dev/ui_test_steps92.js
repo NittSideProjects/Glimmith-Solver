@@ -1,7 +1,7 @@
 // v92 page: big steps are split (at most one finished piece per step), and a letter key over the grid never goes to a dropdown.
-// node ui_test_steps92.js ../glimmith_solver_V1.0.9.html /path/to/The-Wall-of-Opportunity.glimmith.json
+// node ui_test_steps92.js ../glimmith_solver_V1.0.10.html /path/to/The-Wall-of-Opportunity.glimmith.json
 const { JSDOM } = require('jsdom'); const fs = require('fs');
-const file = process.argv[2] || '../glimmith_solver_V1.0.9.html', pz = process.argv[3];
+const file = process.argv[2] || '../glimmith_solver_V1.0.10.html', pz = process.argv[3];
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

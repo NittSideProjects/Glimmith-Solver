@@ -1,10 +1,10 @@
-// Minimum + Maximum are shown as ONE "Range X-Y" chip.   node ui_test_range26.js ../glimmith_solver_V1.0.9.html
+// Minimum + Maximum are shown as ONE "Range X-Y" chip.   node ui_test_range26.js ../glimmith_solver_V1.0.10.html
 const fs = require('fs'); const { JSDOM } = require('jsdom');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
-  const dom = new JSDOM(fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.9.html', 'utf8'), { runScripts:'dangerously', pretendToBeVisual:true, url:'http://localhost/' });
+  const dom = new JSDOM(fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.10.html', 'utf8'), { runScripts:'dangerously', pretendToBeVisual:true, url:'http://localhost/' });
   const { window } = dom; const store = new Map();
   window.storage = { get: async k => store.has(k) ? { key:k, value:store.get(k) } : null, set: async (k,v) => { store.set(k,v); return {}; }, delete: async()=>({}), list: async()=>({keys:[]}) };
   const errors = []; window.addEventListener('error', e => errors.push(String(e.message)));

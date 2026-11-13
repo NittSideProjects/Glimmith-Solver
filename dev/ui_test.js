@@ -3,7 +3,7 @@
 // real "Check Uniqueness" button. Usage: node ui_test.js path/to/app.html
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
-const file = process.argv[2] || '../glimmith_solver_V1.0.9.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.10.html';
 
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };
@@ -171,7 +171,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   $('findAllChk').checked = true;
   st = await solve();
   check('...with "find all solutions" on and exactly 2 tilings it says these are ALL of them', /exactly 2 different tilings/.test(st) && /all of them/.test(st) && !/at least/.test(st), st);
-  check('...and the cards are labelled "of 2"', /Solution A \(of 2\)/.test($('solverResults').textContent));
+  check('...and the cards are labelled A and B', /Solution A/.test($('solverResults').textContent) && /Solution B/.test($('solverResults').textContent));
   $('findAllChk').checked = false;
 
   seam5(1); key('Backspace');             // hover seam v:1,0 ; (backspace does nothing on seams)

@@ -2,7 +2,7 @@
 // Loads the real HTML in jsdom. Usage: node ui_test_limits.js path/to/app.html
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
-const file = process.argv[2] || '../glimmith_solver_V1.0.9.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.10.html';
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -146,7 +146,7 @@ async function boot(store){
   W.$('solveBtn').click();
   await sleep(2200);
   status = W.$('solverStatus').textContent;
-  check('too-wide root: says why there is no percentage and points at the limits', /no percentage/.test(status) && /max region size \/ amount/.test(status) && !/~\d+%/.test(status), status);
+  check('too-wide root: says why there is no percentage', /no percentage/.test(status) && !/~\d+%/.test(status), status);
   check('too-wide root: bar is indeterminate', W.$('solverProgress').classList.contains('indeterminate'));
   W.$('cancelSolveBtn').click(); await sleep(400);
   check('cancel without an estimate has no percentage note', /^Cancelled after/.test(W.$('solverStatus').textContent) && !/at about/.test(W.$('solverStatus').textContent), W.$('solverStatus').textContent);

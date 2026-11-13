@@ -1,8 +1,8 @@
 // UI checks for Shape ban't (v29): panel, red cards, add / duplicate / remove, saving with the puzzle and the library, solver verdicts.
-// Loads the real HTML in jsdom.  usage: node ui_test_ban29.js ../glimmith_solver_V1.0.9.html
+// Loads the real HTML in jsdom.  usage: node ui_test_ban29.js ../glimmith_solver_V1.0.10.html
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
-const file = process.argv[2] || '../glimmith_solver_V1.0.9.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.10.html';
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -41,7 +41,7 @@ const O4 = [[0,0],[1,0],[0,1],[1,1]], DOMINO = [[0,0],[1,0]], P5 = [[0,0],[1,0],
   let A = await boot(store);
   const { $ } = A;
   check('page loaded without script errors', A.errors.length === 0, A.errors);
-  check('ban panel exists under the bank with an empty note', !!$('banSection') && /No shapes banned yet/.test($('banList').textContent) && /Omits \(0\)/.test($('banTitle').textContent), $('banTitle').textContent);
+  check('ban panel exists under the bank with an empty note', !!$('banSection') && /No shapes added yet/.test($('banList').textContent) && /Omits \(0\)/.test($('banTitle').textContent), $('banTitle').textContent);
   check('both buttons exist, the ban button is not the amber primary one', !!$('addToBanBtn') && !$('addToBanBtn').classList.contains('primary') && $('addToBankBtn').classList.contains('primary'));
   check('v49: the Omits panel explains itself in a hint (no bubble)', /contain/.test($('banSection').textContent) && !$('banInfo'));
   A.$('addToBanBtn').click(); check('nothing drawn: nothing banned', A.raw().banShapes.length === 0);
@@ -56,7 +56,7 @@ const O4 = [[0,0],[1,0],[0,1],[1,1]], DOMINO = [[0,0],[1,0]], P5 = [[0,0],[1,0],
   A.draw(DOMINO); $('addToBanBtn').click(); await sleep(30);
   check('domino added', A.raw().banShapes.length === 2);
   A.draw([[0,0],[0,1]]); $('addToBanBtn').click(); await sleep(30);
-  check('a turned copy is refused', A.raw().banShapes.length === 2 && /already banned/.test(A.window.document.body.textContent), A.raw().banShapes.length);
+  check('a turned copy is refused', A.raw().banShapes.length === 2 && /already inside the pool/.test(A.window.document.body.textContent), A.raw().banShapes.length);
   $('clearShapeBtn').click();           // a refused shape stays in the editor: clear it before drawing the next one
   // remove the domino with its x button
   A.cards()[1].querySelector('.remove').click(); await sleep(30);

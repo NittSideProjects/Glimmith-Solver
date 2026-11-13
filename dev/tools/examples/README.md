@@ -27,5 +27,5 @@ node tools/examples/minimize.js $C $PWD/fuzzlib.js $(ls /tmp/tiny_*.json | paste
 node tools/examples/to_page.js /tmp/min.json build/rule_examples_V1.0.x.json
 ```
 
-`ui_test_examples_V1.0.13.js` checks that every board draws and that the data keeps to the limits above. A new rule needs a line in
+`ui_test_examples_V1.0.14.js` checks that every board draws and that the data keeps to the limits above. A new rule needs a line in
 `lines.json` (and on the rewrite list) and a title in the page's `STEP_INFO`.

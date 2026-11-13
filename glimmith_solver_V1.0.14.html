@@ -195,6 +195,7 @@
   .example-pop .ex-cases{ display:flex; flex-wrap:wrap; gap:10px 22px; justify-content:center; align-items:flex-end; margin-top:10px; }
   .example-pop .ex-case{ display:flex; flex-direction:column; align-items:center; gap:4px; }
   .example-pop .ex-case svg{ max-width:100%; height:auto; }
+  .example-pop .ex-num{ font-size:11.5px; font-weight:600; color:var(--ink-muted); font-variant-numeric:tabular-nums; }
   .example-pop .ex-names{ display:flex; flex-wrap:wrap; gap:4px 8px; align-items:center; justify-content:center; font-size:12px; color:var(--ink-muted); }
   .example-pop .ex-names .ex-shapes{ margin:0; }
   .steps-kicker{ font-family: var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color: var(--teal); }
@@ -13725,16 +13726,19 @@
     return box.firstChild ? box : null;
   }
   const exampleTitle = key => (STEP_INFO[key] || [])[0] || (key === 'fact:split-cut' ? 'The only way to connect' : key === 'fact:label-join' ? 'Only one piece it can be in' : key.startsWith('fact:') ? 'Far apart, but one piece' : key);
+  const exampleNumber = key => Object.keys(RULE_EXAMPLES).indexOf(key) + 1;   // V1.0.14: the same number in both pop-ups
   function exampleCard(key, withTitle){
     const ex = RULE_EXAMPLES[key]; if(!ex) return null;
     const cases = ex.x.map(c => [c, renderExampleCase(key, c)]).filter(([, svg]) => svg);
     if(!cases.length) return null;
     const card = document.createElement('div'); card.className = 'ex-card';
-    if(withTitle){ const h = document.createElement('p'); h.className = 'ex-title'; h.textContent = exampleTitle(key); card.appendChild(h); }
+    if(withTitle){ const h = document.createElement('p'); h.className = 'ex-title'; h.textContent = exampleNumber(key) + '. ' + exampleTitle(key); card.appendChild(h); }
     const p = document.createElement('p'); p.className = 'ex-text'; p.textContent = ex.d + (cases.length > 1 ? ` Here are ${cases.length} cases.` : ''); card.appendChild(p);
     const row = document.createElement('div'); row.className = 'ex-cases';
     for(const [c, svg] of cases){
-      const box = document.createElement('div'); box.className = 'ex-case'; box.appendChild(svg);
+      const box = document.createElement('div'); box.className = 'ex-case';
+      const num = document.createElement('span'); num.className = 'ex-num'; num.textContent = exampleNumber(key) + '.' + (ex.x.indexOf(c) + 1); box.appendChild(num);
+      box.appendChild(svg);
       const names = exampleNames(c); if(names) box.appendChild(names);
       row.appendChild(box);
     }
@@ -13755,7 +13759,7 @@
     pop.appendChild(box); document.body.appendChild(pop);
     if(!all){
       const r = exampleCard(key, false);
-      h.textContent = exampleTitle(key);
+      h.textContent = (exampleNumber(key) ? exampleNumber(key) + '. ' : '') + exampleTitle(key);
       if(r) box.appendChild(r); else { const p = document.createElement('p'); p.textContent = 'This example could not be drawn.'; box.appendChild(p); }
     } else {
       h.textContent = 'A small example of every rule';

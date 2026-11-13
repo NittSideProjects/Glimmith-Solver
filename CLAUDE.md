@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 A single-page editor and uniqueness solver for puzzles from the game *The Artisan of Glimmith*. The whole app (editor, solver, importer, UI) is one
-self-contained HTML file, `glimmith_solver_V1.0.13.html`, with no build step and no network use. `dev/` holds the Node test suite and tools.
+self-contained HTML file, `glimmith_solver_V1.0.14.html`, with no build step and no network use. `dev/` holds the Node test suite and tools.
 
 ## This repository is public: keep game and third-party data out
 
@@ -37,7 +37,7 @@ environment: three timing checks on the live solving animation).
 
 ## Architecture
 
-- **The page is the source of truth.** Inside `glimmith_solver_V1.0.13.html` the main `<script>` contains, in order: the `SOLVER CORE`
+- **The page is the source of truth.** Inside `glimmith_solver_V1.0.14.html` the main `<script>` contains, in order: the `SOLVER CORE`
   block (pure functions; its banner comment is the full core version history), the deduction solver (`deduceSolve`: propagation steps,
   probes, narrow per-edge searches, then an exact final search), the import core (puzzle file, zip and workshop folder parsing), then the
   UI code.
@@ -67,8 +67,9 @@ Rule steps have a "Show example" pop-up (and the rules footer a "Show all exampl
 explanation and up to four tiny synthetic boards. The author's rules for them: an example uses **only the mechanic its rule needs**
 (area numbers and plain walls are the only helpers), is as small as possible, is possible in the game (one clue per tile), and a rule
 with several kinds of cases gets several tiny boards rather than one big one. The pop-up names only what the board cannot show (rules
-that are on, shape bank, Omits). When a solver change can move when rules fire, refresh them with `dev/tools/examples/` (see its README)
-and check with `ui_test_examples_V1.0.13.js`.
+that are on, shape bank, Omits). Rules and boards are numbered (rule 12, boards 12.1, 12.2): the author refers to them
+by number, and the number is the rule's place in `dev/tools/examples/lines.json`, so it moves when a rule gains or loses its examples. When a solver change can move when rules fire, refresh them with `dev/tools/examples/` (see its README)
+and check with `ui_test_examples_V1.0.14.js`.
 
 ## How a new version is made
 

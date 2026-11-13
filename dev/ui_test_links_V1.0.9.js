@@ -2,7 +2,7 @@
 // one piece) have the link between them drawn: the link comes with the join, not on a later step.
 // node ui_test_links_V1.0.9.js [page.html] [puzzle export file]   (default: the synthetic rose puzzle fixtures/colors_V1.0.6.glimmith.json)
 const { JSDOM } = require('jsdom'); const fs = require('fs'); const path = require('path');
-const file = process.argv[2] || '../glimmith_solver_V1.0.13.html', pz = process.argv[3] || path.join(__dirname, 'fixtures', 'colors_V1.0.6.glimmith.json');
+const file = process.argv[2] || '../glimmith_solver_V1.0.14.html', pz = process.argv[3] || path.join(__dirname, 'fixtures', 'colors_V1.0.6.glimmith.json');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

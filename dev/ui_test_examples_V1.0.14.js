@@ -1,8 +1,8 @@
 // V1.0.13: rule examples (tiny boards, one mechanic each). "Show all examples" (bottom of the page) draws every example; a rule step of the step view has a
 // "Show example" button that opens its example; Escape and Close shut the pop-up.
-// node ui_test_examples_V1.0.13.js [page.html]
+// node ui_test_examples_V1.0.14.js [page.html]
 const { JSDOM } = require('jsdom'); const fs = require('fs'); const path = require('path');
-const file = process.argv[2] || '../glimmith_solver_V1.0.13.html', pz = path.join(__dirname, 'fixtures', 'colors_V1.0.6.glimmith.json');
+const file = process.argv[2] || '../glimmith_solver_V1.0.14.html', pz = path.join(__dirname, 'fixtures', 'colors_V1.0.6.glimmith.json');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
@@ -30,8 +30,11 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
   const boards = keys.reduce((n, k) => n + exData[k].x.length, 0);
   check('every case of every example is drawn', doc.querySelectorAll('#examplePop .ex-case > svg').length === boards, { drawn: doc.querySelectorAll('#examplePop .ex-case > svg').length, boards });
   check('each card has a title and a one-line explanation', [...cards].every(c => c.querySelector('.ex-title').textContent && c.querySelector('.ex-text').textContent.length > 20 && c.querySelector('.ex-text').textContent.length < 190));
-  check('no card shows an internal rule name', [...doc.querySelectorAll('#examplePop .ex-title')].every(t => !/^Rule: |^[a-z]+-[a-z]+/.test(t.textContent)));
+  check('no card shows an internal rule name', [...doc.querySelectorAll('#examplePop .ex-title')].every(t => !/Rule: |^\d+\. [a-z]+-[a-z]+/.test(t.textContent)));
   check('every board outlines the edges its step decides', [...doc.querySelectorAll('#examplePop .ex-case > svg')].every(s => s.querySelector('.ded-new') || s.closest('.ex-card').querySelector('.ex-title').textContent.match(/one piece|connect/i)));
+  const nums = [...doc.querySelectorAll('#examplePop .ex-num')].map(n => n.textContent);                 // V1.0.14
+  check('every board has its own number (rule.board)', nums.length === boards && new Set(nums).size === boards && nums.every(n => /^\d+\.\d+$/.test(n)), nums.slice(0, 5));
+  check('every rule title starts with its number, 1 to N in order', [...doc.querySelectorAll('#examplePop .ex-card > .ex-title')].every((t, i) => t.textContent.startsWith((i + 1) + '. ')));
   check('no list of what is on the board, no step text', !doc.querySelector('#examplePop .ex-has') && !doc.querySelector('#examplePop .ex-step'));
   // the data: tiny boards, one clue per tile, few mechanics
   const CLUES = ['roses', 'polyominoes', 'areaNumbers', 'palisades', 'compasses'];
@@ -64,7 +67,7 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
     if(!opened){
       opened = true; const title = $('stepsCapTitle').textContent;
       $('stepsExampleBtn').click(); await sleep(20);
-      check('the step button opens its example', !!$('examplePop') && doc.querySelectorAll('#examplePop .ex-case > svg').length >= 1 && $('examplePop').textContent.includes(title), title);
+      check('the step button opens its example', !!$('examplePop') && doc.querySelectorAll('#examplePop .ex-case > svg').length >= 1 && $('examplePop').textContent.includes(title) && /^\d+\. /.test(doc.querySelector('#examplePop h3').textContent), title);
       $('examplePopClose').click();
       check('Close shuts it', !$('examplePop'));
     }
@@ -73,6 +76,6 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
   $('stepsLast').click(); await sleep(20);
   check('no example button on the result step', $('stepsExampleBtn').hidden);
   check('no script errors', errors.length === 0, errors);
-  console.log(`examples V1.0.13 UI: ${pass} passed, ${fail} failed (examples ${keys.length}, steps with the button ${shown} of ${n - 1})`);
+  console.log(`examples V1.0.14 UI: ${pass} passed, ${fail} failed (examples ${keys.length}, steps with the button ${shown} of ${n - 1})`);
   process.exit(fail ? 1 : 0);
 })();

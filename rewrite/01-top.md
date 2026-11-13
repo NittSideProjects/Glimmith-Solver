@@ -2,14 +2,14 @@
 
 The title, the save status and the buttons in the top bar.
 
-Left here: 2 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 10.
+Left here: 0 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 12.
 
 Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it is. `[..]` anywhere = a note for Claude. `{1}`, `{2}` stand for values the page fills in: keep them.
 
 ### T0888
 - what: browser tab title · The name in the browser tab.
 - now: Artisan of Glimmith Solver
-- new: 
+- new: =
 
 ### T0002
 - what: text
@@ -24,7 +24,7 @@ Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it i
 ### T0889
 - what: text
 - now: Draw/import puzzles, then use the solver at the bottom of the page to check for uniqueness and see the deduction path !
-- new: 
+- new: =
 
 ### T0005
 - what: text · #saveStatus

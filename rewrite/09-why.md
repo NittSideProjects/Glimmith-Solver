@@ -2,7 +2,7 @@
 
 Short reasons the solver gives. They show in the solver result ("Impossible: …") and inside step-by-step explanations ("this breaks: …").
 
-Left here: 109 to write, 0 to check again, 2 notes, 1 to put on the page. Done: 12.
+Left here: 109 to write, 0 to check again, 2 notes, 0 to put on the page. Done: 13.
 
 Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it is. `[..]` anywhere = a note for Claude. `{1}`, `{2}` stand for values the page fills in: keep them.
 
@@ -94,12 +94,12 @@ Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it i
 ### T0993
 - what: message · WHY_TEXT › gemini-place · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
 - now: a shape near a gemini is a shape that the other side can't be, or a delta that the other side must be
-- new: 
+- new: =
 
 ### T0345
 - what: message · WHY_TEXT › region-merge · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
 - now: two groups must be one piece: as two pieces they would need more tiles than their closed-in region has
-- new: two groups that needs to merge can't merge due to the
+- new: 
 
 ### T0994
 - what: message · WHY_TEXT › size-cut · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.

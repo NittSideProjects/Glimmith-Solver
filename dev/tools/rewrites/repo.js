@@ -35,6 +35,9 @@ if(cmd === 'write'){
   const texts = JSON.parse(fs.readFileSync(textsPath, 'utf8')).filter(onScreen), sections = JSON.parse(fs.readFileSync(sectionsPath, 'utf8'));
   const old = parse(dir), db = new Map();
   if(answersDir !== '-'){ const d = path.join(answersDir, 'rewrites'); for(const f of fs.readdirSync(d).filter(f => f.endsWith('.json'))){ const x = JSON.parse(fs.readFileSync(path.join(d, f), 'utf8')); db.set(f.slice(0, -5), x.data || x); } }
+  // the author's own wordings (in the files or on the claude.ai page): a text that already reads like one of them is done
+  const own = new Set(); for(const o of old.values()) if(o.new && o.new !== '=' && !/\[.*\]/.test(o.new)) own.add(norm(o.new));
+  for(const x of db.values()) if(!x.kept && x.text && !/\[.*\]/.test(x.text)) own.add(norm(x.text));
   fs.mkdirSync(dir, { recursive: true });
   for(const f of fs.readdirSync(dir).filter(f => /^\d\d-.*\.md$/.test(f))) fs.unlinkSync(path.join(dir, f));
   const rows = [], total = [];
@@ -50,6 +53,7 @@ if(cmd === 'write'){
         if(a.source && norm(a.source) !== norm(t.text) && norm(a.text) !== norm(t.text) && !/\[.*\]/.test(a.text || '')) e.was = norm(a.source);
       }
       if(e.was !== null && norm(e.new) === norm(e.now)) e.was = null;                    // the author's own text is on the page
+      if(!e.new && own.has(norm(t.text))) e.new = '=';                                     // the same wording as a rewrite of his elsewhere: his own text already
       return e;
     });
     const c = counts(entries), name = String(i + 1).padStart(2, '0') + '-' + sec.key + '.md';

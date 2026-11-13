@@ -2,7 +2,7 @@
 
 The Solver panel: buttons, options, progress and the result after a solve.
 
-Left here: 2 to write, 1 to check again, 26 notes, 0 to put on the page. Done: 47.
+Left here: 0 to write, 0 to check again, 26 notes, 0 to put on the page. Done: 50.
 
 Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it is. `[..]` anywhere = a note for Claude. `{1}`, `{2}` stand for values the page fills in: keep them.
 
@@ -59,12 +59,12 @@ Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it i
 ### T0896
 - what: tooltip · Tooltip: shows when you hover over it.
 - now: Off: solve becomes slower as the solver doesn't skip when it reallze exhaustive would finish it fast. However in some case can lead to step by step being clearer
-- new: 
+- new: =
 
 ### T0897
 - what: text
 - now: Ignore edge by edge if exhaustive whould be faster
-- new: 
+- new: =
 
 ### T0098
 - what: text · #guessBtn · Only shows after some solves.
@@ -294,8 +294,7 @@ Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it i
 ### T0546
 - what: message · capNote · Built by the page while it runs, so it only shows in some situations.
 - now: , all of them (the search finished)
-- was: — all of them (the search finished)
-- new: ,all of them (the search finished)
+- new: =
 
 ### T0547
 - what: message · finishSolver · Built by the page while it runs, so it only shows in some situations.

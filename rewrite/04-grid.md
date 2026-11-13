@@ -2,7 +2,7 @@
 
 Width and height, the clear buttons, the grid itself and the key of what each key draws.
 
-Left here: 1 to write, 1 to check again, 0 notes, 0 to put on the page. Done: 22.
+Left here: 0 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 24.
 
 Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it is. `[..]` anywhere = a note for Claude. `{1}`, `{2}` stand for values the page fills in: keep them.
 
@@ -89,7 +89,7 @@ Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it i
 ### T0895
 - what: text · #puzzlePanel
 - now: watchtower
-- new: 
+- new: =
 
 ### T0065
 - what: text (keep the <b>/<i> tags or drop them) · #puzzlePanel
@@ -119,8 +119,7 @@ Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it i
 ### T0852
 - what: message · attachEvents · Built by the page while it runs, so it only shows in some situations.
 - now: ↑ or ↓ works on horizontal walls only
-- was: Use ↑ or ↓ on a horizontal wall
-- new: ↑ or ↓ works on vertical walls only
+- new: =
 
 ### T0856
 - what: message · attachEvents · Built by the page while it runs, so it only shows in some situations.

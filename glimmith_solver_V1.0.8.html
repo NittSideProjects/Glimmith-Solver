@@ -14438,6 +14438,11 @@
           return;
         }
         if(/^[0-9]$/.test(key)){ e.preventDefault(); toggle(`diff${key}`); return; }
+        if(key === 'backspace' || key === 'delete'){                       // V1.0.8: remove a wall rule (a plain wall stays)
+          const t = puzzle.walls.get(wallKey);
+          if(t && t !== 'wall'){ e.preventDefault(); puzzle.walls.delete(wallKey); renderPuzzle(); scheduleSave(); }
+          return;
+        }
         return;
       }
 

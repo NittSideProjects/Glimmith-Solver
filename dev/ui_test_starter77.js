@@ -1,10 +1,10 @@
 // v77: starter puzzles load with the page; the info line is empty except for the roadblocks' notes.
-// usage: node ui_test_starter77.js ../glimmith_solver_V1.0.7.html
+// usage: node ui_test_starter77.js ../glimmith_solver_V1.0.8.html
 const fs = require('fs'); const { JSDOM } = require('jsdom');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const html = fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.7.html', 'utf8');
+const html = fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.8.html', 'utf8');
 function boot(store){
   const dom = new JSDOM(html, { runScripts: 'dangerously', pretendToBeVisual: true, url: 'http://localhost/' }), { window } = dom;
   window.storage = { get: async k => store.has(k) ? { key: k, value: store.get(k) } : null, set: async (k, v) => { store.set(k, v); return {}; }, delete: async () => ({}), list: async () => ({ keys: [] }) };

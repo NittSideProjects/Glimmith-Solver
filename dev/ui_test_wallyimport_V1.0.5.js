@@ -2,7 +2,7 @@
 // workshop puzzle that does not name Wally does not; Doubt & Certainty then gets 116+ edges before the final solve; no test edge is drawn.
 // node ui_test_wallyimport_V1.0.5.js [page]
 const { JSDOM } = require('jsdom'); const fs = require('fs');
-const file = process.argv[2] || '../glimmith_solver_V1.0.7.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.8.html';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

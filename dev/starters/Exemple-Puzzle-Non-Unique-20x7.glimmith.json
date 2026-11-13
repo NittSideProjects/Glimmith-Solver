@@ -1,0 +1,293 @@
+{
+ "format": "glimmith-puzzle",
+ "version": 1,
+ "app": "Glimmith editor v34",
+ "exported": "2026-11-11T13:16:56.088Z",
+ "puzzles": [
+  {
+   "name": "Exemple Puzzle Non Unique",
+   "state": {
+    "puzzle": {
+     "w": 20,
+     "h": 7,
+     "active": [
+      [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ],
+      [
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       0
+      ],
+      [
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       0
+      ],
+      [
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       1,
+       1,
+       1,
+       1,
+       0
+      ],
+      [
+       1,
+       0,
+       0,
+       0,
+       1,
+       0,
+       1,
+       0,
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       0
+      ],
+      [
+       1,
+       0,
+       0,
+       0,
+       1,
+       0,
+       1,
+       1,
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       1,
+       1,
+       0,
+       0,
+       0
+      ],
+      [
+       1,
+       0,
+       0,
+       0,
+       1,
+       0,
+       0,
+       0,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       0,
+       0,
+       0
+      ]
+     ],
+     "walls": [
+      [
+       "v:7,2",
+       "wall"
+      ],
+      [
+       "v:7,0",
+       "delta"
+      ],
+      [
+       "v:3,2",
+       "wall"
+      ],
+      [
+       "v:11,0",
+       "delta"
+      ],
+      [
+       "v:11,2",
+       "wall"
+      ],
+      [
+       "v:11,4",
+       "wall"
+      ],
+      [
+       "v:11,5",
+       "wall"
+      ],
+      [
+       "v:11,6",
+       "wall"
+      ],
+      [
+       "v:11,3",
+       "wall"
+      ],
+      [
+       "v:15,0",
+       "delta"
+      ],
+      [
+       "v:15,2",
+       "wall"
+      ],
+      [
+       "v:15,3",
+       "wall"
+      ],
+      [
+       "v:15,4",
+       "wall"
+      ],
+      [
+       "v:15,5",
+       "wall"
+      ],
+      [
+       "v:15,6",
+       "wall"
+      ],
+      [
+       "v:7,5",
+       "wall"
+      ],
+      [
+       "v:3,3",
+       "wall"
+      ],
+      [
+       "v:3,0",
+       "delta"
+      ],
+      [
+       "v:7,3",
+       "wall"
+      ],
+      [
+       "v:3,1",
+       "wall"
+      ],
+      [
+       "v:7,1",
+       "wall"
+      ],
+      [
+       "v:11,1",
+       "wall"
+      ],
+      [
+       "v:15,1",
+       "wall"
+      ]
+     ],
+     "roses": [],
+     "polyominoes": [],
+     "areaNumbers": [],
+     "palisades": [],
+     "compasses": [],
+     "watchtowers": []
+    },
+    "shapeBank": [],
+    "banShapes": [],
+    "sizeRules": {
+     "precision": 3,
+     "min": null,
+     "max": null,
+     "mismatch": false,
+     "match": false,
+     "mingleShape": false,
+     "mingleArea": false,
+     "solitude": false,
+     "boxy": false,
+     "nonBoxy": false,
+     "bricky": false,
+     "loopy": false
+    },
+    "solverLimits": {
+     "maxRegions": null,
+     "maxRegionSize": null
+    }
+   }
+  }
+ ]
+}

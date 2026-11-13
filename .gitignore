@@ -1,0 +1,22 @@
+# Base game puzzle data: must never be published
+dev/game_puzzles/
+dev/game_puzzles_converted/
+
+# Private working notes
+docs/handoffs/
+
+# Game extraction tools
+dev/tools/extract_game_puzzles.py
+dev/tools/extract_campaign_list.py
+dev/tools/convert_game_puzzles.js
+
+# Puzzles made by other players
+dev/workshop_wally/
+dev/user_puzzles/
+dev/puzzles/user_*
+dev/user_puzzle.js
+dev/user_compass.js
+
+# Python cache
+__pycache__/
+*.pyc

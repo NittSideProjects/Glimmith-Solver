@@ -1,0 +1,95 @@
+{
+ "format": "glimmith-puzzle",
+ "version": 1,
+ "app": "Glimmith v39 repro",
+ "puzzles": [
+  {
+   "name": "REPRO v38: bank {1,3} + lt arrow => false no-solution (1x3 | 1x1, left smaller)",
+   "state": {
+    "puzzle": {
+     "w": 4,
+     "h": 1,
+     "active": [
+      [
+       1,
+       1,
+       1,
+       1
+      ]
+     ],
+     "walls": [
+      [
+       "v:0,0",
+       "lt"
+      ]
+     ],
+     "roses": [],
+     "polyominoes": [],
+     "areaNumbers": [],
+     "palisades": [],
+     "compasses": [],
+     "watchtowers": []
+    },
+    "shapeBank": [
+     {
+      "id": 1,
+      "w": 1,
+      "h": 1,
+      "cells": [
+       [
+        0,
+        0
+       ]
+      ],
+      "color": "#e0a458"
+     },
+     {
+      "id": 2,
+      "w": 3,
+      "h": 1,
+      "cells": [
+       [
+        0,
+        0
+       ],
+       [
+        1,
+        0
+       ],
+       [
+        2,
+        0
+       ]
+      ],
+      "color": "#6fb8ac"
+     }
+    ],
+    "banShapes": [],
+    "sizeRules": {
+     "precision": null,
+     "min": null,
+     "max": null,
+     "mismatch": false,
+     "match": false,
+     "mingleShape": false,
+     "mingleArea": false,
+     "solitude": false,
+     "boxy": false,
+     "nonBoxy": false,
+     "bricky": false,
+     "loopy": false
+    },
+    "solverLimits": {
+     "maxRegions": null,
+     "maxRegionSize": null
+    }
+   },
+   "solutionWalls": [
+    "v:0,0"
+   ],
+   "author": "",
+   "difficulty": null,
+   "note": "The only tiling is [1 cell][3 cells] with the arrow pointing at the smaller (left) piece. solver-core v38 finds 0 solutions (and deduceSolve ends with none). Works with bank {2,3} or {3,4} (consecutive sizes), fails with {1,3}, {2,4}, {3,9}... Cause: the early check sizesDifferingBy(1) in solvePuzzle (reference/solver-core.v38.js ~line 1275) is used for lt/gt although an arrow only needs two DIFFERENT sizes. Real game puzzle hit by it: Zone3/1408 (bank {3,9} + 4 arrows)."
+  }
+ ]
+}

@@ -142,8 +142,9 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 | `glimmith_solver_V1.0.16.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v99.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
-| `dev/test_*.js`, `dev/fuzz_*.js` | Solver tests. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |
-| `dev/ui_test_*.js` | Page tests (jsdom). |
+| `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |
+| `dev/tests/page/` | Page tests (jsdom). |
+| `rewrite/` | The rewrite list: every text of the page, one file per part of the page, with the author's own wording (see `rewrite/README.md`). |
 | `dev/tools/run_corpus.js` | Times the solver on every puzzle of a corpus and writes a report. |
 | `dev/game_puzzles*`, `dev/user_puzzles`, `dev/puzzles` | Puzzles used by the tools and tests. |
 | `dev/build/` | The changes since V1 as scripts: `patch_core94.py` + `patch_ui_V1.0.1.py` (V1 -> V1.0.1), `patch_core95.py` + `patch_ui_V1.0.2.py` (V1.0.1 -> V1.0.2), `patch_core96.py` + `patch_ui_V1.0.3.py` (V1.0.2 -> V1.0.3), `patch_ui_V1.0.4.py` (V1.0.3 -> V1.0.4, page only), `patch_core97.py` + `patch_ui_V1.0.5.py` (V1.0.4 -> V1.0.5), `patch_core98.py` + `patch_ui_V1.0.6.py` (V1.0.5 -> V1.0.6), `patch_ui_V1.0.7.py` (V1.0.6 -> V1.0.7, page only), `patch_ui_V1.0.8.py` (V1.0.7 -> V1.0.8, page only), `patch_core99.py` + `patch_ui_V1.0.9.py` (V1.0.8 -> V1.0.9), `patch_ui_V1.0.10.py` + `rewrites_V1.0.10.json` (V1.0.9 -> V1.0.10, page only), `patch_ui_V1.0.11.py` (V1.0.10 -> V1.0.11, page only), `patch_ui_V1.0.12.py` + `rule_examples_V1.0.12.json` + `step_info_extra_V1.0.12.json` (V1.0.11 -> V1.0.12, page only); `patch_ui_V1.0.13.py` + `rule_examples_V1.0.13.json` (V1.0.12 -> V1.0.13, page only); `patch_ui_V1.0.14.py` (V1.0.13 -> V1.0.14, page only); `patch_ui_V1.0.15.py` + `rule_examples_V1.0.15.json` (V1.0.14 -> V1.0.15, page only); `patch_ui_V1.0.16.py` + `rule_examples_V1.0.16.json` (V1.0.15 -> V1.0.16, page only). |
@@ -156,9 +157,9 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 ```
 cd dev
 npm install                      # jsdom, for the page tests only
-node test.js                     # solver tests: node test_*.js
-node fuzz_clue92.js 300 1        # fuzzers: node fuzz_*.js <puzzles> <seed>
-node ui_test.js                  # page tests: node ui_test_*.js [page.html]
+node tests/solver/test.js        # solver tests: node tests/solver/test_*.js
+node fuzz/fuzz_clue92.js 300 1   # fuzzers: node fuzz/fuzz_*.js <puzzles> <seed>
+node tests/page/ui_test.js       # page tests: node tests/page/ui_test_*.js [page.html]
 node tools/run_corpus.js         # the campaign run (see the header of the file for options)
 ```
 

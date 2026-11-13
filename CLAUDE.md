@@ -21,12 +21,17 @@ on the author's machine.
 ## Commands (run from `dev/`)
 
 ```
-npm install                      # jsdom, only needed by the ui_test_* page tests
-node test.js                     # main solver test suite (269 checks); other solver tests: node test_<name>.js
-node fuzz_<name>.js <N> <seed>   # fuzzer, e.g. node fuzz_clue92.js 300 1
-node ui_test.js [page.html]      # page tests in jsdom; every ui_test_*.js takes the page path as argv[2]
-node tools/run_corpus.js ...     # timing run over the campaign corpus (options in the file header; needs the game puzzles)
+npm install                                # jsdom, only needed by the page tests
+node tests/solver/test.js                  # main solver test suite (269 checks); the others: node tests/solver/test_<name>.js
+node fuzz/fuzz_<name>.js <N> <seed>        # fuzzer, e.g. node fuzz/fuzz_clue92.js 300 1
+node tests/page/ui_test.js [page.html]     # page tests in jsdom; every tests/page/ui_test_*.js takes the page path as argv[2]
+node tools/run_corpus.js ...               # timing run over the campaign corpus (options in the file header; needs the game puzzles)
 ```
+
+Layout of `dev/`: `fuzz/` (the fuzzers), `tests/solver/` and `tests/page/` (the tests), `tools/`, `build/` (the patch scripts),
+`reference/` (the cores), `fixtures/`, and at its root only the shared modules (`fuzzlib.js`, `oracle.js`, `corepath.js`, `loadpz.js`,
+`pal_refuter.js`). Scripts are still run **from `dev/`**: their default page path (`../glimmith_solver_V1.0.x.html`) is relative to it.
+A new test or fuzzer goes in its folder, never back at the root of `dev/`.
 
 There is no test runner, linter or bundler: each script is standalone and prints its own pass/fail counts. Known baseline failures
 inherited from V1: `ui_test_import.js` 17/27 and `ui_test_export32.js` 14/24 (and `ui_test_deduce.js` 35/38 in this cloud
@@ -44,20 +49,32 @@ environment: three timing checks on the live solving animation).
 - **`dev/reference/` mirrors the page** as Node modules: `solver-core.vNN.js` is the page's `SOLVER CORE` block with the two-space indent
   removed (a few comment lines differ), and `import-core.js` is the importer. After changing the solver in the page, copy it back into the
   reference core so the tests run the same code.
-- **Testing strategy:** `fuzz_*.js` compare the full solver with a brute-force oracle (`oracle.js`, plus `fuzzlib.js` for planted random
-  boards) on small boards. A deduction is only accepted if it never disagrees with the oracle. `test.js` holds hand-built cases.
+- **Testing strategy:** `fuzz/fuzz_*.js` compare the full solver with a brute-force oracle (`oracle.js`, plus `fuzzlib.js` for planted random
+  boards) on small boards. A deduction is only accepted if it never disagrees with the oracle. `tests/solver/test.js` holds hand-built cases.
 - **Puzzle model:** edges are keyed `v:c,r` / `h:c,r` in a `Map` of edge types (`wall`, `delta`, `gemini`, `lt`/`gt`, `diffN`, ...). The
   solver decides for each open edge whether it is a wall or joins two tiles of the same piece. Clues (roses, area numbers, compasses,
   palisades, watchtowers, polyomino bank) and the base-game and custom rules (Wally, Links, Omits, Heterogeneous) constrain the pieces.
 
 ## Page text: always add it to the rewrite list
 
-The author rewrites every text the page shows, on a private claude.ai page (the rewrite list,
-https://claude.ai/artifact/8zkhz8jRG1qYJM5ET2k6e2). **Every time a change adds or changes text a user can see** (labels, buttons,
-tooltips, messages, step titles and explanations, rule explanations), update the rewrite list in the same piece of work: run the tools
-in `dev/tools/rewrites/` (see its README) and republish the list to the same URL, showing only what is still to write plus the new or
-changed texts. Keep text IDs stable through `dev/tools/rewrites/texts_ids.json`. Apply the author's finished rewrites (not `[...]` notes)
-with `gen_rewrites.js` in a patch script, as in `dev/build/patch_ui_V1.0.10.py`.
+The author rewrites every text the page shows. The rewrite list lives **in the repository, in `rewrite/`** (one file per part of the
+page, see `rewrite/README.md`): the author edits those files and pushes them himself, so **pull before working on texts** and read
+his answers there. **Every time a change adds or changes text a user can see** (labels, buttons, tooltips, messages, step titles and
+explanations, rule explanations), refresh `rewrite/` in the same piece of work with the tools in `dev/tools/rewrites/` (see its
+README: `extract.js`, `clean.js`, then `repo.js write`), keeping text IDs stable through `dev/tools/rewrites/texts_ids.json`. Never
+overwrite an answer the author wrote in the files. Apply his finished rewrites (not `[...]` notes) with `gen_rewrites.js` in a patch
+script, as in `dev/build/patch_ui_V1.0.10.py` (`repo.js read` gives the answers in the form it reads).
+
+The older claude.ai page (https://claude.ai/artifact/8zkhz8jRG1qYJM5ET2k6e2) still works as a second way to answer: `repo.js write`
+takes an answer from its database only for a text that has none in the files.
+
+### No V1.1 before the rewrite is done
+
+**Do not make a V1.1 (or any version above V1.0.x), even when asked, while the rewrite list has anything left.** Run
+`node dev/tools/rewrites/repo.js status rewrite` first: it must say that nothing is left, meaning every text is written or kept, no
+text is waiting to be checked again, no `[...]` note is open, and every rewrite is on the page. If something is left, say so with
+the counts, remind the author that he set this rule so that he would not forget the rewrite, and keep numbering V1.0.x. Only the
+author lifting this rule in so many words changes that.
 
 Step-by-step text states what is true first (a link, a wall, one piece), then why; avoid double negatives ("no wall here is impossible").
 
@@ -77,7 +94,7 @@ are too simple, earlier decisions that are not the point of the example are left
 A variant of a rule shares the plain rule's example ("Forced growth (Minimum)" opens "Forced growth": `_alias` in `curated.json`),
 and a rule whose only example nobody can read gets none (`_remove`) rather than a confusing one.
 When a solver change can move when rules fire, refresh them with `dev/tools/examples/` (see its README)
-and check with `ui_test_examples_V1.0.16.js`.
+and check with `tests/page/ui_test_examples_V1.0.16.js`.
 
 ## How a new version is made
 
@@ -89,4 +106,4 @@ Releases are not edited by hand. Each release is a pair of Python patch scripts 
 
 Each replacement anchors on an exact substring and aborts if it is not found exactly once. A release produces the new
 `glimmith_solver_V1.0.x.html`, a new `dev/reference/solver-core.vNN.js` and a README section. Version names go V1.0.1, V1.0.2, and so on
-for each change. Use V1.1 and up only when the author says a version is a big step. The core number (`vNN`) increments independently.
+for each change. Use V1.1 and up only when the author says a version is a big step, and never before the rewrite list is done (see above). The core number (`vNN`) increments independently.

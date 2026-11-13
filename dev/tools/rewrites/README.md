@@ -14,7 +14,24 @@ Claude, not a rewrite). Read it with the ArtifactData tool (`list`, collection `
 | `build_list.js` | Builds the rewrite list page from `texts.json`, the saved answers and `template.html`, showing only what is still to write. `node build_list.js <texts.json> <sections.json> <answers dir> template.html <out.html> [ids to keep]` |
 | `template.html` | The rewrite list page; `__DATA__` = the texts to show, `__SECTIONS__` = `sections.json`. |
 
-## When a change adds or changes text on the page
+## The list in the repository: `rewrite/`
+
+Since the files were put in order, the list the author works on is the folder `rewrite/` at the top of the repository: one file per
+part of the page, each text with `- now:` (the page) and `- new:` (his answer: empty = to do, `=` = keep, `[..]` = a note for Claude).
+He edits and pushes it himself. `repo.js` keeps it in step with the page:
+
+| Command | What |
+|---|---|
+| `node repo.js write texts_ids.json sections.json <answers dir or -> ../../../rewrite` | Rewrites the files from the texts of the page. Answers already in the files stay; a text without one takes the answer of the claude.ai page, if a dump of its database is given. A text that changed under an answer gets a `- was:` line. |
+| `node repo.js read ../../../rewrite <out dir>` | The answers as `<out dir>/rewrites/<id>.json`, the form `gen_rewrites.js` and `build_list.js` read. |
+| `node repo.js status ../../../rewrite` | What is left. Exit code 1 while anything is: no V1.1 before it says nothing is left (see CLAUDE.md). |
+
+When a change adds or changes text: build the release, `git pull`, `extract.js` + `clean.js` on the new page with `texts_ids.json`,
+save the new `texts.json` as `texts_ids.json` (and `sections.json`), then `repo.js write`. Commit `rewrite/` with the release.
+
+## The older way: the claude.ai page
+
+### When a change adds or changes text on the page
 
 1. Build the release as usual.
 2. `node extract.js` + `node clean.js` on the new page with `texts_ids.json`: new text gets new IDs (`isNew`), changed text keeps its ID

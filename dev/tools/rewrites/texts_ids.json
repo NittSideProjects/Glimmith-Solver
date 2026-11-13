@@ -10,8 +10,7 @@
   "text": "Artisan of Glimmith Solver",
   "slots": [],
   "note": "The name in the browser tab.",
-  "id": "T0888",
-  "isNew": true
+  "id": "T0888"
  },
  {
   "sec": "top",
@@ -50,8 +49,7 @@
   "text": "Draw/import puzzles, then use the solver at the bottom of the page to check for uniqueness and see the deduction path !",
   "slots": [],
   "note": "",
-  "id": "T0889",
-  "isNew": true
+  "id": "T0889"
  },
  {
   "sec": "top",
@@ -112,7 +110,7 @@
   "kind": "message",
   "where": "setSavedIndicator",
   "lines": [
-   13714
+   13719
   ],
   "text": "Saving…",
   "slots": [],
@@ -125,7 +123,7 @@
   "kind": "message",
   "where": "setSavedIndicator",
   "lines": [
-   13715
+   13720
   ],
   "text": "All changes saved",
   "slots": [],
@@ -138,7 +136,7 @@
   "kind": "message",
   "where": "setSavedIndicator",
   "lines": [
-   13716
+   13721
   ],
   "text": "Autosave unavailable",
   "slots": [],
@@ -151,7 +149,7 @@
   "kind": "message",
   "where": "paintThemeBtn",
   "lines": [
-   14600
+   14605
   ],
   "text": "Light mode",
   "slots": [],
@@ -164,7 +162,7 @@
   "kind": "message",
   "where": "paintThemeBtn",
   "lines": [
-   14600
+   14605
   ],
   "text": "Dark mode",
   "slots": [],
@@ -182,8 +180,7 @@
   "text": "This project is made by nittneuk.",
   "slots": [],
   "note": "In the Credits window (opens with the Credits button).",
-  "id": "T0009",
-  "changedFrom": "This project was made by nittneuk."
+  "id": "T0009"
  },
  {
   "sec": "credits",
@@ -196,8 +193,7 @@
   "text": "Special thanks to ham for ideas as well as making the SAT solver",
   "slots": [],
   "note": "In the Credits window (opens with the Credits button).",
-  "id": "T0010",
-  "changedFrom": "Special thanks to ham for ideas on the solver improvement."
+  "id": "T0010"
  },
  {
   "sec": "credits",
@@ -210,8 +206,7 @@
   "text": "Special thanks to the creators of the Artisan of Glimmith for making such an amazing game!",
   "slots": [],
   "note": "In the Credits window (opens with the Credits button).",
-  "id": "T0011",
-  "changedFrom": "Special thanks to the creators of the Artisan of Glimmith for making an amazing game."
+  "id": "T0011"
  },
  {
   "sec": "credits",
@@ -317,8 +312,7 @@
   "text": "Make a new empty puzzle",
   "slots": [],
   "note": "Tooltip: shows when you hover over it.",
-  "id": "T0019",
-  "changedFrom": "Start a fresh empty puzzle. The current one stays in the list."
+  "id": "T0019"
  },
  {
   "sec": "library",
@@ -344,8 +338,7 @@
   "text": "Import puzzle files, either just one puzzle or multiple with a zip",
   "slots": [],
   "note": "Tooltip: shows when you hover over it.",
-  "id": "T0021",
-  "changedFrom": "A puzzle file, a zip with puzzles, a zip of folders that contain puzzles, or a file saved with Export puzzle (you can also drop them on this panel)"
+  "id": "T0021"
  },
  {
   "sec": "library",
@@ -371,8 +364,7 @@
   "text": "Import every puzzle from the steam folder or the appdata one. Should be where most puzzles are kept for most people",
   "slots": [],
   "note": "Tooltip: shows when you hover over it.",
-  "id": "T0023",
-  "changedFrom": "Import every puzzle from the game's own folders (Steam workshop puzzles and the puzzles you made), without zipping anything"
+  "id": "T0023"
  },
  {
   "sec": "library",
@@ -424,8 +416,7 @@
   "text": "To save or send this puzzle, works with custom rules !",
   "slots": [],
   "note": "Tooltip: shows when you hover over it.",
-  "id": "T0027",
-  "changedFrom": "Save this puzzle (grid, clues, rules, shape bank) as a file you can import again here or on another machine"
+  "id": "T0027"
  },
  {
   "sec": "library",
@@ -451,8 +442,7 @@
   "text": "To save every puzzle, works with custom rules !",
   "slots": [],
   "note": "Tooltip: shows when you hover over it.",
-  "id": "T0029",
-  "changedFrom": "Save every puzzle in the list into one file"
+  "id": "T0029"
  },
  {
   "sec": "library",
@@ -478,8 +468,7 @@
   "text": "Show at the bottom what solution was stored, THIS ISNT THE SOLVER.",
   "slots": [],
   "note": "Button that only shows for an imported puzzle with a stored solution. Tooltip: shows when you hover over it.",
-  "id": "T0031",
-  "changedFrom": "Draw the solution that is stored in the imported file"
+  "id": "T0031"
  },
  {
   "sec": "library",
@@ -531,8 +520,7 @@
   "text": "The puzzle you downloaded",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T0035",
-  "changedFrom": "Workshop puzzles"
+  "id": "T0035"
  },
  {
   "sec": "library",
@@ -558,8 +546,7 @@
   "text": "open this : <code>4160210</code>",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T0037",
-  "changedFrom": "zip this : <code>4160210</code>"
+  "id": "T0037"
  },
  {
   "sec": "library",
@@ -586,8 +573,7 @@
   "text": "The puzzle you made",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T0039",
-  "changedFrom": "Your own puzzles"
+  "id": "T0039"
  },
  {
   "sec": "library",
@@ -613,8 +599,7 @@
   "text": "open this : <code>workshop</code>",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T0041",
-  "changedFrom": "zip this : <code>workshop</code>"
+  "id": "T0041"
  },
  {
   "sec": "library",
@@ -627,8 +612,7 @@
   "text": "Simply paste the path into the address bar of the folder window. Don't worry about duplicates, they are skipped by default",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T0042",
-  "changedFrom": "Tip: paste the path into the address bar of the folder window. Puzzles already in the list are skipped."
+  "id": "T0042"
  },
  {
   "sec": "library",
@@ -641,8 +625,7 @@
   "text": "Folder blocked?",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T0890",
-  "isNew": true
+  "id": "T0890"
  },
  {
   "sec": "library",
@@ -655,8 +638,7 @@
   "text": "<b>Did your browser say it \"can't open this folder because it contains system files\"?</b> Chrome and Edge do not let a page remember folders inside Program Files or AppData, and both game folders are there. You can still read them once: the browser asks for the folder each time, and it may say it will upload the files, but they stay on your computer.",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T0891",
-  "isNew": true
+  "id": "T0891"
  },
  {
   "sec": "library",
@@ -669,8 +651,7 @@
   "text": "Read the workshop folder once",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T0892",
-  "isNew": true
+  "id": "T0892"
  },
  {
   "sec": "library",
@@ -683,8 +664,7 @@
   "text": "Read your own puzzles once",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T0893",
-  "isNew": true
+  "id": "T0893"
  },
  {
   "sec": "library",
@@ -697,8 +677,7 @@
   "text": "If that is blocked too: copy the folder somewhere else (for example into Documents) and choose the copy, or zip it and open the zip with Import puzzles…",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T0894",
-  "isNew": true
+  "id": "T0894"
  },
  {
   "sec": "library",
@@ -1266,8 +1245,7 @@
   "text": "Duplicate puzzle got skipped",
   "slots": [],
   "note": "Shown in the import report when a file can not be read as expected.",
-  "id": "T0457",
-  "changedFrom": "identical to another puzzle in this import, skipped"
+  "id": "T0457"
  },
  {
   "sec": "library",
@@ -1276,7 +1254,7 @@
   "where": "fallback",
   "lines": [
    11462,
-   14283
+   14288
   ],
   "text": "Imported puzzle",
   "slots": [],
@@ -1315,13 +1293,12 @@
   "kind": "message",
   "where": "FILE_SOLUTION_LABEL",
   "lines": [
-   13816
+   13821
   ],
   "text": "The file's known solution",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0797",
-  "changedFrom": "Solution stored in the file"
+  "id": "T0797"
  },
  {
   "sec": "library",
@@ -1329,7 +1306,7 @@
   "kind": "message",
   "where": "library › items.name",
   "lines": [
-   13819
+   13824
   ],
   "text": "My puzzle",
   "slots": [],
@@ -1342,13 +1319,12 @@
   "kind": "message",
   "where": "STARTER_PUZZLES › name",
   "lines": [
-   13868
+   13873
   ],
   "text": "Example Puzzle Unique",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0799",
-  "changedFrom": "Exemple Puzzle Unique"
+  "id": "T0799"
  },
  {
   "sec": "library",
@@ -1356,13 +1332,12 @@
   "kind": "message",
   "where": "STARTER_PUZZLES › name",
   "lines": [
-   13868
+   13873
   ],
   "text": "Example Puzzle Non Unique",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0800",
-  "changedFrom": "Exemple Puzzle Non Unique"
+  "id": "T0800"
  },
  {
   "sec": "library",
@@ -1370,13 +1345,13 @@
   "kind": "message",
   "where": "switchPuzzle",
   "lines": [
-   13924,
-   13948,
-   14076,
-   14175,
-   14199,
-   14212,
-   14525
+   13929,
+   13953,
+   14081,
+   14180,
+   14204,
+   14217,
+   14530
   ],
   "text": "Wait for the solver to finish (or cancel it) first",
   "slots": [],
@@ -1389,7 +1364,7 @@
   "kind": "message",
   "where": "item › name",
   "lines": [
-   13952
+   13957
   ],
   "text": "Puzzle {1}",
   "slots": [
@@ -1404,7 +1379,7 @@
   "kind": "message",
   "where": "newPuzzle",
   "lines": [
-   13958
+   13963
   ],
   "text": "New empty puzzle: {1}",
   "slots": [
@@ -1419,7 +1394,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   13975
+   13980
   ],
   "text": "by {1}",
   "slots": [
@@ -1434,7 +1409,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   13977
+   13982
   ],
   "text": "id {1}",
   "slots": [
@@ -1449,7 +1424,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   13978
+   13983
   ],
   "text": "the file's solution is stored",
   "slots": [],
@@ -1462,7 +1437,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   13978
+   13983
   ],
   "text": "no solution in the file",
   "slots": [],
@@ -1475,7 +1450,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   13979
+   13984
   ],
   "text": "{1} import note{2}: {3}",
   "slots": [
@@ -1492,8 +1467,8 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   13985,
-   14295
+   13990,
+   14300
   ],
   "text": "Delete",
   "slots": [],
@@ -1506,7 +1481,7 @@
   "kind": "message",
   "where": "join",
   "lines": [
-   14053
+   14058
   ],
   "text": "{1} and {2}",
   "slots": [
@@ -1522,7 +1497,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14056
+   14061
   ],
   "text": "those custom rules",
   "slots": [],
@@ -1535,7 +1510,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14056
+   14061
   ],
   "text": "that custom rule",
   "slots": [],
@@ -1548,7 +1523,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14056
+   14061
   ],
   "text": "“{1}” says {2} in its description, so we assumed it uses {3} and turned {4} on.",
   "slots": [
@@ -1566,7 +1541,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14059
+   14064
   ],
   "text": "{1} puzzles name a custom rule in their description, so we assumed they use it and turned it on:",
   "slots": [
@@ -1581,7 +1556,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14079
+   14084
   ],
   "text": "Reading…",
   "slots": [],
@@ -1594,7 +1569,7 @@
   "kind": "message",
   "where": "bits",
   "lines": [
-   14108
+   14113
   ],
   "text": "{1} puzzle{2} imported",
   "slots": [
@@ -1610,7 +1585,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14109
+   14114
   ],
   "text": "{1} already in the list",
   "slots": [
@@ -1625,7 +1600,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14111
+   14116
   ],
   "text": "{1} problem{2}",
   "slots": [
@@ -1641,7 +1616,7 @@
   "kind": "message",
   "where": "importFiles › text",
   "lines": [
-   14113
+   14118
   ],
   "text": "{1}: {2} switched on (named in its description)",
   "slots": [
@@ -1657,7 +1632,7 @@
   "kind": "message",
   "where": "importFiles › text",
   "lines": [
-   14114
+   14119
   ],
   "text": "No problems.",
   "slots": [],
@@ -1670,7 +1645,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14115
+   14120
   ],
   "text": "Import report: {1}",
   "slots": [
@@ -1685,15 +1660,14 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14117
+   14122
   ],
   "text": "Imported {1} puzzles",
   "slots": [
    "fresh.length"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0827",
-  "changedFrom": "Imported {1} puzzles — pick one from the list"
+  "id": "T0827"
  },
  {
   "sec": "library",
@@ -1701,7 +1675,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14117
+   14122
   ],
   "text": "Imported “{1}”",
   "slots": [
@@ -1716,7 +1690,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14117
+   14122
   ],
   "text": "Nothing new to import",
   "slots": [],
@@ -1729,7 +1703,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14119
+   14124
   ],
   "text": "Import failed",
   "slots": [],
@@ -1742,7 +1716,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14121
+   14126
   ],
   "text": "Import puzzles…",
   "slots": [],
@@ -1755,13 +1729,12 @@
   "kind": "message",
   "where": "fastRender",
   "lines": [
-   14166
+   14171
   ],
   "text": "Choose each folder once. After that, Fast import reads both in one click (if your browser is compatible).",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0833",
-  "changedFrom": "Choose each folder once. After that, Fast import reads both in one click (your browser may ask to allow it)."
+  "id": "T0833"
  },
  {
   "sec": "library",
@@ -1769,13 +1742,12 @@
   "kind": "message",
   "where": "fastRender",
   "lines": [
-   14167
+   14172
   ],
   "text": "Choose your folder to import the puzzles. Your browser can't remember folders (Chrome and Edge can), so you will need to pick it each time.",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0834",
-  "changedFrom": "Choose a folder to import every puzzle in it. This browser can not remember folders (Chrome and Edge can), so you pick it each time."
+  "id": "T0834"
  },
  {
   "sec": "library",
@@ -1783,7 +1755,7 @@
   "kind": "message",
   "where": "fastRun",
   "lines": [
-   14180
+   14185
   ],
   "text": "{1}: reading was not allowed",
   "slots": [
@@ -1798,8 +1770,8 @@
   "kind": "message",
   "where": "fastRun",
   "lines": [
-   14184,
-   14216
+   14189,
+   14221
   ],
   "text": "Fast import: nothing read",
   "slots": [],
@@ -1812,7 +1784,7 @@
   "kind": "message",
   "where": "fastRun",
   "lines": [
-   14184
+   14189
   ],
   "text": "The folders hold no puzzle files.",
   "slots": [],
@@ -1825,7 +1797,7 @@
   "kind": "message",
   "where": "attachFastImport › text",
   "lines": [
-   14216
+   14221
   ],
   "text": "The folder holds no puzzle files.",
   "slots": [],
@@ -1838,7 +1810,7 @@
   "kind": "message",
   "where": "normalizeState › error",
   "lines": [
-   14225
+   14230
   ],
   "text": "no puzzle in it",
   "slots": [],
@@ -1851,7 +1823,7 @@
   "kind": "message",
   "where": "normalizeState › error",
   "lines": [
-   14227
+   14232
   ],
   "text": "the grid size is not valid",
   "slots": [],
@@ -1864,7 +1836,7 @@
   "kind": "message",
   "where": "normalizeState › error",
   "lines": [
-   14228
+   14233
   ],
   "text": "the grid does not match its size",
   "slots": [],
@@ -1877,7 +1849,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14265
+   14270
   ],
   "text": "Nothing to export",
   "slots": [],
@@ -1890,7 +1862,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14268
+   14273
   ],
   "text": "Exported “{1}”",
   "slots": [
@@ -1905,7 +1877,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14268
+   14273
   ],
   "text": "Exported {1} puzzles",
   "slots": [
@@ -1920,7 +1892,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14269
+   14274
   ],
   "text": "Export failed: {1}",
   "slots": [
@@ -1935,13 +1907,12 @@
   "kind": "message",
   "where": "readOwnExport › message",
   "lines": [
-   14277
+   14282
   ],
   "text": "this file was saved by a version of the editor not supported yet. Please verify the import went well",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0847",
-  "changedFrom": "this file was saved by a newer version of the editor; reading what can be read"
+  "id": "T0847"
  },
  {
   "sec": "library",
@@ -1949,7 +1920,7 @@
   "kind": "message",
   "where": "readOwnExport › message",
   "lines": [
-   14278
+   14283
   ],
   "text": "the file holds no puzzles",
   "slots": [],
@@ -1962,7 +1933,7 @@
   "kind": "message",
   "where": "deleteActivePuzzle",
   "lines": [
-   14293
+   14298
   ],
   "text": "Click again to delete",
   "slots": [],
@@ -2053,8 +2024,7 @@
   "text": "Clear all walls",
   "slots": [],
   "note": "",
-  "id": "T0051",
-  "changedFrom": "Clear walls"
+  "id": "T0051"
  },
  {
   "sec": "grid",
@@ -2067,8 +2037,7 @@
   "text": "Clear all symbols",
   "slots": [],
   "note": "",
-  "id": "T0052",
-  "changedFrom": "Clear symbols"
+  "id": "T0052"
  },
  {
   "sec": "grid",
@@ -2224,8 +2193,7 @@
   "text": "watchtower",
   "slots": [],
   "note": "",
-  "id": "T0895",
-  "isNew": true
+  "id": "T0895"
  },
  {
   "sec": "grid",
@@ -2272,13 +2240,12 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14455
+   14460
   ],
   "text": "Links are a custom rule: show custom rules first (bottom of the page)",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0850",
-  "changedFrom": "Links are a custom rule: show custom rules first"
+  "id": "T0850"
  },
  {
   "sec": "grid",
@@ -2286,13 +2253,12 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14468
+   14473
   ],
   "text": "← or → works on vertical walls only",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0851",
-  "changedFrom": "Use ← or → on a vertical wall"
+  "id": "T0851"
  },
  {
   "sec": "grid",
@@ -2300,13 +2266,12 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14468
+   14473
   ],
   "text": "↑ or ↓ works on horizontal walls only",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0852",
-  "changedFrom": "Use ↑ or ↓ on a horizontal wall"
+  "id": "T0852"
  },
  {
   "sec": "grid",
@@ -2314,7 +2279,7 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14605
+   14610
   ],
   "text": "Untitled puzzle",
   "slots": [],
@@ -2411,8 +2376,7 @@
   "text": "No shapes added yet",
   "slots": [],
   "note": "",
-  "id": "T0074",
-  "changedFrom": "No shapes forced yet"
+  "id": "T0074"
  },
  {
   "sec": "shapes",
@@ -2483,8 +2447,7 @@
   "text": "That shape is already inside the pool",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0465",
-  "changedFrom": "That shape is already banned (turned and flipped copies count as the same shape)"
+  "id": "T0465"
  },
  {
   "sec": "shapes",
@@ -2501,8 +2464,7 @@
    "norm.length!==1?'s':''"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0466",
-  "changedFrom": "Banned shape {1} ({2} tile{3}): no piece may contain it"
+  "id": "T0466"
  },
  {
   "sec": "shapes",
@@ -2531,8 +2493,7 @@
   "text": "No shapes added yet",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0470",
-  "changedFrom": "No shapes banned yet"
+  "id": "T0470"
  },
  {
   "sec": "shapes",
@@ -2546,8 +2507,7 @@
   "text": "Remove shape from the pool",
   "slots": [],
   "note": "Tooltip: shows when you hover over it.",
-  "id": "T0471",
-  "changedFrom": "Allow this shape again"
+  "id": "T0471"
  },
  {
   "sec": "shapes",
@@ -2970,8 +2930,7 @@
   "text": "Enter a valid size",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0486",
-  "changedFrom": "Enter a size of 1 or more"
+  "id": "T0486"
  },
  {
   "sec": "rules",
@@ -2984,8 +2943,7 @@
   "text": "Precision can't be combined with Minimum/Maximum, remove them first",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0487",
-  "changedFrom": "Precision can't be combined with Minimum/Maximum — remove them first"
+  "id": "T0487"
  },
  {
   "sec": "rules",
@@ -2998,8 +2956,7 @@
   "text": "Minimum can't be combined with Precision, remove it first",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0488",
-  "changedFrom": "Minimum can't be combined with Precision — remove it first"
+  "id": "T0488"
  },
  {
   "sec": "rules",
@@ -3012,8 +2969,7 @@
   "text": "Maximum can't be combined with Precision, remove it first",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0489",
-  "changedFrom": "Maximum can't be combined with Precision — remove it first"
+  "id": "T0489"
  },
  {
   "sec": "rules",
@@ -3026,8 +2982,7 @@
   "text": "Minimum is greater than maximum, no shape can satisfy both",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0490",
-  "changedFrom": "Minimum is greater than maximum — no shape can satisfy both"
+  "id": "T0490"
  },
  {
   "sec": "rules",
@@ -3089,8 +3044,7 @@
   "text": "(empty: the minimum is above the maximum)",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0494",
-  "changedFrom": "(empty: the minimum is above the maximum, no piece can satisfy it)"
+  "id": "T0494"
  },
  {
   "sec": "rules",
@@ -3109,8 +3063,7 @@
    "empty ? ` (empty: the minimum is above the maximum)` : ''"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0495",
-  "changedFrom": "Minimum {1} and Maximum {2}: every piece has {3} to {4} tiles{5}"
+  "id": "T0495"
  },
  {
   "sec": "rules",
@@ -3153,8 +3106,7 @@
   "text": "No rules yet",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0498",
-  "changedFrom": "No rules — any piece size and shape is allowed."
+  "id": "T0498"
  },
  {
   "sec": "rules",
@@ -3280,8 +3232,7 @@
   "text": "The solver decides the puzzle by finding the correct state for every edge (link or wall). Either by deduction logic, by going neighbors to neighbors, or by testing links between far away symbols. The global idea being that a puzzle solvable by deduction would have a breakthrough spot. The solver is designed to find it by attacking the puzzle with those approaches.",
   "slots": [],
   "note": "Shows when you click the i next to \"Solver\".",
-  "id": "T0086",
-  "changedFrom": "The solver decides the puzzle edge by edge, either by deduction logic (see below), or by going edge by edge. For every edge between two tiles that has no wall already, it runs a very short search under each assumption: “a wall goes here” and “these two tiles are in the same piece”. If one assumption runs out of possibilities completely, the other one is certain. The idea being that a puzzle solvable by deduction would have a spot where you can easily find a way forward, and the solver tries to find it."
+  "id": "T0086"
  },
  {
   "sec": "solver",
@@ -3294,8 +3245,7 @@
   "text": "If it can't find a breakthrough in the current puzzle state, the solver skips to a final solve and does an exhaustive search on the half done puzzle, hopefully finding an impossibility or a solution. If the solver has trouble finding a solution after a minute of exhaustive search, the puzzle probably requires a global thinking that the solver can’t find. If that is the case, please send your puzzle to me! (nittneuk on discord) so I can try to implement a reasoning for puzzle of it's kind.",
   "slots": [],
   "note": "Shows when you click the i next to \"Solver\".",
-  "id": "T0087",
-  "changedFrom": "If the edge by edge isn’t enough the solver skips to a final solve and does an exhaustive search on the half done puzzle, hopefully finding an impossibility or a solution. The time percentage for the final solve is an estimate, not a truth. If the solver has trouble finding a solution after a minute, the puzzle probably requires a global thinking that the solver can’t find. If that is the case, please send your puzzle to nittneuk on discord so I can try to implement a reasoning for it."
+  "id": "T0087"
  },
  {
   "sec": "solver",
@@ -3413,8 +3363,7 @@
   "text": "Off: solve becomes slower as the solver doesn't skip when it reallze exhaustive would finish it fast. However in some case can lead to step by step being clearer",
   "slots": [],
   "note": "Tooltip: shows when you hover over it.",
-  "id": "T0896",
-  "isNew": true
+  "id": "T0896"
  },
  {
   "sec": "solver",
@@ -3427,8 +3376,7 @@
   "text": "Ignore edge by edge if exhaustive whould be faster",
   "slots": [],
   "note": "",
-  "id": "T0897",
-  "isNew": true
+  "id": "T0897"
  },
  {
   "sec": "solver",
@@ -3820,8 +3768,7 @@
    "label"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0501",
-  "changedFrom": "{1} must be a whole number of 1 or more (or empty for no limit)"
+  "id": "T0501"
  },
  {
   "sec": "solver",
@@ -3918,8 +3865,7 @@
   "text": "no percentage: the first piece alone has too many possibilities to count",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0508",
-  "changedFrom": "no percentage: the first piece alone has too many possibilities to count (a max region size / amount would narrow it)"
+  "id": "T0508"
  },
  {
   "sec": "solver",
@@ -3964,8 +3910,7 @@
    "Math.round(SLOW_NOTICE_MS / 1000)"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0511",
-  "changedFrom": "It's been {1} s — this might take longer than expected. The search keeps going until it is finished; you may stop it early with Cancel."
+  "id": "T0511"
  },
  {
   "sec": "solver",
@@ -4148,8 +4093,7 @@
    "sec(finalMs)"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0522",
-  "changedFrom": "{1} being an exhaustive search"
+  "id": "T0522"
  },
  {
   "sec": "solver",
@@ -4178,8 +4122,7 @@
    "finalMs > 0 ? `${sec(finalMs)} being the final search` : 'no exhaustive search needed'"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0524",
-  "changedFrom": "It took {1} with {2}."
+  "id": "T0524"
  },
  {
   "sec": "solver",
@@ -4459,8 +4402,7 @@
    "ALL_SOLUTIONS_CAP"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0545",
-  "changedFrom": "(stopped at {1} — there may be more)"
+  "id": "T0545"
  },
  {
   "sec": "solver",
@@ -4473,8 +4415,7 @@
   "text": ", all of them (the search finished)",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0546",
-  "changedFrom": "— all of them (the search finished)"
+  "id": "T0546"
  },
  {
   "sec": "solver",
@@ -4631,8 +4572,7 @@
    "sec(st.firstMs)"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0556",
-  "changedFrom": "Found a valid tiling (checked by the exact solver) after {1}, but the search was stopped before it could check that no other tiling exists — so uniqueness is NOT confirmed. Run Check Uniqueness for that.{2}"
+  "id": "T0556"
  },
  {
   "sec": "solver",
@@ -4689,7 +4629,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14021
+   14026
   ],
   "text": "✓ It is the solution stored in the imported file.",
   "slots": [],
@@ -4702,13 +4642,12 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14022
+   14027
   ],
   "text": "⚠ It is NOT the solution stored in the imported file: the solver and the file disagree, so one of them is wrong. Please contact nittneuk (nittneuk on discord) about this if you think the mistake is on the solver",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0811",
-  "changedFrom": "⚠ It is NOT the solution stored in the imported file: the solver and the file disagree, so one of them is wrong."
+  "id": "T0811"
  },
  {
   "sec": "solver",
@@ -4716,7 +4655,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14023
+   14028
   ],
   "text": "The solution stored in the imported file is not among the tilings shown.",
   "slots": [],
@@ -4729,7 +4668,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14024
+   14029
   ],
   "text": "The solution stored in the imported file is Solution {1}.",
   "slots": [
@@ -4744,7 +4683,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14024
+   14029
   ],
   "text": "The solution stored in the imported file is solution {1} of these.",
   "slots": [
@@ -4917,10 +4856,11 @@
   "lines": [
    13128
   ],
-  "text": "Direct consequence",
+  "text": "Follows from what is known",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0560"
+  "id": "T0560",
+  "changedFrom": "Direct consequence"
  },
  {
   "sec": "steps",
@@ -4930,10 +4870,11 @@
   "lines": [
    13128
   ],
-  "text": "These two groups of tiles are already separated by a wall elsewhere, so they are different pieces and every edge between them is a wall.",
+  "text": "These two groups already have a wall between them somewhere else, so they are different pieces: every edge between them is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0561"
+  "id": "T0561",
+  "changedFrom": "These two groups of tiles are already separated by a wall elsewhere, so they are different pieces and every edge between them is a wall."
  },
  {
   "sec": "steps",
@@ -4943,10 +4884,11 @@
   "lines": [
    13128
   ],
-  "text": "These tiles are already in one piece, so there is no wall between them.",
+  "text": "These two tiles are already known to be in one piece, so the edge between them is open.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0562"
+  "id": "T0562",
+  "changedFrom": "These tiles are already in one piece, so there is no wall between them."
  },
  {
   "sec": "steps",
@@ -4956,10 +4898,11 @@
   "lines": [
    13129
   ],
-  "text": "Size limits",
+  "text": "Too big for the size rules",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0563"
+  "id": "T0563",
+  "changedFrom": "Size limits"
  },
  {
   "sec": "steps",
@@ -4969,10 +4912,11 @@
   "lines": [
    13129
   ],
-  "text": "Joining these two groups would make a piece bigger than the size rules allow, so there is a wall between them.",
+  "text": "Joined, these two groups would have more tiles than the size rules allow, so there is a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0564"
+  "id": "T0564",
+  "changedFrom": "Joining these two groups would make a piece bigger than the size rules allow, so there is a wall between them."
  },
  {
   "sec": "steps",
@@ -4995,10 +4939,11 @@
   "lines": [
    13130
   ],
-  "text": "This group of tiles is still too small to be a finished piece and only one edge leads out of it, so the piece has to grow through that edge.",
+  "text": "This group is too small to be a whole piece yet, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0566"
+  "id": "T0566",
+  "changedFrom": "This group of tiles is still too small to be a finished piece and only one edge leads out of it, so the piece has to grow through that edge."
  },
  {
   "sec": "steps",
@@ -5021,10 +4966,11 @@
   "lines": [
    13131
   ],
-  "text": "This group is below the Minimum piece size and only one edge leads out of it, so the piece has to grow through that edge.",
+  "text": "This group has fewer tiles than the Minimum, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0568"
+  "id": "T0568",
+  "changedFrom": "This group is below the Minimum piece size and only one edge leads out of it, so the piece has to grow through that edge."
  },
  {
   "sec": "steps",
@@ -5047,11 +4993,11 @@
   "lines": [
    13132
   ],
-  "text": "The group needs this edge to reach enough tiles for a big enough piece, so the two tiles are in one piece.",
+  "text": "This group needs this edge to reach enough tiles for a piece of an allowed size, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0570",
-  "changedFrom": "If this edge were a wall, the group could not reach enough tiles to become a big enough piece, so the tiles are in one piece."
+  "changedFrom": "The group needs this edge to reach enough tiles for a big enough piece, so the two tiles are in one piece."
  },
  {
   "sec": "steps",
@@ -5074,11 +5020,11 @@
   "lines": [
    13133
   ],
-  "text": "The group needs this edge to reach the Minimum number of tiles, so the two tiles are in one piece.",
+  "text": "This group needs this edge to reach the Minimum number of tiles, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0572",
-  "changedFrom": "If this edge were a wall, the group could not reach the Minimum number of tiles, so the tiles are in one piece."
+  "changedFrom": "The group needs this edge to reach the Minimum number of tiles, so the two tiles are in one piece."
  },
  {
   "sec": "steps",
@@ -5101,10 +5047,11 @@
   "lines": [
    13134
   ],
-  "text": "This group of tiles still lacks a rose type and has only one way out, so it has to grow through that edge.",
+  "text": "This group still misses a rose type, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0574"
+  "id": "T0574",
+  "changedFrom": "This group of tiles still lacks a rose type and has only one way out, so it has to grow through that edge."
  },
  {
   "sec": "steps",
@@ -5114,10 +5061,11 @@
   "lines": [
    13135
   ],
-  "text": "Roses: must still reach one",
+  "text": "Roses: the way to a missing rose",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0575"
+  "id": "T0575",
+  "changedFrom": "Roses: must still reach one"
  },
  {
   "sec": "steps",
@@ -5127,11 +5075,11 @@
   "lines": [
    13135
   ],
-  "text": "The group still needs a rose, and this edge is its only way to one within the size limit, so the tiles are joined.",
+  "text": "This group still misses a rose type, and every rose of that type it can reach within the size limit is through this edge. So the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0898",
-  "isNew": true
+  "changedFrom": "The group still needs a rose, and this edge is its only way to one within the size limit, so the tiles are joined."
  },
  {
   "sec": "steps",
@@ -5144,8 +5092,7 @@
   "text": "Roses: one of each type per piece",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0576",
-  "changedFrom": "Roses: same type never together"
+  "id": "T0576"
  },
  {
   "sec": "steps",
@@ -5155,10 +5102,11 @@
   "lines": [
    13136
   ],
-  "text": "Both sides already hold a rose of the same type, and a piece holds only one of each type, so there is a wall between them.",
+  "text": "Each side holds a rose of the same type, and a piece holds only one rose of each type. So they are different pieces, with a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0577"
+  "id": "T0577",
+  "changedFrom": "Both sides already hold a rose of the same type, and a piece holds only one of each type, so there is a wall between them."
  },
  {
   "sec": "steps",
@@ -5194,10 +5142,11 @@
   "lines": [
    13138
   ],
-  "text": "An area closed in by walls holds as many roses of each type as it has pieces, and an area with one rose of each type is a single piece. Counting the roses here decides this edge.",
+  "text": "An area closed in by walls holds, for each rose type, one rose per piece. So its roses give the number of pieces in it: with one rose of each type it is a single piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0580"
+  "id": "T0580",
+  "changedFrom": "An area closed in by walls holds as many roses of each type as it has pieces, and an area with one rose of each type is a single piece. Counting the roses here decides this edge."
  },
  {
   "sec": "steps",
@@ -5207,10 +5156,11 @@
   "lines": [
    13139
   ],
-  "text": "Stamp: where can the shape go?",
+  "text": "Stamp: every place the shape fits",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0581"
+  "id": "T0581",
+  "changedFrom": "Stamp: where can the shape go?"
  },
  {
   "sec": "steps",
@@ -5220,10 +5170,11 @@
   "lines": [
    13139
   ],
-  "text": "The solver tried every position of the stamp's shape that still works. This edge lies outside all of them, so it is a wall.",
+  "text": "The solver listed every place where the stamp's shape still fits. This edge is outside all of them, so it is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0582"
+  "id": "T0582",
+  "changedFrom": "The solver tried every position of the stamp's shape that still works. This edge lies outside all of them, so it is a wall."
  },
  {
   "sec": "steps",
@@ -5233,10 +5184,11 @@
   "lines": [
    13139
   ],
-  "text": "The solver tried every position of the stamp's shape that still works. This edge lies inside all of them, so the tiles are in one piece.",
+  "text": "The solver listed every place where the stamp's shape still fits. This edge is inside all of them, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0583"
+  "id": "T0583",
+  "changedFrom": "The solver tried every position of the stamp's shape that still works. This edge lies inside all of them, so the tiles are in one piece."
  },
  {
   "sec": "steps",
@@ -5246,10 +5198,11 @@
   "lines": [
    13140
   ],
-  "text": "Joining these groups would not fit the size of the stamp, so there is a wall between them.",
+  "text": "Joined, these two groups would have more tiles than the stamp's shape, so there is a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0584"
+  "id": "T0584",
+  "changedFrom": "Joining these groups would not fit the size of the stamp, so there is a wall between them."
  },
  {
   "sec": "steps",
@@ -5259,10 +5212,11 @@
   "lines": [
    13141
   ],
-  "text": "Joining these groups would clash with the shape of a stamp, so there is a wall between them.",
+  "text": "Joined, these two groups would fit no turn or flip of the stamp's shape, so there is a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0585"
+  "id": "T0585",
+  "changedFrom": "Joining these groups would clash with the shape of a stamp, so there is a wall between them."
  },
  {
   "sec": "steps",
@@ -5272,10 +5226,11 @@
   "lines": [
    13142
   ],
-  "text": "Stamps too far apart",
+  "text": "Stamps of the same shape, far apart",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0586"
+  "id": "T0586",
+  "changedFrom": "Stamps too far apart"
  },
  {
   "sec": "steps",
@@ -5285,11 +5240,11 @@
   "lines": [
    13142
   ],
-  "text": "Two stamps of the same shape can only share a piece if one placement of the shape covers both tiles. Every placement leaves one of them out, so there is a wall.",
+  "text": "Two stamps of the same shape share a piece only when one placement of the shape covers both. Every placement leaves one of them out, so they are different pieces, with a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0587",
-  "changedFrom": "Two stamps of the same shape can only share a piece if one placement of the shape covers both tiles. None does, so there is a wall."
+  "changedFrom": "Two stamps of the same shape can only share a piece if one placement of the shape covers both tiles. Every placement leaves one of them out, so there is a wall."
  },
  {
   "sec": "steps",
@@ -5312,10 +5267,11 @@
   "lines": [
    13143
   ],
-  "text": "Joining these groups would give tiles that cannot sit inside the stamp's shape, so there is a wall between them.",
+  "text": "Joined, these two groups would no longer fit inside the stamp's shape, so there is a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0589"
+  "id": "T0589",
+  "changedFrom": "Joining these groups would give tiles that cannot sit inside the stamp's shape, so there is a wall between them."
  },
  {
   "sec": "steps",
@@ -5338,11 +5294,11 @@
   "lines": [
    13144
   ],
-  "text": "Every bank shape is too small or the wrong shape to hold these tiles together, so there is a wall between them.",
+  "text": "Joined, these two groups would fit in none of the bank shapes (in any turn or flip), so there is a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0591",
-  "changedFrom": "No shape of the bank can hold these tiles together, so there is a wall between them."
+  "changedFrom": "Every bank shape is too small or the wrong shape to hold these tiles together, so there is a wall between them."
  },
  {
   "sec": "steps",
@@ -5352,10 +5308,11 @@
   "lines": [
    13145
   ],
-  "text": "Shape bank: where can the shape go?",
+  "text": "Shape bank: every place a shape fits",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0592"
+  "id": "T0592",
+  "changedFrom": "Shape bank: where can the shape go?"
  },
  {
   "sec": "steps",
@@ -5365,10 +5322,11 @@
   "lines": [
    13145
   ],
-  "text": "The solver tried every placement of every bank shape (all turns and flips) that still fits around this group. This edge is outside every placement, so it is a wall.",
+  "text": "The solver listed every placement of every bank shape (all turns and flips) that still fits around this group. This edge is outside all of them, so it is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0593"
+  "id": "T0593",
+  "changedFrom": "The solver tried every placement of every bank shape (all turns and flips) that still fits around this group. This edge is outside every placement, so it is a wall."
  },
  {
   "sec": "steps",
@@ -5378,10 +5336,11 @@
   "lines": [
    13145
   ],
-  "text": "The solver tried every placement of every bank shape (all turns and flips) that still fits around this group. This edge is inside every placement, so the tiles are in one piece.",
+  "text": "The solver listed every placement of every bank shape (all turns and flips) that still fits around this group. This edge is inside all of them, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0594"
+  "id": "T0594",
+  "changedFrom": "The solver tried every placement of every bank shape (all turns and flips) that still fits around this group. This edge is inside every placement, so the tiles are in one piece."
  },
  {
   "sec": "steps",
@@ -5404,10 +5363,11 @@
   "lines": [
    13146
   ],
-  "text": "An area closed in by walls has to be covered by pieces of the bank's sizes. The only way to do that decides this edge.",
+  "text": "An area closed in by walls is covered by whole pieces with the sizes of the bank shapes, and only one way to do that is left.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0596"
+  "id": "T0596",
+  "changedFrom": "An area closed in by walls has to be covered by pieces of the bank's sizes. The only way to do that decides this edge."
  },
  {
   "sec": "steps",
@@ -5430,10 +5390,11 @@
   "lines": [
    13147
   ],
-  "text": "Every shape of the bank has a bend, so every piece must contain one. That decides this edge.",
+  "text": "Every bank shape has a bend, so every piece has one.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0598"
+  "id": "T0598",
+  "changedFrom": "Every shape of the bank has a bend, so every piece must contain one. That decides this edge."
  },
  {
   "sec": "steps",
@@ -5456,10 +5417,11 @@
   "lines": [
    13148
   ],
-  "text": "Every shape of the bank contains a 2x2 block, so every piece must reach one. That decides this edge.",
+  "text": "Every bank shape contains a 2x2 block, so every piece contains one.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0600"
+  "id": "T0600",
+  "changedFrom": "Every shape of the bank contains a 2x2 block, so every piece must reach one. That decides this edge."
  },
  {
   "sec": "steps",
@@ -5469,10 +5431,11 @@
   "lines": [
    13149
   ],
-  "text": "Counting behind a single connection",
+  "text": "One connection between two sides",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0601"
+  "id": "T0601",
+  "changedFrom": "Counting behind a single connection"
  },
  {
   "sec": "steps",
@@ -5480,12 +5443,13 @@
   "kind": "message",
   "where": "STEP_INFO › bridge-count",
   "lines": [
-   13150
+   13149
   ],
-  "text": "The board hangs together by a single connection. If one piece crossed it, the rest of each side could not be covered by whole pieces of the allowed size, so it is a wall.",
+  "text": "The board is held together here by a single connection. With one piece crossing it, the tiles left on each side could only be covered by pieces of sizes the rules forbid. So it is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0602"
+  "id": "T0602",
+  "changedFrom": "The board hangs together by a single connection. If one piece crossed it, the rest of each side could not be covered by whole pieces of the allowed size, so it is a wall."
  },
  {
   "sec": "steps",
@@ -5493,13 +5457,13 @@
   "kind": "message",
   "where": "STEP_INFO › bridge-count",
   "lines": [
-   13151
+   13149
   ],
-  "text": "The board hangs together by a single connection. The two sides only work out with one piece crossing it, so the tiles are joined.",
+  "text": "The board is held together here by a single connection. With a wall here, each side would need to be covered by whole pieces on its own, and its number of tiles makes that impossible. So one piece crosses it: the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0603",
-  "changedFrom": "The board hangs together by a single connection. If it were a wall, each side would have to be covered by whole pieces of the allowed size, and that is impossible, so one piece crosses it."
+  "changedFrom": "The board hangs together by a single connection. The two sides only work out with one piece crossing it, so the tiles are joined."
  },
  {
   "sec": "steps",
@@ -5507,12 +5471,13 @@
   "kind": "message",
   "where": "STEP_INFO › area-sum",
   "lines": [
-   13152
+   13150
   ],
-  "text": "Area numbers add up to every tile",
+  "text": "Area numbers cover every tile",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0604"
+  "id": "T0604",
+  "changedFrom": "Area numbers add up to every tile"
  },
  {
   "sec": "steps",
@@ -5520,12 +5485,13 @@
   "kind": "message",
   "where": "STEP_INFO › area-sum",
   "lines": [
-   13152
+   13150
   ],
-  "text": "The numbers of this region add up to all its tiles, so no piece without a number can exist: every tile ends up in a numbered piece. That decides this edge.",
+  "text": "The area numbers of this region add up to all its tiles, so every tile belongs to a numbered piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0605"
+  "id": "T0605",
+  "changedFrom": "The numbers of this region add up to all its tiles, so no piece without a number can exist: every tile ends up in a numbered piece. That decides this edge."
  },
  {
   "sec": "steps",
@@ -5533,7 +5499,7 @@
   "kind": "message",
   "where": "STEP_INFO › area-region",
   "lines": [
-   13153
+   13151
   ],
   "text": "Area numbers in a closed-in area",
   "slots": [],
@@ -5546,12 +5512,13 @@
   "kind": "message",
   "where": "STEP_INFO › area-region",
   "lines": [
-   13153
+   13151
   ],
-  "text": "The area numbers inside this region closed in by walls leave only one possibility for this edge.",
+  "text": "This area is closed in by walls, and its area numbers fit in it in only one way.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0607"
+  "id": "T0607",
+  "changedFrom": "The area numbers inside this region closed in by walls leave only one possibility for this edge."
  },
  {
   "sec": "steps",
@@ -5559,7 +5526,7 @@
   "kind": "message",
   "where": "STEP_INFO › area-rel",
   "lines": [
-   13154
+   13152
   ],
   "text": "Walls that compare sizes",
   "slots": [],
@@ -5572,12 +5539,13 @@
   "kind": "message",
   "where": "STEP_INFO › area-rel",
   "lines": [
-   13154
+   13152
   ],
-  "text": "The walls that compare sizes (<, >, ±N, same) only leave the pieces on each side some sizes. That decides this edge.",
+  "text": "The walls that compare sizes (<, >, ±N, same) leave only some sizes for the pieces on each side.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0609"
+  "id": "T0609",
+  "changedFrom": "The walls that compare sizes (<, >, ±N, same) only leave the pieces on each side some sizes. That decides this edge."
  },
  {
   "sec": "steps",
@@ -5585,12 +5553,13 @@
   "kind": "message",
   "where": "STEP_INFO › range-region",
   "lines": [
-   13155
+   13153
   ],
-  "text": "Closed-in area must be coverable",
+  "text": "Closed-in area: whole pieces only",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0610"
+  "id": "T0610",
+  "changedFrom": "Closed-in area must be coverable"
  },
  {
   "sec": "steps",
@@ -5598,12 +5567,13 @@
   "kind": "message",
   "where": "STEP_INFO › range-region",
   "lines": [
-   13155
+   13153
   ],
-  "text": "An area closed in by walls has to be covered by whole pieces of the allowed sizes, and only one choice for this edge makes that possible.",
+  "text": "An area closed in by walls is covered by whole pieces of the allowed sizes, and only one choice for this edge allows that.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0611"
+  "id": "T0611",
+  "changedFrom": "An area closed in by walls has to be covered by whole pieces of the allowed sizes, and only one choice for this edge makes that possible."
  },
  {
   "sec": "steps",
@@ -5611,7 +5581,7 @@
   "kind": "message",
   "where": "STEP_INFO › euler-count",
   "lines": [
-   13156
+   13154
   ],
   "text": "Wall budget",
   "slots": [],
@@ -5624,12 +5594,13 @@
   "kind": "message",
   "where": "STEP_INFO › euler-count",
   "lines": [
-   13156
+   13154
   ],
-  "text": "With so few pieces allowed, the walls already placed use up the wall budget (wall ends on the outline and corners where walls branch each cost one). A wall here would go over the budget, so the tiles are in one piece.",
+  "text": "Few pieces are allowed, and that limits the walls: every wall end on the outline and every corner where walls branch costs one, and the walls already placed use the whole budget. A wall here would cost one more, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0613"
+  "id": "T0613",
+  "changedFrom": "With so few pieces allowed, the walls already placed use up the wall budget (wall ends on the outline and corners where walls branch each cost one). A wall here would go over the budget, so the tiles are in one piece."
  },
  {
   "sec": "steps",
@@ -5637,7 +5608,7 @@
   "kind": "message",
   "where": "STEP_INFO › colour-count",
   "lines": [
-   13157
+   13155
   ],
   "text": "Colour count",
   "slots": [],
@@ -5650,38 +5621,55 @@
   "kind": "message",
   "where": "STEP_INFO › colour-count",
   "lines": [
+   13155
+  ],
+  "text": "Few pieces are allowed, so the groups can be coloured with that many colours, with different colours for groups known to be different pieces. Two groups that always get the same colour are one piece; two that always get different colours have a wall between them.",
+  "slots": [],
+  "note": "Title or explanation of a step in the step-by-step view.",
+  "id": "T0615",
+  "changedFrom": "With so few pieces allowed, the groups have to be colourable with that many colours: groups that must differ get different colours, so two groups of one colour are one piece and two of different colours have a wall."
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "STEP_INFO › match-iso",
+  "lines": [
+   13156
+  ],
+  "text": "Match: equal pieces",
+  "slots": [],
+  "note": "Title or explanation of a step in the step-by-step view.",
+  "id": "T0616",
+  "changedFrom": "Equal pieces"
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "STEP_INFO › match-iso",
+  "lines": [
+   13156
+  ],
+  "text": "Every piece has the same shape, so a wall inside one piece has its copy in the other.",
+  "slots": [],
+  "note": "Title or explanation of a step in the step-by-step view.",
+  "id": "T0617",
+  "changedFrom": "All pieces have to be the same shape, so a wall inside one piece has its mirror image in the other. That decides this edge."
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "STEP_INFO › match-place",
+  "lines": [
    13157
   ],
-  "text": "With so few pieces allowed, the groups have to be colourable with that many colours: groups that must differ get different colours, so two groups of one colour are one piece and two of different colours have a wall.",
+  "text": "Match: every place the shape fits",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0615"
- },
- {
-  "sec": "steps",
-  "area": "Step-by-step reasoning",
-  "kind": "message",
-  "where": "STEP_INFO › match-iso",
-  "lines": [
-   13158
-  ],
-  "text": "Equal pieces",
-  "slots": [],
-  "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0616"
- },
- {
-  "sec": "steps",
-  "area": "Step-by-step reasoning",
-  "kind": "message",
-  "where": "STEP_INFO › match-iso",
-  "lines": [
-   13158
-  ],
-  "text": "All pieces have to be the same shape, so a wall inside one piece has its mirror image in the other. That decides this edge.",
-  "slots": [],
-  "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0617"
+  "id": "T0618",
+  "changedFrom": "Match: where can the shape go?"
  },
  {
   "sec": "steps",
@@ -5689,12 +5677,13 @@
   "kind": "message",
   "where": "STEP_INFO › match-place",
   "lines": [
-   13159
+   13157
   ],
-  "text": "Match: where can the shape go?",
+  "text": "Every piece has the same shape, and one shape is left. The solver listed every place it still fits around this group. This edge is outside all of them, so it is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0618"
+  "id": "T0619",
+  "changedFrom": "One shape is left for every group, and the solver tried every place it can still go. This edge lies outside all of them, so it is a wall."
  },
  {
   "sec": "steps",
@@ -5702,25 +5691,13 @@
   "kind": "message",
   "where": "STEP_INFO › match-place",
   "lines": [
-   13159
+   13157
   ],
-  "text": "One shape is left for every group, and the solver tried every place it can still go. This edge lies outside all of them, so it is a wall.",
+  "text": "Every piece has the same shape, and one shape is left. The solver listed every place it still fits around this group. This edge is inside all of them, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0619"
- },
- {
-  "sec": "steps",
-  "area": "Step-by-step reasoning",
-  "kind": "message",
-  "where": "STEP_INFO › match-place",
-  "lines": [
-   13159
-  ],
-  "text": "One shape is left for every group, and the solver tried every place it can still go. This edge lies inside all of them, so the tiles are in one piece.",
-  "slots": [],
-  "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0620"
+  "id": "T0620",
+  "changedFrom": "One shape is left for every group, and the solver tried every place it can still go. This edge lies inside all of them, so the tiles are in one piece."
  },
  {
   "sec": "steps",
@@ -5728,7 +5705,7 @@
   "kind": "message",
   "where": "STEP_INFO › match-region",
   "lines": [
-   13160
+   13158
   ],
   "text": "Match: closed-in area",
   "slots": [],
@@ -5741,12 +5718,13 @@
   "kind": "message",
   "where": "STEP_INFO › match-region",
   "lines": [
-   13160
+   13158
   ],
-  "text": "An area closed in by walls with exactly one piece’s worth of tiles is a single piece, so every edge inside it is open.",
+  "text": "Every piece has the same size, and this area closed in by walls holds exactly that many tiles. So it is a single piece, and every edge inside it is open.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0622"
+  "id": "T0622",
+  "changedFrom": "An area closed in by walls with exactly one piece’s worth of tiles is a single piece, so every edge inside it is open."
  },
  {
   "sec": "steps",
@@ -5754,7 +5732,7 @@
   "kind": "message",
   "where": "STEP_INFO › match-fit",
   "lines": [
-   13161
+   13159
   ],
   "text": "Match: one shape for every group",
   "slots": [],
@@ -5767,12 +5745,13 @@
   "kind": "message",
   "where": "STEP_INFO › match-fit",
   "lines": [
-   13161
+   13159
   ],
-  "text": "The common shape has to fit every group. Joining these two groups would leave no shape that fits, so there is a wall.",
+  "text": "Every piece has the same shape, so that shape has to fit every group. Joined, these two groups would leave no shape that fits all the groups, so there is a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0624"
+  "id": "T0624",
+  "changedFrom": "The common shape has to fit every group. Joining these two groups would leave no shape that fits, so there is a wall."
  },
  {
   "sec": "steps",
@@ -5780,7 +5759,7 @@
   "kind": "message",
   "where": "STEP_INFO › match-mismatch",
   "lines": [
-   13162
+   13160
   ],
   "text": "Match and Mismatch together",
   "slots": [],
@@ -5793,12 +5772,13 @@
   "kind": "message",
   "where": "STEP_INFO › match-mismatch",
   "lines": [
-   13162
+   13160
   ],
-  "text": "Every piece the same and every piece different can only both be true with a single piece, so the whole board is one piece.",
+  "text": "Match makes every piece the same and Mismatch makes every piece different. Both hold only with a single piece, so the whole board is one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0626"
+  "id": "T0626",
+  "changedFrom": "Every piece the same and every piece different can only both be true with a single piece, so the whole board is one piece."
  },
  {
   "sec": "steps",
@@ -5806,12 +5786,13 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-place",
   "lines": [
-   13163
+   13161
   ],
-  "text": "Mismatch: a place for the pinned shape",
+  "text": "Mismatch: every place for the only shape left",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0627"
+  "id": "T0627",
+  "changedFrom": "Mismatch: a place for the pinned shape"
  },
  {
   "sec": "steps",
@@ -5819,12 +5800,13 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-place",
   "lines": [
-   13163
+   13161
   ],
-  "text": "This group can only be one particular shape, and the solver tried every place for it. This edge lies outside all of them, so it is a wall.",
+  "text": "This group can only become one shape. The solver listed every place where that shape still fits. This edge is outside all of them, so it is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0628"
+  "id": "T0628",
+  "changedFrom": "This group can only be one particular shape, and the solver tried every place for it. This edge lies outside all of them, so it is a wall."
  },
  {
   "sec": "steps",
@@ -5832,12 +5814,13 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-place",
   "lines": [
-   13163
+   13161
   ],
-  "text": "This group can only be one particular shape, and the solver tried every place for it. This edge lies inside all of them, so the tiles are in one piece.",
+  "text": "This group can only become one shape. The solver listed every place where that shape still fits. This edge is inside all of them, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0629"
+  "id": "T0629",
+  "changedFrom": "This group can only be one particular shape, and the solver tried every place for it. This edge lies inside all of them, so the tiles are in one piece."
  },
  {
   "sec": "steps",
@@ -5845,7 +5828,7 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-stamp",
   "lines": [
-   13164
+   13162
   ],
   "text": "Mismatch: same stamp, one piece",
   "slots": [],
@@ -5858,13 +5841,13 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-stamp",
   "lines": [
-   13164
+   13162
   ],
-  "text": "Two stamps of the same shape are in one piece, because no two pieces share a shape.",
+  "text": "No two pieces share a shape, and these two stamps have the same shape, so they are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0631",
-  "changedFrom": "Two stamps of the same shape cannot be two pieces (no two pieces may share a shape), so they are one piece."
+  "changedFrom": "Two stamps of the same shape are in one piece, because no two pieces share a shape."
  },
  {
   "sec": "steps",
@@ -5872,12 +5855,13 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-link",
   "lines": [
-   13165
+   13163
   ],
-  "text": "Mismatch: same pinned shape, one piece",
+  "text": "Mismatch: same shape, one piece",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0632"
+  "id": "T0632",
+  "changedFrom": "Mismatch: same pinned shape, one piece"
  },
  {
   "sec": "steps",
@@ -5885,13 +5869,13 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-link",
   "lines": [
-   13165
+   13163
   ],
-  "text": "These two groups can only be the same shape, and no two pieces share a shape, so they are one piece.",
+  "text": "No two pieces share a shape, and these two groups can only become the same shape, so they are one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0633",
-  "changedFrom": "Two groups that can only be the same shape cannot be two pieces (no two pieces may share a shape), so they are one piece."
+  "changedFrom": "These two groups can only be the same shape, and no two pieces share a shape, so they are one piece."
  },
  {
   "sec": "steps",
@@ -5899,7 +5883,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-link",
   "lines": [
-   13166
+   13164
   ],
   "text": "Size Separation: same size side by side",
   "slots": [],
@@ -5912,13 +5896,13 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-link",
   "lines": [
-   13166
+   13164
   ],
-  "text": "The pieces of these two neighbouring tiles are pinned to the same size, and touching pieces always differ in size, so the two tiles are in one piece.",
+  "text": "Touching pieces always have different sizes. The pieces of these two neighbouring tiles are both pinned to the same size, so they are one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0635",
-  "changedFrom": "Two neighbouring tiles whose pieces are pinned to the same size cannot have a wall between them, because two touching pieces would be equal."
+  "changedFrom": "The pieces of these two neighbouring tiles are pinned to the same size, and touching pieces always differ in size, so the two tiles are in one piece."
  },
  {
   "sec": "steps",
@@ -5926,7 +5910,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-link",
   "lines": [
-   13167
+   13165
   ],
   "text": "Mingle Shape: same shape side by side",
   "slots": [],
@@ -5939,13 +5923,13 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-link",
   "lines": [
-   13167
+   13165
   ],
-  "text": "The pieces of these two neighbouring tiles are pinned to the same shape, and touching pieces always differ in shape, so the two tiles are in one piece.",
+  "text": "Touching pieces always have different shapes. The pieces of these two neighbouring tiles are both pinned to the same shape, so they are one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0637",
-  "changedFrom": "Two neighbouring tiles whose pieces are pinned to the same shape cannot have a wall between them, because two touching pieces would be equal."
+  "changedFrom": "The pieces of these two neighbouring tiles are pinned to the same shape, and touching pieces always differ in shape, so the two tiles are in one piece."
  },
  {
   "sec": "steps",
@@ -5953,13 +5937,12 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-merge",
   "lines": [
-   13168
+   13166
   ],
   "text": "Size Separation: different sizes",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0638",
-  "changedFrom": "Size Separation: no size in common"
+  "id": "T0638"
  },
  {
   "sec": "steps",
@@ -5967,13 +5950,12 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-merge",
   "lines": [
-   13168
+   13166
   ],
   "text": "These two groups can only end up with different sizes, so they are different pieces, with a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0639",
-  "changedFrom": "These two groups have no size in common, so they cannot be one piece and there is a wall between them."
+  "id": "T0639"
  },
  {
   "sec": "steps",
@@ -5981,13 +5963,12 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-merge",
   "lines": [
-   13169
+   13167
   ],
   "text": "Mingle Shape: different shapes",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0640",
-  "changedFrom": "Mingle Shape: no shape in common"
+  "id": "T0640"
  },
  {
   "sec": "steps",
@@ -5995,13 +5976,12 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-merge",
   "lines": [
-   13169
+   13167
   ],
   "text": "These two groups can only end up with different shapes, so they are different pieces, with a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0641",
-  "changedFrom": "These two groups have no shape in common, so they cannot be one piece and there is a wall between them."
+  "id": "T0641"
  },
  {
   "sec": "steps",
@@ -6009,7 +5989,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-parity",
   "lines": [
-   13170
+   13168
   ],
   "text": "Size Separation: two sizes alternate",
   "slots": [],
@@ -6022,12 +6002,13 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-parity",
   "lines": [
-   13170
+   13168
   ],
-  "text": "With only two possible sizes, neighbouring pieces must alternate like a chessboard. The chain of walls between these tiles decides this edge.",
+  "text": "Only two sizes are possible, and touching pieces have different sizes, so the sizes alternate across every wall like a chessboard. Counting the walls on the chain between these tiles shows whether their pieces have the same size.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0643"
+  "id": "T0643",
+  "changedFrom": "With only two possible sizes, neighbouring pieces must alternate like a chessboard. The chain of walls between these tiles decides this edge."
  },
  {
   "sec": "steps",
@@ -6035,7 +6016,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-parity",
   "lines": [
-   13171
+   13169
   ],
   "text": "Mingle Shape: two shapes alternate",
   "slots": [],
@@ -6048,12 +6029,13 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-parity",
   "lines": [
-   13171
+   13169
   ],
-  "text": "With only two possible shapes, neighbouring pieces must alternate like a chessboard. The chain of walls between these tiles decides this edge.",
+  "text": "Only two shapes are possible, and touching pieces have different shapes, so the shapes alternate across every wall like a chessboard. Counting the walls on the chain between these tiles shows whether their pieces have the same shape.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0645"
+  "id": "T0645",
+  "changedFrom": "With only two possible shapes, neighbouring pieces must alternate like a chessboard. The chain of walls between these tiles decides this edge."
  },
  {
   "sec": "steps",
@@ -6061,7 +6043,7 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-grow",
   "lines": [
-   13172
+   13170
   ],
   "text": "Solitude: keep growing",
   "slots": [],
@@ -6074,12 +6056,13 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-grow",
   "lines": [
-   13172
+   13170
   ],
-  "text": "This group has no symbol yet and only one way out, so it has to grow through that edge.",
+  "text": "This group has no symbol yet, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0647"
+  "id": "T0647",
+  "changedFrom": "This group has no symbol yet and only one way out, so it has to grow through that edge."
  },
  {
   "sec": "steps",
@@ -6087,12 +6070,13 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-reach",
   "lines": [
-   13173
+   13171
   ],
-  "text": "Solitude: must still reach a symbol",
+  "text": "Solitude: the way to a symbol",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0648"
+  "id": "T0648",
+  "changedFrom": "Solitude: must still reach a symbol"
  },
  {
   "sec": "steps",
@@ -6100,13 +6084,13 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-reach",
   "lines": [
-   13173
+   13171
   ],
-  "text": "This edge is the group’s only way to a symbol it can still reach, so the tiles are joined.",
+  "text": "Every symbol this group can still reach is through this edge, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0899",
-  "isNew": true
+  "changedFrom": "This edge is the group’s only way to a symbol it can still reach, so the tiles are joined."
  },
  {
   "sec": "steps",
@@ -6114,13 +6098,12 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-pair",
   "lines": [
-   13174
+   13172
   ],
   "text": "Solitude: one symbol per piece",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0649",
-  "changedFrom": "Solitude: two symbols never together"
+  "id": "T0649"
  },
  {
   "sec": "steps",
@@ -6128,13 +6111,13 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-pair",
   "lines": [
-   13174
+   13172
   ],
-  "text": "Each piece holds one symbol, so these two symbols are in different pieces, with a wall between them.",
+  "text": "Each piece holds exactly one symbol, so these two symbols are in different pieces, with a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0650",
-  "changedFrom": "Two symbols can never share a piece, so there is a wall between them."
+  "changedFrom": "Each piece holds one symbol, so these two symbols are in different pieces, with a wall between them."
  },
  {
   "sec": "steps",
@@ -6142,7 +6125,7 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-region",
   "lines": [
-   13175
+   13173
   ],
   "text": "Solitude: closed-in area",
   "slots": [],
@@ -6155,12 +6138,13 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-region",
   "lines": [
-   13175
+   13173
   ],
-  "text": "An area closed in by walls holds one symbol per piece, and with exactly one symbol it is a single piece. That decides this edge.",
+  "text": "Each piece holds exactly one symbol, so an area closed in by walls has as many pieces as symbols: with one symbol it is a single piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0652"
+  "id": "T0652",
+  "changedFrom": "An area closed in by walls holds one symbol per piece, and with exactly one symbol it is a single piece. That decides this edge."
  },
  {
   "sec": "steps",
@@ -6168,12 +6152,13 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-place",
   "lines": [
-   13176
+   13174
   ],
-  "text": "Boxy: where can the rectangle go?",
+  "text": "Boxy: every rectangle that fits",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0653"
+  "id": "T0653",
+  "changedFrom": "Boxy: where can the rectangle go?"
  },
  {
   "sec": "steps",
@@ -6181,12 +6166,13 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-place",
   "lines": [
-   13176
+   13174
   ],
-  "text": "The solver tried every rectangle of an allowed size that holds the tiles known so far. This edge is outside all of them, so it is a wall.",
+  "text": "Every piece is a rectangle. The solver listed every rectangle of an allowed size that holds this group's tiles. This edge is outside all of them, so it is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0654"
+  "id": "T0654",
+  "changedFrom": "The solver tried every rectangle of an allowed size that holds the tiles known so far. This edge is outside all of them, so it is a wall."
  },
  {
   "sec": "steps",
@@ -6194,12 +6180,13 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-place",
   "lines": [
-   13176
+   13174
   ],
-  "text": "The solver tried every rectangle of an allowed size that holds the tiles known so far. This edge is inside all of them, so the tiles are in one piece.",
+  "text": "Every piece is a rectangle. The solver listed every rectangle of an allowed size that holds this group's tiles. This edge is inside all of them, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0655"
+  "id": "T0655",
+  "changedFrom": "The solver tried every rectangle of an allowed size that holds the tiles known so far. This edge is inside all of them, so the tiles are in one piece."
  },
  {
   "sec": "steps",
@@ -6207,7 +6194,7 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-line",
   "lines": [
-   13177
+   13175
   ],
   "text": "Boxy: a prime size is a strip",
   "slots": [],
@@ -6218,9 +6205,23 @@
   "sec": "steps",
   "area": "Step-by-step reasoning",
   "kind": "message",
+  "where": "STEP_INFO › boxy-line",
+  "lines": [
+   13175
+  ],
+  "text": "Every piece is a rectangle, and a rectangle with a prime number of tiles is a straight strip. These tiles are already in a row, so their strip runs along that row.",
+  "slots": [],
+  "note": "Title or explanation of a step in the step-by-step view.",
+  "id": "T0909",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
   "where": "STEP_INFO › boxy-corner",
   "lines": [
-   13178
+   13176
   ],
   "text": "Boxy: walls run straight",
   "slots": [],
@@ -6233,12 +6234,13 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-corner",
   "lines": [
-   13178
+   13176
   ],
-  "text": "Round every inner corner the walls run straight through, make a T or a cross, or are not there (otherwise the piece next to them would not be a rectangle). That decides this edge.",
+  "text": "Every piece is a rectangle, so at every inner corner the walls run straight through, make a T or a cross, or there are none. The walls already at this corner leave one choice.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0658"
+  "id": "T0658",
+  "changedFrom": "Round every inner corner the walls run straight through, make a T or a cross, or are not there (otherwise the piece next to them would not be a rectangle). That decides this edge."
  },
  {
   "sec": "steps",
@@ -6246,7 +6248,7 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-fill",
   "lines": [
-   13179
+   13177
   ],
   "text": "Boxy: fill the rectangle",
   "slots": [],
@@ -6259,12 +6261,13 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-fill",
   "lines": [
-   13179
+   13177
   ],
-  "text": "Tiles of one piece sit inside one rectangle, so everything inside the smallest rectangle round them belongs to the piece.",
+  "text": "Every piece is a rectangle, so everything inside the smallest rectangle around these tiles belongs to their piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0660"
+  "id": "T0660",
+  "changedFrom": "Tiles of one piece sit inside one rectangle, so everything inside the smallest rectangle round them belongs to the piece."
  },
  {
   "sec": "steps",
@@ -6272,12 +6275,13 @@
   "kind": "message",
   "where": "STEP_INFO › nonbox-grow",
   "lines": [
-   13180
+   13178
   ],
-  "text": "Non-boxy: a rectangle must keep growing",
+  "text": "Non-boxy: keep growing",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0661"
+  "id": "T0661",
+  "changedFrom": "Non-boxy: a rectangle must keep growing"
  },
  {
   "sec": "steps",
@@ -6285,12 +6289,13 @@
   "kind": "message",
   "where": "STEP_INFO › nonbox-grow",
   "lines": [
-   13180
+   13178
   ],
-  "text": "This group is still a rectangle, which is not allowed for a piece, and it has only one way out, so it has to grow through that edge.",
+  "text": "No piece is a rectangle. This group is still a rectangle, and this edge is its only way out, so the piece grows through it: the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0662"
+  "id": "T0662",
+  "changedFrom": "This group is still a rectangle, which is not allowed for a piece, and it has only one way out, so it has to grow through that edge."
  },
  {
   "sec": "steps",
@@ -6298,8 +6303,8 @@
   "kind": "message",
   "where": "STEP_INFO › pal-wall",
   "lines": [
-   13181,
-   13182
+   13179,
+   13180
   ],
   "text": "Palisade",
   "slots": [],
@@ -6312,12 +6317,13 @@
   "kind": "message",
   "where": "STEP_INFO › pal-wall",
   "lines": [
-   13181
+   13179
   ],
-  "text": "Whatever way this palisade gets its number (given the walls and links already known), this side has to be a wall.",
+  "text": "The solver tried every way to give this palisade its number of walls, with the walls and links already known. In all of them this side is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0664"
+  "id": "T0664",
+  "changedFrom": "Whatever way this palisade gets its number (given the walls and links already known), this side has to be a wall."
  },
  {
   "sec": "steps",
@@ -6325,12 +6331,13 @@
   "kind": "message",
   "where": "STEP_INFO › pal-link",
   "lines": [
-   13182
+   13180
   ],
-  "text": "Whatever way this palisade gets its number (given the walls and links already known), this side has to be open.",
+  "text": "The solver tried every way to give this palisade its number of walls, with the walls and links already known. In all of them this side is open, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0665"
+  "id": "T0665",
+  "changedFrom": "Whatever way this palisade gets its number (given the walls and links already known), this side has to be open."
  },
  {
   "sec": "steps",
@@ -6338,7 +6345,7 @@
   "kind": "message",
   "where": "STEP_INFO › pal-pair",
   "lines": [
-   13183
+   13181
   ],
   "text": "Palisades side by side",
   "slots": [],
@@ -6351,12 +6358,13 @@
   "kind": "message",
   "where": "STEP_INFO › pal-pair",
   "lines": [
-   13183
+   13181
   ],
-  "text": "Two palisades side by side share a side, which counts for both. Counting both numbers together decides this edge.",
+  "text": "Two palisades side by side share one side, which counts for both numbers. Counting both numbers together leaves one choice for this edge.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0667"
+  "id": "T0667",
+  "changedFrom": "Two palisades side by side share a side, which counts for both. Counting both numbers together decides this edge."
  },
  {
   "sec": "steps",
@@ -6364,7 +6372,7 @@
   "kind": "message",
   "where": "STEP_INFO › pal-two",
   "lines": [
-   13184
+   13182
   ],
   "text": "Palisade: only two pieces",
   "slots": [],
@@ -6377,13 +6385,14 @@
   "kind": "message",
   "where": "STEP_INFO › pal-two",
   "lines": [
-   13184,
-   13190
+   13182,
+   13188
   ],
-  "text": "Only two pieces can exist, so every wall separates the same two pieces and every link joins tiles of one piece. Counting round the tiles decides this edge.",
+  "text": "Only two pieces can exist, so every wall has the same two pieces on its sides. Counting the walls around the tiles with that in mind leaves one choice for this edge.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0669"
+  "id": "T0669",
+  "changedFrom": "Only two pieces can exist, so every wall separates the same two pieces and every link joins tiles of one piece. Counting round the tiles decides this edge."
  },
  {
   "sec": "steps",
@@ -6391,13 +6400,14 @@
   "kind": "message",
   "where": "STEP_INFO › wally-wall",
   "lines": [
-   13185,
-   13186
+   13183,
+   13184
   ],
-  "text": "Wally: no T tetromino",
+  "text": "Wally: no T shape",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0670"
+  "id": "T0670",
+  "changedFrom": "Wally: no T tetromino"
  },
  {
   "sec": "steps",
@@ -6405,12 +6415,13 @@
   "kind": "message",
   "where": "STEP_INFO › wally-wall",
   "lines": [
-   13185
+   13183
   ],
-  "text": "This tile already has 2 neighbours in its own piece (or must keep 2 walls), so this side has to be a wall: a third neighbour would make a T.",
+  "text": "With Wally no piece contains a T. This tile already has 2 neighbours in its piece (or keeps 2 walls), and a third neighbour would make a T, so this side is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0671"
+  "id": "T0671",
+  "changedFrom": "This tile already has 2 neighbours in its own piece (or must keep 2 walls), so this side has to be a wall: a third neighbour would make a T."
  },
  {
   "sec": "steps",
@@ -6418,12 +6429,13 @@
   "kind": "message",
   "where": "STEP_INFO › wally-link",
   "lines": [
-   13186
+   13184
   ],
-  "text": "Whatever way this tile keeps at most 2 neighbours in its own piece, this side stays open.",
+  "text": "With Wally no piece contains a T. The solver tried every way this tile keeps at most 2 neighbours in its piece. In all of them this side is open, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0672"
+  "id": "T0672",
+  "changedFrom": "Whatever way this tile keeps at most 2 neighbours in its own piece, this side stays open."
  },
  {
   "sec": "steps",
@@ -6431,7 +6443,7 @@
   "kind": "message",
   "where": "STEP_INFO › wally-ends",
   "lines": [
-   13187
+   13185
   ],
   "text": "Wally: two ends per piece",
   "slots": [],
@@ -6444,12 +6456,13 @@
   "kind": "message",
   "where": "STEP_INFO › wally-ends",
   "lines": [
-   13187
+   13185
   ],
-  "text": "With Wally every piece is a path with two ends (a tile with 3 walls round it), a ring, or a single tile. A piece can not get a third end; a piece whose two ends are known goes straight through every other tile; and the ends can not outnumber two per piece: with every rose (or Solitude symbol) a dead end, every piece starts and ends at them.",
+  "text": "With Wally every piece is a path with two ends (an end is a tile with 3 walls), a ring, or a single tile. So a piece has at most two ends, a piece whose two ends are known runs straight through all its other tiles, and when every rose (or Solitude symbol) is a dead end, the pieces start and end at them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0674"
+  "id": "T0674",
+  "changedFrom": "With Wally every piece is a path with two ends (a tile with 3 walls round it), a ring, or a single tile. A piece can not get a third end; a piece whose two ends are known goes straight through every other tile; and the ends can not outnumber two per piece: with every rose (or Solitude symbol) a dead end, every piece starts and ends at them."
  },
  {
   "sec": "steps",
@@ -6457,12 +6470,13 @@
   "kind": "message",
   "where": "STEP_INFO › wally-ends",
   "lines": [
-   13187
+   13185
   ],
-  "text": "With Wally every piece is a path with two ends. The piece on one side already has both its ends, and joining the other side would give it a third one (or the piece is already whole from end to end), so this is a wall.",
+  "text": "With Wally every piece is a path with two ends. The piece on one side already has both its ends, so joining the other side would give it a third end (or the piece is already whole). So this is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0675"
+  "id": "T0675",
+  "changedFrom": "With Wally every piece is a path with two ends. The piece on one side already has both its ends, and joining the other side would give it a third one (or the piece is already whole from end to end), so this is a wall."
  },
  {
   "sec": "steps",
@@ -6470,12 +6484,13 @@
   "kind": "message",
   "where": "STEP_INFO › wally-ends",
   "lines": [
-   13187
+   13185
   ],
-  "text": "With Wally every piece is a path with two ends. The two ends of this piece are known, or the known ends already use up every end the pieces can have, so this tile can not be an end: it has exactly two ways on and takes both.",
+  "text": "With Wally every piece is a path with two ends. All the ends are known already, so this tile is a middle tile: it has two ways on and takes both.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0676"
+  "id": "T0676",
+  "changedFrom": "With Wally every piece is a path with two ends. The two ends of this piece are known, or the known ends already use up every end the pieces can have, so this tile can not be an end: it has exactly two ways on and takes both."
  },
  {
   "sec": "steps",
@@ -6483,7 +6498,7 @@
   "kind": "message",
   "where": "STEP_INFO › wally-line",
   "lines": [
-   13188
+   13186
   ],
   "text": "Wally + Gemini: lines of the same length",
   "slots": [],
@@ -6496,13 +6511,14 @@
   "kind": "message",
   "where": "STEP_INFO › wally-line",
   "lines": [
-   13188,
-   13189
+   13186,
+   13187
   ],
-  "text": "The two pieces of a Gemini wall have the same shape, so a straight line in one piece has a twin of the same length in the other. The solver tried every place where the twin could still get a line this long: the ones it refuted are gone, and the lengths left say where this line stops. It stops here.",
+  "text": "The two pieces of a Gemini wall have the same shape, so a straight line in one has a twin of the same length in the other. The solver checked every place where the twin could still have a line that long. The lengths left say this line ends here, so this edge is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0678"
+  "id": "T0678",
+  "changedFrom": "The two pieces of a Gemini wall have the same shape, so a straight line in one piece has a twin of the same length in the other. The solver tried every place where the twin could still get a line this long: the ones it refuted are gone, and the lengths left say where this line stops. It stops here."
  },
  {
   "sec": "steps",
@@ -6510,13 +6526,14 @@
   "kind": "message",
   "where": "STEP_INFO › wally-line",
   "lines": [
-   13188,
-   13189
+   13186,
+   13187
   ],
-  "text": "The two pieces of a Gemini wall have the same shape, so a straight line in one piece has a twin of the same length in the other. The solver tried every place where the twin could still get a line this long: the ones it refuted are gone, and the lengths left say this line has to grow through this edge.",
+  "text": "The two pieces of a Gemini wall have the same shape, so a straight line in one has a twin of the same length in the other. The solver checked every place where the twin could still have a line that long. The lengths left say this line goes on through this edge, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0679"
+  "id": "T0679",
+  "changedFrom": "The two pieces of a Gemini wall have the same shape, so a straight line in one piece has a twin of the same length in the other. The solver tried every place where the twin could still get a line this long: the ones it refuted are gone, and the lengths left say this line has to grow through this edge."
  },
  {
   "sec": "steps",
@@ -6524,7 +6541,7 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-line",
   "lines": [
-   13189
+   13187
   ],
   "text": "Gemini: lines of the same length",
   "slots": [],
@@ -6537,7 +6554,7 @@
   "kind": "message",
   "where": "STEP_INFO › wally-two",
   "lines": [
-   13190
+   13188
   ],
   "text": "Wally: only two pieces",
   "slots": [],
@@ -6550,7 +6567,7 @@
   "kind": "message",
   "where": "STEP_INFO › pal-size",
   "lines": [
-   13191
+   13189
   ],
   "text": "Palisade: how big the piece is",
   "slots": [],
@@ -6561,14 +6578,15 @@
   "sec": "steps",
   "area": "Step-by-step reasoning",
   "kind": "message",
-  "where": "STEP_INFO › bri-three",
+  "where": "STEP_INFO › pal-size",
   "lines": [
-   13192
+   13189
   ],
-  "text": "Bricky: three walls, the fourth connects",
+  "text": "The open sides of this tile put it in a piece of at least a certain size. Joined, these two groups would break a size limit, so there is a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0683"
+  "id": "T0910",
+  "isNew": true
  },
  {
   "sec": "steps",
@@ -6576,12 +6594,27 @@
   "kind": "message",
   "where": "STEP_INFO › bri-three",
   "lines": [
-   13192
+   13190
   ],
-  "text": "Three of the four segments at this corner are walls, and four walls may not meet, so the two tiles here are one piece.",
+  "text": "Bricky: three walls, the fourth is open",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0684"
+  "id": "T0683",
+  "changedFrom": "Bricky: three walls, the fourth connects"
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "STEP_INFO › bri-three",
+  "lines": [
+   13190
+  ],
+  "text": "With Bricky, four walls never meet at a corner. Three of the four segments at this corner are walls, so the fourth is open: the two tiles are in one piece.",
+  "slots": [],
+  "note": "Title or explanation of a step in the step-by-step view.",
+  "id": "T0684",
+  "changedFrom": "Three of the four segments at this corner are walls, and four walls may not meet, so the two tiles here are one piece."
  },
  {
   "sec": "steps",
@@ -6589,7 +6622,7 @@
   "kind": "message",
   "where": "STEP_INFO › bri-pinch",
   "lines": [
-   13193
+   13191
   ],
   "text": "Bricky: tiles that touch at a corner",
   "slots": [],
@@ -6602,12 +6635,13 @@
   "kind": "message",
   "where": "STEP_INFO › bri-pinch",
   "lines": [
-   13193
+   13191
   ],
-  "text": "Two tiles that meet only at a corner are one piece, so one of the other two tiles at that corner has to join them. That decides this edge.",
+  "text": "Two tiles that meet only at a corner are in one piece, so one of the other two tiles at that corner joins them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0686"
+  "id": "T0686",
+  "changedFrom": "Two tiles that meet only at a corner are one piece, so one of the other two tiles at that corner has to join them. That decides this edge."
  },
  {
   "sec": "steps",
@@ -6615,7 +6649,7 @@
   "kind": "message",
   "where": "STEP_INFO › bri-vertex",
   "lines": [
-   13194
+   13192
   ],
   "text": "Bricky: no four walls at a corner",
   "slots": [],
@@ -6628,12 +6662,13 @@
   "kind": "message",
   "where": "STEP_INFO › bri-vertex",
   "lines": [
-   13194
+   13192
   ],
-  "text": "No corner may have four walls. Trying every way the four tiles round this corner can be split into pieces decides this edge.",
+  "text": "With Bricky, four walls never meet at a corner. The solver tried every way to split the four tiles around this corner into pieces, and in all of them this edge is the same.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0688"
+  "id": "T0688",
+  "changedFrom": "No corner may have four walls. Trying every way the four tiles round this corner can be split into pieces decides this edge."
  },
  {
   "sec": "steps",
@@ -6641,7 +6676,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-outline",
   "lines": [
-   13195
+   13193
   ],
   "text": "Loopy: the outline is linked",
   "slots": [],
@@ -6654,12 +6689,13 @@
   "kind": "message",
   "where": "STEP_INFO › loo-outline",
   "lines": [
-   13195
+   13193
   ],
-  "text": "Every tile on the outline has a wall to the outside, so two outline tiles side by side must be one piece.",
+  "text": "Every tile on the outline has a wall to the outside, so two outline tiles side by side are one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0690"
+  "id": "T0690",
+  "changedFrom": "Every tile on the outline has a wall to the outside, so two outline tiles side by side must be one piece."
  },
  {
   "sec": "steps",
@@ -6667,7 +6703,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-three",
   "lines": [
-   13196
+   13194
   ],
   "text": "Loopy: three walls, the fourth is a wall",
   "slots": [],
@@ -6680,12 +6716,13 @@
   "kind": "message",
   "where": "STEP_INFO › loo-three",
   "lines": [
-   13196
+   13194
   ],
-  "text": "Three of the four segments at this corner are walls, and an even number of walls meets at every corner, so the fourth is a wall too.",
+  "text": "With Loopy an even number of walls meets at every corner. Three of the four segments at this corner are walls, so the fourth is a wall too.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0692"
+  "id": "T0692",
+  "changedFrom": "Three of the four segments at this corner are walls, and an even number of walls meets at every corner, so the fourth is a wall too."
  },
  {
   "sec": "steps",
@@ -6693,7 +6730,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-corner",
   "lines": [
-   13197
+   13195
   ],
   "text": "Loopy: poking-in corner",
   "slots": [],
@@ -6706,12 +6743,13 @@
   "kind": "message",
   "where": "STEP_INFO › loo-corner",
   "lines": [
-   13197
+   13195
   ],
-  "text": "At a corner where an empty tile pokes in, two walls are already there and the other two segments are either both walls or both links. One of them is now known.",
+  "text": "At a corner where an empty tile pokes in, two walls are already there, so the other two segments are both walls or both open. One of them is known, so the other is the same.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0694"
+  "id": "T0694",
+  "changedFrom": "At a corner where an empty tile pokes in, two walls are already there and the other two segments are either both walls or both links. One of them is now known."
  },
  {
   "sec": "steps",
@@ -6719,7 +6757,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-color",
   "lines": [
-   13198
+   13196
   ],
   "text": "Loopy: two colours",
   "slots": [],
@@ -6730,10 +6768,24 @@
   "sec": "steps",
   "area": "Step-by-step reasoning",
   "kind": "message",
+  "where": "STEP_INFO › loo-color",
+  "lines": [
+   13196
+  ],
+  "text": "With Loopy the tiles get two colours: a wall changes the colour and an open edge keeps it. The chain of decided edges between these two tiles shows whether they have the same colour.",
+  "slots": [],
+  "note": "Title or explanation of a step in the step-by-step view.",
+  "id": "T0911",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
   "where": "STEP_INFO › tower-wall",
   "lines": [
-   13199,
-   13200
+   13197,
+   13198
   ],
   "text": "Watchtower",
   "slots": [],
@@ -6746,12 +6798,13 @@
   "kind": "message",
   "where": "STEP_INFO › tower-wall",
   "lines": [
-   13199
+   13197
   ],
-  "text": "The number on the watchtower at this corner needs this edge to be a wall (a 4 needs four walls, a 2 exactly two, and so on).",
+  "text": "The number on the watchtower at this corner is how many walls meet there (a 4 needs four walls, a 2 exactly two). This edge has to be one of them, so it is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0697"
+  "id": "T0697",
+  "changedFrom": "The number on the watchtower at this corner needs this edge to be a wall (a 4 needs four walls, a 2 exactly two, and so on)."
  },
  {
   "sec": "steps",
@@ -6759,12 +6812,13 @@
   "kind": "message",
   "where": "STEP_INFO › tower-link",
   "lines": [
-   13200
+   13198
   ],
-  "text": "The number on the watchtower at this corner needs this edge to be open (a 1 links all the tiles round its corner).",
+  "text": "The number on the watchtower at this corner is how many walls meet there (a 1 joins all the tiles around its corner). This edge has to be open, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0698"
+  "id": "T0698",
+  "changedFrom": "The number on the watchtower at this corner needs this edge to be open (a 1 links all the tiles round its corner)."
  },
  {
   "sec": "steps",
@@ -6772,7 +6826,7 @@
   "kind": "message",
   "where": "STEP_INFO › tower-wrap",
   "lines": [
-   13201
+   13199
   ],
   "text": "Watchtower: no wrapping round the corner",
   "slots": [],
@@ -6785,12 +6839,13 @@
   "kind": "message",
   "where": "STEP_INFO › tower-wrap",
   "lines": [
-   13201
+   13199
   ],
-  "text": "No piece may wrap round this watchtower corner, which decides this edge.",
+  "text": "Pieces stay on one side of a watchtower corner: none wraps around it.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0700"
+  "id": "T0700",
+  "changedFrom": "No piece may wrap round this watchtower corner, which decides this edge."
  },
  {
   "sec": "steps",
@@ -6798,13 +6853,13 @@
   "kind": "message",
   "where": "STEP_INFO › compass",
   "lines": [
-   13202
+   13200
   ],
-  "text": "The compass piece needs this edge to reach enough tiles on one of its sides, so the tiles are joined.",
+  "text": "The compass piece needs this edge to reach enough tiles on one of its sides, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0701",
-  "changedFrom": "Without this edge the compass piece could not reach enough tiles on one of its sides, so the tiles are joined."
+  "changedFrom": "The compass piece needs this edge to reach enough tiles on one of its sides, so the tiles are joined."
  },
  {
   "sec": "steps",
@@ -6812,7 +6867,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-block",
   "lines": [
-   13203
+   13201
   ],
   "text": "Compass: out of reach",
   "slots": [],
@@ -6825,13 +6880,13 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-block",
   "lines": [
-   13203
+   13201
   ],
-  "text": "The tile across this edge is out of the compass piece’s reach, so there is a wall.",
+  "text": "The tile across this edge is out of the compass piece's reach, so there is a wall between them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0900",
-  "isNew": true
+  "changedFrom": "The tile across this edge is out of the compass piece’s reach, so there is a wall."
  },
  {
   "sec": "steps",
@@ -6839,7 +6894,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-budget",
   "lines": [
-   13204
+   13202
   ],
   "text": "Compass: the way to a rose",
   "slots": [],
@@ -6852,7 +6907,7 @@
   "kind": "message",
   "where": "STEP_INFO › diff-clash",
   "lines": [
-   13205
+   13203
   ],
   "text": "Difference: two numbers, two pieces",
   "slots": [],
@@ -6865,12 +6920,13 @@
   "kind": "message",
   "where": "STEP_INFO › diff-clash",
   "lines": [
-   13205
+   13203
   ],
-  "text": "One piece touches two Difference walls with different numbers (a Gemini wall counts as 0). The pieces across them would have to differ from it by both numbers at once, so they are two different pieces. That decides this edge.",
+  "text": "One piece touches two Difference walls with different numbers (a Gemini wall counts as 0). The pieces across them differ from it by different amounts, so they are two different pieces.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0705"
+  "id": "T0705",
+  "changedFrom": "One piece touches two Difference walls with different numbers (a Gemini wall counts as 0). The pieces across them would have to differ from it by both numbers at once, so they are two different pieces. That decides this edge."
  },
  {
   "sec": "steps",
@@ -6878,7 +6934,7 @@
   "kind": "message",
   "where": "STEP_INFO › diff-small",
   "lines": [
-   13206
+   13204
   ],
   "text": "Difference: the few small pieces",
   "slots": [],
@@ -6891,12 +6947,13 @@
   "kind": "message",
   "where": "STEP_INFO › diff-small",
   "lines": [
-   13206
+   13204
   ],
-  "text": "Every Difference wall of N has a piece of at most (Maximum - N) tiles on one side. With Mismatch each shape is used once, so there are only a few such small pieces. The solver tried every way to place them so that each of those walls has one on a side, and all the ways agree on this edge.",
+  "text": "Every Difference wall of N has a piece of at most (Maximum − N) tiles on one side. With Mismatch every shape is used once, so there are only a few such small pieces. The solver tried every way to place them so that each of those walls has one on a side, and in all of them this edge is the same.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0707"
+  "id": "T0707",
+  "changedFrom": "Every Difference wall of N has a piece of at most (Maximum - N) tiles on one side. With Mismatch each shape is used once, so there are only a few such small pieces. The solver tried every way to place them so that each of those walls has one on a side, and all the ways agree on this edge."
  },
  {
   "sec": "steps",
@@ -6904,7 +6961,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-cover",
   "lines": [
-   13207
+   13205
   ],
   "text": "Roses: who goes with whom",
   "slots": [],
@@ -6917,13 +6974,13 @@
   "kind": "message",
   "where": "STEP_INFO › rose-cover",
   "lines": [
-   13207
+   13205
   ],
-  "text": "Every piece holds one rose of each type. The solver listed every way to split the groups of roses into such pieces. In every one of them these two groups end up in different pieces. That decides this edge.",
+  "text": "Every piece holds one rose of each type. The solver listed every way to split the groups of roses into such pieces. In all of them these two groups are in different pieces.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0709",
-  "changedFrom": "Every piece holds one rose of each type. The solver listed every way to split the groups of roses into such pieces. In none of them are these two groups in the same piece, so they are different pieces. That decides this edge."
+  "changedFrom": "Every piece holds one rose of each type. The solver listed every way to split the groups of roses into such pieces. In every one of them these two groups end up in different pieces. That decides this edge."
  },
  {
   "sec": "steps",
@@ -6931,12 +6988,13 @@
   "kind": "message",
   "where": "STEP_INFO › label",
   "lines": [
-   13208
+   13206
   ],
-  "text": "Every tile belongs to one symbol",
+  "text": "Which piece each tile belongs to",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0710"
+  "id": "T0710",
+  "changedFrom": "Every tile belongs to one symbol"
  },
  {
   "sec": "steps",
@@ -6944,12 +7002,13 @@
   "kind": "message",
   "where": "STEP_INFO › label",
   "lines": [
-   13208
+   13206
   ],
-  "text": "Every piece holds exactly one symbol (Solitude), one rose of each type, or one of the area numbers that fill the board, so every tile belongs to the piece of exactly one of them. The solver keeps, for each tile, the symbols it can still belong to: walls and Inequality / Difference walls take some away, and so does distance from the symbol. These two tiles can no longer belong to the same symbol (wall), or both belong to the same one (link).",
+  "text": "Every piece holds exactly one symbol (Solitude), one rose of each type, or one of the area numbers that fill the board, so every tile belongs to the piece of one of them. For each tile the solver keeps the ones it can still belong to, taking away those cut off by walls, Inequality and Difference walls, or distance. These two tiles have no symbol left in common (a wall) or the same single one (open).",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0711"
+  "id": "T0711",
+  "changedFrom": "Every piece holds exactly one symbol (Solitude), one rose of each type, or one of the area numbers that fill the board, so every tile belongs to the piece of exactly one of them. The solver keeps, for each tile, the symbols it can still belong to: walls and Inequality / Difference walls take some away, and so does distance from the symbol. These two tiles can no longer belong to the same symbol (wall), or both belong to the same one (link)."
  },
  {
   "sec": "steps",
@@ -6957,7 +7016,7 @@
   "kind": "message",
   "where": "STEP_INFO › box-hall",
   "lines": [
-   13209
+   13207
   ],
   "text": "Boxy + Mismatch: shapes taken",
   "slots": [],
@@ -6970,12 +7029,13 @@
   "kind": "message",
   "where": "STEP_INFO › box-hall",
   "lines": [
-   13209
+   13207
   ],
-  "text": "Every piece is a different rectangle. Some pieces can only be a few rectangles, and as many of them as there are such rectangles take all of them (for example four ends that can only be 1x1 to 1x4). Every other piece loses those rectangles. What the rectangles left for this piece agree on decides this edge.",
+  "text": "Every piece is a different rectangle. Some pieces can only be a few rectangles, and when there are as many such pieces as rectangles they take all of them (for example four pieces that can only be 1x1 to 1x4). The other pieces lose those rectangles, and the rectangles left for this piece all agree on this edge.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0713"
+  "id": "T0713",
+  "changedFrom": "Every piece is a different rectangle. Some pieces can only be a few rectangles, and as many of them as there are such rectangles take all of them (for example four ends that can only be 1x1 to 1x4). Every other piece loses those rectangles. What the rectangles left for this piece agree on decides this edge."
  },
  {
   "sec": "steps",
@@ -6983,7 +7043,7 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-hall",
   "lines": [
-   13210
+   13208
   ],
   "text": "Mismatch: few shapes, all taken",
   "slots": [],
@@ -6996,12 +7056,13 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-hall",
   "lines": [
-   13210
+   13208
   ],
-  "text": "Every piece has a different shape and the pieces are small, so there are only a few shapes. Some pieces can only be a few of them, and as many of those pieces as there are such shapes take all of them; every other piece loses them. What the shapes left for this piece agree on decides this edge.",
+  "text": "Every piece has a different shape and the pieces are small, so there are only a few shapes. Some pieces can only be a few of them, and when there are as many such pieces as shapes they take all of them. The other pieces lose those shapes, and the shapes left for this piece all agree on this edge.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0715"
+  "id": "T0715",
+  "changedFrom": "Every piece has a different shape and the pieces are small, so there are only a few shapes. Some pieces can only be a few of them, and as many of those pieces as there are such shapes take all of them; every other piece loses them. What the shapes left for this piece agree on decides this edge."
  },
  {
   "sec": "steps",
@@ -7009,7 +7070,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-box",
   "lines": [
-   13211
+   13209
   ],
   "text": "Compass + Boxy: the rectangle",
   "slots": [],
@@ -7022,12 +7083,13 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-box",
   "lines": [
-   13211
+   13209
   ],
-  "text": "The piece is a rectangle, so the compass numbers are rows above or below times the width, and columns left or right times the height. A number on a side means the rectangle reaches out that way (it can not wrap round). The solver listed every rectangle that fits all the numbers, and they all agree on this edge.",
+  "text": "The piece is a rectangle, so each compass number counts whole rows or columns on that side. The solver listed every rectangle that fits all the numbers, and they all agree on this edge.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0717"
+  "id": "T0717",
+  "changedFrom": "The piece is a rectangle, so the compass numbers are rows above or below times the width, and columns left or right times the height. A number on a side means the rectangle reaches out that way (it can not wrap round). The solver listed every rectangle that fits all the numbers, and they all agree on this edge."
  },
  {
   "sec": "steps",
@@ -7035,7 +7097,7 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-anchor",
   "lines": [
-   13212
+   13210
   ],
   "text": "Gemini: the one line that can match",
   "slots": [],
@@ -7048,12 +7110,13 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-anchor",
   "lines": [
-   13212
+   13210
   ],
-  "text": "Both pieces of the Gemini wall have a closed straight line of the same length, and one of them can not make a second one. Turning or mirroring one shape onto the other must therefore send line onto line: of those few ways, only the ones left after copying the known tiles across agree that this is a wall.",
+  "text": "Both pieces of the Gemini wall have a closed straight line of the same length, and one of them has room for only that one. So the turn or mirror that copies one shape onto the other sends line onto line. Of those few ways, the ones that still fit after copying the known tiles across all have a wall here.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0719"
+  "id": "T0719",
+  "changedFrom": "Both pieces of the Gemini wall have a closed straight line of the same length, and one of them can not make a second one. Turning or mirroring one shape onto the other must therefore send line onto line: of those few ways, only the ones left after copying the known tiles across agree that this is a wall."
  },
  {
   "sec": "steps",
@@ -7061,12 +7124,13 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-anchor",
   "lines": [
-   13212
+   13210
   ],
-  "text": "Both pieces of the Gemini wall have a closed straight line of the same length, and one of them can not make a second one. Turning or mirroring one shape onto the other must therefore send line onto line: of those few ways, only the ones left after copying the known tiles across agree that these tiles are one piece.",
+  "text": "Both pieces of the Gemini wall have a closed straight line of the same length, and one of them has room for only that one. So the turn or mirror that copies one shape onto the other sends line onto line. Of those few ways, the ones that still fit after copying the known tiles across all have these two tiles in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0720"
+  "id": "T0720",
+  "changedFrom": "Both pieces of the Gemini wall have a closed straight line of the same length, and one of them can not make a second one. Turning or mirroring one shape onto the other must therefore send line onto line: of those few ways, only the ones left after copying the known tiles across agree that these tiles are one piece."
  },
  {
   "sec": "steps",
@@ -7074,7 +7138,7 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-place",
   "lines": [
-   13213
+   13211
   ],
   "text": "Gemini / Delta: the shapes on both sides",
   "slots": [],
@@ -7087,12 +7151,13 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-place",
   "lines": [
-   13213
+   13211
   ],
-  "text": "The solver listed every piece each side of a Gemini wall can still become. Both sides must have the same shape, so each keeps only the shapes the other can have too (a Delta wall: a side left with one shape takes it from the other). Every piece left for this side agrees on this edge.",
+  "text": "The solver listed every piece each side of the wall can still become. Across a Gemini wall both sides have the same shape, so each side keeps only the shapes the other side can have too (across a Delta wall, a side left with one shape takes that shape away from the other). The shapes left for this side all agree on this edge.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0722"
+  "id": "T0722",
+  "changedFrom": "The solver listed every piece each side of a Gemini wall can still become. Both sides must have the same shape, so each keeps only the shapes the other can have too (a Delta wall: a side left with one shape takes it from the other). Every piece left for this side agrees on this edge."
  },
  {
   "sec": "steps",
@@ -7100,7 +7165,7 @@
   "kind": "message",
   "where": "STEP_INFO › region-merge",
   "lines": [
-   13214
+   13212
   ],
   "text": "Two groups, one piece",
   "slots": [],
@@ -7113,12 +7178,13 @@
   "kind": "message",
   "where": "STEP_INFO › region-merge",
   "lines": [
-   13214
+   13212
   ],
-  "text": "An area closed in by walls has only so many tiles. The solver tried every way to split its big groups into pieces, with the sizes the Inequality walls ask for; in every way that fits, these two groups are in the same piece. So they are one piece, even where they do not touch yet.",
+  "text": "An area closed in by walls has only so many tiles. The solver tried every way to split its big groups into pieces with the sizes the Inequality walls ask for, and in every way that fits these two groups are in the same piece. So they are one piece, even where they do not touch yet.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0724"
+  "id": "T0724",
+  "changedFrom": "An area closed in by walls has only so many tiles. The solver tried every way to split its big groups into pieces, with the sizes the Inequality walls ask for; in every way that fits, these two groups are in the same piece. So they are one piece, even where they do not touch yet."
  },
  {
   "sec": "steps",
@@ -7126,7 +7192,7 @@
   "kind": "message",
   "where": "STEP_INFO › size-cut",
   "lines": [
-   13215
+   13213
   ],
   "text": "One size, one narrow tile",
   "slots": [],
@@ -7139,12 +7205,13 @@
   "kind": "message",
   "where": "STEP_INFO › size-cut",
   "lines": [
-   13215
+   13213
   ],
-  "text": "Every piece has the same size here. This tile is the only way into a part of the board, so only its own piece can reach in from outside, and it must take exactly what is left of that part after whole pieces: none (then this edge is a wall) or some (then, with one way in, this edge is a link).",
+  "text": "Every piece has the same size here. This tile is the only way into a part of the board, so only its own piece reaches in from outside, and it takes exactly what is left of that part after whole pieces: nothing (a wall) or some tiles (open).",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0726"
+  "id": "T0726",
+  "changedFrom": "Every piece has the same size here. This tile is the only way into a part of the board, so only its own piece can reach in from outside, and it must take exactly what is left of that part after whole pieces: none (then this edge is a wall) or some (then, with one way in, this edge is a link)."
  },
  {
   "sec": "steps",
@@ -7152,7 +7219,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-wrap",
   "lines": [
-   13216
+   13214
   ],
   "text": "Compass: the piece has to go this way",
   "slots": [],
@@ -7165,13 +7232,12 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-wrap",
   "lines": [
-   13216
+   13214
   ],
   "text": "The compass piece needs this tile (or edge) to have enough tiles on some side, or in total, so it is part of the piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0728",
-  "changedFrom": "Without this tile or edge the region would have too few tiles on some side (or in total) for the compass numbers, so it is part of the piece."
+  "id": "T0728"
  },
  {
   "sec": "steps",
@@ -7179,7 +7245,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-place",
   "lines": [
-   13217
+   13215
   ],
   "text": "Compass: every way the piece can be",
   "slots": [],
@@ -7192,13 +7258,13 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-place",
   "lines": [
-   13217
+   13215
   ],
-  "text": "The solver searched for every piece that fits all the compass numbers, the size and the decided walls. Every one of them leaves this tile out, so there is a wall.",
+  "text": "The solver listed every piece that fits all the compass numbers, the size and the walls already decided. Every one of them leaves this tile out, so there is a wall.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0730",
-  "changedFrom": "The solver searched for every piece that fits all the compass numbers, the size and the decided walls. None holds this tile, so it is cut off by a wall."
+  "changedFrom": "The solver searched for every piece that fits all the compass numbers, the size and the decided walls. Every one of them leaves this tile out, so there is a wall."
  },
  {
   "sec": "steps",
@@ -7206,12 +7272,13 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-place",
   "lines": [
-   13217
+   13215
   ],
-  "text": "The solver searched for every piece that fits all the compass numbers, the size and the decided walls. Every one holds this tile, so it is joined.",
+  "text": "The solver listed every piece that fits all the compass numbers, the size and the walls already decided. Every one of them holds this tile, so the two tiles are in one piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0731"
+  "id": "T0731",
+  "changedFrom": "The solver searched for every piece that fits all the compass numbers, the size and the decided walls. Every one holds this tile, so it is joined."
  },
  {
   "sec": "steps",
@@ -7219,12 +7286,13 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-crowd",
   "lines": [
-   13218
+   13216
   ],
-  "text": "Compass: too many compasses",
+  "text": "Compass: room for every compass",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0732"
+  "id": "T0732",
+  "changedFrom": "Compass: too many compasses"
  },
  {
   "sec": "steps",
@@ -7232,12 +7300,13 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-crowd",
   "lines": [
-   13218
+   13216
   ],
-  "text": "However the compasses here are split into pieces, they would need more tiles than are available. That decides this edge.",
+  "text": "The compasses here each need tiles for their pieces, and there are only so many tiles. Only one choice for this edge leaves enough for all of them.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0733"
+  "id": "T0733",
+  "changedFrom": "However the compasses here are split into pieces, they would need more tiles than are available. That decides this edge."
  },
  {
   "sec": "steps",
@@ -7245,13 +7314,12 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-excl",
   "lines": [
-   13219
+   13217
   ],
   "text": "Compass: this tile stays out",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
-  "id": "T0734",
-  "changedFrom": "Compass: a tile that cannot be in the piece"
+  "id": "T0734"
  },
  {
   "sec": "steps",
@@ -7259,13 +7327,13 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-excl",
   "lines": [
-   13219
+   13217
   ],
-  "text": "Putting this tile in the compass piece would break a rule, so it belongs to another piece.",
+  "text": "Putting this tile in the compass piece breaks a rule, so it belongs to another piece.",
   "slots": [],
   "note": "Title or explanation of a step in the step-by-step view.",
   "id": "T0735",
-  "changedFrom": "Assuming this tile is in the piece of a compass breaks something, so it is kept out."
+  "changedFrom": "Putting this tile in the compass piece would break a rule, so it belongs to another piece."
  },
  {
   "sec": "steps",
@@ -7273,7 +7341,7 @@
   "kind": "message",
   "where": "STEP_INFO › hetero-size",
   "lines": [
-   13220
+   13218
   ],
   "text": "Heterogeneous: a size is used once",
   "slots": [],
@@ -7284,15 +7352,28 @@
   "sec": "steps",
   "area": "Step-by-step reasoning",
   "kind": "message",
+  "where": "STEP_INFO › hetero-size",
+  "lines": [
+   13218
+  ],
+  "text": "With Heterogeneous each size is used once, and a finished piece already has this size.",
+  "slots": [],
+  "note": "Title or explanation of a step in the step-by-step view.",
+  "id": "T0912",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
   "where": "",
   "lines": [
-   13223
+   13221
   ],
   "text": "Two clues, two pieces",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0901",
-  "isNew": true
+  "id": "T0901"
  },
  {
   "sec": "steps",
@@ -7300,12 +7381,12 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13223
+   13221
   ],
-  "text": "These two clues are in different pieces (the solver tried them in one piece, and the rules could not all be met that way), so there is a wall between their groups.",
+  "text": "The solver tried these two clues in one piece, and the rules could not all be met that way. So they are in different pieces, with a wall between their groups.",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0902",
+  "id": "T0913",
   "isNew": true
  },
  {
@@ -7314,13 +7395,12 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13224
+   13222
   ],
   "text": "Two groups, two pieces",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0903",
-  "isNew": true
+  "id": "T0903"
  },
  {
   "sec": "steps",
@@ -7328,12 +7408,12 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13224
+   13222
   ],
-  "text": "These two groups are in different pieces (the solver tried them as one piece, and the rules could not all be met that way), so there is a wall between them.",
+  "text": "The solver tried these two groups as one piece, and the rules could not all be met that way. So they are different pieces, with a wall between them.",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0904",
+  "id": "T0914",
   "isNew": true
  },
  {
@@ -7342,7 +7422,7 @@
   "kind": "message",
   "where": "STEP_WHY_EXTRA › forbidden",
   "lines": [
-   13232
+   13230
   ],
   "text": "two tiles that cannot share a piece would be joined",
   "slots": [],
@@ -7355,7 +7435,7 @@
   "kind": "message",
   "where": "out › title",
   "lines": [
-   13416
+   13414
   ],
   "text": "{1} (part {2} of {3})",
   "slots": [
@@ -7372,7 +7452,7 @@
   "kind": "message",
   "where": "stepTexts",
   "lines": [
-   13418
+   13416
   ],
   "text": "Same deduction, continued",
   "slots": [],
@@ -7385,7 +7465,7 @@
   "kind": "message",
   "where": "stepTexts",
   "lines": [
-   13419
+   13417
   ],
   "text": "The same deduction as the steps before also decides these remaining edges.",
   "slots": [],
@@ -7398,7 +7478,7 @@
   "kind": "message",
   "where": "stepTexts",
   "lines": [
-   13420
+   13418
   ],
   "text": "The same deduction as the step before also settles every edge round this piece, which finishes it.",
   "slots": [],
@@ -7411,7 +7491,7 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13428
+   13426
   ],
   "text": "Start",
   "slots": [],
@@ -7424,7 +7504,7 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13428
+   13426
   ],
   "text": "The puzzle as given",
   "slots": [],
@@ -7437,12 +7517,13 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13429
+   13427
   ],
-  "text": "Step through to see what the solver can prove, one deduction at a time. Teal bars are walls it has proven, blue links mean \"these two tiles are in one piece\", and tiles that share a colour are proven to be in one piece even before they touch. Everything it proves holds in every tiling.",
+  "text": "Step through to see what the solver proves, one deduction at a time. Each step outlines the edges it decides. Teal bars are walls, blue links join two tiles of one piece, and tiles that share a colour are in one piece even before they touch. Everything proven here holds in every tiling.",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0744"
+  "id": "T0744",
+  "changedFrom": "Step through to see what the solver can prove, one deduction at a time. Teal bars are walls it has proven, blue links mean \"these two tiles are in one piece\", and tiles that share a colour are proven to be in one piece even before they touch. Everything it proves holds in every tiling."
  },
  {
   "sec": "steps",
@@ -7450,12 +7531,13 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13430
+   13428
   ],
-  "text": "The solver’s rules could not decide any edge on their own for this puzzle, so everything is left to the exhaustive search in the last step.",
+  "text": "For this puzzle the solver’s rules decide no edge on their own, so the last step does all the work with an exhaustive search.",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0745"
+  "id": "T0745",
+  "changedFrom": "The solver’s rules could not decide any edge on their own for this puzzle, so everything is left to the exhaustive search in the last step."
  },
  {
   "sec": "steps",
@@ -7463,7 +7545,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13436
+   13434
   ],
   "text": "same-piece link",
   "slots": [],
@@ -7476,7 +7558,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13436
+   13434
   ],
   "text": "same-piece links",
   "slots": [],
@@ -7489,7 +7571,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13436
+   13434
   ],
   "text": "edge already inside a joined group",
   "slots": [],
@@ -7502,7 +7584,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13436
+   13434
   ],
   "text": "edges already inside a joined group",
   "slots": [],
@@ -7515,7 +7597,7 @@
   "kind": "message",
   "where": "mark",
   "lines": [
-   13439
+   13437
   ],
   "text": "Every tile known to be in that piece now has the same colour.",
   "slots": [],
@@ -7528,7 +7610,7 @@
   "kind": "message",
   "where": "what",
   "lines": [
-   13441
+   13439
   ],
   "text": "one symbol",
   "slots": [],
@@ -7541,7 +7623,7 @@
   "kind": "message",
   "where": "what",
   "lines": [
-   13441
+   13439
   ],
   "text": "one rose of each type",
   "slots": [],
@@ -7554,7 +7636,7 @@
   "kind": "message",
   "where": "what",
   "lines": [
-   13441
+   13439
   ],
   "text": "one of the area numbers",
   "slots": [],
@@ -7567,10 +7649,10 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13442,
+   13440,
+   13443,
    13445,
-   13447,
-   13481
+   13486
   ],
   "text": "Rule",
   "slots": [],
@@ -7583,7 +7665,7 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13442
+   13440
   ],
   "text": "Only one piece it can be in",
   "slots": [],
@@ -7596,7 +7678,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13443
+   13441
   ],
   "text": "Every piece holds exactly {1}. The ringed tiles have only one piece left they can belong to, so they are in that piece, even though they do not touch yet.{2}",
   "slots": [
@@ -7604,8 +7686,7 @@
    "mark"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0887",
-  "changedFrom": "Every piece holds exactly {1}. The ringed tiles can not end up in any other piece, so they are in one piece, even though they do not touch yet.{2}"
+  "id": "T0887"
  },
  {
   "sec": "steps",
@@ -7613,7 +7694,7 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13445
+   13443
   ],
   "text": "The only way to connect",
   "slots": [],
@@ -7626,7 +7707,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13446
+   13444
   ],
   "text": "they belong",
   "slots": [],
@@ -7639,7 +7720,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13446
+   13444
   ],
   "text": "it belongs",
   "slots": [],
@@ -7652,7 +7733,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13446
+   13444
   ],
   "text": "The parts of one piece that do not touch yet still have to meet, and every way to connect them passes through the ringed tile{1}, so {2} to that piece.{3}",
   "slots": [
@@ -7669,8 +7750,8 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13447,
-   13449
+   13445,
+   13447
   ],
   "text": "Far apart, but one piece",
   "slots": [],
@@ -7683,14 +7764,15 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13448
+   13446
   ],
-  "text": "The rules already used show that the ringed tiles are in one piece, even though they do not touch yet.{1}",
+  "text": "The rule steps so far put the ringed tiles in one piece, even though they do not touch yet.{1}",
   "slots": [
    "mark"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0757"
+  "id": "T0757",
+  "changedFrom": "The rules already used show that the ringed tiles are in one piece, even though they do not touch yet.{1}"
  },
  {
   "sec": "steps",
@@ -7698,14 +7780,13 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13449,
-   13460
+   13447,
+   13458
   ],
   "text": "Checked by trying the other way",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0758",
-  "changedFrom": "Proof by contradiction"
+  "id": "T0758"
  },
  {
   "sec": "steps",
@@ -7713,15 +7794,14 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13450
+   13448
   ],
   "text": "The ringed tiles are in one piece, even though they do not touch yet: the solver tried them in different pieces, and the rules could not all be met that way.{1}",
   "slots": [
    "mark"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0759",
-  "changedFrom": "Suppose the ringed tiles were in different pieces. Following the rules from there leads to a contradiction, so they are in one piece, even though they do not touch yet.{1}"
+  "id": "T0759"
  },
  {
   "sec": "steps",
@@ -7729,13 +7809,12 @@
   "kind": "message",
   "where": "title",
   "lines": [
-   13454
+   13452
   ],
   "text": "These two tiles are in one piece",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0905",
-  "isNew": true
+  "id": "T0905"
  },
  {
   "sec": "steps",
@@ -7743,13 +7822,12 @@
   "kind": "message",
   "where": "title",
   "lines": [
-   13454
+   13452
   ],
   "text": "There is a wall here",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0906",
-  "isNew": true
+  "id": "T0906"
  },
  {
   "sec": "steps",
@@ -7757,13 +7835,12 @@
   "kind": "message",
   "where": "concl",
   "lines": [
-   13455
+   13453
   ],
   "text": "The two tiles at the outlined edge are in one piece.",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0762",
-  "changedFrom": "So there is no wall: the two tiles are in one piece."
+  "id": "T0762"
  },
  {
   "sec": "steps",
@@ -7771,13 +7848,12 @@
   "kind": "message",
   "where": "concl",
   "lines": [
-   13455
+   13453
   ],
   "text": "There is a wall at the outlined edge.",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0763",
-  "changedFrom": "So there must be a wall between the two tiles."
+  "id": "T0763"
  },
  {
   "sec": "steps",
@@ -7785,13 +7861,12 @@
   "kind": "message",
   "where": "other",
   "lines": [
-   13456
+   13454
   ],
   "text": "the two tiles in one piece",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0907",
-  "isNew": true
+  "id": "T0907"
  },
  {
   "sec": "steps",
@@ -7799,13 +7874,12 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13461
+   13459
   ],
   "text": "the rules could not all be met",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0765",
-  "changedFrom": "Following the rules from there, this breaks: {1}."
+  "id": "T0765"
  },
  {
   "sec": "steps",
@@ -7813,7 +7887,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13461
+   13459
   ],
   "text": "{1} The solver tried {2} instead and found that {3}.",
   "slots": [
@@ -7822,8 +7896,7 @@
    "why || 'the rules could not all be met'"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0766",
-  "changedFrom": "Following the rules from there leads to a contradiction."
+  "id": "T0766"
  },
  {
   "sec": "steps",
@@ -7831,13 +7904,12 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13463
+   13461
   ],
   "text": "Checked by search",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0767",
-  "changedFrom": "Proof by exhaustive search"
+  "id": "T0767"
  },
  {
   "sec": "steps",
@@ -7845,7 +7917,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13464
+   13462
   ],
   "text": "{1} The solver tried every way to go on with {2} instead, and none of them works out. This is a brute-force check, so there is no short rule to quote.",
   "slots": [
@@ -7853,8 +7925,7 @@
    "other"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0768",
-  "changedFrom": "{1} The solver searched every way to continue around this spot and none works. This is a brute-force check, so there is no short rule to quote. {2}"
+  "id": "T0768"
  },
  {
   "sec": "steps",
@@ -7862,15 +7933,27 @@
   "kind": "message",
   "where": "stepTextsBase",
   "lines": [
-   13477
+   13476
   ],
   "text": "These tiles are in one piece: a wall here would break a rule ({1}).",
   "slots": [
    "why"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0769",
-  "changedFrom": "These tiles have to be in one piece."
+  "id": "T0769"
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "stepTextsBase",
+  "lines": [
+   13476
+  ],
+  "text": "These tiles are in one piece.",
+  "slots": [],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T0770"
  },
  {
   "sec": "steps",
@@ -7880,27 +7963,12 @@
   "lines": [
    13477
   ],
-  "text": "These tiles are in one piece.",
-  "slots": [],
-  "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0770",
-  "changedFrom": "Joining these groups would break a rule ({1}), so there is a wall between them."
- },
- {
-  "sec": "steps",
-  "area": "Step-by-step reasoning",
-  "kind": "message",
-  "where": "stepTextsBase",
-  "lines": [
-   13478
-  ],
   "text": "There is a wall between these groups: joining them would break a rule ({1}).",
   "slots": [
    "why"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0908",
-  "isNew": true
+  "id": "T0908"
  },
  {
   "sec": "steps",
@@ -7908,7 +7976,7 @@
   "kind": "message",
   "where": "stepTextsBase",
   "lines": [
-   13478
+   13477
   ],
   "text": "This follows from the rules already used.",
   "slots": [],
@@ -7919,9 +7987,114 @@
   "sec": "steps",
   "area": "Step-by-step reasoning",
   "kind": "message",
-  "where": "stepTextsBase › kicker",
+  "where": "res",
   "lines": [
    13481
+  ],
+  "text": "open edge",
+  "slots": [],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T0915",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "res",
+  "lines": [
+   13481
+  ],
+  "text": "open edges",
+  "slots": [],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T0916",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "res",
+  "lines": [
+   13481
+  ],
+  "text": "This decides the outlined edges: {1} and {2}.",
+  "slots": [
+   "plural(nWall, 'wall', 'walls')",
+   "plural(nLink, 'open edge', 'open edges')"
+  ],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T0917",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "res",
+  "lines": [
+   13482
+  ],
+  "text": "So the outlined edge is a wall.",
+  "slots": [],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T0918",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "res",
+  "lines": [
+   13482
+  ],
+  "text": "So the {1} outlined edges are walls.",
+  "slots": [
+   "nWall"
+  ],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T0919",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "res",
+  "lines": [
+   13483
+  ],
+  "text": "So the outlined edge is open: the two tiles are in one piece.",
+  "slots": [],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T0920",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "res",
+  "lines": [
+   13483
+  ],
+  "text": "So the {1} outlined edges are open: their tiles are in one piece.",
+  "slots": [
+   "nLink"
+  ],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T0921",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "stepTextsBase › kicker",
+  "lines": [
+   13486
   ],
   "text": "Follows from the proof above",
   "slots": [],
@@ -7934,7 +8107,7 @@
   "kind": "message",
   "where": "makeFinalStep › kicker",
   "lines": [
-   13491
+   13496
   ],
   "text": "Solved",
   "slots": [],
@@ -7947,7 +8120,7 @@
   "kind": "message",
   "where": "makeFinalStep › title",
   "lines": [
-   13491
+   13496
   ],
   "text": "Every edge is decided",
   "slots": [],
@@ -7960,7 +8133,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13491
+   13496
   ],
   "text": "The rules above settled every edge, and the exact solver confirmed that no other tiling exists.",
   "slots": [],
@@ -7973,7 +8146,7 @@
   "kind": "message",
   "where": "makeFinalStep › kicker",
   "lines": [
-   13492
+   13497
   ],
   "text": "Exhaustive search",
   "slots": [],
@@ -7986,7 +8159,7 @@
   "kind": "message",
   "where": "makeFinalStep › title",
   "lines": [
-   13492
+   13497
   ],
   "text": "The rest is found by search",
   "slots": [],
@@ -7999,7 +8172,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13493
+   13498
   ],
   "text": "The rules above settle {1} of {2} edges. For the other {3} the solver switched to an exhaustive search of the remaining possibilities, and exactly one tiling survives (shown). Edges found by search are drawn in purple.",
   "slots": [
@@ -8016,7 +8189,7 @@
   "kind": "message",
   "where": "makeFinalStep › kicker",
   "lines": [
-   13495
+   13500
   ],
   "text": "Not unique",
   "slots": [],
@@ -8029,7 +8202,7 @@
   "kind": "message",
   "where": "makeFinalStep › title",
   "lines": [
-   13495
+   13500
   ],
   "text": "More than one tiling remains",
   "slots": [],
@@ -8042,7 +8215,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13496
+   13501
   ],
   "text": "at least",
   "slots": [],
@@ -8055,7 +8228,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13496
+   13501
   ],
   "text": "Everything above holds in every tiling. For the other {1} of {2} edges the rules could not decide and the solver found {3}two different tilings. They differ at the ringed tiles; switch between them below. Edges found by search are drawn in purple.",
   "slots": [
@@ -8072,8 +8245,8 @@
   "kind": "message",
   "where": "view › label",
   "lines": [
-   13582,
-   13601
+   13587,
+   13606
   ],
   "text": "Step {1} of {2}",
   "slots": [
@@ -8089,7 +8262,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13593
+   13598
   ],
   "text": "Final tiling{1}",
   "slots": [
@@ -8104,7 +8277,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13601
+   13606
   ],
   "text": "Start · {1} step{2}",
   "slots": [
@@ -8120,7 +8293,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13601
+   13606
   ],
   "text": "Result · step {1} of {2}",
   "slots": [
@@ -8136,7 +8309,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13608
+   13613
   ],
   "text": "Tiling A",
   "slots": [],
@@ -8149,7 +8322,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13608
+   13613
   ],
   "text": "Tiling B",
   "slots": [],
@@ -8162,7 +8335,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13625
+   13630
   ],
   "text": "Replaying the solver’s reasoning…",
   "slots": [],
@@ -8175,7 +8348,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13645
+   13650
   ],
   "text": "Replaying the solver’s reasoning… {1} of {2} edges decided",
   "slots": [
@@ -8191,7 +8364,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13652
+   13657
   ],
   "text": "Cancelled.",
   "slots": [],
@@ -8204,7 +8377,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13653
+   13658
   ],
   "text": "The replay stopped early: {1}",
   "slots": [
@@ -8224,8 +8397,7 @@
   "text": "rose windows are uneven, there are more of one type.",
   "slots": [],
   "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
-  "id": "T0330",
-  "changedFrom": "the rose types do not appear equally often"
+  "id": "T0330"
  },
  {
   "sec": "why",
@@ -8238,8 +8410,7 @@
   "text": "two roses of the same type are forced to be in one piece",
   "slots": [],
   "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
-  "id": "T0331",
-  "changedFrom": "two roses of the same type end up in one piece"
+  "id": "T0331"
  },
  {
   "sec": "why",
@@ -8252,8 +8423,7 @@
   "text": "more rose pieces must squeeze through a narrow passage than that passage has tiles",
   "slots": [],
   "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
-  "id": "T0332",
-  "changedFrom": "more rose pieces must squeeze through a narrow passage than it has tiles"
+  "id": "T0332"
  },
  {
   "sec": "why",
@@ -8266,8 +8436,7 @@
   "text": "an area number has no place left to satisfy it's size",
   "slots": [],
   "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
-  "id": "T0333",
-  "changedFrom": "an area number has no place left for its piece"
+  "id": "T0333"
  },
  {
   "sec": "why",
@@ -8280,8 +8449,7 @@
   "text": "two piece are forced to go over two difference walls, and those two have different numbers",
   "slots": [],
   "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
-  "id": "T0334",
-  "changedFrom": "two difference walls with different numbers end up between the same two pieces"
+  "id": "T0334"
  },
  {
   "sec": "why",
@@ -8307,8 +8475,7 @@
   "text": "the rose groups can't be split into pieces with one rose of every type",
   "slots": [],
   "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
-  "id": "T0336",
-  "changedFrom": "the rose groups can not be split into pieces with one rose of every type"
+  "id": "T0336"
  },
  {
   "sec": "why",
@@ -8334,8 +8501,7 @@
   "text": "There is a group of n tiles that can only hold n-1 possible rectangle shapes, one of them will break",
   "slots": [],
   "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
-  "id": "T0338",
-  "changedFrom": "more pieces need a few rectangle shapes than there are such shapes"
+  "id": "T0338"
  },
  {
   "sec": "why",
@@ -8348,8 +8514,7 @@
   "text": "the total puzzle area tells us every rectangle that can be used must be used, but one of them has no placement left",
   "slots": [],
   "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
-  "id": "T0339",
-  "changedFrom": "every rectangle that fits is used exactly once, and one of them has no place left"
+  "id": "T0339"
  },
  {
   "sec": "why",
@@ -8362,8 +8527,7 @@
   "text": "an area number (or its copy across a gemini) has no possible way to be placed",
   "slots": [],
   "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
-  "id": "T0340",
-  "changedFrom": "every way to place the piece of an area number (or the copy across a gemini wall) leads to a contradiction"
+  "id": "T0340"
  },
  {
   "sec": "why",
@@ -8376,8 +8540,7 @@
   "text": "knowing the puzzle is exaclty 2 shapes, there isn't a way to group the tiles and fit the clues.",
   "slots": [],
   "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
-  "id": "T0341",
-  "changedFrom": "the board holds two pieces, and no way of splitting the tiles between them fits the clues"
+  "id": "T0341"
  },
  {
   "sec": "why",
@@ -8390,8 +8553,7 @@
   "text": "There is a group of n tiles that can only hold n-1 possible shapes, one of them will break",
   "slots": [],
   "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
-  "id": "T0342",
-  "changedFrom": "more pieces need a few shapes than there are such shapes"
+  "id": "T0342"
  },
  {
   "sec": "why",

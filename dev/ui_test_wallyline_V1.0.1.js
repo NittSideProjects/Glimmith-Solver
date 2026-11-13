@@ -1,7 +1,7 @@
 // V1.0.1 page: "Doubt & Certainty" (10x12, Wally): the solver finds the gemini-line step (the 4-line under the gemini wall grows by one).
-// node ui_test_wallyline_V1.0.1.js ../glimmith_solver_V1.0.10.html /path/to/Doubt-Certainty-10x12.glimmith.json
+// node ui_test_wallyline_V1.0.1.js ../glimmith_solver_V1.0.11.html /path/to/Doubt-Certainty-10x12.glimmith.json
 const { JSDOM } = require('jsdom'); const fs = require('fs');
-const file = process.argv[2] || '../glimmith_solver_V1.0.10.html', pz = process.argv[3] || 'user_puzzles/Doubt-Certainty-10x12.glimmith.json';
+const file = process.argv[2] || '../glimmith_solver_V1.0.11.html', pz = process.argv[3] || 'user_puzzles/Doubt-Certainty-10x12.glimmith.json';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

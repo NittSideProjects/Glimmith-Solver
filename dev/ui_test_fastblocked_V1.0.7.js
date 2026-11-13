@@ -1,8 +1,8 @@
 // V1.0.7: Fast import when Chrome / Edge block the game folders ("can't open this folder because it contains system files"):
 // the picker fails, the help shows, "Read once" falls back to <input webkitdirectory> and imports the folder.
-// node ui_test_fastblocked_V1.0.7.js ../glimmith_solver_V1.0.10.html   (needs fixtures/folders.zip and the unzip command)
+// node ui_test_fastblocked_V1.0.7.js ../glimmith_solver_V1.0.11.html   (needs fixtures/folders.zip and the unzip command)
 const { JSDOM } = require('jsdom'); const fs = require('fs'), path = require('path'), cp = require('child_process'), os = require('os');
-const file = process.argv[2] || '../glimmith_solver_V1.0.10.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.11.html';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

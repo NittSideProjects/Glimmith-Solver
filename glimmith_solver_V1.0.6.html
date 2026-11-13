@@ -648,6 +648,10 @@
   const K_RULES   = 'glimmith:sizerules:v1';
   const K_LIMITS  = 'glimmith:solverlimits:v1';
   const PALETTE = ['#e0a458','#6fb8ac','#c97b84','#8ab6d6','#b98cc7','#9fc169','#e0956f','#7c9bd8','#d6b45c','#5fbfa0'];
+  // V1.0.6: the 25 colours of the step view's same-piece groups (see markGroupColors)
+  const GROUP_COLORS = ['#e6194b','#3cb44b','#4363d8','#f58231','#911eb4','#42d4f4','#f032e6','#bfef45','#469990','#9a6324',
+                        '#ffe119','#800000','#808000','#000075','#ff6f91','#2ec4b6','#7b2cbf','#ff9f1c','#1982c4','#8ac926',
+                        '#c1121f','#e9c46a','#264653','#b5838d','#6d597a'];
 
   const NODE_BUDGET = 0;                  // v36: 0 = no node limit, the exhaustive search runs until it is finished (Cancel stops it)
   const SLOW_NOTICE_MS = 15000;           // v36: after this long a note says it may take longer than expected; it never stops the search
@@ -656,7 +660,7 @@
   function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
   function makeGrid(w,h,val){ return Array.from({length:h}, () => Array.from({length:w}, () => val)); }
 
-  // ================= SOLVER CORE (pure, unit-tested separately; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
+  // ================= SOLVER CORE (pure, unit-tested separately; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
 
   // ---- shape symmetry helpers ----
 
@@ -2700,10 +2704,11 @@
     const members = new Map(); for(const i of activeIds) members.set(i, [i]);
     function find(x){ while(parent[x] !== x){ parent[x] = parent[parent[x]]; x = parent[x]; } return x; }
     let factRec = false; const factLog = [];               // v93: facts about tiles that do not touch (see patch_core93.py)
+    let factTag = '';                                      // v98: the rule a far join is reported with ('' = 'far-join')
     function union(a, b){
       let ra = find(a), rb = find(b);
       if(ra === rb) return;
-      if(factRec && Math.abs(a % w - b % w) + Math.abs(((a - a % w) - (b - b % w)) / w) !== 1) factLog.push([a, b, 'far-join']);       // v93
+      if(factRec && Math.abs(a % w - b % w) + Math.abs(((a - a % w) - (b - b % w)) / w) !== 1) factLog.push([a, b, factTag || 'far-join']);       // v93, v98 tag
       if(members.get(ra).length < members.get(rb).length){ const t = ra; ra = rb; rb = t; }
       parent[rb] = ra;
       for(const m of members.get(rb)) members.get(ra).push(m);
@@ -3766,6 +3771,16 @@
         let common = false; for(let l = 0; l < LB; l++) if(has(e.a, l) && has(e.b, l)){ common = true; break; }
         if(!common){ e.state = 1; out.push({ e, value: 'wall', rule: 'label' }); continue; }
         const la = only(e.a); if(la >= 0 && la === only(e.b)){ e.state = 2; union(e.a, e.b); out.push({ e, value: 'same', rule: 'label' }); }
+      }
+      // v98: a tile whose only possible anchor is l is in the piece of anchor l, touching or not
+      if(opts.labelJoin !== false){
+        factTag = 'label-join';
+        try {
+          for(let l = 0; l < LB; l++){
+            const a = lbAnchors[l];
+            for(const id of activeIds) if(only(id) === l && find(id) !== find(a)){ union(a, id); out.again = true; }
+          }
+        } finally { factTag = ''; }
       }
       return out;
     }
@@ -9218,7 +9233,7 @@
       if(isoK){ const ik = isoKStep(dmap); if(ik === null){ failWhy = why; return null; } if(ik.length > 0 || ik.again) return ik; }          // v48
       if(dcPairs.length > 0){ const dc = diffClashStep(dmap); if(dc === null){ failWhy = why; return null; } if(dc.again) return dc; }       // v55
       if(rcvOn && !inProbe && !searchLite){ const cv = roseCoverStep(dmap); if(cv === null){ failWhy = why; return null; } if(cv.again) return cv; }     // v57
-      if(lbOn && (lbSized || (!inProbe && !searchLite)) && (!searchLite || opts.labelSearch !== false) && (!inProbe || opts.labelProbe !== false)){ const lb = labelStep(dmap); if(lb === null){ failWhy = why; return null; } if(lb.length > 0) return lb; }     // v58
+      if(lbOn && (lbSized || (!inProbe && !searchLite)) && (!searchLite || opts.labelSearch !== false) && (!inProbe || opts.labelProbe !== false)){ const lb = labelStep(dmap); if(lb === null){ failWhy = why; return null; } if(lb.length > 0 || lb.again) return lb; }     // v58
       if(dsOn && !inProbe && !searchLite){ const ds = diffSmallStep(dmap); if(ds === null){ failWhy = why; return null; } if(ds.length > 0) return ds; }     // v56
       const changes = [];
       // every group must still be able to be a piece
@@ -13318,27 +13333,42 @@
     }
   }
 
-  // v94: letters. A piece known through a fact (tiles that do not touch, one piece) gets the next letter; every tile joined to it by
-  // proven links or later facts carries it. st.letters: 'c,r' -> letter, for every step.
-  function letterName(i){ let s = ''; i++; while(i > 0){ i--; s = String.fromCharCode(65 + i % 26) + s; i = Math.floor(i / 26); } return s; }
-  function markLetters(list){
-    const w = puzzle.w, h = puzzle.h, par = new Map(), let_ = new Map(); let next = 0;
+  // V1.0.6: colours instead of the v94 letters. Tiles known to be in one piece share a colour from the step the solver knows it,
+  // also when they do not touch yet. A group gets a colour when a fact joins tiles that do not touch; every tile joined to it later
+  // (links, more facts) takes it; two coloured groups that meet keep the older colour. A finished piece keeps its colour and gives it
+  // back to the pool; a colour is used twice only when all GROUP_COLORS are held by unfinished groups.
+  // st.groupTint: 'c,r' -> colour for the tiles of unfinished coloured groups; st.closed[i].color is the group's colour when it had one.
+  function markGroupColors(list){
+    const par = new Map(), grp = new Map(), held = new Array(GROUP_COLORS.length).fill(0); let born = 0;
     const find = k => { let r = k; while(par.has(r) && par.get(r) !== r) r = par.get(r); let c = k; while(par.has(c) && par.get(c) !== r){ const n = par.get(c); par.set(c, r); c = n; } return r; };
+    const take = () => { let best = 0; for(let i = 0; i < held.length; i++){ if(!held[i]) return i; if(held[i] < held[best]) best = i; } return best; };
     const join = (a, b, birth) => {
-      const ra = find(a), rb = find(b), la = let_.get(ra), lb = let_.get(rb);
-      let l = la === undefined ? lb : (lb === undefined ? la : Math.min(la, lb));
-      if(l === undefined && birth) l = next++;
-      if(ra !== rb){ par.set(ra, rb); let_.delete(ra); }
-      if(l !== undefined) let_.set(rb, l);
+      const ra = find(a), rb = find(b);
+      if(ra === rb) return;
+      const ga = grp.get(ra), gb = grp.get(rb);
+      par.set(ra, rb); grp.delete(ra);
+      let g = ga && gb ? (ga.born <= gb.born ? ga : gb) : (ga || gb);
+      if(ga && gb){ const lost = g === ga ? gb : ga; if(!lost.closed) held[lost.c]--; }
+      if(!g && birth){ const c = take(); held[c]++; g = { c, born: born++, closed: false }; }
+      if(g) grp.set(rb, g); else grp.delete(rb);
     };
     const tiles = key => { const [o, rest] = key.split(':'), [c, r] = rest.split(',').map(Number); return [`${c},${r}`, o === 'v' ? `${c + 1},${r}` : `${c},${r + 1}`]; };
     for(const [k, t] of puzzle.walls) if(t === 'link'){ const [a, b] = tiles(k); join(a, b, false); }
     for(const st of list){
       for(const f of (st.facts || [])) join(f.a.join(','), f.b.join(','), true);
       for(const e of st.edges) if(e.value !== 'wall'){ const [a, b] = tiles(e.spot.key); join(a, b, false); }
+      for(const p of (st.closed || [])){
+        const g = grp.get(find(p.cells[0].join(',')));
+        if(!g) continue;
+        if(!g.closed){ g.closed = true; held[g.c]--; }
+        p.color = GROUP_COLORS[g.c];
+      }
       const m = new Map();
-      if(let_.size) for(let r = 0; r < h; r++) for(let c = 0; c < w; c++){ if(!puzzle.active[r][c]) continue; const l = let_.get(find(`${c},${r}`)); if(l !== undefined) m.set(`${c},${r}`, letterName(l)); }
-      st.letters = m;
+      for(let r = 0; r < puzzle.h; r++) for(let c = 0; c < puzzle.w; c++){
+        if(!puzzle.active[r][c]) continue;
+        const g = grp.get(find(`${c},${r}`)); if(g && !g.closed) m.set(`${c},${r}`, GROUP_COLORS[g.c]);
+      }
+      st.groupTint = m;
     }
   }
   // ---- the words ----
@@ -13359,7 +13389,7 @@
     if(st.kind === 'start'){
       const hasLogic = total > 1;
       return { kicker: 'Start', title: 'The puzzle as given',
-        text: hasLogic ? 'Step through to see what the solver can prove, one deduction at a time. Teal bars are walls it has proven, blue links mean "these two tiles are in one piece". Everything it proves holds in every tiling.'
+        text: hasLogic ? 'Step through to see what the solver can prove, one deduction at a time. Teal bars are walls it has proven, blue links mean "these two tiles are in one piece", and tiles that share a colour are proven to be in one piece even before they touch. Everything it proves holds in every tiling.'
                        : 'The solver\u2019s rules could not decide any edge on their own for this puzzle, so everything is left to the exhaustive search in the last step.',
         meta: '' };
     }
@@ -13368,8 +13398,13 @@
     const nTriv = st.edges.length - nWall - nLink;
     const meta = [nWall ? plural(nWall, 'wall', 'walls') : '', nLink ? plural(nLink, 'same-piece link', 'same-piece links') : '', nTriv ? plural(nTriv, 'edge already inside a joined group', 'edges already inside a joined group') : ''].filter(Boolean).join(' \u00b7 ');
     if(st.kind === 'fact'){                                            // v94
-      const L = (st.letters && st.letters.get(st.facts[0].a.join(','))) || '', n = st.facts.length;
-      const mark = L ? ` Every tile known to be in that piece is marked ${L}.` : '';
+      const n = st.facts.length;
+      const mark = ' Every tile known to be in that piece now has the same colour.';           // V1.0.6 (was a letter)
+      if(st.rule === 'label-join'){                                      // V1.0.6: core v98
+        const what = sizeRules.solitude ? 'one symbol' : (puzzle.roses && puzzle.roses.size ? 'one rose of each type' : 'one of the area numbers');
+        return { kicker: 'Rule', title: 'Only one piece it can be in',
+          text: `Every piece holds exactly ${what}. The ringed tiles can not end up in any other piece, so they are in one piece, even though they do not touch yet.${mark}`, meta };
+      }
       if(st.rule === 'split-cut') return { kicker: 'Rule', title: 'The only way to connect',
         text: `The parts of one piece that do not touch yet still have to meet, and every way to connect them passes through the ringed tile${n > 1 ? 's' : ''}, so ${n > 1 ? 'they belong' : 'it belongs'} to that piece.${mark}`, meta };
       if(st.rule !== 'clue-join' && st.rule !== 'pair-join') return { kicker: 'Rule', title: 'Far apart, but one piece',
@@ -13462,13 +13497,10 @@
       const active = puzzle.active[r][c], k = `${c},${r}`;
       svgEl('rect', { x: c * cs, y: r * cs, width: cs, height: cs, fill: active ? 'var(--tile)' : 'var(--empty)', stroke: active ? 'var(--tile-line)' : 'var(--empty-line)', 'stroke-width': 1 }, svg);
       const tint = pieceColor.get(k) || shapeColor.get(k);
-      if(active && tint) svgEl('rect', { x: c * cs + 1, y: r * cs + 1, width: cs - 2, height: cs - 2, fill: tint, 'fill-opacity': v.pieces ? 0.6 : 0.5 }, svg);
+      if(active && tint) svgEl('rect', { x: c * cs + 1, y: r * cs + 1, width: cs - 2, height: cs - 2, fill: tint, 'fill-opacity': v.pieces ? 0.6 : 0.5, 'data-color': tint }, svg);
+      else if(active && !v.pieces && v.groupTint && v.groupTint.has(k))     // V1.0.6: known to be in one piece, not finished yet
+        svgEl('rect', { x: c * cs + 1, y: r * cs + 1, width: cs - 2, height: cs - 2, fill: v.groupTint.get(k), 'fill-opacity': 0.5, class: 'step-group', 'data-color': v.groupTint.get(k) }, svg);
       if(active) drawCellMarkers(svg, cs, c, r, puzzle.roses, puzzle.polyominoes, puzzle.areaNumbers);
-    }
-    if(v.letters && !v.pieces) for(const [k, L] of v.letters){            // v94: small letter, top-left of the tile
-      const [c, r] = k.split(',').map(Number), fs = Math.max(6, cs * (L.length > 1 ? 0.2 : 0.24));
-      const t = svgEl('text', { x: c * cs + cs * 0.07, y: r * cs + cs * 0.06 + fs * 0.8, 'font-size': fs, 'font-family': 'var(--font-mono)', 'font-weight': '700', fill: 'var(--ink)', 'fill-opacity': 0.8, class: 'step-letter' }, svg);
-      t.textContent = L;
     }
     if(v.factTiles && !v.pieces){ const seenF = new Set();
       for(const [c, r] of v.factTiles){ if(seenF.has(c + ',' + r)) continue; seenF.add(c + ',' + r);
@@ -13507,7 +13539,7 @@
   function renderStepsView(){
     const n = stepsList.length, st = stepsList[stepsIdx], isFinal = st.kind === 'final';
     const state = stateAfter(isFinal ? n - 2 : stepsIdx);
-    const view = { letters: (stepsList[isFinal ? n - 2 : stepsIdx] || {}).letters || null, factTiles: st.kind === 'fact' ? st.facts.flatMap(f => [f.a, f.b]) : null, walls: state.walls, links: state.links, shapes: (stepsList[isFinal ? n - 2 : stepsIdx] || {}).closed || [], fresh: new Set(st.edges.map(e => e.spot.key)), probe: null, pieces: null, searchWalls: null, diff: null,
+    const view = { groupTint: (stepsList[isFinal ? n - 2 : stepsIdx] || {}).groupTint || null, factTiles: st.kind === 'fact' ? st.facts.flatMap(f => [f.a, f.b]) : null, walls: state.walls, links: state.links, shapes: (stepsList[isFinal ? n - 2 : stepsIdx] || {}).closed || [], fresh: new Set(st.edges.map(e => e.spot.key)), probe: null, pieces: null, searchWalls: null, diff: null,
                    label: `Step ${stepsIdx} of ${n - 1}` };
     if(isFinal){
       const pieces = stepsCtx.solutions[Math.min(stepsTiling, stepsCtx.solutions.length - 1)];
@@ -13590,7 +13622,7 @@
     if(!stepsCtx) return;
     stepsList = splitBigSteps(buildSteps(stepTrace));                  // v92: at most one finished piece per step
     markClosedPieces(stepsList);
-    markLetters(stepsList);                                             // v94
+    markGroupColors(stepsList);                                         // V1.0.6 (was the v94 letters)
     stepsList.push(makeFinalStep());
     stepsIdx = 0; stepsTiling = 0;
     document.getElementById('stepsBtn').style.display = 'none';

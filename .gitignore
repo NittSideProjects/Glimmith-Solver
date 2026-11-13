@@ -20,3 +20,6 @@ dev/user_compass.js
 # Python cache
 __pycache__/
 *.pyc
+
+# npm
+node_modules/

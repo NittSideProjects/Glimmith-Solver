@@ -2,7 +2,7 @@
 // PLANTED puzzles whose bank holds exactly the shapes of the planted tiling (so the bank sizes are usually NOT consecutive: {1,3}, {2,4}, {3,9} ...).
 // For each puzzle: (1) the exact solver (solvePuzzle) must find the planted tiling among its solutions, (2) deduceSolve must never contradict the planted
 // tiling (no impossible-early, every deduce event agrees). Runs the v39 core and the v38 core: v39 must have 0 failures; the v38 count shows the fuzz sees BUG 1.
-const L = require('./fuzzlib.js'), S39 = require('./reference/solver-core.v97.js'), S38 = require('./reference/solver-core.v97.js');
+const L = require('./fuzzlib.js'), S39 = require('./reference/solver-core.v98.js'), S38 = require('./reference/solver-core.v98.js');
 const N = +process.argv[2] || 400, seed0 = +process.argv[3] || 1, maxSide = +process.argv[4] || 7;
 const rng = s => () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 const pieceKey = cells => cells.map(([c, r]) => `${c},${r}`).sort().join(';');

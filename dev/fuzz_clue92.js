@@ -1,7 +1,7 @@
 // END-TO-END FUZZ (v92 clue grouping: clue-pair probes, clue-pair branching in the edge search, split-cut): the whole solver against the
 // brute-force oracle on small planted boards rich in clues (roses, area numbers, polyominoes), with far joins (opts.preJoin of two clues of
 // one planted piece) on some. node fuzz_clue92.js N seed
-const L = require('./fuzzlib.js'), O = require('./oracle.js'), S = require(process.env.GLIMMITH_CORE || './reference/solver-core.v97.js');
+const L = require('./fuzzlib.js'), O = require('./oracle.js'), S = require(process.env.GLIMMITH_CORE || './reference/solver-core.v98.js');
 const N = +process.argv[2] || 300, seed0 = +process.argv[3] || 1;
 const rng = s => () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 const OPTS = [{}, { clueBranchFull: true }, { portfolio: false }, { portfolio: false, clueBranchFull: true }, { cluePairInner: true }];

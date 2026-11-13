@@ -9,7 +9,7 @@
 //      3 .. 2+SPAN): no deduction may contradict the planted tiling and the verdict is never 'impossible'.
 // Used for V1.0.1: oracle runs (MODE wally / any, JOIN 0.6, EARLY) 0 mismatches; PLANTED TWIN MAXT=49 SPAN=5 (about 2 000 boards, 160
 // line deductions) 0 mismatches.
-const L = require('./fuzzlib.js'), O = require('./oracle.js'), S = require(process.env.GLIMMITH_CORE || './reference/solver-core.v97.js');
+const L = require('./fuzzlib.js'), O = require('./oracle.js'), S = require(process.env.GLIMMITH_CORE || './reference/solver-core.v98.js');
 const N = +process.argv[2] || 300, seed0 = +process.argv[3] || 1, MODE = process.env.MODE || 'wally';
 const ck = S.canonicalShapeKey, PL = !!process.env.PLANTED;   // PLANTED=1: no oracle, bigger boards: no deduction may contradict the planted tiling, never 'impossible'
 const ownerOf = pieces => { const m = new Map(); pieces.forEach((p, k) => p.forEach(([c, r]) => m.set(c + ',' + r, k))); return m; };

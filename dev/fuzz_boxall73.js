@@ -1,6 +1,6 @@
 // v73: box-shapes / box-all. Random small boards (holes + drawn walls), Boxy + Mismatch, kept only when the placeable rectangles add up to
 // exactly the board (the case box-all handles). Verdicts and every deduction are checked against the independent oracle.
-// usage: GLIMMITH_CORE=reference/solver-core.v97.js node fuzz_boxall73.js [N=150] [seed=1]
+// usage: GLIMMITH_CORE=reference/solver-core.v98.js node fuzz_boxall73.js [N=150] [seed=1]
 const L = require('./fuzzlib.js'), O = require('./oracle.js');
 const N = +process.argv[2] || 150, seed0 = +process.argv[3] || 1;
 let boxAllDeds = 0, made = 0, bad = 0, deds = 0, dedBad = 0, tried = 0; const tally = { 0: 0, 1: 0, 2: 0 };

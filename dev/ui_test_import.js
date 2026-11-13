@@ -3,7 +3,7 @@ const fs = require('fs'), path = require('path'); const { JSDOM } = require('jsd
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const html = fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.5.html', 'utf8'), store = new Map();
+const html = fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.6.html', 'utf8'), store = new Map();
 function boot(){
   const dom = new JSDOM(html, { runScripts:'dangerously', pretendToBeVisual:true, url:'http://localhost/' });
   const { window } = dom;

@@ -65,8 +65,8 @@ README: `extract.js`, `clean.js`, then `repo.js write`), keeping text IDs stable
 overwrite an answer the author wrote in the files. Apply his finished rewrites (not `[...]` notes) with `gen_rewrites.js` in a patch
 script, as in `dev/build/patch_ui_V1.0.10.py` (`repo.js read` gives the answers in the form it reads).
 
-The older claude.ai page (https://claude.ai/artifact/8zkhz8jRG1qYJM5ET2k6e2) still works as a second way to answer: `repo.js write`
-takes an answer from its database only for a text that has none in the files.
+The claude.ai page that held the list before (https://claude.ai/artifact/8zkhz8jRG1qYJM5ET2k6e2) is retired: its answers were
+carried over and it is no longer rebuilt. Do not republish it.
 
 ### No V1.1 before the rewrite is done
 

@@ -4,7 +4,7 @@
 //       the claude.ai rewrite list (<answers dir>/rewrites/<id>.json), if any. When the page text changed since an answer was
 //       written, the entry gets a "- was:" line and counts as to do until the author removes that line.
 //   node repo.js read <rewrite dir> <out dir>
-//       the answers as <out dir>/rewrites/<id>.json ({ text, kept, source }), the form gen_rewrites.js and build_list.js read.
+//       the answers as <out dir>/rewrites/<id>.json ({ text, kept, source }), the form gen_rewrites.js reads.
 //   node repo.js status <rewrite dir>
 //       the counts; exit code 1 while something is left to write, to check again, to apply or noted with [..].
 // An entry:   ### T0123 / - what: ... / - now: the text on the page / - new: the author's text

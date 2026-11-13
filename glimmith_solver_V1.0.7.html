@@ -211,6 +211,9 @@
   .fast-zip code{ margin-left:2px; color: var(--ink); }
   .fast-status{ margin-left:8px; font-size:12px; color: var(--accent); }
   .fast-actions{ display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; }
+  .fast-blocked{ margin-top:10px; padding:10px 12px; border:1px solid var(--amber); border-radius:8px; background: var(--panel); }
+  .fast-blocked p{ margin:0; }
+  .link-btn{ background:none; border:none; padding:0; font:inherit; color: var(--accent); text-decoration:underline; cursor:pointer; }
   #importLogBox ul{ margin:6px 0 0; padding-left:18px; font-family: var(--font-mono); font-size:12px; color: var(--ink-muted); line-height:1.6; }
   #importLogBox li.bad{ color: var(--danger); }
   #puzzlePanel.drop-target{ outline:2px dashed var(--amber); outline-offset:-6px; }
@@ -380,7 +383,12 @@
           <div><b>Your own puzzles</b> <code>%LOCALAPPDATA%\Geri\Saved</code><br><span class="fast-zip">zip this : <code>workshop</code></span><span class="fast-status" id="fastStatus_own"></span></div>
           <button type="button" class="subtle" id="fastPick_own">Choose folder…</button>
         </div>
-        <p class="hint" style="margin:6px 0 0;">Tip: paste the path into the address bar of the folder window. Puzzles already in the list are skipped.</p>
+        <p class="hint" style="margin:6px 0 0;">Tip: paste the path into the address bar of the folder window. Puzzles already in the list are skipped. <button type="button" class="link-btn" id="fastBlockedLink">Folder blocked?</button></p>
+        <div class="fast-blocked" id="fastBlocked" hidden>
+          <p><b>Did your browser say it "can't open this folder because it contains system files"?</b> Chrome and Edge do not let a page remember folders inside Program Files or AppData, and both game folders are there. You can still read them once: the browser asks for the folder each time, and it may say it will upload the files, but they stay on your computer.</p>
+          <div class="fast-actions"><button type="button" class="subtle" id="fastOnce_steam">Read the workshop folder once</button><button type="button" class="subtle" id="fastOnce_own">Read your own puzzles once</button></div>
+          <p class="hint" style="margin:8px 0 0;">If that is blocked too: copy the folder somewhere else (for example into Documents) and choose the copy, or zip it and open the zip with Import puzzles…</p>
+        </div>
         <div class="fast-actions"><button type="button" id="fastRunBtn">Import now</button><button type="button" class="subtle" id="fastForgetBtn">Forget folders</button><button type="button" class="subtle" id="fastCloseBtn">Close</button></div>
       </div>
       <div class="stats" id="libraryInfo"></div>
@@ -14149,7 +14157,8 @@
   let fastPickSlot = null;
   async function fastPick(slot){
     if(fastCanRemember()){
-      let hd; try{ hd = await window.showDirectoryPicker({ id: 'glimmith-' + slot, mode: 'read' }); } catch(e){ return; }      // closed the dialog
+      let hd; try{ hd = await window.showDirectoryPicker({ id: 'glimmith-' + slot, mode: 'read' }); }
+      catch(e){ document.getElementById('fastBlocked').hidden = false; return; }      // closed the dialog, or the browser blocked the folder (V1.0.7: the page can not tell)
       fastDirs[slot] = hd; await fastStore(slot, hd); fastRender();
       return;
     }
@@ -14167,6 +14176,9 @@
     for(const slot of FAST_SLOTS) document.getElementById('fastPick_' + slot).addEventListener('click', () => fastPick(slot));
     document.getElementById('fastRunBtn').addEventListener('click', fastRun);
     document.getElementById('fastCloseBtn').addEventListener('click', () => fastShowBox(false));
+    // V1.0.7: blocked folders (Program Files, AppData): read once through the classic folder upload
+    document.getElementById('fastBlockedLink').addEventListener('click', () => { const b = document.getElementById('fastBlocked'); b.hidden = !b.hidden; });
+    for(const slot of FAST_SLOTS) document.getElementById('fastOnce_' + slot).addEventListener('click', () => { if(solverRunning){ showToast('Wait for the solver to finish (or cancel it) first'); return; } fastPickSlot = slot; document.getElementById('fastDirInput').click(); });
     document.getElementById('fastForgetBtn').addEventListener('click', async () => { for(const slot of FAST_SLOTS){ fastDirs[slot] = null; await fastStore(slot, null); } fastRender(); });
     const di = document.getElementById('fastDirInput');
     di.addEventListener('change', async () => { const picked = Array.from(di.files); di.value = ''; if(!picked.length) return; const inputs = await fastInputsFromFiles(picked);

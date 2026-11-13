@@ -41,6 +41,12 @@ src = rep(src, "  .steps-caption{ margin-top:12px; padding:12px 14px; background
   .example-pop .ex-title{ font-weight:600; font-size:14px; margin:0; }
   .example-pop .ex-text{ margin:6px 0 0; font-size:13px; line-height:1.5; }
   .example-pop .ex-note{ margin:6px 0 0; font-size:11.5px; color:var(--ink-muted); }
+  .example-pop .ex-has{ margin:8px 0 0; padding:8px 10px; background:var(--panel-2); border:1px solid var(--seam); border-radius:8px; font-size:12.5px; line-height:1.45; }
+  .example-pop .ex-has h4{ margin:0 0 4px; font-size:10px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-muted); }
+  .example-pop .ex-has ul{ margin:0; padding:0 0 0 16px; }
+  .example-pop .ex-has li{ margin:2px 0; }
+  .example-pop .ex-shapes{ display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 2px; }
+  .example-pop .ex-step{ margin-top:10px; }
 """)
 
 # ---- markup: the step button and the footer button ----
@@ -92,14 +98,68 @@ src = rep(src, "  function stepsGo(i){", r"""  // ---- V1.0.12: rule examples --
     } catch(e){ return null; }
     finally { puzzle = savedPuzzle; sizeRules = savedRules; stepsList = savedList; }
   }
+  // V1.0.12: what is in an example, each with the one-line meaning the rules footer gives (its first sentence)
+  function impLead(id){ const p = document.querySelector('#impInfo_' + id + ' p.imp-lead'); const t = p ? p.textContent.trim() : ''; const m = /^.*?[.!?](\s|$)/.exec(t); return m ? m[0].trim() : t; }
+  function miniShapes(shapes){
+    const box = document.createElement('div'); box.className = 'ex-shapes';
+    shapes.forEach((shape, i) => {
+      const cs = 12, w = Math.max(...shape.cells.map(c => c[0])) + 1, h = Math.max(...shape.cells.map(c => c[1])) + 1;
+      const svg = document.createElementNS(SVGNS, 'svg'); svg.setAttribute('width', w * cs + 4); svg.setAttribute('height', h * cs + 4); svg.setAttribute('viewBox', `0 0 ${w * cs + 4} ${h * cs + 4}`);
+      svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', `shape of ${shape.cells.length} tiles`);
+      shape.cells.forEach(([c, r]) => svgEl('rect', { x: c * cs + 2, y: r * cs + 2, width: cs - 1, height: cs - 1, rx: 2, fill: shape.color || PALETTE[i % PALETTE.length] }, svg));
+      box.appendChild(svg);
+    });
+    return box;
+  }
+  function exampleContents(ex){
+    const items = [];                                                   // [label, meaning, extra element]
+    const r = ex.r || {}, p = ex.p;
+    if(r.precision) items.push([`Precision ${r.precision}`, impLead('precision')]);
+    if(r.min) items.push([`Minimum ${r.min}`, impLead('minimum')]);
+    if(r.max) items.push([`Maximum ${r.max}`, impLead('maximum')]);
+    const RULE_INFO = { mismatch: 'mismatch', match: 'match', mingleShape: 'mingleshape', mingleArea: 'minglearea', solitude: 'solitude', boxy: 'boxy', nonBoxy: 'nonboxy',
+                        bricky: 'bricky', loopy: 'loopy', wally: 'wally', heterogeneous: 'hetero' };
+    for(const [k, id] of Object.entries(RULE_INFO)) if(r[k]) items.push([BOOLEAN_RULE_LABELS[k] || k, impLead(id)]);
+    if(ex.b && ex.b.length) items.push([`Shape bank (${ex.b.length})`, impLead('shapebank'), miniShapes(ex.b)]);
+    if(ex.n && ex.n.length) items.push([`Omits (${ex.n.length})`, impLead('ban'), miniShapes(ex.n)]);
+    const kinds = new Set((p.walls || []).map(([, t]) => /^diff/.test(t) ? 'diff' : t));
+    if(kinds.has('delta')) items.push(['Delta walls', impLead('delta')]);
+    if(kinds.has('gemini')) items.push(['Gemini walls', impLead('gemini')]);
+    if(kinds.has('lt') || kinds.has('gt')) items.push(['Inequality walls', impLead('inequality')]);
+    if(kinds.has('diff')) items.push(['Difference walls', impLead('difference')]);
+    if(kinds.has('link')) items.push(['Links', impLead('links')]);
+    if(p.roses && p.roses.length){ const types = new Set(p.roses.map(([, t]) => t)).size; items.push([`Roses (${types} type${types === 1 ? '' : 's'})`, impLead('rose')]); }
+    if(p.polyominoes && p.polyominoes.length) items.push(['Polyominoes', impLead('polyomino')]);
+    if(p.areaNumbers && p.areaNumbers.length) items.push(['Area numbers', impLead('area')]);
+    if(p.palisades && p.palisades.length) items.push(['Palisades', impLead('palisade')]);
+    if(p.compasses && p.compasses.length) items.push(['Compasses', impLead('compass')]);
+    if(p.watchtowers && p.watchtowers.length) items.push(['Watchtowers', impLead('watchtower')]);
+    if(p.active.some(row => row.some(v => !v))) items.push(['Holes', 'The white squares are not part of the board.']);
+    const box = document.createElement('div'); box.className = 'ex-has';
+    const h = document.createElement('h4'); h.textContent = 'In this puzzle'; box.appendChild(h);
+    if(!items.length){ const q = document.createElement('p'); q.style.margin = '0'; q.textContent = 'Only the board and its walls: no rules, no clues.'; box.appendChild(q); return box; }
+    const ul = document.createElement('ul');
+    for(const [label, meaning, extra] of items){
+      const li = document.createElement('li'); const b = document.createElement('b'); b.textContent = label; li.appendChild(b);
+      if(meaning) li.appendChild(document.createTextNode(': ' + meaning));
+      if(extra) li.appendChild(extra);
+      ul.appendChild(li);
+    }
+    box.appendChild(ul);
+    return box;
+  }
   function exampleCard(key, withTitle){
     const r = renderExample(key); if(!r) return null;
     const card = document.createElement('div'); card.className = 'ex-card';
     if(withTitle){ const h = document.createElement('p'); h.className = 'ex-title'; h.textContent = r.title; card.appendChild(h); }
     const b = document.createElement('div'); b.className = 'ex-board'; b.appendChild(r.svg); card.appendChild(b);
-    const p = document.createElement('p'); p.className = 'ex-text'; p.textContent = r.text; card.appendChild(p);
+    card.appendChild(exampleContents(RULE_EXAMPLES[key]));
+    const step = document.createElement('div'); step.className = 'ex-step';
+    const st = document.createElement('p'); st.className = 'ex-title'; st.textContent = withTitle ? 'The step' : r.title; step.appendChild(st);
+    const p = document.createElement('p'); p.className = 'ex-text'; p.textContent = r.text; step.appendChild(p);
+    card.appendChild(step);
     const n = document.createElement('p'); n.className = 'ex-note';
-    n.textContent = `${r.tiles} tiles${r.rules.length ? ' · rules: ' + r.rules.join(', ') : ''} · ${r.unique ? 'one solution' : 'several solutions'} · the outlined edges are the ones this step decides`;
+    n.textContent = `${r.tiles} tiles · ${r.unique ? 'one solution' : 'more than one solution'} · the outlined edges are the ones this step decides`;
     card.appendChild(n);
     return card;
   }

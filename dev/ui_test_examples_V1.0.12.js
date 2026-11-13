@@ -29,6 +29,13 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
   check('each card has a board, a title and a text', [...cards].every(c => c.querySelector('svg') && c.querySelector('.ex-title').textContent && c.querySelector('.ex-text').textContent.length > 20));
   check('no card shows an internal rule name', [...doc.querySelectorAll('#examplePop .ex-title')].every(t => !/^Rule: /.test(t.textContent)));
   check('every board outlines the edges its step decides', [...cards].every(c => c.querySelector('svg .ded-new')));
+  check('every card says what is in its puzzle', [...cards].every(c => c.querySelector('.ex-has') && /In this puzzle/i.test(c.querySelector('.ex-has').textContent)));
+  const exData = nEx ? JSON.parse(nEx.replace(/<\\\//g, '</')) : {};
+  const bankKeys = keys.filter(k => exData[k].b && exData[k].b.length);
+  const bankCards = [...cards].filter(c => /Shape bank \(\d+\)/.test(c.querySelector('.ex-has').textContent));
+  check('every example with a shape bank lists it and draws its shapes', bankCards.length === bankKeys.length && bankCards.every(c => c.querySelectorAll('.ex-shapes svg').length >= 1), { bankCards: bankCards.length, bankKeys: bankKeys.length });
+  const rulesKeys = keys.filter(k => exData[k].r && Object.keys(exData[k].r).length);
+  check('rules that are on are named with their meaning', [...cards].filter(c => /:\s+\S/.test(c.querySelector('.ex-has li') ? c.querySelector('.ex-has li').textContent : 'x: y')).length === cards.length, rulesKeys.length);
   window.document.dispatchEvent(new window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
   check('Escape closes the pop-up', !$('examplePop'));
   // a step with a rule

@@ -150,9 +150,6 @@
   .swatch-dedlink{ background: #bcd7ff; height:8px; margin-top:3px; }
   .swatch-dedshape{ background: rgba(224,164,88,.55); }
   .swatch-dedprobe{ background: transparent; border:2px solid var(--amber); }
-  .swatch-dedred{ background: linear-gradient(#ff9a9a,#e03a3a); }
-  .swatch-dedredlight{ background: #ffc2c2; height:8px; margin-top:3px; }
-  .swatch-dedwrong{ background: transparent; border:2px dashed #e03a3a; }
   /* ---- v47: step-by-step reasoning viewer ---- */
   .swatch-stepnew{ background: transparent; border:2px solid #ffd98a; }
   .swatch-stepwhatif{ background: rgba(229,83,75,.25); border:1px dashed #e5534b; }
@@ -203,11 +200,6 @@
   .steps-text{ margin:0; font-size:14px; line-height:1.55; color: var(--ink); }
   .steps-meta{ margin:8px 0 0; font-family: var(--font-mono); font-size:11px; color: var(--ink-muted); }
   .steps-meta[hidden]{ display:none; }
-  #deduceLegend .guess-legend{ display:none; }
-  #deduceLegend[data-guess] .guess-legend{ display:inline-flex; align-items:center; gap:6px; }
-  .guess-row{ align-items:center; gap:8px; }
-  .guess-row[hidden]{ display:none; }
-  .guess-note{ margin-top:6px; font-size:12.5px; line-height:1.5; color: var(--ink-muted); }
   .deduce-row{ align-items:flex-end; }
   .deduce-row select{ max-width:230px; }
   #deduceSummary{ margin-top:6px; }
@@ -563,10 +555,6 @@
       <label class="checkfield"><input type="checkbox" id="findAllChk"> Find all solutions (slower, stops at 200)</label>
       <label class="checkfield" title="Off: solve becomes slower as the solver doesn't skip when it reallze exhaustive would finish it fast. However in some case can lead to step by step being clearer"><input type="checkbox" id="quickFinalChk" checked> Ignore edge by edge if exhaustive whould be faster</label>
     </div>
-    <div class="controls guess-row" id="guessRow" hidden>
-      <button id="guessBtn" class="subtle">Solve with buffer guess layer (experimental)</button>
-      
-    </div>
         <details class="debug" id="solverTuning" hidden style="display:none">
     <summary>Solver tuning</summary>
     <div class="controls limits-row deduce-row">
@@ -622,9 +610,6 @@
       <span><span class="swatch swatch-dedwall"></span>wall placed by the solver</span>
       <span><span class="swatch swatch-dedlink"></span>two tiles proven to be in one piece</span>
       <span><span class="swatch swatch-dedshape"></span>completed piece</span>
-      <span class="guess-legend"><span class="swatch swatch-dedred"></span>rough guess (may be wrong)</span>
-      <span class="guess-legend"><span class="swatch swatch-dedredlight"></span>follows from the guesses</span>
-      <span class="guess-legend"><span class="swatch swatch-dedwrong"></span>guess the final tiling did not use</span>
     </div>
     <div class="progress" id="solverProgress" hidden><div class="progress-fill" id="solverProgressFill"></div></div>
     <div class="stats" id="solverStatus"></div>
@@ -696,7 +681,7 @@
   function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
   function makeGrid(w,h,val){ return Array.from({length:h}, () => Array.from({length:w}, () => val)); }
 
-  // ================= SOLVER CORE (pure, unit-tested separately; v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
+  // ================= SOLVER CORE (pure, unit-tested separately; v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
 
   // ---- shape symmetry helpers ----
 
@@ -8180,7 +8165,6 @@
     // Every piece found is a witness for all the tiles in it / outside it, so far fewer searches than tiles are needed. A search that
     // runs out of its budget proves nothing (the tile stays undecided): always sound.
     const CMP_QUERY_MAX = 1500, CMP_STEP_MAX = 40000;
-    let lastPass = null, sketchCapture = false;                                   // the sizes / masks / differences of the last propagation pass (for the sketch)
     function compassPlaceStep(need, capOf, maskOf, dmap){
       const out = [], link = [];
       if(inProbe && !globalThis.__CMP_PROBE) return out;
@@ -8674,336 +8658,6 @@
       else if(complete) cmpProbeCursor.doneSig = sig;
       return out;
     }
-    // ============================================================================================================
-    // SKETCH (rough shapes). Not a proof: a TENTATIVE layer on top of the true deductions, shown in red.
-    // For every compass piece the solver draws many random pieces that fit that compass alone (the same pruned search as cmp-place, with random
-    // choices), and counts how often each tile next to the piece is part of it. A neighbour that joins nearly every drawing becomes a red link,
-    // one that joins almost none a red wall, most sure first. Each red decision is applied on a copy of the state and the TRUE rules are run on it:
-    // a contradiction means the guess was wrong (it is dropped, the correction), otherwise everything it settles is red as well.
-    //   deduceSolve(..., { sketch: true, sketchTheta: [0.95, 0.85], sketchSamples: 24, sketchMs: 8000, sketchSeed: 1 })
-    //   events: { type: 'sketch', spot, value, hyp: true|false, conf, round }  (hyp = the guess itself, else a consequence)   then { type: 'sketch-done', ... }
-    // ============================================================================================================
-    function cmpSampler(rep, need, capOf, maskOf, dmap, nadj, nmask, rnd){
-      const mem = members.get(rep);
-      const comps = cmpOf(mem);
-      if(!comps || !comps.some(C => C.dims.length > 0)) return null;
-      const cap = capOf.get(rep), nd = need.get(rep), blocked = dmap.get(rep) || new Set();
-      const G = cmpGroupRegion(rep, mem, comps, cap, maskOf, blocked, null, nadj, nmask);
-      if(G === null || G.nodes === null) return null;
-      const nodes = [rep]; for(const r of G.nodes) if(r !== rep) nodes.push(r);
-      const n = nodes.length, idx = new Map(nodes.map((r, i) => [r, i]));
-      const adj = nodes.map(r => { const o = [], m = nadj.get(r); if(m) for(const q of m.keys()) if(idx.has(q)) o.push(idx.get(q)); return o; });
-      const tiles = nodes.map(r => members.get(r));
-      const cost = nodes.map((r, i) => i === 0 ? null : comps.map(C => { const c = new Array(C.dims.length + 1).fill(0); for(const id of tiles[i]){ const m = cmpMask(id, C.T); for(let k = 0; k < C.dims.length; k++) if((m >> C.dims[k]) & 1) c[k]++; c[C.dims.length]++; } return c; }));
-      const bud = comps.map(C => { const b = C.dims.map(i => C.cp[DIRS[i]] - C.cnt[i]); b.push(cap - mem.length); return b; });
-      const exactDims = comps.map(C => C.dims.length);
-      const hasCmp = nodes.map((r, i) => i > 0 && tiles[i].some(id => ctx.compasses.has(`${id % w},${(id - id % w) / w}`)));
-      const sums = comps.map(C => new Array(C.dims.length + 1).fill(0));
-      const inS = new Uint8Array(n), ex = new Uint8Array(n); inS[0] = 1;
-      const S = [];
-      let sizeNow = mem.length, calls = 0;
-      const valid = () => {
-        if(sizeNow < nd || sizeNow > cap) return false;
-        for(let i = 0; i < comps.length; i++) for(let k = 0; k < exactDims[i]; k++) if(sums[i][k] !== bud[i][k]) return false;
-        const P = mem.slice();
-        for(const j of S) for(const id of tiles[j]) P.push(id);
-        if(!boxPlacementOk(P, rep, dmap)) return false;
-        if(mem.length > 1 || S.length > 0){
-          markGen++;
-          for(const id of P) markBuf[id] = markGen;
-          const q = [P[0]], got = new Set([P[0]]);
-          for(let qi = 0; qi < q.length; qi++) for(const { e, o } of adjE[q[qi]]) if(e.state !== 1 && markBuf[o] === markGen && !got.has(o)){ got.add(o); q.push(o); }
-          if(got.size !== P.length) return false;
-        }
-        const cells = P.map(id => { const x = id % w; return [x, (id - x) / w]; });
-        return passesMarkers(cells, canonicalShapeKey(cells), ctx);
-      };
-      const fits = j => { for(let i = 0; i < comps.length; i++) for(let k = 0; k < sums[i].length; k++) if(sums[i][k] + cost[j][i][k] > bud[i][k]) return false; return true; };
-      const partialOk = () => {
-        const cells = mem.map(id => [id % w, (id - id % w) / w]);
-        for(const j of S) for(const id of tiles[j]) cells.push([id % w, (id - id % w) / w]);
-        return compassPartialOk(ctx, cells, cap, null, null);
-      };
-      // one random valid piece (list of node indices) or null: random growth, restarted on a dead end
-      const ATTEMPTS = globalThis.__SKETCH_ATTEMPTS || 150;
-      const draw = () => {
-        for(let at = 0; at < ATTEMPTS; at++){
-          S.length = 0; inS.fill(0); inS[0] = 1; sizeNow = mem.length;
-          for(const s of sums) s.fill(0);
-          const stopP = 0.15 + rnd() * 0.5;                          // some attempts stop early, some grow on
-          for(let step = 0; step < n; step++){
-            if(valid() && rnd() < stopP) return S.slice();
-            // frontier: groups that touch the piece and still fit every count
-            const fr = [], wt = []; let tw = 0;
-            for(let j = 1; j < n; j++){
-              if(inS[j]) continue;
-              let touch = false; for(const o of adj[j]) if(inS[o]){ touch = true; break; }
-              if(!touch || !fits(j)) continue;
-              // wants: the sides whose count is still short
-              let want = 1;
-              for(let i = 0; i < comps.length; i++) for(let k = 0; k < exactDims[i]; k++) if(cost[j][i][k] > 0 && sums[i][k] < bud[i][k]) want += 3;
-              fr.push(j); wt.push(want); tw += want;
-            }
-            if(fr.length === 0) break;
-            let x = rnd() * tw, pick = 0;
-            for(; pick < fr.length - 1; pick++){ x -= wt[pick]; if(x <= 0) break; }
-            const b = fr[pick];
-            inS[b] = 1; S.push(b); sizeNow += tiles[b].length;
-            for(let i = 0; i < comps.length; i++) for(let k = 0; k < sums[i].length; k++) sums[i][k] += cost[b][i][k];
-            if(hasCmp[b] && !partialOk()) break;
-          }
-          if(valid()) return S.slice();
-        }
-        return null;
-      };
-      if(globalThis.__SKETCH_REGION && n <= 6) globalThis.__SKETCH_REGION({ T: mem[0], mem: mem.slice(), nodes: nodes.map(r => members.get(r).slice()), cap, nd, bud, dims: comps.map(C => C.dims) });
-      return { nodes, idx, draw, n };
-    }
-    function* sketchRun(opts){
-      const thetas = opts.sketchTheta || [0.95, 0.85];
-      const K = opts.sketchSamples || 24, limitMs = opts.sketchMs || 60000, maxRounds = opts.sketchRounds || 80;   // the rounds are the real limit (the same on every machine); the time only a safety net
-      let seed = (opts.sketchSeed || 1) >>> 0;
-      const rnd = () => { seed = (seed + 0x6D2B79F5) >>> 0; let t = seed; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
-      const t0 = nowMs();
-      const sn0 = snapshot(), base = spots.map(e => e.state);
-      const rejected = new Set();
-      const guessList = [];
-      let round = 0, acceptedN = 0, rejectedN = 0;
-      const tables = () => {
-        const nadj = cmpNodeAdj(), nmask = new Map();
-        for(const [r, mm] of members){ let x = 0; for(const id of mm) x |= roseMask[id]; nmask.set(r, x); }
-        return { nadj, nmask };
-      };
-      for(const theta of thetas){
-        let again = true;
-        while(again && nowMs() - t0 < limitMs && round < maxRounds){
-          again = false;
-          const pr = propagate();                                  // the true facts first, then the best guess
-          if(pr === null){ yield { type: 'sketch-done', conflict: true, accepted: acceptedN, rejected: rejectedN, ms: nowMs() - t0 }; return; }
-          if(!lastPass) break;
-          const { need, capOf, maskOf, dmap } = lastPass;
-          const { nadj, nmask } = tables();
-          const cands = [];
-          for(const [rep] of members){
-            if(nowMs() - t0 > limitMs) break;
-            const sm = cmpSampler(rep, need, capOf, maskOf, dmap, nadj, nmask, rnd);
-            if(!sm) continue;
-            const cnt = new Array(sm.n).fill(0); let got = 0;
-            for(let k = 0; k < K; k++){ const S = sm.draw(); if(!S) continue; got++; for(const j of S) cnt[j]++; }
-            if(got < Math.max(6, K / 3)) continue;                 // too few drawings to say anything
-            const nb = nadj.get(rep);
-            if(!nb) continue;
-            for(const [nr, es] of nb){
-              const j = sm.idx.get(nr);
-              const f = j === undefined ? 0 : cnt[j] / got;
-              const conf = Math.max(f, 1 - f);
-              if(conf < theta) continue;
-              const e = es.find(x => x.state === 0);
-              if(!e) continue;
-              const value = f >= 0.5 ? 'same' : 'wall';
-              if(rejected.has(e.key + value)) continue;
-              cands.push({ e, value, conf });
-            }
-          }
-          cands.sort((a, b) => b.conf - a.conf);
-          for(const c of cands){
-            if(nowMs() - t0 > limitMs || round >= maxRounds) break;
-            if(c.e.state !== 0) continue;
-            const before = spots.map(e => e.state), sn = snapshot();
-            c.e.state = c.value === 'wall' ? 1 : 2;
-            if(c.value === 'same') union(c.e.a, c.e.b);
-            inProbe = true; sketchCapture = true;
-            const r = propagate();
-            inProbe = false; sketchCapture = false;
-            round++;
-            // the correction: after the guess every compass piece must still be drawable (a soft contradiction drops the guess)
-            let soft = false;
-            if(r !== null && opts.sketchCheck !== false && lastPass){
-              const t2 = tables();
-              for(const [rep] of members){
-                const sm = cmpSampler(rep, lastPass.need, lastPass.capOf, lastPass.maskOf, lastPass.dmap, t2.nadj, t2.nmask, rnd);
-                if(sm && !sm.draw()){ soft = true; break; }
-              }
-            }
-            if(r === null || soft){ restore(sn); rejected.add(c.e.key + c.value); rejectedN++; yield { type: 'sketch-rejected', spot: spotView(c.e), value: c.value, conf: c.conf, round, soft }; continue; }
-            acceptedN++;
-            guessList.push({ e: c.e, value: c.value });
-            if(opts._guessOut) opts._guessOut.push({ e: c.e, value: c.value });
-            yield { type: 'sketch', spot: spotView(c.e), value: c.value, hyp: true, conf: c.conf, round };
-            for(let i = 0; i < spots.length; i++) if(before[i] === 0 && spots[i].state !== 0 && spots[i] !== c.e)
-              yield { type: 'sketch', spot: spotView(spots[i]), value: spots[i].state === 1 ? 'wall' : 'same', hyp: false, conf: c.conf, round };
-            again = true;
-            break;                                                  // draw again on the new state
-          }
-        }
-      }
-      const open = spots.filter(e => e.state === 0).length;
-      const redState = spots.map(e => e.state);
-      restore(sn0);
-      yield { type: 'sketch-done', conflict: false, accepted: acceptedN, rejected: rejectedN, open, ms: nowMs() - t0, state: redState.map((s, i) => base[i] === 0 && s !== 0 ? s : 0), guesses: guessList.length };
-      // VERIFY: the guesses g1..gm cut the solutions into m+1 disjoint cases that cover all of them: "g1..gm all hold" and, for each i, "g1..g(i-1) hold and gi is
-      // the opposite". Each case is propagated with the true rules (a contradiction closes the case for good); what is left, with every edge it decided, is handed to
-      // the exact solver by the caller. Checking all the cases is checking every solution of the puzzle.
-      if(opts.sketchVerify){
-        const apply = (e, v) => { e.state = v === 'wall' ? 1 : 2; if(v === 'same') union(e.a, e.b); };
-        const flip = v => v === 'wall' ? 'same' : 'wall';
-        const remaining = guessList.slice(), prefix = [];
-        const run = (flipOne) => {
-          restore(sn0);
-          for(const g of prefix) apply(g.e, g.value);
-          if(flipOne) apply(flipOne.e, flip(flipOne.value));
-          const was = inProbe; inProbe = false;
-          const r = propagate();
-          inProbe = was;
-          if(r === null) return { refuted: true };
-          const edges = [];
-          for(const e of spots) if(e.state !== 0) edges.push({ c1: e.c1, r1: e.r1, c2: e.c2, r2: e.r2, key: e.key, value: e.state === 1 ? 'wall' : 'same' });
-          return { refuted: false, edges };
-        };
-        let idx = 0;
-        while(remaining.length > 0){
-          // the order of the guesses is free: first any guess whose opposite the true rules already refute, the hard ones last
-          let pick = -1, res = null, hard = null;
-          for(let k = 0; k < remaining.length; k++){
-            const r = run(remaining[k]);
-            if(r.refuted){ pick = k; res = r; break; }
-            if(!hard || r.edges.length > hard.res.edges.length) hard = { k, res: r };
-          }
-          if(pick < 0){ pick = hard.k; res = hard.res; }
-          const g = remaining[pick];
-          yield { type: 'branch', i: idx++, leaf: false, refuted: res.refuted, edges: res.edges, guess: { key: g.e.key, value: g.value } };
-          prefix.push(g); remaining.splice(pick, 1);
-        }
-        const r = run(null);                                  // every guess holds
-        yield { type: 'branch', i: idx, leaf: true, refuted: r.refuted, edges: r.edges, guess: null };
-        restore(sn0);
-      }
-    }
-    // one JOINT sketch: pieces are drawn and committed one after the other (walls all round), the true rules run after every commit.
-    // returns { ok, pieces: [[tile ids]] } and leaves the state as it found it
-    function jointAttempt(rnd, order){
-      const sn = snapshot();
-      const pieces = [], done = new Set();
-      let ok = true;
-      const cheap = () => { inProbe = true; sketchCapture = true; const r = propagate(); inProbe = false; sketchCapture = false; return r; };
-      if(cheap() === null){ restore(sn); return { ok: false, pieces }; }
-      for(let guard = 0; guard < 40 && ok; guard++){
-        const nadj = cmpNodeAdj(), nmask = new Map();
-        for(const [r, mm] of members){ let x = 0; for(const id of mm) x |= roseMask[id]; nmask.set(r, x); }
-        // the next compass piece: the one with the fewest groups it could still use (or random)
-        let best = null;
-        for(const [rep, mm] of members){
-          if(done.has(mm[0])) continue;
-          const comps = cmpOf(mm);
-          if(!comps || !comps.some(C => C.dims.length > 0)) continue;
-          const sm = cmpSampler(rep, lastPass.need, lastPass.capOf, lastPass.maskOf, lastPass.dmap, nadj, nmask, rnd);
-          if(!sm){ ok = false; break; }
-          const key = order === 'random' ? rnd() : sm.n + rnd() * 0.5;
-          if(!best || key < best.key) best = { key, rep, sm, mm };
-        }
-        if(!ok) break;
-        if(!best) break;                                         // every compass piece is drawn
-        const S = best.sm.draw();
-        if(!S){ ok = false; break; }
-        for(const j of S) union(best.rep, best.sm.nodes[j]);
-        const rep = find(best.rep), tiles = members.get(rep).slice(), inP = new Set(tiles);
-        for(const id of tiles){ if(ctx.compasses.has(`${id % w},${(id - id % w) / w}`)) done.add(id); }
-        for(const e of spots) if(e.state === 0 && find(e.a) === find(e.b)) e.state = 2;
-        for(const id of tiles) for(const { e, o } of adjE[id]) if(e.state === 0 && !inP.has(o)) e.state = 1;
-        pieces.push(tiles);
-        if(cheap() === null){ ok = false; break; }
-      }
-      restore(sn);
-      return { ok, pieces };
-    }
-
-    // GUESS-AND-CHECK SEARCH: the sketch chooses the branching edges and their preferred values, the true rules prune. Complete: every case is either closed by
-    // propagation, solved, or split again (the first open edge when the sketch has no guess). Returns { solutions: [[state per spot]], complete, nodes }.
-    function* guessSolve(opts, deadline, maxSolutions){
-      const sols = [], stats = { nodes: 0, complete: true, depth: 0, t0: nowMs(), firstMs: null };
-      const apply = (e, v) => { e.state = v === 'wall' ? 1 : 2; if(v === 'same') union(e.a, e.b); };
-      const flip = v => v === 'wall' ? 'same' : 'wall';
-      const rec = function*(depth){
-        if(sols.length >= maxSolutions) return;
-        if(nowMs() > deadline){ stats.complete = false; return; }
-        stats.nodes++; stats.depth = Math.max(stats.depth, depth);
-        yield { type: 'guess-progress', nodes: stats.nodes, depth, found: sols.length, ms: nowMs() - stats.t0 };
-        const was = inProbe; inProbe = false;
-        const r = propagate();
-        inProbe = was;
-        if(r === null) return;                                     // closed
-        const open = spots.filter(e => e.state === 0);
-        if(open.length === 0){
-          const state = spots.map(e => e.state);
-          sols.push(state); if(stats.firstMs == null) stats.firstMs = nowMs() - stats.t0;
-          yield { type: 'guess-found', state, ms: nowMs() - stats.t0 };       // reported at once: the search may go on for a long time
-          return;
-        }
-        const sn = snapshot();
-        // the guesses for this state
-        const out = [];
-        const o2 = Object.assign({}, opts, { sketch: true, sketchVerify: false, _guessOut: out, sketchMs: Math.max(500, Math.min(opts.nodeSketchMs || 30000, deadline - nowMs())), sketchRounds: opts.nodeSketchRounds || 40 });
-        const gen = sketchRun(o2);
-        for(let it = gen.next(); !it.done; it = gen.next()){ /* events are not needed here */ }
-        restore(sn);
-        let list = out.filter(g => g.e.state === 0);
-        if(list.length === 0) list = [{ e: open[0], value: 'wall' }];
-        const remaining = list.slice(), prefix = [], cases = [];
-        const setUp = (pre, flipOne) => { restore(sn); for(const g of pre) apply(g.e, g.value); if(flipOne) apply(flipOne.e, flip(flipOne.value)); };
-        while(remaining.length > 0){
-          // a guess whose opposite is already closed by the rules costs nothing: take those first; the others go in the order drawn
-          let pick = -1;
-          for(let k = 0; k < remaining.length; k++){
-            setUp(prefix, remaining[k]);
-            const was2 = inProbe; inProbe = false;
-            const r2 = propagate();
-            inProbe = was2;
-            if(r2 === null){ pick = k; break; }
-          }
-          if(pick >= 0){ prefix.push(remaining[pick]); remaining.splice(pick, 1); continue; }
-          const g = remaining.shift();
-          cases.push({ pre: prefix.slice(), flipOne: g });
-          prefix.push(g);
-        }
-        cases.push({ pre: prefix.slice(), flipOne: null });
-        // the cases are disjoint, so any order covers everything: all guesses hold first, then the latest guess flipped, then the one before ...
-        for(let k = cases.length - 1; k >= 0; k--){
-          setUp(cases[k].pre, cases[k].flipOne);
-          yield* rec(depth + 1);
-          if(sols.length >= maxSolutions || nowMs() > deadline){ if(nowMs() > deadline) stats.complete = false; break; }
-        }
-        restore(sn);
-      };
-      const sn0 = snapshot();
-      yield* rec(0);
-      restore(sn0);
-      return { solutions: sols, complete: stats.complete, nodes: stats.nodes, depth: stats.depth, firstMs: stats.firstMs };
-    }
-
-    // GUESS LAYER: draw the red sketch (events 'sketch'), then search with it (events 'guess-progress'), then report every tiling found as a normal 'solution'.
-    // Every tiling is re-checked by the exact solver with all its edges fixed (the exact solver knows nothing about the guesses), so a tiling is only reported if it is valid.
-    // Last event: { type: 'guess-done', complete, nodes, depth, firstMs, found, invalid }. complete = every other case was closed by the rules, so "found 1" means unique.
-    function* guessLayerRun(opts){
-      yield* sketchRun(Object.assign({}, opts, { sketch: true, sketchVerify: false }));
-      const deadline = nowMs() + (opts.guessMs || 1e12);
-      let stats = null, found = 0, invalid = 0;
-      const gen = guessSolve(opts, deadline, opts.guessMax || 2);
-      let it = gen.next();
-      while(!it.done){
-        const ev = it.value;
-        if(ev.type === 'guess-found'){
-          const extraWalls = new Set(), links = [];
-          spots.forEach((e, i) => { if(ev.state[i] === 1) extraWalls.add(e.key); else if(ev.state[i] === 2) links.push([e.c1, e.r1, e.c2, e.r2]); });
-          let pieces = null;
-          for(const sv of solvePuzzle(w, h, ctx, specialEdges, 0, { extraWalls, links })){ if(sv.type === 'solution'){ pieces = sv.pieces; break; } }
-          if(pieces){ found++; yield { type: 'solution', pieces, ms: ev.ms }; } else invalid++;
-        } else yield ev;
-        it = gen.next();
-      }
-      stats = it.value;
-      yield { type: 'guess-done', complete: stats.complete, nodes: stats.nodes, depth: stats.depth, firstMs: stats.firstMs, found, invalid };
-    }
-
     // ---- shape bank ----
     const BANK_MAX_CAND = 700;                              // placements tried per group and pass (more = the group is skipped: always sound)
     const bankOn = !!ctx.useBank && !!loose && loose.length > 0;
@@ -9313,7 +8967,6 @@
         else if(pieceInfo(members.get(ra).concat(members.get(rb))) === null){ e.state = 1; changes.push({ e, value: 'wall', rule: why }); }
       }
       if(changes.length > 0) return changes;              // let the new walls spread before looking for forced growth
-      if(!inProbe || sketchCapture) lastPass = { need, capOf, maskOf, dmap };
       // v36: bricky
       if(briOn){
         const br = briVertexStep(dmap);
@@ -10953,9 +10606,6 @@
     // with the portfolio the stage runs after the first exact slices (a puzzle they solve never pays for it); without, here
     const tpLate = exactMode === 'edge' && opts.portfolio !== false && !finalOnly && !opts.fullScan;
     if(!ended && !tpLate && !opts.twoPieceEarly){ const r = yield* twoPieceStage(); if(r === 'impossible') ended = 'impossible'; }
-    if(opts.sketch && !ended){ yield* sketchRun(opts); return; }
-    if(opts.guessLayer && !ended){ yield* guessLayerRun(opts); return; }
-    if(opts.jointTest && !ended){ yield { type: 'joint-test', run: (n, seed, order) => { let sd = seed >>> 0; const rnd = () => { sd = (sd + 0x6D2B79F5) >>> 0; let t = sd; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; const out = []; propagate(); for(let i = 0; i < n; i++) out.push(jointAttempt(rnd, order)); return out; } }; return; }
     // v40: PORTFOLIO, first slices (before the scan: a puzzle the edge search solves fast never pays for it)
     let finalAnnounced = false;
     const slicePlan = parseSlices(opts.slices), usePortfolio = exactMode === 'edge' && opts.portfolio !== false && !finalOnly;
@@ -11780,7 +11430,6 @@
   // ---------------- PUZZLE GRID ----------------
 
   function renderPuzzle(){
-    updateGuessRow();
     if(stepsCtx && stepsCtx.sig !== puzzleSig()) hideStepsUI();            // v47: the step view draws the puzzle: an edited puzzle closes it
     const cs = calcCellSize(puzzle.w, puzzle.h, 520, 14, 42);
     puzzleCellSize = cs;
@@ -12530,7 +12179,6 @@
   }
   function setSolveButtonsDisabled(disabled){
     document.getElementById('solveBtn').disabled = disabled;
-    document.getElementById('guessBtn').disabled = disabled;
   }
 
   function fmtDuration(sec){
@@ -12656,13 +12304,10 @@
   //   pulsing marks the edge being tested right now
   function clearDeduceOverlay(){
     if(dedWallEls) dedWallEls.clear();
-    deduceLayer.innerHTML = '<g class="ded-shapes"></g><g class="ded-links"></g><g class="ded-walls"></g><g class="ded-red-links"></g><g class="ded-red-walls"></g><g class="ded-probe-layer"></g>';
+    deduceLayer.innerHTML = '<g class="ded-shapes"></g><g class="ded-links"></g><g class="ded-walls"></g><g class="ded-probe-layer"></g>';
     document.getElementById('deduceLegend').hidden = true;
-    delete document.getElementById('deduceLegend').dataset.guess;
-    redEls = new Map();
   }
   const dedSub = name => deduceLayer.querySelector('.' + name);
-  let redEls = new Map();                 // v38: key -> the red element on the grid (guess layer)
   function dedSpotParts(key){
     const [orient, rest] = key.split(':');
     const [c, r] = rest.split(',').map(Number);
@@ -12959,169 +12604,6 @@
       solutions.forEach((p,i) => addSolutionCard(p, `Solution ${i+1}`, 220));
     }
     offerSteps(solutions);
-  }
-
-  // ================= v38: BUFFER GUESS LAYER (experimental) =================
-  function updateGuessRow(){
-    const row = document.getElementById('guessRow'); if(!row) return;
-    row.hidden = !(puzzle.compasses && puzzle.compasses.size > 0);
-  }
-  // red styles: 'guess' = a rough guess, 'follow' = settled by the rules from the guesses, 'wrong' = a guess the final tiling did not use
-  function dedAddRed(key, value, kind){
-    const layer = dedSub(value === 'wall' ? 'ded-red-walls' : 'ded-red-links'); if(!layer) return;
-    const old = redEls.get(key); if(old && old.parentNode) old.parentNode.removeChild(old);
-    const cs = puzzleCellSize, { orient, c, r } = dedSpotParts(key);
-    const strong = kind === 'guess', wrong = kind === 'wrong';
-    const fill = wrong ? 'none' : (strong ? '#e03a3a' : '#ff9f9f'), stroke = wrong ? '#e03a3a' : (strong ? '#5a1010' : '#a83a3a');
-    const attrs = { fill, stroke, 'stroke-width': wrong ? 1.6 : 1, 'fill-opacity': strong ? 0.95 : 0.8 };
-    if(wrong) attrs['stroke-dasharray'] = '3 2';
-    let el;
-    if(value === 'wall'){
-      const g = wallBarGeometry(cs, orient, c, r), t = Math.max(4, cs * 0.16);
-      el = dedRect(g.x, g.y, g.width, g.height, t / 2, attrs);
-    } else {
-      const len = cs * 0.5, th = Math.max(3, cs * 0.14);
-      el = orient === 'v' ? dedRect((c + 1) * cs - len / 2, r * cs + cs / 2 - th / 2, len, th, th / 2, attrs)
-                          : dedRect(c * cs + cs / 2 - th / 2, (r + 1) * cs - len / 2, th, len, th / 2, attrs);
-    }
-    if(kind !== 'wrong') el.setAttribute('class', 'ded-new');
-    layer.appendChild(el);
-    redEls.set(key, el);
-  }
-  async function runGuessLayer(){
-    if(solverRunning) return;
-    const limits = readSolverLimits();
-    if(!limits) return;
-    solverRunning = true; solverCancelled = false; skipScanRequested = false;
-    runLimitsText = limits.text; lastRunHints = limits.hints; lastProgressPct = null;
-    setEditorsDisabled(true);
-    setLimitInputsDisabled(true);
-    puzzleGhost.setAttribute('display','none');
-    shapeGhost.setAttribute('display','none');
-    setSolveButtonsDisabled(true);
-    document.getElementById('cancelSolveBtn').style.display = 'inline-block';
-    document.getElementById('skipScanBtn').style.display = 'none';
-    clearSolverResults();
-    hideStepsUI();
-    clearDeduceOverlay();
-    dedDrawnKeys = new Set(); dedShapeCells = new Set();
-    const legend = document.getElementById('deduceLegend');
-    legend.hidden = false; legend.dataset.guess = '1';
-    document.getElementById('deduceSummary').textContent = '';
-    lastNodes = 0;
-
-    const bankShapesData = bank.map(s => ({ id:s.id, cells:s.cells, color:s.color }));
-    const ctx = buildSolverContext(puzzle, bankShapesData, sizeRules, limits.hints, banShapesData());
-    const gen = deduceSolve(puzzle.w, puzzle.h, ctx, collectSpecialEdges(), { guessLayer: true, guessMax: 2, sketchSeed: 1, sketchMs: 20000, nodeBudget: 0 });
-    const solutions = [];
-    const red = new Map();                 // key -> { value, hyp } for every red mark
-    const st = { total: 0, open: 0, walls: 0, links: 0, shapes: 0, guesses: 0, follow: 0, rejected: 0, phase: 'true', nodes: 0, depth: 0, firstMs: null, done: null };
-    const startTime = performance.now();
-    let lastPaint = performance.now(), outcome = null;
-    setSolverStatus('Buffer guess layer: preparing…' + (limits.text ? ` (with your limits: ${limits.text})` : ''));
-    const bar = document.getElementById('solverProgress');
-    bar.hidden = false; bar.classList.add('indeterminate');
-
-    outer:
-    while(true){
-      const sliceStart = performance.now();
-      let paintNow = false;
-      while(performance.now() - sliceStart < SLICE_MS){
-        const { value, done } = gen.next();
-        if(done){ outcome = 'exhausted'; break outer; }
-        if(!value) continue;
-        switch(value.type){
-          case 'plan': st.total = value.spots; st.open = value.spots; break;
-          case 'deduce':
-            st.open = value.open; st.walls = value.walls; st.links = value.links;
-            if(!dedDrawnKeys.has(value.spot.key)){
-              dedDrawnKeys.add(value.spot.key);
-              if(value.value === 'wall') dedAddWall(value.spot.key, true, false); else dedAddLink(value.spot.key, true);
-            }
-            break;
-          case 'shape':
-            dedShapeCells.add(value.cells.map(([c, r]) => `${c},${r}`).sort().join(';'));
-            dedAddShape(value.cells, st.shapes++, true);
-            break;
-          case 'sketch':
-            st.phase = 'sketch';
-            if(!dedDrawnKeys.has(value.spot.key)){
-              red.set(value.spot.key, { value: value.value, hyp: value.hyp });
-              if(value.hyp) st.guesses++; else st.follow++;
-              dedAddRed(value.spot.key, value.value, value.hyp ? 'guess' : 'follow');
-            }
-            if(performance.now() - lastPaint > 40) paintNow = true;
-            break;
-          case 'sketch-rejected': st.rejected++; break;
-          case 'sketch-done': st.phase = 'search'; break;
-          case 'guess-progress': st.phase = 'search'; st.nodes = value.nodes; st.depth = value.depth; lastNodes = value.nodes; break;
-          case 'solution':
-            solutions.push(value.pieces);
-            if(solutions.length === 1){
-              st.firstMs = performance.now() - startTime;
-              // the tiling is in: guesses that agree with it become part of the normal picture, the others stay as dashed marks
-              const pieceOf = new Map();
-              value.pieces.forEach((p, i) => p.cells.forEach(([c, r]) => pieceOf.set(`${c},${r}`, i)));
-              for(const [key, it] of red){
-                const { orient, c, r } = dedSpotParts(key);
-                const a = pieceOf.get(`${c},${r}`), b = orient === 'v' ? pieceOf.get(`${c + 1},${r}`) : pieceOf.get(`${c},${r + 1}`);
-                const agrees = (a === b) === (it.value === 'same');
-                if(agrees){ const el = redEls.get(key); if(el && el.parentNode) el.parentNode.removeChild(el); redEls.delete(key); }
-                else dedAddRed(key, it.value, 'wrong');
-              }
-              dedPaintFinalSolution(value.pieces, st.shapes);
-              paintNow = true;
-            }
-            break;
-          case 'guess-done': st.done = value; break;
-          case 'impossible-early': break;
-        }
-        if(paintNow) break;
-      }
-      if(solverCancelled){ outcome = 'cancelled'; break; }
-      const elapsed = (performance.now() - startTime) / 1000;
-      if(st.phase === 'search'){
-        setSolverStatus(solutions.length
-          ? `Buffer guess layer: found a valid tiling after ${(st.firstMs / 1000).toFixed(1)}s — now checking whether any other tiling exists (stop it any time with Cancel) · node ${st.nodes.toLocaleString()} · depth ${st.depth} · ${elapsed.toFixed(1)}s`
-          : `Buffer guess layer: searching with the guesses · node ${st.nodes.toLocaleString()} · depth ${st.depth} · ${st.guesses} red guesses · ${elapsed.toFixed(1)}s`);
-      } else {
-        setSolverStatus(`Buffer guess layer: drawing rough guesses · ${st.guesses} guesses (${st.follow} follow from them, ${st.rejected} dropped) · ${elapsed.toFixed(1)}s`);
-      }
-      if(paintNow){ await nextPaint(); lastPaint = performance.now(); }
-      else await new Promise(res => setTimeout(res, 0));
-    }
-
-    const totalMs = performance.now() - startTime;
-    solverRunning = false;
-    setEditorsDisabled(false);
-    setLimitInputsDisabled(false);
-    hideProgressBar();
-    bar.classList.remove('indeterminate');
-    setSolveButtonsDisabled(false);
-    document.getElementById('cancelSolveBtn').style.display = 'none';
-    dedSetProbe(null);
-
-    const sec = ms => (ms / 1000).toFixed(ms < 10000 ? 2 : 1) + 's';
-    const complete = !!(st.done && st.done.complete);
-    const exp = ' (experimental guess layer; every tiling shown was re-checked by the exact solver)';
-    if(outcome === 'exhausted' && complete){
-      // every case was closed: the answer is as good as the normal solver's
-      finishSolver('exhausted', solutions, false);
-      document.getElementById('solverStatus').textContent += exp;
-    } else if(solutions.length === 0){
-      setSolverStatus(outcome === 'cancelled'
-        ? `Cancelled after ${sec(totalMs)} — the buffer guess layer found no tiling yet. The red marks are guesses only.`
-        : `The buffer guess layer found no tiling and could not finish (it stopped without closing every case). The red marks are guesses only.`);
-    } else if(solutions.length >= 2){
-      finishSolver('cap-reached', solutions, false);
-      document.getElementById('solverStatus').textContent += exp;
-    } else {
-      setSolverStatus(`Found a valid tiling (checked by the exact solver) after ${sec(st.firstMs)}, but the search was stopped before it could check that no other tiling exists, uniqueness is NOT confirmed.`);
-      addSolutionCard(solutions[0], 'Tiling found by the guess layer', 520);
-    }
-    document.getElementById('deduceSummary').textContent =
-      `Buffer guess layer (experimental): ${st.guesses} red guesses (${st.follow} more followed from them, ${st.rejected} dropped), search ${st.nodes.toLocaleString()} nodes, depth ${st.depth}, ${sec(totalMs)} in total` +
-      (st.firstMs != null ? `; first tiling after ${sec(st.firstMs)}` : '') + '. Red marks are guesses, not proofs.';
   }
 
   // ================= v47: STEP-BY-STEP REASONING VIEWER =================
@@ -14745,8 +14227,6 @@
     document.getElementById('solveBtn').addEventListener('click', () => { if(document.getElementById('exactOnlyChk').checked) runSolver(); else runDeduce(); });
     initStepsUI();
     document.getElementById('cancelSolveBtn').addEventListener('click', () => { solverCancelled = true; });
-    document.getElementById('guessBtn').addEventListener('click', () => { runGuessLayer(); });
-    updateGuessRow();
     document.getElementById('skipScanBtn').addEventListener('click', () => { skipScanRequested = true; });
     attachLibraryEvents();
     window.addEventListener('keydown', e => { if(e.key === 'Control'){ ctrlHeld = true; updatePocket(); } });

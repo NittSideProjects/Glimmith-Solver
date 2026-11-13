@@ -1,7 +1,7 @@
 // END-TO-END FUZZ (v37 Loopy): the whole solver (Solver B, deduction + exact stage) against the brute-force oracle on small planted boards
 // (holes, hand walls, clues, palisades, Boxy / Mismatch / Min / Max / stamps mixed in, Loopy always on): same number of tilings (capped at 2), same verdict.
 // node fuzz_loopy37.js N seed
-const L = require('../fuzzlib.js'), O = require('../oracle.js'), S = require('../reference/solver-core.v99.js');
+const L = require('../fuzzlib.js'), O = require('../oracle.js'), S = require('../reference/solver-core.v100.js');
 const N = +process.argv[2] || 300, seed0 = +process.argv[3] || 1;
 const rng = s => () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 function palType(owner, c, r){ const me = owner.get(c + ',' + r), sd = [[0, -1], [1, 0], [0, 1], [-1, 0]].map(([dc, dr]) => owner.get((c + dc) + ',' + (r + dr)) === me ? 0 : 1); const n = sd[0] + sd[1] + sd[2] + sd[3]; return n === 2 ? ((sd[0] + sd[2] === 2 || sd[1] + sd[3] === 2) ? '2s' : '2c') : String(n); }

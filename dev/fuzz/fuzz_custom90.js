@@ -2,7 +2,7 @@
 // The oracle knows neither rule: it gets the puzzle without links, and its tilings are filtered here with independent checks
 // (linked tiles in one piece; all piece sizes different). Wally, Boxy, Size Separation, palisades, area numbers, holes mixed in.
 // node fuzz_custom90.js N seed        (MODE=links | hetero | both, default both; VALID=1: planted tiling satisfies Heterogeneous)
-const L = require('../fuzzlib.js'), O = require('../oracle.js'), S = require(process.env.GLIMMITH_CORE || '../reference/solver-core.v99.js');
+const L = require('../fuzzlib.js'), O = require('../oracle.js'), S = require(process.env.GLIMMITH_CORE || '../reference/solver-core.v100.js');
 const N = +process.argv[2] || 300, seed0 = +process.argv[3] || 1, MODE = process.env.MODE || 'both', VALID = !!process.env.VALID;
 const rng = s => () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 const ownerOf = pieces => { const m = new Map(); pieces.forEach((p, k) => p.forEach(([c, r]) => m.set(c + ',' + r, k))); return m; };

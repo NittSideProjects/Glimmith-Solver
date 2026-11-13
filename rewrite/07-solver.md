@@ -2,7 +2,7 @@
 
 The Solver panel: buttons, options, progress and the result after a solve.
 
-Left here: 0 to write, 0 to check again, 26 notes, 0 to put on the page. Done: 50.
+Left here: 0 to write, 0 to check again, 16 notes, 0 to put on the page. Done: 48.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -65,11 +65,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: text
 - now: Ignore edge by edge if exhaustive whould be faster
 - new: =
-
-### T0098
-- what: text · #guessBtn · Only shows after some solves.
-- now: Solve with buffer guess layer (experimental)
-- new: [remove this whole thing, the code behind as well, it isn't needed]
 
 ### T0115
 - what: text · #stepsBtn · Button that shows after a solve.
@@ -304,61 +299,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0548
 - what: message · finishSolver · Built by the page while it runs, so it only shows in some situations.
 - now: Solution {1}
-- new: =
-
-### T0549
-- what: message · runGuessLayer · Built by the page while it runs, so it only shows in some situations.
-- now: Buffer guess layer: preparing…{1}
-- new: [removethiswholething]
-
-### T0550
-- what: message · runGuessLayer · Built by the page while it runs, so it only shows in some situations.
-- now: Buffer guess layer: found a valid tiling after {1}s — now checking whether any other tiling exists (stop it any time with Cancel) · node {2} · depth {3} · {4}s
-- new: [removethiswholething]
-
-### T0551
-- what: message · runGuessLayer · Built by the page while it runs, so it only shows in some situations.
-- now: Buffer guess layer: searching with the guesses · node {1} · depth {2} · {3} red guesses · {4}s
-- new: [removethiswholething]
-
-### T0552
-- what: message · runGuessLayer · Built by the page while it runs, so it only shows in some situations.
-- now: Buffer guess layer: drawing rough guesses · {1} guesses ({2} follow from them, {3} dropped) · {4}s
-- new: [removethiswholething]
-
-### T0553
-- what: message · exp · Built by the page while it runs, so it only shows in some situations.
-- now: (experimental guess layer; every tiling shown was re-checked by the exact solver)
-- new: [removethiswholething]
-
-### T0554
-- what: message · runGuessLayer · Built by the page while it runs, so it only shows in some situations.
-- now: Cancelled after {1} — the buffer guess layer found no tiling yet. The red marks are guesses only.
-- new: [removethiswholething]
-
-### T0555
-- what: message · runGuessLayer · Built by the page while it runs, so it only shows in some situations.
-- now: The buffer guess layer found no tiling and could not finish (it stopped without closing every case). The red marks are guesses only.
-- new: [removethiswholething]
-
-### T0556
-- what: message · runGuessLayer · Built by the page while it runs, so it only shows in some situations.
-- now: Found a valid tiling (checked by the exact solver) after {1}, but the search was stopped before it could check that no other tiling exists, uniqueness is NOT confirmed.
-- new: Found a valid tiling (checked by the exact solver) after {1}, but the search was stopped before it could check that no other tiling exists, uniqueness is NOT confirmed.
-
-### T0557
-- what: message · runGuessLayer · Built by the page while it runs, so it only shows in some situations.
-- now: Tiling found by the guess layer
-- new: [removethiswholething]
-
-### T0558
-- what: message · runGuessLayer · Built by the page while it runs, so it only shows in some situations.
-- now: Buffer guess layer (experimental): {1} red guesses ({2} more followed from them, {3} dropped), search {4} nodes, depth {5}, {6} in total{7}. Red marks are guesses, not proofs.
-- new: [removethiswholething]
-
-### T0559
-- what: message · runGuessLayer · Built by the page while it runs, so it only shows in some situations.
-- now: ; first tiling after {1}
 - new: =
 
 ### T0810

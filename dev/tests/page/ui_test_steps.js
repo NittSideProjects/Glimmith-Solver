@@ -2,7 +2,7 @@
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 const L = require('../../fuzzlib.js');
-const file = process.argv[2] || '../glimmith_solver_V1.0.16.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.17.html';
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { console.log((cond ? "ok  " : "FAIL") + " " + name); if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));

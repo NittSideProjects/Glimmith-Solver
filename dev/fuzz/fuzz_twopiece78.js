@@ -1,6 +1,6 @@
 // v78: two-piece DP. Planted 2-piece tilings on small boards (holes, drawn walls), clues: area numbers (two values a + b = tiles), true watchtower
 // values at some corners, sometimes a rose pair. The DP runs right after the probes (portfolio off). Verdicts and EVERY deduction are checked
-// against the independent oracle (all solutions). The DP runs before any probe (opts.twoPieceEarly) so it does the work.   usage: GLIMMITH_CORE=reference/solver-core.v99.js node fuzz_twopiece78.js [N=200] [seed=1]
+// against the independent oracle (all solutions). The DP runs before any probe (opts.twoPieceEarly) so it does the work.   usage: GLIMMITH_CORE=reference/solver-core.v100.js node fuzz_twopiece78.js [N=200] [seed=1]
 const L = require('../fuzzlib.js'), O = require('../oracle.js');
 const N = +process.argv[2] || 200, seed0 = +process.argv[3] || 1, sparse = process.argv[4] === 'sparse';   // sparse: few clues, no drawn walls, one tower value sometimes changed
 let dpRuns = 0, dpBad = 0, made = 0, bad = 0, deds = 0, dedBad = 0, tpDeds = 0, tried = 0; const tally = { 0: 0, 1: 0, 2: 0 };

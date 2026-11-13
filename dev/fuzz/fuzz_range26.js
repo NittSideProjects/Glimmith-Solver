@@ -5,7 +5,7 @@
 //   2. verdict equals the brute-force oracle on small boards -- also for MUTANTS (rule values / clues changed: often impossible)
 //   3. strength: edges decided before any search, v25 core vs v26 core
 const L = require('../fuzzlib.js'), O = require('../oracle.js');
-const S26 = require('../reference/solver-core.v99.js'), S25 = require('../reference/solver-core.v99.js');
+const S26 = require('../reference/solver-core.v100.js'), S25 = require('../reference/solver-core.v100.js');
 const N = +process.argv[2] || 300, seed0 = +process.argv[3] || 1, maxSide = +process.argv[4] || 6;
 const rng = s => () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 const DIRS = [[1,0],[-1,0],[0,1],[0,-1]];

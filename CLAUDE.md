@@ -57,21 +57,25 @@ environment: three timing checks on the live solving animation).
 
 ## Page text: always add it to the rewrite list
 
-The author rewrites every text the page shows. The rewrite list lives **in the repository, in `rewrite/`** (one file per part of the
-page, see `rewrite/README.md`): the author edits those files and pushes them himself, so **pull before working on texts** and read
-his answers there. **Every time a change adds or changes text a user can see** (labels, buttons, tooltips, messages, step titles and
-explanations, rule explanations), refresh `rewrite/` in the same piece of work with the tools in `dev/tools/rewrites/` (see its
-README: `extract.js`, `clean.js`, then `repo.js write`), keeping text IDs stable through `dev/tools/rewrites/texts_ids.json`. Never
-overwrite an answer the author wrote in the files. Apply his finished rewrites (not `[...]` notes) with `gen_rewrites.js` in a patch
-script, as in `dev/build/patch_ui_V1.0.10.py` (`repo.js read` gives the answers in the form it reads).
+The author rewrites every text the page shows **on the rewrite page**, a private claude.ai page with its own database:
+https://claude.ai/artifact/8zkhz8jRG1qYJM5ET2k6e2. He prefers it to editing files (it shows where each text is and is easier to
+use), so that page is where his answers are. The folder `rewrite/` in the repository is a copy of them, kept by Claude.
 
-The claude.ai page that held the list before (https://claude.ai/artifact/8zkhz8jRG1qYJM5ET2k6e2) is retired: its answers were
-carried over and it is no longer rebuilt. Do not republish it.
+**Habit: fetch his answers.** Before any work that touches page text, and whenever he mentions the rewrite, read the page's database
+(ArtifactData tool: `list`, collection `rewrites`, limit 1000, with `out_dir`), then refresh `rewrite/` from it
+(`node dev/tools/rewrites/repo.js write ... <that dump> rewrite`) and commit it. Never answer questions about what is left, and never
+apply rewrites, from an old dump or from the files alone: he may have written more since.
+
+**Every time a change adds or changes text a user can see** (labels, buttons, tooltips, messages, step titles and explanations, rule
+explanations), in the same piece of work: run `extract.js` + `clean.js` (IDs stay stable through `dev/tools/rewrites/texts_ids.json`),
+fetch the database, rebuild the page with `build_list.js` (only what is still to write, plus the new or changed texts) and republish
+it **to the same URL**, then refresh `rewrite/`. See `dev/tools/rewrites/README.md`. Apply his finished rewrites (not `[...]` notes)
+with `gen_rewrites.js` in a patch script, as in `dev/build/patch_ui_V1.0.10.py`.
 
 ### No V1.1 before the rewrite is done
 
 **Do not make a V1.1 (or any version above V1.0.x), even when asked, while the rewrite list has anything left.** Run
-`node dev/tools/rewrites/repo.js status rewrite` first: it must say that nothing is left, meaning every text is written or kept, no
+`node dev/tools/rewrites/repo.js status rewrite` first, on a `rewrite/` just refreshed from the page's database: it must say that nothing is left, meaning every text is written or kept, no
 text is waiting to be checked again, no `[...]` note is open, and every rewrite is on the page. If something is left, say so with
 the counts, remind the author that he set this rule so that he would not forget the rewrite, and keep numbering V1.0.x. Only the
 author lifting this rule in so many words changes that.

@@ -4,7 +4,7 @@ The title, the save status and the buttons in the top bar.
 
 Left here: 0 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 12.
 
-Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it is. `[..]` anywhere = a note for Claude. `{1}`, `{2}` stand for values the page fills in: keep them.
+A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
 ### T0888
 - what: browser tab title · The name in the browser tab.

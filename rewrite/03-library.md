@@ -4,7 +4,7 @@ The puzzle list at the top of the Puzzle Grid panel, its buttons, the Fast impor
 
 Left here: 6 to write, 0 to check again, 6 notes, 0 to put on the page. Done: 110.
 
-Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it is. `[..]` anywhere = a note for Claude. `{1}`, `{2}` stand for values the page fills in: keep them.
+A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
 ### T0014
 - what: text · #puzzlePanel

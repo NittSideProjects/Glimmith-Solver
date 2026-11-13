@@ -1,11 +1,12 @@
-# The rewrite list
+# The rewrite list (copy)
 
-Every text the page shows, one file per part of the page, with room for the author's own wording. The author edits these files and
-pushes them; Claude pulls, puts the finished rewrites on the page in the next version and refreshes the files
-(`dev/tools/rewrites/repo.js`, see `dev/tools/rewrites/README.md`).
+Every text the page shows, one file per part of the page, with the author's own wording. **The author writes his answers on the
+rewrite page, https://claude.ai/artifact/8zkhz8jRG1qYJM5ET2k6e2 (private), not here.** These files are a copy of that page that
+Claude refreshes whenever it works on texts (`dev/tools/rewrites/repo.js`, see `dev/tools/rewrites/README.md`): they keep the
+answers in the repository and give the count below. A change made by hand in these files is lost at the next refresh.
 
 **Left before V1.1: 735** (695 to write, 0 to check again, 40 notes for Claude, 0 written but not on the page yet).
-Done: 273 of 1008.
+Done: 273 of 1008. The rewrite page lists fewer: it leaves out the notes for Claude.
 
 | Part of the page | To write | To check again | Notes | To put on the page | Done |
 |---|---|---|---|---|---|
@@ -22,19 +23,17 @@ Done: 273 of 1008.
 | [Custom rules button](11-custom.md) | 0 | 0 | 0 | 0 | 3 |
 | [Other messages](12-other.md) | 93 | 0 | 0 | 0 | 0 |
 
-## How to fill it in
+## How to read an entry
 
 ```
 ### T0123
 - what: where the text shows
 - now: the text on the page today
-- new: your text
+- new: the author's answer
 ```
 
-- Write your text after `- new:`, on one line. Leave it empty while it is not done.
-- `- new: =` keeps the text as it is.
+- `- new:` empty = not answered yet; `=` = keep the text as it is (or the text is already the author's own wording).
 - Anything with `[..]` in it is a note for Claude ("[remove this]", "[where is this shown?]"): it is never put on the page.
-- `{1}`, `{2}` are values the page fills in (a number, a name). Keep them in your text.
-- A `- was:` line means the page text changed after you wrote your answer (`was` is the old text). Check your answer against
-  `now`, then delete the `- was:` line.
-- Do not change the `###`, `- what:` and `- now:` lines: they are rewritten from the page every version.
+- `{1}`, `{2}` are values the page fills in (a number, a name).
+- A `- was:` line means the page text changed after the answer was written (`was` is the old text): the rewrite page shows that
+  text again as changed.

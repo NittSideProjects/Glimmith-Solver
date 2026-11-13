@@ -4,7 +4,7 @@ The Rules panel: adding a rule and the rule chips (including what it says when t
 
 Left here: 0 to write, 0 to check again, 4 notes, 0 to put on the page. Done: 40.
 
-Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it is. `[..]` anywhere = a note for Claude. `{1}`, `{2}` stand for values the page fills in: keep them.
+A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
 ### T0078
 - what: text · #rulesPanel

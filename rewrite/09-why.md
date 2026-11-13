@@ -4,7 +4,7 @@ Short reasons the solver gives. They show in the solver result ("Impossible: …
 
 Left here: 109 to write, 0 to check again, 2 notes, 0 to put on the page. Done: 13.
 
-Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it is. `[..]` anywhere = a note for Claude. `{1}`, `{2}` stand for values the page fills in: keep them.
+A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
 ### T0330
 - what: message · WHY_TEXT › rose-count · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.

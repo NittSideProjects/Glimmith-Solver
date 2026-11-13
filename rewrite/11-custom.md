@@ -4,7 +4,7 @@ The button at the very bottom of the page.
 
 Left here: 0 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 3.
 
-Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it is. `[..]` anywhere = a note for Claude. `{1}`, `{2}` stand for values the page fills in: keep them.
+A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
 ### T0329
 - what: text · #customToggleBtn

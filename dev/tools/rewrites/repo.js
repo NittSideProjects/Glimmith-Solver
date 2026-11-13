@@ -1,8 +1,10 @@
-// The rewrite list as files in the repository (folder rewrite/ at the top): the author edits them and pushes, Claude pulls.
+// The rewrite list as files in the repository (folder rewrite/ at the top): a copy of the author's answers on the claude.ai rewrite
+// list, refreshed by Claude, and the count of what is left before V1.1.
 //   node repo.js write <texts.json from clean.js> <sections.json> <answers dir or -> <rewrite dir>
-//       (re)writes one file per page section. An answer already in the files wins; a text without one takes the answer saved on
-//       the claude.ai rewrite list (<answers dir>/rewrites/<id>.json), if any. When the page text changed since an answer was
-//       written, the entry gets a "- was:" line and counts as to do until the author removes that line.
+//       (re)writes one file per page section. With <answers dir> (a dump of the claude.ai rewrite list's database:
+//       <answers dir>/rewrites/<id>.json) the files mirror the page: its answers replace what the files held. With "-" the answers
+//       already in the files stay. When the page text changed since an answer was written, the entry gets a "- was:" line and
+//       counts as to do until the author answers it again.
 //   node repo.js read <rewrite dir> <out dir>
 //       the answers as <out dir>/rewrites/<id>.json ({ text, kept, source }), the form gen_rewrites.js reads.
 //   node repo.js status <rewrite dir>
@@ -33,7 +35,7 @@ function counts(entries){ const c = { todo: 0, check: 0, note: 0, apply: 0, done
 if(cmd === 'write'){
   const [textsPath, sectionsPath, answersDir, dir] = args;
   const texts = JSON.parse(fs.readFileSync(textsPath, 'utf8')).filter(onScreen), sections = JSON.parse(fs.readFileSync(sectionsPath, 'utf8'));
-  const old = parse(dir), db = new Map();
+  const old = parse(dir), db = new Map(), mirror = answersDir !== '-';   // with a dump of the page's database the files mirror the page
   if(answersDir !== '-'){ const d = path.join(answersDir, 'rewrites'); for(const f of fs.readdirSync(d).filter(f => f.endsWith('.json'))){ const x = JSON.parse(fs.readFileSync(path.join(d, f), 'utf8')); db.set(f.slice(0, -5), x.data || x); } }
   // the author's own wordings (in the files or on the claude.ai page): a text that already reads like one of them is done
   const own = new Set(); for(const o of old.values()) if(o.new && o.new !== '=' && !/\[.*\]/.test(o.new)) own.add(norm(o.new));
@@ -45,7 +47,7 @@ if(cmd === 'write'){
     const list = texts.filter(t => t.sec === sec.key); if(!list.length) return;
     const entries = list.map(t => {
       const e = { id: t.id, t, now: t.text, new: '', was: null }, o = old.get(t.id), a = db.get(t.id);
-      if(o && o.new){
+      if(o && o.new && !mirror){
         e.new = o.new; e.was = o.was;
         if(e.was === null && norm(o.now) !== norm(t.text) && norm(o.new) !== norm(t.text) && !/\[.*\]/.test(o.new)) e.was = o.now;   // the page text changed under an answer
       } else if(a && (a.kept || norm(a.text))){
@@ -58,7 +60,7 @@ if(cmd === 'write'){
     });
     const c = counts(entries), name = String(i + 1).padStart(2, '0') + '-' + sec.key + '.md';
     const body = [`# ${sec.name}`, '', sec.desc, '', `Left here: ${c.todo} to write, ${c.check} to check again, ${c.note} notes, ${c.apply} to put on the page. Done: ${c.done + c.keep}.`,
-      '', 'Write after `- new:`. Leave it empty = not done yet. `=` = keep the text as it is. `[..]` anywhere = a note for Claude. `{1}`, `{2}` stand for values the page fills in: keep them.', ''];
+      '', 'A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.', ''];
     for(const e of entries){
       const t = e.t, what = [t.kind, t.where, t.note].filter(Boolean).join(' · ');
       body.push(`### ${e.id}`, `- what: ${what}`, `- now: ${norm(e.now)}`);
@@ -69,35 +71,34 @@ if(cmd === 'write'){
     rows.push(`| [${sec.name}](${name}) | ${c.todo} | ${c.check} | ${c.note} | ${c.apply} | ${c.done + c.keep} |`); total.push(...entries);
   });
   const c = counts(total), left = c.todo + c.check + c.note + c.apply;
-  fs.writeFileSync(path.join(dir, 'README.md'), `# The rewrite list
+  fs.writeFileSync(path.join(dir, 'README.md'), `# The rewrite list (copy)
 
-Every text the page shows, one file per part of the page, with room for the author's own wording. The author edits these files and
-pushes them; Claude pulls, puts the finished rewrites on the page in the next version and refreshes the files
-(\`dev/tools/rewrites/repo.js\`, see \`dev/tools/rewrites/README.md\`).
+Every text the page shows, one file per part of the page, with the author's own wording. **The author writes his answers on the
+rewrite page, https://claude.ai/artifact/8zkhz8jRG1qYJM5ET2k6e2 (private), not here.** These files are a copy of that page that
+Claude refreshes whenever it works on texts (\`dev/tools/rewrites/repo.js\`, see \`dev/tools/rewrites/README.md\`): they keep the
+answers in the repository and give the count below. A change made by hand in these files is lost at the next refresh.
 
 **Left before V1.1: ${left}** (${c.todo} to write, ${c.check} to check again, ${c.note} notes for Claude, ${c.apply} written but not on the page yet).
-Done: ${c.done + c.keep} of ${total.length}.
+Done: ${c.done + c.keep} of ${total.length}. The rewrite page lists fewer: it leaves out the notes for Claude.
 
 | Part of the page | To write | To check again | Notes | To put on the page | Done |
 |---|---|---|---|---|---|
 ${rows.join('\n')}
 
-## How to fill it in
+## How to read an entry
 
 \`\`\`
 ### T0123
 - what: where the text shows
 - now: the text on the page today
-- new: your text
+- new: the author's answer
 \`\`\`
 
-- Write your text after \`- new:\`, on one line. Leave it empty while it is not done.
-- \`- new: =\` keeps the text as it is.
+- \`- new:\` empty = not answered yet; \`=\` = keep the text as it is (or the text is already the author's own wording).
 - Anything with \`[..]\` in it is a note for Claude ("[remove this]", "[where is this shown?]"): it is never put on the page.
-- \`{1}\`, \`{2}\` are values the page fills in (a number, a name). Keep them in your text.
-- A \`- was:\` line means the page text changed after you wrote your answer (\`was\` is the old text). Check your answer against
-  \`now\`, then delete the \`- was:\` line.
-- Do not change the \`###\`, \`- what:\` and \`- now:\` lines: they are rewritten from the page every version.
+- \`{1}\`, \`{2}\` are values the page fills in (a number, a name).
+- A \`- was:\` line means the page text changed after the answer was written (\`was\` is the old text): the rewrite page shows that
+  text again as changed.
 `);
   console.log(total.length, 'texts in', rows.length, 'files;', JSON.stringify(c));
 } else if(cmd === 'read'){

@@ -3,7 +3,7 @@
 // real "Check Uniqueness" button. Usage: node ui_test.js path/to/app.html
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
-const file = process.argv[2] || '../glimmith_solver_V1.0.14.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.15.html';
 
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };

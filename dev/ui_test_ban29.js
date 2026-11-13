@@ -1,8 +1,8 @@
 // UI checks for Shape ban't (v29): panel, red cards, add / duplicate / remove, saving with the puzzle and the library, solver verdicts.
-// Loads the real HTML in jsdom.  usage: node ui_test_ban29.js ../glimmith_solver_V1.0.14.html
+// Loads the real HTML in jsdom.  usage: node ui_test_ban29.js ../glimmith_solver_V1.0.15.html
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
-const file = process.argv[2] || '../glimmith_solver_V1.0.14.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.15.html';
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));

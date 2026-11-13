@@ -92,6 +92,8 @@ function make(){
   const clues = walls.size + roses.size + polyominoes.size + areaNumbers.size + palisades.size + compasses.size + watchtowers.size + bank.length + ban.length;
   return { rec: { puzzle: P, rules, bank, ban }, mech: [...mech].sort(), tiles: tiles.length, clues };
 }
+if(require.main !== module) module.exports = { make };                  // find.js borrows the generator (it sets process.argv first)
+else {
 const best = {};                                                       // rule -> signature -> candidate
 const t0 = Date.now(), deadline = t0 + (+maxSec || 60) * 1000; let made = 0, solved = 0;
 while(Date.now() < deadline){
@@ -112,3 +114,4 @@ while(Date.now() < deadline){
 }
 fs.writeFileSync(outPath, JSON.stringify(best));
 console.log('made', made, 'solved', solved, 'rules', Object.keys(best).length);
+}

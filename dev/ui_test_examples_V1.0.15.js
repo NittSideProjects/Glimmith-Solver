@@ -1,8 +1,8 @@
 // V1.0.13: rule examples (tiny boards, one mechanic each). "Show all examples" (bottom of the page) draws every example; a rule step of the step view has a
 // "Show example" button that opens its example; Escape and Close shut the pop-up.
-// node ui_test_examples_V1.0.14.js [page.html]
+// node ui_test_examples_V1.0.15.js [page.html]
 const { JSDOM } = require('jsdom'); const fs = require('fs'); const path = require('path');
-const file = process.argv[2] || '../glimmith_solver_V1.0.14.html', pz = path.join(__dirname, 'fixtures', 'colors_V1.0.6.glimmith.json');
+const file = process.argv[2] || '../glimmith_solver_V1.0.15.html', pz = path.join(__dirname, 'fixtures', 'colors_V1.0.6.glimmith.json');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
@@ -39,7 +39,10 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
   // the data: tiny boards, one clue per tile, few mechanics
   const CLUES = ['roses', 'polyominoes', 'areaNumbers', 'palisades', 'compasses'];
   const all = keys.flatMap(k => exData[k].x.map(c => [k, c]));
-  check('boards have at most 12 tiles', all.every(([, c]) => c.p.active.flat().filter(Boolean).length <= 12), all.filter(([, c]) => c.p.active.flat().filter(Boolean).length > 12).map(x => x[0]));
+  // V1.0.15: curated cases (a chosen step, earlier edges left out) and the word "polyomino"
+  check('some examples show a chosen step, some leave earlier edges out', all.some(([, c]) => c.s) && all.some(([, c]) => c.h));
+  check('nothing says "stamp"', [...cards].every(c => !/stamp/i.test(c.querySelector('.ex-title').textContent + c.querySelector('.ex-text').textContent)));
+  check('boards have at most 13 tiles', all.every(([, c]) => c.p.active.flat().filter(Boolean).length <= 13), all.filter(([, c]) => c.p.active.flat().filter(Boolean).length > 13).map(x => x[0]));
   check('one clue per tile, as in the game', all.every(([, c]) => { const ks = CLUES.flatMap(f => (c.p[f] || []).map(([k]) => k)); return new Set(ks).size === ks.length; }));
   const mech = c => Object.keys(c.r || {}).length + (c.b ? 1 : 0) + (c.n ? 1 : 0) + ['roses', 'polyominoes', 'palisades', 'compasses', 'watchtowers'].filter(f => c.p[f]).length
     + new Set((c.p.walls || []).map(([, t]) => /^diff/.test(t) ? 'diff' : t === 'gt' ? 'lt' : t).filter(t => t !== 'wall')).size;
@@ -76,6 +79,6 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
   $('stepsLast').click(); await sleep(20);
   check('no example button on the result step', $('stepsExampleBtn').hidden);
   check('no script errors', errors.length === 0, errors);
-  console.log(`examples V1.0.14 UI: ${pass} passed, ${fail} failed (examples ${keys.length}, steps with the button ${shown} of ${n - 1})`);
+  console.log(`examples V1.0.15 UI: ${pass} passed, ${fail} failed (examples ${keys.length}, steps with the button ${shown} of ${n - 1})`);
   process.exit(fail ? 1 : 0);
 })();

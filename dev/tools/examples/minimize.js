@@ -7,8 +7,8 @@ const fs = require('fs');
 const [, , corePath, libPath, inPaths, outPath, topArg] = process.argv;
 const S = require(corePath), L = require(libPath), X = require('./lib.js');
 const TOP = +topArg || 10, clone = o => JSON.parse(JSON.stringify(o));
-const all = {};
-for(const f of inPaths.split(',')){ const d = JSON.parse(fs.readFileSync(f, 'utf8'));
+const MAIN = require.main === module, all = {};
+if(MAIN) for(const f of inPaths.split(',')){ const d = JSON.parse(fs.readFileSync(f, 'utf8'));
   for(const [k, sigs] of Object.entries(d)){ const slot = all[k] || (all[k] = []); for(const c of Object.values(sigs)) slot.push(c); } }
 function connected(active){
   const h = active.length, w = active[0].length, t = []; for(let r = 0; r < h; r++) for(let c = 0; c < w; c++) if(active[r][c]) t.push([c, r]);
@@ -52,12 +52,12 @@ function score(rec, res, key){
   const f = res.firstAt.get(key), before = res.events.slice(0, f.at).filter(e => e.t === 'd' && e.r !== key).length;
   return X.mechanics(rec).length * 100 + X.tiles(rec) * 3 + X.count(rec) * 2 + before * 2 + (res.sols === 1 ? 0 : 6);
 }
-function minimize(rec, key){
+function minimize(rec, key, valid){                                   // valid(rec): an extra condition the example has to keep
   let res = X.run(S, L, rec); if(!res || !res.firstAt.has(key)) return null;
   let cur = rec, sc = score(cur, res, key);
   for(let round = 0; round < 40; round++){
     let better = null;
-    for(const n of smaller(cur)){ const r = X.run(S, L, n, 800); if(!r || !r.firstAt.has(key)) continue; const s = score(n, r, key); if(s < sc && (!better || s < better.s)) better = { n, r, s }; }
+    for(const n of smaller(cur)){ if(valid && !valid(n)) continue; const r = X.run(S, L, n, 800); if(!r || !r.firstAt.has(key)) continue; const s = score(n, r, key); if(s < sc && (!better || s < better.s)) better = { n, r, s }; }
     if(!better) break;
     cur = better.n; res = better.r; sc = better.s;
   }
@@ -71,6 +71,8 @@ function minimize(rec, key){
 const HOME = [[/^min-/, 'min'], [/^rose-/, 'roses'], [/^stamp-|^shape-fit/, 'stamp'], [/^bank-/, 'bank'], [/^ban-/, 'ban'], [/^match-/, 'match'], [/^mismatch-/, 'mismatch'],
   [/^mingle-area/, 'mingleArea'], [/^mingle-shape/, 'mingleShape'], [/^solitude/, 'solitude'], [/^box/, 'boxy'], [/^nonbox/, 'nonBoxy'], [/^pal-/, 'palisade'], [/^wally/, 'wally'],
   [/^gemini-line|^gemini-anchor/, 'gemini'], [/^bri-/, 'bricky'], [/^loo-/, 'loopy'], [/^tower/, 'tower'], [/^cmp|^compass/, 'compass'], [/^diff-/, 'diff'], [/^hetero/, 'heterogeneous']];
+if(!MAIN) module.exports = { minimize, score };
+else {
 const out = {}, t0 = Date.now();
 for(const key of Object.keys(all).sort()){
   const cands = all[key].sort((a, b) => a.score - b.score), done = new Map(), seen = new Set();
@@ -105,3 +107,4 @@ for(const key of Object.keys(all).sort()){
 }
 fs.writeFileSync(outPath, JSON.stringify(out));
 console.log(Object.keys(out).length, 'rules in', ((Date.now() - t0) / 1000).toFixed(0), 's');
+}

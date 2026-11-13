@@ -13,6 +13,9 @@ the rule needs two), helped by nothing but area numbers and plain walls, on a bo
 | `minimize.js` | Strips every candidate of all its rule does not need (a rule, a clue, a wall, a bank shape, a compass number, a tile), then keeps per rule the simplest cases: the fewest mechanics, at most four boards, each a different kind of case (another kind of wall, another result). `node minimize.js <core.js> <fuzzlib.js> <a.json,b.json,...> <out.json> [candidates tried per rule]` |
 | `lines.json` | The one-line explanation of every rule, in the order "Show all examples" lists them. A rule without a line stops `to_page.js`. |
 | `to_page.js` | `minimize.js` output + `lines.json` -> the page's data. |
+| `curated.json` + `curate.js` | The author's own choices, applied on top of `to_page.js` output: per rule the boards to show instead. `{ rec, step }` = a hand-made or author-sent puzzle and the step of the step view to show; `{ from, hide }` = a generated board with edges of earlier steps left out of the picture. `node curate.js <core.js> <fuzzlib.js> <in.json> <out.json>` |
+| `find.js` | Searches for examples of one rule under conditions (bigger board, bigger polyominoes, no area number, nothing decided before) and prints records for `curated.json`. Options in its header. |
+| `show.js` | Prints the solver's steps on one puzzle (a page export or a record), to pick the step. |
 | `lib.js` | Shared: solve one puzzle as the page does, list the rules its steps would show (a link between tiles already known to be in one piece does not count, as in the step view), name its mechanics. |
 
 Refresh after a solver change (rules can fire at other moments):
@@ -24,8 +27,9 @@ for s in 11 22 33 44; do node tools/examples/tiny.js $C $PWD/fuzzlib.js /tmp/tin
 for m in wally min palisade loopy compass stamp boxy solitude bricky heterogeneous gemini nonBoxy mismatch match roses bank delta diff mingleShape mingleArea; do
   node tools/examples/tiny.js $C $PWD/fuzzlib.js /tmp/tiny_$m.json 70 9 $m; done
 node tools/examples/minimize.js $C $PWD/fuzzlib.js $(ls /tmp/tiny_*.json | paste -sd,) /tmp/min.json 16
-node tools/examples/to_page.js /tmp/min.json build/rule_examples_V1.0.x.json
+node tools/examples/to_page.js /tmp/min.json /tmp/page.json
+node tools/examples/curate.js $C $PWD/fuzzlib.js /tmp/page.json build/rule_examples_V1.0.x.json
 ```
 
-`ui_test_examples_V1.0.14.js` checks that every board draws and that the data keeps to the limits above. A new rule needs a line in
+`ui_test_examples_V1.0.15.js` checks that every board draws and that the data keeps to the limits above. A new rule needs a line in
 `lines.json` (and on the rewrite list) and a title in the page's `STEP_INFO`.

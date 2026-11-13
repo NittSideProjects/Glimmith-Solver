@@ -1,4 +1,4 @@
-// ================= SOLVER CORE (pure, unit-tested separately; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; v28 = v27 + chain / parity / budget facts for the walls that compare sizes; v27 = v26 + area number deduction; v25 = v24 + Match / Mismatch deduction rules; v24 = v23 + Mingle Area / Mingle Shape deduction rules; v23 = v22 + rose / polyomino deduction rules) =================
+// ================= SOLVER CORE (pure, unit-tested separately; v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; v28 = v27 + chain / parity / budget facts for the walls that compare sizes; v27 = v26 + area number deduction; v25 = v24 + Match / Mismatch deduction rules; v24 = v23 + Mingle Area / Mingle Shape deduction rules; v23 = v22 + rose / polyomino deduction rules) =================
 
 // ---- shape symmetry helpers ----
 
@@ -2043,10 +2043,12 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
   function find(x){ while(parent[x] !== x){ parent[x] = parent[parent[x]]; x = parent[x]; } return x; }
   let factRec = false; const factLog = [];               // v93: facts about tiles that do not touch (see patch_core93.py)
   let factTag = '';                                      // v98: the rule a far join is reported with ('' = 'far-join')
+  let unionGen = 0, linkGen = -1, propPos = 0;           // v99: joins so far / at the last same-link look; decisions collected by the current propagate()
   function union(a, b){
     let ra = find(a), rb = find(b);
     if(ra === rb) return;
-    if(factRec && Math.abs(a % w - b % w) + Math.abs(((a - a % w) - (b - b % w)) / w) !== 1) factLog.push([a, b, factTag || 'far-join']);       // v93, v98 tag
+    unionGen++;                                                                                                                            // v99
+    if(factRec && Math.abs(a % w - b % w) + Math.abs(((a - a % w) - (b - b % w)) / w) !== 1) factLog.push([a, b, factTag || 'far-join', propPos]);       // v93, v98 tag, v99 position
     if(members.get(ra).length < members.get(rb).length){ const t = ra; ra = rb; rb = t; }
     parent[rb] = ra;
     for(const m of members.get(rb)) members.get(ra).push(m);
@@ -8518,14 +8520,17 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     return true;
   }
   function propagate(){
-    const all = [];
-    for(let pass = 0; pass < 1000; pass++){
-      const part = propagateOnce();
-      if(part === null) return null;
-      if(part.length === 0 && !part.again) break;
-      for(const ch of part){ ch.pass = pass; all.push(ch); }          // v47: pass number, reported on the deduce events
-    }
-    return all;
+    const all = [], pos0 = propPos;
+    try {
+      for(let pass = 0; pass < 1000; pass++){
+        propPos = all.length;                                          // v99
+        const part = propagateOnce();
+        if(part === null) return null;
+        if(part.length === 0 && !part.again) break;
+        for(const ch of part){ ch.pass = pass; all.push(ch); }          // v47: pass number, reported on the deduce events
+      }
+      return all;
+    } finally { propPos = pos0; }
   }
   function propagateOnce(){
     if(boxOn && nbOn && activeIds.length > 0){ failWhy = 'box-both'; return null; }                       // v32: Boxy and Non-boxy together
@@ -8538,6 +8543,12 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     if(staticWhy){ failWhy = staticWhy; return null; }                                  // v25: the grid alone rules Match / Mismatch out
     if(heteroStatic){ failWhy = 'hetero-count'; return null; }                          // v90
     if(roseCutWhy){ failWhy = roseCutWhy; return null; }                                // v53: a cut needs more pieces than it has tiles
+    if(opts.sameLinksEarly !== false && linkGen !== unionGen){                          // v99: neighbours already in one group are linked at once
+      linkGen = unionGen;
+      const same = [];
+      for(const e of spots) if(e.state === 0 && find(e.a) === find(e.b)){ e.state = 2; same.push({ e, value: 'same' }); }
+      if(same.length){ linkGen = unionGen; return same; }
+    }
     if(dStamp && !derivePrepare()){ failWhy = why; return null; }                       // v29: shapes pinned across gemini / delta walls
     if(bothRules){ const bt = bothStep(); if(bt === null){ failWhy = why; return null; } if(bt.length > 0) return bt; }
     if(ruleMatch && !matchPrepare()){ failWhy = why; return null; }                     // v25: common size / shape list for this pass
@@ -8719,7 +8730,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
       dfs(0, -1);
       if(term[0] < np){ failWhy = 'grow'; return null; }                   // a part can not be reached at all
       if(must.length){
-        for(const v of must){ const fr = factRec; if(fr) factLog.push([mem[0], members.get(gOf[v - np])[0], 'split-cut']); factRec = false; union(rep, gOf[v - np]); factRec = fr; }
+        for(const v of must){ const fr = factRec; if(fr) factLog.push([mem[0], members.get(gOf[v - np])[0], 'split-cut', propPos]); factRec = false; union(rep, gOf[v - np]); factRec = fr; }
         bump('split-cut'); changes.again = true; return changes;
       }
     }
@@ -8953,20 +8964,24 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     factLog.length = 0; factRec = true;
     let changes; try { changes = propagate(); } finally { factRec = false; }
     if(changes === null) return false;
-    yield* drainFacts(cause);
-    for(const ch of changes){
+    for(let ci = 0; ci < changes.length; ci++){
+      const ch = changes[ci];
+      yield* drainFacts(cause, ci);                                     // v99: a fact comes just before the decisions that followed it
       stats.byInference++; bump(ch.rule);
       touched.push(ch.e.a, ch.e.b);
       c = counts();
       yield { type: 'deduce', spot: spotView(ch.e), value: ch.value, source: 'inference', rule: tagOut(ch.rule) || 'basic', via: 'rule', cause, pass: ch.pass, open: c.open, walls: c.walls, links: c.links };
     }
+    yield* drainFacts(cause);
     for(const cells of completeShapes(touched)) yield { type: 'shape', cells, cause };
     return true;
   }
 
   // v93: facts about tiles that do not touch, reported to the page
   const factXY = id => [id % w, (id - id % w) / w];
-  function* drainFacts(cause){ while(factLog.length){ const [a, b, rule] = factLog.shift(); yield { type: 'fact', kind: 'join', a: factXY(a), b: factXY(b), rule, cause }; } }
+  function* drainFacts(cause, upTo){                     // v99: only the facts logged before decision upTo (all when upTo is undefined)
+    while(factLog.length && (upTo === undefined || (factLog[0][3] || 0) <= upTo)){ const [a, b, rule] = factLog.shift(); yield { type: 'fact', kind: 'join', a: factXY(a), b: factXY(b), rule, cause }; }
+  }
   // ---- start ----
   yield { type: 'plan', spots: spots.length, fixedWalls: edges.length - spots.length, order };
   if(opts.preAssume) for(const [k, v] of opts.preAssume){                                  // v52: analysis only
@@ -8979,12 +8994,14 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
   factRec = true;
   let initial; try { initial = propagate(); } finally { factRec = false; }
   if(initial === null){ failWhy = tagOut(failWhy); yield { type: 'impossible-early', reason: WHY_TEXT[failWhy] || 'contradictory walls', why: failWhy }; return; }
-  yield* drainFacts(0);
-  for(const ch of initial){
+  for(let ci = 0; ci < initial.length; ci++){
+    const ch = initial[ci];
+    yield* drainFacts(0, ci);                                           // v99: facts in order
     stats.byInference++; bump(ch.rule);
     const c = counts();
     yield { type: 'deduce', spot: spotView(ch.e), value: ch.value, source: 'inference', rule: tagOut(ch.rule) || 'basic', via: 'rule', cause: 0, pass: ch.pass, open: c.open, walls: c.walls, links: c.links };
   }
+  yield* drainFacts(0);
   for(const cells of completeShapes(activeIds)) yield { type: 'shape', cells, cause: 0 };
 
   let twoSolutions = null;                  // set when two different tilings were seen
@@ -9849,12 +9866,14 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     factLog.length = 0; factRec = true;
     let changes; try { changes = propagate(); } finally { factRec = false; }
     if(changes === null) return false;
-    yield* drainFacts(cause);
-    for(const ch of changes){
+    for(let ci = 0; ci < changes.length; ci++){
+      const ch = changes[ci];
+      yield* drainFacts(cause, ci);                                     // v99: facts in order
       stats.byInference++; bump(ch.rule);
       const c = counts();
       yield { type: 'deduce', spot: spotView(ch.e), value: ch.value, source: 'inference', rule: tagOut(ch.rule) || 'basic', via: 'rule', cause, pass: ch.pass, open: c.open, walls: c.walls, links: c.links };
     }
+    yield* drainFacts(cause);
     return true;
   }
   // the inner probe pass of a pair probe (as ppInner, all edges): each edge tried the cheap way (inProbe), and a value it forces is applied

@@ -4,7 +4,7 @@ let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
-  const dom = new JSDOM(fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.8.html', 'utf8'), { runScripts:'dangerously', pretendToBeVisual:true, url:'http://localhost/' });
+  const dom = new JSDOM(fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.9.html', 'utf8'), { runScripts:'dangerously', pretendToBeVisual:true, url:'http://localhost/' });
   const { window } = dom; const store = new Map();
   window.storage = { get: async k => store.has(k) ? { key:k, value:store.get(k) } : null, set: async (k,v) => { store.set(k,v); return {}; }, delete: async()=>({}), list: async()=>({keys:[]}) };
   window.SVGSVGElement.prototype.createSVGPoint = function(){ return { x:0, y:0, matrixTransform(){ return { x:this.x, y:this.y }; } }; };

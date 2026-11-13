@@ -1,10 +1,10 @@
 // EXPORT button (v32): a puzzle file written by this page is read back by a FRESH page (empty storage = another machine) and gives the same puzzle.
-// usage: node ui_test_export32.js ../glimmith_solver_V1.0.8.html
+// usage: node ui_test_export32.js ../glimmith_solver_V1.0.9.html
 const fs = require('fs'), path = require('path'); const { JSDOM } = require('jsdom');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const html = fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.8.html', 'utf8');
+const html = fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.9.html', 'utf8');
 function boot(){   // a new page with its own empty storage
   const store = new Map(), dom = new JSDOM(html, { runScripts: 'dangerously', pretendToBeVisual: true, url: 'http://localhost/' }), { window } = dom;
   window.storage = { get: async k => store.has(k) ? { key: k, value: store.get(k) } : null, set: async (k, v) => { store.set(k, v); return {}; }, delete: async () => ({}), list: async () => ({ keys: [] }) };

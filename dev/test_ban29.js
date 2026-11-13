@@ -1,5 +1,5 @@
 // Examples for Shape ban't (v29): each deduction fires, the exact search agrees, v28 (no ban support) does not find it.   node test_ban29.js
-const S = require('./reference/solver-core.v98.js'), L = require('./fuzzlib.js');
+const S = require('./reference/solver-core.v99.js'), L = require('./fuzzlib.js');
 const R0 = { precision: null, min: null, max: null, mismatch: false, match: false, mingleShape: false, mingleArea: false, solitude: false, boxy: false, nonBoxy: false };
 let pass = 0, fail = 0;
 const check = (name, ok, extra) => { if(ok) pass++; else { fail++; console.log('FAIL', name, extra === undefined ? '' : JSON.stringify(extra)); } };
@@ -54,7 +54,7 @@ const exactN = Q => L.exact(Q, 100, 500000).sols.length;
   const Q = make(3, 3, {}, { ban: B(DOM) }), r = events(Q);
   check('domino banned on 3x3: every piece is a single tile, solved before any search', r.out.length + 0 >= 0 && exactN(Q) === 1);
   const rr = events(Q); check('  deduce wall tags', rr.out.length > 0 && rr.out.every(x => x.startsWith('wall:')), rr.out.slice(0, 4));
-  const S28 = require('./reference/solver-core.v98.js');
+  const S28 = require('./reference/solver-core.v99.js');
   const ctx28 = S28.buildSolverContext(Q.puzzle, Q.bank, Q.rules, null); let n28 = 0;
   for(const ev of S28.deduceSolve(3, 3, ctx28, [], { testNodes: 1, stopAtTwo: true })){ if(ev.type === 'deduce') n28++; if(ev.type === 'testing' || ev.type === 'stage' || ev.type === 'solution') break; }
   check('  v28 (which ignores the ban) decides nothing here', n28 === 0, n28);

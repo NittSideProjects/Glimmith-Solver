@@ -8,8 +8,8 @@
 //   3. strength:  edges decided before any search, v22 core vs v23 core (printed at the end)
 const L = require('./fuzzlib.js');
 const O = require('./oracle.js');
-const S23 = require('./reference/solver-core.v98.js');
-const S22 = require('./reference/solver-core.v98.js');
+const S23 = require('./reference/solver-core.v99.js');
+const S22 = require('./reference/solver-core.v99.js');
 const N = +process.argv[2] || 300, seed0 = +process.argv[3] || 1, maxSide = +process.argv[4] || 7;
 const rng = (s => () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; });
 

@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.8.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.9.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -12,6 +12,15 @@ is sent anywhere.
   `C:\Program Files (x86)\Steam\steamapps\workshop\content\4160210` (workshop puzzles) and `%LOCALAPPDATA%\Geri\Saved\workshop` (your own puzzles).
   Chrome and Edge remember the folders, so later imports are one click; other browsers ask for the folder each time.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.9
+
+Step by step: two neighbouring tiles known to be in one piece are linked on the step that shows it. The solver (core v99) now links
+every open edge inside a joined group at the start of the next propagation pass, before any other rule, and reports a far join right
+before the decisions that followed it (before, those links came from the basic check after every other rule had nothing left, up to
+twenty decisions later, and the step view drew them on unrelated steps). The step view also treats a link between tiles it already
+showed to be in one piece as part of the current step, whatever rule the solver names for it. No verdict changes (the same links were
+decided before, only later).
 
 ## V1.0.8
 
@@ -74,14 +83,14 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.8.html` | The whole application (editor, solver, importer) in one file. |
-| `dev/reference/solver-core.v98.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
+| `glimmith_solver_V1.0.9.html` | The whole application (editor, solver, importer) in one file. |
+| `dev/reference/solver-core.v99.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/test_*.js`, `dev/fuzz_*.js` | Solver tests. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |
 | `dev/ui_test_*.js` | Page tests (jsdom). |
 | `dev/tools/run_corpus.js` | Times the solver on every puzzle of a corpus and writes a report. |
 | `dev/game_puzzles*`, `dev/user_puzzles`, `dev/puzzles` | Puzzles used by the tools and tests. |
-| `dev/build/` | The changes since V1 as scripts: `patch_core94.py` + `patch_ui_V1.0.1.py` (V1 -> V1.0.1), `patch_core95.py` + `patch_ui_V1.0.2.py` (V1.0.1 -> V1.0.2), `patch_core96.py` + `patch_ui_V1.0.3.py` (V1.0.2 -> V1.0.3), `patch_ui_V1.0.4.py` (V1.0.3 -> V1.0.4, page only), `patch_core97.py` + `patch_ui_V1.0.5.py` (V1.0.4 -> V1.0.5), `patch_core98.py` + `patch_ui_V1.0.6.py` (V1.0.5 -> V1.0.6), `patch_ui_V1.0.7.py` (V1.0.6 -> V1.0.7, page only), `patch_ui_V1.0.8.py` (V1.0.7 -> V1.0.8, page only). |
+| `dev/build/` | The changes since V1 as scripts: `patch_core94.py` + `patch_ui_V1.0.1.py` (V1 -> V1.0.1), `patch_core95.py` + `patch_ui_V1.0.2.py` (V1.0.1 -> V1.0.2), `patch_core96.py` + `patch_ui_V1.0.3.py` (V1.0.2 -> V1.0.3), `patch_ui_V1.0.4.py` (V1.0.3 -> V1.0.4, page only), `patch_core97.py` + `patch_ui_V1.0.5.py` (V1.0.4 -> V1.0.5), `patch_core98.py` + `patch_ui_V1.0.6.py` (V1.0.5 -> V1.0.6), `patch_ui_V1.0.7.py` (V1.0.6 -> V1.0.7, page only), `patch_ui_V1.0.8.py` (V1.0.7 -> V1.0.8, page only), `patch_core99.py` + `patch_ui_V1.0.9.py` (V1.0.8 -> V1.0.9). |
 | `dev/tools/steptiming/`, `dev/results/step_timing_v94.md` | Time of each propagation step over the campaign (what the V1.0.2 order is based on). |
 | `dev/workshop_wally/` | The 21 Wally puzzles of the Steam workshop collection as one export file (Wally switched on: the game files can not say it), and their results. Run with `node tools/run_export.js workshop_wally/wally_workshop_21.glimmith.json 60 2`. |
 | `docs/handoffs/` | Development notes, oldest to newest. `HANDOFF_V1.0.5.md` is the last summary. |
@@ -98,4 +107,4 @@ node tools/run_corpus.js         # the campaign run (see the header of the file 
 ```
 
 The page is the source of truth. If you change the solver inside it, copy the block between `SOLVER CORE` and the import core into
-`dev/reference/solver-core.v98.js` (remove the two-space indent) so the tests run the same code.
+`dev/reference/solver-core.v99.js` (remove the two-space indent) so the tests run the same code.

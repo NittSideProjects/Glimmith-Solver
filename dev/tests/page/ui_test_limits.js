@@ -2,7 +2,7 @@
 // Loads the real HTML in jsdom. Usage: node ui_test_limits.js path/to/app.html
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
-const file = process.argv[2] || '../glimmith_solver_V1.0.20.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.21.html';
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));

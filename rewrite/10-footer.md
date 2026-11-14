@@ -2,7 +2,7 @@
 
 The "Rules with improved deduction logic" list and what each i button opens.
 
-Left here: 108 to write, 0 to check again, 12 notes, 31 to put on the page. Done: 16.
+Left here: 50 to write, 0 to check again, 24 notes, 63 to put on the page. Done: 30.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -304,287 +304,287 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0197
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_precision · Shows when you click the i next to this rule.
 - now: <b>The board must divide.</b> 7 tiles with Precision 3 is impossible, and so is every area closed off by walls that is not a multiple. An area of exactly 3 tiles is one piece.
-- new: 
+- new: <b>The board must divide.</b> If we know the precision is 5, then no pocket of area can be of size 8, they must be divisible by 10. Any wall that would force the remaining area to fail has to be a link
 
 ### T0198
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_precision · Shows when you click the i next to this rule.
 - now: <b>Grow and stop.</b> A group under the size with one way out takes it, and a group at the size is walled all round: on a 1x9 strip with Precision 3 both walls are found at once.
-- new: 
+- new: <b>Grow and stop.</b> If a shape hasn't satisified the precision yet, and has only one way out, then it must grows out that way. Similarely if it has already satisifed the precision then it's walled of.
 
 ### T0199
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_precision · Shows when you click the i next to this rule.
 - now: <b>One connection.</b> Where part of the board hangs on a single edge, counting decides it: 24 tiles behind one edge with Precision 5 need a piece to cross it, so the edge is a link. This works for every size rule.
-- new: 
+- new: <b>The board must divide advanced.</b> knowing that the board must divide everything equally, when a choke point exist we can count to know how many tiles need to be poking out/in. a pocket of size 23 with precision 5 needs to be poking out through it's only choke point 2 tiles.
 
 ### T0200
 - what: text · #improvedFooter
 - now: Minimum
-- new: 
+- new: =
 
 ### T0202
 - what: text · #impInfo_minimum · Shows when you click the i next to this rule.
 - now: Every piece has at least this many tiles.
-- new: 
+- new: [remove]
 
 ### T0203
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_minimum · Shows when you click the i next to this rule.
 - now: <b>Sizes that fit.</b> 7 tiles with Minimum 3 can only use pieces of 3, 4 or 7: a 5 or a 6 would leave 2 or 1 tiles.
-- new: 
+- new: <b>Sizes that fit.</b> An area of size 7 with Minimum 3 can only use pieces of size 3, 4 or 7: a 5 or a 6 would leave 2 or 1 tiles and fail the minimum.
 
 ### T0204
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_minimum · Shows when you click the i next to this rule.
 - now: <b>Too small.</b> A group under the Minimum with one way out takes it, and one that can not reach enough tiles is impossible. A closed area under twice the Minimum is one piece.
-- new: 
+- new: <b>Too small.</b> Similarely to precision, if a shape has only one way out and hasn't satisfied the minimum, it has to grow that way. this also makes us know a closed area with the size strictly under twice the minimum is one piece, two piece wouldn't fit.
 
 ### T0205
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_minimum · Shows when you click the i next to this rule.
 - now: <b>Together with the other bound.</b> A Minimum and a Maximum make a range: 13 tiles with pieces of 4 to 6 can only use 4s and 5s, and a 2x3 board with pieces of 3 to 5 is two pieces of 3.
-- new: 
+- new: <b>Together with the other bound.</b> A Minimum and a Maximum make a range: Knowing that can help reduce possible size combinations even more, sometimes it can even rule out a size completely. min 4 max 6 in a pocket of 12 can only be 4+4+4 or 6+6.
 
 ### T0206
 - what: text · #improvedFooter
 - now: Maximum
-- new: 
+- new: =
 
 ### T0208
 - what: text · #impInfo_maximum · Shows when you click the i next to this rule.
 - now: Every piece has at most this many tiles. On its own it says little; it matters with walls, clues or a Minimum.
-- new: 
+- new: [remove]
 
 ### T0209
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_maximum · Shows when you click the i next to this rule.
 - now: <b>Too big together.</b> Two groups that would be too big together get a wall. A closed area needs at least (tiles / Maximum) pieces: 10 tiles with Maximum 5 and only two groups make each group its own piece.
-- new: 
+- new: <b>Too big together.</b> when adding up two shapes size make a number above the maximum, then those two shapes must be distinct. and in puzzles where the total amount of shape is known or limited (mismatch for exemple) maximum allows the solver to enumerate all possible shapes and plan accordingly
 
 ### T0210
 - what: text · #improvedFooter
 - now: Piece rules
-- new: 
+- new: =
 
 ### T0211
 - what: text · #improvedFooter
 - now: Shape bank
-- new: 
+- new: =
 
 ### T0213
 - what: text · #impInfo_shapebank · Shows when you click the i next to this rule.
 - now: Every piece is one of the bank's shapes (turned or flipped).
-- new: 
+- new: [remove]
 
 ### T0214
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_shapebank · Shows when you click the i next to this rule.
 - now: <b>Sizes.</b> Only the bank's sizes count: straight trominoes on 7 tiles is impossible, and a domino and a pentomino on 9 tiles is only 2 + 2 + 5. The same holds for every closed area.
-- new: 
+- new: <b>Sizes.</b> Since every piece is a shape in the shape bank, they must all have one of their size. if the bank only holds shape of size 2 and 5, a closed area of size 9 forces the 2+2+5 combination.
 
 ### T0215
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_shapebank · Shows when you click the i next to this rule.
 - now: <b>Where a shape can go.</b> The solver lists every placement that holds each group, and what they share is decided: straight trominoes on a 1x6 strip find the wall after the third tile.
-- new: 
+- new: <b>Where a shape can go.</b> with shape bank every possibility is very restictive, so testing all possible placement is a good strategy specially with small shape banks.
 
 ### T0216
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_shapebank · Shows when you click the i next to this rule.
 - now: <b>What every shape has.</b> If every bank shape contains a 2x2 block, so does every piece: a tile with no room for a 2x2 around it is impossible. The same goes for a bend.
-- new: 
+- new: <b>What is in commun.</b> If every bank shape contains a 2x2 block, so does every piece. this means a straight corridor must go out in a way that allows it to contain that 2x2. This is also true of every shape doesn't contain a 2x2, but it is taken care of by the point above.
 
 ### T0217
 - what: text · #improvedFooter
 - now: Mismatch
-- new: 
+- new: =
 
 ### T0219
 - what: text · #impInfo_mismatch · Shows when you click the i next to this rule.
 - now: Every piece has a different shape.
-- new: 
+- new: [remove]
 
 ### T0220
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_mismatch · Shows when you click the i next to this rule.
 - now: <b>Enough shapes.</b> There is 1 domino, 2 trominoes, 5 tetrominoes... A board that can not be covered with different shapes is impossible, and sizes that can not be used are dropped.
-- new: 
+- new: <b>Enough shapes.</b> Mismatch is a piece amount limitation, since there is 1 domino, 2 trominoes, 5 tetrominoes... so with a size limitation we can easily tell what pieces HAVE to be used, in particular a puzzle which are is equal to the total size of all shapes must have room for every, single, one.
 
 ### T0221
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_mismatch · Shows when you click the i next to this rule.
 - now: <b>A shape is used once.</b> Once a piece is the domino, no other piece can be. Two pieces that can only be the two trominoes take both, even before knowing which is which. Two touching area numbers 2 are one piece (there is a single domino).
-- new: 
+- new: <b>A shape is used once.</b> Since every shape is unique, if they are already drawn, every piece that looks like it must grow to avoid breaking mismatch.
 
 ### T0222
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_mismatch · Shows when you click the i next to this rule.
 - now: <b>Room for the neighbour.</b> A place is dropped if it leaves a neighbour room only for the same shape: a 1x4 gap can not be filled with 1x2s.
-- new: 
+- new: <b>Room for the neighbour.</b> if an area can be filled with a shape that would leave the remaining hole of that same shape, then it can't happen, as both would be matching and break mismatch.
 
 ### T0223
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_mismatch · Shows when you click the i next to this rule.
 - now: <b>Sizes used up.</b> Once both trominoes are used no other piece has 3 tiles, and Inequality and Difference walls carry that further.
-- new: 
+- new: <b>A shape is used once advanced.</b> The solver doesn't need to check if the shape is fully drawn to know if that shape is still available in the rest of the puzzle. If two place need to be of area 3, since there exist only 2 triomino, the rest of the puzzle can't be either of those and no size 3 can happen.
 
 ### T0224
 - what: text · #improvedFooter
 - now: Match
-- new: 
+- new: =
 
 ### T0226
 - what: text · #impInfo_match · Shows when you click the i next to this rule.
 - now: Every piece has the same shape.
-- new: 
+- new: [remove]
 
 ### T0227
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_match · Shows when you click the i next to this rule.
 - now: <b>One size.</b> The size divides the board and every area closed by walls: 12 tiles allow 1, 2, 3, 4, 6 or 12. With one size left, groups grow to it and stop, and a tile that is the only way into a part of the board takes exactly what is left after whole pieces.
-- new: 
+- new: <b>One size.</b> If the puzzle is one shape, then the puzzle has one size. this means the shape can only be one size that divide the total area of the puzzle. if the puzzle is of size 12, then the shape can't be of size 5.
 
 ### T0228
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_match · Shows when you click the i next to this rule.
 - now: <b>One shape for every group.</b> Every group known to be one piece must fit in the shape: a bent group of 3 and a straight group of 3 rule out size 3. With one shape left, every group needs a place for it, like a polyomino.
-- new: 
+- new: <b>One shape for every group.</b> Every part of the puzzle that is known can act as small pocket of knowledge about the shape as a whole. if we know the shape contains a 1x3 and the 2x2 then it must be of size 5 or more.
 
 ### T0229
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_match · Shows when you click the i next to this rule.
 - now: <b>Every tile needs the shape.</b> Every tile of the board must be covered by some placement of the shape: a size where no shape can reach every tile (a dead end at the end of a 1-wide arm, a 2x2 pocket) is dropped.
-- new: 
+- new: <b>One shape for every group advanced.</b> This idea of pocket of knowledge can be pushed further, if we know from a compass that the shape must fit inside a 5x5 square as a whole, then finding the correct shape can get a lot easier as any shape that break that size limit are instantly dismissed without testing the tiling. Combining known sub-shapes that must fit inside the true shape and size limitation from puzzle grid or clue we can go through all possibility very quickly
 
 ### T0230
 - what: text · #improvedFooter
 - now: Mingle Shape
-- new: 
+- new: =
 
 ### T0232
 - what: text · #impInfo_mingleshape · Shows when you click the i next to this rule.
 - now: Pieces that touch have different shapes.
-- new: 
+- new: [remove]
 
 ### T0233
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_mingleshape · Shows when you click the i next to this rule.
 - now: <b>Neighbours lose a shape.</b> A piece known to be a shape takes it from every piece across a wall: with a bank of a domino and two trominoes, the piece next to a domino has 3 tiles. Two touching pieces known to be the same shape are one piece.
-- new: 
+- new: <b>Neighbours lose a shape.</b> When a piece is already decided, every neighbor that looks like it must grow, this is expecially useful with small shapes like the 1x1, or with shape bank.
 
 ### T0234
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_mingleshape · Shows when you click the i next to this rule.
 - now: <b>Two shapes.</b> With only two possible shapes, neighbours alternate like a chessboard: an odd loop of walls is impossible, and no corner has exactly three walls.
-- new: 
+- new: <b>Two shapes.</b> And when only two possible shapes are used in the puzzle, we know the solution must always alternate, like a checkerboard pattern. this also makes us know a corner can't have exactly 3 walls.
 
 ### T0235
 - what: text · #improvedFooter
 - now: Size Separation
-- new: 
+- new: =
 
 ### T0237
 - what: text · #impInfo_minglearea · Shows when you click the i next to this rule.
 - now: Pieces that touch have different sizes.
-- new: 
+- new: [remove]
 
 ### T0238
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_minglearea · Shows when you click the i next to this rule.
 - now: <b>Neighbours lose a size.</b> With sizes 2 to 4, the piece next to a 2 has at least 3 tiles. Two touching area numbers 2 are one piece.
-- new: 
+- new: <b>Neighbours lose a size.</b> Exactly the same idea that mingle shape had, but even more restrictive, if a shape is decided neighbouring shapes of the same size must grow.
 
 ### T0239
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_minglearea · Shows when you click the i next to this rule.
 - now: <b>Two sizes.</b> With only two possible sizes, neighbours alternate like a chessboard: an odd loop of walls is impossible, and no corner has exactly three walls.
-- new: 
+- new: <b>Two sizes.</b> And exactly like mingle shape, with only 2 size the solution is also a sort of checkerboard pattern, so all corner of exactly 3 walls are banned.
 
 ### T0240
 - what: text · #improvedFooter
 - now: Solitude
-- new: 
+- new: =
 
 ### T0242
 - what: text · #impInfo_solitude · Shows when you click the i next to this rule.
 - now: Every piece holds exactly one symbol (watchtowers do not count).
-- new: 
+- new: [remove]
 
 ### T0243
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_solitude · Shows when you click the i next to this rule.
 - now: <b>One symbol each.</b> N symbols make N pieces, and two symbols never share one: neighbouring symbols get a wall.
-- new: 
+- new: <b>One symbol each.</b> Since N symbols make N pieces, this rules allows us to know the total amount of pieces. Also two neighbouring piece that each already hold a symbol can't merge and are walled off.
 
 ### T0244
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_solitude · Shows when you click the i next to this rule.
 - now: <b>Reaching a symbol.</b> A group with no symbol must grow to one, so a wall that would cut it off from all of them is a link. A closed area with one symbol is one piece.
-- new: 
+- new: <b>Reaching a symbol.</b> A group with no symbol must grow to one, so a wall that would cut it off from all of them is a link and a closed area with one symbol needs to be one piece.
 
 ### T0245
 - what: text · #improvedFooter
 - now: Boxy
-- new: 
+- new: =
 
 ### T0247
 - what: text · #impInfo_boxy · Shows when you click the i next to this rule.
 - now: Every piece is a rectangle.
-- new: 
+- new: [remove]
 
 ### T0248
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_boxy · Shows when you click the i next to this rule.
 - now: <b>Fill the box.</b> Tiles of one piece fill the box round them: two tiles at opposite corners of a 2x3 link all six.
-- new: 
+- new: <b>Fill the box.</b> tiles known to be one piece needs to fill everything in the middle to be a rectangle, so an L tetromino needs to be a 2x3. The solver doesn't need to know the tiles are already linked for that, knowing they will eventually be part of the same shape is enough to fill the whole middle.
 
 ### T0249
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_boxy · Shows when you click the i next to this rule.
 - now: <b>Walls run straight.</b> A wall can not stop in the open or turn a corner: at each inner corner it runs straight, makes a T or a cross.
-- new: 
+- new: <b>Walls run straight.</b> At every corner, there can never be exactly 2 wall that formes a bend, otherwise the other two link would create a bend triomino. this means every corner either runs straight, has 3 walls, or has 4 walls. (or 0)
 
 ### T0250
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_boxy · Shows when you click the i next to this rule.
 - now: <b>Where the rectangle can go.</b> For a piece of known size the solver lists every rectangle that fits, and what they share is decided. A group already shut on one side (wall, hole, board edge) can not grow past it.
-- new: 
+- new: <b>What placement fits the size.</b> When a piece's size is known, it's very fast to check every placement of it with boxy as the amount of possible rectangle is very small. this is done to know what link is always there and what wall is always there.
 
 ### T0251
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_boxy · Shows when you click the i next to this rule.
 - now: <b>Prime sizes.</b> However the size is known (an area number, Difference or Inequality walls, ...), a prime size is a strip: a piece of 7 is a 1x7, and where 7 tiles do not fit across, it runs up and down.
-- new: 
+- new: <b>Prime sizes.</b> To go further, when the size of a piece is known and is a prime number then the shape is a strip: a size of 7 is always a 1x7, and finding way to fit it into the puzzle often lead to knowing if it is horizontal or vertical.
 
 ### T0252
 - what: text · #improvedFooter
 - now: Non-boxy
-- new: 
+- new: =
 
 ### T0254
 - what: text · #impInfo_nonboxy · Shows when you click the i next to this rule.
 - now: No piece is a rectangle.
-- new: 
+- new: [remove]
 
 ### T0255
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_nonboxy · Shows when you click the i next to this rule.
 - now: <b>At least 3 tiles.</b> A single tile and a domino are rectangles, so every piece has 3 tiles or more.
-- new: 
+- new: <b>At least 3 tiles.</b> Title says it all ! the 1x1 and 1x2 are both rectangles, so non boxy is also minimum 3 so minimum logic also applies.
 
 ### T0256
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_nonboxy · Shows when you click the i next to this rule.
 - now: <b>Keep growing.</b> A group that is a rectangle so far is not finished: with one way out, that edge is a link. A closed strip or a small closed box is impossible.
-- new: 
+- new: <b>Keep growing.</b> if a shape is currently a rectangle, it has to grow no matter what. And if it only has one way to grow then that needs to be a link.
 
 ### T0257
 - what: text · #improvedFooter
 - now: Bricky
-- new: 
+- new: =
 
 ### T0259
 - what: text · #impInfo_bricky · Shows when you click the i next to this rule.
 - now: No corner has four walls meeting (a cross).
-- new: 
+- new: [remove]
 
 ### T0260
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_bricky · Shows when you click the i next to this rule.
 - now: <b>Three walls.</b> Three walls at a corner make the fourth a link.
-- new: 
+- new: <b>Three walls.</b> if we know three walls at a corner, we know the 4th is a link, pretty self explanatory.
 
 ### T0261
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_bricky · Shows when you click the i next to this rule.
 - now: <b>Poking-in corners.</b> Where two walls meet at a right angle pointing into the board (next to a hole), the tile diagonal to it must join one of its two neighbours: it can never be a one-tile piece. Two pieces (or holes) touching only at a corner are impossible.
-- new: 
+- new: <b>Poking-in corners.</b> Where two walls meet at a right angle pointing into the board (or from a hole), the tile diagonal to it has to join one of its two neighbours. If it didn't, it would instantly create 4 walls. Two pieces (or holes) with touching corners is impossible. This helps reduce possible placement for polyomino and such.
 
 ### T0262
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_bricky · Shows when you click the i next to this rule.
 - now: <b>Placements.</b> A polyomino, bank shape or rectangle that would leave a cross somewhere is dropped.
-- new: 
+- new: [remove as explained above]
 
 ### T0263
 - what: text · #improvedFooter
 - now: Loopy
-- new: 
+- new: =
 
 ### T0265
 - what: text · #impInfo_loopy · Shows when you click the i next to this rule.
 - now: No corner has exactly three walls (a T). So every corner has 0, 2 or 4 walls, and the pieces can be coloured with two colours, the outside being one of them.
-- new: 
+- new: [make this a point instead : <b>Two colors.</b> Since no corner has exactly three walls (a T), So every corner has 0, 2 or 4 walls. this also makes the final puzzle 2 colorable, with the outside being one of them.
 
 ### T0266
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_loopy · Shows when you click the i next to this rule.
@@ -594,7 +594,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0267
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_loopy · Shows when you click the i next to this rule.
 - now: <b>Three walls.</b> Three walls at a corner make the fourth a wall.
-- new: 
+- new: <b>Three walls.</b> Three walls at a corner make the fourth a wall.
 
 ### T0268
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_loopy · Shows when you click the i next to this rule.

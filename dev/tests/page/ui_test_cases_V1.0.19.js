@@ -1,7 +1,7 @@
 // V1.0.19: "Show cases" on the proofs by contradiction of the step view.
 // node tests/page/ui_test_cases_V1.0.19.js [page.html]
 const { JSDOM } = require('jsdom'); const fs = require('fs'); const path = require('path');
-const file = process.argv[2] || '../glimmith_solver_V1.0.20.html', pz = path.join(__dirname, '..', '..', 'fixtures', 'colors_V1.0.6.glimmith.json');
+const file = process.argv[2] || '../glimmith_solver_V1.0.21.html', pz = path.join(__dirname, '..', '..', 'fixtures', 'colors_V1.0.6.glimmith.json');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

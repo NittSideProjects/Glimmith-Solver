@@ -176,6 +176,9 @@
   .example-pop .case-list{ margin:6px 0 0; padding:0 0 0 20px; font-size:13px; line-height:1.5; }
   .example-pop .case-fail{ margin:6px 0 0; font-size:13px; line-height:1.5; }
   .example-pop .case-fail b{ color:#e5534b; }
+  .example-pop details.case-fold{ border-top:1px solid var(--seam); padding:8px 0; }
+  .example-pop details.case-fold > summary{ cursor:pointer; font-size:13px; line-height:1.5; }
+  .example-pop details.case-fold .ex-card{ border-top:none; padding:8px 0 0; }
   .example-pop .ded-probe [stroke-dasharray]{ fill:rgba(229,83,75,.75); stroke-width:2.2; }
   .example-btn[hidden]{ display:none; }
   .example-pop{ position:fixed; inset:0; background:rgba(0,0,0,.5); display:flex; align-items:center; justify-content:center; z-index:70; padding:16px; }
@@ -2558,9 +2561,9 @@
     'gemini-place': `a shape near a gemini is a shape that the other side can't be, or a delta that the other side must be`,
     'region-merge': 'two groups must be one piece: as two pieces they would need more tiles than their closed-in region has',
     'size-cut': 'a part cut off by one tile can not be covered by pieces of the one size every piece has',
-    'stamp-size': 'a polyomino stamp does not fit the size rules or another symbol',
-    'stamp-shape': 'two different stamps end up in one piece',
-    'shape-fit': 'a piece can no longer be the shape of its stamp',
+    'stamp-size': 'a polyomino does not fit the size rules or another symbol',
+    'stamp-shape': 'two different polyominoes end up in one piece',
+    'shape-fit': 'a piece can no longer be the shape of its polyomino',
     'bank-fit': 'a piece can no longer be any shape of the bank',
     'ban-fit': 'tiles that must share a piece already contain a banned shape',
     'solitude-count': 'with Solitude every piece holds exactly one symbol, and the symbols on the grid do not allow that',
@@ -2606,11 +2609,11 @@
     'cmp-place': 'no way is left for a compass piece to have all its numbers',
     'cmp-crowd': 'the compasses want more tiles than the board has for them (however they are split into pieces)',
     'cmp-excl': 'a tile can not be in the piece of a compass (assuming it is breaks something)',
-    'gemini-shape': 'two different stamp shapes are pinned on the two sides of a same-shape wall',
-    'delta-shape': 'the same stamp shape is pinned on both sides of a different-shape wall',
+    'gemini-shape': 'two different polyomino shapes are pinned on the two sides of a same-shape wall',
+    'delta-shape': 'the same polyomino shape is pinned on both sides of a different-shape wall',
     'ban-size': 'every shape of a size the rules need contains a banned shape',
-    'stamp-pair': 'two stamps that cannot share a piece are forced together',
-    'stamp-place': 'a polyomino stamp has nowhere left to go',
+    'stamp-pair': 'two polyominoes that cannot share a piece are forced together',
+    'stamp-place': 'a polyomino has nowhere left to go',
     'mingle-area-single': 'only one piece size is possible, so no two pieces may touch',
     'mingle-area-clash': 'a piece has no size left that differs from all its neighbours',
     'mingle-area-pocket': 'tiles closed in by pieces of known size are too few for a piece of their own, and joining any of those pieces breaks Mingle Area',
@@ -2639,7 +2642,7 @@
     'pair-apart': 'the tile joining that group leads to a contradiction, so they are different pieces',
     'pair-join': 'the two groups as different pieces lead to a contradiction, so they are one piece',
     'mismatch-count': 'there are not enough different shapes to cover the board',
-    'mismatch-stamp': 'two stamps of the same shape must be one piece, because no two pieces may share a shape',
+    'mismatch-stamp': 'two polyominoes of the same shape must be one piece, because no two pieces may share a shape',
     'mismatch-link': 'two groups that can only be the same shape must be one piece, because no two pieces may share a shape',
     'mismatch-clash': 'a piece has no shape left that the other pieces do not already use',
     'mismatch-place': 'the one shape this piece must have has no place left',
@@ -13339,10 +13342,18 @@
       const ctx = buildSolverContext(puzzle, bankShapesData, sizeRules, (stepsCtx && stepsCtx.hints) || { maxRegions: null, maxRegionSize: null }, banShapesData());
       const opts = Object.assign({ testMs: cfg.testMs, restart: cfg.restart, order: cfg.order, focusMode: cfg.focusMode, nearShare: cfg.nearShare, useWitness: cfg.useWitness,
         stopAtTwo: true, nodeBudget: NODE_BUDGET, exact: 'edge', slices: 's18,e', fullScan: true }, pre, { explain });
-      for(const ev of deduceSolve(puzzle.w, puzzle.h, ctx, collectSpecialEdges(), opts)) if(ev.type === 'cases') return ev;
+      let first = null;
+      for(const ev of deduceSolve(puzzle.w, puzzle.h, ctx, collectSpecialEdges(), opts)) if(ev.type === 'cases') first = ev;
+      if(!first || first.complete || first.stale) return first;
+      // V1.0.21: cases left open: once more with deeper limits (a fresh context: the first run changed nothing, but it is cheap)
+      const ctx2 = buildSolverContext(puzzle, bankShapesData, sizeRules, (stepsCtx && stepsCtx.hints) || { maxRegions: null, maxRegionSize: null }, banShapesData());
+      let deep = null;
+      for(const ev of deduceSolve(puzzle.w, puzzle.h, ctx2, collectSpecialEdges(), Object.assign({}, opts, { explain: Object.assign({}, explain, { maxDepth: 8, maxCases: 40, ms: 4000 }) }))) if(ev.type === 'cases') deep = ev;
+      return deep && deep.complete ? deep : first;
     } catch(e){ /* the cases stay unknown */ }
     return null;
   }
+  const WHOLE_BOARD_WHY = new Set(['euler-count', 'colour-count', 'match-size', 'mismatch-count', 'area-count', 'rose-count', 'hetero-count', 'solitude-count', 'range-count', 'bridge-count']);   // V1.0.21
   // one case: its board (the tried values in red, what the rules then decide outlined), the rules in order, the reason it fails
   function caseCard(st, idx, c, n, total, fact){
     const card = document.createElement('div'); card.className = 'ex-card';
@@ -13374,6 +13385,7 @@
       let why = stepWhyText(c.why).trim().replace(/\.+$/, ''); if(/^[A-Z][a-z]/.test(why)) why = why[0].toLowerCase() + why.slice(1);
       const lead = document.createElement('b'); lead.textContent = c.at ? 'This fails at the tiles ringed in red: ' : 'This fails: '; f.appendChild(lead);
       f.appendChild(document.createTextNode((why || 'the rules can not all be met') + '.'));
+      if(!c.at && WHOLE_BOARD_WHY.has(c.why)) f.appendChild(document.createTextNode(' This is a count over the whole board, so there is no single place to mark.'));   // V1.0.21
     }
     card.appendChild(f);
     return card;
@@ -13398,10 +13410,17 @@
     for(const fact of facts){
       const res = explainStep(st, fact);
       if(!res || !res.cases.length){ note('The cases could not be rebuilt for this step.'); continue; }
-      if(!res.complete) note(st.kind === 'search'
-        ? 'The solver proved this step with a longer search: it tried every way to go on. These are the first cases; the ones marked as still open need more choices than fit here.'
-        : 'These cases do not close everything: the ones marked as still open need more choices than fit here.');
-      res.cases.forEach((c, i) => { box.appendChild(caseCard(st, idx, c, i + 1, res.cases.length, fact)); shown++; });
+      const failing = res.cases.filter(c => !c.open), still = res.cases.length - failing.length;      // V1.0.21
+      if(!failing.length){ note('This step was proved by a longer search: trying the other value breaks no rule within a few choices, so there is no short list of cases to show.'); continue; }
+      if(still) note(`${still === 1 ? 'One more way' : still + ' more ways'} to go on ${still === 1 ? 'breaks' : 'break'} no rule within a few choices: for ${still === 1 ? 'that one' : 'those'} the solver needed a longer search. The cases below are the ones that fail.`);
+      failing.forEach((c, i) => {
+        const card = caseCard(st, idx, c, i + 1, failing.length, fact); shown++;
+        if(failing.length <= 4){ box.appendChild(card); return; }
+        const d = document.createElement('details'); d.className = 'case-fold'; d.open = i === 0;                 // many cases are folded
+        const sm = document.createElement('summary');
+        sm.textContent = card.querySelector('.case-tried').textContent + ' ' + card.querySelector('.case-fail').textContent;
+        d.append(sm, card); box.appendChild(d);
+      });
     }
     if(st.kind === 'fact' && st.facts.length > 3) note(`This step joins ${st.facts.length} pairs of tiles: the cases of the first three are shown.`);
     close.focus();

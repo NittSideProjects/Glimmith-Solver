@@ -2,7 +2,7 @@
 
 Messages that are not tied to one place on the page.
 
-Left here: 113 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 0.
+Left here: 117 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 0.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -546,6 +546,11 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - now: the rules can not all be met
 - new: 
 
+### T1157
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: This is a count over the whole board, so there is no single place to mark.
+- new: 
+
 ### T1152
 - what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
 - now: What the solver tried, and why it fails
@@ -558,12 +563,27 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T1154
 - what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
-- now: The solver proved this step with a longer search: it tried every way to go on. These are the first cases; the ones marked as still open need more choices than fit here.
+- now: This step was proved by a longer search: trying the other value breaks no rule within a few choices, so there is no short list of cases to show.
 - new: 
 
 ### T1155
 - what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
-- now: These cases do not close everything: the ones marked as still open need more choices than fit here.
+- now: One more way
+- new: 
+
+### T1158
+- what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
+- now: {1} more ways
+- new: 
+
+### T1159
+- what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
+- now: that one
+- new: 
+
+### T1160
+- what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
+- now: {1} to go on {2} no rule within a few choices: for {3} the solver needed a longer search. The cases below are the ones that fail.
 - new: 
 
 ### T1156

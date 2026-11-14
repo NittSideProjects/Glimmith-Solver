@@ -108,17 +108,17 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0995
 - what: message · WHY_TEXT › stamp-size · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: a polyomino stamp does not fit the size rules or another symbol
+- now: a polyomino does not fit the size rules or another symbol
 - new: 
 
 ### T0346
 - what: message · WHY_TEXT › stamp-shape · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: two different stamps end up in one piece
+- now: two different polyominoes end up in one piece
 - new: 
 
 ### T0996
 - what: message · WHY_TEXT › shape-fit · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: a piece can no longer be the shape of its stamp
+- now: a piece can no longer be the shape of its polyomino
 - new: 
 
 ### T0997
@@ -338,12 +338,12 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0376
 - what: message · WHY_TEXT › gemini-shape · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: two different stamp shapes are pinned on the two sides of a same-shape wall
+- now: two different polyomino shapes are pinned on the two sides of a same-shape wall
 - new: 
 
 ### T0377
 - what: message · WHY_TEXT › delta-shape · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: the same stamp shape is pinned on both sides of a different-shape wall
+- now: the same polyomino shape is pinned on both sides of a different-shape wall
 - new: 
 
 ### T0378
@@ -353,12 +353,12 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0379
 - what: message · WHY_TEXT › stamp-pair · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: two stamps that cannot share a piece are forced together
+- now: two polyominoes that cannot share a piece are forced together
 - new: 
 
 ### T1011
 - what: message · WHY_TEXT › stamp-place · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: a polyomino stamp has nowhere left to go
+- now: a polyomino has nowhere left to go
 - new: 
 
 ### T0380
@@ -503,7 +503,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0403
 - what: message · WHY_TEXT › mismatch-stamp · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: two stamps of the same shape must be one piece, because no two pieces may share a shape
+- now: two polyominoes of the same shape must be one piece, because no two pieces may share a shape
 - new: 
 
 ### T0404

@@ -38,7 +38,9 @@ same events on 3,700 random boards). Tests: `tests/solver/test_explain102.js`, `
 Reach cap (core v101). A group on a wall that compares sizes now has at most the tiles it can still reach (through edges that are
 not walls, never into another piece). So "this piece has 3 or 4 tiles" is known, and the piece across a Difference wall gets its
 size from it and grows by the rules. On the puzzle that showed the gap (sent by the author, not in the repository) a piece in a
-pocket is now linked out through its neck by three rule steps, where the solver went to the final search before. A link a
+pocket is now linked out through its neck by three rule steps, where the solver went to the final search before. On the page with its default settings that puzzle went from 9.0 s to 1.6 s (measured in a browser): with those
+links known, the short exhaustive attempt that runs before the edge-by-edge tests finishes. With "Ignore edge by edge if exhaustive
+would be faster" unticked it still takes about 25 s: every edge is then tested on its own first. A link a
 group needs to reach a size asked by such a wall is tagged "Walls that compare sizes" (it showed as "Reach (Minimum)"). All 41
 fuzzers at 120 puzzles: no mismatch. Tests: `tests/solver/test_reachcap101.js` (synthetic boards).
 

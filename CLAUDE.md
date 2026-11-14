@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 A single-page editor and uniqueness solver for puzzles from the game *The Artisan of Glimmith*. The whole app (editor, solver, importer, UI) is one
-self-contained HTML file, `glimmith_solver_V1.0.17.html`, with no build step and no network use. `dev/` holds the Node test suite and tools.
+self-contained HTML file, `glimmith_solver_V1.0.18.html`, with no build step and no network use. `dev/` holds the Node test suite and tools.
 
 ## This repository is public: keep game and third-party data out
 
@@ -42,7 +42,7 @@ environment: three timing checks on the live solving animation).
 
 ## Architecture
 
-- **The page is the source of truth.** Inside `glimmith_solver_V1.0.17.html` the main `<script>` contains, in order: the `SOLVER CORE`
+- **The page is the source of truth.** Inside `glimmith_solver_V1.0.18.html` the main `<script>` contains, in order: the `SOLVER CORE`
   block (pure functions; its banner comment is the full core version history), the deduction solver (`deduceSolve`: propagation steps,
   probes, narrow per-edge searches, then an exact final search), the import core (puzzle file, zip and workshop folder parsing), then the
   UI code.
@@ -98,7 +98,7 @@ are too simple, earlier decisions that are not the point of the example are left
 A variant of a rule shares the plain rule's example ("Forced growth (Minimum)" opens "Forced growth": `_alias` in `curated.json`),
 and a rule whose only example nobody can read gets none (`_remove`) rather than a confusing one.
 When a solver change can move when rules fire, refresh them with `dev/tools/examples/` (see its README)
-and check with `tests/page/ui_test_examples_V1.0.17.js`.
+and check with `tests/page/ui_test_examples_V1.0.18.js`.
 
 ## How a new version is made
 

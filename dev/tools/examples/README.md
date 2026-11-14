@@ -31,5 +31,5 @@ node tools/examples/to_page.js /tmp/min.json /tmp/page.json
 node tools/examples/curate.js $C $PWD/fuzzlib.js /tmp/page.json build/rule_examples_V1.0.x.json
 ```
 
-`tests/page/ui_test_examples_V1.0.17.js` checks that every board draws and that the data keeps to the limits above. A new rule needs a line in
+`tests/page/ui_test_examples_V1.0.18.js` checks that every board draws and that the data keeps to the limits above. A new rule needs a line in
 `lines.json` (and on the rewrite list) and a title in the page's `STEP_INFO`.

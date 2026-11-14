@@ -1,12 +1,12 @@
 // v39: the converted game puzzles open in the editor page, and give EXACTLY the state the page's own "Import puzzles..." makes from the original .puz.
-// usage (from the project folder, after `npm install`): node ui_test_game_import39.js [../glimmith_solver_V1.0.17.html]
+// usage (from the project folder, after `npm install`): node ui_test_game_import39.js [../glimmith_solver_V1.0.18.html]
 // For one sample per category (+ 1408 and the puzzle with most clue kinds): fresh page A imports the .puz, fresh page B imports the converted .glimmith.json;
 // Raw state (debugJson) must be identical, the file's solution must be offered, and the report must have no problem.
 const fs = require('fs'), path = require('path'); const { JSDOM } = require('jsdom');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x).slice(0, 300) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const html = fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.17.html', 'utf8');
+const html = fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.18.html', 'utf8');
 function boot(){
   const store = new Map(), dom = new JSDOM(html, { runScripts: 'dangerously', pretendToBeVisual: true, url: 'http://localhost/' }), { window } = dom;
   window.storage = { get: async k => store.has(k) ? { key: k, value: store.get(k) } : null, set: async (k, v) => { store.set(k, v); return {}; }, delete: async () => ({}), list: async () => ({ keys: [] }) };

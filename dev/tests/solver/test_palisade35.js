@@ -3,7 +3,7 @@
 //   2. it is TRUE: an independent pruned search (below, shares nothing with solver-core) finds no tiling that has the opposite value,
 //   3. impossible examples: that search finds no tiling at all; solvable ones: it finds at least one.
 // node test_palisade35.js
-const L = require('../../fuzzlib.js'), S = require('../../reference/solver-core.v100.js'), S34 = require('../../reference/solver-core.v100.js');
+const L = require('../../fuzzlib.js'), S = require('../../reference/solver-core.v101.js'), S34 = require('../../reference/solver-core.v101.js');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const R0 = { precision: null, min: null, max: null, mismatch: false, match: false, mingleShape: false, mingleArea: false, solitude: false, boxy: false, nonBoxy: false };

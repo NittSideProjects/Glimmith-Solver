@@ -1,4 +1,4 @@
-// ================= SOLVER CORE (pure, unit-tested separately; v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; v28 = v27 + chain / parity / budget facts for the walls that compare sizes; v27 = v26 + area number deduction; v25 = v24 + Match / Mismatch deduction rules; v24 = v23 + Mingle Area / Mingle Shape deduction rules; v23 = v22 + rose / polyomino deduction rules) =================
+// ================= SOLVER CORE (pure, unit-tested separately; v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; v28 = v27 + chain / parity / budget facts for the walls that compare sizes; v27 = v26 + area number deduction; v25 = v24 + Match / Mismatch deduction rules; v24 = v23 + Mingle Area / Mingle Shape deduction rules; v23 = v22 + rose / polyomino deduction rules) =================
 
 // ---- shape symmetry helpers ----
 
@@ -8326,6 +8326,17 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     }
     // v27: walls that compare sizes (lt / gt / diffN / gemini): the sizes each piece can still have
     if(relOn){
+      if(opts.reachCap !== false){                                               // v101: a piece stays inside the tiles its group can still reach
+        const seen = new Set(), none = new Set();
+        for(const re of relEdges) for(const t of [re.a, re.b]){
+          const rep = find(t); if(seen.has(rep)) continue; seen.add(rep);
+          const cap = capOf.get(rep), lim = Math.min(cap, 24) + 1;
+          const n = reachCount(rep, members.get(rep), dmap.get(rep) || none, null, lim);
+          if(n >= lim) continue;                                               // it reaches as many tiles as it may have (or too many to matter)
+          if(n < need.get(rep)){ failWhy = 'reach'; return null; }
+          capOf.set(rep, n);
+        }
+      }
       const rl = relStep(need, capOf, dmap);
       if(rl === null){ failWhy = why; return null; }
       if(rl.length > 0) return rl;
@@ -8461,7 +8472,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
       };
       const reachTag = closed => {                         // the Minimum alone made it fail: the group could still reach what its other rules need
         if(reachWhy !== 'reach' || nd === baseNd) return reachWhy;
-        return (fast ? reachCnt >= baseNd : reachOk(rep, mem, blocked, closed, baseNd, cp)) ? 'min-reach' : reachWhy;
+        return (fast ? reachCnt >= baseNd : reachOk(rep, mem, blocked, closed, baseNd, cp)) ? (relRaised.has(rep) ? 'area-rel' : 'min-reach') : reachWhy;   // v101
       };
       if(reachFails(null)){ failWhy = reachTag(null); return null; }
       for(const e of (exits.get(rep) || [])){

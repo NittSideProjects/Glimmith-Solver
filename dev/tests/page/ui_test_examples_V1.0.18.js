@@ -1,8 +1,8 @@
 // V1.0.13: rule examples (tiny boards, one mechanic each). "Show all examples" (bottom of the page) draws every example; a rule step of the step view has a
 // "Show example" button that opens its example; Escape and Close shut the pop-up.
-// node ui_test_examples_V1.0.17.js [page.html]
+// node ui_test_examples_V1.0.18.js [page.html]
 const { JSDOM } = require('jsdom'); const fs = require('fs'); const path = require('path');
-const file = process.argv[2] || '../glimmith_solver_V1.0.17.html', pz = path.join(__dirname, '..', '..', 'fixtures', 'colors_V1.0.6.glimmith.json');
+const file = process.argv[2] || '../glimmith_solver_V1.0.18.html', pz = path.join(__dirname, '..', '..', 'fixtures', 'colors_V1.0.6.glimmith.json');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
@@ -83,6 +83,6 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
   $('stepsLast').click(); await sleep(20);
   check('no example button on the result step', $('stepsExampleBtn').hidden);
   check('no script errors', errors.length === 0, errors);
-  console.log(`examples V1.0.17 UI: ${pass} passed, ${fail} failed (examples ${keys.length}, steps with the button ${shown} of ${n - 1})`);
+  console.log(`examples V1.0.18 UI: ${pass} passed, ${fail} failed (examples ${keys.length}, steps with the button ${shown} of ${n - 1})`);
   process.exit(fail ? 1 : 0);
 })();

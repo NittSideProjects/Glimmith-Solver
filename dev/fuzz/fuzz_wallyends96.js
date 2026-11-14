@@ -2,7 +2,7 @@
 // path most of the time (so the end budget fills up); some ends get a palisade 3, some hand walls. Checks every deduction made before
 // the search against EVERY tiling the oracle finds (oracle tilings filtered with Wally and the palisades here), and the verdict.
 //   node fuzz_wallyends96.js N seed        PLANTED=1: no oracle, bigger boards (MAXT tiles): no deduction may contradict the planted tiling
-const L = require('../fuzzlib.js'), O = require('../oracle.js'), S = require(process.env.GLIMMITH_CORE || '../reference/solver-core.v100.js');
+const L = require('../fuzzlib.js'), O = require('../oracle.js'), S = require(process.env.GLIMMITH_CORE || '../reference/solver-core.v101.js');
 const N = +process.argv[2] || 300, seed0 = +process.argv[3] || 1, PL = !!process.env.PLANTED, MAXT = +process.env.MAXT || (PL ? 42 : 12);
 const ownerOf = pieces => { const m = new Map(); pieces.forEach((p, k) => p.forEach(([c, r]) => m.set(c + ',' + r, k))); return m; };
 const nb4 = [[0, -1], [1, 0], [0, 1], [-1, 0]];

@@ -4,7 +4,7 @@
 //   2. verdict equals the brute-force oracle on small boards, also for MUTANTS (an area number / rule / wall changed: often impossible)
 //   3. strength: edges decided before any search, v27 core vs v28 core
 const L = require('../fuzzlib.js'), O = require('../oracle.js');
-const S27 = require('../reference/solver-core.v101.js'), S26 = require('../reference/solver-core.v101.js');   // (names kept: S27 = the new core, S26 = the one before)
+const S27 = require('../reference/solver-core.v102.js'), S26 = require('../reference/solver-core.v102.js');   // (names kept: S27 = the new core, S26 = the one before)
 const N = +process.argv[2] || 300, seed0 = +process.argv[3] || 1, maxSide = +process.argv[4] || 6;
 const rng = s => () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 function pieceOfMap(P){ const m = Array.from({ length: P.puzzle.h }, () => Array(P.puzzle.w).fill(-1)); P.planted.forEach((cells, i) => cells.forEach(([c, r]) => { m[r][c] = i; })); return m; }

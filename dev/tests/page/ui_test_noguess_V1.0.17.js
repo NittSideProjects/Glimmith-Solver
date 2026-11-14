@@ -2,7 +2,7 @@
 // and neither the page nor its embedded solver holds anything of the layer.
 // node tests/page/ui_test_noguess_V1.0.17.js [page.html]
 const { JSDOM } = require('jsdom'); const fs = require('fs'); const path = require('path');
-const file = process.argv[2] || '../glimmith_solver_V1.0.18.html', pz = path.join(__dirname, '..', '..', 'fixtures', 'compass_V1.0.17.glimmith.json');
+const file = process.argv[2] || '../glimmith_solver_V1.0.19.html', pz = path.join(__dirname, '..', '..', 'fixtures', 'compass_V1.0.17.glimmith.json');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

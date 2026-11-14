@@ -5,7 +5,7 @@
 //   2. MUTANTS (a stamp changed to another shape, a gemini <-> delta swap): exact search and deduce give the same verdict and the same unique tiling
 //   3. strength: edges decided before any search, v28 vs v29 (never fewer)
 const L = require('../fuzzlib.js');
-const S29 = require('../reference/solver-core.v101.js'), S28 = require('../reference/solver-core.v101.js');
+const S29 = require('../reference/solver-core.v102.js'), S28 = require('../reference/solver-core.v102.js');
 const N = +process.argv[2] || 400, seed0 = +process.argv[3] || 1;
 const ck = L.S.canonicalShapeKey;
 const optSets = [ { testNodes: 15, restart: 'first', order: 'scan', useWitness: true }, { testNodes: 60, restart: 'continue', order: 'clues', useWitness: true, focusMode: 'near' }, { testNodes: 8, restart: 'continue', order: 'scan', useWitness: false, focusMode: 'none' } ];

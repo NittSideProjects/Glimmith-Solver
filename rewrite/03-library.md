@@ -2,7 +2,7 @@
 
 The puzzle list at the top of the Puzzle Grid panel, its buttons, the Fast import box, the import report and the messages an import or export can show.
 
-Left here: 6 to write, 0 to check again, 6 notes, 0 to put on the page. Done: 110.
+Left here: 0 to write, 0 to check again, 11 notes, 1 to put on the page. Done: 110.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -144,27 +144,27 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0890
 - what: text · #fastBlockedLink · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Folder blocked?
-- new: 
+- new: [need to change fast import]
 
 ### T0891
 - what: text (keep the <b>/<i> tags or drop them) · #fastBlocked · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: <b>Did your browser say it "can't open this folder because it contains system files"?</b> Chrome and Edge do not let a page remember folders inside Program Files or AppData, and both game folders are there. You can still read them once: the browser asks for the folder each time, and it may say it will upload the files, but they stay on your computer.
-- new: 
+- new: [need to change fast import]
 
 ### T0892
 - what: text · #fastOnce_steam · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Read the workshop folder once
-- new: 
+- new: [need to change fast import]
 
 ### T0893
 - what: text · #fastOnce_own · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Read your own puzzles once
-- new: 
+- new: [need to change fast import]
 
 ### T0894
 - what: text · #fastBlocked · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: If that is blocked too: copy the folder somewhere else (for example into Documents) and choose the copy, or zip it and open the zip with Import puzzles…
-- new: 
+- new: [need to change fast import]
 
 ### T0043
 - what: text · #fastRunBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
@@ -579,7 +579,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T1134
 - what: message · normalizeState › error · Built by the page while it runs, so it only shows in some situations.
 - now: a clue in it is not valid
-- new: 
+- new: a clue is the puzzle isn't valid
 
 ### T0843
 - what: message · exportPuzzles · Built by the page while it runs, so it only shows in some situations.

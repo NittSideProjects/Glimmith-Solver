@@ -2,7 +2,7 @@
 
 Messages that are not tied to one place on the page.
 
-Left here: 93 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 0.
+Left here: 113 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 0.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -469,4 +469,104 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0961
 - what: message · renderExampleCase › label · Built by the page while it runs, so it only shows in some situations.
 - now: Example
+- new: 
+
+### T1137
+- what: message · first · Built by the page while it runs, so it only shows in some situations.
+- now: the ringed tiles in different pieces
+- new: 
+
+### T1138
+- what: message · first · Built by the page while it runs, so it only shows in some situations.
+- now: a wall at the edge marked in red
+- new: 
+
+### T1139
+- what: message · first · Built by the page while it runs, so it only shows in some situations.
+- now: the two tiles at the red mark in one piece
+- new: 
+
+### T1140
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: Case {1} of {2}.
+- new: 
+
+### T1141
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: one more choice
+- new: 
+
+### T1142
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: {1} more choices
+- new: 
+
+### T1143
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: , and {1} (marked the same way)
+- new: 
+
+### T1144
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: {1}Tried: {2}{3}.
+- new: 
+
+### T1145
+- what: message · svg › label · Built by the page while it runs, so it only shows in some situations.
+- now: Case
+- new: 
+
+### T1146
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: From that, the rules decide the outlined edges:
+- new: 
+
+### T1147
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: and {1} more
+- new: 
+
+### T1148
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: No rule is broken yet after these choices: the solver needed a longer search here.
+- new: 
+
+### T1149
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: This fails at the tiles ringed in red:
+- new: 
+
+### T1150
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: This fails:
+- new: 
+
+### T1151
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: the rules can not all be met
+- new: 
+
+### T1152
+- what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
+- now: What the solver tried, and why it fails
+- new: 
+
+### T1153
+- what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
+- now: The cases could not be rebuilt for this step.
+- new: 
+
+### T1154
+- what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
+- now: The solver proved this step with a longer search: it tried every way to go on. These are the first cases; the ones marked as still open need more choices than fit here.
+- new: 
+
+### T1155
+- what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
+- now: These cases do not close everything: the ones marked as still open need more choices than fit here.
+- new: 
+
+### T1156
+- what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
+- now: This step joins {1} pairs of tiles: the cases of the first three are shown.
 - new: 

@@ -2,304 +2,304 @@
 
 The "Rules with improved deduction logic" list and what each i button opens.
 
-Left here: 167 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 0.
+Left here: 108 to write, 0 to check again, 12 notes, 31 to put on the page. Done: 16.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
 ### T0128
 - what: text · #improvedFooter
 - now: Rules with improved deduction logic
-- new: 
+- new: Base truth for speedups
 
 ### T0129
 - what: text · #improvedFooter
 - now: Every rule has some ground truth that can be used by the solver to save time on the edge by edge deciding phase. They are tested every time a new edge gets decided and are almost always instantaneous.
-- new: 
+- new: =
 
 ### T0923
 - what: text · #allExamplesBtn
 - now: Show all examples
-- new: 
+- new: =
 
 ### T0130
 - what: text · #improvedFooter
 - now: Walls
-- new: 
+- new: =
 
 ### T0131
 - what: text · #improvedFooter
 - now: Delta
-- new: 
+- new: =
 
 ### T0133
 - what: text · #impInfo_delta · Shows when you click the i next to this rule.
 - now: A Delta wall says the two pieces have different shapes.
-- new: 
+- new: [remove]
 
 ### T0134
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_delta · Shows when you click the i next to this rule.
 - now: <b>Not the same shape.</b> If both sides can only be the same shape (two identical polyominoes, or two small pieces that can only be a domino), it is impossible. A side left with one possible shape takes that shape away from the other side.
-- new: 
+- new: <b>Not the same shape.</b> If a link would make both side of the delta the same shape (two identical polyominoes for exemple), it makes it impossible. This means it should be walled. this is also true if we know what shape a side would be without knowing it's position (an area number 2 is always a domino, no matter where it goes).
 
 ### T0135
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_delta · Shows when you click the i next to this rule.
 - now: <b>Must grow.</b> If one side is already a finished piece and the other side matches its shape right now, the other side can not stop there: it has to grow.
-- new: 
+- new: <b>Must grow.</b> If one side of the delta is decided and the other side matches it currently, we know it must grow at least one more tile.
 
 ### T0136
 - what: text · #improvedFooter
 - now: Gemini
-- new: 
+- new: =
 
 ### T0138
 - what: text · #impInfo_gemini · Shows when you click the i next to this rule.
 - now: A Gemini wall says the two pieces have the same shape, so also the same size.
-- new: 
+- new: [remove]
 
 ### T0139
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_gemini · Shows when you click the i next to this rule.
 - now: <b>Same size.</b> A 4 on one side makes the other side a 4, and so on down a line of Gemini walls. Two same-size pieces sharing an area of 9 tiles are 4 tiles or fewer each.
-- new: 
+- new: <b>Same size.</b> if a side is known to be size 4, then the other side is size 4 as well. this check is also used to know what the maximum size for a shape next to a gemini can be, if the total area is 8 then that shape will be size 4 at best.
 
 ### T0140
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_gemini · Shows when you click the i next to this rule.
 - now: <b>Same shape.</b> A polyomino on one side gives its shape to the other side. If the shape on one side contains a 1x4, the other side needs one too.
-- new: 
+- new: <b>Same shape.</b> A polyomino on one side gives its shape to the other side. This also apply if the shape isn't finished : a shape on one side contains a 1x4? the other side needs one too.
 
 ### T0141
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_gemini · Shows when you click the i next to this rule.
 - now: <b>Lines anchor the copy.</b> When both sides have a closed straight line of the same length and one side can not make a second one, the copy must send line onto line: only 4 ways are left (two directions, two mirrors). The solver copies the known tiles and walls across each way, and the ways that break are dropped.
-- new: 
+- new: <b>Shape shape advanced.</b> When a side is known to contain a unique shape (for exemple it has a 2x3 and it won't be able to make another one), if the other side also contain that shape we know it is exactly that instance. we can then test rotations/symetry using this point as the common point, which is fast to test as there are at most 8.
 
 ### T0142
 - what: text · #improvedFooter
 - now: Inequality
-- new: 
+- new: =
 
 ### T0144
 - what: text · #impInfo_inequality · Shows when you click the i next to this rule.
 - now: An Inequality wall says the piece the arrow points at is smaller.
-- new: 
+- new: [remove]
 
 ### T0145
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_inequality · Shows when you click the i next to this rule.
 - now: <b>Sizes push each other.</b> A piece smaller than a 3 is 1 or 2 tiles. A chain a < b < c < d makes d at least 4 tiles (5 with a Minimum of 2). A loop a < b < c < a is impossible.
-- new: 
+- new: [divide this in multiple points : <b>Sizes push each other.</b> Since the smallest size is 1, the big size of an inequality is always at least two. chains like a < b < c will make c at least 3. This also means if c is known to be size 3, then b is size 2 and a is size 1. <b>Loops can't exist.</b> A link that would make a look of a < b < a is impossible, so the solver puts a wall there. this is also true with bigger loops like a < b < c < a.
 
 ### T0146
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_inequality · Shows when you click the i next to this rule.
 - now: <b>Room for the whole chain.</b> Pieces on a chain all have different sizes, so they need at least 1 + 2 + 3 + ... tiles: a closed area of 5 tiles can not hold a chain of 3 walls. Three touching pieces that can each only be 1 or 2 tiles can not all differ.
-- new: 
+- new: <b>Room for whole chains.</b> When a chain of inequality exists, we know the area it will take will be at least n(n+1)/2 (1+2+3...+n). if the area needed to hold it is too small it would break, so we can't place wall in places that would force a chain to be too restrained.
 
 ### T0147
 - what: text · #improvedFooter
 - now: Difference
-- new: 
+- new: =
 
 ### T0149
 - what: text · #impInfo_difference · Shows when you click the i next to this rule.
 - now: A Difference wall of N says the two pieces differ by exactly N tiles.
-- new: 
+- new: [remove]
 
 ### T0150
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_difference · Shows when you click the i next to this rule.
 - now: <b>Size across the wall.</b> A known 2 next to a Difference 2 makes the other side exactly 4 (0 is not a size). A tile closed in by walls is a known 1.
-- new: 
+- new: <b>Size across the wall.</b> Since size needs to be strickly positive, a known 2 next to a difference 2 makes the other side size 4. We don't even need for exact size to use this idea, if a shape is known to be between size 2 and 4 and it hits a difference 5, the other side must be between size 7 and 9.
 
 ### T0151
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_difference · Shows when you click the i next to this rule.
 - now: <b>Odd and even.</b> An odd N makes one side odd and the other even; an even N makes both sides odd or both even. Three pieces that all touch through odd Differences are impossible.
-- new: 
+- new: <b>Odd and even.</b> An odd difference makes one side odd and the other even and an even difference makes both sides odd or both sides even. We can use this idea to eliminate links that would create parity issue without having to check for all possible sizes.
 
 ### T0152
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_difference · Shows when you click the i next to this rule.
 - now: <b>Two numbers, two pieces.</b> The pieces across a Difference 2 and a Difference 3 of the same piece can never have the same size, so they are different pieces.
-- new: 
+- new: <b>Two numbers, two pieces.</b> If a piece touches two difference wall with one being 2 and the other being 4, the other side of those walls can never connect, no matter what the original piece do.
 
 ### T0153
 - what: text · #improvedFooter
 - now: Clues
-- new: 
+- new: =
 
 ### T0154
 - what: text · #improvedFooter
 - now: Area number
-- new: 
+- new: =
 
 ### T0156
 - what: text · #impInfo_area · Shows when you click the i next to this rule.
 - now: An area number gives the size of its piece (a polyomino does too).
-- new: 
+- new: [remove]
 
 ### T0157
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_area · Shows when you click the i next to this rule.
 - now: <b>Grow to the number.</b> A piece grows toward its number and stops at it, and the walls next to it pass the size on.
-- new: 
+- new: [explain]
 
 ### T0158
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_area · Shows when you click the i next to this rule.
 - now: <b>The numbers must fit.</b> Every number needs a whole piece of its size: a 6 and a 4 do not fit on 9 tiles. Two touching 3s with room for only one piece of 3 are linked; if each needs its own piece, there is a wall.
-- new: 
+- new: <b>The numbers must fit.</b> adding numbers up should always be lower then the total area. if a wall would make that area too small it is a link. for exemple a 6 and a 4 can't be inside a size 8. this is also used to know that two area number with the same number must connect if their sum is bigger than the total area (two 5 must be together in an area 9).
 
 ### T0159
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_area · Shows when you click the i next to this rule.
 - now: <b>No tile left over.</b> When the numbers of an area sum up to its size, every tile must end up in a numbered piece, so a group with no number has to grow to one it can still reach.
-- new: 
+- new: <b>No tile left over.</b> In a similar idea, if the sum of all the numbers is EXACTLY equal to the area (with no way to merge two number together), then every tile must link to an area number. this is especially useful for far away tiles, since we now know they must connect to one of the area numbers
 
 ### T0160
 - what: text · #improvedFooter
 - now: Rose
-- new: 
+- new: =
 
 ### T0162
 - what: text · #impInfo_rose · Shows when you click the i next to this rule.
 - now: Every piece holds exactly one rose of each type.
-- new: 
+- new: [remove]
 
 ### T0163
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_rose · Shows when you click the i next to this rule.
 - now: <b>Counting.</b> Every type appears once per piece, so uneven counts are impossible. Two roses of the same type are never one piece: neighbouring ones get a wall.
-- new: 
+- new: <b>Counting.</b> Since every type appears once per piece, two piece with a rose in common are walled of instantly. Uneven counts are impossible so a wall that would force uneven count is a link. this also makes puzzle with global uneven count get rejected instantly
 
 ### T0164
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_rose · Shows when you click the i next to this rule.
 - now: <b>Reaching a rose.</b> A group missing a type must still reach one, so a wall that would cut it off from every rose of that type is a link.
-- new: 
+- new: <b>Reaching a rose.</b> if a shape has only one way out and it is missing a rose type, it must grow no matter what.
 
 ### T0165
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_rose · Shows when you click the i next to this rule.
 - now: <b>Narrow passages.</b> If a narrow passage splits the roses into uneven counts, the extra roses on one side must join the extra roses on the other side through it. An area closed off with one rose of each type is a single piece.
-- new: 
+- new: <b>Counting Advanced</b> The extension of the uneven counting, narrow passages must be passed through if they would leave uneven count, this also works for slightly bigger passages if the different of rose amount is bigger to the same degree. a 2 wide passage with three red one blue on the left and three blue one red on the right must have the passage linked to allow the connection for 2 shapes.
 
 ### T0166
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_rose · Shows when you click the i next to this rule.
 - now: <b>Who goes with whom.</b> Like the ends of a Flow puzzle, the solver lists every way to group the roses into pieces. Two roses that are never grouped are different pieces.
-- new: 
+- new: <b>Who goes with whom.</b> Similarely to a Flow puzzle, the solver lists every way to group the remaining roses into pieces. Pretty useful when puzzle has a lot of different roses in small packs
 
 ### T0167
 - what: text · #improvedFooter
 - now: Polyomino
-- new: 
+- new: =
 
 ### T0169
 - what: text · #impInfo_polyomino · Shows when you click the i next to this rule.
 - now: A polyomino makes its piece exactly that shape (turned or flipped).
-- new: 
+- new: [remove]
 
 ### T0170
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_polyomino · Shows when you click the i next to this rule.
 - now: <b>Must fit the shape.</b> The piece has the polyomino's size, and the tiles already together must fit in the shape: with a shape that has no line of 3, two tiles in a row get a wall at both ends.
-- new: 
+- new: <b>Must fit the shape.</b> The piece has the polyomino's size, it is also considered like an area number. Also tiles already together must fit in the shape. So if a shape has no line of length 3, two tiles in a row instantly get a wall at both ends.
 
 ### T0171
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_polyomino · Shows when you click the i next to this rule.
 - now: <b>Where the polyomino can go.</b> The solver tests each place the shape can go over the polyomino: tiles every place covers are linked, edges on the border of every place are walls. Two identical polyominoes too far apart for one place are different pieces.
-- new: 
+- new: <b>Where the polyomino can go.</b> The solver tests each place the shape can go over the polyomino, if in every universe two shapes must be linked they are linked (same with walls). This helps identify that two identical polyominoes where the merge causes all possible tiling to fail must be different pieces.
 
 ### T0172
 - what: text · #improvedFooter
 - now: Watchtower
-- new: 
+- new: =
 
 ### T0174
 - what: text · #impInfo_watchtower · Shows when you click the i next to this rule.
 - now: A watchtower on a corner gives how many different pieces touch that corner.
-- new: 
+- new: [remove]
 
 ### T0175
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_watchtower · Shows when you click the i next to this rule.
 - now: <b>1 and 4.</b> A 1 links all the tiles round the corner, a 4 walls them all.
-- new: 
+- new: <b>1 and 4.</b> A 1 links all the tiles round the corner, a 4 walls them all. Pretty trivial :)
 
 ### T0176
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_watchtower · Shows when you click the i next to this rule.
 - now: <b>2 and 3.</b> A 2 is exactly two walls. A 3 is three walls, or four if one piece wraps round the corner; when no piece can wrap (too small, or no way round), a 3 with three walls known links the fourth.
-- new: 
+- new: <b>2 and 3.</b> A 2 is exactly two walls, either in a bend or a straight line. So if two walls or two links are decided we know the other two state. A 3 is more tricky, as it can be three walls, or four if one piece wraps around the corner. When no piece can wrap (too small, or no way round), a 3 with three walls known links the fourth.
 
 ### T0177
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_watchtower · Shows when you click the i next to this rule.
 - now: <b>Outline and inward corners.</b> Only two tiles touch an outline corner: a 1 links them, a 2 walls them, a 3 or 4 is impossible. Three tiles touch an inward corner (next to a hole or a notch in the board): a 3 there is three walls.
-- new: 
+- new: <b>Edges of puzzle.</b> A 1 or a 2 at the edge of the puzzle is respectively a link or a wall. Similarely a 1 or a 3 at an inward corner is two links or two walls. And more is impossible. (this is also true for walls the solvers discover midway)
 
 ### T0178
 - what: text · #improvedFooter
 - now: Palisade
-- new: 
+- new: =
 
 ### T0180
 - what: text · #impInfo_palisade · Shows when you click the i next to this rule.
 - now: A palisade gives how many of its tile's four sides are walls (0 to 4, a 2 straight or bent). The board edge and empty tiles count as walls.
-- new: 
+- new: [remove]
 
 ### T0181
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_palisade · Shows when you click the i next to this rule.
 - now: <b>Count the sides.</b> Once enough sides are known the rest follow: a 1 with its wall found links the other three, a 1 on the outline links its three inner sides.
-- new: 
+- new: <b>Count the sides.</b> If a palisade has already enough links or walls known, the solver can instantly input the rest. With a straight 2 palisade with a wall already known bottom of it, the solver put the wall on the opposite side, and two link on the left and right directly.
 
 ### T0182
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_palisade · Shows when you click the i next to this rule.
 - now: <b>Size of the piece.</b> A tile with k open sides is in a piece of at least k + 1 tiles: a 0 needs 5, so a 0 with Maximum 4 is impossible. A tile with one open side can end a piece but never let it pass through.
-- new: 
+- new: [make those two separate points <b>Size of the piece.</b> A tile with k open sides is in a piece of at least k + 1 tiles, 0 needs 5 tiles, 1 needs 4... So if a 1 Palisade has an area number 3 neighboring, it can't link. <b>Fake walls.</b> A piece can't pass directly through a bend palisade or a dead end palisade, If a bunch of dead end palisades are in a row the solver knows a piece can't pass through it. (two bend is an exception)
 
 ### T0183
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_palisade · Shows when you click the i next to this rule.
 - now: <b>Palisades together.</b> Palisades side by side or corner to corner are solved together: a 0 next to a 3 makes their shared side the 3's only opening, so its other three sides are walls.
-- new: 
+- new: <b>Palisades together.</b> Palisade can have some interesting interaction when next to each other, or when diagonally adjacent. most famous exemple of that is the 1 palisade and 2 palisade diagonaly adjacent forces the 1 to have two link outwards. there are other cases specially with solitude that the solver can use.
 
 ### T0184
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_palisade · Shows when you click the i next to this rule.
 - now: <b>Inside a known shape.</b> A polyomino, a bank shape or a rectangle must give each palisade inside it the right count: with Boxy a 0 can only be an inner tile of a rectangle.
-- new: 
+- new: <b>Inside a known shape.</b> Reduced shape possibility (from a polymino, a shape bank or even boxy) in combination with palissade can really decrease possible placements, or force more growing. for exemple a 0 palisade must be a 3x3 with boxy.
 
 ### T0185
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_palisade · Shows when you click the i next to this rule.
 - now: <b>Only two pieces.</b> When only two pieces can exist, a straight 2 puts the tiles on its two walled sides in the same piece, and a bent 2 puts the tiles on its opposite sides in different pieces.
-- new: 
+- new: <b>Only two pieces.</b> When a puzzle is known to have EXACTLY two shapes in total, palisade become a very good tool to find coloring reasoning. for exemple no matter the orientation, the opposite side of a straight line palisade will always be the same piece/color.
 
 ### T0186
 - what: text · #improvedFooter
 - now: Compass
-- new: 
+- new: =
 
 ### T0188
 - what: text · #impInfo_compass · Shows when you click the i next to this rule.
 - now: A compass gives how many tiles of its piece lie north, east, south and west of it (over the whole piece, not just its row or column).
-- new: 
+- new: [remove]
 
 ### T0189
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_compass · Shows when you click the i next to this rule.
 - now: <b>A count is a limit.</b> With 2 east, nothing three columns or more to the east can join, and a 0 closes its side. A detour round a wall costs tiles too, so a tile the piece can not afford to reach gets a wall.
-- new: 
+- new: <b>A count is a limit.</b> With a 2 east compass, nothing three columns or more to the east can join the compass. This also walls off 0 compasses instantly. if walls forces a detour, it can also reduce the "reachable" even more.
 
 ### T0190
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_compass · Shows when you click the i next to this rule.
 - now: <b>The only way.</b> If the piece can only get enough tiles on a side through one tile, that tile joins. Tiles in every piece that fits all the numbers are linked, tiles in none are walled off.
-- new: 
+- new: <b>The only way.</b> If a compass needs a lot of tiles and one of them is a choke point that leads to the count being possible, it must be linked. This is very important to know when a compass has to "wrap around". Similarely to polymino, if in every possible compass shape two tiles are link/walled, we can add that. (this is mostly useful for compass with all 4 direction inputted)
 
 ### T0191
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_compass · Shows when you click the i next to this rule.
 - now: <b>Size.</b> Four numbers cap the piece at 1 + N + E + S + W tiles, and the numbers also give a smallest size: one number k needs k + 1 tiles.
-- new: 
+- new: <b>Size.</b> Size of compasses are ranges, but we can find some easy truths : A compass with four numbers cap the piece at 1 + N + E + S + W tiles. And any compass also give a smallest size at "biggest numbet + 1" (the compass tile itself)
 
 ### T0192
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_compass · Shows when you click the i next to this rule.
 - now: <b>Two compasses.</b> An upper compass with 3 north and a lower one with 1 north can not be one piece: everything north of the upper one is also north of the lower one. Two compasses that would need more tiles apart than the board has on one side are one piece.
-- new: 
+- new: <b>Count doesn't match.</b> A compass with north 3 cannot merge with another compass above it if they also have north 3. This logic is also true with the first compass being north 2, or the second compass being further away. In the opposite manner, if a tile needs to be part of two compass, mostly from size being too big, then the two compass must be together in the same shape.
 
 ### T0193
 - what: text · #improvedFooter
 - now: Size limits
-- new: 
+- new: =
 
 ### T0194
 - what: text · #improvedFooter
 - now: Precision
-- new: 
+- new: =
 
 ### T0196
 - what: text · #impInfo_precision · Shows when you click the i next to this rule.
 - now: Every piece has exactly this many tiles.
-- new: 
+- new: [remove]
 
 ### T0197
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_precision · Shows when you click the i next to this rule.

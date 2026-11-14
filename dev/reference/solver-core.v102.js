@@ -1,4 +1,4 @@
-// ================= SOLVER CORE (pure, unit-tested separately; v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; v28 = v27 + chain / parity / budget facts for the walls that compare sizes; v27 = v26 + area number deduction; v25 = v24 + Match / Mismatch deduction rules; v24 = v23 + Mingle Area / Mingle Shape deduction rules; v23 = v22 + rose / polyomino deduction rules) =================
+// ================= SOLVER CORE (pure, unit-tested separately; v102 (V1.0.19) = v101 + opts.explain (the cases behind a proof by contradiction); v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; v28 = v27 + chain / parity / budget facts for the walls that compare sizes; v27 = v26 + area number deduction; v25 = v24 + Match / Mismatch deduction rules; v24 = v23 + Mingle Area / Mingle Shape deduction rules; v23 = v22 + rose / polyomino deduction rules) =================
 
 // ---- shape symmetry helpers ----
 
@@ -2145,6 +2145,8 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
   const portSeen = new Set();              // v40: tilings already reported by an earlier slice
   let scanCapAt = Infinity;                // v40: the scan stops at this nowMs() time (portfolio)
   let why = '', failWhy = '';                   // 'why' = tag of the last failed check, failWhy = what made propagate() give up
+  let failTrace = null, failAt = null, failAtTag = '';  // v102: the decisions of the last propagate() that ended in a contradiction, and the tiles where it broke (when a check noted them)
+  function markAt(tag, tiles){ failAt = tiles.length > 60 ? tiles.slice(0, 60) : tiles.slice(); failAtTag = tag; }
   const hasCompass = !!(ctx.compasses && ctx.compasses.size > 0);
   const adjE = Array.from({ length: N }, () => []);
   for(const e of edges){ adjE[e.a].push({ e, o: e.b }); adjE[e.b].push({ e, o: e.a }); }
@@ -3633,8 +3635,8 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
         for(const { e, o } of adjE[id]){ if(e.state === 1 || comp[o] >= 0) continue; comp[o] = start; tiles.push(o); }
       }
       const n = cnt[0];
-      if(n === 0 || cnt.some(c => c !== n)){ why = roseTag('region'); return null; }
-      if(tiles.length < n * lo || tiles.length > n * hi){ why = roseTag('region'); return null; }
+      if(n === 0 || cnt.some(c => c !== n)){ why = roseTag('region'); markAt(why, tiles); return null; }
+      if(tiles.length < n * lo || tiles.length > n * hi){ why = roseTag('region'); markAt(why, tiles); return null; }
       if(n === 1 && tiles.length > 1){
         for(const id of tiles) if(find(id) !== find(tiles[0])){ union(tiles[0], id); merged = true; }
         for(const id of tiles) for(const { e, o } of adjE[id]) if(e.state === 0 && find(o) === find(id)){ e.state = 2; out.push({ e, value: 'same', rule: roseTag('region') }); }
@@ -5080,7 +5082,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     for(const [rep, mem] of members){
       if(groupComplete(rep, mem) && mem.length >= need.get(rep) && mem.length <= capOf.get(rep)){ need.set(rep, mem.length); capOf.set(rep, mem.length); }   // v34: finished piece
       const d = mingleDomain('shape', mem, need.get(rep), capOf.get(rep));
-      if(domEmpty(d, false)){ why = 'mismatch-clash'; return null; }
+      if(domEmpty(d, false)){ why = 'mismatch-clash'; markAt(why, mem); return null; }
       dom.set(rep, d);
     }
     // v34: groups in different open regions (cut off from each other by decided walls) are different pieces too
@@ -6386,7 +6388,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
       if(!sc) break;
     }
     for(const [rep, d] of dom){
-      if(d === 0n){ why = 'area-rel'; return null; }
+      if(d === 0n){ why = 'area-rel'; markAt(why, members.get(rep)); return null; }
       const lo = bitLo(d), hi = bitHi(d);
       if(lo > need.get(rep)){ need.set(rep, lo); relRaised.add(rep); }
       if(hi < capOf.get(rep)) capOf.set(rep, hi);
@@ -8190,11 +8192,12 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
   }
   function propagate(){
     const all = [], pos0 = propPos;
+    failAt = null; failAtTag = '';
     try {
       for(let pass = 0; pass < 1000; pass++){
         propPos = all.length;                                          // v99
         const part = propagateOnce();
-        if(part === null) return null;
+        if(part === null){ failTrace = all; return null; }               // v102: what was decided before the contradiction
         if(part.length === 0 && !part.again) break;
         for(const ch of part){ ch.pass = pass; all.push(ch); }          // v47: pass number, reported on the deduce events
       }
@@ -8232,12 +8235,12 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     for(const e of edges){
       if(e.state !== 1) continue;
       const ra = find(e.a), rb = find(e.b);
-      if(ra === rb){ failWhy = 'wall-inside'; return null; }
+      if(ra === rb){ failWhy = 'wall-inside'; markAt(failWhy, [e.a, e.b]); return null; }
       addDiff(ra, rb);
     }
     for(const [fa, fb, ft] of forbidden){
       const ra = find(fa), rb = find(fb);
-      if(ra === rb){ failWhy = ft || 'forbidden'; return null; }                // two tiles that cannot share a piece were forced together
+      if(ra === rb){ failWhy = ft || 'forbidden'; markAt(failWhy, [fa, fb]); return null; }                // two tiles that cannot share a piece were forced together
       addDiff(ra, rb, ft);
     }
     if(eulerBudget !== null){ const eu = eulerStep(); if(eu === null){ failWhy = why; return null; } if(eu.length > 0) return eu; }      // v42
@@ -8258,7 +8261,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     const need = new Map(), capOf = new Map(), maskOf = new Map();
     for(const [rep, mem] of members){
       const nd = pieceInfo(mem);
-      if(nd === null){ failWhy = why; return null; }
+      if(nd === null){ failWhy = why; markAt(failWhy, mem); return null; }       // v102: this group breaks a rule of its own (roses, polyomino, palisade size, compass, ...)
       need.set(rep, nd.need); capOf.set(rep, nd.cap); maskOf.set(rep, nd.mask);
       if((relOn || mingleModes.length > 0) && opts.closedSize !== false && mem.length >= nd.need && mem.length < nd.cap && groupComplete(rep, mem)){ need.set(rep, mem.length); capOf.set(rep, mem.length); }   // v55b, v72: + Size Separation / Mingle Shape
     }
@@ -8272,7 +8275,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
       if(rangeSet){ const sv = rangeSet; rangeSet = null; for(const [rep, mem] of members){ const r = pieceInfo(mem); if(r) needBase.set(rep, r.need); } rangeSet = sv; }
       for(const rep of members.keys()){
         if(need.get(rep) < rLo) need.set(rep, rLo);
-        if(need.get(rep) > capOf.get(rep)){ failWhy = 'size'; return null; }
+        if(need.get(rep) > capOf.get(rep)){ failWhy = 'size'; markAt(failWhy, members.get(rep)); return null; }
       }
     }
     for(const e of spots){
@@ -8333,7 +8336,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
           const cap = capOf.get(rep), lim = Math.min(cap, 24) + 1;
           const n = reachCount(rep, members.get(rep), dmap.get(rep) || none, null, lim);
           if(n >= lim) continue;                                               // it reaches as many tiles as it may have (or too many to matter)
-          if(n < need.get(rep)){ failWhy = 'reach'; return null; }
+          if(n < need.get(rep)){ failWhy = 'reach'; markAt(failWhy, members.get(rep)); return null; }
           capOf.set(rep, n);
         }
       }
@@ -8368,7 +8371,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
       const exits = Array.from({ length: np }, () => []);
       for(const id of mem) for(const { e, o } of adjE[id]) if(e.state === 0 && find(o) !== rep) exits[part.get(id)].push(e);
       for(let p = 0; p < np; p++){
-        if(exits[p].length === 0){ failWhy = 'grow'; return null; }
+        if(exits[p].length === 0){ failWhy = 'grow'; markAt(failWhy, mem); return null; }
         if(exits[p].length === 1){ const e = exits[p][0]; e.state = 2; union(e.a, e.b); changes.push({ e, value: 'same', rule: 'grow' }); return changes; }
       }
     }
@@ -8407,7 +8410,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
         }
       };
       dfs(0, -1);
-      if(term[0] < np){ failWhy = 'grow'; return null; }                   // a part can not be reached at all
+      if(term[0] < np){ failWhy = 'grow'; markAt(failWhy, mem); return null; }                   // a part can not be reached at all
       if(must.length){
         for(const v of must){ const fr = factRec; if(fr) factLog.push([mem[0], members.get(gOf[v - np])[0], 'split-cut', propPos]); factRec = false; union(rep, gOf[v - np]); factRec = fr; }
         bump('split-cut'); changes.again = true; return changes;
@@ -8451,7 +8454,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
       if(mem.length >= need.get(rep) && !lacks) continue;
       const ex = exits.get(rep) || [];
       const minOnly = !lacks && needBase !== null && mem.length >= needBase.get(rep);      // v26: it is the Minimum that asks for more tiles
-      if(ex.length === 0){ failWhy = lacks ? roseTag('grow') : (minOnly ? 'min-reach' : 'no-exit'); return null; }                  // too small (or missing a rose) and nowhere to grow
+      if(ex.length === 0){ failWhy = lacks ? roseTag('grow') : (minOnly ? 'min-reach' : 'no-exit'); markAt(failWhy, mem); return null; }                  // too small (or missing a rose) and nowhere to grow
       if(ex.length === 1){
         const e = ex[0]; e.state = 2; union(e.a, e.b); changes.push({ e, value: 'same', rule: lacks ? roseTag('grow') : (relRaised.has(rep) ? 'area-rel' : (minOnly ? 'min-grow' : 'grow')) });
         return changes;
@@ -8474,7 +8477,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
         if(reachWhy !== 'reach' || nd === baseNd) return reachWhy;
         return (fast ? reachCnt >= baseNd : reachOk(rep, mem, blocked, closed, baseNd, cp)) ? (relRaised.has(rep) ? 'area-rel' : 'min-reach') : reachWhy;   // v101
       };
-      if(reachFails(null)){ failWhy = reachTag(null); return null; }
+      if(reachFails(null)){ failWhy = reachTag(null); markAt(failWhy, mem); return null; }
       for(const e of (exits.get(rep) || [])){
         if(reachFails(e)){ e.state = 2; union(e.a, e.b); changes.push({ e, value: 'same', rule: reachTag(e) }); return changes; }
       }
@@ -9515,6 +9518,41 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     }
     return true;
   }
+  // ---- v102: the cases behind a proof by contradiction (see build/patch_core102.py) ----
+  function* explainRun(x){
+    const t0 = nowMs(), maxCases = x.maxCases || 12, maxDepth = x.maxDepth != null ? x.maxDepth : 4, msMax = x.ms || 1500;
+    const cases = []; let complete = true, tried = 0;
+    const tr = list => list.map(ch => [ch.e.key, ch.value === 'wall' ? 'wall' : 'same', tagOut(ch.rule) || 'basic']);
+    const setEdge = (e, v) => { e.state = v === 'wall' ? 1 : 2; if(v !== 'wall') union(e.a, e.b); };
+    const run = () => { inProbe = true; try { return propagate(); } finally { inProbe = false; } };
+    const first = x.edge ? edgeByKey.get(x.edge[0]) : null, pair = x.apart || x.join;
+    if(x.edge && (!first || first.state !== 0)){ yield { type: 'cases', cases: [], complete: false, tried: 0, ms: 0, stale: true }; return; }
+    // how far every tile is from the assumption: the next edge to split is the open one nearest to it
+    const dist = new Int32Array(N).fill(1e9), q = first ? [first.a, first.b] : [cid(pair[0], pair[1]), cid(pair[2], pair[3])];
+    for(const t of q) dist[t] = 0;
+    for(let i = 0; i < q.length; i++) for(const { o } of adjE[q[i]]) if(dist[o] > dist[q[i]] + 1){ dist[o] = dist[q[i]] + 1; q.push(o); }
+    function rec(assumed, path, depth){                  // the assumptions are set; the rules have not run on them yet
+      tried++;
+      const r = run();
+      if(r === null){ cases.push({ assume: assumed, trace: path.concat(tr(failTrace || [])), why: failWhy || '', at: failAt && failAtTag === failWhy ? failAt.map(factXY) : null }); return; }
+      const path2 = path.concat(tr(r));
+      let best = null, bd = 1e9;
+      for(const e of spotOrder){ if(e.state !== 0) continue; const d = Math.min(dist[e.a], dist[e.b]); if(d < bd){ bd = d; best = e; } }
+      if(!best || depth >= maxDepth || nowMs() - t0 > msMax){ complete = false; cases.push({ assume: assumed, trace: path2, why: '', open: true }); return; }
+      for(const v of ['wall', 'same']){
+        if(cases.length >= maxCases){ complete = false; return; }
+        const sn = snapFull(); setEdge(best, v); rec(assumed.concat([[best.key, v]]), path2, depth + 1); restoreFull(sn);
+      }
+    }
+    const sn = snapFull();
+    if(first) setEdge(first, x.edge[1]);
+    else if(x.apart) forbidden.push([cid(pair[0], pair[1]), cid(pair[2], pair[3]), 'explain']);
+    else union(find(cid(pair[0], pair[1])), find(cid(pair[2], pair[3])));
+    rec(first ? [[first.key, x.edge[1] === 'wall' ? 'wall' : 'same']] : [], [], 0);
+    restoreFull(sn);
+    yield { type: 'cases', cases, complete: complete && cases.length > 0 && cases.every(c => !c.open), tried, ms: nowMs() - t0 };
+  }
+  if(opts.explain){ yield* explainRun(opts.explain); return; }
   // ---- the scan ----
   let ended = null;                         // 'impossible' | 'two' | null
   if(opts.gemLineEarly && !finalOnly && !(yield* glStage())) ended = 'impossible';     // v94: tests only (before any probe)

@@ -2,39 +2,44 @@
 
 The step-by-step view: step titles, explanations and captions.
 
-Left here: 320 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 0.
+Left here: 315 to write, 0 to check again, 0 notes, 4 to put on the page. Done: 2.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
 ### T0117
 - what: text · #stepsViewer · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve).
 - now: Step-by-step reasoning
-- new: 
+- new: =
 
 ### T0119
 - what: tooltip · #stepsFirst · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve). Tooltip: shows when you hover over it.
 - now: First step (Home)
-- new: 
+- new: First step
 
 ### T0121
 - what: tooltip · #stepsPrev · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve). Tooltip: shows when you hover over it.
 - now: Previous step (left arrow)
-- new: 
+- new: Previous step
 
 ### T0123
 - what: tooltip · #stepsNext · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve). Tooltip: shows when you hover over it.
 - now: Next step (right arrow)
-- new: 
+- new: Next step
 
 ### T0125
 - what: tooltip · #stepsLast · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve). Tooltip: shows when you hover over it.
 - now: Last step (End)
+- new: Last step
+
+### T1136
+- what: text · #stepsCasesBtn · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve).
+- now: Show cases
 - new: 
 
 ### T0922
 - what: text · #stepsExampleBtn · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve).
 - now: Show example
-- new: 
+- new: Show example
 
 ### T0560
 - what: message · STEP_INFO › basic · Title or explanation of a step in the step-by-step view.

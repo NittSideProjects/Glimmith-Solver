@@ -1,5 +1,5 @@
 // v53 soundness fuzz for rose-cut (static + dynamic): planted rose tilings on boards with many holes (narrow passages).
-//   GLIMMITH_CORE=./reference/solver-core.v101.js node fuzz_rosecut53.js [N=200] [seed=1]
+//   GLIMMITH_CORE=./reference/solver-core.v102.js node fuzz_rosecut53.js [N=200] [seed=1]
 // 1. every deduce event agrees with the planted tiling (it holds in every tiling, so also in the planted one)
 // 2. the number of tilings (0 / 1 / 2+) agrees with the plain exact solver (solvePuzzle), when both finish
 // 3. how often rose-cut fired, and edges decided before any search with rose-cut on vs off

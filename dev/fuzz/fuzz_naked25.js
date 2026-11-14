@@ -5,7 +5,7 @@
 const fs = require('fs'), Module = require('module');
 const N = +process.argv[2] || 400; let maxSideArg = +process.argv[3] || 6;
 const L = require('../fuzzlib.js');
-const S25 = require('../reference/solver-core.v102.js');
+const S25 = require('../reference/solver-core.v103.js');
 let maxSide = 6;
 const rng = s => () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 const DIRS = [[1,0],[-1,0],[0,1],[0,-1]];
@@ -126,8 +126,8 @@ function mutant(P, seed){                                                   // c
 
 
 maxSide = maxSideArg;
-const B = require('../reference/solver-core.v102.js');
-const A = (() => { const f = require.resolve('../reference/solver-core.v102.js'), src = fs.readFileSync(f, 'utf8'); const needle = 'const nk = nakedPass(dom, dmap);'; if(!src.includes(needle)) throw new Error('naked pass call not found'); const m = new Module(f); m.filename = f; m.paths = Module._nodeModulePaths(require('path').dirname(f)); m._compile(src.replace(needle, 'const nk = false;'), f); return m.exports; })();
+const B = require('../reference/solver-core.v103.js');
+const A = (() => { const f = require.resolve('../reference/solver-core.v103.js'), src = fs.readFileSync(f, 'utf8'); const needle = 'const nk = nakedPass(dom, dmap);'; if(!src.includes(needle)) throw new Error('naked pass call not found'); const m = new Module(f); m.filename = f; m.paths = Module._nodeModulePaths(require('path').dirname(f)); m._compile(src.replace(needle, 'const nk = false;'), f); return m.exports; })();
 const opts = [{ testNodes: 15, restart: 'first', order: 'scan', useWitness: true }, { testNodes: 60, restart: 'continue', order: 'clues', useWitness: true, focusMode: 'near' }];
 let bad = 0, checked = 0, made = 0, more = 0, pairTagged = 0, aN = 0, bN = 0;
 for(let i = 0; i < N; i++){

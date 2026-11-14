@@ -5,7 +5,7 @@
 // node tests/solver/test_explain102.js
 'use strict';
 const fs = require('fs'), path = require('path');
-const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v102.js'), L = require('../../fuzzlib.js');
+const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v103.js'), L = require('../../fuzzlib.js');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const OPTS = { testMs: 100, restart: 'continue', order: 'clues', focusMode: 'near', nearShare: 0.4, useWitness: true, stopAtTwo: true, nodeBudget: 200000, exact: 'portfolio', slices: 's18,e', fullScan: true };
@@ -39,9 +39,29 @@ for(const e of ev){
   else (e.kind === 'join' ? pre.preJoin : pre.preApart).push([e.a[0], e.a[1], e.b[0], e.b[1]]);
 }
 check('the puzzle has proofs by contradiction to explain', probes >= 3, probes);
+// v103: a far join found by trying the two groups apart (tiny synthetic boards: the rule examples of the page)
+{
+  const EX = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'build', 'rule_examples_V1.0.16.json'), 'utf8'));
+  const RULES0 = { precision: null, min: null, max: null, mismatch: false, match: false, mingleShape: false, mingleArea: false, solitude: false, boxy: false, nonBoxy: false, bricky: false, loopy: false, wally: false, heterogeneous: false };
+  for(const key of ['fact:clue-join', 'fact:pair-join']){
+    const c = EX[key] && EX[key].x[0]; if(!c){ check(key + ': the example exists', false); continue; }
+    const q = { w: c.p.w, h: c.p.h, active: c.p.active }; for(const f of ['walls', 'roses', 'polyominoes', 'areaNumbers', 'palisades', 'compasses', 'watchtowers']) q[f] = new Map(c.p[f] || []);
+    const go = extra => [...S.deduceSolve(q.w, q.h, S.buildSolverContext(q, c.b || [], Object.assign({}, RULES0, c.r || {}), null, c.n || []), L.collectSpecialEdges(q.walls), Object.assign({}, OPTS, extra))];
+    const evs = go({}).filter(e => e.type === 'deduce' || e.type === 'fact'), pr = { preAssume: [], preJoin: [], preApart: [] }; let seen = 0;
+    for(const e of evs){
+      if(e.type === 'fact' && e.kind === 'join' && 'fact:' + e.rule === key){
+        seen++;
+        const res = go({ preAssume: pr.preAssume.slice(), preJoin: pr.preJoin.slice(), preApart: pr.preApart.slice(), explain: { apart: [e.a[0], e.a[1], e.b[0], e.b[1]] } }).find(x => x.type === 'cases');
+        check(key + ': trying the two tiles apart is refuted, with a reason', !!res && res.complete && res.cases.length >= 1 && res.cases.every(k => !k.open && k.why && k.assume.every(a => a.length === 2)), res && res.cases.map(k => k.open ? 'open' : k.why));
+      }
+      if(e.type === 'deduce') pr.preAssume.push([e.spot.key, e.value]); else (e.kind === 'join' ? pr.preJoin : pr.preApart).push([e.a[0], e.a[1], e.b[0], e.b[1]]);
+    }
+    check(key + ': the board has such a step', seen >= 1, seen);
+  }
+}
 // an edge that is already decided: nothing to explain
 { const k = pre.preAssume[0]; const r = run({ preAssume: pre.preAssume.slice(), explain: { edge: [k[0], 'wall'] } }).find(x => x.type === 'cases'); check('a decided edge gives no case', !!r && r.stale && r.cases.length === 0); }
 // a normal run never yields a cases event
 check('a normal run has no cases event', !run({}).some(x => x.type === 'cases'));
-console.log(`explain (core v102): ${pass} passed, ${fail} failed`);
+console.log(`explain (core v102, v103): ${pass} passed, ${fail} failed`);
 process.exit(fail ? 1 : 0);

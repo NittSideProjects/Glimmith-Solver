@@ -1,5 +1,5 @@
 // Soundness check of the DEDUCTIONS (instant + probes, no scan, no final search): every edge decided must agree with the game's stored solution.
-//   node tools/check_deductions.js [--core reference/solver-core.v102.js] [--ids a,b | --area | --all] [--capS 8]
+//   node tools/check_deductions.js [--core reference/solver-core.v103.js] [--ids a,b | --area | --all] [--capS 8]
 // Prints per puzzle only when something is wrong; at the end the totals and the rule counts (so a new rule can be seen firing).
 const fs = require('fs'), path = require('path'), root = path.join(__dirname, '..');
 const a = process.argv.slice(2), opt = {}; for(let i = 0; i < a.length; i++) if(a[i].startsWith('--')){ opt[a[i].slice(2)] = (a[i + 1] && !a[i + 1].startsWith('--')) ? a[++i] : true; }

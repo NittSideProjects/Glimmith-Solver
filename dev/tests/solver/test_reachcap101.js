@@ -3,7 +3,7 @@
 // so the middle piece is 4 bigger and has to leave through the neck. The rules find it, without a proof by contradiction.
 // node tests/solver/test_reachcap101.js
 'use strict';
-const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v102.js'), L = require('../../fuzzlib.js');
+const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v103.js'), L = require('../../fuzzlib.js');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const RULES = { precision: null, min: null, max: null, mismatch: false, match: false, mingleShape: false, mingleArea: false, solitude: false, boxy: false, nonBoxy: false };

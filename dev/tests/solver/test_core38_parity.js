@@ -2,7 +2,7 @@
 // hand walls, holes, size and relation rules), propagation only: the set of decided edges (value and rule) must be identical in v37 and v38.
 // usage: node test_core38_parity.js [N] [seed]
 const L = require('../../fuzzlib.js');
-const S38 = require('../../reference/solver-core.v102.js'), S37 = require('../../reference/solver-core.v102.js');
+const S38 = require('../../reference/solver-core.v103.js'), S37 = require('../../reference/solver-core.v103.js');
 const N = +process.argv[2] || 80, seed0 = +process.argv[3] || 1;
 function decide(Core, P){
   const ctx = Core.buildSolverContext(P.puzzle, P.bank, P.rules, null, []), out = new Map(); let imp = null;

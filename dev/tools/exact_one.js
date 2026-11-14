@@ -3,7 +3,7 @@
 //          raw-edge  deduceSolve with finalOnly + exact:'edge' (root propagation, then the edge search; no probes, no scan)
 //          pipe-old  deduceSolve as the page runs it (probes, scan, old final search)
 //          pipe-edge deduceSolve (probes, scan, EDGE final search)
-//   k=v options: core=reference/solver-core.v102.js  euler=0 colour=0 matchsplit=0 matchiso=0 (switch a v42-v46 rule off)  pick=mindeg|clue  first=same|wall  full=1  testMs=100  area=0 ...
+//   k=v options: core=reference/solver-core.v103.js  euler=0 colour=0 matchsplit=0 matchiso=0 (switch a v42-v46 rule off)  pick=mindeg|clue  first=same|wall  full=1  testMs=100  area=0 ...
 // Checks every tiling it finds against the game's stored solution. Hard time limit = limitS (cooperative: the search deadline; the caller may also kill).
 const fs = require('fs'), path = require('path');
 const root = path.join(__dirname, '..');

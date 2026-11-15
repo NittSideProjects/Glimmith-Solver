@@ -1,10 +1,10 @@
-// Minimum + Maximum are shown as ONE "Range X-Y" chip.   node ui_test_range26.js ../glimmith_solver_V1.0.22.html
+// Minimum + Maximum are shown as ONE "Range X-Y" chip.   node ui_test_range26.js ../glimmith_solver_V1.0.23.html
 const fs = require('fs'); const { JSDOM } = require('jsdom');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
-  const dom = new JSDOM(fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.22.html', 'utf8'), { runScripts:'dangerously', pretendToBeVisual:true, url:'http://localhost/' });
+  const dom = new JSDOM(fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.23.html', 'utf8'), { runScripts:'dangerously', pretendToBeVisual:true, url:'http://localhost/' });
   const { window } = dom; const store = new Map();
   window.storage = { get: async k => store.has(k) ? { key:k, value:store.get(k) } : null, set: async (k,v) => { store.set(k,v); return {}; }, delete: async()=>({}), list: async()=>({keys:[]}) };
   const errors = []; window.addEventListener('error', e => errors.push(String(e.message)));
@@ -48,7 +48,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   // the solver still sees min / max: a 3x3 board with range 4-5 has the one covering 4+5
   $('puzzleW').value = 3; $('puzzleH').value = 3; $('puzzleW').dispatchEvent(new ($('puzzleW').ownerDocument.defaultView.Event)('input'));
   add('minimum', 4); add('maximum', 5);
-  $('exactOnlyChk').checked = true; $('solveBtn').click();
+  if($('exactOnlyChk')) $('exactOnlyChk').checked = true;   // V1.0.23: the switch is gone (the page always runs the deduce solver) $('solveBtn').click();
   for(let i = 0; i < 120; i++){ await sleep(50); if(i > 2 && !/Searching|Solver:/.test($('solverStatus').textContent)) break; }
   check('solver runs with the range (status is not an error)', !/rror/.test($('solverStatus').textContent), $('solverStatus').textContent);
   check('no script errors', errors.length === 0, errors);

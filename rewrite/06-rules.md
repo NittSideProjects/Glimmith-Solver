@@ -2,7 +2,7 @@
 
 The Rules panel: adding a rule and the rule chips (including what it says when there are no rules).
 
-Left here: 0 to write, 0 to check again, 2 notes, 0 to put on the page. Done: 40.
+Left here: 0 to write, 0 to check again, 1 notes, 0 to put on the page. Done: 41.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -14,7 +14,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0079
 - what: text · #ruleValueField · Only shows for rules that need a number.
 - now: Size
-- new: [where]
+- new: =
 
 ### T0857
 - what: menu option · #ruleType · An option in a drop-down menu.

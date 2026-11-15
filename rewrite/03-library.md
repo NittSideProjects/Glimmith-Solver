@@ -2,7 +2,7 @@
 
 The puzzle list at the top of the Puzzle Grid panel, its buttons, the Fast import box, the import report and the messages an import or export can show.
 
-Left here: 0 to write, 0 to check again, 11 notes, 0 to put on the page. Done: 111.
+Left here: 0 to write, 0 to check again, 7 notes, 0 to put on the page. Done: 115.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -59,7 +59,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0026
 - what: text · #fastFoldersBtn · Button that only shows once Fast import has remembered a folder.
 - now: Folders…
-- new: [where]
+- new: =
 
 ### T0027
 - what: tooltip · #exportBtn · Tooltip: shows when you hover over it.
@@ -169,17 +169,17 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0043
 - what: text · #fastRunBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Import now
-- new: [where]
+- new: =
 
 ### T0044
 - what: text · #fastForgetBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Forget folders
-- new: [where]
+- new: =
 
 ### T0045
 - what: text · #importLogSummary · Under the puzzle list, after an import.
 - now: Import report
-- new: [where]
+- new: =
 
 ### T0421
 - what: error message · importCellTokens · An error message, shown when something goes wrong (often in the import report).

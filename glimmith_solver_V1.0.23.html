@@ -545,16 +545,6 @@
       <p style="margin-top:8px;">If it can't find a breakthrough in the current puzzle state, the solver skips to a final solve and does an exhaustive search on the half done puzzle, hopefully finding an impossibility or a solution. If the solver has trouble finding a solution after a minute of exhaustive search, the puzzle probably requires a global thinking that the solver can’t find. If that is the case, please send your puzzle to me! (nittneuk on discord) so I can try to implement a reasoning for puzzle of it's kind.</p>
       <p id="solverPctLine" style="margin-top:8px;">This solver has been tested on the base game puzzles, it took under 10 min to prove all of them were unique.</p>
     </div>
-    <div class="controls limits-row" style="display:none" hidden>
-      <div class="field">
-        <label for="maxRegionCountInput">Max region amount</label>
-        <input type="number" id="maxRegionCountInput" class="limit" min="1" step="1" inputmode="numeric" placeholder="no limit">
-      </div>
-      <div class="field">
-        <label for="maxRegionSizeInput">Max region size</label>
-        <input type="number" id="maxRegionSizeInput" class="limit" min="1" step="1" inputmode="numeric" placeholder="no limit">
-      </div>
-    </div>
     <div class="controls">
       <button id="solveBtn" class="primary">Check Uniqueness</button>
       <button id="cancelSolveBtn" class="subtle" style="display:none;">Cancel</button>
@@ -562,56 +552,6 @@
       <label class="checkfield"><input type="checkbox" id="findAllChk"> Find all solutions (slower, stops at 200)</label>
       <label class="checkfield" title="Off: solve becomes slower as the solver doesn't skip when it reallze exhaustive would finish it fast. However in some case can lead to step by step being clearer"><input type="checkbox" id="quickFinalChk" checked> Ignore edge by edge if exhaustive whould be faster</label>
     </div>
-        <details class="debug" id="solverTuning" hidden style="display:none">
-    <summary>Solver tuning</summary>
-    <div class="controls limits-row deduce-row">
-      <div class="field">
-        <label for="testMsInput">Narrow search (ms per test)</label>
-        <input type="number" id="testMsInput" class="limit" min="5" max="5000" step="5" inputmode="numeric" value="100">
-      </div>
-      <div class="field">
-        <label for="focusSel">Narrow search order</label>
-        <select id="focusSel">
-          <option value="near" selected>grow outward from the edge only</option>
-          <option value="mix">mix of both (below)</option>
-          <option value="first">edge tiles first, then normal order only</option>
-          <option value="none">normal order only (no focus)</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="nearShareInput">Mix only: % of time “outward”</label>
-        <input type="number" id="nearShareInput" class="limit" min="0" max="100" step="5" inputmode="numeric" value="40">
-      </div>
-    </div>
-    <div class="controls limits-row deduce-row">
-      <div class="field">
-        <label for="restartSel">After a deduction</label>
-        <select id="restartSel">
-          <option value="continue" selected>keep going round</option>
-          <option value="first">start over from the first spot</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="orderSel">Spot order</label>
-        <select id="orderSel">
-          <option value="clues" selected>nearest the clues first</option>
-          <option value="scan">row by row</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="exactSel">Final search</label>
-        <select id="exactSel">
-          <option value="portfolio" selected>edge search, whole-piece search as a fallback (v40)</option>
-          <option value="edge">edge search only</option>
-          <option value="old">whole-piece search with the narrow-test scan (v39)</option>
-        </select>
-      </div>
-      <label class="checkfield"><input type="checkbox" id="witnessChk" checked> Once a tiling is found, only test the opposite side of each edge</label>
-    </div>
-    <div class="controls">
-      <label class="checkfield"><input type="checkbox" id="exactOnlyChk"> Exact solver only: skip the edge-by-edge phase (the plain exhaustive search; slow on big puzzles)</label>
-    </div>
-    </details>
     <div class="legend" id="deduceLegend" hidden>
       <span><span class="swatch swatch-dedprobe"></span>being tested</span>
       <span><span class="swatch swatch-dedwall"></span>wall placed by the solver</span>
@@ -11252,8 +11192,10 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   const banList = document.getElementById('banList');
   const banTitle = document.getElementById('banTitle');
   const debugJson = document.getElementById('debugJson');
-  const limitSizeInput = document.getElementById('maxRegionSizeInput');
-  const limitCountInput = document.getElementById('maxRegionCountInput');
+  // V1.0.23: the solver limits have no inputs any more; a puzzle file may still carry them (solverLimits): they are kept here and
+  // given to the solver as hints
+  const limitBox = () => ({ value: '', disabled: false, setAttribute(){}, removeAttribute(){}, addEventListener(){} });
+  const limitSizeInput = limitBox(), limitCountInput = limitBox();
   const deduceLayer = document.getElementById('deduceLayer');
   const saveStatus = document.getElementById('saveStatus');
   const toast = document.getElementById('toast');
@@ -12212,30 +12154,17 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   let runLimitsText = '', lastProgressPct = null;
   const SLICE_MS = 80;                    // how long the search runs before the page gets to repaint
 
-  function parseLimitInput(input, label){
-    const raw = input.value.trim();
-    input.removeAttribute('aria-invalid');
-    if(raw === '') return { value: null };
-    if(!/^\d+$/.test(raw) || Number(raw) < 1){
-      input.setAttribute('aria-invalid', 'true');
-      showToast(`${label} must be a number (or empty for no limit)`);
-      return { error: true };
-    }
-    return { value: Number(raw) };
+  function parseLimitInput(input){
+    const raw = String(input.value).trim();
+    return { value: /^\d+$/.test(raw) && Number(raw) >= 1 ? Number(raw) : null };
   }
   // null = a box holds something invalid (the run is refused rather than silently ignoring what was typed)
   function readSolverLimits(){
-    const n = parseLimitInput(limitCountInput, 'Max region amount');
-    const s = parseLimitInput(limitSizeInput, 'Max region size');
-    if(n.error || s.error) return null;
-    const parts = [];
-    if(n.value !== null) parts.push(`max region amount ${n.value}`);
-    if(s.value !== null) parts.push(`max region size ${s.value}`);
-    return { hints: { maxRegions: n.value, maxRegionSize: s.value }, text: parts.join(', ') };
+    const n = parseLimitInput(limitCountInput), s = parseLimitInput(limitSizeInput);
+    return { hints: { maxRegions: n.value, maxRegionSize: s.value }, text: '' };
   }
   function setLimitInputsDisabled(disabled){
     limitCountInput.disabled = disabled; limitSizeInput.disabled = disabled;
-    ['testMsInput','restartSel','orderSel','focusSel','nearShareInput','witnessChk','exactOnlyChk','exactSel'].forEach(id => { document.getElementById(id).disabled = disabled; });
   }
   function setSolveButtonsDisabled(disabled){
     document.getElementById('solveBtn').disabled = disabled;
@@ -12289,70 +12218,6 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   }
   const pctNote = () => lastProgressPct != null ? ` at about ${lastProgressPct}% of the estimated search` : '';
 
-  async function runSolver(){
-    if(solverRunning) return;
-    const limits = readSolverLimits();
-    if(!limits) return;
-    solverRunning = true; solverCancelled = false;
-    runLimitsText = limits.text; lastRunHints = limits.hints; lastProgressPct = null;
-    setEditorsDisabled(true);
-    setLimitInputsDisabled(true);
-    puzzleGhost.setAttribute('display','none');
-    shapeGhost.setAttribute('display','none');
-    setSolveButtonsDisabled(true);
-    document.getElementById('cancelSolveBtn').style.display = 'inline-block';
-    clearSolverResults();
-    hideStepsUI();
-    lastNodes = 0;
-    setSolverStatus('Searching…' + (limits.text ? ` (with your limits: ${limits.text})` : ''));
-
-    const findAll = document.getElementById('findAllChk').checked;
-    const maxSolutions = findAll ? ALL_SOLUTIONS_CAP : 2;
-
-    const bankShapesData = bank.map(s => ({ id:s.id, cells:s.cells, color:s.color }));
-    const ctx = buildSolverContext(puzzle, bankShapesData, sizeRules, limits.hints, banShapesData());
-    const specialEdges = collectSpecialEdges();
-    const gen = solvePuzzle(puzzle.w, puzzle.h, ctx, specialEdges, NODE_BUDGET);
-
-    const solutions = [];
-    const tracker = createProgressTracker();
-    let outcome = null;
-    const startTime = performance.now();
-
-    outer:
-    while(true){
-      const sliceStart = performance.now();
-      while(performance.now() - sliceStart < SLICE_MS){
-        const { value, done } = gen.next();
-        if(done){ outcome = 'exhausted'; break outer; }
-        if(!value) continue;
-        if(value.type === 'progress'){ lastNodes = value.nodes; tracker.see(value); }
-        else if(value.type === 'solution'){
-          solutions.push(value.pieces);
-          if(solutions.length >= maxSolutions){ outcome = 'cap-reached'; break outer; }
-        } else if(value.type === 'budget-exceeded'){
-          lastNodes = value.nodes; tracker.see(value); outcome = 'budget'; break outer;
-        }
-      }
-      if(solverCancelled){ outcome = 'cancelled'; break; }
-      const elapsed = performance.now() - startTime;
-      const line = tracker.line(elapsed);
-      setSolverStatus(`Searching… ${limits.text ? `limits: ${limits.text} · ` : ''}${line ? line + ' · ' : ''}${lastNodes.toLocaleString()} nodes explored · ${(elapsed/1000).toFixed(1)}s`);
-      tracker.paintBar();
-      await new Promise(res => setTimeout(res, 0));
-      updateSlowNote(performance.now() - startTime);
-    }
-
-    lastProgressPct = tracker.pct();
-    solverRunning = false;
-    setEditorsDisabled(false);
-    setLimitInputsDisabled(false);
-    hideProgressBar();
-    setSolveButtonsDisabled(false);
-    document.getElementById('cancelSolveBtn').style.display = 'none';
-
-    finishSolver(outcome, solutions, findAll);
-  }
 
   // ================= SOLVER B (deduction) : live overlay + run loop =================
   //
@@ -12461,22 +12326,8 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   }
   let dedDrawnKeys = new Set(), dedShapeCells = new Set();
 
-  function readDeduceSettings(){
-    const raw = document.getElementById('testMsInput').value.trim();
-    const ms = Number(raw);
-    if(!/^\d+$/.test(raw) || ms < 5 || ms > 5000){
-      setSolverStatus('The narrow search time must be a whole number of milliseconds between 5 and 5000.');
-      return null;
-    }
-    const rawShare = document.getElementById('nearShareInput').value.trim();
-    const share = Number(rawShare);
-    if(!/^\d+$/.test(rawShare) || share < 0 || share > 100){
-      setSolverStatus('The mix share must be a whole number between 0 and 100 (percent of each narrow search spent growing outward from the edge).');
-      return null;
-    }
-    return { testMs: ms, restart: document.getElementById('restartSel').value, order: document.getElementById('orderSel').value,
-             focusMode: document.getElementById('focusSel').value, nearShare: share / 100, useWitness: document.getElementById('witnessChk').checked,
-             exact: document.getElementById('exactSel').value === 'old' ? 'old' : 'edge', portfolio: document.getElementById('exactSel').value === 'edge' ? false : undefined };
+  function readDeduceSettings(){                                      // V1.0.23: the settings the hidden tuning panel had
+    return { testMs: 100, restart: 'continue', order: 'clues', focusMode: 'near', nearShare: 0.4, useWitness: true, exact: 'edge', portfolio: undefined };
   }
   // resolves after the browser has painted (or after 60 ms if the tab is in the background and never paints)
   const nextPaint = () => new Promise(res => { let done = false; const fin = () => { if(!done){ done = true; res(); } }; requestAnimationFrame(() => setTimeout(fin, 0)); setTimeout(fin, 60); });
@@ -12519,7 +12370,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     const st = { total: 0, walls: 0, links: 0, open: 0, tests: 0, proofs: 0, timeouts: 0, found: 0, shapes: 0, early: null };
     let stage = 'scan', outcome = null, finalStart = 0, scanMs = 0, lastPaint = performance.now();
     const startTime = performance.now();
-    setSolverStatus('Solver: preparing…' + (limits.text ? ` (with your limits: ${limits.text})` : ''));
+    setSolverStatus('Solver: preparing…');
 
     outer:
     while(true){
@@ -12575,7 +12426,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       }
       if(solverCancelled){ outcome = 'cancelled'; break; }
       const elapsed = performance.now() - startTime;
-      const lim = limits.text ? `limits: ${limits.text} · ` : '';
+      const lim = '';
       if(stage === 'scan'){
         const decided = st.total - st.open;
         setSolverStatus(`Solver: narrow searches (${cfg.testMs} ms each) · ${lim}${decided} of ${st.total} edges decided (${st.walls} walls, ${st.links} same-piece) · ${st.shapes} piece${st.shapes === 1 ? '' : 's'} complete · ${st.tests} tests: ${st.proofs} proofs, ${st.timeouts} timed out, ${st.found} found a tiling · ${(elapsed / 1000).toFixed(1)}s`);
@@ -12622,16 +12473,10 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
 
   function finishSolver(outcome, solutions, findAll){
     // with limits, "not unique" stays certain (the tilings found are real); "unique" / "impossible" lean on the limits being right
-    const underLimits = runLimitsText ? ` Under your limits (${runLimitsText}) only: if one of them is wrong this may be false — clear the limits to be sure.` : '';
-    const assuming = runLimitsText ? ` This assumes your limits (${runLimitsText}) are correct.` : '';
+    const underLimits = '', assuming = '';
     if(outcome === 'cancelled'){
       setSolverStatus(`Cancelled after ${lastNodes.toLocaleString()} nodes${pctNote()}. ${solutions.length} solution(s) found so far.`);
       solutions.slice(0,2).forEach((p,i) => addSolutionCard(p, `Partial result ${i+1}`, 420));
-      return;
-    }
-    if(outcome === 'budget'){
-      setSolverStatus(`Search limit reached (${lastNodes.toLocaleString()} nodes${pctNote()}) before finishing — can't confirm uniqueness. Try a smaller grid, a narrower size rule, shapes in the bank, or a max region size / amount.`);
-      if(solutions.length>0) solutions.slice(0,2).forEach((p,i) => addSolutionCard(p, `Found so far ${i+1}`, 420));
       return;
     }
     if(solutions.length === 0){
@@ -14390,7 +14235,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       updateRuleValueVisibility();
     });
     [limitCountInput, limitSizeInput].forEach(inp => inp.addEventListener('input', () => { inp.removeAttribute('aria-invalid'); updateDebug(); scheduleSave(); }));
-    document.getElementById('solveBtn').addEventListener('click', () => { if(document.getElementById('exactOnlyChk').checked) runSolver(); else runDeduce(); });
+    document.getElementById('solveBtn').addEventListener('click', () => runDeduce());
     initStepsUI();
     document.getElementById('cancelSolveBtn').addEventListener('click', () => { solverCancelled = true; });
     document.getElementById('skipScanBtn').addEventListener('click', () => { skipScanRequested = true; });

@@ -2,11 +2,12 @@
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 const L = require('../../fuzzlib.js');
-const file = process.argv[2] || '../glimmith_solver_V1.0.22.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.23.html';
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { console.log((cond ? "ok  " : "FAIL") + " " + name); if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const slowCfg = $ => { $('testMsInput').value = '100'; $('focusSel').value = 'mix'; $('restartSel').value = 'first'; $('orderSel').value = 'scan'; $('exactSel').value = 'old'; };       // v40: the slow progressive display is the old whole-piece search + scan
+const slowCfg = $ => { if(!$('testMsInput')) return;   // V1.0.23: the tuning panel is gone
+  $('testMsInput').value = '100'; $('focusSel').value = 'mix'; $('restartSel').value = 'first'; $('orderSel').value = 'scan'; $('exactSel').value = 'old'; };       // v40: the slow progressive display is the old whole-piece search + scan
 const html = fs.readFileSync(file, 'utf8');
 
 function seedStore(P){
@@ -111,7 +112,7 @@ async function solveAndWait($, maxMs){ $('solveBtn').click(); const t0 = Date.no
 
   // ---------- 2. "exact solver only": no recorded trace, the viewer replays the deduction phase ----------
   A = await boot(seedStore(P)); ({ $, window } = A);
-  $('exactOnlyChk').checked = true;
+  if($('exactOnlyChk')) $('exactOnlyChk').checked = true;   // V1.0.23: the switch is gone (the page always runs the deduce solver)
   st = await solveAndWait($);
   check('exact-only run gives a verdict', /^Unique/.test(st), st);
   check('steps offered after an exact-only run too', $('stepsBtn').style.display !== 'none');

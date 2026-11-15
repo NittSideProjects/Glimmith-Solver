@@ -4,7 +4,7 @@ let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
-  const dom = new JSDOM(fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.22.html', 'utf8'), { runScripts:'dangerously', pretendToBeVisual:true, url:'http://localhost/' });
+  const dom = new JSDOM(fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.23.html', 'utf8'), { runScripts:'dangerously', pretendToBeVisual:true, url:'http://localhost/' });
   const { window } = dom; const store = new Map();
   window.storage = { get: async k => store.has(k) ? { key:k, value:store.get(k) } : null, set: async (k,v) => { store.set(k,v); return {}; }, delete: async()=>({}), list: async()=>({keys:[]}) };
   window.SVGSVGElement.prototype.createSVGPoint = function(){ return { x:0, y:0, matrixTransform(){ return { x:this.x, y:this.y }; } }; };
@@ -20,7 +20,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const resize = (w,h) => { $('puzzleW').value = w; $('puzzleH').value = h; $('puzzleW').dispatchEvent(new ($('puzzleW').ownerDocument.defaultView.Event)('input')); };
   const addRule = t => { $('ruleType').value = t; $('ruleType').dispatchEvent(new ($('ruleType').ownerDocument.defaultView.Event)('change')); $('addRuleBtn').click(); };
   const solve = async () => { $('solveBtn').click(); for(let i=0;i<120;i++){ await sleep(50); if(!/Searching|Solver:/.test($('solverStatus').textContent) && !$('cancelSolveBtn').offsetParent && i>2) break; } await sleep(100); return $('solverStatus').textContent; };
-  $('exactOnlyChk').checked = true;
+  if($('exactOnlyChk')) $('exactOnlyChk').checked = true;   // V1.0.23: the switch is gone (the page always runs the deduce solver)
 
   resize(3,3);
   // palisade

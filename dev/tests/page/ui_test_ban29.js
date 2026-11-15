@@ -1,8 +1,8 @@
 // UI checks for Shape ban't (v29): panel, red cards, add / duplicate / remove, saving with the puzzle and the library, solver verdicts.
-// Loads the real HTML in jsdom.  usage: node ui_test_ban29.js ../glimmith_solver_V1.0.22.html
+// Loads the real HTML in jsdom.  usage: node ui_test_ban29.js ../glimmith_solver_V1.0.23.html
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
-const file = process.argv[2] || '../glimmith_solver_V1.0.22.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.23.html';
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -22,7 +22,7 @@ async function boot(store){
   window.addEventListener('error', e => errors.push(String(e.message)));
   await sleep(400);
   const $ = id => window.document.getElementById(id);
-  $('exactOnlyChk').checked = true;
+  if($('exactOnlyChk')) $('exactOnlyChk').checked = true;   // V1.0.23: the switch is gone (the page always runs the deduce solver)
   const vb = $('shapeSvg').getAttribute('viewBox').split(' ').map(Number), CS = vb[2] / 6;
   const A = { window, errors, $, store,
     shapeCell: (c, r) => { $('shapeSvg').dispatchEvent(new window.MouseEvent('pointerdown', { clientX:c*CS+CS/2, clientY:r*CS+CS/2, bubbles:true })); window.dispatchEvent(new window.MouseEvent('pointerup', { bubbles:true })); },

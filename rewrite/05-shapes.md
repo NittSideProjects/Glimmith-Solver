@@ -2,7 +2,7 @@
 
 The side panel next to the grid.
 
-Left here: 0 to write, 0 to check again, 1 notes, 0 to put on the page. Done: 16.
+Left here: 0 to write, 0 to check again, 0 notes, 1 to put on the page. Done: 16.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -24,7 +24,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0071
 - what: tooltip · #addToBanBtn · Tooltip: shows when you hover over it.
 - now: Forbid this shape: no piece may contain it
-- new: [where]
+- new: Add shape to Omits: no piece can contain it
 
 ### T0072
 - what: text · #addToBanBtn

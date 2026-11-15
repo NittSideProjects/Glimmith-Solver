@@ -2,11 +2,12 @@
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 const L = require('../../fuzzlib.js');
-const file = process.argv[2] || '../glimmith_solver_V1.0.22.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.23.html';
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { console.log((cond ? "ok  " : "FAIL") + " " + name); if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const slowCfg = $ => { $('testMsInput').value = '100'; $('focusSel').value = 'mix'; $('restartSel').value = 'first'; $('orderSel').value = 'scan'; $('exactSel').value = 'old'; };       // v40: the slow progressive display is the old whole-piece search + scan
+const slowCfg = $ => { if(!$('testMsInput')) return;   // V1.0.23: the tuning panel is gone
+  $('testMsInput').value = '100'; $('focusSel').value = 'mix'; $('restartSel').value = 'first'; $('orderSel').value = 'scan'; $('exactSel').value = 'old'; };       // v40: the slow progressive display is the old whole-piece search + scan
 const html = fs.readFileSync(file, 'utf8');
 
 function seedStore(P){
@@ -47,18 +48,10 @@ async function waitDone($, maxMs){ const t0 = Date.now(); await sleep(60); while
   let A = await boot(seedStore(P));
   let { $, window } = A;
   check('page loaded without script errors', A.errors.length === 0, A.errors);
-  check('Solver controls exist', !$('deduceBtn') && !!$('exactOnlyChk') && !!$('solverTuning') && !$('solverTuning').open && !!$('testMsInput') && !!$('restartSel') && !!$('orderSel') && !!$('skipScanBtn'));
-  check('defaults: 100 ms, outward only, keep going round, clue order, witness on', $('testMsInput').value === '100' && $('focusSel').value === 'near' && $('nearShareInput').value === '40' && $('restartSel').value === 'continue' && $('orderSel').value === 'clues' && $('witnessChk').checked);
+  check('Solver controls: no tuning panel, no exact-only switch (V1.0.23)', !$('deduceBtn') && !$('exactOnlyChk') && !$('solverTuning') && !$('testMsInput') && !!$('skipScanBtn'));
   check('overlay layer exists and legend starts hidden', !!$('deduceLayer') && $('deduceLegend').hidden === true);
   check('seeded puzzle is 6x6', JSON.parse($('debugJson').textContent).puzzle.w === 6);
 
-  // bad settings are refused with a message
-  $('testMsInput').value = '0'; $('solveBtn').click(); await sleep(30);
-  check('narrow search time 0 refused', /between 5 and 5000/.test($('solverStatus').textContent), $('solverStatus').textContent);
-  $('testMsInput').value = '100';
-  $('nearShareInput').value = '150'; $('solveBtn').click(); await sleep(30);
-  check('mix share over 100 refused', /between 0 and 100/.test($('solverStatus').textContent), $('solverStatus').textContent);
-  $('nearShareInput').value = '40';
 
   $('solveBtn').click(); await sleep(20);
   // v21: pure inference + probing solves this fully clued 6x6 in a few ms, so the run may already be over after 20 ms; the
@@ -133,22 +126,7 @@ async function waitDone($, maxMs){ const t0 = Date.now(); await sleep(60); while
   check('cancel: reports Cancelled (or had already finished)', /^Cancelled|^(Unique|Not unique|Impossible)/.test(st), st);
   check('cancel: buttons restored', !$('solveBtn').disabled);
 
-  // settings: "keep going round" + "nearest clues first" with a 20 ms narrow search
-  A = await boot(seedStore(Q)); ({ $, window } = A);
-  $('testMsInput').value = '20'; $('restartSel').value = 'continue'; $('orderSel').value = 'clues'; $('focusSel').value = 'first'; $('nearShareInput').value = '70'; $('witnessChk').checked = false;
-  $('solveBtn').click(); await sleep(30);
-  check('settings inputs disabled during the run', ['testMsInput','restartSel','orderSel','focusSel','nearShareInput','witnessChk','exactOnlyChk'].every(id => $(id).disabled));
-  await waitDone($, 60000);
-  st = $('solverStatus').textContent;
-  check('alternate settings: right verdict', /^(Unique|Not unique|Impossible)/.test(st) && (/^Not unique/.test(st) === true), st);
-  check('settings enabled again', ['testMsInput','restartSel','orderSel','focusSel','nearShareInput','witnessChk','exactOnlyChk'].every(id => !$(id).disabled));
-  check('summary line with other settings: timings (v88 page)', /^It took /.test($('deduceSummary').textContent), $('deduceSummary').textContent);
 
-  // the exact solver is still reachable through the tuning checkbox
-  A = await boot(seedStore(P)); ({ $, window } = A);
-  $('exactOnlyChk').checked = true;
-  $('solveBtn').click(); for(let i = 0; i < 400 && /Searching/.test($('solverStatus').textContent) || i < 2; i++) await sleep(50);
-  check('exact-solver-only mode still works, draws no overlay and writes no Solver summary', /^Unique/.test($('solverStatus').textContent) && $('deduceLayer').querySelectorAll('rect').length === 0 && $('deduceSummary').textContent === '', $('solverStatus').textContent);
 
   // ---------- the user's 20x20 puzzle with a shape bank, end to end with the default settings ----------
   {

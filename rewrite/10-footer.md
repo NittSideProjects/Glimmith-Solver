@@ -2,7 +2,7 @@
 
 The "Rules with improved deduction logic" list and what each i button opens.
 
-Left here: 50 to write, 0 to check again, 1 notes, 4 to put on the page. Done: 91.
+Left here: 50 to write, 0 to check again, 0 notes, 5 to put on the page. Done: 91.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -114,7 +114,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0157
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_area · Shows when you click the i next to this rule.
 - now: <b>Grow to the number.</b> A piece grows toward its number and stops at it, and the walls next to it pass the size on.
-- new: [explain]
+- new: A piece with an area number must grow until that number is satisfied, and be fully walled of when it is. Any tile it passes through lets the solver know of it's size, so if there is a difference/inequality/ect they know the size on one side.
 
 ### T0158
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_area · Shows when you click the i next to this rule.
@@ -139,7 +139,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0164
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_rose · Shows when you click the i next to this rule.
 - now: <b>Reaching a rose.</b> A group missing a type must still reach one, so a wall that would cut it off from every rose of that type is a link.
-- new: <b>Reaching a rose.</b> if a shape has only one way out and it is missing a rose type, it must grow no matter what.
+- new: <b>Reaching a rose.</b> if a shape has only one way out and it is missing a rose type, it must grow no matter what. This is also true if it has multiple ways out but only one of them leads to a rose it needs.
 
 ### T0165
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_rose · Shows when you click the i next to this rule.
@@ -214,7 +214,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0184
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_palisade · Shows when you click the i next to this rule.
 - now: <b>Inside a known shape.</b> A polyomino, a bank shape or a rectangle must give each palisade inside it the right count: with Boxy a 0 can only be an inner tile of a rectangle.
-- new: <b>Inside a known shape.</b> Reduced shape possibility (from a polymino, a shape bank or even boxy) in combination with palissade can really decrease possible placements, or force more growing. for exemple a 0 palisade must be a 3x3 with boxy.
+- new: <b>Inside a known shape.</b> Reduced shape possibility (from a polymino, a shape bank or even boxy) in combination with palissade can really decrease possible placements, or force more growing. for exemple a 0 palisade must be at least a 3x3 with boxy.
 
 ### T0185
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_palisade · Shows when you click the i next to this rule.
@@ -259,7 +259,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0197
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_precision · Shows when you click the i next to this rule.
 - now: <b>The board must divide.</b> 7 tiles with Precision 3 is impossible, and so is every area closed off by walls that is not a multiple. An area of exactly 3 tiles is one piece.
-- new: <b>The board must divide.</b> If we know the precision is 5, then no pocket of area can be of size 8, they must be divisible by 10. Any wall that would force the remaining area to fail has to be a link
+- new: <b>The board must divide.</b> If we know the precision is 5, then no pocket of area can be of size 8, they must be divisible by 5. Any wall that would force the remaining area to fail has to be a link
 
 ### T0198
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_precision · Shows when you click the i next to this rule.
@@ -489,7 +489,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0267
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_loopy · Shows when you click the i next to this rule.
 - now: <b>Three walls.</b> Three walls at a corner make the fourth a wall.
-- new: <b>Three walls.</b> when a corner has three walls already known, the solver adds the 4th. pretty
+- new: <b>Three walls.</b> when a corner has three walls already known, the solver adds the 4th wall. Pretty self explanatory.
 
 ### T0268
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_loopy · Shows when you click the i next to this rule.

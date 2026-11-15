@@ -2,7 +2,7 @@
 
 Short reasons the solver gives. They show in the solver result ("Impossible: …") and inside step-by-step explanations ("this breaks: …").
 
-Left here: 109 to write, 0 to check again, 2 notes, 0 to put on the page. Done: 13.
+Left here: 111 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 13.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -49,7 +49,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0335
 - what: message · WHY_TEXT › diff-small · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
 - now: the few small pieces (one per shape) can not reach every difference wall
-- new: [explain]
+- new: 
 
 ### T0336
 - what: message · WHY_TEXT › rose-cover · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
@@ -59,7 +59,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0337
 - what: message · WHY_TEXT › label · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
 - now: some tile can not belong to the piece of any symbol / number
-- new: [explain]
+- new: 
 
 ### T0338
 - what: message · WHY_TEXT › box-hall · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.

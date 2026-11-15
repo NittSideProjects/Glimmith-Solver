@@ -3,7 +3,7 @@
 // real "Check Uniqueness" button. Usage: node ui_test.js path/to/app.html
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
-const file = process.argv[2] || '../glimmith_solver_V1.0.22.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.23.html';
 
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };
@@ -28,7 +28,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   await sleep(300);
   const doc = window.document;
   const $ = id => doc.getElementById(id);
-  $('exactOnlyChk').checked = true;   // these suites exercise the exact solver, which is now behind the 'Exact solver only' tuning option
+  if($('exactOnlyChk')) $('exactOnlyChk').checked = true;   // V1.0.23: the switch is gone (the page always runs the deduce solver)   // these suites exercise the exact solver, which is now behind the 'Exact solver only' tuning option
 
   const raw = () => JSON.parse($('debugJson').textContent);
   const walls = () => Object.fromEntries(raw().puzzle.walls);

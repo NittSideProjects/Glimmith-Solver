@@ -3,7 +3,7 @@ const fs = require('fs'), path = require('path'); const { JSDOM } = require('jsd
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
-const html = fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.22.html', 'utf8'), store = new Map();
+const html = fs.readFileSync(process.argv[2] || '../glimmith_solver_V1.0.23.html', 'utf8'), store = new Map();
 function boot(){
   const dom = new JSDOM(html, { runScripts:'dangerously', pretendToBeVisual:true, url:'http://localhost/' });
   const { window } = dom;
@@ -65,7 +65,7 @@ function boot(){
 
   // 6. solve an imported puzzle: verdict mentions the file's solution
   $('puzzleSelect').value = $('puzzleSelect').options[1].value; $('puzzleSelect').dispatchEvent(new window.Event('change'));
-  $('exactOnlyChk').checked = true; $('solveBtn').click();
+  if($('exactOnlyChk')) $('exactOnlyChk').checked = true;   // V1.0.23: the switch is gone (the page always runs the deduce solver) $('solveBtn').click();
   for(let i=0;i<300;i++){ await sleep(100); if(/Unique|Not unique|No tiling|impossible/i.test($('solverStatus').textContent)) break; }
   check('unique and matches the stored solution', /Unique/.test($('solverStatus').textContent) && /✓ It is the solution stored/.test($('solverStatus').textContent), $('solverStatus').textContent);
   $('showFileSolutionBtn').click();

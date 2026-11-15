@@ -2,7 +2,7 @@
 
 The Solver panel: buttons, options, progress and the result after a solve.
 
-Left here: 0 to write, 0 to check again, 16 notes, 0 to put on the page. Done: 47.
+Left here: 0 to write, 0 to check again, 1 notes, 0 to put on the page. Done: 46.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -71,31 +71,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - now: Show the step-by-step reasoning
 - new: =
 
-### T0501
-- what: message · parseLimitInput · Built by the page while it runs, so it only shows in some situations.
-- now: {1} must be a number (or empty for no limit)
-- new: {1} must be a number (or empty for no limit)
-
-### T0502
-- what: message · n · Built by the page while it runs, so it only shows in some situations.
-- now: Max region amount
-- new: [probnotshown]
-
-### T0503
-- what: message · s · Built by the page while it runs, so it only shows in some situations.
-- now: Max region size
-- new: [probnotshown]
-
-### T0504
-- what: message · readSolverLimits · Built by the page while it runs, so it only shows in some situations.
-- now: max region amount {1}
-- new: [probnotshown]
-
-### T0505
-- what: message · readSolverLimits · Built by the page while it runs, so it only shows in some situations.
-- now: max region size {1}
-- new: [probnotshown]
-
 ### T0506
 - what: message · fmtDuration · Built by the page while it runs, so it only shows in some situations.
 - now: {1} min
@@ -131,41 +106,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - now: at about {1}% of the estimated search
 - new: =
 
-### T0513
-- what: message · runSolver · Built by the page while it runs, so it only shows in some situations.
-- now: (with your limits: {1})
-- new: [where]
-
-### T0514
-- what: message · runSolver · Built by the page while it runs, so it only shows in some situations.
-- now: Searching…{1}
-- new: [where]
-
-### T0515
-- what: message · runSolver · Built by the page while it runs, so it only shows in some situations.
-- now: limits: {1} ·
-- new: [where]
-
-### T0516
-- what: message · runSolver · Built by the page while it runs, so it only shows in some situations.
-- now: Searching… {1}{2}{3} nodes explored · {4}s
-- new: [where]
-
-### T0517
-- what: message · readDeduceSettings · Built by the page while it runs, so it only shows in some situations.
-- now: The narrow search time must be a whole number of milliseconds between 5 and 5000.
-- new: [where]
-
-### T0518
-- what: message · readDeduceSettings · Built by the page while it runs, so it only shows in some situations.
-- now: The mix share must be a whole number between 0 and 100 (percent of each narrow search spent growing outward from the edge).
-- new: [where]
-
-### T0519
-- what: message · runDeduce · Built by the page while it runs, so it only shows in some situations.
-- now: Solver: preparing…{1}
-- new: [where]
-
 ### T0520
 - what: message · runDeduce · Built by the page while it runs, so it only shows in some situations.
 - now: Solver: narrow searches ({1} ms each) · {2}{3} of {4} edges decided ({5} walls, {6} same-piece) · {7} piece{8} complete · {9} tests: {10} proofs, {11} timed out, {12} found a tiling · {13}s
@@ -196,16 +136,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - now: It ran {1}.
 - new: =
 
-### T0526
-- what: message · underLimits · Built by the page while it runs, so it only shows in some situations.
-- now: Under your limits ({1}) only: if one of them is wrong this may be false — clear the limits to be sure.
-- new: [where]
-
-### T0527
-- what: message · assuming · Built by the page while it runs, so it only shows in some situations.
-- now: This assumes your limits ({1}) are correct.
-- new: [where]
-
 ### T0528
 - what: message · finishSolver · Built by the page while it runs, so it only shows in some situations.
 - now: Cancelled after {1} nodes{2}. {3} solution(s) found so far.
@@ -214,16 +144,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0529
 - what: message · finishSolver · Built by the page while it runs, so it only shows in some situations.
 - now: Partial result {1}
-- new: [where]
-
-### T0530
-- what: message · finishSolver · Built by the page while it runs, so it only shows in some situations.
-- now: Search limit reached ({1} nodes{2}) before finishing — can't confirm uniqueness. Try a smaller grid, a narrower size rule, shapes in the bank, or a max region size / amount.
-- new: [where]
-
-### T0531
-- what: message · finishSolver · Built by the page while it runs, so it only shows in some situations.
-- now: Found so far {1}
 - new: =
 
 ### T0532

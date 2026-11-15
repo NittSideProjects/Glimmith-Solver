@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 A single-page editor and uniqueness solver for puzzles from the game *The Artisan of Glimmith*. The whole app (editor, solver, importer, UI) is one
-self-contained HTML file, `glimmith_solver_V1.0.35.html`, with no build step and no network use. `dev/` holds the Node test suite and tools.
+self-contained HTML file, `glimmith_solver_V1.0.36.html`, with no build step and no network use. `dev/` holds the Node test suite and tools.
 
 ## This repository is public: keep game and third-party data out
 
@@ -42,13 +42,15 @@ environment: three timing checks on the live solving animation).
 
 ## Architecture
 
-- **The page is the source of truth.** Inside `glimmith_solver_V1.0.35.html` the main `<script>` contains, in order: the `SOLVER CORE`
+- **The page is the source of truth.** Inside `glimmith_solver_V1.0.36.html` the main `<script>` contains, in order: the `SOLVER CORE`
   block (pure functions; its banner comment is the full core version history), the deduction solver (`deduceSolve`: propagation steps,
   probes, narrow per-edge searches, then an exact final search), the import core (puzzle file, zip and workshop folder parsing), then the
   UI code.
 - **`dev/reference/` mirrors the page** as Node modules: `solver-core.vNN.js` is the page's `SOLVER CORE` block with the two-space indent
-  removed (a few comment lines differ), and `import-core.js` is the importer. After changing the solver in the page, copy it back into the
-  reference core so the tests run the same code.
+  removed, **character for character** (since V1.0.36 the reference core is written from the page: `patch_ui_V1.0.x.py ... --reference
+  dev/reference/solver-core.vNN.js`), and `import-core.js` is the importer. Never patch the reference core on its own: a fix that lived
+  only there (V1.0.25 to V1.0.35) let the page call valid puzzles impossible while every test passed. `tests/page/ui_test_core_sync.js`
+  must pass after every release.
 - **Testing strategy:** `fuzz/fuzz_*.js` compare the full solver with a brute-force oracle (`oracle.js`, plus `fuzzlib.js` for planted random
   boards) on small boards. A deduction is only accepted if it never disagrees with the oracle. `tests/solver/test.js` holds hand-built cases.
 - **Puzzle model:** edges are keyed `v:c,r` / `h:c,r` in a `Map` of edge types (`wall`, `delta`, `gemini`, `lt`/`gt`, `diffN`, ...). The

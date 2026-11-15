@@ -633,7 +633,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
   function makeGrid(w,h,val){ return Array.from({length:h}, () => Array.from({length:w}, () => val)); }
 
-  // ================= SOLVER CORE (pure, unit-tested separately; v119 (V1.0.35) = v118 + Wally: the dead-end budget per wall; v118 (V1.0.34) = v117 without the Size Separation relation of v115 (step 3 dropped); v117 (V1.0.33) = v116 + the box per tile cuts the placements; v116 (V1.0.33) = v115 + Gemini shares the shape list across its walls; v115 (V1.0.33) = v114 + Size Separation walls as size relations; v114 (V1.0.31) = v113 + the shared step of every rule tag (RULE_FAMILY); v113 (V1.0.31) = v112 + one corner-pattern checker (Bricky / Loopy); v112 (V1.0.31) = v111 + a box per tile (tBx); v111 (V1.0.31) = v110 + one forced-growth step (growNeed); v110 (V1.0.30) = v109 + one count step for the closed-in areas (areaCountStep); v109 (V1.0.29) = v108 with one shared placement decision (placeDecide); v108 (V1.0.28) = v107 + tile shapes (the shapes a tile's piece is known not to be); v107 (V1.0.27) = v106 with size sets up to 15 and Non-boxy as a Minimum of 3 written once; v106 (V1.0.26) = v105 + tile size sets (the exact sizes a tile's piece can have, holes included); v105 (V1.0.25) = v104 + tile sizes (every tile keeps the size range of its piece); v104 (V1.0.24) = v103 + piece count (fewest .. most pieces, shared by every rule); v103 (V1.0.20) = v102 + more checks say where they fail (markAt); v102 (V1.0.19) = v101 + opts.explain (the cases behind a proof by contradiction); v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
+  // ================= SOLVER CORE (pure, unit-tested separately; v120 (V1.0.36) = v119 + the page gets the nested-pass fix of v105; v119 (V1.0.35) = v118 + Wally: the dead-end budget per wall; v118 (V1.0.34) = v117 without the Size Separation relation of v115 (step 3 dropped); v117 (V1.0.33) = v116 + the box per tile cuts the placements; v116 (V1.0.33) = v115 + Gemini shares the shape list across its walls; v115 (V1.0.33) = v114 + Size Separation walls as size relations; v114 (V1.0.31) = v113 + the shared step of every rule tag (RULE_FAMILY); v113 (V1.0.31) = v112 + one corner-pattern checker (Bricky / Loopy); v112 (V1.0.31) = v111 + a box per tile (tBx); v111 (V1.0.31) = v110 + one forced-growth step (growNeed); v110 (V1.0.30) = v109 + one count step for the closed-in areas (areaCountStep); v109 (V1.0.29) = v108 with one shared placement decision (placeDecide); v108 (V1.0.28) = v107 + tile shapes (the shapes a tile's piece is known not to be); v107 (V1.0.27) = v106 with size sets up to 15 and Non-boxy as a Minimum of 3 written once; v106 (V1.0.26) = v105 + tile size sets (the exact sizes a tile's piece can have, holes included); v105 (V1.0.25) = v104 + tile sizes (every tile keeps the size range of its piece); v104 (V1.0.24) = v103 + piece count (fewest .. most pieces, shared by every rule); v103 (V1.0.20) = v102 + more checks say where they fail (markAt); v102 (V1.0.19) = v101 + opts.explain (the cases behind a proof by contradiction); v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
 
   // ---- shape symmetry helpers ----
 
@@ -9144,28 +9144,27 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       try {
         for(let pass = 0; pass < 1000; pass++){
           propPos = all.length;                                          // v99
-          const part = propagateOnce();
+          const fr = { n: null, c: null }; passFrames.push(fr);
+          let part; try { part = propagateOnce(); } finally { passFrames.pop(); }
           if(part === null){ failTrace = all; return null; }               // v102: what was decided before the contradiction
-          if(tsOn && passNeed) keepSizes();                                // v105
+          if(tsOn && fr.n) keepSizes(fr.n, fr.c);                          // v105
           if(part.length === 0 && !part.again && !tsDirty) break;
           for(const ch of part){ ch.pass = pass; all.push(ch); }          // v47: pass number, reported on the deduce events
         }
         return all;
       } finally { propPos = pos0; }
     }
-    let passNeed = null, passCap = null;                  // v105: need / capOf of the pass that just ran
-    function keepSizes(){
+    const passFrames = [];                                // v105: one frame per propagate() call: need / capOf of the pass that just ran
+    function keepSizes(passNeed, passCap){
       const ndMin = minOn ? rLo : 0;                      // a lowest size that is only the Minimum stays the Minimum's (applied every pass)
       for(const [rep, lo] of passNeed){
         const hi = passCap.get(rep);
         if(lo > tLo[rep] && lo > ndMin) tLo[rep] = lo;
         if(hi < tHi[rep]) tHi[rep] = hi;
       }
-      passNeed = passCap = null;
     }
     function propagateOnce(){
       tsDirty = false;
-      passNeed = passCap = null;
       if(boxOn && nbOn && activeIds.length > 0){ failWhy = 'box-both'; return null; }                       // v32: Boxy and Non-boxy together
       if(solDouble){ failWhy = 'solitude-count'; return null; }
       if(roseUnbalanced){
@@ -9221,7 +9220,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       const changes = [];
       // every group must still be able to be a piece
       const need = new Map(), capOf = new Map(), maskOf = new Map();
-      passNeed = need; passCap = capOf;                                                    // v105
+      if(passFrames.length){ const fr = passFrames[passFrames.length - 1]; fr.n = need; fr.c = capOf; }   // v105: this pass's bounds (its own frame: a step may run a nested propagate)
       for(const [rep, mem] of members){
         const nd = pieceInfo(mem);
         if(nd === null){ failWhy = why; markAt(failWhy, mem); return null; }       // v102: this group breaks a rule of its own (roses, polyomino, palisade size, compass, ...)

@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.35.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.36.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -12,6 +12,20 @@ is sent anywhere.
   `C:\Program Files (x86)\Steam\steamapps\workshop\content\4160210` (workshop puzzles) and `%LOCALAPPDATA%\Geri\Saved\workshop` (your own puzzles).
   Chrome and Edge remember the folders, so later imports are one click; other browsers ask for the folder each time.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.36
+
+**Bug fix: a valid puzzle could be called impossible** (core v120; the author's report). Since V1.0.25 each pass of the propagation
+narrows the tile sizes with the bounds it found. A step that runs a nested propagation (a probe, for instance) must not hand its
+own bounds to the outer pass: the fix for that (one frame of bounds per propagate call) went into the reference core of V1.0.25 but
+not into the page, so from V1.0.25 to V1.0.35 the page could narrow sizes with the wrong bounds and say "impossible" (here with
+compasses and Mismatch) about a puzzle whose solution is valid. The tests run the reference core, so none of them saw it.
+- The page now has the fix; its solver core is the same code as `dev/reference/solver-core.v120.js`, which is now written from the
+  page itself (`patch_ui_V1.0.36.py --reference ...`).
+- `dev/tests/page/ui_test_core_sync.js` fails on any difference between the page's core and the newest reference core.
+- `dev/fuzz/fuzz_planted120.js` runs the whole solver with the page's settings on planted tilings that obey every clue and rule on
+  the board, and fails on any "impossible", any rule or probe deduction that disagrees with the planted tiling, or a "unique" that
+  is not the planted tiling.
 
 ## V1.0.35
 
@@ -332,7 +346,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.35.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.36.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |
@@ -340,7 +354,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 | `rewrite/` | The rewrite list: every text of the page, one file per part of the page, with the author's own wording (see `rewrite/README.md`). |
 | `dev/tools/run_corpus.js` | Times the solver on every puzzle of a corpus and writes a report. |
 | `dev/game_puzzles*`, `dev/user_puzzles`, `dev/puzzles` | Puzzles used by the tools and tests. |
-| `dev/build/` | The changes since V1 as scripts: `patch_core94.py` + `patch_ui_V1.0.1.py` (V1 -> V1.0.1), `patch_core95.py` + `patch_ui_V1.0.2.py` (V1.0.1 -> V1.0.2), `patch_core96.py` + `patch_ui_V1.0.3.py` (V1.0.2 -> V1.0.3), `patch_ui_V1.0.4.py` (V1.0.3 -> V1.0.4, page only), `patch_core97.py` + `patch_ui_V1.0.5.py` (V1.0.4 -> V1.0.5), `patch_core98.py` + `patch_ui_V1.0.6.py` (V1.0.5 -> V1.0.6), `patch_ui_V1.0.7.py` (V1.0.6 -> V1.0.7, page only), `patch_ui_V1.0.8.py` (V1.0.7 -> V1.0.8, page only), `patch_core99.py` + `patch_ui_V1.0.9.py` (V1.0.8 -> V1.0.9), `patch_ui_V1.0.10.py` + `rewrites_V1.0.10.json` (V1.0.9 -> V1.0.10, page only), `patch_ui_V1.0.11.py` (V1.0.10 -> V1.0.11, page only), `patch_ui_V1.0.12.py` + `rule_examples_V1.0.12.json` + `step_info_extra_V1.0.12.json` (V1.0.11 -> V1.0.12, page only); `patch_ui_V1.0.13.py` + `rule_examples_V1.0.13.json` (V1.0.12 -> V1.0.13, page only); `patch_ui_V1.0.14.py` (V1.0.13 -> V1.0.14, page only); `patch_ui_V1.0.15.py` + `rule_examples_V1.0.15.json` (V1.0.14 -> V1.0.15, page only); `patch_ui_V1.0.16.py` + `rule_examples_V1.0.16.json` (V1.0.15 -> V1.0.16, page only); `patch_core100.py` + `patch_ui_V1.0.17.py` (V1.0.16 -> V1.0.17); `patch_core101.py` + `patch_ui_V1.0.18.py` (V1.0.17 -> V1.0.18); `patch_core102.py` + `patch_ui_V1.0.19.py` (V1.0.18 -> V1.0.19); `patch_core103.py` + `patch_ui_V1.0.20.py` (V1.0.19 -> V1.0.20); `patch_ui_V1.0.21.py` (V1.0.20 -> V1.0.21, page only); `patch_ui_V1.0.22.py` + `rewrites_V1.0.22.json` + `typos_V1.0.22.json` (V1.0.21 -> V1.0.22, page only); `patch_ui_V1.0.23.py` (V1.0.22 -> V1.0.23, page only); `patch_core104.py` + `patch_ui_V1.0.24.py` (V1.0.23 -> V1.0.24); `patch_core105.py` + `patch_ui_V1.0.25.py` (V1.0.24 -> V1.0.25); `patch_core106.py` + `patch_ui_V1.0.26.py` (V1.0.25 -> V1.0.26); `patch_core107.py` + `patch_ui_V1.0.27.py` (V1.0.26 -> V1.0.27); `patch_core108.py` + `patch_ui_V1.0.28.py` (V1.0.27 -> V1.0.28); `patch_core109.py` + `patch_ui_V1.0.29.py` (V1.0.28 -> V1.0.29); `patch_core110.py` + `patch_ui_V1.0.30.py` (V1.0.29 -> V1.0.30); `patch_core111.py` ... `patch_core114.py` + `patch_ui_V1.0.31.py` (V1.0.30 -> V1.0.31); `patch_ui_V1.0.32.py` (V1.0.31 -> V1.0.32, page only); `patch_core115.py` ... `patch_core117.py` + `patch_ui_V1.0.33.py` (V1.0.32 -> V1.0.33); `patch_core118.py` + `patch_ui_V1.0.34.py` (V1.0.33 -> V1.0.34); `patch_core119.py` + `patch_ui_V1.0.35.py` (V1.0.34 -> V1.0.35). |
+| `dev/build/` | The changes since V1 as scripts: `patch_core94.py` + `patch_ui_V1.0.1.py` (V1 -> V1.0.1), `patch_core95.py` + `patch_ui_V1.0.2.py` (V1.0.1 -> V1.0.2), `patch_core96.py` + `patch_ui_V1.0.3.py` (V1.0.2 -> V1.0.3), `patch_ui_V1.0.4.py` (V1.0.3 -> V1.0.4, page only), `patch_core97.py` + `patch_ui_V1.0.5.py` (V1.0.4 -> V1.0.5), `patch_core98.py` + `patch_ui_V1.0.6.py` (V1.0.5 -> V1.0.6), `patch_ui_V1.0.7.py` (V1.0.6 -> V1.0.7, page only), `patch_ui_V1.0.8.py` (V1.0.7 -> V1.0.8, page only), `patch_core99.py` + `patch_ui_V1.0.9.py` (V1.0.8 -> V1.0.9), `patch_ui_V1.0.10.py` + `rewrites_V1.0.10.json` (V1.0.9 -> V1.0.10, page only), `patch_ui_V1.0.11.py` (V1.0.10 -> V1.0.11, page only), `patch_ui_V1.0.12.py` + `rule_examples_V1.0.12.json` + `step_info_extra_V1.0.12.json` (V1.0.11 -> V1.0.12, page only); `patch_ui_V1.0.13.py` + `rule_examples_V1.0.13.json` (V1.0.12 -> V1.0.13, page only); `patch_ui_V1.0.14.py` (V1.0.13 -> V1.0.14, page only); `patch_ui_V1.0.15.py` + `rule_examples_V1.0.15.json` (V1.0.14 -> V1.0.15, page only); `patch_ui_V1.0.16.py` + `rule_examples_V1.0.16.json` (V1.0.15 -> V1.0.16, page only); `patch_core100.py` + `patch_ui_V1.0.17.py` (V1.0.16 -> V1.0.17); `patch_core101.py` + `patch_ui_V1.0.18.py` (V1.0.17 -> V1.0.18); `patch_core102.py` + `patch_ui_V1.0.19.py` (V1.0.18 -> V1.0.19); `patch_core103.py` + `patch_ui_V1.0.20.py` (V1.0.19 -> V1.0.20); `patch_ui_V1.0.21.py` (V1.0.20 -> V1.0.21, page only); `patch_ui_V1.0.22.py` + `rewrites_V1.0.22.json` + `typos_V1.0.22.json` (V1.0.21 -> V1.0.22, page only); `patch_ui_V1.0.23.py` (V1.0.22 -> V1.0.23, page only); `patch_core104.py` + `patch_ui_V1.0.24.py` (V1.0.23 -> V1.0.24); `patch_core105.py` + `patch_ui_V1.0.25.py` (V1.0.24 -> V1.0.25); `patch_core106.py` + `patch_ui_V1.0.26.py` (V1.0.25 -> V1.0.26); `patch_core107.py` + `patch_ui_V1.0.27.py` (V1.0.26 -> V1.0.27); `patch_core108.py` + `patch_ui_V1.0.28.py` (V1.0.27 -> V1.0.28); `patch_core109.py` + `patch_ui_V1.0.29.py` (V1.0.28 -> V1.0.29); `patch_core110.py` + `patch_ui_V1.0.30.py` (V1.0.29 -> V1.0.30); `patch_core111.py` ... `patch_core114.py` + `patch_ui_V1.0.31.py` (V1.0.30 -> V1.0.31); `patch_ui_V1.0.32.py` (V1.0.31 -> V1.0.32, page only); `patch_core115.py` ... `patch_core117.py` + `patch_ui_V1.0.33.py` (V1.0.32 -> V1.0.33); `patch_core118.py` + `patch_ui_V1.0.34.py` (V1.0.33 -> V1.0.34); `patch_core119.py` + `patch_ui_V1.0.35.py` (V1.0.34 -> V1.0.35); `patch_core120.py` + `patch_ui_V1.0.36.py` (V1.0.35 -> V1.0.36). |
 | `dev/tools/steptiming/`, `dev/results/step_timing_v94.md` | Time of each propagation step over the campaign (what the V1.0.2 order is based on). |
 | `dev/workshop_wally/` | The 21 Wally puzzles of the Steam workshop collection as one export file (Wally switched on: the game files can not say it), and their results. Run with `node tools/run_export.js workshop_wally/wally_workshop_21.glimmith.json 60 2`. |
 | `docs/handoffs/` | Development notes, oldest to newest. `HANDOFF_V1.0.5.md` is the last summary. |

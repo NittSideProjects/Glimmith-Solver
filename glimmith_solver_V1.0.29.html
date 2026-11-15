@@ -632,7 +632,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
   function makeGrid(w,h,val){ return Array.from({length:h}, () => Array.from({length:w}, () => val)); }
 
-  // ================= SOLVER CORE (pure, unit-tested separately; v108 (V1.0.28) = v107 + tile shapes (the shapes a tile's piece is known not to be); v107 (V1.0.27) = v106 with size sets up to 15 and Non-boxy as a Minimum of 3 written once; v106 (V1.0.26) = v105 + tile size sets (the exact sizes a tile's piece can have, holes included); v105 (V1.0.25) = v104 + tile sizes (every tile keeps the size range of its piece); v104 (V1.0.24) = v103 + piece count (fewest .. most pieces, shared by every rule); v103 (V1.0.20) = v102 + more checks say where they fail (markAt); v102 (V1.0.19) = v101 + opts.explain (the cases behind a proof by contradiction); v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
+  // ================= SOLVER CORE (pure, unit-tested separately; v109 (V1.0.29) = v108 with one shared placement decision (placeDecide); v108 (V1.0.28) = v107 + tile shapes (the shapes a tile's piece is known not to be); v107 (V1.0.27) = v106 with size sets up to 15 and Non-boxy as a Minimum of 3 written once; v106 (V1.0.26) = v105 + tile size sets (the exact sizes a tile's piece can have, holes included); v105 (V1.0.25) = v104 + tile sizes (every tile keeps the size range of its piece); v104 (V1.0.24) = v103 + piece count (fewest .. most pieces, shared by every rule); v103 (V1.0.20) = v102 + more checks say where they fail (markAt); v102 (V1.0.19) = v101 + opts.explain (the cases behind a proof by contradiction); v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
 
   // ---- shape symmetry helpers ----
 
@@ -4402,17 +4402,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         if(over){ apOver.add(apKey); continue; }
         if(V.length === 0){ why = 'area-place'; markAt(why, mem); return null; }
         const out = [];
-        for(const P of V) for(const id of P) cntBuf[id]++;
-        const sure = V[0].filter(id => cntBuf[id] === V.length);
-        for(const P of V) for(const id of P) cntBuf[id] = 0;
-        let merged = false;
-        for(const id of sure) if(find(id) !== find(rep)){ union(rep, id); merged = true; }
-        for(const id of sure) for(const { e, o } of adjE[id]) if(e.state === 0 && find(o) === find(id)){ e.state = 2; out.push({ e, value: 'same', rule: 'area-place' }); }
-        for(const P of V){ markGen++; for(const id of P) markBuf[id] = markGen; for(const id of P) for(const { e, o } of adjE[id]) if(markBuf[o] !== markGen) edgeCnt[e.idx]++; }
-        for(const P of V) for(const id of P) for(const { e } of adjE[id]){
-          const n = edgeCnt[e.idx]; if(n === 0) continue; edgeCnt[e.idx] = 0;
-          if(n === V.length && e.state === 0){ e.state = 1; out.push({ e, value: 'wall', rule: 'area-place' }); }
-        }
+        let merged = placeDecide(V, 'area-place', out, rep, null);      // v109
         if(merged) out.again = true;
         if(out.length > 0 || merged) return out;
       }
@@ -4427,24 +4417,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         if(V.length === 0){ why = 'stamp-place'; markAt(why, members.get(rep)); return null; }
         const out = [];
         // cells that EVERY remaining placement covers are in this piece
-        for(const P of V) for(const id of P) cntBuf[id]++;
-        const sure = V[0].filter(id => cntBuf[id] === V.length);
-        for(const P of V) for(const id of P) cntBuf[id] = 0;
-        let merged = false;
-        for(const id of sure) if(find(id) !== find(st.id)){ union(st.id, id); merged = true; }
-        for(const id of sure) for(const { e, o } of adjE[id]) if(e.state === 0 && find(o) === find(id)){ e.state = 2; out.push({ e, value: 'same', rule: 'stamp-place' }); }
-        // an edge that is a boundary of EVERY remaining placement is a wall
-        for(const P of V){
-          markGen++;
-          for(const id of P) markBuf[id] = markGen;
-          for(const id of P) for(const { e, o } of adjE[id]) if(markBuf[o] !== markGen) edgeCnt[e.idx]++;
-        }
-        for(const P of V) for(const id of P) for(const { e } of adjE[id]){
-          const n = edgeCnt[e.idx];
-          if(n === 0) continue;
-          edgeCnt[e.idx] = 0;
-          if(n === V.length && e.state === 0){ e.state = 1; out.push({ e, value: 'wall', rule: 'stamp-place' }); }
-        }
+        let merged = placeDecide(V, 'stamp-place', out, st.id, null);      // v109
         if(merged) out.again = true;
         if(out.length > 0 || merged) return out;
       }
@@ -5804,6 +5777,34 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       return out;
     }
 
+    // v109: what every remaining place agrees on (shared by all the placement steps). V = the places (tile lists), tag = rule name.
+    // rep >= 0: the tiles every place covers are merged into rep's group at once (returns true when it merged);
+    // link (array): the edges between those tiles are linked and pushed to `link`, the caller merges them at the end of its step.
+    // An edge on the border of every place is a wall.
+    function placeDecide(V, tag, out, rep, link){
+      for(const P of V) for(const id of P) cntBuf[id]++;
+      const sure = V[0].filter(id => cntBuf[id] === V.length);
+      for(const P of V) for(const id of P) cntBuf[id] = 0;
+      let merged = false;
+      if(link === null){
+        for(const id of sure) if(find(id) !== find(rep)){ union(rep, id); merged = true; }
+        for(const id of sure) for(const { e, o } of adjE[id]) if(e.state === 0 && find(o) === find(id)){ e.state = 2; out.push({ e, value: 'same', rule: tag }); }
+      } else {
+        for(const id of sure) for(const { e, o } of adjE[id]) if(e.state === 0 && sure.includes(o)){ e.state = 2; link.push(e); out.push({ e, value: 'same', rule: tag }); }
+      }
+      for(const P of V){
+        markGen++;
+        for(const id of P) markBuf[id] = markGen;
+        for(const id of P) for(const { e, o } of adjE[id]) if(markBuf[o] !== markGen) edgeCnt[e.idx]++;
+      }
+      for(const P of V) for(const id of P) for(const { e } of adjE[id]){
+        const n = edgeCnt[e.idx];
+        if(n === 0) continue;
+        edgeCnt[e.idx] = 0;
+        if(n === V.length && e.state === 0){ e.state = 1; out.push({ e, value: 'wall', rule: tag }); }
+      }
+      return merged;
+    }
     // ---- where can a given shape still go, for the group `rep`? (what stampStep does for a stamp) ----
     const placeCache = new Map();
     function placementsAt(X, id){
@@ -5833,23 +5834,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       for(const P of placementsAt(X, members.get(rep)[0])) if(placementOk(P, rep, dmap)) V.push(P);
       if(V.length === 0){ why = tag; markAt(why, members.get(rep)); return null; }
       const out = [];
-      for(const P of V) for(const id of P) cntBuf[id]++;
-      const sure = V[0].filter(id => cntBuf[id] === V.length);          // tiles EVERY remaining place covers are in this piece
-      for(const P of V) for(const id of P) cntBuf[id] = 0;
-      let merged = false;
-      for(const id of sure) if(find(id) !== find(rep)){ union(rep, id); merged = true; }
-      for(const id of sure) for(const { e, o } of adjE[id]) if(e.state === 0 && find(o) === find(id)){ e.state = 2; out.push({ e, value: 'same', rule: tag }); }
-      for(const P of V){                                                // an edge on the boundary of EVERY remaining place is a wall
-        markGen++;
-        for(const id of P) markBuf[id] = markGen;
-        for(const id of P) for(const { e, o } of adjE[id]) if(markBuf[o] !== markGen) edgeCnt[e.idx]++;
-      }
-      for(const P of V) for(const id of P) for(const { e } of adjE[id]){
-        const n = edgeCnt[e.idx];
-        if(n === 0) continue;
-        edgeCnt[e.idx] = 0;
-        if(n === V.length && e.state === 0){ e.state = 1; out.push({ e, value: 'wall', rule: tag }); }
-      }
+      let merged = placeDecide(V, tag, out, rep, null);      // v109
       if(merged) out.again = true;
       return out;
     }
@@ -7571,22 +7556,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         }
         if(V.length === 0){ why = tag; markAt(why, members.get(rep)); return null; }
         // tiles every candidate covers are in this piece
-        for(const P of V) for(const id of P) cntBuf[id]++;
-        const sure = V[0].filter(id => cntBuf[id] === V.length);
-        for(const P of V) for(const id of P) cntBuf[id] = 0;
-        for(const id of sure) for(const { e, o } of adjE[id]) if(e.state === 0 && sure.includes(o)){ e.state = 2; link.push(e); out.push({ e, value: 'same', rule: tag }); }
-        // an edge that is a boundary of EVERY candidate is a wall
-        for(const P of V){
-          markGen++;
-          for(const id of P) markBuf[id] = markGen;
-          for(const id of P) for(const { e, o } of adjE[id]) if(markBuf[o] !== markGen) edgeCnt[e.idx]++;
-        }
-        for(const P of V) for(const id of P) for(const { e } of adjE[id]){
-          const n = edgeCnt[e.idx];
-          if(n === 0) continue;
-          edgeCnt[e.idx] = 0;
-          if(n === V.length && e.state === 0){ e.state = 1; out.push({ e, value: 'wall', rule: tag }); }
-        }
+        placeDecide(V, tag, out, -1, link);      // v109
       }
       for(const e of link) union(e.a, e.b);
       return out;
@@ -7694,15 +7664,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       const out = [], link = [];
       for(const r of shrunk){
         const V = lists.get(r).map(v => v.P);
-        for(const P of V) for(const id of P) cntBuf[id]++;
-        const sure = V[0].filter(id => cntBuf[id] === V.length);
-        for(const P of V) for(const id of P) cntBuf[id] = 0;
-        for(const id of sure) for(const { e, o } of adjE[id]) if(e.state === 0 && sure.includes(o)){ e.state = 2; link.push(e); out.push({ e, value: 'same', rule: 'gemini-place' }); }
-        for(const P of V){ markGen++; for(const id of P) markBuf[id] = markGen; for(const id of P) for(const { e, o } of adjE[id]) if(markBuf[o] !== markGen) edgeCnt[e.idx]++; }
-        for(const P of V) for(const id of P) for(const { e } of adjE[id]){
-          const n = edgeCnt[e.idx]; if(n === 0) continue; edgeCnt[e.idx] = 0;
-          if(n === V.length && e.state === 0){ e.state = 1; out.push({ e, value: 'wall', rule: 'gemini-place' }); }
-        }
+        placeDecide(V, 'gemini-place', out, -1, link);      // v109
         if(out.length) break;
       }
       for(const e of link) union(e.a, e.b);
@@ -7758,15 +7720,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         }
         if(V.length === 0){ why = 'cmp-box'; return null; }
         if(V.length > 2000) continue;
-        for(const P of V) for(const id of P) cntBuf[id]++;
-        const sure = V[0].filter(id => cntBuf[id] === V.length);
-        for(const P of V) for(const id of P) cntBuf[id] = 0;
-        for(const id of sure) for(const { e, o } of adjE[id]) if(e.state === 0 && sure.includes(o)){ e.state = 2; link.push(e); out.push({ e, value: 'same', rule: 'cmp-box' }); }
-        for(const P of V){ markGen++; for(const id of P) markBuf[id] = markGen; for(const id of P) for(const { e, o } of adjE[id]) if(markBuf[o] !== markGen) edgeCnt[e.idx]++; }
-        for(const P of V) for(const id of P) for(const { e } of adjE[id]){
-          const n = edgeCnt[e.idx]; if(n === 0) continue; edgeCnt[e.idx] = 0;
-          if(n === V.length && e.state === 0){ e.state = 1; out.push({ e, value: 'wall', rule: 'cmp-box' }); }
-        }
+        placeDecide(V, 'cmp-box', out, -1, link);      // v109
         if(out.length) break;
       }
       for(const e of link) union(e.a, e.b);
@@ -7953,15 +7907,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       for(const g of G){
         if(g.V.length === g.n0) continue;
         const V = g.V.map(v => v.P);
-        for(const P of V) for(const id of P) cntBuf[id]++;
-        const sure = V[0].filter(id => cntBuf[id] === V.length);
-        for(const P of V) for(const id of P) cntBuf[id] = 0;
-        for(const id of sure) for(const { e, o } of adjE[id]) if(e.state === 0 && sure.includes(o)){ e.state = 2; link.push(e); out.push({ e, value: 'same', rule: tag }); }
-        for(const P of V){ markGen++; for(const id of P) markBuf[id] = markGen; for(const id of P) for(const { e, o } of adjE[id]) if(markBuf[o] !== markGen) edgeCnt[e.idx]++; }
-        for(const P of V) for(const id of P) for(const { e } of adjE[id]){
-          const n = edgeCnt[e.idx]; if(n === 0) continue; edgeCnt[e.idx] = 0;
-          if(n === V.length && e.state === 0){ e.state = 1; out.push({ e, value: 'wall', rule: tag }); }
-        }
+        placeDecide(V, tag, out, -1, link);      // v109
       }
       for(const e of link) union(e.a, e.b);
       return out;
@@ -8921,11 +8867,12 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         const len = mem.length, nd = Math.max(need.get(rep), len), cp = capOf.get(rep);
         if(cp < nd) continue;
         const x0 = mem[0] % w, y0 = (mem[0] - x0) / w;
-        let est = 0; for(const sh of loose) if(sh.size >= nd && sh.size <= cp) est += sh.orients.length * sh.size;
+        const nkB = tsOn ? notOfIds(mem) : null;                                     // v109: not the shapes ruled out for this group
+        let est = 0; for(const sh of loose) if(sh.size >= nd && sh.size <= cp && !(nkB && nkB.has(sh.key))) est += sh.orients.length * sh.size;
         if(est > BANK_MAX_CAND) continue;                                         // too many placements to be worth it (sound: nothing is decided)
         const V = [], seen = new Set(); let tries = 0, tooMany = false;
         for(const sh of loose){
-          if(sh.size < nd || sh.size > cp) continue;
+          if(sh.size < nd || sh.size > cp || (nkB && nkB.has(sh.key))) continue;
           for(const ori of sh.orients){
             for(const [sx, sy] of ori.cells){
               if(++tries > BANK_MAX_CAND){ tooMany = true; break; }
@@ -8949,21 +8896,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         }
         if(tooMany) continue;
         if(V.length === 0){ why = 'bank-place'; return null; }
-        for(const P of V) for(const id of P) cntBuf[id]++;
-        const sure = V[0].filter(id => cntBuf[id] === V.length);
-        for(const P of V) for(const id of P) cntBuf[id] = 0;
-        for(const id of sure) for(const { e, o } of adjE[id]) if(e.state === 0 && sure.includes(o)){ e.state = 2; link.push(e); out.push({ e, value: 'same', rule: 'bank-place' }); }
-        for(const P of V){
-          markGen++;
-          for(const id of P) markBuf[id] = markGen;
-          for(const id of P) for(const { e, o } of adjE[id]) if(markBuf[o] !== markGen) edgeCnt[e.idx]++;
-        }
-        for(const P of V) for(const id of P) for(const { e } of adjE[id]){
-          const n = edgeCnt[e.idx];
-          if(n === 0) continue;
-          edgeCnt[e.idx] = 0;
-          if(n === V.length && e.state === 0){ e.state = 1; out.push({ e, value: 'wall', rule: 'bank-place' }); }
-        }
+        placeDecide(V, 'bank-place', out, -1, link);      // v109
       }
       for(const e of link) union(e.a, e.b);
       return out;

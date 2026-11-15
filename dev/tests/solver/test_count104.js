@@ -3,7 +3,7 @@
 // Heterogeneous, Match, the user's limit on pieces; then the closed-in areas that must add up to the count ('piece-region').
 // node tests/solver/test_count104.js
 'use strict';
-const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v118.js'), L = require('../../fuzzlib.js');
+const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v119.js'), L = require('../../fuzzlib.js');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const RULES = { precision: null, min: null, max: null, mismatch: false, match: false, mingleShape: false, mingleArea: false, solitude: false, boxy: false, nonBoxy: false };

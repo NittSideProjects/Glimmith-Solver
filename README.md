@@ -13,6 +13,16 @@ is sent anywhere.
   Chrome and Edge remember the folders, so later imports are one click; other browsers ask for the folder each time.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
 
+## V1.0.28
+
+Every tile keeps the shapes its piece is known not to be (core v108, refactoring step 1: the shape rules share their facts). Mingle
+Shape and Mismatch keep every shape they take away from a group, and start from what was taken away before; a Delta wall takes the
+known shape of one side (a polyomino in it, or a finished piece) away from the other side, even before the two have the same size;
+with a shape bank, the shapes ruled out leave the list a group must fit; and a size whose shapes are all ruled out leaves the size
+set. Two groups that could only be one piece of a ruled-out shape are separated by a new step, "Shape ruled out". On 211 campaign
+puzzles with shape rules: same verdicts, 67 more edges decided in the first pass (Mingle Shape +45, Gemini / Delta +22), 64.5 s ->
+62.1 s. The new texts are on the rewrite list.
+
 ## V1.0.27
 
 Two small changes in the solver (core v107), no new deduction. The tile size sets of V1.0.26 now keep sizes 1 to 15 one by one

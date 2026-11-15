@@ -19,7 +19,7 @@ The number of pieces, as one range shared by every rule (core v104, the first st
 solver now works out once the fewest and the most pieces any tiling can have, and for each size the fewest and most pieces of that
 size, from everything that counts pieces: the roses, Solitude, the size rules and the shape bank, the pieces the area numbers and
 polyominoes need (three tiles numbered 2 need at least two pieces of 2), Heterogeneous (one piece per size), Mismatch (no more pieces
-of k tiles than shapes of k tiles), Match and the user's limit. Having both ends lets them meet: area numbers that add up to the
+of k tiles than shapes of k tiles) and the user's limit. Match is left to its own size check, which is already stricter. Having both ends lets them meet: area numbers that add up to the
 board fix the count, and a Mismatch bank whose shapes fill the board exactly is used once each. A board with no possible count is
 impossible at once ('no number of pieces fits all the rules and clues'), and during the solve the areas closed in by walls must add
 up to the count: a new step, "Number of pieces in closed-in areas", makes an area one piece, or every group in it a piece of its own.

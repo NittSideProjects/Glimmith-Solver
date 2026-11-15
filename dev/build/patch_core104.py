@@ -21,11 +21,10 @@ It is a counting problem only (a 2-D knapsack: tiles x pieces, with a bounded nu
 EVERY valid tiling:
   ctx.pieceLo / ctx.pieceHi     fewest / most pieces (pieceCapMax becomes pieceHi)
   ctx.pieceMult.lo[k] / .hi[k]  fewest / most pieces of k tiles (hi[k] = 0: no piece of k tiles)
-  ctx.sizeLo / ctx.sizeHi       narrowed to the sizes that occur in some count; rangeInfo is rebuilt for them (not under Match:
-                                its own size list already knows them, and narrowing here switched on costly Minimum steps)
+  ctx.sizeLo / ctx.sizeHi       narrowed to the sizes that occur in some count; rangeInfo is rebuilt for them
   ctx.countInfeasible           no count at all: impossible ('piece-count')
-Match: all pieces have one size s, so the count is T / s for the sizes matchSizeCandidates keeps; matchSizeCandidates now also
-drops the sizes whose count falls outside pieceLo..pieceHi.
+Match: not counted here. Match's own size list (matchSizeCandidates: one size dividing the tile count, agreeing with the numbers,
+polyominoes, roses, Solitude, the limit) is already stricter, so counting again would only cost time.
 
 During the propagation (pieceCountStep, after the closed-in areas): every area closed in by walls holds between minN and maxN
 pieces (from its tile count and the sizes, and never more pieces than groups). Added up they must reach pieceLo and stay within
@@ -59,7 +58,7 @@ def patch(src, ind):
     else if(pc){
       ctxOut.pieceLo = pc.lo; ctxOut.pieceHi = pc.hi; ctxOut.pieceMult = pc;
       ctxOut.pieceCapMax = ctxOut.pieceCapMax == null ? pc.hi : Math.min(ctxOut.pieceCapMax, pc.hi);
-      if(pc.sizes && pc.sizes.length && !ctxOut.matchRule){                        // Match keeps its own sizes (matchS0): narrowing here only switches on the Minimum steps, slower
+      if(pc.sizes && pc.sizes.length){
         const nlo = Math.max(ctxOut.sizeLo, pc.sizes[0]), nhi = Math.min(ctxOut.sizeHi, pc.sizes[pc.sizes.length - 1]);
         if(nlo !== ctxOut.sizeLo || nhi !== ctxOut.sizeHi){
           ctxOut.sizeLo = nlo; ctxOut.sizeHi = nhi;
@@ -75,7 +74,7 @@ def patch(src, ind):
 // v104 'piece count' (see build/patch_core104.py): the fewest / most pieces of any tiling, and of each size. null = nothing to count.
 function pieceCountInfo(ctx, w, h){
   const T = ctx.totalActive;
-  if(!(T > 0) || T > 2500) return null;
+  if(!(T > 0) || T > 2500 || ctx.matchRule) return null;   // Match: its own size list (matchSizeCandidates) is stricter, no need to count twice
   const f = gatherFacts(ctx, w, h);
   const lo = Math.max(1, ctx.sizeLo, ctx.nonBoxyRule ? 3 : 1), hi = Math.min(ctx.sizeHi, T);
   if(lo > hi) return { ok: false };
@@ -120,15 +119,6 @@ function pieceCountInfo(ctx, w, h){
     const mi = mismatchSizeInfo(ctx, w, h, f);
     if(!mi.ok) return { ok: false };
     if(mi.q) for(let k = lo; k <= hi; k++) cap[k] = Math.min(cap[k], mi.q[k] || 0);
-  }
-  if(ctx.matchRule){                                        // one size s for every piece: T / s pieces
-    let sizes = matchSizeCandidates(ctx, f).filter(s => s >= lo && s <= hi && allowed[s]);
-    sizes = sizes.filter(s => { const n = T / s; if(n < cLo || n > cHi || n > cap[s]) return false; for(const [k, m] of mand) if(k !== s || m > n) return false; return true; });
-    if(!sizes.length) return { ok: false };
-    const mlo = new Array(hi + 1).fill(0), mhi = new Array(hi + 1).fill(0);
-    let plo = Infinity, phi = 0;
-    for(const s of sizes){ const n = T / s; mhi[s] = n; if(sizes.length === 1) mlo[s] = n; plo = Math.min(plo, n); phi = Math.max(phi, n); }
-    return { ok: true, lo: plo, hi: phi, sizes, mlo, mhi };
   }
   // place the forced pieces first, then count the ways to cover the rest
   let M = 0, A = 0;
@@ -188,14 +178,6 @@ function pieceCountInfo(ctx, w, h){
   return { ok: true, lo: M + plo, hi: M + phi, sizes, mlo, mhi };
 }
 """), 'count pass')
-
-    # ---- Match: the sizes whose count is out of range go ----
-    src = rep(src, I("""  if(ctx.maxRegions != null) sizes = sizes.filter(s => T / s <= ctx.maxRegions);
-  return sizes;
-"""), I("""  if(ctx.maxRegions != null) sizes = sizes.filter(s => T / s <= ctx.maxRegions);
-  if(ctx.pieceLo != null) sizes = sizes.filter(s => T / s >= ctx.pieceLo && T / s <= ctx.pieceHi);     // v104
-  return sizes;
-"""), 'match sizes')
 
     # ---- the exact search: no count = no tiling ----
     src = rep(src, I("""  if(ctx.rangeInfeasible) return;

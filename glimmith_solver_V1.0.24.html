@@ -1175,7 +1175,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       else if(pc){
         ctxOut.pieceLo = pc.lo; ctxOut.pieceHi = pc.hi; ctxOut.pieceMult = pc;
         ctxOut.pieceCapMax = ctxOut.pieceCapMax == null ? pc.hi : Math.min(ctxOut.pieceCapMax, pc.hi);
-        if(pc.sizes && pc.sizes.length && !ctxOut.matchRule){                        // Match keeps its own sizes (matchS0): narrowing here only switches on the Minimum steps, slower
+        if(pc.sizes && pc.sizes.length){
           const nlo = Math.max(ctxOut.sizeLo, pc.sizes[0]), nhi = Math.min(ctxOut.sizeHi, pc.sizes[pc.sizes.length - 1]);
           if(nlo !== ctxOut.sizeLo || nhi !== ctxOut.sizeHi){
             ctxOut.sizeLo = nlo; ctxOut.sizeHi = nhi;
@@ -1191,7 +1191,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   // v104 'piece count' (see build/patch_core104.py): the fewest / most pieces of any tiling, and of each size. null = nothing to count.
   function pieceCountInfo(ctx, w, h){
     const T = ctx.totalActive;
-    if(!(T > 0) || T > 2500) return null;
+    if(!(T > 0) || T > 2500 || ctx.matchRule) return null;   // Match: its own size list (matchSizeCandidates) is stricter, no need to count twice
     const f = gatherFacts(ctx, w, h);
     const lo = Math.max(1, ctx.sizeLo, ctx.nonBoxyRule ? 3 : 1), hi = Math.min(ctx.sizeHi, T);
     if(lo > hi) return { ok: false };
@@ -1236,15 +1236,6 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       const mi = mismatchSizeInfo(ctx, w, h, f);
       if(!mi.ok) return { ok: false };
       if(mi.q) for(let k = lo; k <= hi; k++) cap[k] = Math.min(cap[k], mi.q[k] || 0);
-    }
-    if(ctx.matchRule){                                        // one size s for every piece: T / s pieces
-      let sizes = matchSizeCandidates(ctx, f).filter(s => s >= lo && s <= hi && allowed[s]);
-      sizes = sizes.filter(s => { const n = T / s; if(n < cLo || n > cHi || n > cap[s]) return false; for(const [k, m] of mand) if(k !== s || m > n) return false; return true; });
-      if(!sizes.length) return { ok: false };
-      const mlo = new Array(hi + 1).fill(0), mhi = new Array(hi + 1).fill(0);
-      let plo = Infinity, phi = 0;
-      for(const s of sizes){ const n = T / s; mhi[s] = n; if(sizes.length === 1) mlo[s] = n; plo = Math.min(plo, n); phi = Math.max(phi, n); }
-      return { ok: true, lo: plo, hi: phi, sizes, mlo, mhi };
     }
     // place the forced pieces first, then count the ways to cover the rest
     let M = 0, A = 0;
@@ -1895,7 +1886,6 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     }
     if(ctx.solitudeRule) sizes = sizes.filter(s => f.symbols > 0 && T / s === f.symbols);   // one symbol per piece: pieces = symbols
     if(ctx.maxRegions != null) sizes = sizes.filter(s => T / s <= ctx.maxRegions);
-    if(ctx.pieceLo != null) sizes = sizes.filter(s => T / s >= ctx.pieceLo && T / s <= ctx.pieceHi);     // v104
     return sizes;
   }
   // MISMATCH: all pieces have different shapes. A piece of k cells uses up one of the (few) shapes with k cells, so the

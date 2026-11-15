@@ -35,11 +35,9 @@ const count = c => [c.pieceLo, c.pieceHi];
 { const c = ctxOf(['###', '###'], { rules: { heterogeneous: true } });
   check('Heterogeneous on 6 tiles: 1 to 3 pieces (6, 1+5, 2+4, 1+2+3)', String(count(c)) === '1,3', count(c));
   check('... at most one piece of each size', [1, 2, 3, 4, 5, 6].every(k => c.pieceMult.mhi[k] === 1), c.pieceMult.mhi); }
-// Match: one size, the count is the tile count over it
+// Match: not counted by the pass (Match's own size list is stricter), its own check still finds the impossible board below
 { const c = ctxOf(['###', '###'], { roses: [['0,0', 1], ['2,1', 1]], rules: { match: true } });
-  check('Match with 2 pieces on 6 tiles: size 3', String(count(c)) === '2,2' && String(c.pieceMult.sizes) === '3' && c.pieceMult.mlo[3] === 2, [count(c), c.pieceMult.sizes, c.pieceMult.mlo]);
-  const d = ctxOf(['###', '###'], { roses: [['0,0', 1], ['1,0', 1], ['2,0', 1], ['0,1', 1]], rules: { match: true } });
-  check('Match with 4 pieces on 6 tiles: impossible', d.countInfeasible === true, d.countInfeasible); }
+  check('Match: the count pass steps aside', c.pieceLo == null && !c.countInfeasible, [count(c), c.countInfeasible]); }
 // the user's limit meets the lowest count
 { const c = ctxOf(['###', '###'], { areas: [['0,0', 1], ['2,1', 1]], rules: { max: 3 }, hints: { maxRegions: 2 } });
   check('two pieces of 1 and the rest still to cover, at most 2 pieces: impossible', c.countInfeasible === true, [c.countInfeasible, count(c)]);

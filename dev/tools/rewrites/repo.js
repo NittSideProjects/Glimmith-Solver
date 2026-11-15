@@ -29,7 +29,8 @@ function parse(dir){
   }
   return out;
 }
-const state = e => e.was !== null && e.was !== undefined ? 'check' : !e.new ? 'todo' : e.new === '=' ? 'keep' : /\[.*\]/.test(e.new) ? 'note' : norm(e.new) === norm(e.now) ? 'done' : 'apply';
+const APPLIED = new Set(); try { const ap = JSON.parse(fs.readFileSync(path.join(__dirname, 'applied.json'), 'utf8')); for(const v of Object.values(ap)) if(Array.isArray(v)) for(const [, t] of v) APPLIED.add(String(t).replace(/\s+/g, ' ').trim()); } catch(e){}
+const state = e => APPLIED.has(norm(e.now)) && !(e.was !== null && e.was !== undefined) && !(e.new && /\[.*\]/.test(e.new)) ? 'done' : e.was !== null && e.was !== undefined ? 'check' : !e.new ? 'todo' : e.new === '=' ? 'keep' : /\[.*\]/.test(e.new) ? 'note' : norm(e.new) === norm(e.now) ? 'done' : 'apply';
 const LABEL = { todo: 'to write', check: 'to check again (the page text changed)', note: 'notes for Claude [..]', apply: 'written, not on the page yet', done: 'written and on the page', keep: 'kept as it is' };
 function counts(entries){ const c = { todo: 0, check: 0, note: 0, apply: 0, done: 0, keep: 0 }; for(const e of entries) c[state(e)]++; return c; }
 if(cmd === 'write'){
@@ -55,6 +56,7 @@ if(cmd === 'write'){
         if(a.source && norm(a.source) !== norm(t.text) && norm(a.text) !== norm(t.text) && !/\[.*\]/.test(a.text || '')) e.was = norm(a.source);
       }
       if(e.was !== null && norm(e.new) === norm(e.now)) e.was = null;                    // the author's own text is on the page
+      if(e.was !== null && APPLIED.has(norm(e.now))) e.was = null;                       // his rewrite is on the page (typos fixed)
       if(!e.new && own.has(norm(t.text))) e.new = '=';                                     // the same wording as a rewrite of his elsewhere: his own text already
       return e;
     });

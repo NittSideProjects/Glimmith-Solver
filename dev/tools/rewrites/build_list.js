@@ -15,6 +15,8 @@ const answers = new Map(fs.readdirSync(dir).filter(f => f.endsWith('.json')).map
 const keepIds = new Set((keepArg || '').split(',').filter(Boolean));
 const norm = s => String(s || '').replace(/\s+/g, ' ').trim();
 const authorTexts = new Set([...answers.values()].filter(a => !a.kept && a.text && !/\[.*\]/.test(a.text)).map(a => norm(a.text)));
+// the author's rewrites already on the page (typos fixed, so not letter for letter his answer): done (applied.json, one list per release)
+try { const ap = JSON.parse(fs.readFileSync(path.join(__dirname, 'applied.json'), 'utf8')); for(const [k, v] of Object.entries(ap)) if(Array.isArray(v)) for(const [, t] of v) authorTexts.add(norm(t)); } catch(e){}
 const onScreen = t => !/Never shown|Not shown on screen/.test(t.note || '');
 const out = [], why = {};
 for(const t of all){

@@ -2,7 +2,7 @@
 
 The Rules panel: adding a rule and the rule chips (including what it says when there are no rules).
 
-Left here: 0 to write, 0 to check again, 4 notes, 0 to put on the page. Done: 40.
+Left here: 0 to write, 0 to check again, 2 notes, 0 to put on the page. Done: 40.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -15,11 +15,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: text · #ruleValueField · Only shows for rules that need a number.
 - now: Size
 - new: [where]
-
-### T0080
-- what: text · #rulesPanel
-- now: Rule
-- new: [remove]
 
 ### T0857
 - what: menu option · #ruleType · An option in a drop-down menu.
@@ -215,11 +210,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: message · renderRuleChips · Built by the page while it runs, so it only shows in some situations.
 - now: No rules yet
 - new: No rules yet
-
-### T0499
-- what: tooltip · renderRuleChips · Tooltip: shows when you hover over it.
-- now: Remove the range (minimum and maximum)
-- new: [useT0500instead]
 
 ### T0500
 - what: tooltip · renderRuleChips · Tooltip: shows when you hover over it.

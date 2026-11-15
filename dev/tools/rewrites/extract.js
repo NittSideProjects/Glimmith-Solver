@@ -93,7 +93,7 @@ const out = [];
       attrs(el);
       el.querySelectorAll && [...el.querySelectorAll('*')].forEach(d => { if (inlineOnly(el) && d !== el) attrs(d); });
       if (el.tagName === 'TEMPLATE') { [...el.content.childNodes].forEach(visit); return; }
-      if (inlineOnly(el)) { emit(el, ser(el), loc(el), innerPos(el)); return; }
+      if (inlineOnly(el) && !el.querySelector('select')) { emit(el, ser(el), loc(el), innerPos(el)); return; }   // a box holding only a menu: visit the menu
     }
     for (const c of el.childNodes) {
       if (c.nodeType === 3) emit(el, c.textContent, loc(c) || loc(el), textPos(c));

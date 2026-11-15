@@ -2,7 +2,7 @@
 
 The Solver panel: buttons, options, progress and the result after a solve.
 
-Left here: 0 to write, 0 to check again, 16 notes, 0 to put on the page. Done: 48.
+Left here: 0 to write, 0 to check again, 16 notes, 0 to put on the page. Done: 47.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -228,13 +228,8 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0532
 - what: message · note · Built by the page while it runs, so it only shows in some situations.
-- now: and the Omits
+- now: (No shape in your bank fits the grid under the current size rule(s).)
 - new: [remove]
-
-### T0533
-- what: message · note · Built by the page while it runs, so it only shows in some situations.
-- now: (No shape in your bank fits the grid under the current size rule(s){1}.)
-- new: =
 
 ### T0534
 - what: message · note · Built by the page while it runs, so it only shows in some situations.

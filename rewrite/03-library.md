@@ -2,7 +2,7 @@
 
 The puzzle list at the top of the Puzzle Grid panel, its buttons, the Fast import box, the import report and the messages an import or export can show.
 
-Left here: 0 to write, 0 to check again, 11 notes, 1 to put on the page. Done: 110.
+Left here: 0 to write, 0 to check again, 11 notes, 0 to put on the page. Done: 111.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -578,7 +578,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T1134
 - what: message · normalizeState › error · Built by the page while it runs, so it only shows in some situations.
-- now: a clue in it is not valid
+- now: a clue in the puzzle isn't valid
 - new: a clue is the puzzle isn't valid
 
 ### T0843

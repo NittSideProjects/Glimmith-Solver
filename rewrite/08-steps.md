@@ -2,7 +2,7 @@
 
 The step-by-step view: step titles, explanations and captions.
 
-Left here: 315 to write, 0 to check again, 0 notes, 4 to put on the page. Done: 2.
+Left here: 315 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -13,22 +13,22 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0119
 - what: tooltip · #stepsFirst · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve). Tooltip: shows when you hover over it.
-- now: First step (Home)
+- now: First step
 - new: First step
 
 ### T0121
 - what: tooltip · #stepsPrev · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve). Tooltip: shows when you hover over it.
-- now: Previous step (left arrow)
+- now: Previous step
 - new: Previous step
 
 ### T0123
 - what: tooltip · #stepsNext · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve). Tooltip: shows when you hover over it.
-- now: Next step (right arrow)
+- now: Next step
 - new: Next step
 
 ### T0125
 - what: tooltip · #stepsLast · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve). Tooltip: shows when you hover over it.
-- now: Last step (End)
+- now: Last step
 - new: Last step
 
 ### T1136

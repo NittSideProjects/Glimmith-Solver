@@ -1,0 +1,523 @@
+{
+ "_": "Typo fixes on the author's rewrites (V1.0.22): only spelling, a missing plural or 's', capitals at the start of a sentence, a missing final full stop. Each pair is [what he wrote, what goes on the page].",
+ "T0134": [
+  [
+   "both side of",
+   "both sides of"
+  ],
+  [
+   "for exemple",
+   "for example"
+  ],
+  [
+   "walled. this is",
+   "walled. This is"
+  ],
+  [
+   "it's position",
+   "its position"
+  ]
+ ],
+ "T0139": [
+  [
+   "</b> if a side",
+   "</b> If a side"
+  ],
+  [
+   "as well. this check",
+   "as well. This check"
+  ]
+ ],
+ "T0140": [
+  [
+   "This also apply",
+   "This also applies"
+  ]
+ ],
+ "T0141": [
+  [
+   "Shape shape advanced",
+   "Same shape advanced"
+  ],
+  [
+   "for exemple",
+   "for example"
+  ],
+  [
+   "also contain that shape",
+   "also contains that shape"
+  ],
+  [
+   "instance. we can",
+   "instance. We can"
+  ],
+  [
+   "symetry",
+   "symmetry"
+  ]
+ ],
+ "T0146": [
+  [
+   "(1+2+3...+n). if the area",
+   "(1+2+3...+n). If the area"
+  ]
+ ],
+ "T0150": [
+  [
+   "strickly",
+   "strictly"
+  ]
+ ],
+ "T0152": [
+  [
+   "two difference wall with",
+   "two difference walls with"
+  ],
+  [
+   "the original piece do.",
+   "the original piece does."
+  ]
+ ],
+ "T0158": [
+  [
+   "</b> adding numbers",
+   "</b> Adding numbers"
+  ],
+  [
+   "lower then the",
+   "lower than the"
+  ],
+  [
+   "link. for exemple",
+   "link. For example"
+  ],
+  [
+   "size 8. this is",
+   "size 8. This is"
+  ],
+  [
+   "two area number with",
+   "two area numbers with"
+  ]
+ ],
+ "T0159": [
+  [
+   "one of the area numbers",
+   "one of the area numbers."
+  ]
+ ],
+ "T0163": [
+  [
+   "two piece with",
+   "two pieces with"
+  ],
+  [
+   "walled of instantly",
+   "walled off instantly"
+  ],
+  [
+   "link. this also",
+   "link. This also"
+  ],
+  [
+   "rejected instantly",
+   "rejected instantly."
+  ]
+ ],
+ "T0165": [
+  [
+   "<b>Counting Advanced</b>",
+   "<b>Counting Advanced.</b>"
+  ],
+  [
+   "the different of rose",
+   "the difference of rose"
+  ],
+  [
+   "degree. a 2 wide",
+   "degree. A 2 wide"
+  ]
+ ],
+ "T0166": [
+  [
+   "Similarely",
+   "Similarly"
+  ],
+  [
+   "in small packs",
+   "in small packs."
+  ]
+ ],
+ "T0176": [
+  [
+   "the other two state.",
+   "the other two states."
+  ]
+ ],
+ "T0177": [
+  [
+   "Similarely",
+   "Similarly"
+  ],
+  [
+   "walls the solvers discover",
+   "walls the solver discovers"
+  ]
+ ],
+ "T0181": [
+  [
+   "the solver put the wall",
+   "the solver puts the wall"
+  ],
+  [
+   "and two link on",
+   "and two links on"
+  ]
+ ],
+ "T0183": [
+  [
+   "adjacent. most famous exemple",
+   "adjacent. Most famous example"
+  ],
+  [
+   "diagonaly",
+   "diagonally"
+  ],
+  [
+   "two link outwards. there are",
+   "two links outwards. There are"
+  ]
+ ],
+ "T0185": [
+  [
+   "palisade become",
+   "palisades become"
+  ],
+  [
+   "reasoning. for exemple",
+   "reasoning. For example"
+  ]
+ ],
+ "T0189": [
+  [
+   "instantly. if walls forces",
+   "instantly. If walls force"
+  ]
+ ],
+ "T0190": [
+  [
+   "Similarely to polymino",
+   "Similarly to polyomino"
+  ],
+  [
+   "two tiles are link/walled",
+   "two tiles are linked/walled"
+  ]
+ ],
+ "T0191": [
+  [
+   "any compass also give",
+   "any compass also gives"
+  ],
+  [
+   "numbet + 1\" (the compass tile itself)",
+   "number + 1\" (the compass tile itself)."
+  ]
+ ],
+ "T0192": [
+  [
+   "</b>  A compass",
+   "</b> A compass"
+  ],
+  [
+   "part of two compass,",
+   "part of two compasses,"
+  ],
+  [
+   "the two compass must",
+   "the two compasses must"
+  ]
+ ],
+ "T0198": [
+  [
+   "hasn't satisified",
+   "hasn't satisfied"
+  ],
+  [
+   "it must grows out",
+   "it must grow out"
+  ],
+  [
+   "Similarely",
+   "Similarly"
+  ],
+  [
+   "already satisifed",
+   "already satisfied"
+  ],
+  [
+   "it's walled of.",
+   "it's walled off."
+  ]
+ ],
+ "T0199": [
+  [
+   "</b> knowing that",
+   "</b> Knowing that"
+  ],
+  [
+   "when a choke point exist",
+   "when a choke point exists"
+  ],
+  [
+   "poking out/in. a pocket",
+   "poking out/in. A pocket"
+  ],
+  [
+   "through it's only",
+   "through its only"
+  ]
+ ],
+ "T0204": [
+  [
+   "Similarely",
+   "Similarly"
+  ],
+  [
+   "grow that way. this also",
+   "grow that way. This also"
+  ],
+  [
+   "two piece wouldn't",
+   "two pieces wouldn't"
+  ]
+ ],
+ "T0209": [
+  [
+   "</b> when adding",
+   "</b> When adding"
+  ],
+  [
+   "distinct. and in puzzles",
+   "distinct. And in puzzles"
+  ],
+  [
+   "(mismatch for exemple)",
+   "(mismatch for example)"
+  ],
+  [
+   "plan accordingly",
+   "plan accordingly."
+  ]
+ ],
+ "T0214": [
+  [
+   "one of their size. if the bank",
+   "one of their size. If the bank"
+  ]
+ ],
+ "T0215": [
+  [
+   "</b> with shape bank",
+   "</b> With shape bank"
+  ],
+  [
+   "restictive",
+   "restrictive"
+  ]
+ ],
+ "T0216": [
+  [
+   "What is in commun.",
+   "What is in common."
+  ],
+  [
+   "every piece. this means",
+   "every piece. This means"
+  ],
+  [
+   "also true of every shape",
+   "also true if every shape"
+  ]
+ ],
+ "T0220": [
+  [
+   "which are is equal",
+   "which area is equal"
+  ]
+ ],
+ "T0222": [
+  [
+   "</b> if an area",
+   "</b> If an area"
+  ]
+ ],
+ "T0223": [
+  [
+   "If two place need",
+   "If two places need"
+  ],
+  [
+   "2 triomino",
+   "2 trominoes"
+  ]
+ ],
+ "T0227": [
+  [
+   "one size. this means",
+   "one size. This means"
+  ],
+  [
+   "one size that divide",
+   "one size that divides"
+  ],
+  [
+   "the puzzle. if the puzzle",
+   "the puzzle. If the puzzle"
+  ]
+ ],
+ "T0228": [
+  [
+   "the shape as a whole. if we know",
+   "the shape as a whole. If we know"
+  ]
+ ],
+ "T0229": [
+  [
+   "any shape that break",
+   "any shape that breaks"
+  ],
+  [
+   "all possibility very quickly",
+   "all possibilities very quickly."
+  ]
+ ],
+ "T0233": [
+  [
+   "expecially",
+   "especially"
+  ]
+ ],
+ "T0234": [
+  [
+   "checkerboard pattern. this also",
+   "checkerboard pattern. This also"
+  ]
+ ],
+ "T0239": [
+  [
+   "with only 2 size the",
+   "with only 2 sizes the"
+  ],
+  [
+   "so all corner of",
+   "so all corners of"
+  ]
+ ],
+ "T0243": [
+  [
+   "this rules allows",
+   "this rule allows"
+  ],
+  [
+   "two neighbouring piece that",
+   "two neighbouring pieces that"
+  ]
+ ],
+ "T0248": [
+  [
+   "</b> tiles known to be one piece needs",
+   "</b> Tiles known to be one piece need"
+  ]
+ ],
+ "T0249": [
+  [
+   "exactly 2 wall that formes",
+   "exactly 2 walls that form"
+  ],
+  [
+   "the other two link would create a bend triomino. this means",
+   "the other two links would create a bend tromino. This means"
+  ]
+ ],
+ "T0250": [
+  [
+   "the amount of possible rectangle is",
+   "the amount of possible rectangles is"
+  ],
+  [
+   "very small. this is done",
+   "very small. This is done"
+  ]
+ ],
+ "T0251": [
+  [
+   "often lead to",
+   "often leads to"
+  ]
+ ],
+ "T0255": [
+  [
+   "Title says it all ! the 1x1",
+   "Title says it all ! The 1x1"
+  ]
+ ],
+ "T0256": [
+  [
+   "</b> if a shape",
+   "</b> If a shape"
+  ]
+ ],
+ "T0260": [
+  [
+   "</b> if we know",
+   "</b> If we know"
+  ]
+ ],
+ "T0261": [
+  [
+   "with touching corners is impossible",
+   "with touching corners are impossible"
+  ]
+ ],
+ "T1134": [
+  [
+   "a clue is the puzzle",
+   "a clue in the puzzle"
+  ]
+ ],
+ "T0145 (split)": [
+  [
+   "chains like",
+   "Chains like"
+  ],
+  [
+   "make a look of",
+   "make a loop of"
+  ],
+  [
+   "this is also true with bigger",
+   "This is also true with bigger"
+  ]
+ ],
+ "T0182 (split)": [
+  [
+   "dead end palisade, If a bunch",
+   "dead end palisade. If a bunch"
+  ],
+  [
+   "(two bend is an exception)",
+   "(two bends are an exception)"
+  ]
+ ],
+ "T0265 (point)": [
+  [
+   "(a T), So every corner",
+   "(a T), so every corner"
+  ],
+  [
+   "walls. this also makes",
+   "walls. This also makes"
+  ]
+ ]
+}

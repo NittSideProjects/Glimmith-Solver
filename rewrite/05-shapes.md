@@ -2,7 +2,7 @@
 
 The side panel next to the grid.
 
-Left here: 0 to write, 0 to check again, 2 notes, 0 to put on the page. Done: 16.
+Left here: 0 to write, 0 to check again, 1 notes, 0 to put on the page. Done: 16.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -45,11 +45,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: text · #banTitle · Only shows when custom rules are on (button at the bottom of the page).
 - now: Omits (0)
 - new: =
-
-### T0076
-- what: text · #banSection · Only shows when custom rules are on (button at the bottom of the page).
-- now: No piece may contain a banned shape: if some placement of it (turned or flipped) fits completely inside a piece, that piece is not allowed.
-- new: [remove]
 
 ### T0462
 - what: message · addShapeToBank · Built by the page while it runs, so it only shows in some situations.

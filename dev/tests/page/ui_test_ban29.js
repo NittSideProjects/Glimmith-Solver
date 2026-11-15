@@ -1,8 +1,8 @@
 // UI checks for Shape ban't (v29): panel, red cards, add / duplicate / remove, saving with the puzzle and the library, solver verdicts.
-// Loads the real HTML in jsdom.  usage: node ui_test_ban29.js ../glimmith_solver_V1.0.21.html
+// Loads the real HTML in jsdom.  usage: node ui_test_ban29.js ../glimmith_solver_V1.0.22.html
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
-const file = process.argv[2] || '../glimmith_solver_V1.0.21.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.22.html';
 let pass = 0, fail = 0;
 const check = (name, cond, extra) => { if(cond) pass++; else { fail++; console.log('FAIL:', name, extra !== undefined ? '-> ' + JSON.stringify(extra) : ''); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -43,7 +43,7 @@ const O4 = [[0,0],[1,0],[0,1],[1,1]], DOMINO = [[0,0],[1,0]], P5 = [[0,0],[1,0],
   check('page loaded without script errors', A.errors.length === 0, A.errors);
   check('ban panel exists under the bank with an empty note', !!$('banSection') && /No shapes added yet/.test($('banList').textContent) && /Omits \(0\)/.test($('banTitle').textContent), $('banTitle').textContent);
   check('both buttons exist, the ban button is not the amber primary one', !!$('addToBanBtn') && !$('addToBanBtn').classList.contains('primary') && $('addToBankBtn').classList.contains('primary'));
-  check('v49: the Omits panel explains itself in a hint (no bubble)', /contain/.test($('banSection').textContent) && !$('banInfo'));
+  check('v49: the Omits panel has no bubble (V1.0.22: its hint was removed at the author\'s request)', !$('banInfo') && !/No piece may contain a banned shape/.test($('banSection').textContent));
   A.$('addToBanBtn').click(); check('nothing drawn: nothing banned', A.raw().banShapes.length === 0);
   // add the 2x2 square
   A.draw(O4); $('addToBanBtn').click(); await sleep(30);
@@ -81,7 +81,7 @@ const O4 = [[0,0],[1,0],[0,1],[1,1]], DOMINO = [[0,0],[1,0]], P5 = [[0,0],[1,0],
   A.draw(P5); $('addToBankBtn').click(); await sleep(30);
   await A.resize(5, 1);
   st = await A.solve();
-  check('bank holds only a shape that contains the banned square: Impossible', /^Impossible/.test(st) && /Ban't|Omits|banned/.test(st), st);
+  check('bank holds only a shape that contains the banned square: Impossible', /^Impossible/.test(st) && /No shape in your bank fits/.test(st), st);   // V1.0.22: "and the Omits" removed at the author's request
   // ---- persistence: autosave -> reload ----
   await sleep(600);
   check('ban list is saved under its own key', store.has('glimmith:shapeban:v1') && JSON.parse(store.get('glimmith:shapeban:v1')).length === 1);

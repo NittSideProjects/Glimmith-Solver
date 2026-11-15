@@ -1,6 +1,7 @@
 // strings.json (extract.js) -> texts.json: noise dropped, duplicates merged, grouped by where they show on the page (page order),
 // with a "where it shows" note, and the IDs of the previous list kept for the same text (new text gets the next free ID).
 // node clean.js <page.html> <previous ids list (texts_ids.json)> <strings.json from extract.js> <out dir>
+//   node clean.js <page.html> texts_ids.json <strings.json> <out dir> [pins.json]   (argv[6]; pins: see 'keep the old IDs')
 //   writes <out dir>/texts.json (every text, with id, sec, area, note, isNew, changedFrom) and <out dir>/sections.json
 const fs = require('fs');
 const page = process.argv[2];
@@ -110,7 +111,14 @@ const old = JSON.parse(fs.readFileSync(process.argv[3], 'utf8'));
 const key = t => t.kind + '\u0000' + t.text + '\u0000' + JSON.stringify(t.slots || []);
 const oldByKey = new Map(old.map(t => [key(t), t.id]));
 const used = new Set();
-for(const it of items){ const id = oldByKey.get(key(it)); if(id && !used.has(id)){ it.id = id; used.add(id); } }
+// optional pins (argv[6], JSON { pins: [[id, text]], retire: [ids] }): a rewrite put on the page keeps the ID of the answer it came
+// from (the text changed, and a point inserted before it would otherwise shift the IDs); a retired ID is never given again (its
+// answer was a note that the release carried out)
+const pinFile = process.argv[6] ? JSON.parse(fs.readFileSync(process.argv[6], 'utf8')) : { pins: [], retire: [] };
+const normT = t => String(t || '').replace(/\s+/g, ' ').trim();
+for(const id of pinFile.retire || []) used.add(id);
+for(const [id, text] of pinFile.pins || []){ const it = items.find(i => !i.id && normT(i.text) === normT(text)); if(it){ it.id = id; used.add(id); it.changedFrom = (old.find(t => t.id === id) || {}).text; } else console.log('PIN NOT FOUND', id, text.slice(0, 60)); }
+for(const it of items){ if(it.id) continue; const id = oldByKey.get(key(it)); if(id && !used.has(id)){ it.id = id; used.add(id); } }
 // a text that changed in place (same code spot and kind): keep its ID, so a rewrite stays attached (the page flags the change)
 const oldFree = old.filter(t => !used.has(t.id));
 for(const it of items.filter(i => !i.id)){
@@ -119,7 +127,7 @@ for(const it of items.filter(i => !i.id)){
 }
 let next = Math.max(...old.map(t => +t.id.slice(1))) + 1;
 for(const it of items.sort((a, b) => a.lines[0] - b.lines[0])) if(!it.id){ it.id = 'T' + String(next++).padStart(4, '0'); it.isNew = true; }
-const gone = old.filter(t => !used.has(t.id));
+const gone = old.filter(t => !used.has(t.id) || (pinFile.retire || []).includes(t.id));
 
 // ---- page order: section, then line ----
 items.sort((a, b) => ORDER.get(a.sec) - ORDER.get(b.sec) || a.lines[0] - b.lines[0]);

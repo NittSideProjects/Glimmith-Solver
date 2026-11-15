@@ -5,14 +5,14 @@ rewrite page, https://claude.ai/artifact/8zkhz8jRG1qYJM5ET2k6e2 (private), not h
 Claude refreshes whenever it works on texts (`dev/tools/rewrites/repo.js`, see `dev/tools/rewrites/README.md`): they keep the
 answers in the repository and give the count below. A change made by hand in these files is lost at the next refresh.
 
-**Left before V1.1: 639** (624 to write, 0 to check again, 9 notes for Claude, 6 written but not on the page yet).
-Done: 372 of 1011. The rewrite page lists fewer: it leaves out the notes for Claude.
+**Left before V1.1: 648** (632 to write, 1 to check again, 9 notes for Claude, 6 written but not on the page yet).
+Done: 371 of 1019. The rewrite page lists fewer: it leaves out the notes for Claude.
 
 | Part of the page | To write | To check again | Notes | To put on the page | Done |
 |---|---|---|---|---|---|
 | [Top of the page](01-top.md) | 0 | 0 | 0 | 0 | 12 |
 | [Credits window](02-credits.md) | 0 | 0 | 0 | 0 | 5 |
-| [Puzzle list, import and export](03-library.md) | 0 | 0 | 7 | 0 | 115 |
+| [Puzzle list, import and export](03-library.md) | 6 | 1 | 7 | 0 | 114 |
 | [Grid size, tools and key](04-grid.md) | 0 | 0 | 0 | 0 | 24 |
 | [Shape editor, Shape Bank and Omits](05-shapes.md) | 0 | 0 | 0 | 1 | 16 |
 | [Rules](06-rules.md) | 0 | 0 | 1 | 0 | 41 |
@@ -21,7 +21,7 @@ Done: 372 of 1011. The rewrite page lists fewer: it leaves out the notes for Cla
 | [Why something is impossible](09-why.md) | 115 | 0 | 0 | 0 | 13 |
 | [Rule explanations (bottom of the page)](10-footer.md) | 50 | 0 | 0 | 5 | 91 |
 | [Custom rules button](11-custom.md) | 0 | 0 | 0 | 0 | 3 |
-| [Other messages](12-other.md) | 133 | 0 | 0 | 0 | 0 |
+| [Other messages](12-other.md) | 135 | 0 | 0 | 0 | 0 |
 
 ## How to read an entry
 

@@ -402,6 +402,15 @@
       </div>
       <div id="fastImportBox" class="fast-import" hidden>
         <p id="fastImportIntro"></p>
+        <div class="fast-setup" id="fastSetup">
+          <p><b>One-click import.</b> Chrome and Edge can remember a folder, but not the game's own folders (they are inside Program Files and AppData). The setup file gets around that: put it in any folder you like (Documents, for example) and double-click it. It makes a folder <code>Glimmith puzzles</code> next to itself, holding two links: <code>downloaded</code> leads to the puzzles you downloaded from the workshop, <code>made</code> to the puzzles you made. A link only points to the game's folder: nothing is copied or moved, the game works as before, new puzzles show up in it by themselves, and deleting <code>Glimmith puzzles</code> deletes only the links. It needs no administrator rights. Windows may warn that the file comes from the internet: choose "More info", then "Run anyway". You can open it in Notepad first, it is a few lines.</p>
+          <p>Then choose the <code>Glimmith puzzles</code> folder once. After that, Fast import reads both kinds of puzzles in one click.</p>
+          <div class="fast-row" data-slot="both">
+            <div><b>The folder the setup made</b> <code>Glimmith puzzles</code><span class="fast-status" id="fastStatus_both"></span></div>
+            <span><button type="button" class="subtle" id="fastSetupBtn">Download the setup file</button> <button type="button" class="subtle" id="fastPick_both">Choose folder…</button></span>
+          </div>
+          <p class="hint" style="margin:6px 0 0;">Steam somewhere else than <code>C:\Program Files (x86)\Steam</code>? Open the setup file in Notepad and change that line.</p>
+        </div>
         <div class="fast-row" data-slot="steam">
           <div><b>The puzzle you downloaded</b> <code>C:\Program Files (x86)\Steam\steamapps\workshop\content</code><br><span class="fast-zip">open this : <code>4160210</code></span><span class="fast-status" id="fastStatus_steam"></span></div>
           <button type="button" class="subtle" id="fastPick_steam">Choose folder…</button>
@@ -414,7 +423,7 @@
         <div class="fast-blocked" id="fastBlocked" hidden>
           <p><b>Did your browser say it "can't open this folder because it contains system files"?</b> Chrome and Edge do not let a page remember folders inside Program Files or AppData, and both game folders are there. You can still read them once: the browser asks for the folder each time, and it may say it will upload the files, but they stay on your computer.</p>
           <div class="fast-actions"><button type="button" class="subtle" id="fastOnce_steam">Read the workshop folder once</button><button type="button" class="subtle" id="fastOnce_own">Read your own puzzles once</button></div>
-          <p class="hint" style="margin:8px 0 0;">If that is blocked too: copy the folder somewhere else (for example into Documents) and choose the copy, or zip it and open the zip with Import puzzles…</p>
+          <p class="hint" style="margin:8px 0 0;">To read them in one click every time, use the setup file above. If reading once is blocked too: copy the folder somewhere else (for example into Documents) and choose the copy, or zip it and open the zip with Import puzzles…</p>
         </div>
         <div class="fast-actions"><button type="button" id="fastRunBtn">Import now</button><button type="button" class="subtle" id="fastForgetBtn">Forget folders</button><button type="button" class="subtle" id="fastCloseBtn">Close</button></div>
       </div>
@@ -14166,8 +14175,8 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     }
   }
   // ---- fast import: the game's own puzzle folders, read as they are ----
-  const FAST_SLOTS = ['steam', 'own'], FAST_MAX_FILES = 20000, FAST_MAX_BYTES = 2000000;
-  const fastDirs = { steam: null, own: null };                       // remembered folder handles (Chrome / Edge)
+  const FAST_SLOTS = ['steam', 'own', 'both'], FAST_MAX_FILES = 20000, FAST_MAX_BYTES = 2000000;      // V1.0.38: 'both' = the folder of links the setup file makes
+  const fastDirs = { steam: null, own: null, both: null };                       // remembered folder handles (Chrome / Edge)
   const fastCanRemember = () => typeof window.showDirectoryPicker === 'function';
   function fastDb(){
     return new Promise((res, rej) => {
@@ -14206,13 +14215,15 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   }
   function fastRender(){
     const remember = fastCanRemember();
-    document.getElementById('fastImportIntro').textContent = remember
-      ? `Choose each folder once. After that, Fast import reads both in one click (if your browser is compatible).`
+    document.getElementById('fastImportIntro').textContent = remember                                          // V1.0.38
+      ? `Fast import reads the folders you choose here. A folder your browser accepts is remembered, so the next imports take one click.`
       : `Choose your folder to import the puzzles. Your browser can't remember folders (Chrome and Edge can), so you will need to pick it each time.`;
+    document.getElementById('fastSetup').hidden = !remember;
     for(const slot of FAST_SLOTS){ const st = document.getElementById('fastStatus_' + slot); st.textContent = fastDirs[slot] ? '\u2713 ' + fastDirs[slot].name : ''; }
-    document.getElementById('fastRunBtn').hidden = !remember || !(fastDirs.steam || fastDirs.own);
-    document.getElementById('fastForgetBtn').hidden = !remember || !(fastDirs.steam || fastDirs.own);
-    document.getElementById('fastFoldersBtn').hidden = !(remember && (fastDirs.steam || fastDirs.own));     // once folders are remembered, Fast import runs at once: this opens the box
+    const anyDir = FAST_SLOTS.some(s => fastDirs[s]);
+    document.getElementById('fastRunBtn').hidden = !remember || !anyDir;
+    document.getElementById('fastForgetBtn').hidden = !remember || !anyDir;
+    document.getElementById('fastFoldersBtn').hidden = !(remember && anyDir);     // once folders are remembered, Fast import runs at once: this opens the box
   }
   function fastShowBox(on){ document.getElementById('fastImportBox').hidden = !on; if(on) fastRender(); }
   async function fastRun(){
@@ -14230,6 +14241,13 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     if(notes.length) showToast(notes[0]);
   }
   let fastPickSlot = null;
+  // V1.0.38: the setup file (Windows): a folder "Glimmith puzzles" next to it with junctions to the game's two puzzle folders
+  const FAST_SETUP_BAT = `@echo off\r\nrem Glimmith solver: one-click import setup.\r\nrem Makes the folder "Glimmith puzzles" next to this file, with two links (junctions) to the game's puzzle folders:\r\nrem   downloaded = the puzzles you downloaded from the Steam workshop, made = the puzzles you made.\r\nrem Nothing is copied or moved. Deleting "Glimmith puzzles" deletes only the links. No administrator rights needed.\r\nsetlocal\r\nset "DEST=%~dp0Glimmith puzzles"\r\nset "STEAM=C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\4160210"\r\nset "OWN=%LOCALAPPDATA%\\Geri\\Saved\\workshop"\r\nif not exist "%DEST%" mkdir "%DEST%"\r\nif exist "%STEAM%" if not exist "%DEST%\\downloaded" mklink /J "%DEST%\\downloaded" "%STEAM%"\r\nif not exist "%STEAM%" echo Not found: the workshop folder "%STEAM%". If Steam is somewhere else, change the STEAM line in this file.\r\nif exist "%OWN%" if not exist "%DEST%\\made" mklink /J "%DEST%\\made" "%OWN%"\r\nif not exist "%OWN%" echo Not found: your own puzzles folder "%OWN%".\r\necho.\r\necho Done. In the Glimmith solver, choose this folder once: "%DEST%"\r\npause\r\n`;
+  function fastSetupDownload(){
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([FAST_SETUP_BAT], { type: 'application/octet-stream' })); a.download = 'glimmith-setup.bat';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  }
   async function fastPick(slot){
     if(fastCanRemember()){
       let hd; try{ hd = await window.showDirectoryPicker({ id: 'glimmith-' + slot, mode: 'read' }); }
@@ -14241,7 +14259,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   }
   async function fastButton(){
     if(solverRunning){ showToast('Wait for the solver to finish (or cancel it) first'); return; }
-    if(fastCanRemember()){ await fastLoad(); if(fastDirs.steam || fastDirs.own){ fastShowBox(false); await fastRun(); return; } }
+    if(fastCanRemember()){ await fastLoad(); if(FAST_SLOTS.some(s => fastDirs[s])){ fastShowBox(false); await fastRun(); return; } }
     fastShowBox(document.getElementById('fastImportBox').hidden);
   }
   function attachExamples(){                                          // V1.0.12
@@ -14256,10 +14274,11 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     if(fastCanRemember()) fastLoad().then(fastRender);
     for(const slot of FAST_SLOTS) document.getElementById('fastPick_' + slot).addEventListener('click', () => fastPick(slot));
     document.getElementById('fastRunBtn').addEventListener('click', fastRun);
+    document.getElementById('fastSetupBtn').addEventListener('click', fastSetupDownload);       // V1.0.38
     document.getElementById('fastCloseBtn').addEventListener('click', () => fastShowBox(false));
     // V1.0.7: blocked folders (Program Files, AppData): read once through the classic folder upload
     document.getElementById('fastBlockedLink').addEventListener('click', () => { const b = document.getElementById('fastBlocked'); b.hidden = !b.hidden; });
-    for(const slot of FAST_SLOTS) document.getElementById('fastOnce_' + slot).addEventListener('click', () => { if(solverRunning){ showToast('Wait for the solver to finish (or cancel it) first'); return; } fastPickSlot = slot; document.getElementById('fastDirInput').click(); });
+    for(const slot of FAST_SLOTS) if(document.getElementById('fastOnce_' + slot)) document.getElementById('fastOnce_' + slot).addEventListener('click', () => { if(solverRunning){ showToast('Wait for the solver to finish (or cancel it) first'); return; } fastPickSlot = slot; document.getElementById('fastDirInput').click(); });
     document.getElementById('fastForgetBtn').addEventListener('click', async () => { for(const slot of FAST_SLOTS){ fastDirs[slot] = null; await fastStore(slot, null); } fastRender(); });
     const di = document.getElementById('fastDirInput');
     di.addEventListener('change', async () => { const picked = Array.from(di.files); di.value = ''; if(!picked.length) return; const inputs = await fastInputsFromFiles(picked);

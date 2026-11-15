@@ -2,7 +2,7 @@
 
 Messages that are not tied to one place on the page.
 
-Left here: 133 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 0.
+Left here: 135 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 0.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -669,4 +669,14 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T1156
 - what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.
 - now: This step joins {1} pairs of tiles: the cases of the first three are shown.
+- new: 
+
+### T1203
+- what: message · FAST_SETUP_BAT · Built by the page while it runs, so it only shows in some situations.
+- now: @echo off rem Glimmith solver: one-click import setup. rem Makes the folder "Glimmith puzzles" next to this file, with two links (junctions) to the game's puzzle folders: rem downloaded = the puzzles you downloaded from the Steam workshop, made = the puzzles you made. rem Nothing is copied or moved. Deleting "Glimmith puzzles" deletes only the links. No administrator rights needed. setlocal set "DEST=%~dp0Glimmith puzzles" set "STEAM=C:\Program Files (x86)\Steam\steamapps\workshop\content\4160210" set "OWN=%LOCALAPPDATA%\Geri\Saved\workshop" if not exist "%DEST%" mkdir "%DEST%" if exist "%STEAM%" if not exist "%DEST%\downloaded" mklink /J "%DEST%\downloaded" "%STEAM%" if not exist "%STEAM%" echo Not found: the workshop folder "%STEAM%". If Steam is somewhere else, change the STEAM line in this file. if exist "%OWN%" if not exist "%DEST%\made" mklink /J "%DEST%\made" "%OWN%" if not exist "%OWN%" echo Not found: your own puzzles folder "%OWN%". echo. echo Done. In the Glimmith solver, choose this folder once: "%DEST%" pause
+- new: 
+
+### T1204
+- what: message · fastSetupDownload · Built by the page while it runs, so it only shows in some situations.
+- now: glimmith-setup.bat
 - new: 

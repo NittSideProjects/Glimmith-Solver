@@ -2,7 +2,7 @@
 
 The puzzle list at the top of the Puzzle Grid panel, its buttons, the Fast import box, the import report and the messages an import or export can show.
 
-Left here: 0 to write, 0 to check again, 7 notes, 0 to put on the page. Done: 115.
+Left here: 6 to write, 1 to check again, 7 notes, 0 to put on the page. Done: 114.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -101,6 +101,41 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - now: Delete
 - new: =
 
+### T1197
+- what: text (keep the <b>/<i> tags or drop them) · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
+- now: <b>One-click import.</b> Chrome and Edge can remember a folder, but not the game's own folders (they are inside Program Files and AppData). The setup file gets around that: put it in any folder you like (Documents, for example) and double-click it. It makes a folder <code>Glimmith puzzles</code> next to itself, holding two links: <code>downloaded</code> leads to the puzzles you downloaded from the workshop, <code>made</code> to the puzzles you made. A link only points to the game's folder: nothing is copied or moved, the game works as before, new puzzles show up in it by themselves, and deleting <code>Glimmith puzzles</code> deletes only the links. It needs no administrator rights. Windows may warn that the file comes from the internet: choose "More info", then "Run anyway". You can open it in Notepad first, it is a few lines.
+- new: 
+
+### T1198
+- what: text (keep the <b>/<i> tags or drop them) · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
+- now: Then choose the <code>Glimmith puzzles</code> folder once. After that, Fast import reads both kinds of puzzles in one click.
+- new: 
+
+### T1199
+- what: text · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
+- now: The folder the setup made
+- new: 
+
+### T1200
+- what: text · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
+- now: Glimmith puzzles
+- new: 
+
+### T1201
+- what: text · #fastSetupBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
+- now: Download the setup file
+- new: 
+
+### T0038
+- what: text · #fastPick_both · In the Fast import box, which opens the first time you click Fast import, or with Folders….
+- now: Choose folder…
+- new: =
+
+### T1202
+- what: text (keep the <b>/<i> tags or drop them) · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
+- now: Steam somewhere else than <code>C:\Program Files (x86)\Steam</code>? Open the setup file in Notepad and change that line.
+- new: 
+
 ### T0035
 - what: text · #fastImportBox · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: The puzzle you downloaded
@@ -115,11 +150,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: text (keep the <b>/<i> tags or drop them) · #fastImportBox · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: open this : <code>4160210</code>
 - new: open this : <code>4160210</code>
-
-### T0038
-- what: text · #fastPick_steam · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: Choose folder…
-- new: =
 
 ### T0039
 - what: text · #fastImportBox · In the Fast import box, which opens the first time you click Fast import, or with Folders….
@@ -163,7 +193,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0894
 - what: text · #fastBlocked · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: If that is blocked too: copy the folder somewhere else (for example into Documents) and choose the copy, or zip it and open the zip with Import puzzles…
+- now: To read them in one click every time, use the setup file above. If reading once is blocked too: copy the folder somewhere else (for example into Documents) and choose the copy, or zip it and open the zip with Import puzzles…
 - new: [need to change fast import]
 
 ### T0043
@@ -533,7 +563,8 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0833
 - what: message · fastRender · Built by the page while it runs, so it only shows in some situations.
-- now: Choose each folder once. After that, Fast import reads both in one click (if your browser is compatible).
+- now: Fast import reads the folders you choose here. A folder your browser accepts is remembered, so the next imports take one click.
+- was: Choose each folder once. After that, Fast import reads both in one click (your browser may ask to allow it).
 - new: Choose each folder once. After that, Fast import reads both in one click (if your browser is compatible).
 
 ### T0834

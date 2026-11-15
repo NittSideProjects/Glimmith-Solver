@@ -2,7 +2,7 @@
 
 The step-by-step view: step titles, explanations and captions.
 
-Left here: 322 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
+Left here: 324 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -999,6 +999,16 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T1176
 - what: message · Built by the page while it runs, so it only shows in some situations.
 - now: Earlier steps ruled out some shapes for the pieces of these groups. Joined, they could only take one of those shapes, so they are different pieces, with a wall between them.
+- new: 
+
+### T1177
+- what: message · Built by the page while it runs, so it only shows in some situations.
+- now: Closed-in area: one piece per group
+- new: 
+
+### T1178
+- what: message · Built by the page while it runs, so it only shows in some situations.
+- now: The rules fix how many pieces this area closed in by walls holds, and it has exactly that many groups. So every group is a piece of its own, with walls between them.
 - new: 
 
 ### T1172

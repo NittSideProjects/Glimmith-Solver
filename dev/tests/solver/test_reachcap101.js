@@ -4,7 +4,7 @@
 // (since v106 the second link may be 'grow': the size found by the walls that compare sizes is kept on the tiles).
 // node tests/solver/test_reachcap101.js
 'use strict';
-const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v110.js'), L = require('../../fuzzlib.js');
+const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v111.js'), L = require('../../fuzzlib.js');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const RULES = { precision: null, min: null, max: null, mismatch: false, match: false, mingleShape: false, mingleArea: false, solitude: false, boxy: false, nonBoxy: false };

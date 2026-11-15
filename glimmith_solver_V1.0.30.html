@@ -632,7 +632,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
   function makeGrid(w,h,val){ return Array.from({length:h}, () => Array.from({length:w}, () => val)); }
 
-  // ================= SOLVER CORE (pure, unit-tested separately; v109 (V1.0.29) = v108 with one shared placement decision (placeDecide); v108 (V1.0.28) = v107 + tile shapes (the shapes a tile's piece is known not to be); v107 (V1.0.27) = v106 with size sets up to 15 and Non-boxy as a Minimum of 3 written once; v106 (V1.0.26) = v105 + tile size sets (the exact sizes a tile's piece can have, holes included); v105 (V1.0.25) = v104 + tile sizes (every tile keeps the size range of its piece); v104 (V1.0.24) = v103 + piece count (fewest .. most pieces, shared by every rule); v103 (V1.0.20) = v102 + more checks say where they fail (markAt); v102 (V1.0.19) = v101 + opts.explain (the cases behind a proof by contradiction); v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
+  // ================= SOLVER CORE (pure, unit-tested separately; v110 (V1.0.30) = v109 + one count step for the closed-in areas (areaCountStep); v109 (V1.0.29) = v108 with one shared placement decision (placeDecide); v108 (V1.0.28) = v107 + tile shapes (the shapes a tile's piece is known not to be); v107 (V1.0.27) = v106 with size sets up to 15 and Non-boxy as a Minimum of 3 written once; v106 (V1.0.26) = v105 + tile size sets (the exact sizes a tile's piece can have, holes included); v105 (V1.0.25) = v104 + tile sizes (every tile keeps the size range of its piece); v104 (V1.0.24) = v103 + piece count (fewest .. most pieces, shared by every rule); v103 (V1.0.20) = v102 + more checks say where they fail (markAt); v102 (V1.0.19) = v101 + opts.explain (the cases behind a proof by contradiction); v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
 
   // ---- shape symmetry helpers ----
 
@@ -2731,7 +2731,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     'wall-inside': 'a wall runs inside one piece'
   };
   for(const k of Object.keys(WHY_TEXT)) if(k.startsWith('mingle-area-')) WHY_TEXT['hetero-' + k.slice(12)] = WHY_TEXT[k].replace('Mingle Area', 'Heterogeneous') + ' (Heterogeneous: touching pieces differ in size too)';   // v90
-  const RULE_TAGS = new Set(['clue-join', 'clue-apart', 'hetero-count', 'hetero-size', 'hetero-single', 'hetero-clash', 'hetero-pocket', 'hetero-place', 'hetero-connect', 'hetero-none', 'hetero-link', 'hetero-merge', 'hetero-parity', 'hetero-corner', 'rose-count', 'rose-pair', 'rose-grow', 'rose-reach', 'rose-region', 'rose-cut', 'cmp-budget', 'diff-clash', 'diff-small', 'rose-cover', 'label', 'box-hall', 'box-all', 'place-probe', 'two-piece', 'mismatch-hall', 'cmp-box', 'gemini-place', 'region-merge', 'size-cut', 'area-place', 'gd-clash', 'stamp-size', 'stamp-shape', 'shape-fit', 'bank-fit', 'stamp-pair', 'stamp-place', 'mingle-area-single', 'mingle-area-clash', 'mingle-area-pocket', 'mingle-area-place', 'mingle-area-connect', 'gemini-iso', 'mingle-area-none', 'mingle-area-link', 'mingle-area-merge', 'mingle-area-parity', 'mingle-area-corner', 'mingle-shape-single', 'mingle-shape-clash', 'mingle-shape-none', 'mingle-shape-link', 'mingle-shape-merge', 'mingle-shape-parity', 'mingle-shape-corner', 'match-size', 'match-fit', 'match-region', 'match-place', 'match-compass', 'match-hole', 'cross', 'pair-apart', 'pair-join', 'mismatch-count', 'mismatch-stamp', 'mismatch-link', 'mismatch-clash', 'mismatch-place', 'mismatch-pair', 'match-mismatch', 'range-count', 'range-region', 'min-grow', 'min-reach', 'area-count', 'area-region', 'area-rel', 'area-chain', 'area-parity', 'ban-fit', 'ban-size', 'gemini-shape', 'delta-shape', 'area-hall', 'solitude-count', 'solitude-pair', 'solitude-grow', 'solitude-reach', 'solitude-region', 'boxy-fit', 'boxy-corner', 'boxy-place', 'boxy-line', 'boxy-fill', 'nonbox-grow', 'nonbox-fit', 'nonbox-region', 'box-both', 'tower-count', 'tower-wall', 'tower-link', 'tower-wrap', 'bank-count', 'bank-region', 'bank-place', 'bank-block', 'bank-bend', 'pal-count', 'pal-wall', 'pal-link', 'pal-pair', 'pal-size', 'pal-two', 'wally-wall', 'wally-link', 'wally-count', 'wally-two', 'gemini-anchor', 'wally-ends', 'wally-line', 'gemini-line', 'bri-three', 'bri-pinch', 'bri-vertex', 'loo-outline', 'loo-three', 'loo-corner', 'loo-color', 'loo-parity', 'cmp-block', 'cmp-reach', 'cmp-wrap', 'cmp-place', 'cmp-crowd', 'cmp-excl', 'area-sum', 'bridge-count', 'euler-count', 'colour-count', 'match-iso', 'piece-count', 'piece-region', 'size-range', 'shape-range']);
+  const RULE_TAGS = new Set(['clue-join', 'clue-apart', 'hetero-count', 'hetero-size', 'hetero-single', 'hetero-clash', 'hetero-pocket', 'hetero-place', 'hetero-connect', 'hetero-none', 'hetero-link', 'hetero-merge', 'hetero-parity', 'hetero-corner', 'rose-count', 'rose-pair', 'rose-grow', 'rose-reach', 'rose-region', 'rose-cut', 'cmp-budget', 'diff-clash', 'diff-small', 'rose-cover', 'label', 'box-hall', 'box-all', 'place-probe', 'two-piece', 'mismatch-hall', 'cmp-box', 'gemini-place', 'region-merge', 'size-cut', 'area-place', 'gd-clash', 'stamp-size', 'stamp-shape', 'shape-fit', 'bank-fit', 'stamp-pair', 'stamp-place', 'mingle-area-single', 'mingle-area-clash', 'mingle-area-pocket', 'mingle-area-place', 'mingle-area-connect', 'gemini-iso', 'mingle-area-none', 'mingle-area-link', 'mingle-area-merge', 'mingle-area-parity', 'mingle-area-corner', 'mingle-shape-single', 'mingle-shape-clash', 'mingle-shape-none', 'mingle-shape-link', 'mingle-shape-merge', 'mingle-shape-parity', 'mingle-shape-corner', 'match-size', 'match-fit', 'match-region', 'match-place', 'match-compass', 'match-hole', 'cross', 'pair-apart', 'pair-join', 'mismatch-count', 'mismatch-stamp', 'mismatch-link', 'mismatch-clash', 'mismatch-place', 'mismatch-pair', 'match-mismatch', 'range-count', 'range-region', 'min-grow', 'min-reach', 'area-count', 'area-region', 'area-rel', 'area-chain', 'area-parity', 'ban-fit', 'ban-size', 'gemini-shape', 'delta-shape', 'area-hall', 'solitude-count', 'solitude-pair', 'solitude-grow', 'solitude-reach', 'solitude-region', 'boxy-fit', 'boxy-corner', 'boxy-place', 'boxy-line', 'boxy-fill', 'nonbox-grow', 'nonbox-fit', 'nonbox-region', 'box-both', 'tower-count', 'tower-wall', 'tower-link', 'tower-wrap', 'bank-count', 'bank-region', 'bank-place', 'bank-block', 'bank-bend', 'pal-count', 'pal-wall', 'pal-link', 'pal-pair', 'pal-size', 'pal-two', 'wally-wall', 'wally-link', 'wally-count', 'wally-two', 'gemini-anchor', 'wally-ends', 'wally-line', 'gemini-line', 'bri-three', 'bri-pinch', 'bri-vertex', 'loo-outline', 'loo-three', 'loo-corner', 'loo-color', 'loo-parity', 'cmp-block', 'cmp-reach', 'cmp-wrap', 'cmp-place', 'cmp-crowd', 'cmp-excl', 'area-sum', 'bridge-count', 'euler-count', 'colour-count', 'match-iso', 'piece-count', 'piece-region', 'size-range', 'shape-range', 'region-apart']);
   function* deduceSolve(w, h, ctx, specialEdges, opts){
     opts = opts || {};
     const testMs = opts.testMs != null ? opts.testMs : 100;
@@ -6101,6 +6101,60 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     const pcT = activeIds.length;
     const pcOn = opts.pieceCount !== false && ctx.pieceLo != null &&
       (ctx.pieceHi < Math.floor(pcT / Math.max(1, rLo)) || ctx.pieceLo > Math.ceil(pcT / Math.max(1, rHi)));
+    // v110: one count step for the areas closed in by walls (see build/patch_core110.py)
+    function areaCountStep(){
+      const regs = openRegions(), R = regs.length;
+      if(R === 0) return [];
+      const useGlobal = pcOn && !inProbe;
+      const matchS = (ruleMatch && sizeSet && sizeSet.length === 1 && sizeSet[0] >= 2) ? sizeSet[0] : 0;
+      const G = new Int32Array(R), LO = new Int32Array(R), HI = new Int32Array(R), loTag = new Array(R), hiTag = new Array(R);
+      for(let i = 0; i < R; i++){
+        const tiles = regs[i], s = tiles.length, gs = new Set();
+        for(const id of tiles) gs.add(find(id));
+        const g = gs.size; G[i] = g;
+        let lo = 1, hi = g, lt = 'size', ht = 'size';
+        let a = RI ? RI.minN[s] : Math.ceil(s / Math.max(1, rHi)), b = RI ? RI.maxN[s] : Math.floor(s / Math.max(1, rLo));
+        if(a >= 0 && b >= a && a <= s){ if(a > lo){ lo = a; lt = 'size'; } if(b < hi){ hi = b; ht = 'size'; } }
+        if(K > 0){                                                              // roses / Solitude: exactly the count of each type
+          const cnt = new Array(K).fill(0);
+          for(const id of tiles){ const m = roseMask[id]; if(m) for(let q = 0; q < K; q++) if(m & (1 << q)) cnt[q]++; }
+          const n = cnt[0];
+          if(n === 0 || cnt.some(c => c !== n)){ why = roseTag('region'); markAt(why, tiles); return null; }
+          if(s < n * ctx.sizeLo || s > n * ctx.sizeHi){ why = roseTag('region'); markAt(why, tiles); return null; }
+          if(n > lo){ lo = n; lt = roseTag('region'); }
+          if(n < hi){ hi = n; ht = roseTag('region'); }
+        }
+        if(matchS && s % matchS === 0){ const n = s / matchS; if(n > lo){ lo = n; lt = 'match-region'; } if(n < hi){ hi = n; ht = 'match-region'; } }
+        if(lo > hi){ why = K > 0 ? roseTag('region') : matchS ? 'match-region' : 'piece-region'; markAt(why, tiles); return null; }
+        LO[i] = lo; HI[i] = hi; loTag[i] = lt; hiTag[i] = ht;
+      }
+      if(useGlobal){                                                            // the areas add up to the board's number of pieces
+        let sMin = 0, sMax = 0;
+        for(let i = 0; i < R; i++){ sMin += LO[i]; sMax += HI[i]; }
+        if(sMin > ctx.pieceHi || sMax < ctx.pieceLo){ why = 'piece-region'; return null; }
+        for(let i = 0; i < R; i++){
+          const hiI = ctx.pieceHi - (sMin - LO[i]), loI = ctx.pieceLo - (sMax - HI[i]);
+          if(hiI < HI[i]){ HI[i] = hiI; hiTag[i] = 'piece-region'; }
+          if(loI > LO[i]){ LO[i] = loI; loTag[i] = 'piece-region'; }
+          if(LO[i] > HI[i]){ why = 'piece-region'; markAt(why, regs[i]); return null; }
+        }
+      }
+      const out = []; let merged = false;
+      for(let i = 0; i < R; i++){
+        const tiles = regs[i];
+        if(HI[i] === 1 && tiles.length > 1 && hiTag[i] !== 'size'){              // one piece: the whole area is linked
+          const s = tiles.length;
+          if(s > rHi || s < rLo || (RI && !RI.usable.includes(s))){ why = hiTag[i]; markAt(why, tiles); return null; }
+          for(const id of tiles) if(find(id) !== find(tiles[0])){ union(tiles[0], id); merged = true; }
+          for(const id of tiles) for(const { e, o } of adjE[id]) if(e.state === 0 && find(o) === find(id)){ e.state = 2; out.push({ e, value: 'same', rule: hiTag[i] }); }
+        } else if(G[i] > 1 && LO[i] >= G[i] && loTag[i] !== 'size'){              // as many pieces as groups: every group is a piece of its own
+          const tag = loTag[i] === 'piece-region' ? 'piece-region' : 'region-apart';
+          for(const id of tiles) for(const { e, o } of adjE[id]) if(e.state === 0 && find(o) !== find(id)){ e.state = 1; out.push({ e, value: 'wall', rule: tag }); }
+        }
+      }
+      if(merged) out.again = true;
+      return out;
+    }
     function pieceCountStep(need, capOf){
       const regs = openRegions();
       if(regs.length < 2 && ctx.pieceLo <= 1 && ctx.pieceHi > 1) return [];
@@ -9182,15 +9236,11 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         if(br.length > 0) return br;
       }
       { const sc = sizeCutStep(); if(sc === null){ failWhy = why; return null; } if(sc.length > 0) return sc; }       // v69c
-      // roses: regions closed in by walls
-      if(K > 0){
-        const rg = regionStep();
-        if(rg === null){ failWhy = why; return null; }
-        if(rg.length > 0 || rg.again) return rg;
-      }
-      if(ruleMatch){
-        const mr = matchRegionStep();
-        if(mr.length > 0 || mr.again) return mr;
+      // v110: how many pieces each area closed in by walls holds (roses / Solitude, Match, sizes, the board's count)
+      if(K > 0 || ruleMatch || (pcOn && !inProbe)){
+        const ac = areaCountStep();
+        if(ac === null){ failWhy = why; return null; }
+        if(ac.length > 0 || ac.again) return ac;
       }
       // v37: loopy
       if(looOn){
@@ -9238,11 +9288,6 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         const rg = rangeStep(need, capOf);
         if(rg === null){ failWhy = why; return null; }
         if(rg.length > 0 || rg.again) return rg;
-      }
-      if(pcOn && !inProbe){                                                        // v104: the areas closed in add up to the number of pieces (not inside probes: it costs more than it finds there)
-        const pg = pieceCountStep(need, capOf);
-        if(pg === null){ failWhy = why; return null; }
-        if(pg.length > 0 || pg.again) return pg;
       }
       // v27: area numbers (and stamps): how many pieces do the numbers need in each region closed in by walls?
       if((areaOn || relOn) && !inProbe){
@@ -12902,6 +12947,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   }
   // V1.0.12: steps that showed their internal name
   STEP_INFO["shape-range"] = ["Shape ruled out", null, "Earlier steps ruled out some shapes for the pieces of these groups. Joined, they could only take one of those shapes, so they are different pieces, with a wall between them.", null];   // V1.0.28
+  STEP_INFO["region-apart"] = ["Closed-in area: one piece per group", null, "The rules fix how many pieces this area closed in by walls holds, and it has exactly that many groups. So every group is a piece of its own, with walls between them.", null];   // V1.0.30
   STEP_INFO["size-range"] = ["Different sizes", null, "Earlier steps found the sizes the pieces of these two groups can have, and no size is on both lists. So they are different pieces, with a wall between them.", null];   // V1.0.25
   STEP_INFO["piece-region"] = ["Number of pieces in closed-in areas", null, "The rules and clues fix how many pieces the board has, at least and at most, and every area closed in by walls holds whole pieces. Added up, the areas leave this one as many pieces as it has groups, so every group here is a piece of its own, with walls between them.", "The rules and clues fix how many pieces the board has, at least and at most, and every area closed in by walls holds whole pieces. Added up, the areas leave this one room for only one piece, so all its tiles are one piece."];   // V1.0.24
   STEP_INFO["box-all"] = ["Boxy + Mismatch: every rectangle is used", "Every piece is a different rectangle, and the board has exactly as many tiles as all the rectangles still possible put together. So each of those rectangles is used once, and each needs a place on the board.", null, null];

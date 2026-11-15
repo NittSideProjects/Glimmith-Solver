@@ -79,6 +79,11 @@ from what the solver does, is left alone and asked about. A text he is still typ
 back on his list. Applied texts go in `dev/tools/rewrites/applied.json` (so the list counts them as done) and keep their IDs
 through a pins file given to `clean.js` (`dev/build/rewrite_pins_V1.0.x.json`).
 
+### Open ideas: `TODO.md`
+
+`TODO.md` lists what the author wants done later. When he asks what could be added next, remind him of what is open there; when he
+wants a V1.1, also tell him what in it is not done yet (for now: the rule order from a human point of view).
+
 ### No V1.1 before the rewrite is done
 
 **Do not make a V1.1 (or any version above V1.0.x), even when asked, while the rewrite list has anything left.** Run

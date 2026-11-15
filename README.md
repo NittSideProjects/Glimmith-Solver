@@ -13,6 +13,18 @@ is sent anywhere.
   Chrome and Edge remember the folders, so later imports are one click; other browsers ask for the folder each time.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
 
+## V1.0.25
+
+Every tile keeps the size range of its piece (core v105, the second step of making the rules share their facts). Until now each
+group's lowest and highest size was worked out again at every pass from the clues alone (area numbers, polyominoes, compasses,
+palisades, Precision / Minimum / Maximum, ...), and what the other steps found on top (the walls that compare sizes, the reach of a
+group, the closed-in areas, the number of pieces, Match, Heterogeneous, Gemini / Delta) was forgotten at the end of the pass. Now
+those bounds are kept on the tiles and a piece's range is the overlap of the ranges of its tiles, so forced growth, reach, "too big"
+and the rest start from everything found so far. Two groups whose ranges have no size in common are separated by a new step,
+"Different sizes". Probes and searches undo the ranges with the edges. On 374 campaign puzzles with size relations, compasses and
+area numbers: same verdicts, 201 more edges decided in the first pass (147 of them in the Inequality puzzles), 397 s -> 368 s (the
+Difference puzzles 62 s -> 40 s). New: `tests/solver/test_tilesize105.js`. The new texts are on the rewrite list.
+
 ## V1.0.24
 
 The number of pieces, as one range shared by every rule (core v104, the first step of making the rules share their facts). The

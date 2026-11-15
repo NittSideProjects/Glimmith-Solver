@@ -392,7 +392,7 @@
         <button id="newPuzzleBtn" type="button" title="Make a new empty puzzle">New puzzle</button>
         <button id="importBtn" type="button" title="Import puzzle files, either just one puzzle or multiple with a zip">Import puzzles…</button>
         <button id="fastImportBtn" type="button" title="Import every puzzle from the steam folder or the appdata one. Should be where most puzzles are kept for most people">Fast import</button>
-        <button id="fastFoldersBtn" type="button" class="subtle" hidden title="Choose or forget the folders Fast import reads">Folders…</button>
+        <button id="fastFoldersBtn" type="button" class="subtle" hidden title="Choose or forget the folder Fast import reads">Folder…</button>
         <button id="exportBtn" type="button" title="To save or send this puzzle, works with custom rules !">Export puzzle</button>
         <button id="exportAllBtn" type="button" class="subtle" title="To save every puzzle, works with custom rules !">Export all</button>
         <button id="showFileSolutionBtn" type="button" class="subtle" hidden title="Show at the bottom what solution was stored, THIS ISNT THE SOLVER.">File's solution</button>
@@ -403,29 +403,17 @@
       <div id="fastImportBox" class="fast-import" hidden>
         <p id="fastImportIntro"></p>
         <div class="fast-setup" id="fastSetup">
-          <p><b>One-click import.</b> Chrome and Edge can remember a folder, but not the game's own folders (they are inside Program Files and AppData). The setup file gets around that: put it in any folder you like (Documents, for example) and double-click it. It makes a folder <code>Glimmith puzzles</code> next to itself, holding two links: <code>downloaded</code> leads to the puzzles you downloaded from the workshop, <code>made</code> to the puzzles you made. A link only points to the game's folder: nothing is copied or moved, the game works as before, new puzzles show up in it by themselves, and deleting <code>Glimmith puzzles</code> deletes only the links. It needs no administrator rights. Windows may warn that the file comes from the internet: choose "More info", then "Run anyway". You can open it in Notepad first, it is a few lines.</p>
-          <p>Then choose the <code>Glimmith puzzles</code> folder once. After that, Fast import reads both kinds of puzzles in one click.</p>
+          <p><b>Set up once.</b> Fast import reads one folder, <code>Glimmith puzzles</code>, that a small setup file makes for you. Put the setup file in any folder you like (Documents, for example) and run it: it makes <code>Glimmith puzzles</code> next to itself, holding two links. <code>downloaded</code> leads to the puzzles you downloaded from the workshop, <code>made</code> to the puzzles you made. A link only points to the game's folder: nothing is copied or moved, the game works as before, new puzzles show up in it by themselves, and deleting <code>Glimmith puzzles</code> deletes only the links. It needs no administrator rights.</p>
+          <p><b>Windows:</b> double-click <code>glimmith-setup.bat</code>. Windows may warn that the file comes from the internet: choose "More info", then "Run anyway". You can open it in Notepad first, it is a few lines.<br><b>Linux:</b> in a terminal, in the folder where you put it, run <code>sh glimmith-setup.sh</code>. It looks for Steam in the usual places (the Flatpak one too).</p>
+          <p>Then choose the <code>Glimmith puzzles</code> folder below.</p>
           <div class="fast-row" data-slot="both">
             <div><b>The folder the setup made</b> <code>Glimmith puzzles</code><span class="fast-status" id="fastStatus_both"></span></div>
-            <span><button type="button" class="subtle" id="fastSetupBtn">Download the setup file</button> <button type="button" class="subtle" id="fastPick_both">Choose folder…</button></span>
+            <span><button type="button" class="subtle" id="fastSetupBtn">Setup file for Windows</button> <button type="button" class="subtle" id="fastSetupShBtn">Setup file for Linux</button> <button type="button" class="subtle" id="fastPick_both">Choose folder…</button></span>
           </div>
-          <p class="hint" style="margin:6px 0 0;">Steam somewhere else than <code>C:\Program Files (x86)\Steam</code>? Open the setup file in Notepad and change that line.</p>
+          <p class="hint" style="margin:6px 0 0;">Steam installed somewhere else? Open the setup file in a text editor and change the line with the Steam folder.</p>
+          <p class="hint" id="fastRefused" style="margin:6px 0 0;" hidden>Your browser refused that folder. Choose the <code>Glimmith puzzles</code> folder the setup file made, not the game's own folders.</p>
         </div>
-        <div class="fast-row" data-slot="steam">
-          <div><b>The puzzle you downloaded</b> <code>C:\Program Files (x86)\Steam\steamapps\workshop\content</code><br><span class="fast-zip">open this : <code>4160210</code></span><span class="fast-status" id="fastStatus_steam"></span></div>
-          <button type="button" class="subtle" id="fastPick_steam">Choose folder…</button>
-        </div>
-        <div class="fast-row" data-slot="own">
-          <div><b>The puzzle you made</b> <code>%LOCALAPPDATA%\Geri\Saved</code><br><span class="fast-zip">open this : <code>workshop</code></span><span class="fast-status" id="fastStatus_own"></span></div>
-          <button type="button" class="subtle" id="fastPick_own">Choose folder…</button>
-        </div>
-        <p class="hint" style="margin:6px 0 0;">Simply paste the path into the address bar of the folder window. Don't worry about duplicates, they are skipped by default <button type="button" class="link-btn" id="fastBlockedLink">Folder blocked?</button></p>
-        <div class="fast-blocked" id="fastBlocked" hidden>
-          <p><b>Did your browser say it "can't open this folder because it contains system files"?</b> Chrome and Edge do not let a page remember folders inside Program Files or AppData, and both game folders are there. You can still read them once: the browser asks for the folder each time, and it may say it will upload the files, but they stay on your computer.</p>
-          <div class="fast-actions"><button type="button" class="subtle" id="fastOnce_steam">Read the workshop folder once</button><button type="button" class="subtle" id="fastOnce_own">Read your own puzzles once</button></div>
-          <p class="hint" style="margin:8px 0 0;">To read them in one click every time, use the setup file above. If reading once is blocked too: copy the folder somewhere else (for example into Documents) and choose the copy, or zip it and open the zip with Import puzzles…</p>
-        </div>
-        <div class="fast-actions"><button type="button" id="fastRunBtn">Import now</button><button type="button" class="subtle" id="fastForgetBtn">Forget folders</button><button type="button" class="subtle" id="fastCloseBtn">Close</button></div>
+        <div class="fast-actions"><button type="button" id="fastRunBtn">Import now</button><button type="button" class="subtle" id="fastForgetBtn">Forget folder</button><button type="button" class="subtle" id="fastCloseBtn">Close</button></div>
       </div>
       <div class="stats" id="libraryInfo"></div>
       <details class="debug" id="importLogBox" hidden>
@@ -14175,8 +14163,8 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     }
   }
   // ---- fast import: the game's own puzzle folders, read as they are ----
-  const FAST_SLOTS = ['steam', 'own', 'both'], FAST_MAX_FILES = 20000, FAST_MAX_BYTES = 2000000;      // V1.0.38: 'both' = the folder of links the setup file makes
-  const fastDirs = { steam: null, own: null, both: null };                       // remembered folder handles (Chrome / Edge)
+  const FAST_SLOTS = ['both'], FAST_MAX_FILES = 20000, FAST_MAX_BYTES = 2000000;      // V1.0.39: only the folder of links the setup file makes
+  const fastDirs = { both: null };                       // remembered folder handles (Chrome / Edge)
   const fastCanRemember = () => typeof window.showDirectoryPicker === 'function';
   function fastDb(){
     return new Promise((res, rej) => {
@@ -14215,10 +14203,9 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   }
   function fastRender(){
     const remember = fastCanRemember();
-    document.getElementById('fastImportIntro').textContent = remember                                          // V1.0.38
-      ? `Fast import reads the folders you choose here. A folder your browser accepts is remembered, so the next imports take one click.`
-      : `Choose your folder to import the puzzles. Your browser can't remember folders (Chrome and Edge can), so you will need to pick it each time.`;
-    document.getElementById('fastSetup').hidden = !remember;
+    document.getElementById('fastImportIntro').textContent = remember                                          // V1.0.39
+      ? `Fast import reads all your puzzles in one click, once the setup below is done.`
+      : `Your browser can't remember folders (Chrome and Edge can): after the setup below, it asks for the Glimmith puzzles folder each time.`;
     for(const slot of FAST_SLOTS){ const st = document.getElementById('fastStatus_' + slot); st.textContent = fastDirs[slot] ? '\u2713 ' + fastDirs[slot].name : ''; }
     const anyDir = FAST_SLOTS.some(s => fastDirs[s]);
     document.getElementById('fastRunBtn').hidden = !remember || !anyDir;
@@ -14241,21 +14228,23 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     if(notes.length) showToast(notes[0]);
   }
   let fastPickSlot = null;
-  // V1.0.38: the setup file (Windows): a folder "Glimmith puzzles" next to it with junctions to the game's two puzzle folders
-  const FAST_SETUP_BAT = `@echo off\r\nrem Glimmith solver: one-click import setup.\r\nrem Makes the folder "Glimmith puzzles" next to this file, with two links (junctions) to the game's puzzle folders:\r\nrem   downloaded = the puzzles you downloaded from the Steam workshop, made = the puzzles you made.\r\nrem Nothing is copied or moved. Deleting "Glimmith puzzles" deletes only the links. No administrator rights needed.\r\nsetlocal\r\nset "DEST=%~dp0Glimmith puzzles"\r\nset "STEAM=C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\4160210"\r\nset "OWN=%LOCALAPPDATA%\\Geri\\Saved\\workshop"\r\nif not exist "%DEST%" mkdir "%DEST%"\r\nif exist "%STEAM%" if not exist "%DEST%\\downloaded" mklink /J "%DEST%\\downloaded" "%STEAM%"\r\nif not exist "%STEAM%" echo Not found: the workshop folder "%STEAM%". If Steam is somewhere else, change the STEAM line in this file.\r\nif exist "%OWN%" if not exist "%DEST%\\made" mklink /J "%DEST%\\made" "%OWN%"\r\nif not exist "%OWN%" echo Not found: your own puzzles folder "%OWN%".\r\necho.\r\necho Done. In the Glimmith solver, choose this folder once: "%DEST%"\r\npause\r\n`;
-  function fastSetupDownload(){
+  // V1.0.38 / V1.0.39: the setup files: a folder "Glimmith puzzles" next to them with links to the game's two puzzle folders
+  const FAST_SETUP_BAT = `@echo off\r\nrem Glimmith solver: one-click import setup (Windows).\r\nrem Makes the folder "Glimmith puzzles" next to this file, with two links (junctions) to the game's puzzle folders:\r\nrem   downloaded = the puzzles you downloaded from the Steam workshop, made = the puzzles you made.\r\nrem Nothing is copied or moved. Deleting "Glimmith puzzles" deletes only the links. No administrator rights needed.\r\nsetlocal\r\nset "DEST=%~dp0Glimmith puzzles"\r\nset "STEAM=C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\4160210"\r\nset "OWN=%LOCALAPPDATA%\\Geri\\Saved\\workshop"\r\nif not exist "%DEST%" mkdir "%DEST%"\r\nif exist "%STEAM%" if not exist "%DEST%\\downloaded" mklink /J "%DEST%\\downloaded" "%STEAM%"\r\nif not exist "%STEAM%" echo Not found: the workshop folder "%STEAM%". If Steam is somewhere else, change the STEAM line in this file.\r\nif exist "%OWN%" if not exist "%DEST%\\made" mklink /J "%DEST%\\made" "%OWN%"\r\nif not exist "%OWN%" echo Not found: your own puzzles folder "%OWN%".\r\necho.\r\necho Done. In the Glimmith solver, choose this folder once: "%DEST%"\r\npause\r\n`;
+  const FAST_SETUP_SH = `#!/bin/sh\n# Glimmith solver: one-click import setup (Linux).\n# Makes the folder "Glimmith puzzles" next to this file, with two links (symbolic links) to the game's puzzle folders:\n#   downloaded = the puzzles you downloaded from the Steam workshop, made = the puzzles you made.\n# Nothing is copied or moved. Deleting "Glimmith puzzles" deletes only the links. Run it with: sh glimmith-setup.sh\n# If Steam is somewhere else, put its folder first in the STEAMS line.\nSTEAMS="$HOME/.local/share/Steam $HOME/.steam/steam $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam"\nAPP=4160210\nDEST="$(cd "$(dirname "$0")" && pwd)/Glimmith puzzles"\nmkdir -p "$DEST"\nlink(){ # name, list of places: the first that exists\n  name="$1"; shift\n  if [ -e "$DEST/$name" ]; then echo "Already there: $DEST/$name"; return; fi\n  for p in "$@"; do if [ -d "$p" ]; then ln -s "$p" "$DEST/$name" && echo "Linked $name -> $p"; return; fi; done\n  echo "Not found: the $name puzzles (looked in: $*)"\n}\nW=""; O=""\nfor s in $STEAMS; do\n  W="$W $s/steamapps/workshop/content/$APP"\n  O="$O $s/steamapps/compatdata/$APP/pfx/drive_c/users/steamuser/AppData/Local/Geri/Saved/workshop"\ndone\nlink downloaded $W\nlink made $O\necho\necho "Done. In the Glimmith solver, choose this folder once: $DEST"\n`;
+  function fastSetupDownload(name, text){
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([FAST_SETUP_BAT], { type: 'application/octet-stream' })); a.download = 'glimmith-setup.bat';
+    a.href = URL.createObjectURL(new Blob([text], { type: 'application/octet-stream' })); a.download = name;
     document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
   }
   async function fastPick(slot){
+    document.getElementById('fastRefused').hidden = true;
     if(fastCanRemember()){
       let hd; try{ hd = await window.showDirectoryPicker({ id: 'glimmith-' + slot, mode: 'read' }); }
-      catch(e){ document.getElementById('fastBlocked').hidden = false; return; }      // closed the dialog, or the browser blocked the folder (V1.0.7: the page can not tell)
+      catch(e){ if(!(e && e.name === 'AbortError')) document.getElementById('fastRefused').hidden = false; return; }     // closed the dialog, or the browser refused the folder
       fastDirs[slot] = hd; await fastStore(slot, hd); fastRender();
       return;
     }
-    fastPickSlot = slot; document.getElementById('fastDirInput').click();
+    fastPickSlot = slot; document.getElementById('fastDirInput').click();      // a browser without folder handles: the classic folder dialog, each time
   }
   async function fastButton(){
     if(solverRunning){ showToast('Wait for the solver to finish (or cancel it) first'); return; }
@@ -14274,11 +14263,9 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     if(fastCanRemember()) fastLoad().then(fastRender);
     for(const slot of FAST_SLOTS) document.getElementById('fastPick_' + slot).addEventListener('click', () => fastPick(slot));
     document.getElementById('fastRunBtn').addEventListener('click', fastRun);
-    document.getElementById('fastSetupBtn').addEventListener('click', fastSetupDownload);       // V1.0.38
+    document.getElementById('fastSetupBtn').addEventListener('click', () => fastSetupDownload('glimmith-setup.bat', FAST_SETUP_BAT));      // V1.0.38
+    document.getElementById('fastSetupShBtn').addEventListener('click', () => fastSetupDownload('glimmith-setup.sh', FAST_SETUP_SH));      // V1.0.39
     document.getElementById('fastCloseBtn').addEventListener('click', () => fastShowBox(false));
-    // V1.0.7: blocked folders (Program Files, AppData): read once through the classic folder upload
-    document.getElementById('fastBlockedLink').addEventListener('click', () => { const b = document.getElementById('fastBlocked'); b.hidden = !b.hidden; });
-    for(const slot of FAST_SLOTS) if(document.getElementById('fastOnce_' + slot)) document.getElementById('fastOnce_' + slot).addEventListener('click', () => { if(solverRunning){ showToast('Wait for the solver to finish (or cancel it) first'); return; } fastPickSlot = slot; document.getElementById('fastDirInput').click(); });
     document.getElementById('fastForgetBtn').addEventListener('click', async () => { for(const slot of FAST_SLOTS){ fastDirs[slot] = null; await fastStore(slot, null); } fastRender(); });
     const di = document.getElementById('fastDirInput');
     di.addEventListener('change', async () => { const picked = Array.from(di.files); di.value = ''; if(!picked.length) return; const inputs = await fastInputsFromFiles(picked);

@@ -2,7 +2,7 @@
 
 The puzzle list at the top of the Puzzle Grid panel, its buttons, the Fast import box, the import report and the messages an import or export can show.
 
-Left here: 6 to write, 1 to check again, 7 notes, 0 to put on the page. Done: 114.
+Left here: 11 to write, 5 to check again, 2 notes, 0 to put on the page. Done: 103.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -53,12 +53,14 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0025
 - what: tooltip · #fastFoldersBtn · Button that only shows once Fast import has remembered a folder. Tooltip: shows when you hover over it.
-- now: Choose or forget the folders Fast import reads
+- now: Choose or forget the folder Fast import reads
+- was: Choose or forget the folders Fast import reads
 - new: =
 
 ### T0026
 - what: text · #fastFoldersBtn · Button that only shows once Fast import has remembered a folder.
-- now: Folders…
+- now: Folder…
+- was: Folders…
 - new: =
 
 ### T0027
@@ -103,12 +105,17 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T1197
 - what: text (keep the <b>/<i> tags or drop them) · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: <b>One-click import.</b> Chrome and Edge can remember a folder, but not the game's own folders (they are inside Program Files and AppData). The setup file gets around that: put it in any folder you like (Documents, for example) and double-click it. It makes a folder <code>Glimmith puzzles</code> next to itself, holding two links: <code>downloaded</code> leads to the puzzles you downloaded from the workshop, <code>made</code> to the puzzles you made. A link only points to the game's folder: nothing is copied or moved, the game works as before, new puzzles show up in it by themselves, and deleting <code>Glimmith puzzles</code> deletes only the links. It needs no administrator rights. Windows may warn that the file comes from the internet: choose "More info", then "Run anyway". You can open it in Notepad first, it is a few lines.
+- now: <b>Set up once.</b> Fast import reads one folder, <code>Glimmith puzzles</code>, that a small setup file makes for you. Put the setup file in any folder you like (Documents, for example) and run it: it makes <code>Glimmith puzzles</code> next to itself, holding two links. <code>downloaded</code> leads to the puzzles you downloaded from the workshop, <code>made</code> to the puzzles you made. A link only points to the game's folder: nothing is copied or moved, the game works as before, new puzzles show up in it by themselves, and deleting <code>Glimmith puzzles</code> deletes only the links. It needs no administrator rights.
 - new: 
 
 ### T1198
 - what: text (keep the <b>/<i> tags or drop them) · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: Then choose the <code>Glimmith puzzles</code> folder once. After that, Fast import reads both kinds of puzzles in one click.
+- now: <b>Windows:</b> double-click <code>glimmith-setup.bat</code>. Windows may warn that the file comes from the internet: choose "More info", then "Run anyway". You can open it in Notepad first, it is a few lines.<br><b>Linux:</b> in a terminal, in the folder where you put it, run <code>sh glimmith-setup.sh</code>. It looks for Steam in the usual places (the Flatpak one too).
+- new: 
+
+### T1202
+- what: text (keep the <b>/<i> tags or drop them) · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
+- now: Then choose the <code>Glimmith puzzles</code> folder below.
 - new: 
 
 ### T1199
@@ -123,7 +130,12 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T1201
 - what: text · #fastSetupBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: Download the setup file
+- now: Setup file for Windows
+- new: 
+
+### T1205
+- what: text · #fastSetupShBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
+- now: Setup file for Linux
 - new: 
 
 ### T0038
@@ -131,70 +143,15 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - now: Choose folder…
 - new: =
 
-### T1202
-- what: text (keep the <b>/<i> tags or drop them) · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: Steam somewhere else than <code>C:\Program Files (x86)\Steam</code>? Open the setup file in Notepad and change that line.
+### T1206
+- what: text · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
+- now: Steam installed somewhere else? Open the setup file in a text editor and change the line with the Steam folder.
 - new: 
 
-### T0035
-- what: text · #fastImportBox · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: The puzzle you downloaded
-- new: The puzzle you downloaded
-
-### T0036
-- what: text · #fastImportBox · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: C:\Program Files (x86)\Steam\steamapps\workshop\content
-- new: =
-
-### T0037
-- what: text (keep the <b>/<i> tags or drop them) · #fastImportBox · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: open this : <code>4160210</code>
-- new: open this : <code>4160210</code>
-
-### T0039
-- what: text · #fastImportBox · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: The puzzle you made
-- new: The puzzle you made
-
-### T0040
-- what: text · #fastImportBox · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: %LOCALAPPDATA%\Geri\Saved
-- new: =
-
-### T0041
-- what: text (keep the <b>/<i> tags or drop them) · #fastImportBox · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: open this : <code>workshop</code>
-- new: open this : <code>workshop</code>
-
-### T0042
-- what: text · #fastImportBox · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: Simply paste the path into the address bar of the folder window. Don't worry about duplicates, they are skipped by default
-- new: Simply paste the path into the address bar of the folder window. Don't worry about duplicates, they are skipped by default
-
-### T0890
-- what: text · #fastBlockedLink · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: Folder blocked?
-- new: [need to change fast import]
-
-### T0891
-- what: text (keep the <b>/<i> tags or drop them) · #fastBlocked · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: <b>Did your browser say it "can't open this folder because it contains system files"?</b> Chrome and Edge do not let a page remember folders inside Program Files or AppData, and both game folders are there. You can still read them once: the browser asks for the folder each time, and it may say it will upload the files, but they stay on your computer.
-- new: [need to change fast import]
-
-### T0892
-- what: text · #fastOnce_steam · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: Read the workshop folder once
-- new: [need to change fast import]
-
-### T0893
-- what: text · #fastOnce_own · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: Read your own puzzles once
-- new: [need to change fast import]
-
-### T0894
-- what: text · #fastBlocked · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: To read them in one click every time, use the setup file above. If reading once is blocked too: copy the folder somewhere else (for example into Documents) and choose the copy, or zip it and open the zip with Import puzzles…
-- new: [need to change fast import]
+### T1207
+- what: text (keep the <b>/<i> tags or drop them) · #fastRefused · In the Fast import box, which opens the first time you click Fast import, or with Folders….
+- now: Your browser refused that folder. Choose the <code>Glimmith puzzles</code> folder the setup file made, not the game's own folders.
+- new: 
 
 ### T0043
 - what: text · #fastRunBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
@@ -203,7 +160,8 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0044
 - what: text · #fastForgetBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
-- now: Forget folders
+- now: Forget folder
+- was: Forget folders
 - new: =
 
 ### T0045
@@ -563,13 +521,14 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0833
 - what: message · fastRender · Built by the page while it runs, so it only shows in some situations.
-- now: Fast import reads the folders you choose here. A folder your browser accepts is remembered, so the next imports take one click.
+- now: Fast import reads all your puzzles in one click, once the setup below is done.
 - was: Choose each folder once. After that, Fast import reads both in one click (your browser may ask to allow it).
 - new: Choose each folder once. After that, Fast import reads both in one click (if your browser is compatible).
 
 ### T0834
 - what: message · fastRender · Built by the page while it runs, so it only shows in some situations.
-- now: Choose your folder to import the puzzles. Your browser can't remember folders (Chrome and Edge can), so you will need to pick it each time.
+- now: Your browser can't remember folders (Chrome and Edge can): after the setup below, it asks for the Glimmith puzzles folder each time.
+- was: Choose a folder to import every puzzle in it. This browser can not remember folders (Chrome and Edge can), so you pick it each time.
 - new: Choose your folder to import the puzzles. Your browser can't remember folders (Chrome and Edge can), so you will need to pick it each time.
 
 ### T0835
@@ -586,6 +545,16 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: message · fastRun · Built by the page while it runs, so it only shows in some situations.
 - now: The folders hold no puzzle files.
 - new: =
+
+### T1204
+- what: message · attachFastImport · Built by the page while it runs, so it only shows in some situations.
+- now: glimmith-setup.bat
+- new: 
+
+### T1209
+- what: message · attachFastImport · Built by the page while it runs, so it only shows in some situations.
+- now: glimmith-setup.sh
+- new: 
 
 ### T0838
 - what: message · attachFastImport › text · Built by the page while it runs, so it only shows in some situations.

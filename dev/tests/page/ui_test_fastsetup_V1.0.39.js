@@ -1,9 +1,9 @@
-// V1.0.38: Fast import's one-click setup. (1) the setup file: glimmith-setup.bat, made next to where it runs, CRLF, junctions only;
+// V1.0.38 / V1.0.39: Fast import's one-click setup, the only way since V1.0.39. (1) the setup file: glimmith-setup.bat, made next to where it runs, CRLF, junctions only;
 // (2) one folder holding both (the folder of links): chosen once, both kinds of puzzles in one click; (3) a browser that can not
 // remember folders does not see the setup (it could not use it).
-// node ui_test_fastsetup_V1.0.38.js ../glimmith_solver_V1.0.38.html   (needs fixtures/folders.zip and the unzip command)
+// node ui_test_fastsetup_V1.0.39.js ../glimmith_solver_V1.0.39.html   (needs fixtures/folders.zip and the unzip command)
 const { JSDOM } = require('jsdom'); const fs = require('fs'), path = require('path'), cp = require('child_process'), os = require('os');
-const file = process.argv[2] || '../glimmith_solver_V1.0.38.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.39.html';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
@@ -39,6 +39,14 @@ const settle = async P => { for(let i = 0; i < 200; i++){ await sleep(50); if(P.
   check('two junctions, nothing copied or deleted', (bat.match(/mklink \/J/g) || []).length === 2 && !/\b(copy|xcopy|robocopy|del|rmdir|rd|move)\b/i.test(bat.replace(/^rem .*$/gim, '')));
   check('the workshop and the own puzzles folders', bat.includes('steamapps\\workshop\\content\\4160210') && bat.includes('%LOCALAPPDATA%\\Geri\\Saved\\workshop'));
   check('no ( ) blocks (a path with "(x86)" would end them)', !/\(\s*$/m.test(bat) && !/^\s*\)/m.test(bat));
+  blob = null; P.$('fastSetupShBtn').click(); await sleep(50);
+  const sh = blob ? Buffer.from(await blob.arrayBuffer()).toString('utf8') : '';
+  check('a file glimmith-setup.sh is downloaded (Linux)', dlName === 'glimmith-setup.sh' && sh.startsWith('#!/bin/sh') && !sh.includes('\r'), [dlName, sh.length]);
+  check('the Linux folder is made next to the file, with two symbolic links', sh.includes('DEST="$(cd "$(dirname "$0")" && pwd)/Glimmith puzzles"') && (sh.match(/ln -s /g) || []).length === 1 && /link downloaded/.test(sh) && /link made/.test(sh));
+  check('Linux: workshop and the Proton prefix, Flatpak Steam too', sh.includes('steamapps/workshop/content/$APP') && sh.includes('compatdata/$APP/pfx/drive_c/users/steamuser/AppData/Local/Geri/Saved/workshop') && sh.includes('com.valvesoftware.Steam'));
+  check('Linux: nothing copied or deleted', !/\b(cp|mv|rm|rsync)\b/.test(sh.replace(/^#.*$/gm, '')));
+  check('the old ways are gone (game folders, read once, blocked help)', !P.$('fastPick_steam') && !P.$('fastPick_own') && !P.$('fastOnce_steam') && !P.$('fastBlocked') && !/4160210/.test(P.$('fastImportBox').textContent.replace(/setup/g, '')));
+  check('the page says how to run each file', /double-click/.test(P.$('fastSetup').textContent) && /sh glimmith-setup\.sh/.test(P.$('fastSetup').textContent));
   check('no script errors (1)', P.errors.length === 0, P.errors);
   // ---- 2. one folder holding both ----
   P = await page();
@@ -61,8 +69,13 @@ const settle = async P => { for(let i = 0; i < 200; i++){ await sleep(50); if(P.
   // ---- 3. a browser that can not remember folders ----
   P = await page();
   P.$('fastImportBtn').click(); await sleep(80);
-  check('no setup block where it can not work, and the intro says why', P.$('fastSetup').hidden && /can't remember/.test(P.$('fastImportIntro').textContent));
+  check('a browser that can not remember: the same setup, the folder asked for each time', !P.$('fastSetup').hidden && /can't remember/.test(P.$('fastImportIntro').textContent) && /each time/.test(P.$('fastImportIntro').textContent));
+  const mk = rel => { const f = new P.window.File([rd(rel)], path.basename(rel)); Object.defineProperty(f, 'webkitRelativePath', { value: 'Glimmith puzzles/' + (rel.startsWith('x1') ? 'downloaded/' : 'made/') + rel }); return f; };
+  const b3 = names(P).length, inp = P.$('fastDirInput');
+  Object.defineProperty(inp, 'files', { value: [mk('x1/puzzle'), mk('x1/metadata'), mk('x2/puzzle'), mk('x2/metadata')], configurable: true });
+  inp.dispatchEvent(new P.window.Event('change')); await settle(P);
+  check('the Glimmith puzzles folder read through the classic dialog: 2 puzzles', names(P).length === b3 + 2, [names(P), P.$('importLogSummary').textContent]);
   check('no script errors (3)', P.errors.length === 0, P.errors);
-  console.log(`fast setup V1.0.38 UI: ${pass} passed, ${fail} failed`);
+  console.log(`fast setup V1.0.39 UI: ${pass} passed, ${fail} failed`);
   process.exit(fail ? 1 : 0);
 })();

@@ -2,16 +2,26 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.38.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.39.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
 * **Step by step**: after a solve, walk through what the solver proved, one deduction at a time.
 * **Import puzzles…** takes a puzzle file, a zip of puzzles, or a file saved with Export.
-* **Fast import** reads the game's own folders as they are (no zip): `C:\Program Files (x86)\Steam\steamapps\workshop\content\4160210`
-  (workshop puzzles) and `%LOCALAPPDATA%\Geri\Saved\workshop` (your own puzzles). For one-click imports in Chrome or Edge, use the setup
-  file in the Fast import box once (it makes a folder of links the browser accepts); other browsers ask for the folders each time.
+* **Fast import** reads all your puzzles in one click. Set it up once: the Fast import box gives a small setup file (Windows or Linux)
+  that makes a folder `Glimmith puzzles` of links to the game's puzzle folders; choose that folder once.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.39
+
+**Fast import has one way: the setup file.** The box gives a setup file for Windows (`glimmith-setup.bat`, junctions) and for Linux
+(`glimmith-setup.sh`, symbolic links; run `sh glimmith-setup.sh`). Each makes a folder `Glimmith puzzles` next to itself with the
+links `downloaded` (Steam workshop puzzles) and `made` (your own puzzles); nothing is copied or moved. Choose that folder once: Chrome
+and Edge remember it (one click from then on); other browsers ask for it each time. The rows for the game's own folders, "Read once"
+and the "Folder blocked?" help are gone. On Linux the game runs through Proton, so the script finds your own puzzles in the game's
+Proton prefix (`steamapps/compatdata/4160210/pfx/.../AppData/Local/Geri/Saved/workshop`), in the usual Steam places (the Flatpak one
+too). The Linux script was run here on test folders; whether Chrome on Linux follows the links when it reads the chosen folder is not
+tested yet. Test: `dev/tests/page/ui_test_fastsetup_V1.0.39.js` (replaces `ui_test_fastimport.js`).
 
 ## V1.0.38
 
@@ -21,7 +31,7 @@ and both game folders are there, so Fast import asked for them every time. The F
 itself with two links (Windows junctions): `downloaded` to the Steam workshop puzzles and `made` to your own. Nothing is copied or
 moved, deleting the folder deletes only the links, and no administrator rights are needed. Choose `Glimmith puzzles` once in the new
 row of the box; from then on Fast import reads both in one click. Browsers that can not remember folders (Firefox, the VS Code
-browser) do not see the setup and are told the folders are read each time. Test: `dev/tests/page/ui_test_fastsetup_V1.0.38.js`.
+browser) do not see the setup and are told the folders are read each time. Test: `dev/tests/page/ui_test_fastsetup_V1.0.39.js`.
 
 ## V1.0.37
 
@@ -368,7 +378,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.38.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.39.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |

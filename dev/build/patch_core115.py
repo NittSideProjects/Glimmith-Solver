@@ -30,10 +30,8 @@ def patch(src, ind):
       }
 """), I("""        const B2 = relPrune(B, dom.get(ra), re.kind, re.value, true); if(B2 !== B){ dom.set(rb, B2); changed = true; }
       }
-      if(neOn) for(const e of spots){                                          // v115: Size Separation, sizes differ across every wall
-        if(e.state !== 1) continue;
-        const ra = find(e.a), rb = find(e.b);
-        if(ra === rb) continue;
+      if(neOn) for(let q = 0; q < neA.length; q++){                            // v115: Size Separation, sizes differ across every wall
+        const ra = neA[q], rb = neB[q];
         const A = getDom(ra), B = getDom(rb);
         if(B !== 0n && (B & (B - 1n)) === 0n && (A & B)){ dom.set(ra, A & ~B); neHit.add(ra); changed = true; }
         const A1 = dom.get(ra);
@@ -43,6 +41,8 @@ def patch(src, ind):
     src = rep(src, I("""    derived = new Map(); relRaised = new Set();
 """), I("""    derived = new Map(); relRaised = new Set();
     const neHit = new Set();                                                   // v115: groups narrowed by a Size Separation wall
+    const neA = [], neB = [];                                                  // v115: the pairs of groups with a wall between them (once per call)
+    if(neOn){ const seen = new Set(); for(const e of spots){ if(e.state !== 1) continue; const ra = find(e.a), rb = find(e.b); if(ra === rb) continue; const k = ra < rb ? ra * N + rb : rb * N + ra; if(seen.has(k)) continue; seen.add(k); neA.push(ra); neB.push(rb); } }
 """), 'neHit')
     src = rep(src, I("""      if(d === 0n){ why = 'area-rel'; markAt(why, members.get(rep)); return null; }
 """), I("""      if(d === 0n){ why = neHit.has(rep) ? 'mingle-area-clash' : 'area-rel'; markAt(why, members.get(rep)); return null; }

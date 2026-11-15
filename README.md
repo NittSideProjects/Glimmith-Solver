@@ -23,6 +23,9 @@ compasses and Mismatch) about a puzzle whose solution is valid. The tests run th
 - The page now has the fix; its solver core is the same code as `dev/reference/solver-core.v120.js`, which is now written from the
   page itself (`patch_ui_V1.0.36.py --reference ...`).
 - `dev/tests/page/ui_test_core_sync.js` fails on any difference between the page's core and the newest reference core.
+- Audit on core v120: every fuzzer (44) run; the only reports were fuzzer artefacts (`fuzz_oracle.js` compared with an oracle list cut at
+  100000 tilings: fixed; `fuzz_area27.js` one planted board the oracle itself rejects, the same on v104). On the same planted boards the
+  V1.0.35 page core failed 188 times in 1000 (false "impossible" and wrong deductions), v120 0 times in 1500.
 - `dev/fuzz/fuzz_planted120.js` runs the whole solver with the page's settings on planted tilings that obey every clue and rule on
   the board, and fails on any "impossible", any rule or probe deduction that disagrees with the planted tiling, or a "unique" that
   is not the planted tiling.

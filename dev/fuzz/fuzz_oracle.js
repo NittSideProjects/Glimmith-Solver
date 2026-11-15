@@ -27,7 +27,7 @@ for(let i = 0; i < N; i++){
     const want = Math.min(truth.length, 2);
     let ok = r.sols.length === want;
     if(ok && truth.length === 1) ok = L.sig(r.sols[0]) === O.sigCells(truth[0]);
-    if(ok && want === 2){ const all = new Set(O.oracle(P, 100000).map(O.sigCells)); ok = r.sols.every(s => all.has(L.sig(s))) && L.sig(r.sols[0]) !== L.sig(r.sols[1]); }
+    if(ok && want === 2){ const full = O.oracle(P, 100000), all = new Set(full.map(O.sigCells)); ok = (full.length >= 100000 || r.sols.every(s => all.has(L.sig(s)))) && L.sig(r.sols[0]) !== L.sig(r.sols[1]); }   // a capped oracle list does not hold every tiling
     if(!ok){ bad++; if(bad <= 6) console.log('MISMATCH', name, 'seed', seed0 * 100000 + i, 'oracle', truth.length, 'got', r.sols.length, JSON.stringify(P.rules)); }
   }
 }

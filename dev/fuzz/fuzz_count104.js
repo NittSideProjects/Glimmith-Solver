@@ -5,7 +5,7 @@
 // and countInfeasible only when there is none; (2) deduceSolve and solvePuzzle give the oracle's verdict, and every edge the
 // deduction decides agrees with every true tiling.
 // node fuzz/fuzz_count104.js [N=300] [seed=1]
-const L = require('../fuzzlib.js'), O = require('../oracle.js'), S = require(process.env.GLIMMITH_CORE || '../reference/solver-core.v106.js');
+const L = require('../fuzzlib.js'), O = require('../oracle.js'), S = require(process.env.GLIMMITH_CORE || '../reference/solver-core.v107.js');
 const N = +process.argv[2] || 300, seed0 = +process.argv[3] || 1;
 const heteroOk = pieces => new Set(pieces.map(p => p.length)).size === pieces.length;
 let ran = 0, bad = 0, boundsChecked = 0, deds = 0, dedBad = 0, tight = 0, infeas = 0, fired = {};

@@ -2,7 +2,7 @@
 
 The step-by-step view: step titles, explanations and captions.
 
-Left here: 324 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
+Left here: 326 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -30,6 +30,16 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: tooltip · #stepsLast · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve). Tooltip: shows when you hover over it.
 - now: Last step
 - new: Last step
+
+### T1179
+- what: tooltip · #stepsViewer · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve). Tooltip: shows when you hover over it.
+- now: Title each step by the shared logic it uses, and the rule that gave the fact
+- new: 
+
+### T1180
+- what: text · #stepsViewer · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve).
+- now: Name steps by logic
+- new: 
 
 ### T1136
 - what: text · #stepsCasesBtn · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve).

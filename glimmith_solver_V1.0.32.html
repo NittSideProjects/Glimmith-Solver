@@ -578,6 +578,7 @@
         <span class="steps-counter" id="stepsCounter" aria-live="polite"></span>
         <button type="button" id="stepsNext" aria-label="Next step" title="Next step">&#x25B6;</button>
         <button type="button" id="stepsLast" aria-label="Last step" title="Last step">&#x23ED;</button>
+        <label class="subtle steps-families" title="Title each step by the shared logic it uses, and the rule that gave the fact"><input type="checkbox" id="stepsFamilies"> Name steps by logic</label>
       </div>
       <input type="range" id="stepsSlider" class="steps-slider" min="0" max="0" value="0" step="1" aria-label="Step">
       <div class="steps-caption" id="stepsCaption" role="status" aria-live="polite">
@@ -13241,7 +13242,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     // a rule
     const info = STEP_INFO[st.rule];
     const onlyWalls = nWall > 0 && nLink === 0, onlyLinks = nLink > 0 && nWall === 0;
-    const title = info ? info[0] : 'Rule: ' + st.rule;
+    const title = (stepFamilies && familyTitle(st.rule)) || (info ? info[0] : 'Rule: ' + st.rule);      // V1.0.32
     let body = null, addResult = false;                                // V1.0.11: info[1] says why; the result is added here
     if(info){
       if(onlyWalls) body = info[2]; else if(onlyLinks) body = info[3];
@@ -13448,6 +13449,14 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     if(ex.n && ex.n.length) add('Omits', miniShapes(ex.n));
     return box.firstChild ? box : null;
   }
+  // V1.0.32: step names that follow the logic (refactoring step 8): the shared step + the rule that supplied the fact
+  let stepFamilies = false; try { stepFamilies = localStorage.getItem('glimmith.stepFamilies') === '1'; } catch(e){}
+  const FAMILY_NAMES = { grow: 'Forced growth', reach: 'Reach', region: 'Closed-in area count', place: 'Placement', corner: 'Corner pattern' };
+  const SOURCE_NAMES = { 'size': 'the sizes', 'minimum': 'the Minimum', 'roses': 'the roses', 'solitude': 'Solitude', 'non-boxy': 'Non-boxy',
+    'compasses': 'the compasses', 'bank': 'the shape bank', 'match': 'Match', 'piece-count': 'the number of pieces', 'region-count': 'the rules of the area',
+    'area-numbers': 'the area numbers', 'polyomino': 'the polyomino', 'mismatch': 'Mismatch', 'boxy': 'Boxy', 'gemini': 'Gemini', 'mingle-area': 'Mingle Area',
+    'bricky': 'Bricky', 'loopy': 'Loopy', 'palisades': 'the palisades', 'wally': 'Wally' };
+  const familyTitle = tag => { const f = RULE_FAMILY[tag]; if(!f || !FAMILY_NAMES[f[0]]) return null; return `${FAMILY_NAMES[f[0]]}, from ${SOURCE_NAMES[f[1]] || f[1]}`; };
   const exampleTitle = key => (STEP_INFO[key] || [])[0] || (key === 'fact:split-cut' ? 'The only way to connect' : key === 'fact:label-join' ? 'Only one piece it can be in' : key.startsWith('fact:') ? 'Far apart, but one piece' : key);
   const exampleNumber = key => Object.keys(RULE_EXAMPLES).indexOf(key) + 1;   // V1.0.14: the same number in both pop-ups
   function exampleCard(key, withTitle){
@@ -13665,6 +13674,8 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     document.getElementById('stepsClose').addEventListener('click', closeSteps);
     document.getElementById('stepsPrev').addEventListener('click', () => stepsGo(stepsIdx - 1));
     document.getElementById('stepsNext').addEventListener('click', () => stepsGo(stepsIdx + 1));
+    { const cb = document.getElementById('stepsFamilies'); cb.checked = stepFamilies;                     // V1.0.32
+      cb.addEventListener('change', () => { stepFamilies = cb.checked; try { localStorage.setItem('glimmith.stepFamilies', stepFamilies ? '1' : '0'); } catch(e){} stepsGo(stepsIdx); }); }
     document.getElementById('stepsFirst').addEventListener('click', () => stepsGo(0));
     document.getElementById('stepsLast').addEventListener('click', () => stepsGo(stepsList.length - 1));
     document.getElementById('stepsSlider').addEventListener('input', ev => stepsGo(Number(ev.target.value)));

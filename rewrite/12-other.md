@@ -2,7 +2,7 @@
 
 Messages that are not tied to one place on the page.
 
-Left here: 117 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 0.
+Left here: 133 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 0.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -469,6 +469,86 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0961
 - what: message · renderExampleCase › label · Built by the page while it runs, so it only shows in some situations.
 - now: Example
+- new: 
+
+### T1181
+- what: message · FAMILY_NAMES › region · Built by the page while it runs, so it only shows in some situations.
+- now: Closed-in area count
+- new: 
+
+### T1182
+- what: message · FAMILY_NAMES › place · Built by the page while it runs, so it only shows in some situations.
+- now: Placement
+- new: 
+
+### T1183
+- what: message · FAMILY_NAMES › corner · Built by the page while it runs, so it only shows in some situations.
+- now: Corner pattern
+- new: 
+
+### T1184
+- what: message · SOURCE_NAMES › size · Built by the page while it runs, so it only shows in some situations.
+- now: the sizes
+- new: 
+
+### T1185
+- what: message · SOURCE_NAMES › minimum · Built by the page while it runs, so it only shows in some situations.
+- now: the Minimum
+- new: 
+
+### T1186
+- what: message · SOURCE_NAMES › roses · Built by the page while it runs, so it only shows in some situations.
+- now: the roses
+- new: 
+
+### T1187
+- what: message · SOURCE_NAMES › compasses · Built by the page while it runs, so it only shows in some situations.
+- now: the compasses
+- new: 
+
+### T1188
+- what: message · SOURCE_NAMES › bank · Built by the page while it runs, so it only shows in some situations.
+- now: the shape bank
+- new: 
+
+### T1189
+- what: message · SOURCE_NAMES › piece-count · Built by the page while it runs, so it only shows in some situations.
+- now: the number of pieces
+- new: 
+
+### T1190
+- what: message · SOURCE_NAMES › region-count · Built by the page while it runs, so it only shows in some situations.
+- now: the rules of the area
+- new: 
+
+### T1191
+- what: message · SOURCE_NAMES › area-numbers · Built by the page while it runs, so it only shows in some situations.
+- now: the area numbers
+- new: 
+
+### T1192
+- what: message · SOURCE_NAMES › polyomino · Built by the page while it runs, so it only shows in some situations.
+- now: the polyomino
+- new: 
+
+### T1193
+- what: message · SOURCE_NAMES › gemini · Built by the page while it runs, so it only shows in some situations.
+- now: Gemini
+- new: 
+
+### T1194
+- what: message · SOURCE_NAMES › mingle-area · Built by the page while it runs, so it only shows in some situations.
+- now: Mingle Area
+- new: 
+
+### T1195
+- what: message · SOURCE_NAMES › palisades · Built by the page while it runs, so it only shows in some situations.
+- now: the palisades
+- new: 
+
+### T1196
+- what: message · familyTitle · Built by the page while it runs, so it only shows in some situations.
+- now: {1}, from {2}
 - new: 
 
 ### T1137

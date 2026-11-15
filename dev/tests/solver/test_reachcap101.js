@@ -1,9 +1,10 @@
 // Core v101: a group on a wall that compares sizes has at most the tiles it can still reach ("reach cap").
 // Synthetic boards: a pocket with a narrow neck; two "difference" walls in the bottom row; the outer groups can reach 1 or 2 tiles,
-// so the middle piece is 4 bigger and has to leave through the neck. The rules find it, without a proof by contradiction.
+// so the middle piece is 4 bigger and has to leave through the neck. The rules find it, without a proof by contradiction
+// (since v106 the second link may be 'grow': the size found by the walls that compare sizes is kept on the tiles).
 // node tests/solver/test_reachcap101.js
 'use strict';
-const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v105.js'), L = require('../../fuzzlib.js');
+const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v106.js'), L = require('../../fuzzlib.js');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const RULES = { precision: null, min: null, max: null, mismatch: false, match: false, mingleShape: false, mingleArea: false, solitude: false, boxy: false, nonBoxy: false };
@@ -20,7 +21,7 @@ for(const [name, rows, walls, rules, keys] of [
   ['a wider board, difference 3', ['.#####', '.#####', '...#..', '######'], [['v:2,3', 'diff3'], ['v:3,3', 'diff3']], {}, ['h:3,2', 'h:3,1']],
 ]){
   const a = run(rows, walls, rules), b = run(rows, walls, rules, { reachCap: false });
-  check(name + ': the neck is linked by a rule', neck(a, keys).every(e => e && e.value === 'same' && e.via === 'rule' && e.rule === 'area-rel'), neck(a, keys).map(e => e && [e.via, e.rule, e.value]));
+  check(name + ': the neck is linked by a rule', neck(a, keys).every(e => e && e.value === 'same' && e.via === 'rule' && (e.rule === 'area-rel' || e.rule === 'grow')), neck(a, keys).map(e => e && [e.via, e.rule, e.value]));
   check(name + ': without the reach cap it took a proof by contradiction (or nothing)', neck(b, keys).every(e => !e || e.via !== 'rule'), neck(b, keys).map(e => e && [e.via, e.rule]));
   check(name + ': same verdict with and without', a.sols.length === b.sols.length && a.sols.length >= 1, [a.sols.length, b.sols.length]);
   // every decision holds in every tiling the exact search finds (it does not use the deduction rules)

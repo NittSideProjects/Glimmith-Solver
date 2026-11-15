@@ -2,7 +2,7 @@
 
 The step-by-step view: step titles, explanations and captions.
 
-Left here: 318 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
+Left here: 320 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -989,6 +989,16 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0914
 - what: message · Built by the page while it runs, so it only shows in some situations.
 - now: The solver tried these two groups as one piece, and the rules could not all be met that way. So they are different pieces, with a wall between them.
+- new: 
+
+### T1172
+- what: message · Built by the page while it runs, so it only shows in some situations.
+- now: Different sizes
+- new: 
+
+### T1173
+- what: message · Built by the page while it runs, so it only shows in some situations.
+- now: Earlier steps found the sizes the pieces of these two groups can have, and no size is on both lists. So they are different pieces, with a wall between them.
 - new: 
 
 ### T1168

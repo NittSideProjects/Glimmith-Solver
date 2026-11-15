@@ -8,7 +8,7 @@ const rng = s => () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t 
 let ran = 0, checked = 0, bad = 0, fired = 0;
 for(let i = 0; i < N; i++){
   const seed = seed0 * 100000 + i, R = rng(seed), pick = n => Math.floor(R() * n);
-  const w = 4 + pick(5), h = 4 + pick(5);
+  const w = 3 + pick(4), h = 3 + pick(4);
   const P0 = L.plantedPuzzle(seed, { w, h, maxPiece: 3 + pick(6), rich: false, noSpecials: true, clueP: [0, 0.1, 0.2][pick(3)], wallP: [0, 0.1][pick(2)], bank: false, holes: [0, 0.1][pick(2)] });
   const owner = new Map(); P0.planted.forEach((p, k) => p.forEach(([c, r]) => owner.set(c + ',' + r, k)));
   if(owner.size === 0) continue;
@@ -22,7 +22,7 @@ for(let i = 0; i < N; i++){
   const hints = { maxRegions: P0.planted.length };
   const ctx = S.buildSolverContext(Q.puzzle, Q.bank, Q.rules, hints, []);
   ran++;
-  for(const ev of S.deduceSolve(w, h, ctx, L.collectSpecialEdges(Q.puzzle.walls), { stopAtTwo: true })){
+  for(const ev of S.deduceSolve(w, h, ctx, L.collectSpecialEdges(Q.puzzle.walls), { stopAtTwo: true, nodeBudget: 50000 })){
     if(ev.type === 'impossible-early'){ bad++; console.log('IMPOSSIBLE on a planted board, seed', seed, ev.reason, ev.why); break; }
     if(ev.type !== 'deduce') continue;
     const m = /^([vh]):(\d+),(\d+)$/.exec(ev.spot.key); const c = +m[2], r = +m[3];

@@ -103,7 +103,7 @@ async function waitDone($, maxMs){ const t0 = Date.now(); await sleep(60); while
   clearInterval(poll); mo.disconnect();
   st = $('solverStatus').textContent;
   check('8x8 clue puzzle: ends with a verdict', /^(Unique|Not unique|Impossible)/.test(st), st);
-  const solver = require('../../reference/solver-core.v114.js');
+  const solver = require('../../reference/solver-core.v115.js');
   check('the verdict agrees with the exact solver', (/^Not unique/.test(st)) === true, st);
   check('walls/shapes appeared over time (not all at once at the end)', times.length > 5 && times[times.length - 1] - times[0] > 150, [times.length, times.length ? times[times.length-1] - times[0] : 0, took]);
   check('a testing marker was visible while running', sawProbe);

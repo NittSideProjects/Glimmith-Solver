@@ -3,7 +3,7 @@
 // then checks the colour pool itself (25 colours, reuse only when all are held, a finished piece gives its colour back).
 // node ui_test_colors_V1.0.6.js [page.html]
 const { JSDOM } = require('jsdom'); const fs = require('fs'); const path = require('path');
-const file = process.argv[2] || '../glimmith_solver_V1.0.36.html', pz = path.join(__dirname, '..', '..', 'fixtures', 'colors_V1.0.6.glimmith.json');
+const file = process.argv[2] || '../glimmith_solver_V1.0.37.html', pz = path.join(__dirname, '..', '..', 'fixtures', 'colors_V1.0.6.glimmith.json');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
@@ -56,7 +56,7 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
   }
   check('a label-join step ("Only one piece it can be in")', labelStep >= 1, labelStep);
   check('a split-cut step ("The only way to connect")', splitStep >= 1, splitStep);
-  check('no colour group before the first fact step', groupBefore === 0, groupBefore);
+  check('linked tiles are coloured before the first fact step too (V1.0.37)', groupBefore > 0, groupBefore);
   check('the ringed tiles of each fact step share one colour and the text says so', ringedSame);
   check('the first group keeps its colour on every later step (also once finished)', colourKept);
   check('no letters anywhere', letters === 0, letters);

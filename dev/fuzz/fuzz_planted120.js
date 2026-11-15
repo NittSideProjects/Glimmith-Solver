@@ -6,7 +6,7 @@
 //   * every deduction made by a rule or a probe must agree with the planted tiling (the search can name another tiling);
 //   * when it says unique, its solution must be the planted tiling.
 //   node fuzz/fuzz_planted120.js [N=300] [seed=1]
-const L = require('../fuzzlib.js'), S = require('../reference/solver-core.v120.js');
+const L = require('../fuzzlib.js'), S = require('../reference/solver-core.v121.js');
 const N = +process.argv[2] || 300, seed0 = +process.argv[3] || 1;
 const rng = s => () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 const PAGE = { testMs: 100, restart: 'continue', order: 'clues', focusMode: 'near', nearShare: 0.4, useWitness: true, exact: 'edge', stopAtTwo: true, fullScan: true, nodeBudget: 300000 };

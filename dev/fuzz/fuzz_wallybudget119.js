@@ -17,7 +17,7 @@ for(let i = 0; i < N; i++){
   for(const [k, me] of owner){ const [c, r] = k.split(',').map(Number); if(nb(c, r).filter(x => x === me).length > 2){ wallyOk = false; break; } }
   if(!wallyOk) continue;
   const pal = new Map();
-  for(const [k, me] of owner) if(R() < 0.35){ const [c, r] = k.split(',').map(Number); pal.set(k, String(nb(c, r).filter(x => x !== me).length)); }
+  for(const [k, me] of owner) if(R() < 0.35){ const [c, r] = k.split(',').map(Number); const sd = nb(c, r).map(x => x === me ? 0 : 1), n = sd[0] + sd[1] + sd[2] + sd[3]; pal.set(k, n === 2 ? ((sd[0] + sd[2] === 2 || sd[1] + sd[3] === 2) ? '2s' : '2c') : String(n)); }
   const Q = { puzzle: Object.assign({}, P0.puzzle, { palisades: pal, compasses: new Map(), watchtowers: new Map() }), bank: P0.bank, rules: Object.assign({}, P0.rules, { wally: true }) };
   const hints = { maxRegions: P0.planted.length };
   const ctx = S.buildSolverContext(Q.puzzle, Q.bank, Q.rules, hints, []);

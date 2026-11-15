@@ -6344,7 +6344,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     if(!ctx.isActive(se.c1, se.r1) || !ctx.isActive(se.c2, se.r2)) continue;
     relEdges.push({ a: cid(se.c1, se.r1), b: cid(se.c2, se.r2), kind, value: se.kind === 'gemini' ? 0 : (se.value || 0) });
   }
-  const neOn = !!ctx.mingleAreaRule && opts.sizeSepRel !== false;           // v115: every wall between two groups = "sizes differ"
+  const neOn = !!ctx.mingleAreaRule && opts.sizeSepRel === true;           // v115: every wall between two groups = "sizes differ" (off by default: no gain, a few % slower)
   const relOn = relEdges.length > 0 || neOn;
   // ============================================================================================================
   // v29: gemini / delta walls and polyomino stamps (the "not done" idea of v27 / v28). A gemini wall is a real wall (two different pieces) with the

@@ -8,6 +8,8 @@ one removes that size from the groups across its walls, and what that removes fl
 the walls of groups with no size in common, the tile size sets of v106). Heterogeneous (sizes differ between ALL pieces) implies it
 for touching pieces, so it is on for both. A group left with no size this way fails with 'mingle-area-clash'.
 The shape half (Mingle Shape as a Delta on every wall) was tried before (an earlier v110): no gain and 13% slower, so it stays out.
+Result: same edges decided on 146 campaign puzzles (Size Separation, Heterogeneous, mixed rules), 4 to 7% slower on the first two,
+so it is OFF by default (opts.sizeSepRel = true turns it on).
 Usage: python3 patch_core115.py <in.js> <out.js> [indent]"""
 import sys
 
@@ -21,7 +23,7 @@ def patch(src, ind):
     src = rep(src, "// ================= SOLVER CORE (pure, unit-tested separately; v114 (V1.0.31)",
         "// ================= SOLVER CORE (pure, unit-tested separately; v115 (V1.0.33) = v114 + Size Separation walls as size relations; v114 (V1.0.31)", 'banner')
     src = rep(src, I("""  const relOn = relEdges.length > 0;
-"""), I("""  const neOn = !!ctx.mingleAreaRule && opts.sizeSepRel !== false;           // v115: every wall between two groups = "sizes differ"
+"""), I("""  const neOn = !!ctx.mingleAreaRule && opts.sizeSepRel === true;           // v115: every wall between two groups = "sizes differ" (off by default: no gain, a few % slower)
   const relOn = relEdges.length > 0 || neOn;
 """), 'relOn')
     src = rep(src, I("""        const B2 = relPrune(B, dom.get(ra), re.kind, re.value, true); if(B2 !== B){ dom.set(rb, B2); changed = true; }

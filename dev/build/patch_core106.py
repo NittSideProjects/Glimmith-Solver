@@ -4,8 +4,9 @@
 User: after v105 (a lowest and a highest size per tile), keep the exact set when it is known, and also the sizes a tile is known NOT
 to have: Size Separation, Mingle Shape with small shapes, small Delta pieces, the shape bank.
 
-New: tSet, one entry per tile: a bit mask of the sizes the piece holding the tile can still have (bit s = size s; null = nothing
-known yet). As in v105 a group's facts are kept on its representative tile, and the set of a group is the overlap (AND) of the sets of
+New: tSet, one entry per tile: a 32-bit mask of the sizes the piece holding the tile can still have (bit s = size s for 1..30, bit
+31 = "31 tiles or more", -1 = nothing known yet). Holes come from small sizes; bigger ones keep the range of v105. (A first version
+used BigInt masks: the bit scans on them made Size Separation searches 2-3 times slower.) As in v105 a group's facts are kept on its representative tile, and the set of a group is the overlap (AND) of the sets of
 its tiles. It is part of the snapshot, so probes and searches undo it with the edges.
   * pieceInfo: the sizes a group / a merge can have are the overlap of its tiles' sets, of the bank shape sizes it still fits (they
     were only used as a lowest / highest size before) and of its range; none left = 'size-range' ("Different sizes": a merge of two
@@ -36,22 +37,29 @@ def patch(src, ind):
         "// ================= SOLVER CORE (pure, unit-tested separately; v106 (V1.0.26) = v105 + tile size sets (the exact sizes a tile's piece can have, holes included); v105 (V1.0.25)", 'banner')
     src = rep(src, I("""  const tLo = new Int16Array(N), tHi = new Int16Array(N).fill(32767);
 """), I("""  const tLo = new Int16Array(N), tHi = new Int16Array(N).fill(32767);
-  const tSet = new Array(N).fill(null);                // v106: bit mask of the sizes the piece of the tile can still have (null = all)
-  const tsAll = (1n << BigInt(ctx.totalActive + 1)) - 1n;
+  // v106: the sizes the piece of the tile can still have, as a 32-bit mask: bit s = size s for 1..30, bit 31 = "31 tiles or more"
+  // (-1 = all, nothing known). Holes come from small sizes (one shape of 1 or 2 tiles, Size Separation, differences); bigger sizes
+  // keep their range only (tLo / tHi). Plain integers: this runs deep in the searches.
+  const tSet = new Int32Array(N).fill(-1);
   let tsDirty = false;                                 // v106: a set was narrowed in this pass (the next pass reads it)
-  const tsLoBit = m => (m & -m).toString(2).length - 1, tsHiBit = m => m.toString(2).length - 1;
-  const tsRange = (lo, hi) => hi < lo ? 0n : ((1n << BigInt(hi + 1)) - 1n) & ~((1n << BigInt(lo)) - 1n);
-  function setOfIds(ids){ let m = null; for(let i = 0; i < ids.length; i++){ const s = tSet[ids[i]]; if(s !== null) m = m === null ? s : (m & s); } return m; }
+  const TS_BIG = 1 << 31;
+  const tsBit = z => z >= 31 ? TS_BIG : (1 << z);
+  const tsRange = (lo, hi) => { if(hi < lo) return 0; let m = 0; const top = Math.min(hi, 30); for(let z = Math.max(lo, 0); z <= top; z++) m |= 1 << z; if(hi >= 31) m |= TS_BIG; return m; };
+  const tsLoBit = m => 31 - Math.clz32(m & -m);       // 31 = only "31 or more" left
+  const tsHiBit = m => 31 - Math.clz32(m);            // 31 = "31 or more" still possible
+  function setOfIds(ids){ let m = -1; for(let i = 0; i < ids.length; i++) m &= tSet[ids[i]]; return m; }
   function keepOnly(rep, mask){                        // v106: the piece of this group has one of these sizes
     if(!tsOn) return;
-    const cur = tSet[rep] === null ? tsAll : tSet[rep], nm = cur & mask;
+    const cur = tSet[rep], nm = cur & mask;
     if(nm !== cur){ tSet[rep] = nm; tsDirty = true; }
   }
+  const tsFromBig = d => (Number(d & 0x7fffffffn) | ((d >> 31n) !== 0n ? TS_BIG : 0)) | 0;     // a BigInt size list -> mask
+  const tsToBig = m => BigInt(m & 0x7fffffff) | (m & TS_BIG ? ~0x7fffffffn : 0n);              // a mask -> BigInt (all big sizes when bit 31)
 """), 'sets')
     # pieceInfo: bank sizes as a set, the tiles' sets, final snap
     src = rep(src, I("""      need = pick; cap = top;
 """), I("""      need = pick; cap = top;
-      if(tsOn){ let bm = 0n; for(const s of sizes) if(s >= lo && s <= cap) bm |= 1n << BigInt(s); piHole = bm; }       // v106: the sizes it still fits, as a set
+      if(tsOn){ let bm = 0; for(const s of sizes) if(s >= lo && s <= cap) bm |= tsBit(s); piHole = bm; }       // v106: the sizes it still fits, as a set
 """), 'bank set')
     src = rep(src, I("""  function pieceInfo(ids){
     let cap = Math.min(ctx.sizeHi, ctx.totalActive), need = 1, area = 0, stamp = 0, mask = 0;
@@ -61,12 +69,14 @@ def patch(src, ind):
     src = rep(src, I("""    return { need: nd, cap: cp, mask };
 """), I("""    if(tsOn){                                            // v106: the exact sizes: the tiles' sets, the bank sizes, the range
       let sm = setOfIds(ids);
-      if(piHole !== null) sm = sm === null ? piHole : (sm & piHole);
-      if(sm !== null){
+      if(piHole !== null) sm &= piHole;
+      if(sm !== -1){
         const m2 = sm & tsRange(nd, cp);
-        if(m2 === 0n){ why = 'size-range'; return null; }
-        nd = tsLoBit(m2); cp = tsHiBit(m2);
-        return { need: nd, cap: cp, mask, set: m2 };
+        if(m2 === 0){ why = 'size-range'; return null; }
+        const a = tsLoBit(m2), b = tsHiBit(m2);
+        if(a < 31) nd = Math.max(nd, a); else nd = Math.max(nd, 31);
+        if(b < 31) cp = Math.min(cp, b);
+        if(nd > cp){ why = 'size-range'; return null; }
       }
     }
     return { need: nd, cap: cp, mask };
@@ -75,7 +85,7 @@ def patch(src, ind):
     src = rep(src, "tl: tLo.slice(), th: tHi.slice() }; }", "tl: tLo.slice(), th: tHi.slice(), tx: tSet.slice() }; }", 'snapshot')
     src = rep(src, I("""    if(sn.tl){ tLo.set(sn.tl); tHi.set(sn.th); }                                              // v105
 """), I("""    if(sn.tl){ tLo.set(sn.tl); tHi.set(sn.th); }                                              // v105
-    if(sn.tx){ for(let i = 0; i < N; i++) tSet[i] = sn.tx[i]; }                               // v106
+    if(sn.tx) tSet.set(sn.tx);                                                                // v106
 """), 'restore')
     # propagation goes on after a narrowed set
     src = rep(src, I("""        if(part.length === 0 && !part.again) break;
@@ -88,12 +98,12 @@ def patch(src, ind):
     # relStep: start from the kept sets, keep the result
     src = rep(src, I("""        if(relUsable !== null) d &= relUsable;
 """), I("""        if(relUsable !== null) d &= relUsable;
-        if(tsOn){ const sm = setOfIds(members.get(rep)); if(sm !== null) d &= sm; }          // v106
+        if(tsOn){ const sm = setOfIds(members.get(rep)); if(sm !== -1) d &= tsToBig(sm); }   // v106
 """), 'rel start')
     src = rep(src, I("""      if(lo === hi) derived.set(rep, lo);
     }
 """), I("""      if(lo === hi) derived.set(rep, lo);
-      keepOnly(rep, d);                                                        // v106
+      keepOnly(rep, tsFromBig(d));                                             // v106
     }
 """), 'rel keep')
     # mingle: start from the kept sets, keep the result
@@ -102,9 +112,9 @@ def patch(src, ind):
 """), I("""      const d = mingleDomain(mode, mem, need.get(rep), capOf.get(rep));
       if(tsOn){                                                                // v106: the sizes already ruled out for this group
         const sm = setOfIds(mem);
-        if(sm !== null){
-          for(const it of d.items) if(!((sm >> BigInt(it.size)) & 1n)){ if(!d.rm) d.rm = new Set(); d.rm.add(it.k); }
-          if(area && d.wlo <= d.whi) for(let s = d.wlo; s <= d.whi; s++) if(!((sm >> BigInt(s)) & 1n)){ if(!d.ex) d.ex = new Set(); d.ex.add(s); }
+        if(sm !== -1){
+          for(const it of d.items) if(it.size <= 30 && !(sm & (1 << it.size))){ if(!d.rm) d.rm = new Set(); d.rm.add(it.k); }
+          if(area && d.wlo <= d.whi){ const top = Math.min(d.whi, 30); for(let z = d.wlo; z <= top; z++) if(!(sm & (1 << z))){ if(!d.ex) d.ex = new Set(); d.ex.add(z); } }
         }
       }
       if(domEmpty(d, area)){ why = T + '-none'; return null; }
@@ -113,10 +123,15 @@ def patch(src, ind):
     for(const [rep, d] of dom){
       const b = domBounds(d, area);
 """), I("""    // the surviving values bound the size of every group
-    if(tsOn) for(const [rep, d] of dom){                                       // v106: and their sizes are kept
-      let m = 0n;
-      for(const it of d.items) if(!(d.rm && d.rm.has(it.k))) m |= 1n << BigInt(it.size);
-      if(d.wlo <= d.whi){ const top = Math.min(d.whi, ctx.totalActive); for(let s = Math.max(d.wlo, 0); s <= top; s++) if(!(area && d.ex && d.ex.has(s))) m |= 1n << BigInt(s); }
+    if(tsOn) for(const [rep, d] of dom){                                       // v106: and their sizes are kept (only when a value was ruled out:
+      if(!(d.rm && d.rm.size) && !(d.ex && d.ex.size)) continue;               //  otherwise the list says no more than the range, and this runs deep in the searches)
+      let m = 0;
+      for(const it of d.items) if(!(d.rm && d.rm.has(it.k))) m |= tsBit(it.size);
+      if(d.wlo <= d.whi){
+        let wm = tsRange(Math.max(d.wlo, 0), d.whi);
+        if(area && d.ex) for(const z of d.ex) if(z <= 30) wm &= ~(1 << z);
+        m |= wm;
+      }
       keepOnly(rep, m);
     }
     for(const [rep, d] of dom){
@@ -132,7 +147,7 @@ def patch(src, ind):
         for(const [x, y] of [[ra, rb], [rb, ra]]){
           const k = need.get(x); if(k !== capOf.get(x) || shapesOfSize(k) !== 1) continue;
           if(need.get(y) === k && capOf.get(y) === k){ failWhy = 'delta-shape'; markAt(failWhy, members.get(y)); return null; }
-          keepOnly(y, ~(1n << BigInt(k)));
+          if(k <= 30) keepOnly(y, ~(1 << k));
         }
       }
     }

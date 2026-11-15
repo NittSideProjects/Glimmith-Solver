@@ -13,6 +13,19 @@ is sent anywhere.
   Chrome and Edge remember the folders, so later imports are one click; other browsers ask for the folder each time.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
 
+## V1.0.26
+
+Every tile keeps the exact set of sizes its piece can have, holes included (core v106, the third step of making the rules share
+their facts). V1.0.25 kept a lowest and a highest size; now a tile can also know "1 or 5, but not 2, 3 or 4". The sets come from the
+walls that compare sizes (a difference 2 from a piece of 3 leaves 1 or 5), from Size Separation and Mingle Shape (a pinned
+neighbour across a wall takes its size away), from the shape bank (only the sizes of the bank shapes a group still fits), and from a
+new Delta check: a side pinned to a size with a single shape (1 or 2 tiles; with Boxy any prime size; with a bank, the bank decides)
+takes that size away from the other side. Each step starts from the sets found so far, and "Different sizes" now also separates two
+groups whose ranges overlap but whose sets have no size in common. Sizes up to 30 are kept one by one, bigger sizes as a range. On
+278 campaign puzzles with these rules: same verdicts, 336 more edges decided in the first pass (Difference +198, Mingle Shape +69,
+Gemini / Delta +59); the time is about the same except one Size Separation puzzle whose final search takes 15% longer. New:
+`tests/solver/test_sizeset106.js`. No new text on the page.
+
 ## V1.0.25
 
 Every tile keeps the size range of its piece (core v105, the second step of making the rules share their facts). Until now each

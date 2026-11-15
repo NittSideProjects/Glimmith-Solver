@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 A single-page editor and uniqueness solver for puzzles from the game *The Artisan of Glimmith*. The whole app (editor, solver, importer, UI) is one
-self-contained HTML file, `glimmith_solver_V1.0.23.html`, with no build step and no network use. `dev/` holds the Node test suite and tools.
+self-contained HTML file, `glimmith_solver_V1.0.24.html`, with no build step and no network use. `dev/` holds the Node test suite and tools.
 
 ## This repository is public: keep game and third-party data out
 
@@ -23,7 +23,7 @@ on the author's machine.
 ```
 npm install                                # jsdom, only needed by the page tests
 node tests/solver/test.js                  # main solver test suite (269 checks); the others: node tests/solver/test_<name>.js
-node fuzz/fuzz_<name>.js <N> <seed>        # fuzzer, e.g. node fuzz/fuzz_clue92.js 300 1
+node fuzz/fuzz_<name>.js <N> <seed>        # fuzzer, e.g. node fuzz/fuzz_clue92.js 300 1 (fuzz_count104.js: the piece count)
 node tests/page/ui_test.js [page.html]     # page tests in jsdom; every tests/page/ui_test_*.js takes the page path as argv[2]
 node tools/run_corpus.js ...               # timing run over the campaign corpus (options in the file header; needs the game puzzles)
 ```
@@ -42,7 +42,7 @@ environment: three timing checks on the live solving animation).
 
 ## Architecture
 
-- **The page is the source of truth.** Inside `glimmith_solver_V1.0.23.html` the main `<script>` contains, in order: the `SOLVER CORE`
+- **The page is the source of truth.** Inside `glimmith_solver_V1.0.24.html` the main `<script>` contains, in order: the `SOLVER CORE`
   block (pure functions; its banner comment is the full core version history), the deduction solver (`deduceSolve`: propagation steps,
   probes, narrow per-edge searches, then an exact final search), the import core (puzzle file, zip and workshop folder parsing), then the
   UI code.

@@ -5,7 +5,7 @@
 // node tests/solver/test_explain102.js
 'use strict';
 const fs = require('fs'), path = require('path');
-const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v103.js'), L = require('../../fuzzlib.js');
+const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v104.js'), L = require('../../fuzzlib.js');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const OPTS = { testMs: 100, restart: 'continue', order: 'clues', focusMode: 'near', nearShare: 0.4, useWitness: true, stopAtTwo: true, nodeBudget: 200000, exact: 'portfolio', slices: 's18,e', fullScan: true };

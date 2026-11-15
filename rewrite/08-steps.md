@@ -2,7 +2,7 @@
 
 The step-by-step view: step titles, explanations and captions.
 
-Left here: 315 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
+Left here: 318 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -989,6 +989,21 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0914
 - what: message · Built by the page while it runs, so it only shows in some situations.
 - now: The solver tried these two groups as one piece, and the rules could not all be met that way. So they are different pieces, with a wall between them.
+- new: 
+
+### T1168
+- what: message · Built by the page while it runs, so it only shows in some situations.
+- now: Number of pieces in closed-in areas
+- new: 
+
+### T1169
+- what: message · Built by the page while it runs, so it only shows in some situations.
+- now: The rules and clues fix how many pieces the board has, at least and at most, and every area closed in by walls holds whole pieces. Added up, the areas leave this one as many pieces as it has groups, so every group here is a piece of its own, with walls between them.
+- new: 
+
+### T1170
+- what: message · Built by the page while it runs, so it only shows in some situations.
+- now: The rules and clues fix how many pieces the board has, at least and at most, and every area closed in by walls holds whole pieces. Added up, the areas leave this one room for only one piece, so all its tiles are one piece.
 - new: 
 
 ### T0924

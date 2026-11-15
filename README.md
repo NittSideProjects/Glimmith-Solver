@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.23.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.24.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -12,6 +12,20 @@ is sent anywhere.
   `C:\Program Files (x86)\Steam\steamapps\workshop\content\4160210` (workshop puzzles) and `%LOCALAPPDATA%\Geri\Saved\workshop` (your own puzzles).
   Chrome and Edge remember the folders, so later imports are one click; other browsers ask for the folder each time.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.24
+
+The number of pieces, as one range shared by every rule (core v104, the first step of making the rules share their facts). The
+solver now works out once the fewest and the most pieces any tiling can have, and for each size the fewest and most pieces of that
+size, from everything that counts pieces: the roses, Solitude, the size rules and the shape bank, the pieces the area numbers and
+polyominoes need (three tiles numbered 2 need at least two pieces of 2), Heterogeneous (one piece per size), Mismatch (no more pieces
+of k tiles than shapes of k tiles), Match and the user's limit. Having both ends lets them meet: area numbers that add up to the
+board fix the count, and a Mismatch bank whose shapes fill the board exactly is used once each. A board with no possible count is
+impossible at once ('no number of pieces fits all the rules and clues'), and during the solve the areas closed in by walls must add
+up to the count: a new step, "Number of pieces in closed-in areas", makes an area one piece, or every group in it a piece of its own.
+The Mismatch size count of v62 now uses these per-size limits for every rule. On 369 campaign puzzles of the counting categories:
+same verdicts, 57 more edges decided in the first pass, 176 s -> 164 s. New: `fuzz/fuzz_count104.js` (every true tiling against the
+bounds), `tests/solver/test_count104.js`. The new texts are on the rewrite list.
 
 ## V1.0.23
 
@@ -205,7 +219,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.23.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.24.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |
@@ -213,7 +227,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 | `rewrite/` | The rewrite list: every text of the page, one file per part of the page, with the author's own wording (see `rewrite/README.md`). |
 | `dev/tools/run_corpus.js` | Times the solver on every puzzle of a corpus and writes a report. |
 | `dev/game_puzzles*`, `dev/user_puzzles`, `dev/puzzles` | Puzzles used by the tools and tests. |
-| `dev/build/` | The changes since V1 as scripts: `patch_core94.py` + `patch_ui_V1.0.1.py` (V1 -> V1.0.1), `patch_core95.py` + `patch_ui_V1.0.2.py` (V1.0.1 -> V1.0.2), `patch_core96.py` + `patch_ui_V1.0.3.py` (V1.0.2 -> V1.0.3), `patch_ui_V1.0.4.py` (V1.0.3 -> V1.0.4, page only), `patch_core97.py` + `patch_ui_V1.0.5.py` (V1.0.4 -> V1.0.5), `patch_core98.py` + `patch_ui_V1.0.6.py` (V1.0.5 -> V1.0.6), `patch_ui_V1.0.7.py` (V1.0.6 -> V1.0.7, page only), `patch_ui_V1.0.8.py` (V1.0.7 -> V1.0.8, page only), `patch_core99.py` + `patch_ui_V1.0.9.py` (V1.0.8 -> V1.0.9), `patch_ui_V1.0.10.py` + `rewrites_V1.0.10.json` (V1.0.9 -> V1.0.10, page only), `patch_ui_V1.0.11.py` (V1.0.10 -> V1.0.11, page only), `patch_ui_V1.0.12.py` + `rule_examples_V1.0.12.json` + `step_info_extra_V1.0.12.json` (V1.0.11 -> V1.0.12, page only); `patch_ui_V1.0.13.py` + `rule_examples_V1.0.13.json` (V1.0.12 -> V1.0.13, page only); `patch_ui_V1.0.14.py` (V1.0.13 -> V1.0.14, page only); `patch_ui_V1.0.15.py` + `rule_examples_V1.0.15.json` (V1.0.14 -> V1.0.15, page only); `patch_ui_V1.0.16.py` + `rule_examples_V1.0.16.json` (V1.0.15 -> V1.0.16, page only); `patch_core100.py` + `patch_ui_V1.0.17.py` (V1.0.16 -> V1.0.17); `patch_core101.py` + `patch_ui_V1.0.18.py` (V1.0.17 -> V1.0.18); `patch_core102.py` + `patch_ui_V1.0.19.py` (V1.0.18 -> V1.0.19); `patch_core103.py` + `patch_ui_V1.0.20.py` (V1.0.19 -> V1.0.20); `patch_ui_V1.0.21.py` (V1.0.20 -> V1.0.21, page only); `patch_ui_V1.0.22.py` + `rewrites_V1.0.22.json` + `typos_V1.0.22.json` (V1.0.21 -> V1.0.22, page only); `patch_ui_V1.0.23.py` (V1.0.22 -> V1.0.23, page only). |
+| `dev/build/` | The changes since V1 as scripts: `patch_core94.py` + `patch_ui_V1.0.1.py` (V1 -> V1.0.1), `patch_core95.py` + `patch_ui_V1.0.2.py` (V1.0.1 -> V1.0.2), `patch_core96.py` + `patch_ui_V1.0.3.py` (V1.0.2 -> V1.0.3), `patch_ui_V1.0.4.py` (V1.0.3 -> V1.0.4, page only), `patch_core97.py` + `patch_ui_V1.0.5.py` (V1.0.4 -> V1.0.5), `patch_core98.py` + `patch_ui_V1.0.6.py` (V1.0.5 -> V1.0.6), `patch_ui_V1.0.7.py` (V1.0.6 -> V1.0.7, page only), `patch_ui_V1.0.8.py` (V1.0.7 -> V1.0.8, page only), `patch_core99.py` + `patch_ui_V1.0.9.py` (V1.0.8 -> V1.0.9), `patch_ui_V1.0.10.py` + `rewrites_V1.0.10.json` (V1.0.9 -> V1.0.10, page only), `patch_ui_V1.0.11.py` (V1.0.10 -> V1.0.11, page only), `patch_ui_V1.0.12.py` + `rule_examples_V1.0.12.json` + `step_info_extra_V1.0.12.json` (V1.0.11 -> V1.0.12, page only); `patch_ui_V1.0.13.py` + `rule_examples_V1.0.13.json` (V1.0.12 -> V1.0.13, page only); `patch_ui_V1.0.14.py` (V1.0.13 -> V1.0.14, page only); `patch_ui_V1.0.15.py` + `rule_examples_V1.0.15.json` (V1.0.14 -> V1.0.15, page only); `patch_ui_V1.0.16.py` + `rule_examples_V1.0.16.json` (V1.0.15 -> V1.0.16, page only); `patch_core100.py` + `patch_ui_V1.0.17.py` (V1.0.16 -> V1.0.17); `patch_core101.py` + `patch_ui_V1.0.18.py` (V1.0.17 -> V1.0.18); `patch_core102.py` + `patch_ui_V1.0.19.py` (V1.0.18 -> V1.0.19); `patch_core103.py` + `patch_ui_V1.0.20.py` (V1.0.19 -> V1.0.20); `patch_ui_V1.0.21.py` (V1.0.20 -> V1.0.21, page only); `patch_ui_V1.0.22.py` + `rewrites_V1.0.22.json` + `typos_V1.0.22.json` (V1.0.21 -> V1.0.22, page only); `patch_ui_V1.0.23.py` (V1.0.22 -> V1.0.23, page only); `patch_core104.py` + `patch_ui_V1.0.24.py` (V1.0.23 -> V1.0.24). |
 | `dev/tools/steptiming/`, `dev/results/step_timing_v94.md` | Time of each propagation step over the campaign (what the V1.0.2 order is based on). |
 | `dev/workshop_wally/` | The 21 Wally puzzles of the Steam workshop collection as one export file (Wally switched on: the game files can not say it), and their results. Run with `node tools/run_export.js workshop_wally/wally_workshop_21.glimmith.json 60 2`. |
 | `docs/handoffs/` | Development notes, oldest to newest. `HANDOFF_V1.0.5.md` is the last summary. |

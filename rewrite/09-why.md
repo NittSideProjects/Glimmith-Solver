@@ -2,9 +2,19 @@
 
 Short reasons the solver gives. They show in the solver result ("Impossible: …") and inside step-by-step explanations ("this breaks: …").
 
-Left here: 111 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 13.
+Left here: 113 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 13.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
+
+### T1166
+- what: message · WHY_TEXT › piece-count · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
+- now: no number of pieces fits all the rules and clues
+- new: 
+
+### T1167
+- what: message · WHY_TEXT › piece-region · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
+- now: the areas closed in by walls need more pieces than the puzzle allows, or fewer than it needs
+- new: 
 
 ### T0330
 - what: message · WHY_TEXT › rose-count · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.

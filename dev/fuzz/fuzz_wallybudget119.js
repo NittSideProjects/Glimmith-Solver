@@ -24,7 +24,7 @@ for(let i = 0; i < N; i++){
   ran++;
   for(const ev of S.deduceSolve(w, h, ctx, L.collectSpecialEdges(Q.puzzle.walls), { stopAtTwo: true, nodeBudget: 50000 })){
     if(ev.type === 'impossible-early'){ bad++; console.log('IMPOSSIBLE on a planted board, seed', seed, ev.reason, ev.why); break; }
-    if(ev.type !== 'deduce') continue;
+    if(ev.type !== 'deduce' || ev.via === 'search') continue;            // the search only names one tiling when there are several
     const m = /^([vh]):(\d+),(\d+)$/.exec(ev.spot.key); const c = +m[2], r = +m[3];
     const a = owner.get(c + ',' + r), b = m[1] === 'v' ? owner.get((c + 1) + ',' + r) : owner.get(c + ',' + (r + 1));
     const truth = a === b ? 'same' : 'wall';

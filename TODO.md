@@ -12,6 +12,14 @@ Notes so far:
   solution is rotation- or mirror-symmetric" is not sound in general (its clues are not symmetric, and equal pieces can tile a
   symmetric board without symmetry). Sound options: when the WHOLE puzzle (board, walls, clues) is symmetric, copy every proven edge to
   its mirror image; for Match, use the four-piece structure (placements of one shape) more strongly. To look into.
+- Symmetry checked by brute force (every tiling of small symmetric boards by equal pieces):
+  * 6 or more equal pieces: tilings with no symmetry at all exist (6x4 board, six L tetrominoes: 36 of 47 tilings).
+  * 4 equal pieces: NOT "quarter-turn or a mirror": many tilings have only the half turn (6x6, four pieces of 9: 44 of 139), and some
+    have no symmetry at all (8x4, four pieces of 8: 40 of 98).
+  * 2 equal pieces on a board with half-turn symmetry: every tiling found is half-turn symmetric (all small boards, plus ~37,000
+    random boards up to 26 tiles, ~307,000 tilings). Not proved. Options: a hard rule (copy each clue to its half-turned spot; wrong
+    if the claim ever fails), a search order only (symmetric solutions first; always correct), or the hard rule plus a final check.
+    Waiting for the author's choice.
 
 **Reminder:** bring this up when the author asks what to add next, and before any V1.1: it is not done yet.
 

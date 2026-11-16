@@ -13,7 +13,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0010
 - what: text · #creditsDialog · In the Credits window (opens with the Credits button).
-- now: Special thanks to ham for ideas as well as making the SAT solver, which this solver uses for match puzzles.
+- now: Special thanks to ham for ideas as well as making the SAT solver, which this solver takes inspiration from for match puzzles.
 - new: Special thanks to ham for ideas as well as making the SAT solver
 
 ### T0011

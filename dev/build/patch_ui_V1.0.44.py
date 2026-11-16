@@ -17,7 +17,7 @@ def rep(src, old, new, what):
     return src.replace(old, new)
 
 src = rep(src, "    <p>Special thanks to ham for ideas as well as making the SAT solver</p>",
-    "    <p>Special thanks to ham for ideas as well as making the SAT solver, which this solver uses for match puzzles.</p>", 'credits ham')
+    "    <p>Special thanks to ham for ideas as well as making the SAT solver, which this solver takes inspiration from for match puzzles.</p>", 'credits ham')
 src = rep(src, "I recommend ham's SAT solver, which you can find online.</p>",
     "I recommend ham's SAT solver, which you can find online (<a href=\"https://github.com/ham883/glimmith-solver\" target=\"_blank\" rel=\"noopener\">https://github.com/ham883/glimmith-solver</a>).</p>", 'credits link')
 open(sys.argv[2], 'w', encoding='utf8').write(src); print('ok', sys.argv[2])

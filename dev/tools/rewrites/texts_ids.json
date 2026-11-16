@@ -177,11 +177,11 @@
   "lines": [
    380
   ],
-  "text": "Special thanks to ham for ideas as well as making the SAT solver, which this solver uses for match puzzles.",
+  "text": "Special thanks to ham for ideas as well as making the SAT solver, which this solver takes inspiration from for match puzzles.",
   "slots": [],
   "note": "In the Credits window (opens with the Credits button).",
   "id": "T0010",
-  "changedFrom": "Special thanks to ham for ideas as well as making the SAT solver"
+  "changedFrom": "Special thanks to ham for ideas as well as making the SAT solver, which this solver uses for match puzzles."
  },
  {
   "sec": "credits",
@@ -208,7 +208,7 @@
   "slots": [],
   "note": "In the Credits window (opens with the Credits button).",
   "id": "T0012",
-  "changedFrom": "This project was made with the assistance of AI. While I did have a significant impact on the final product, if you prefer to stay away from AI in general I recommend ham's SAT solver, which you can find online."
+  "changedFrom": "This project was made with the assistance of AI. While I did have a significant impact on the final product, if you prefer to stay away from AI in general I recommend ham's SAT solver, which you can find online (<a>https://github.com/ham883/glimmith-solver</a>)."
  },
  {
   "sec": "credits",

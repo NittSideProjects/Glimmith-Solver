@@ -144,7 +144,13 @@ pieces. So either two neighbouring corners share a piece (band case), or the fou
      * One lying (A), three standing: the same tile gives H = n/2; then the lower-left quarter can only hold D, which is
        then that n/2 x n/2 square, not a W x n/2 shape: impossible. Three lying, one standing: the same.
      * A, C lying, B, D standing (pinwheel): the same tile gives H = n/2, so A is in the top half, B in the right half, C in
-       the bottom half, D in the left half; each piece has the same number of tiles in its own quarter. OPEN.
+       the bottom half, D in the left half; each piece has the same number of tiles in its own quarter. Each piece's
+       run along its long side is >= n/2 (the neighbour's run on that side is along a short side, <= n/2). The motion
+       A -> C keeps the axes and the boxes are fixed ([0, W) x [0, n/2) and [n - W, n) x [n/2, n)), so it is sigma, the shift
+       by (n - W, n/2), the left-right mirror then down n/2, or right n - W then the up-down flip. If it is sigma: B u D is
+       half-turn symmetric, B and D are both standing, so B -> D keeps the axes and Claim 1 (proved cases) gives D = sigma B:
+       two half-turn pairs. The other three need A to have a second anchor (lower-right corner, lower-left corner with
+       b = n/2, or upper-right corner with a = W). OPEN.
    - H > n/2: every box contains the centre 2 x 2. OPEN.
 7. OPEN: a side whose only motions are of the odd types W1-W4 (within the two open box cases above). (Type W1 with A's height h <= n/2: B fills column n - h from
    the top to row n - h - 1, which walls A into an (n - h) x h box; area gives h = n/2 and A is a quarter: the four quarters.)

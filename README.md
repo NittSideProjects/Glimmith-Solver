@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.42.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.43.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -11,6 +11,17 @@ is sent anywhere.
 * **Fast import** reads all your puzzles in one click. Set it up once: the Fast import box gives a small setup file (Windows or Linux)
   that makes a folder `Glimmith puzzles` of links to the game's puzzle folders; choose that folder once.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.43
+
+Two steps a person sees first (core v122; the author's rule-order notes in `TODO.md`):
+- **Known to be different, first.** Two groups with a wall between two of their tiles are different pieces, so every other open edge
+  between them is a wall. It is now checked at the start of every pass; before, another rule that also walled such an edge got the
+  credit (a watchtower on a watchtower puzzle the author sent).
+- **Two area numbers, one piece** (new step). In an area closed in by walls, two groups whose area numbers add up to more than the
+  area's tiles can not be two pieces: equal numbers are one piece (shown even when they do not touch yet), different numbers are
+  impossible. Before, the solver found this by trying the other way (two 8s in an area of 13 tiles).
+Checked on every fuzzer that covers these rules and `dev/tests/solver/test_order122.js`.
 
 ## V1.0.42
 
@@ -401,7 +412,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.42.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.43.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |

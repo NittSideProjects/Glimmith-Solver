@@ -5,7 +5,13 @@
 The step-by-step (and maybe the solver) should fire the rules in the order a person would find them. How: the author goes through
 the step-by-step of many puzzles; every time the solver takes a step A while he sees an easier step B, we note "B before A". Those
 notes become a priority order for the rules (in the step-by-step, and in the solver's propagation if it does not cost speed).
-Notes so far: none.
+Notes so far:
+- Done in V1.0.43: "known to be different" before a watchtower wall (the watchtower took the credit); two equal area numbers that do
+  not fit side by side in a closed-in area before trying the other way (new step "Two area numbers, one piece").
+- Open: a Match puzzle with a symmetric board (12x12, four pieces of 35 tiles) takes more than 15 minutes. The author's idea "the
+  solution is rotation- or mirror-symmetric" is not sound in general (its clues are not symmetric, and equal pieces can tile a
+  symmetric board without symmetry). Sound options: when the WHOLE puzzle (board, walls, clues) is symmetric, copy every proven edge to
+  its mirror image; for Match, use the four-piece structure (placements of one shape) more strongly. To look into.
 
 **Reminder:** bring this up when the author asks what to add next, and before any V1.1: it is not done yet.
 

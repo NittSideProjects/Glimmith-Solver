@@ -97,7 +97,7 @@
   "kind": "message",
   "where": "setSavedIndicator",
   "lines": [
-   13831
+   13863
   ],
   "text": "Saving…",
   "slots": [],
@@ -110,7 +110,7 @@
   "kind": "message",
   "where": "setSavedIndicator",
   "lines": [
-   13832
+   13864
   ],
   "text": "All changes saved",
   "slots": [],
@@ -123,7 +123,7 @@
   "kind": "message",
   "where": "setSavedIndicator",
   "lines": [
-   13833
+   13865
   ],
   "text": "Autosave unavailable",
   "slots": [],
@@ -136,7 +136,7 @@
   "kind": "message",
   "where": "paintThemeBtn",
   "lines": [
-   14730
+   14762
   ],
   "text": "Light mode",
   "slots": [],
@@ -149,7 +149,7 @@
   "kind": "message",
   "where": "paintThemeBtn",
   "lines": [
-   14730
+   14762
   ],
   "text": "Dark mode",
   "slots": [],
@@ -658,7 +658,7 @@
   "kind": "error message",
   "where": "importCellTokens",
   "lines": [
-   11123
+   11152
   ],
   "text": "row {1}: unreadable compass at column {2}",
   "slots": [
@@ -674,7 +674,7 @@
   "kind": "error message",
   "where": "importCellTokens",
   "lines": [
-   11129
+   11158
   ],
   "text": "row {1}: unreadable polyomino at column {2}",
   "slots": [
@@ -690,7 +690,7 @@
   "kind": "error message",
   "where": "importCellTokens",
   "lines": [
-   11137
+   11166
   ],
   "text": "row {1}: unreadable area number \"{2}\"",
   "slots": [
@@ -706,7 +706,7 @@
   "kind": "error message",
   "where": "importCellTokens",
   "lines": [
-   11147
+   11176
   ],
   "text": "row {1}: unknown cell code \"{2}\"",
   "slots": [
@@ -722,7 +722,7 @@
   "kind": "error message",
   "where": "importCellTokens",
   "lines": [
-   11150
+   11179
   ],
   "text": "row {1}: unexpected text after the last cell (\"{2}\")",
   "slots": [
@@ -738,7 +738,7 @@
   "kind": "error message",
   "where": "parsePuzzleFile",
   "lines": [
-   11156
+   11185
   ],
   "text": "not a puzzle file (first line is not \"VERSION 1\")",
   "slots": [],
@@ -751,7 +751,7 @@
   "kind": "message",
   "where": "parsePuzzleFile",
   "lines": [
-   11176
+   11205
   ],
   "text": "shape {1} is empty",
   "slots": [
@@ -766,7 +766,7 @@
   "kind": "message",
   "where": "parsePuzzleFile",
   "lines": [
-   11178
+   11207
   ],
   "text": "unknown header line \"{1}\" ignored",
   "slots": [
@@ -781,7 +781,7 @@
   "kind": "error message",
   "where": "parsePuzzleFile",
   "lines": [
-   11180
+   11209
   ],
   "text": "no PUZZLE section",
   "slots": [],
@@ -794,7 +794,7 @@
   "kind": "error message",
   "where": "parsePuzzleFile",
   "lines": [
-   11181
+   11210
   ],
   "text": "no DIMENSIONS line",
   "slots": [],
@@ -807,7 +807,7 @@
   "kind": "message",
   "where": "parsePuzzleFile",
   "lines": [
-   11182
+   11211
   ],
   "text": "the file has AREA_EQUALS together with AT_LEAST / AT_MOST",
   "slots": [],
@@ -820,7 +820,7 @@
   "kind": "error message",
   "where": "parsePuzzleFile",
   "lines": [
-   11185
+   11214
   ],
   "text": "the board has {1} lines, {2} expected",
   "slots": [
@@ -836,7 +836,7 @@
   "kind": "error message",
   "where": "parsePuzzleFile",
   "lines": [
-   11202
+   11231
   ],
   "text": "row {1}: unknown corner mark \"{2}\"",
   "slots": [
@@ -852,7 +852,7 @@
   "kind": "error message",
   "where": "parsePuzzleFile",
   "lines": [
-   11209
+   11238
   ],
   "text": "row {1}: unknown horizontal edge \"{2}\"",
   "slots": [
@@ -868,7 +868,7 @@
   "kind": "error message",
   "where": "parsePuzzleFile",
   "lines": [
-   11221
+   11250
   ],
   "text": "row {1}: unknown vertical edge \"{2}\"",
   "slots": [
@@ -884,7 +884,7 @@
   "kind": "error message",
   "where": "parsePuzzleFile",
   "lines": [
-   11236
+   11265
   ],
   "text": "row {1}: polyomino S{2} is not defined by a SHAPE line",
   "slots": [
@@ -900,7 +900,7 @@
   "kind": "message",
   "where": "parsePuzzleFile",
   "lines": [
-   11247
+   11276
   ],
   "text": "{1} edge mark(s) next to an empty tile ignored",
   "slots": [
@@ -915,7 +915,7 @@
   "kind": "message",
   "where": "parsePuzzleFile",
   "lines": [
-   11250
+   11279
   ],
   "text": "watchtower at corner {1} touches no tile, ignored",
   "slots": [
@@ -930,7 +930,7 @@
   "kind": "message",
   "where": "parsePuzzleFile",
   "lines": [
-   11255
+   11284
   ],
   "text": "SHAPE_BANK lists shape {1}, which is not defined",
   "slots": [
@@ -945,7 +945,7 @@
   "kind": "message",
   "where": "parsePuzzleFile",
   "lines": [
-   11279
+   11308
   ],
   "text": "SOLUTION section is cut short, ignored",
   "slots": [],
@@ -958,7 +958,7 @@
   "kind": "error message",
   "where": "str",
   "lines": [
-   11302
+   11331
   ],
   "text": "bad metadata",
   "slots": [],
@@ -971,7 +971,7 @@
   "kind": "error message",
   "where": "bits",
   "lines": [
-   11317
+   11346
   ],
   "text": "unexpected end of compressed data",
   "slots": [],
@@ -984,7 +984,7 @@
   "kind": "error message",
   "where": "decode",
   "lines": [
-   11335
+   11364
   ],
   "text": "bad Huffman code",
   "slots": [],
@@ -997,8 +997,8 @@
   "kind": "error message",
   "where": "inflateRawJS",
   "lines": [
-   11348,
-   11350
+   11377,
+   11379
   ],
   "text": "bad stored block",
   "slots": [],
@@ -1011,7 +1011,7 @@
   "kind": "error message",
   "where": "inflateRawJS",
   "lines": [
-   11371
+   11400
   ],
   "text": "bad lengths",
   "slots": [],
@@ -1024,7 +1024,7 @@
   "kind": "error message",
   "where": "inflateRawJS",
   "lines": [
-   11377
+   11406
   ],
   "text": "bad block type",
   "slots": [],
@@ -1037,7 +1037,7 @@
   "kind": "error message",
   "where": "inflateRawJS",
   "lines": [
-   11383
+   11412
   ],
   "text": "bad length symbol",
   "slots": [],
@@ -1050,7 +1050,7 @@
   "kind": "error message",
   "where": "inflateRawJS",
   "lines": [
-   11385
+   11414
   ],
   "text": "bad distance symbol",
   "slots": [],
@@ -1063,7 +1063,7 @@
   "kind": "error message",
   "where": "inflateRawJS",
   "lines": [
-   11387
+   11416
   ],
   "text": "distance too far back",
   "slots": [],
@@ -1076,7 +1076,7 @@
   "kind": "error message",
   "where": "readZip",
   "lines": [
-   11418
+   11447
   ],
   "text": "not a valid zip file (no end-of-archive record)",
   "slots": [],
@@ -1089,7 +1089,7 @@
   "kind": "error message",
   "where": "readZip",
   "lines": [
-   11421
+   11450
   ],
   "text": "zip64 archives are not supported",
   "slots": [],
@@ -1102,7 +1102,7 @@
   "kind": "error message",
   "where": "readZip",
   "lines": [
-   11424
+   11453
   ],
   "text": "damaged zip directory",
   "slots": [],
@@ -1115,7 +1115,7 @@
   "kind": "error message",
   "where": "readZip › getData",
   "lines": [
-   11433
+   11462
   ],
   "text": "{1} is encrypted",
   "slots": [
@@ -1130,7 +1130,7 @@
   "kind": "error message",
   "where": "readZip › getData",
   "lines": [
-   11434
+   11463
   ],
   "text": "damaged zip entry {1}",
   "slots": [
@@ -1145,7 +1145,7 @@
   "kind": "error message",
   "where": "readZip › getData",
   "lines": [
-   11439
+   11468
   ],
   "text": "{1}: unsupported zip compression method {2}",
   "slots": [
@@ -1161,7 +1161,7 @@
   "kind": "message",
   "where": "importExpand › message",
   "lines": [
-   11459
+   11488
   ],
   "text": "zip files nested too deeply, skipped",
   "slots": [],
@@ -1174,7 +1174,7 @@
   "kind": "message",
   "where": "collectPuzzles › message",
   "lines": [
-   11506
+   11535
   ],
   "text": "Duplicate puzzle got skipped",
   "slots": [],
@@ -1187,8 +1187,8 @@
   "kind": "message",
   "where": "fallback",
   "lines": [
-   11514,
-   14415
+   11543,
+   14447
   ],
   "text": "Imported puzzle",
   "slots": [],
@@ -1201,7 +1201,7 @@
   "kind": "message",
   "where": "collectPuzzles › message",
   "lines": [
-   11526
+   11555
   ],
   "text": "no readable puzzle found",
   "slots": [],
@@ -1214,7 +1214,7 @@
   "kind": "message",
   "where": "collectPuzzles › message",
   "lines": [
-   11526
+   11555
   ],
   "text": "no puzzle files found (expected text files starting with \"VERSION 1\")",
   "slots": [],
@@ -1227,7 +1227,7 @@
   "kind": "message",
   "where": "FILE_SOLUTION_LABEL",
   "lines": [
-   13933
+   13965
   ],
   "text": "The file's known solution",
   "slots": [],
@@ -1240,7 +1240,7 @@
   "kind": "message",
   "where": "library › items.name",
   "lines": [
-   13936
+   13968
   ],
   "text": "My puzzle",
   "slots": [],
@@ -1253,7 +1253,7 @@
   "kind": "message",
   "where": "STARTER_PUZZLES › name",
   "lines": [
-   13985
+   14017
   ],
   "text": "Example Puzzle Unique",
   "slots": [],
@@ -1266,7 +1266,7 @@
   "kind": "message",
   "where": "STARTER_PUZZLES › name",
   "lines": [
-   13985
+   14017
   ],
   "text": "Example Puzzle Non Unique",
   "slots": [],
@@ -1279,12 +1279,12 @@
   "kind": "message",
   "where": "switchPuzzle",
   "lines": [
-   14041,
-   14065,
-   14193,
-   14293,
-   14326,
-   14657
+   14073,
+   14097,
+   14225,
+   14325,
+   14358,
+   14689
   ],
   "text": "Wait for the solver to finish (or cancel it) first",
   "slots": [],
@@ -1297,7 +1297,7 @@
   "kind": "message",
   "where": "item › name",
   "lines": [
-   14069
+   14101
   ],
   "text": "Puzzle {1}",
   "slots": [
@@ -1312,7 +1312,7 @@
   "kind": "message",
   "where": "newPuzzle",
   "lines": [
-   14075
+   14107
   ],
   "text": "New empty puzzle: {1}",
   "slots": [
@@ -1327,7 +1327,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14092
+   14124
   ],
   "text": "by {1}",
   "slots": [
@@ -1342,7 +1342,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14094
+   14126
   ],
   "text": "id {1}",
   "slots": [
@@ -1357,7 +1357,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14095
+   14127
   ],
   "text": "the file's solution is stored",
   "slots": [],
@@ -1370,7 +1370,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14095
+   14127
   ],
   "text": "no solution in the file",
   "slots": [],
@@ -1383,7 +1383,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14096
+   14128
   ],
   "text": "{1} import note{2}: {3}",
   "slots": [
@@ -1400,8 +1400,8 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14102,
-   14427
+   14134,
+   14459
   ],
   "text": "Delete",
   "slots": [],
@@ -1414,7 +1414,7 @@
   "kind": "message",
   "where": "join",
   "lines": [
-   14170
+   14202
   ],
   "text": "{1} and {2}",
   "slots": [
@@ -1430,7 +1430,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14173
+   14205
   ],
   "text": "those custom rules",
   "slots": [],
@@ -1443,7 +1443,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14173
+   14205
   ],
   "text": "that custom rule",
   "slots": [],
@@ -1456,7 +1456,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14173
+   14205
   ],
   "text": "“{1}” says {2} in its description, so we assumed it uses {3} and turned {4} on.",
   "slots": [
@@ -1474,7 +1474,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14176
+   14208
   ],
   "text": "{1} puzzles name a custom rule in their description, so we assumed they use it and turned it on:",
   "slots": [
@@ -1489,7 +1489,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14196
+   14228
   ],
   "text": "Reading…",
   "slots": [],
@@ -1502,7 +1502,7 @@
   "kind": "message",
   "where": "bits",
   "lines": [
-   14225
+   14257
   ],
   "text": "{1} puzzle{2} imported",
   "slots": [
@@ -1518,7 +1518,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14226
+   14258
   ],
   "text": "{1} already in the list",
   "slots": [
@@ -1533,7 +1533,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14228
+   14260
   ],
   "text": "{1} problem{2}",
   "slots": [
@@ -1549,7 +1549,7 @@
   "kind": "message",
   "where": "importFiles › text",
   "lines": [
-   14230
+   14262
   ],
   "text": "{1}: {2} switched on (named in its description)",
   "slots": [
@@ -1565,7 +1565,7 @@
   "kind": "message",
   "where": "importFiles › text",
   "lines": [
-   14231
+   14263
   ],
   "text": "No problems.",
   "slots": [],
@@ -1578,7 +1578,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14232
+   14264
   ],
   "text": "Import report: {1}",
   "slots": [
@@ -1593,7 +1593,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14234
+   14266
   ],
   "text": "Imported {1} puzzles",
   "slots": [
@@ -1608,7 +1608,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14234
+   14266
   ],
   "text": "Imported “{1}”",
   "slots": [
@@ -1623,7 +1623,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14234
+   14266
   ],
   "text": "Nothing new to import",
   "slots": [],
@@ -1636,7 +1636,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14236
+   14268
   ],
   "text": "Import failed",
   "slots": [],
@@ -1649,7 +1649,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14238
+   14270
   ],
   "text": "Import puzzles…",
   "slots": [],
@@ -1662,7 +1662,7 @@
   "kind": "message",
   "where": "fastRender",
   "lines": [
-   14283
+   14315
   ],
   "text": "Fast import reads all your puzzles in one click, once the setup below is done.",
   "slots": [],
@@ -1675,7 +1675,7 @@
   "kind": "message",
   "where": "fastRender",
   "lines": [
-   14284
+   14316
   ],
   "text": "Your browser can't remember folders (Chrome and Edge can): after the setup below, it asks for the Glimmith puzzles folder each time.",
   "slots": [],
@@ -1688,7 +1688,7 @@
   "kind": "message",
   "where": "fastRun",
   "lines": [
-   14298
+   14330
   ],
   "text": "{1}: reading was not allowed",
   "slots": [
@@ -1703,8 +1703,8 @@
   "kind": "message",
   "where": "fastRun",
   "lines": [
-   14302,
-   14348
+   14334,
+   14380
   ],
   "text": "Fast import: nothing read",
   "slots": [],
@@ -1717,7 +1717,7 @@
   "kind": "message",
   "where": "fastRun",
   "lines": [
-   14302
+   14334
   ],
   "text": "The folders hold no puzzle files.",
   "slots": [],
@@ -1730,7 +1730,7 @@
   "kind": "message",
   "where": "attachFastImport",
   "lines": [
-   14342
+   14374
   ],
   "text": "glimmith-setup.bat",
   "slots": [],
@@ -1743,7 +1743,7 @@
   "kind": "message",
   "where": "attachFastImport",
   "lines": [
-   14343
+   14375
   ],
   "text": "glimmith-setup.sh",
   "slots": [],
@@ -1756,7 +1756,7 @@
   "kind": "message",
   "where": "attachFastImport › text",
   "lines": [
-   14348
+   14380
   ],
   "text": "The folder holds no puzzle files.",
   "slots": [],
@@ -1769,7 +1769,7 @@
   "kind": "message",
   "where": "normalizeState › error",
   "lines": [
-   14357
+   14389
   ],
   "text": "no puzzle in it",
   "slots": [],
@@ -1782,7 +1782,7 @@
   "kind": "message",
   "where": "normalizeState › error",
   "lines": [
-   14359
+   14391
   ],
   "text": "the grid size is not valid",
   "slots": [],
@@ -1795,7 +1795,7 @@
   "kind": "message",
   "where": "normalizeState › error",
   "lines": [
-   14360
+   14392
   ],
   "text": "the grid does not match its size",
   "slots": [],
@@ -1808,7 +1808,7 @@
   "kind": "message",
   "where": "normalizeState › error",
   "lines": [
-   14379
+   14411
   ],
   "text": "a clue in the puzzle isn't valid",
   "slots": [],
@@ -1822,7 +1822,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14397
+   14429
   ],
   "text": "Nothing to export",
   "slots": [],
@@ -1835,7 +1835,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14400
+   14432
   ],
   "text": "Exported “{1}”",
   "slots": [
@@ -1850,7 +1850,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14400
+   14432
   ],
   "text": "Exported {1} puzzles",
   "slots": [
@@ -1865,7 +1865,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14401
+   14433
   ],
   "text": "Export failed: {1}",
   "slots": [
@@ -1880,7 +1880,7 @@
   "kind": "message",
   "where": "readOwnExport › message",
   "lines": [
-   14409
+   14441
   ],
   "text": "this file was saved by a version of the editor not supported yet. Please verify the import went well",
   "slots": [],
@@ -1893,7 +1893,7 @@
   "kind": "message",
   "where": "readOwnExport › message",
   "lines": [
-   14410
+   14442
   ],
   "text": "the file holds no puzzles",
   "slots": [],
@@ -1906,7 +1906,7 @@
   "kind": "message",
   "where": "deleteActivePuzzle",
   "lines": [
-   14425
+   14457
   ],
   "text": "Click again to delete",
   "slots": [],
@@ -2213,7 +2213,7 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14587
+   14619
   ],
   "text": "Links are a custom rule: show custom rules first (bottom of the page)",
   "slots": [],
@@ -2226,7 +2226,7 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14600
+   14632
   ],
   "text": "← or → works on vertical walls only",
   "slots": [],
@@ -2239,7 +2239,7 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14600
+   14632
   ],
   "text": "↑ or ↓ works on horizontal walls only",
   "slots": [],
@@ -2252,7 +2252,7 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14735
+   14767
   ],
   "text": "Untitled puzzle",
   "slots": [],
@@ -2370,9 +2370,9 @@
   "kind": "message",
   "where": "addShapeToBank",
   "lines": [
-   12049,
-   12100,
-   12193
+   12078,
+   12129,
+   12222
   ],
   "text": "Draw a shape first",
   "slots": [],
@@ -2385,7 +2385,7 @@
   "kind": "message",
   "where": "addShapeToBank",
   "lines": [
-   12056
+   12085
   ],
   "text": "Added Shape {1} ({2} tile{3})",
   "slots": [
@@ -2402,7 +2402,7 @@
   "kind": "message",
   "where": "addShapeToBan",
   "lines": [
-   12195
+   12224
   ],
   "text": "That shape is already inside the pool",
   "slots": [],
@@ -2415,7 +2415,7 @@
   "kind": "message",
   "where": "addShapeToBan",
   "lines": [
-   12201
+   12230
   ],
   "text": "Added Shape {1} ({2} tile{3})",
   "slots": [
@@ -2432,7 +2432,7 @@
   "kind": "message",
   "where": "renderBan",
   "lines": [
-   12211
+   12240
   ],
   "text": "Omits ({1})",
   "slots": [
@@ -2447,8 +2447,8 @@
   "kind": "message",
   "where": "renderBan",
   "lines": [
-   12216,
-   12258
+   12245,
+   12287
   ],
   "text": "No shapes added yet",
   "slots": [],
@@ -2461,8 +2461,8 @@
   "kind": "tooltip",
   "where": "renderBan",
   "lines": [
-   12226,
-   12268
+   12255,
+   12297
   ],
   "text": "Remove shape from the pool",
   "slots": [],
@@ -2475,8 +2475,8 @@
   "kind": "message",
   "where": "renderBan",
   "lines": [
-   12246,
-   12285
+   12275,
+   12314
   ],
   "text": "#{1} · {2} tile{3}",
   "slots": [
@@ -2493,7 +2493,7 @@
   "kind": "message",
   "where": "renderBank",
   "lines": [
-   12253
+   12282
   ],
   "text": "Shape Bank ({1})",
   "slots": [
@@ -2742,8 +2742,8 @@
   "kind": "message",
   "where": "BOOLEAN_RULE_LABELS › mismatch",
   "lines": [
-   12295,
-   13524
+   12324,
+   13556
   ],
   "text": "Mismatch",
   "slots": [],
@@ -2756,8 +2756,8 @@
   "kind": "message",
   "where": "BOOLEAN_RULE_LABELS › match",
   "lines": [
-   12295,
-   13523
+   12324,
+   13555
   ],
   "text": "Match",
   "slots": [],
@@ -2770,7 +2770,7 @@
   "kind": "message",
   "where": "BOOLEAN_RULE_LABELS › mingleShape",
   "lines": [
-   12295
+   12324
   ],
   "text": "Mingle Shape",
   "slots": [],
@@ -2783,7 +2783,7 @@
   "kind": "message",
   "where": "BOOLEAN_RULE_LABELS › mingleArea",
   "lines": [
-   12295
+   12324
   ],
   "text": "Size Separation",
   "slots": [],
@@ -2796,8 +2796,8 @@
   "kind": "message",
   "where": "BOOLEAN_RULE_LABELS › solitude",
   "lines": [
-   12295,
-   13522
+   12324,
+   13554
   ],
   "text": "Solitude",
   "slots": [],
@@ -2810,8 +2810,8 @@
   "kind": "message",
   "where": "BOOLEAN_RULE_LABELS › boxy",
   "lines": [
-   12295,
-   13524
+   12324,
+   13556
   ],
   "text": "Boxy",
   "slots": [],
@@ -2824,8 +2824,8 @@
   "kind": "message",
   "where": "BOOLEAN_RULE_LABELS › bricky",
   "lines": [
-   12295,
-   13525
+   12324,
+   13557
   ],
   "text": "Bricky",
   "slots": [],
@@ -2838,8 +2838,8 @@
   "kind": "message",
   "where": "BOOLEAN_RULE_LABELS › loopy",
   "lines": [
-   12295,
-   13525
+   12324,
+   13557
   ],
   "text": "Loopy",
   "slots": [],
@@ -2852,8 +2852,8 @@
   "kind": "message",
   "where": "BOOLEAN_RULE_LABELS › wally",
   "lines": [
-   12295,
-   13525
+   12324,
+   13557
   ],
   "text": "Wally",
   "slots": [],
@@ -2866,7 +2866,7 @@
   "kind": "message",
   "where": "BOOLEAN_RULE_LABELS › heterogeneous",
   "lines": [
-   12295
+   12324
   ],
   "text": "Heterogeneous",
   "slots": [],
@@ -2879,7 +2879,7 @@
   "kind": "message",
   "where": "addSizeRule",
   "lines": [
-   12318
+   12347
   ],
   "text": "Enter a valid size",
   "slots": [],
@@ -2892,7 +2892,7 @@
   "kind": "message",
   "where": "addSizeRule",
   "lines": [
-   12322
+   12351
   ],
   "text": "Precision can't be combined with Minimum/Maximum, remove them first",
   "slots": [],
@@ -2905,7 +2905,7 @@
   "kind": "message",
   "where": "addSizeRule",
   "lines": [
-   12327
+   12356
   ],
   "text": "Minimum can't be combined with Precision, remove it first",
   "slots": [],
@@ -2918,7 +2918,7 @@
   "kind": "message",
   "where": "addSizeRule",
   "lines": [
-   12330
+   12359
   ],
   "text": "Maximum can't be combined with Precision, remove it first",
   "slots": [],
@@ -2931,7 +2931,7 @@
   "kind": "message",
   "where": "addSizeRule",
   "lines": [
-   12334
+   12363
   ],
   "text": "Minimum is greater than maximum, no shape can satisfy both",
   "slots": [],
@@ -2944,7 +2944,7 @@
   "kind": "message",
   "where": "addSizeRule",
   "lines": [
-   12336
+   12365
   ],
   "text": "Range {1}–{2}: pieces have {3} to {4} tiles",
   "slots": [
@@ -2962,7 +2962,7 @@
   "kind": "message",
   "where": "renderRuleChips",
   "lines": [
-   12354
+   12383
   ],
   "text": "Precision = {1}",
   "slots": [
@@ -2977,7 +2977,7 @@
   "kind": "message",
   "where": "renderRuleChips",
   "lines": [
-   12357
+   12386
   ],
   "text": "Range {1}–{2}",
   "slots": [
@@ -2993,7 +2993,7 @@
   "kind": "message",
   "where": "renderRuleChips",
   "lines": [
-   12357
+   12386
   ],
   "text": "(empty: the minimum is above the maximum)",
   "slots": [],
@@ -3006,7 +3006,7 @@
   "kind": "message",
   "where": "renderRuleChips",
   "lines": [
-   12357
+   12386
   ],
   "text": "Minimum {1} and Maximum {2}: every piece has {3} to {4} tiles{5}",
   "slots": [
@@ -3025,7 +3025,7 @@
   "kind": "message",
   "where": "renderRuleChips",
   "lines": [
-   12359
+   12388
   ],
   "text": "Minimum = {1}",
   "slots": [
@@ -3040,7 +3040,7 @@
   "kind": "message",
   "where": "renderRuleChips",
   "lines": [
-   12360
+   12389
   ],
   "text": "Maximum = {1}",
   "slots": [
@@ -3055,7 +3055,7 @@
   "kind": "message",
   "where": "renderRuleChips",
   "lines": [
-   12377
+   12406
   ],
   "text": "No rules yet",
   "slots": [],
@@ -3068,7 +3068,7 @@
   "kind": "tooltip",
   "where": "renderRuleChips",
   "lines": [
-   12390
+   12419
   ],
   "text": "Remove rule",
   "slots": [],
@@ -3350,7 +3350,7 @@
   "kind": "message",
   "where": "fmtDuration",
   "lines": [
-   12551
+   12580
   ],
   "text": "{1} min",
   "slots": [
@@ -3365,7 +3365,7 @@
   "kind": "message",
   "where": "fmtDuration",
   "lines": [
-   12551
+   12580
   ],
   "text": "over an hour",
   "slots": [],
@@ -3378,7 +3378,7 @@
   "kind": "message",
   "where": "createProgressTracker › line",
   "lines": [
-   12562
+   12591
   ],
   "text": "no percentage: the first piece alone has too many possibilities to count",
   "slots": [],
@@ -3391,7 +3391,7 @@
   "kind": "message",
   "where": "s › line",
   "lines": [
-   12564
+   12593
   ],
   "text": "~{1}% (estimate)",
   "slots": [
@@ -3406,7 +3406,7 @@
   "kind": "message",
   "where": "createProgressTracker › line",
   "lines": [
-   12568
+   12597
   ],
   "text": "· about {1} left (rough)",
   "slots": [
@@ -3421,7 +3421,7 @@
   "kind": "message",
   "where": "updateSlowNote",
   "lines": [
-   12584
+   12613
   ],
   "text": "It's been {1} s — this might take longer than expected. The search keeps going until it is finished; you may stop it early with Cancel. Please contact nittneuk on discord to tell him about this puzzle",
   "slots": [
@@ -3436,7 +3436,7 @@
   "kind": "message",
   "where": "pctNote",
   "lines": [
-   12593
+   12622
   ],
   "text": "at about {1}% of the estimated search",
   "slots": [
@@ -3451,7 +3451,7 @@
   "kind": "message",
   "where": "runDeduce",
   "lines": [
-   12806
+   12835
   ],
   "text": "Solver: narrow searches ({1} ms each) · {2}{3} of {4} edges decided ({5} walls, {6} same-piece) · {7} piece{8} complete · {9} tests: {10} proofs, {11} timed out, {12} found a tiling · {13}s",
   "slots": [
@@ -3478,7 +3478,7 @@
   "kind": "message",
   "where": "runDeduce",
   "lines": [
-   12813
+   12842
   ],
   "text": "Solver: final exact solve on the half-solved puzzle ({1} edges left open) · {2}{3}{4} nodes explored · {5}s",
   "slots": [
@@ -3497,7 +3497,7 @@
   "kind": "message",
   "where": "runDeduce",
   "lines": [
-   12843
+   12872
   ],
   "text": "{1} being the final search",
   "slots": [
@@ -3512,7 +3512,7 @@
   "kind": "message",
   "where": "runDeduce",
   "lines": [
-   12843
+   12872
   ],
   "text": "no exhaustive search needed",
   "slots": [],
@@ -3525,7 +3525,7 @@
   "kind": "message",
   "where": "runDeduce",
   "lines": [
-   12843
+   12872
   ],
   "text": "It took {1} with {2}.",
   "slots": [
@@ -3541,7 +3541,7 @@
   "kind": "message",
   "where": "runDeduce",
   "lines": [
-   12844
+   12873
   ],
   "text": "It ran {1}.",
   "slots": [
@@ -3556,7 +3556,7 @@
   "kind": "message",
   "where": "finishSolver",
   "lines": [
-   12852
+   12881
   ],
   "text": "Cancelled after {1} nodes{2}. {3} solution(s) found so far.",
   "slots": [
@@ -3573,7 +3573,7 @@
   "kind": "message",
   "where": "finishSolver",
   "lines": [
-   12853
+   12882
   ],
   "text": "Partial result {1}",
   "slots": [
@@ -3588,7 +3588,7 @@
   "kind": "message",
   "where": "note",
   "lines": [
-   12858
+   12887
   ],
   "text": "(No shape in your bank fits the grid under the current size rule(s).)",
   "slots": [],
@@ -3601,7 +3601,7 @@
   "kind": "message",
   "where": "note",
   "lines": [
-   12859
+   12888
   ],
   "text": "(No connected region of the required size exists in the grid, or every one of them contains a banned shape.)",
   "slots": [],
@@ -3614,7 +3614,7 @@
   "kind": "message",
   "where": "note",
   "lines": [
-   12859
+   12888
   ],
   "text": "(No connected region of the required size exists in the grid.)",
   "slots": [],
@@ -3627,7 +3627,7 @@
   "kind": "message",
   "where": "finishSolver",
   "lines": [
-   12860
+   12889
   ],
   "text": "Impossible — no tiling satisfies every rule.{1}{2}",
   "slots": [
@@ -3643,7 +3643,7 @@
   "kind": "message",
   "where": "finishSolver",
   "lines": [
-   12864
+   12893
   ],
   "text": "Unique — exactly one tiling satisfies every rule.{1}{2}",
   "slots": [
@@ -3659,7 +3659,7 @@
   "kind": "message",
   "where": "finishSolver",
   "lines": [
-   12865
+   12894
   ],
   "text": "Solution",
   "slots": [],
@@ -3672,7 +3672,7 @@
   "kind": "message",
   "where": "finishSolver",
   "lines": [
-   12871
+   12900
   ],
   "text": "Not unique — found at least two different tilings. Differences are ringed below.{1}",
   "slots": [
@@ -3687,8 +3687,8 @@
   "kind": "message",
   "where": "finishSolver",
   "lines": [
-   12872,
-   12878
+   12901,
+   12907
   ],
   "text": "Solution A",
   "slots": [],
@@ -3701,8 +3701,8 @@
   "kind": "message",
   "where": "finishSolver",
   "lines": [
-   12873,
-   12879
+   12902,
+   12908
   ],
   "text": "Solution B",
   "slots": [],
@@ -3715,7 +3715,7 @@
   "kind": "message",
   "where": "finishSolver",
   "lines": [
-   12877
+   12906
   ],
   "text": "Not unique — exactly 2 different tilings, and these are all of them (the search finished). Differences are ringed below.{1}",
   "slots": [
@@ -3730,7 +3730,7 @@
   "kind": "message",
   "where": "capNote",
   "lines": [
-   12881
+   12910
   ],
   "text": "(stopped at {1}, there may be more)",
   "slots": [
@@ -3745,7 +3745,7 @@
   "kind": "message",
   "where": "capNote",
   "lines": [
-   12881
+   12910
   ],
   "text": ", all of them (the search finished)",
   "slots": [],
@@ -3758,7 +3758,7 @@
   "kind": "message",
   "where": "finishSolver",
   "lines": [
-   12882
+   12911
   ],
   "text": "Not unique — {1} distinct tilings found{2}.{3}",
   "slots": [
@@ -3775,7 +3775,7 @@
   "kind": "message",
   "where": "finishSolver",
   "lines": [
-   12883
+   12912
   ],
   "text": "Solution {1}",
   "slots": [
@@ -3790,7 +3790,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14138
+   14170
   ],
   "text": "✓ It is the solution stored in the imported file.",
   "slots": [],
@@ -3803,7 +3803,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14139
+   14171
   ],
   "text": "⚠ It is NOT the solution stored in the imported file: the solver and the file disagree, so one of them is wrong. Please contact nittneuk (nittneuk on discord) about this if you think the mistake is on the solver",
   "slots": [],
@@ -3816,7 +3816,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14140
+   14172
   ],
   "text": "The solution stored in the imported file is not among the tilings shown.",
   "slots": [],
@@ -3829,7 +3829,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14141
+   14173
   ],
   "text": "The solution stored in the imported file is Solution {1}.",
   "slots": [
@@ -3844,7 +3844,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14141
+   14173
   ],
   "text": "The solution stored in the imported file is solution {1} of these.",
   "slots": [
@@ -3926,7 +3926,7 @@
   "where": "#stepsPrev",
   "lines": [
    579,
-   13671
+   13703
   ],
   "text": "Previous step",
   "slots": [],
@@ -3954,7 +3954,7 @@
   "where": "#stepsNext",
   "lines": [
    581,
-   13672
+   13704
   ],
   "text": "Next step",
   "slots": [],
@@ -4073,8 +4073,8 @@
   "kind": "message",
   "where": "STEP_INFO › basic",
   "lines": [
-   12917,
-   13031
+   12946,
+   13060
   ],
   "text": "Follows from what is known",
   "slots": [],
@@ -4087,8 +4087,8 @@
   "kind": "message",
   "where": "STEP_INFO › basic",
   "lines": [
-   12917,
-   13031
+   12946,
+   13060
   ],
   "text": "These two groups already have a wall between them somewhere else, so they are different pieces: every edge between them is a wall.",
   "slots": [],
@@ -4101,8 +4101,8 @@
   "kind": "message",
   "where": "STEP_INFO › basic",
   "lines": [
-   12917,
-   13031
+   12946,
+   13060
   ],
   "text": "These two tiles are already known to be in one piece, so the edge between them is open.",
   "slots": [],
@@ -4115,7 +4115,7 @@
   "kind": "message",
   "where": "STEP_INFO › size",
   "lines": [
-   12918
+   12947
   ],
   "text": "Too big for the size rules",
   "slots": [],
@@ -4128,7 +4128,7 @@
   "kind": "message",
   "where": "STEP_INFO › size",
   "lines": [
-   12918
+   12947
   ],
   "text": "Joined, these two groups would have more tiles than the size rules allow, so there is a wall between them.",
   "slots": [],
@@ -4141,8 +4141,8 @@
   "kind": "message",
   "where": "STEP_INFO › grow",
   "lines": [
-   12919,
-   13521
+   12948,
+   13553
   ],
   "text": "Forced growth",
   "slots": [],
@@ -4155,7 +4155,7 @@
   "kind": "message",
   "where": "STEP_INFO › grow",
   "lines": [
-   12919
+   12948
   ],
   "text": "This group is too small to be a whole piece yet, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.",
   "slots": [],
@@ -4168,7 +4168,7 @@
   "kind": "message",
   "where": "STEP_INFO › min-grow",
   "lines": [
-   12920
+   12949
   ],
   "text": "Forced growth (Minimum)",
   "slots": [],
@@ -4181,7 +4181,7 @@
   "kind": "message",
   "where": "STEP_INFO › min-grow",
   "lines": [
-   12920
+   12949
   ],
   "text": "This group has fewer tiles than the Minimum, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.",
   "slots": [],
@@ -4194,8 +4194,8 @@
   "kind": "message",
   "where": "STEP_INFO › reach",
   "lines": [
-   12921,
-   13521
+   12950,
+   13553
   ],
   "text": "Reach",
   "slots": [],
@@ -4208,7 +4208,7 @@
   "kind": "message",
   "where": "STEP_INFO › reach",
   "lines": [
-   12921
+   12950
   ],
   "text": "This group needs this edge to reach enough tiles for a piece of an allowed size, so the two tiles are in one piece.",
   "slots": [],
@@ -4221,7 +4221,7 @@
   "kind": "message",
   "where": "STEP_INFO › min-reach",
   "lines": [
-   12922
+   12951
   ],
   "text": "Reach (Minimum)",
   "slots": [],
@@ -4234,7 +4234,7 @@
   "kind": "message",
   "where": "STEP_INFO › min-reach",
   "lines": [
-   12922
+   12951
   ],
   "text": "This group needs this edge to reach the Minimum number of tiles, so the two tiles are in one piece.",
   "slots": [],
@@ -4247,7 +4247,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-grow",
   "lines": [
-   12923
+   12952
   ],
   "text": "Roses: keep growing",
   "slots": [],
@@ -4260,7 +4260,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-grow",
   "lines": [
-   12923
+   12952
   ],
   "text": "This group still misses a rose type, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.",
   "slots": [],
@@ -4273,7 +4273,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-reach",
   "lines": [
-   12924
+   12953
   ],
   "text": "Roses: the way to a missing rose",
   "slots": [],
@@ -4286,7 +4286,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-reach",
   "lines": [
-   12924
+   12953
   ],
   "text": "This group still misses a rose type, and every rose of that type it can reach within the size limit is through this edge. So the two tiles are in one piece.",
   "slots": [],
@@ -4299,7 +4299,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-pair",
   "lines": [
-   12925
+   12954
   ],
   "text": "Roses: one of each type per piece",
   "slots": [],
@@ -4312,7 +4312,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-pair",
   "lines": [
-   12925
+   12954
   ],
   "text": "Each side holds a rose of the same type, and a piece holds only one rose of each type. So they are different pieces, with a wall between them.",
   "slots": [],
@@ -4325,7 +4325,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-cut",
   "lines": [
-   12926
+   12955
   ],
   "text": "Roses: narrow passage",
   "slots": [],
@@ -4338,7 +4338,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-cut",
   "lines": [
-   12926
+   12955
   ],
   "text": "A few tiles are the only way into one part of the board. The roses in that part need as many different pieces to leave it as the passage has tiles, so each passage tile belongs to its own one of those pieces, and each of those pieces gets the roses it needs inside the part.",
   "slots": [],
@@ -4351,7 +4351,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-region",
   "lines": [
-   12927
+   12956
   ],
   "text": "Roses: closed-in area",
   "slots": [],
@@ -4364,7 +4364,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-region",
   "lines": [
-   12927
+   12956
   ],
   "text": "An area closed in by walls holds, for each rose type, one rose per piece. So its roses give the number of pieces in it: with one rose of each type it is a single piece.",
   "slots": [],
@@ -4377,8 +4377,8 @@
   "kind": "message",
   "where": "STEP_INFO › stamp-place",
   "lines": [
-   12928,
-   13032
+   12957,
+   13061
   ],
   "text": "Polyomino: every place the shape fits",
   "slots": [],
@@ -4391,8 +4391,8 @@
   "kind": "message",
   "where": "STEP_INFO › stamp-place",
   "lines": [
-   12928,
-   13032
+   12957,
+   13061
   ],
   "text": "The solver listed every place where the polyomino's shape still fits. This edge is outside all of them, so it is a wall.",
   "slots": [],
@@ -4405,8 +4405,8 @@
   "kind": "message",
   "where": "STEP_INFO › stamp-place",
   "lines": [
-   12928,
-   13032
+   12957,
+   13061
   ],
   "text": "The solver listed every place where the polyomino's shape still fits. This edge is inside all of them, so the two tiles are in one piece.",
   "slots": [],
@@ -4419,7 +4419,7 @@
   "kind": "message",
   "where": "STEP_INFO › stamp-size",
   "lines": [
-   12929
+   12958
   ],
   "text": "Joined, these two groups would have more tiles than the polyomino's shape, so there is a wall between them.",
   "slots": [],
@@ -4432,7 +4432,7 @@
   "kind": "message",
   "where": "STEP_INFO › stamp-shape",
   "lines": [
-   12930
+   12959
   ],
   "text": "Joined, these two groups would fit no turn or flip of the polyomino's shape, so there is a wall between them.",
   "slots": [],
@@ -4445,7 +4445,7 @@
   "kind": "message",
   "where": "STEP_INFO › stamp-pair",
   "lines": [
-   12931
+   12960
   ],
   "text": "Two polyominoes of the same shape, two pieces",
   "slots": [],
@@ -4458,7 +4458,7 @@
   "kind": "message",
   "where": "STEP_INFO › stamp-pair",
   "lines": [
-   12931
+   12960
   ],
   "text": "Two polyominoes of the same shape share a piece only when one placement of the shape covers both. Every placement leaves one of them out, so they are different pieces, with a wall between them.",
   "slots": [],
@@ -4471,7 +4471,7 @@
   "kind": "message",
   "where": "STEP_INFO › shape-fit",
   "lines": [
-   12932
+   12961
   ],
   "text": "Must still fit the shape",
   "slots": [],
@@ -4484,7 +4484,7 @@
   "kind": "message",
   "where": "STEP_INFO › shape-fit",
   "lines": [
-   12932
+   12961
   ],
   "text": "Joined, these two groups would no longer fit inside the polyomino's shape, so there is a wall between them.",
   "slots": [],
@@ -4497,7 +4497,7 @@
   "kind": "message",
   "where": "STEP_INFO › bank-fit",
   "lines": [
-   12933
+   12962
   ],
   "text": "Must still fit a bank shape",
   "slots": [],
@@ -4510,7 +4510,7 @@
   "kind": "message",
   "where": "STEP_INFO › bank-fit",
   "lines": [
-   12933
+   12962
   ],
   "text": "Joined, these two groups would fit in none of the bank shapes (in any turn or flip), so there is a wall between them.",
   "slots": [],
@@ -4523,8 +4523,8 @@
   "kind": "message",
   "where": "STEP_INFO › bank-place",
   "lines": [
-   12934,
-   13033
+   12963,
+   13062
   ],
   "text": "Shape bank: every place a shape fits",
   "slots": [],
@@ -4537,8 +4537,8 @@
   "kind": "message",
   "where": "STEP_INFO › bank-place",
   "lines": [
-   12934,
-   13033
+   12963,
+   13062
   ],
   "text": "The solver listed every placement of every bank shape (all turns and flips) that still fits around this group. This edge is outside all of them, so it is a wall.",
   "slots": [],
@@ -4551,8 +4551,8 @@
   "kind": "message",
   "where": "STEP_INFO › bank-place",
   "lines": [
-   12934,
-   13033
+   12963,
+   13062
   ],
   "text": "The solver listed every placement of every bank shape (all turns and flips) that still fits around this group. This edge is inside all of them, so the two tiles are in one piece.",
   "slots": [],
@@ -4565,7 +4565,7 @@
   "kind": "message",
   "where": "STEP_INFO › bank-region",
   "lines": [
-   12935
+   12964
   ],
   "text": "Shape bank: closed-in area",
   "slots": [],
@@ -4578,7 +4578,7 @@
   "kind": "message",
   "where": "STEP_INFO › bank-region",
   "lines": [
-   12935
+   12964
   ],
   "text": "An area closed in by walls is covered by whole pieces with the sizes of the bank shapes, and only one way to do that is left.",
   "slots": [],
@@ -4591,7 +4591,7 @@
   "kind": "message",
   "where": "STEP_INFO › bank-bend",
   "lines": [
-   12936
+   12965
   ],
   "text": "Shape bank: every shape has a bend",
   "slots": [],
@@ -4604,7 +4604,7 @@
   "kind": "message",
   "where": "STEP_INFO › bank-bend",
   "lines": [
-   12936
+   12965
   ],
   "text": "Every bank shape has a bend, so every piece has one.",
   "slots": [],
@@ -4617,7 +4617,7 @@
   "kind": "message",
   "where": "STEP_INFO › bank-block",
   "lines": [
-   12937
+   12966
   ],
   "text": "Shape bank: every shape has a 2x2 block",
   "slots": [],
@@ -4630,7 +4630,7 @@
   "kind": "message",
   "where": "STEP_INFO › bank-block",
   "lines": [
-   12937
+   12966
   ],
   "text": "Every bank shape contains a 2x2 block, so every piece contains one.",
   "slots": [],
@@ -4643,8 +4643,8 @@
   "kind": "message",
   "where": "STEP_INFO › bridge-count",
   "lines": [
-   12938,
-   13034
+   12967,
+   13063
   ],
   "text": "One connection between two sides",
   "slots": [],
@@ -4657,8 +4657,8 @@
   "kind": "message",
   "where": "STEP_INFO › bridge-count",
   "lines": [
-   12938,
-   13034
+   12967,
+   13063
   ],
   "text": "The board is held together here by a single connection. With one piece crossing it, the tiles left on each side could only be covered by pieces of sizes the rules forbid. So it is a wall.",
   "slots": [],
@@ -4671,8 +4671,8 @@
   "kind": "message",
   "where": "STEP_INFO › bridge-count",
   "lines": [
-   12938,
-   13034
+   12967,
+   13063
   ],
   "text": "The board is held together here by a single connection. With a wall here, each side would need to be covered by whole pieces on its own, and its number of tiles makes that impossible. So one piece crosses it: the two tiles are in one piece.",
   "slots": [],
@@ -4685,7 +4685,7 @@
   "kind": "message",
   "where": "STEP_INFO › area-sum",
   "lines": [
-   12939
+   12968
   ],
   "text": "Area numbers cover every tile",
   "slots": [],
@@ -4698,7 +4698,7 @@
   "kind": "message",
   "where": "STEP_INFO › area-sum",
   "lines": [
-   12939
+   12968
   ],
   "text": "The area numbers of this region add up to all its tiles, so every tile belongs to a numbered piece.",
   "slots": [],
@@ -4711,7 +4711,7 @@
   "kind": "message",
   "where": "STEP_INFO › area-region",
   "lines": [
-   12940
+   12969
   ],
   "text": "Area numbers in a closed-in area",
   "slots": [],
@@ -4724,7 +4724,7 @@
   "kind": "message",
   "where": "STEP_INFO › area-region",
   "lines": [
-   12940
+   12969
   ],
   "text": "This area is closed in by walls, and its area numbers fit in it in only one way.",
   "slots": [],
@@ -4737,7 +4737,7 @@
   "kind": "message",
   "where": "STEP_INFO › area-rel",
   "lines": [
-   12941
+   12970
   ],
   "text": "Walls that compare sizes",
   "slots": [],
@@ -4750,7 +4750,7 @@
   "kind": "message",
   "where": "STEP_INFO › area-rel",
   "lines": [
-   12941
+   12970
   ],
   "text": "The walls that compare sizes (<, >, ±N, same) leave only some sizes for the pieces on each side.",
   "slots": [],
@@ -4763,7 +4763,7 @@
   "kind": "message",
   "where": "STEP_INFO › range-region",
   "lines": [
-   12942
+   12971
   ],
   "text": "Closed-in area: whole pieces only",
   "slots": [],
@@ -4776,7 +4776,7 @@
   "kind": "message",
   "where": "STEP_INFO › range-region",
   "lines": [
-   12942
+   12971
   ],
   "text": "An area closed in by walls is covered by whole pieces of the allowed sizes, and only one choice for this edge allows that.",
   "slots": [],
@@ -4789,7 +4789,7 @@
   "kind": "message",
   "where": "STEP_INFO › euler-count",
   "lines": [
-   12943
+   12972
   ],
   "text": "Wall budget",
   "slots": [],
@@ -4802,7 +4802,7 @@
   "kind": "message",
   "where": "STEP_INFO › euler-count",
   "lines": [
-   12943
+   12972
   ],
   "text": "Few pieces are allowed, and that limits the walls: every wall end on the outline and every corner where walls branch costs one, and the walls already placed use the whole budget. A wall here would cost one more, so the two tiles are in one piece.",
   "slots": [],
@@ -4815,7 +4815,7 @@
   "kind": "message",
   "where": "STEP_INFO › colour-count",
   "lines": [
-   12944
+   12973
   ],
   "text": "Colour count",
   "slots": [],
@@ -4828,7 +4828,7 @@
   "kind": "message",
   "where": "STEP_INFO › colour-count",
   "lines": [
-   12944
+   12973
   ],
   "text": "Few pieces are allowed, so the groups can be coloured with that many colours, with different colours for groups known to be different pieces. Two groups that always get the same colour are one piece; two that always get different colours have a wall between them.",
   "slots": [],
@@ -4841,7 +4841,7 @@
   "kind": "message",
   "where": "STEP_INFO › match-iso",
   "lines": [
-   12945
+   12974
   ],
   "text": "Match: equal pieces",
   "slots": [],
@@ -4854,7 +4854,7 @@
   "kind": "message",
   "where": "STEP_INFO › match-iso",
   "lines": [
-   12945
+   12974
   ],
   "text": "Every piece has the same shape, so a wall inside one piece has its copy in the other.",
   "slots": [],
@@ -4867,8 +4867,8 @@
   "kind": "message",
   "where": "STEP_INFO › match-place",
   "lines": [
-   12946,
-   13035
+   12975,
+   13064
   ],
   "text": "Match: every place the shape fits",
   "slots": [],
@@ -4881,8 +4881,8 @@
   "kind": "message",
   "where": "STEP_INFO › match-place",
   "lines": [
-   12946,
-   13035
+   12975,
+   13064
   ],
   "text": "Every piece has the same shape, and one shape is left. The solver listed every place it still fits around this group. This edge is outside all of them, so it is a wall.",
   "slots": [],
@@ -4895,8 +4895,8 @@
   "kind": "message",
   "where": "STEP_INFO › match-place",
   "lines": [
-   12946,
-   13035
+   12975,
+   13064
   ],
   "text": "Every piece has the same shape, and one shape is left. The solver listed every place it still fits around this group. This edge is inside all of them, so the two tiles are in one piece.",
   "slots": [],
@@ -4909,7 +4909,7 @@
   "kind": "message",
   "where": "STEP_INFO › match-region",
   "lines": [
-   12947
+   12976
   ],
   "text": "Match: closed-in area",
   "slots": [],
@@ -4922,7 +4922,7 @@
   "kind": "message",
   "where": "STEP_INFO › match-region",
   "lines": [
-   12947
+   12976
   ],
   "text": "Every piece has the same size, and this area closed in by walls holds exactly that many tiles. So it is a single piece, and every edge inside it is open.",
   "slots": [],
@@ -4935,7 +4935,7 @@
   "kind": "message",
   "where": "STEP_INFO › match-fit",
   "lines": [
-   12948
+   12977
   ],
   "text": "Match: one shape for every group",
   "slots": [],
@@ -4948,7 +4948,7 @@
   "kind": "message",
   "where": "STEP_INFO › match-fit",
   "lines": [
-   12948
+   12977
   ],
   "text": "Every piece has the same shape, so that shape has to fit every group. Joined, these two groups would leave no shape that fits all the groups, so there is a wall between them.",
   "slots": [],
@@ -4961,7 +4961,7 @@
   "kind": "message",
   "where": "STEP_INFO › match-mismatch",
   "lines": [
-   12949
+   12978
   ],
   "text": "Match and Mismatch together",
   "slots": [],
@@ -4974,7 +4974,7 @@
   "kind": "message",
   "where": "STEP_INFO › match-mismatch",
   "lines": [
-   12949
+   12978
   ],
   "text": "Match makes every piece the same and Mismatch makes every piece different. Both hold only with a single piece, so the whole board is one piece.",
   "slots": [],
@@ -4987,8 +4987,8 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-place",
   "lines": [
-   12950,
-   13036
+   12979,
+   13065
   ],
   "text": "Mismatch: every place for the only shape left",
   "slots": [],
@@ -5001,8 +5001,8 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-place",
   "lines": [
-   12950,
-   13036
+   12979,
+   13065
   ],
   "text": "This group can only become one shape. The solver listed every place where that shape still fits. This edge is outside all of them, so it is a wall.",
   "slots": [],
@@ -5015,8 +5015,8 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-place",
   "lines": [
-   12950,
-   13036
+   12979,
+   13065
   ],
   "text": "This group can only become one shape. The solver listed every place where that shape still fits. This edge is inside all of them, so the two tiles are in one piece.",
   "slots": [],
@@ -5029,7 +5029,7 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-stamp",
   "lines": [
-   12951
+   12980
   ],
   "text": "Mismatch: same polyomino, one piece",
   "slots": [],
@@ -5042,7 +5042,7 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-stamp",
   "lines": [
-   12951
+   12980
   ],
   "text": "No two pieces share a shape, and these two polyominoes have the same shape, so they are in one piece.",
   "slots": [],
@@ -5055,7 +5055,7 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-link",
   "lines": [
-   12952
+   12981
   ],
   "text": "Mismatch: same shape, one piece",
   "slots": [],
@@ -5068,7 +5068,7 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-link",
   "lines": [
-   12952
+   12981
   ],
   "text": "No two pieces share a shape, and these two groups can only become the same shape, so they are one piece.",
   "slots": [],
@@ -5081,7 +5081,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-link",
   "lines": [
-   12953
+   12982
   ],
   "text": "Size Separation: same size side by side",
   "slots": [],
@@ -5094,7 +5094,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-link",
   "lines": [
-   12953
+   12982
   ],
   "text": "Touching pieces always have different sizes. The pieces of these two neighbouring tiles are both pinned to the same size, so they are one piece.",
   "slots": [],
@@ -5107,7 +5107,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-link",
   "lines": [
-   12954
+   12983
   ],
   "text": "Mingle Shape: same shape side by side",
   "slots": [],
@@ -5120,7 +5120,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-link",
   "lines": [
-   12954
+   12983
   ],
   "text": "Touching pieces always have different shapes. The pieces of these two neighbouring tiles are both pinned to the same shape, so they are one piece.",
   "slots": [],
@@ -5133,7 +5133,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-merge",
   "lines": [
-   12955
+   12984
   ],
   "text": "Size Separation: different sizes",
   "slots": [],
@@ -5146,7 +5146,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-merge",
   "lines": [
-   12955
+   12984
   ],
   "text": "These two groups can only end up with different sizes, so they are different pieces, with a wall between them.",
   "slots": [],
@@ -5159,7 +5159,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-merge",
   "lines": [
-   12956
+   12985
   ],
   "text": "Mingle Shape: different shapes",
   "slots": [],
@@ -5172,7 +5172,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-merge",
   "lines": [
-   12956
+   12985
   ],
   "text": "These two groups can only end up with different shapes, so they are different pieces, with a wall between them.",
   "slots": [],
@@ -5185,7 +5185,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-parity",
   "lines": [
-   12957
+   12986
   ],
   "text": "Size Separation: two sizes alternate",
   "slots": [],
@@ -5198,7 +5198,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-area-parity",
   "lines": [
-   12957
+   12986
   ],
   "text": "Only two sizes are possible, and touching pieces have different sizes, so the sizes alternate across every wall like a chessboard. Counting the walls on the chain between these tiles shows whether their pieces have the same size.",
   "slots": [],
@@ -5211,7 +5211,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-parity",
   "lines": [
-   12958
+   12987
   ],
   "text": "Mingle Shape: two shapes alternate",
   "slots": [],
@@ -5224,7 +5224,7 @@
   "kind": "message",
   "where": "STEP_INFO › mingle-shape-parity",
   "lines": [
-   12958
+   12987
   ],
   "text": "Only two shapes are possible, and touching pieces have different shapes, so the shapes alternate across every wall like a chessboard. Counting the walls on the chain between these tiles shows whether their pieces have the same shape.",
   "slots": [],
@@ -5237,7 +5237,7 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-grow",
   "lines": [
-   12959
+   12988
   ],
   "text": "Solitude: keep growing",
   "slots": [],
@@ -5250,7 +5250,7 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-grow",
   "lines": [
-   12959
+   12988
   ],
   "text": "This group has no symbol yet, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.",
   "slots": [],
@@ -5263,7 +5263,7 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-reach",
   "lines": [
-   12960
+   12989
   ],
   "text": "Solitude: the way to a symbol",
   "slots": [],
@@ -5276,7 +5276,7 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-reach",
   "lines": [
-   12960
+   12989
   ],
   "text": "Every symbol this group can still reach is through this edge, so the two tiles are in one piece.",
   "slots": [],
@@ -5289,7 +5289,7 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-pair",
   "lines": [
-   12961
+   12990
   ],
   "text": "Solitude: one symbol per piece",
   "slots": [],
@@ -5302,7 +5302,7 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-pair",
   "lines": [
-   12961
+   12990
   ],
   "text": "Each piece holds exactly one symbol, so these two symbols are in different pieces, with a wall between them.",
   "slots": [],
@@ -5315,7 +5315,7 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-region",
   "lines": [
-   12962
+   12991
   ],
   "text": "Solitude: closed-in area",
   "slots": [],
@@ -5328,7 +5328,7 @@
   "kind": "message",
   "where": "STEP_INFO › solitude-region",
   "lines": [
-   12962
+   12991
   ],
   "text": "Each piece holds exactly one symbol, so an area closed in by walls has as many pieces as symbols: with one symbol it is a single piece.",
   "slots": [],
@@ -5341,8 +5341,8 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-place",
   "lines": [
-   12963,
-   13037
+   12992,
+   13066
   ],
   "text": "Boxy: every rectangle that fits",
   "slots": [],
@@ -5355,8 +5355,8 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-place",
   "lines": [
-   12963,
-   13037
+   12992,
+   13066
   ],
   "text": "Every piece is a rectangle. The solver listed every rectangle of an allowed size that holds this group's tiles. This edge is outside all of them, so it is a wall.",
   "slots": [],
@@ -5369,8 +5369,8 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-place",
   "lines": [
-   12963,
-   13037
+   12992,
+   13066
   ],
   "text": "Every piece is a rectangle. The solver listed every rectangle of an allowed size that holds this group's tiles. This edge is inside all of them, so the two tiles are in one piece.",
   "slots": [],
@@ -5383,7 +5383,7 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-line",
   "lines": [
-   12964
+   12993
   ],
   "text": "Boxy: a prime size is a strip",
   "slots": [],
@@ -5396,7 +5396,7 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-line",
   "lines": [
-   12964
+   12993
   ],
   "text": "Every piece is a rectangle, and a rectangle with a prime number of tiles is a straight strip. These tiles are already in a row, so their strip runs along that row.",
   "slots": [],
@@ -5409,7 +5409,7 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-corner",
   "lines": [
-   12965
+   12994
   ],
   "text": "Boxy: walls run straight",
   "slots": [],
@@ -5422,7 +5422,7 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-corner",
   "lines": [
-   12965
+   12994
   ],
   "text": "Every piece is a rectangle, so at every inner corner the walls run straight through, make a T or a cross, or there are none. The walls already at this corner leave one choice.",
   "slots": [],
@@ -5435,7 +5435,7 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-fill",
   "lines": [
-   12966
+   12995
   ],
   "text": "Boxy: fill the rectangle",
   "slots": [],
@@ -5448,7 +5448,7 @@
   "kind": "message",
   "where": "STEP_INFO › boxy-fill",
   "lines": [
-   12966
+   12995
   ],
   "text": "Every piece is a rectangle, so everything inside the smallest rectangle around these tiles belongs to their piece.",
   "slots": [],
@@ -5461,7 +5461,7 @@
   "kind": "message",
   "where": "STEP_INFO › nonbox-grow",
   "lines": [
-   12967
+   12996
   ],
   "text": "Non-boxy: keep growing",
   "slots": [],
@@ -5474,7 +5474,7 @@
   "kind": "message",
   "where": "STEP_INFO › nonbox-grow",
   "lines": [
-   12967
+   12996
   ],
   "text": "No piece is a rectangle. This group is still a rectangle, and this edge is its only way out, so the piece grows through it: the two tiles are in one piece.",
   "slots": [],
@@ -5487,8 +5487,8 @@
   "kind": "message",
   "where": "STEP_INFO › pal-wall",
   "lines": [
-   12968,
-   12969
+   12997,
+   12998
   ],
   "text": "Palisade",
   "slots": [],
@@ -5501,7 +5501,7 @@
   "kind": "message",
   "where": "STEP_INFO › pal-wall",
   "lines": [
-   12968
+   12997
   ],
   "text": "The solver tried every way to give this palisade its number of walls, with the walls and links already known. In all of them this side is a wall.",
   "slots": [],
@@ -5514,7 +5514,7 @@
   "kind": "message",
   "where": "STEP_INFO › pal-link",
   "lines": [
-   12969
+   12998
   ],
   "text": "The solver tried every way to give this palisade its number of walls, with the walls and links already known. In all of them this side is open, so the two tiles are in one piece.",
   "slots": [],
@@ -5527,7 +5527,7 @@
   "kind": "message",
   "where": "STEP_INFO › pal-pair",
   "lines": [
-   12970
+   12999
   ],
   "text": "Palisades side by side",
   "slots": [],
@@ -5540,7 +5540,7 @@
   "kind": "message",
   "where": "STEP_INFO › pal-pair",
   "lines": [
-   12970
+   12999
   ],
   "text": "Two palisades side by side share one side, which counts for both numbers. Counting both numbers together leaves one choice for this edge.",
   "slots": [],
@@ -5553,7 +5553,7 @@
   "kind": "message",
   "where": "STEP_INFO › pal-two",
   "lines": [
-   12971
+   13000
   ],
   "text": "Palisade: only two pieces",
   "slots": [],
@@ -5566,8 +5566,8 @@
   "kind": "message",
   "where": "STEP_INFO › pal-two",
   "lines": [
-   12971,
-   12977
+   13000,
+   13006
   ],
   "text": "Only two pieces can exist, so every wall has the same two pieces on its sides. Counting the walls around the tiles with that in mind leaves one choice for this edge.",
   "slots": [],
@@ -5580,8 +5580,8 @@
   "kind": "message",
   "where": "STEP_INFO › wally-wall",
   "lines": [
-   12972,
-   12973
+   13001,
+   13002
   ],
   "text": "Wally: no T shape",
   "slots": [],
@@ -5594,7 +5594,7 @@
   "kind": "message",
   "where": "STEP_INFO › wally-wall",
   "lines": [
-   12972
+   13001
   ],
   "text": "With Wally no piece contains a T. This tile already has 2 neighbours in its piece (or keeps 2 walls), and a third neighbour would make a T, so this side is a wall.",
   "slots": [],
@@ -5607,7 +5607,7 @@
   "kind": "message",
   "where": "STEP_INFO › wally-link",
   "lines": [
-   12973
+   13002
   ],
   "text": "With Wally no piece contains a T. The solver tried every way this tile keeps at most 2 neighbours in its piece. In all of them this side is open, so the two tiles are in one piece.",
   "slots": [],
@@ -5620,7 +5620,7 @@
   "kind": "message",
   "where": "STEP_INFO › wally-ends",
   "lines": [
-   12974
+   13003
   ],
   "text": "Wally: two ends per piece",
   "slots": [],
@@ -5633,7 +5633,7 @@
   "kind": "message",
   "where": "STEP_INFO › wally-ends",
   "lines": [
-   12974
+   13003
   ],
   "text": "With Wally every piece is a path with two ends (an end is a tile with 3 walls), a ring, or a single tile. So a piece has at most two ends, a piece whose two ends are known runs straight through all its other tiles, and when every rose (or Solitude symbol) is a dead end, the pieces start and end at them.",
   "slots": [],
@@ -5646,7 +5646,7 @@
   "kind": "message",
   "where": "STEP_INFO › wally-ends",
   "lines": [
-   12974
+   13003
   ],
   "text": "With Wally every piece is a path with two ends. The piece on one side already has both its ends, so joining the other side would give it a third end (or the piece is already whole). So this is a wall.",
   "slots": [],
@@ -5659,7 +5659,7 @@
   "kind": "message",
   "where": "STEP_INFO › wally-ends",
   "lines": [
-   12974
+   13003
   ],
   "text": "With Wally every piece is a path with two ends. All the ends are known already, so this tile is a middle tile: it has two ways on and takes both.",
   "slots": [],
@@ -5672,8 +5672,8 @@
   "kind": "message",
   "where": "STEP_INFO › wally-line",
   "lines": [
-   12975,
-   13038
+   13004,
+   13067
   ],
   "text": "Wally + Gemini: lines of the same length",
   "slots": [],
@@ -5686,10 +5686,10 @@
   "kind": "message",
   "where": "STEP_INFO › wally-line",
   "lines": [
-   12975,
-   12976,
-   13038,
-   13039
+   13004,
+   13005,
+   13067,
+   13068
   ],
   "text": "The two pieces of a Gemini wall have the same shape, so a straight line in one has a twin of the same length in the other. The solver checked every place where the twin could still have a line that long. The lengths left say this line ends here, so this edge is a wall.",
   "slots": [],
@@ -5702,10 +5702,10 @@
   "kind": "message",
   "where": "STEP_INFO › wally-line",
   "lines": [
-   12975,
-   12976,
-   13038,
-   13039
+   13004,
+   13005,
+   13067,
+   13068
   ],
   "text": "The two pieces of a Gemini wall have the same shape, so a straight line in one has a twin of the same length in the other. The solver checked every place where the twin could still have a line that long. The lengths left say this line goes on through this edge, so the two tiles are in one piece.",
   "slots": [],
@@ -5718,8 +5718,8 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-line",
   "lines": [
-   12976,
-   13039
+   13005,
+   13068
   ],
   "text": "Gemini: lines of the same length",
   "slots": [],
@@ -5732,7 +5732,7 @@
   "kind": "message",
   "where": "STEP_INFO › wally-two",
   "lines": [
-   12977
+   13006
   ],
   "text": "Wally: only two pieces",
   "slots": [],
@@ -5745,7 +5745,7 @@
   "kind": "message",
   "where": "STEP_INFO › pal-size",
   "lines": [
-   12978
+   13007
   ],
   "text": "Palisade: how big the piece is",
   "slots": [],
@@ -5758,7 +5758,7 @@
   "kind": "message",
   "where": "STEP_INFO › pal-size",
   "lines": [
-   12978
+   13007
   ],
   "text": "The open sides of this tile put it in a piece of at least a certain size. Joined, these two groups would break a size limit, so there is a wall between them.",
   "slots": [],
@@ -5771,7 +5771,7 @@
   "kind": "message",
   "where": "STEP_INFO › bri-three",
   "lines": [
-   12979
+   13008
   ],
   "text": "Bricky: three walls, the fourth is open",
   "slots": [],
@@ -5784,7 +5784,7 @@
   "kind": "message",
   "where": "STEP_INFO › bri-three",
   "lines": [
-   12979
+   13008
   ],
   "text": "With Bricky, four walls never meet at a corner. Three of the four segments at this corner are walls, so the fourth is open: the two tiles are in one piece.",
   "slots": [],
@@ -5797,7 +5797,7 @@
   "kind": "message",
   "where": "STEP_INFO › bri-pinch",
   "lines": [
-   12980
+   13009
   ],
   "text": "Bricky: tiles that touch at a corner",
   "slots": [],
@@ -5810,7 +5810,7 @@
   "kind": "message",
   "where": "STEP_INFO › bri-pinch",
   "lines": [
-   12980
+   13009
   ],
   "text": "Two tiles that meet only at a corner are in one piece, so one of the other two tiles at that corner joins them.",
   "slots": [],
@@ -5823,7 +5823,7 @@
   "kind": "message",
   "where": "STEP_INFO › bri-vertex",
   "lines": [
-   12981
+   13010
   ],
   "text": "Bricky: no four walls at a corner",
   "slots": [],
@@ -5836,7 +5836,7 @@
   "kind": "message",
   "where": "STEP_INFO › bri-vertex",
   "lines": [
-   12981
+   13010
   ],
   "text": "With Bricky, four walls never meet at a corner. The solver tried every way to split the four tiles around this corner into pieces, and in all of them this edge is the same.",
   "slots": [],
@@ -5849,7 +5849,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-outline",
   "lines": [
-   12982
+   13011
   ],
   "text": "Loopy: the outline is linked",
   "slots": [],
@@ -5862,7 +5862,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-outline",
   "lines": [
-   12982
+   13011
   ],
   "text": "Every tile on the outline has a wall to the outside, so two outline tiles side by side are one piece.",
   "slots": [],
@@ -5875,7 +5875,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-three",
   "lines": [
-   12983
+   13012
   ],
   "text": "Loopy: three walls, the fourth is a wall",
   "slots": [],
@@ -5888,7 +5888,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-three",
   "lines": [
-   12983
+   13012
   ],
   "text": "With Loopy an even number of walls meets at every corner. Three of the four segments at this corner are walls, so the fourth is a wall too.",
   "slots": [],
@@ -5901,7 +5901,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-corner",
   "lines": [
-   12984
+   13013
   ],
   "text": "Loopy: poking-in corner",
   "slots": [],
@@ -5914,7 +5914,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-corner",
   "lines": [
-   12984
+   13013
   ],
   "text": "At a corner where an empty tile pokes in, two walls are already there, so the other two segments are both walls or both open. One of them is known, so the other is the same.",
   "slots": [],
@@ -5927,7 +5927,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-color",
   "lines": [
-   12985
+   13014
   ],
   "text": "Loopy: two colours",
   "slots": [],
@@ -5940,7 +5940,7 @@
   "kind": "message",
   "where": "STEP_INFO › loo-color",
   "lines": [
-   12985
+   13014
   ],
   "text": "With Loopy the tiles get two colours: a wall changes the colour and an open edge keeps it. The chain of decided edges between these two tiles shows whether they have the same colour.",
   "slots": [],
@@ -5953,8 +5953,8 @@
   "kind": "message",
   "where": "STEP_INFO › tower-wall",
   "lines": [
-   12986,
-   12987
+   13015,
+   13016
   ],
   "text": "Watchtower",
   "slots": [],
@@ -5967,7 +5967,7 @@
   "kind": "message",
   "where": "STEP_INFO › tower-wall",
   "lines": [
-   12986
+   13015
   ],
   "text": "The number on the watchtower at this corner is how many walls meet there (a 4 needs four walls, a 2 exactly two). This edge has to be one of them, so it is a wall.",
   "slots": [],
@@ -5980,7 +5980,7 @@
   "kind": "message",
   "where": "STEP_INFO › tower-link",
   "lines": [
-   12987
+   13016
   ],
   "text": "The number on the watchtower at this corner is how many walls meet there (a 1 joins all the tiles around its corner). This edge has to be open, so the two tiles are in one piece.",
   "slots": [],
@@ -5993,7 +5993,7 @@
   "kind": "message",
   "where": "STEP_INFO › tower-wrap",
   "lines": [
-   12988
+   13017
   ],
   "text": "Watchtower: no wrapping round the corner",
   "slots": [],
@@ -6006,7 +6006,7 @@
   "kind": "message",
   "where": "STEP_INFO › tower-wrap",
   "lines": [
-   12988
+   13017
   ],
   "text": "Pieces stay on one side of a watchtower corner: none wraps around it.",
   "slots": [],
@@ -6019,7 +6019,7 @@
   "kind": "message",
   "where": "STEP_INFO › compass",
   "lines": [
-   12989
+   13018
   ],
   "text": "The compass piece needs this edge to reach enough tiles on one of its sides, so the two tiles are in one piece.",
   "slots": [],
@@ -6032,7 +6032,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-block",
   "lines": [
-   12990
+   13019
   ],
   "text": "Compass: out of reach",
   "slots": [],
@@ -6045,7 +6045,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-block",
   "lines": [
-   12990
+   13019
   ],
   "text": "The tile across this edge is out of the compass piece's reach, so there is a wall between them.",
   "slots": [],
@@ -6058,7 +6058,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-budget",
   "lines": [
-   12991
+   13020
   ],
   "text": "Compass: the way to a rose",
   "slots": [],
@@ -6071,7 +6071,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-budget",
   "lines": [
-   12991
+   13020
   ],
   "text": "A compass number is exact, so the piece has only that many tiles on that side. Every way from the compass to a rose it still needs goes through tiles on that side, and each one uses up the count. Only the ways through this edge stay within the numbers.",
   "slots": [],
@@ -6084,7 +6084,7 @@
   "kind": "message",
   "where": "STEP_INFO › diff-clash",
   "lines": [
-   12992
+   13021
   ],
   "text": "Difference: two numbers, two pieces",
   "slots": [],
@@ -6097,7 +6097,7 @@
   "kind": "message",
   "where": "STEP_INFO › diff-clash",
   "lines": [
-   12992
+   13021
   ],
   "text": "One piece touches two Difference walls with different numbers (a Gemini wall counts as 0). The pieces across them differ from it by different amounts, so they are two different pieces.",
   "slots": [],
@@ -6110,7 +6110,7 @@
   "kind": "message",
   "where": "STEP_INFO › diff-small",
   "lines": [
-   12993
+   13022
   ],
   "text": "Difference: the few small pieces",
   "slots": [],
@@ -6123,7 +6123,7 @@
   "kind": "message",
   "where": "STEP_INFO › diff-small",
   "lines": [
-   12993
+   13022
   ],
   "text": "Every Difference wall of N has a piece of at most (Maximum − N) tiles on one side. With Mismatch every shape is used once, so there are only a few such small pieces. The solver tried every way to place them so that each of those walls has one on a side, and in all of them this edge is the same.",
   "slots": [],
@@ -6136,7 +6136,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-cover",
   "lines": [
-   12994
+   13023
   ],
   "text": "Roses: who goes with whom",
   "slots": [],
@@ -6149,7 +6149,7 @@
   "kind": "message",
   "where": "STEP_INFO › rose-cover",
   "lines": [
-   12994
+   13023
   ],
   "text": "Every piece holds one rose of each type. The solver listed every way to split the groups of roses into such pieces. In all of them these two groups are in different pieces.",
   "slots": [],
@@ -6162,7 +6162,7 @@
   "kind": "message",
   "where": "STEP_INFO › label",
   "lines": [
-   12995
+   13024
   ],
   "text": "Which piece each tile belongs to",
   "slots": [],
@@ -6175,7 +6175,7 @@
   "kind": "message",
   "where": "STEP_INFO › label",
   "lines": [
-   12995
+   13024
   ],
   "text": "Every piece holds exactly one symbol (Solitude), one rose of each type, or one of the area numbers that fill the board, so every tile belongs to the piece of one of them. For each tile the solver keeps the ones it can still belong to, taking away those cut off by walls, Inequality and Difference walls, or distance. These two tiles have no symbol left in common (a wall) or the same single one (open).",
   "slots": [],
@@ -6188,7 +6188,7 @@
   "kind": "message",
   "where": "STEP_INFO › box-hall",
   "lines": [
-   12996
+   13025
   ],
   "text": "Boxy + Mismatch: shapes taken",
   "slots": [],
@@ -6201,7 +6201,7 @@
   "kind": "message",
   "where": "STEP_INFO › box-hall",
   "lines": [
-   12996
+   13025
   ],
   "text": "Every piece is a different rectangle. Some pieces can only be a few rectangles, and when there are as many such pieces as rectangles they take all of them (for example four pieces that can only be 1x1 to 1x4). The other pieces lose those rectangles, and the rectangles left for this piece all agree on this edge.",
   "slots": [],
@@ -6214,7 +6214,7 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-hall",
   "lines": [
-   12997
+   13026
   ],
   "text": "Mismatch: few shapes, all taken",
   "slots": [],
@@ -6227,7 +6227,7 @@
   "kind": "message",
   "where": "STEP_INFO › mismatch-hall",
   "lines": [
-   12997
+   13026
   ],
   "text": "Every piece has a different shape and the pieces are small, so there are only a few shapes. Some pieces can only be a few of them, and when there are as many such pieces as shapes they take all of them. The other pieces lose those shapes, and the shapes left for this piece all agree on this edge.",
   "slots": [],
@@ -6240,7 +6240,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-box",
   "lines": [
-   12998
+   13027
   ],
   "text": "Compass + Boxy: the rectangle",
   "slots": [],
@@ -6253,7 +6253,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-box",
   "lines": [
-   12998
+   13027
   ],
   "text": "The piece is a rectangle, so each compass number counts whole rows or columns on that side. The solver listed every rectangle that fits all the numbers, and they all agree on this edge.",
   "slots": [],
@@ -6266,8 +6266,8 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-anchor",
   "lines": [
-   12999,
-   13040
+   13028,
+   13069
   ],
   "text": "Gemini: the one line that can match",
   "slots": [],
@@ -6280,8 +6280,8 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-anchor",
   "lines": [
-   12999,
-   13040
+   13028,
+   13069
   ],
   "text": "Both pieces of the Gemini wall have a closed straight line of the same length, and one of them has room for only that one. So the turn or mirror that copies one shape onto the other sends line onto line. Of those few ways, the ones that still fit after copying the known tiles across all have a wall here.",
   "slots": [],
@@ -6294,8 +6294,8 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-anchor",
   "lines": [
-   12999,
-   13040
+   13028,
+   13069
   ],
   "text": "Both pieces of the Gemini wall have a closed straight line of the same length, and one of them has room for only that one. So the turn or mirror that copies one shape onto the other sends line onto line. Of those few ways, the ones that still fit after copying the known tiles across all have these two tiles in one piece.",
   "slots": [],
@@ -6308,7 +6308,7 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-place",
   "lines": [
-   13000
+   13029
   ],
   "text": "Gemini / Delta: the shapes on both sides",
   "slots": [],
@@ -6321,7 +6321,7 @@
   "kind": "message",
   "where": "STEP_INFO › gemini-place",
   "lines": [
-   13000
+   13029
   ],
   "text": "The solver listed every piece each side of the wall can still become. Across a Gemini wall both sides have the same shape, so each side keeps only the shapes the other side can have too (across a Delta wall, a side left with one shape takes that shape away from the other). The shapes left for this side all agree on this edge.",
   "slots": [],
@@ -6334,7 +6334,7 @@
   "kind": "message",
   "where": "STEP_INFO › region-merge",
   "lines": [
-   13001
+   13030
   ],
   "text": "Two groups, one piece",
   "slots": [],
@@ -6347,7 +6347,7 @@
   "kind": "message",
   "where": "STEP_INFO › region-merge",
   "lines": [
-   13001
+   13030
   ],
   "text": "An area closed in by walls has only so many tiles. The solver tried every way to split its big groups into pieces with the sizes the Inequality walls ask for, and in every way that fits these two groups are in the same piece. So they are one piece, even where they do not touch yet.",
   "slots": [],
@@ -6360,7 +6360,7 @@
   "kind": "message",
   "where": "STEP_INFO › size-cut",
   "lines": [
-   13002
+   13031
   ],
   "text": "One size, one narrow tile",
   "slots": [],
@@ -6373,7 +6373,7 @@
   "kind": "message",
   "where": "STEP_INFO › size-cut",
   "lines": [
-   13002
+   13031
   ],
   "text": "Every piece has the same size here. This tile is the only way into a part of the board, so only its own piece reaches in from outside, and it takes exactly what is left of that part after whole pieces: nothing (a wall) or some tiles (open).",
   "slots": [],
@@ -6386,7 +6386,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-wrap",
   "lines": [
-   13003
+   13032
   ],
   "text": "Compass: the piece has to go this way",
   "slots": [],
@@ -6399,7 +6399,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-wrap",
   "lines": [
-   13003
+   13032
   ],
   "text": "The compass piece needs this tile (or edge) to have enough tiles on some side, or in total, so it is part of the piece.",
   "slots": [],
@@ -6412,8 +6412,8 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-place",
   "lines": [
-   13004,
-   13041
+   13033,
+   13070
   ],
   "text": "Compass: every way the piece can be",
   "slots": [],
@@ -6426,8 +6426,8 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-place",
   "lines": [
-   13004,
-   13041
+   13033,
+   13070
   ],
   "text": "The solver listed every piece that fits all the compass numbers, the size and the walls already decided. Every one of them leaves this tile out, so there is a wall.",
   "slots": [],
@@ -6440,8 +6440,8 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-place",
   "lines": [
-   13004,
-   13041
+   13033,
+   13070
   ],
   "text": "The solver listed every piece that fits all the compass numbers, the size and the walls already decided. Every one of them holds this tile, so the two tiles are in one piece.",
   "slots": [],
@@ -6454,7 +6454,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-crowd",
   "lines": [
-   13005
+   13034
   ],
   "text": "Compass: room for every compass",
   "slots": [],
@@ -6467,7 +6467,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-crowd",
   "lines": [
-   13005
+   13034
   ],
   "text": "The compasses here each need tiles for their pieces, and there are only so many tiles. Only one choice for this edge leaves enough for all of them.",
   "slots": [],
@@ -6480,7 +6480,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-excl",
   "lines": [
-   13006
+   13035
   ],
   "text": "Compass: this tile stays out",
   "slots": [],
@@ -6493,7 +6493,7 @@
   "kind": "message",
   "where": "STEP_INFO › cmp-excl",
   "lines": [
-   13006
+   13035
   ],
   "text": "Putting this tile in the compass piece breaks a rule, so it belongs to another piece.",
   "slots": [],
@@ -6506,7 +6506,7 @@
   "kind": "message",
   "where": "STEP_INFO › hetero-size",
   "lines": [
-   13007
+   13036
   ],
   "text": "Heterogeneous: a size is used once",
   "slots": [],
@@ -6519,7 +6519,7 @@
   "kind": "message",
   "where": "STEP_INFO › hetero-size",
   "lines": [
-   13007
+   13036
   ],
   "text": "With Heterogeneous each size is used once, and a finished piece already has this size.",
   "slots": [],
@@ -6532,7 +6532,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13010
+   13039
   ],
   "text": "Two clues, two pieces",
   "slots": [],
@@ -6545,7 +6545,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13010
+   13039
   ],
   "text": "The solver tried these two clues in one piece, and the rules could not all be met that way. So they are in different pieces, with a wall between their groups.",
   "slots": [],
@@ -6558,7 +6558,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13011
+   13040
   ],
   "text": "Two groups, two pieces",
   "slots": [],
@@ -6571,7 +6571,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13011
+   13040
   ],
   "text": "The solver tried these two groups as one piece, and the rules could not all be met that way. So they are different pieces, with a wall between them.",
   "slots": [],
@@ -6584,7 +6584,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13016
+   13045
   ],
   "text": "Shape ruled out",
   "slots": [],
@@ -6597,7 +6597,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13016
+   13045
   ],
   "text": "Earlier steps ruled out some shapes for the pieces of these groups. Joined, they could only take one of those shapes, so they are different pieces, with a wall between them.",
   "slots": [],
@@ -6610,7 +6610,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13017
+   13046
   ],
   "text": "Closed-in area: one piece per group",
   "slots": [],
@@ -6623,7 +6623,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13017
+   13046
   ],
   "text": "The rules fix how many pieces this area closed in by walls holds, and it has exactly that many groups. So every group is a piece of its own, with walls between them.",
   "slots": [],
@@ -6636,7 +6636,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13018
+   13047
   ],
   "text": "Different sizes",
   "slots": [],
@@ -6649,7 +6649,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13018
+   13047
   ],
   "text": "Earlier steps found the sizes the pieces of these two groups can have, and no size is on both lists. So they are different pieces, with a wall between them.",
   "slots": [],
@@ -6662,7 +6662,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13019
+   13048
   ],
   "text": "Number of pieces in closed-in areas",
   "slots": [],
@@ -6675,7 +6675,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13019
+   13048
   ],
   "text": "The rules and clues fix how many pieces the board has, at least and at most, and every area closed in by walls holds whole pieces. Added up, the areas leave this one as many pieces as it has groups, so every group here is a piece of its own, with walls between them.",
   "slots": [],
@@ -6688,7 +6688,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13019
+   13048
   ],
   "text": "The rules and clues fix how many pieces the board has, at least and at most, and every area closed in by walls holds whole pieces. Added up, the areas leave this one room for only one piece, so all its tiles are one piece.",
   "slots": [],
@@ -6701,7 +6701,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13020
+   13049
   ],
   "text": "Boxy + Mismatch: every rectangle is used",
   "slots": [],
@@ -6714,7 +6714,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13020
+   13049
   ],
   "text": "Every piece is a different rectangle, and the board has exactly as many tiles as all the rectangles still possible put together. So each of those rectangles is used once, and each needs a place on the board.",
   "slots": [],
@@ -6727,7 +6727,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13021
+   13050
   ],
   "text": "Gemini and Delta: never the same two pieces",
   "slots": [],
@@ -6740,7 +6740,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13021
+   13050
   ],
   "text": "A Gemini wall has two pieces of the same shape on its sides and a Delta wall two pieces of different shapes, so a Gemini wall and a Delta wall are always between different pairs of pieces.",
   "slots": [],
@@ -6753,7 +6753,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13022
+   13051
   ],
   "text": "Size Separation: a place for the piece",
   "slots": [],
@@ -6766,7 +6766,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13022
+   13051
   ],
   "text": "Touching pieces always have different sizes. This piece has a known size, and the solver listed every place it can take where it touches no other piece of that size. They all agree on this edge.",
   "slots": [],
@@ -6779,7 +6779,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13023
+   13052
   ],
   "text": "Heterogeneous: a place for the piece",
   "slots": [],
@@ -6792,7 +6792,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13023
+   13052
   ],
   "text": "With Heterogeneous, touching pieces always have different sizes. This piece has a known size, and the solver listed every place it can take where it touches no other piece of that size. They all agree on this edge.",
   "slots": [],
@@ -6805,7 +6805,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13024
+   13053
   ],
   "text": "Area number: every place the piece fits",
   "slots": [],
@@ -6818,7 +6818,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13024
+   13053
   ],
   "text": "The solver listed every place where the piece of this area number still fits with its size. They all agree on this edge.",
   "slots": [],
@@ -6831,7 +6831,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13025
+   13054
   ],
   "text": "Size Separation: one size for every piece",
   "slots": [],
@@ -6844,7 +6844,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13025
+   13054
   ],
   "text": "Only one size is possible, and touching pieces always have different sizes, so no two pieces touch: every edge left is open.",
   "slots": [],
@@ -6857,7 +6857,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13026
+   13055
   ],
   "text": "Mingle Shape: one shape for every piece",
   "slots": [],
@@ -6870,7 +6870,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13026
+   13055
   ],
   "text": "Only one shape is possible, and touching pieces always have different shapes, so no two pieces touch: every edge left is open.",
   "slots": [],
@@ -6883,7 +6883,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13027
+   13056
   ],
   "text": "Heterogeneous: one size for every piece",
   "slots": [],
@@ -6896,7 +6896,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13027
+   13056
   ],
   "text": "Only one size is possible, and with Heterogeneous touching pieces always have different sizes, so no two pieces touch: every edge left is open.",
   "slots": [],
@@ -6909,7 +6909,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13028
+   13057
   ],
   "text": "Size Separation: never three walls at a corner",
   "slots": [],
@@ -6922,7 +6922,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13028
+   13057
   ],
   "text": "Only two sizes are possible and touching pieces have different sizes, so three pieces never meet at one corner: a corner never has exactly three walls. The walls already at this corner leave one choice.",
   "slots": [],
@@ -6935,7 +6935,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13029
+   13058
   ],
   "text": "Mingle Shape: never three walls at a corner",
   "slots": [],
@@ -6948,7 +6948,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13029
+   13058
   ],
   "text": "Only two shapes are possible and touching pieces have different shapes, so three pieces never meet at one corner: a corner never has exactly three walls. The walls already at this corner leave one choice.",
   "slots": [],
@@ -6961,7 +6961,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13030
+   13059
   ],
   "text": "Heterogeneous: never three walls at a corner",
   "slots": [],
@@ -6974,7 +6974,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13030
+   13059
   ],
   "text": "Only two sizes are possible and with Heterogeneous touching pieces have different sizes, so three pieces never meet at one corner: a corner never has exactly three walls. The walls already at this corner leave one choice.",
   "slots": [],
@@ -6987,7 +6987,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13031
+   13060
   ],
   "text": "Some of these tiles are already known to be in one piece, and some groups already have a wall between them somewhere else.",
   "slots": [],
@@ -7000,7 +7000,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13032
+   13061
   ],
   "text": "The solver listed every place where the polyomino's shape still fits. Edges outside all of them are walls; edges inside all of them are open.",
   "slots": [],
@@ -7013,7 +7013,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13033
+   13062
   ],
   "text": "The solver listed every placement of every bank shape (all turns and flips) that still fits around this group. Edges outside all of them are walls; edges inside all of them are open.",
   "slots": [],
@@ -7026,7 +7026,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13034
+   13063
   ],
   "text": "The board is held together here by a single connection, and only one choice for it leaves each side with a number of tiles whole pieces of the allowed sizes can cover.",
   "slots": [],
@@ -7039,7 +7039,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13035
+   13064
   ],
   "text": "Every piece has the same shape, and one shape is left. The solver listed every place it still fits around this group. Edges outside all of them are walls; edges inside all of them are open.",
   "slots": [],
@@ -7052,7 +7052,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13036
+   13065
   ],
   "text": "This group can only become one shape. The solver listed every place where that shape still fits. Edges outside all of them are walls; edges inside all of them are open.",
   "slots": [],
@@ -7065,7 +7065,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13037
+   13066
   ],
   "text": "Every piece is a rectangle. The solver listed every rectangle of an allowed size that holds this group's tiles. Edges outside all of them are walls; edges inside all of them are open.",
   "slots": [],
@@ -7078,8 +7078,8 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13038,
-   13039
+   13067,
+   13068
   ],
   "text": "The two pieces of a Gemini wall have the same shape, so a straight line in one has a twin of the same length in the other. The solver checked every place where the twin could still have a line that long, and the lengths left say where this line ends.",
   "slots": [],
@@ -7092,7 +7092,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13040
+   13069
   ],
   "text": "Both pieces of the Gemini wall have a closed straight line of the same length, and one of them has room for only that one. So the turn or mirror that copies one shape onto the other sends line onto line. Of those few ways, the ones that still fit after copying the known tiles across all agree on these edges.",
   "slots": [],
@@ -7105,7 +7105,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13041
+   13070
   ],
   "text": "The solver listed every piece that fits all the compass numbers, the size and the walls already decided. Tiles that none of them holds are cut off by walls; tiles that all of them hold are joined.",
   "slots": [],
@@ -7118,7 +7118,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13042
+   13071
   ],
   "text": "Match: one size for every piece",
   "slots": [],
@@ -7131,7 +7131,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13042
+   13071
   ],
   "text": "Every piece has the same shape, so the same size, and only some sizes still work for the whole board.",
   "slots": [],
@@ -7144,7 +7144,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13042
+   13071
   ],
   "text": "Every piece has the same shape, so the same size, and only some sizes still work for the whole board. Joined, these two groups would have a size outside those, so there is a wall between them.",
   "slots": [],
@@ -7157,7 +7157,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13043
+   13072
   ],
   "text": "Mismatch: enough different shapes",
   "slots": [],
@@ -7170,7 +7170,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13043
+   13072
   ],
   "text": "Every piece has a different shape, and each size has only so many shapes, so only some piece sizes still work for the whole board.",
   "slots": [],
@@ -7183,7 +7183,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13043
+   13072
   ],
   "text": "Every piece has a different shape, and each size has only so many shapes, so only some piece sizes still work for the whole board. Joined, these two groups would have a size outside those, so there is a wall between them.",
   "slots": [],
@@ -7196,7 +7196,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13044
+   13073
   ],
   "text": "Omits: never one of those shapes",
   "slots": [],
@@ -7209,7 +7209,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13044
+   13073
   ],
   "text": "Joined, these two groups would hold a shape of the Omits, so there is a wall between them.",
   "slots": [],
@@ -7222,7 +7222,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13045
+   13074
   ],
   "text": "Sizes that can fill the board",
   "slots": [],
@@ -7235,7 +7235,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   13045
+   13074
   ],
   "text": "Only some piece sizes can still cover the whole board. Joined, these two groups would have a size outside those, so there is a wall between them.",
   "slots": [],
@@ -7248,7 +7248,7 @@
   "kind": "message",
   "where": "STEP_WHY_EXTRA › size",
   "lines": [
-   13054
+   13083
   ],
   "text": "a piece would get a size the size rules do not allow",
   "slots": [],
@@ -7261,7 +7261,7 @@
   "kind": "message",
   "where": "STEP_WHY_EXTRA › wall-inside",
   "lines": [
-   13055
+   13084
   ],
   "text": "a wall would lie inside one piece",
   "slots": [],
@@ -7274,7 +7274,7 @@
   "kind": "message",
   "where": "STEP_WHY_EXTRA › forbidden",
   "lines": [
-   13056
+   13085
   ],
   "text": "two tiles that cannot share a piece would be joined",
   "slots": [],
@@ -7287,7 +7287,7 @@
   "kind": "message",
   "where": "STEP_WHY_EXTRA › no-exit",
   "lines": [
-   13057
+   13086
   ],
   "text": "a group that still has to grow would have no way out",
   "slots": [],
@@ -7300,7 +7300,7 @@
   "kind": "message",
   "where": "STEP_WHY_EXTRA › reach",
   "lines": [
-   13058
+   13087
   ],
   "text": "a group could not reach enough tiles to become a big enough piece",
   "slots": [],
@@ -7313,7 +7313,7 @@
   "kind": "message",
   "where": "STEP_WHY_EXTRA › min-reach",
   "lines": [
-   13059
+   13088
   ],
   "text": "a group could not reach the Minimum number of tiles",
   "slots": [],
@@ -7326,7 +7326,7 @@
   "kind": "message",
   "where": "STEP_WHY_EXTRA › compass",
   "lines": [
-   13060
+   13089
   ],
   "text": "a compass piece could not get all its numbers",
   "slots": [],
@@ -7339,7 +7339,7 @@
   "kind": "message",
   "where": "out › title",
   "lines": [
-   13258
+   13288
   ],
   "text": "{1} (part {2} of {3})",
   "slots": [
@@ -7356,7 +7356,7 @@
   "kind": "message",
   "where": "stepTexts",
   "lines": [
-   13260
+   13290
   ],
   "text": "Same deduction, continued",
   "slots": [],
@@ -7369,7 +7369,7 @@
   "kind": "message",
   "where": "stepTexts",
   "lines": [
-   13261
+   13291
   ],
   "text": "The same deduction as the step before also settles every edge round this piece, which finishes it.",
   "slots": [],
@@ -7382,7 +7382,7 @@
   "kind": "message",
   "where": "stepTexts",
   "lines": [
-   13262
+   13292
   ],
   "text": "The same deduction, applied again to what the steps before decided, also decides these edges.",
   "slots": [],
@@ -7395,7 +7395,7 @@
   "kind": "message",
   "where": "stepTexts",
   "lines": [
-   13263
+   13293
   ],
   "text": "The same deduction as the steps before also decides these remaining edges.",
   "slots": [],
@@ -7408,7 +7408,7 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13271
+   13301
   ],
   "text": "Start",
   "slots": [],
@@ -7421,7 +7421,7 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13271
+   13301
   ],
   "text": "The puzzle as given",
   "slots": [],
@@ -7434,7 +7434,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13272
+   13302
   ],
   "text": "Step through to see what the solver proves, one deduction at a time. Each step outlines the edges it decides. Teal bars are walls, blue links join two tiles of one piece, and tiles that share a colour are in one piece even before they touch. Everything proven here holds in every tiling.",
   "slots": [],
@@ -7447,7 +7447,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13273
+   13303
   ],
   "text": "For this puzzle the solver’s rules decide no edge on their own, so the last step does all the work with an exhaustive search.",
   "slots": [],
@@ -7460,7 +7460,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13279
+   13309
   ],
   "text": "same-piece link",
   "slots": [],
@@ -7473,7 +7473,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13279
+   13309
   ],
   "text": "same-piece links",
   "slots": [],
@@ -7486,7 +7486,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13279
+   13309
   ],
   "text": "edge already inside a joined group",
   "slots": [],
@@ -7499,7 +7499,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13279
+   13309
   ],
   "text": "edges already inside a joined group",
   "slots": [],
@@ -7512,7 +7512,7 @@
   "kind": "message",
   "where": "mark",
   "lines": [
-   13282
+   13312
   ],
   "text": "Every tile known to be in that piece now has the same colour.",
   "slots": [],
@@ -7525,7 +7525,7 @@
   "kind": "message",
   "where": "what",
   "lines": [
-   13284
+   13314
   ],
   "text": "one symbol",
   "slots": [],
@@ -7538,7 +7538,7 @@
   "kind": "message",
   "where": "what",
   "lines": [
-   13284
+   13314
   ],
   "text": "one rose of each type",
   "slots": [],
@@ -7551,7 +7551,7 @@
   "kind": "message",
   "where": "what",
   "lines": [
-   13284
+   13314
   ],
   "text": "one of the area numbers",
   "slots": [],
@@ -7564,10 +7564,11 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13285,
-   13288,
-   13290,
-   13331
+   13315,
+   13318,
+   13320,
+   13322,
+   13363
   ],
   "text": "Rule",
   "slots": [],
@@ -7580,8 +7581,8 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13285,
-   13527
+   13315,
+   13559
   ],
   "text": "Only one piece it can be in",
   "slots": [],
@@ -7594,7 +7595,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13286
+   13316
   ],
   "text": "Every piece holds exactly {1}. The ringed tiles have only one piece left they can belong to, so they are in that piece, even though they do not touch yet.{2}",
   "slots": [
@@ -7610,8 +7611,39 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13288,
-   13527
+   13318,
+   13559
+  ],
+  "text": "Two area numbers, one piece",
+  "slots": [],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T1225",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "stepTextsBase › text",
+  "lines": [
+   13319
+  ],
+  "text": "The ringed tiles carry the same area number, and the area closed in by walls round them has fewer tiles than two pieces of that size need. So they are one piece, even though they do not touch yet.{1}",
+  "slots": [
+   "mark"
+  ],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T1226",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "stepTextsBase › title",
+  "lines": [
+   13320,
+   13559
   ],
   "text": "The only way to connect",
   "slots": [],
@@ -7624,7 +7656,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13289
+   13321
   ],
   "text": "they belong",
   "slots": [],
@@ -7637,7 +7669,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13289
+   13321
   ],
   "text": "it belongs",
   "slots": [],
@@ -7650,7 +7682,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13289
+   13321
   ],
   "text": "The parts of one piece that do not touch yet still have to meet, and every way to connect them passes through the ringed tile{1}, so {2} to that piece.{3}",
   "slots": [
@@ -7667,9 +7699,9 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13290,
-   13292,
-   13527
+   13322,
+   13324,
+   13559
   ],
   "text": "Far apart, but one piece",
   "slots": [],
@@ -7682,7 +7714,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13291
+   13323
   ],
   "text": "The rule steps so far put the ringed tiles in one piece, even though they do not touch yet.{1}",
   "slots": [
@@ -7697,8 +7729,8 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13292,
-   13303
+   13324,
+   13335
   ],
   "text": "Checked by trying the other way",
   "slots": [],
@@ -7711,7 +7743,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13293
+   13325
   ],
   "text": "The ringed tiles are in one piece, even though they do not touch yet: the solver tried them in different pieces, and the rules could not all be met that way.{1}",
   "slots": [
@@ -7726,7 +7758,7 @@
   "kind": "message",
   "where": "title",
   "lines": [
-   13297
+   13329
   ],
   "text": "These two tiles are in one piece",
   "slots": [],
@@ -7739,7 +7771,7 @@
   "kind": "message",
   "where": "title",
   "lines": [
-   13297
+   13329
   ],
   "text": "There is a wall here",
   "slots": [],
@@ -7752,7 +7784,7 @@
   "kind": "message",
   "where": "concl",
   "lines": [
-   13298
+   13330
   ],
   "text": "The two tiles at the outlined edge are in one piece.",
   "slots": [],
@@ -7765,7 +7797,7 @@
   "kind": "message",
   "where": "concl",
   "lines": [
-   13298
+   13330
   ],
   "text": "There is a wall at the outlined edge.",
   "slots": [],
@@ -7778,7 +7810,7 @@
   "kind": "message",
   "where": "other",
   "lines": [
-   13299
+   13331
   ],
   "text": "a wall there",
   "slots": [],
@@ -7791,7 +7823,7 @@
   "kind": "message",
   "where": "other",
   "lines": [
-   13299
+   13331
   ],
   "text": "the two tiles in one piece",
   "slots": [],
@@ -7804,7 +7836,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13304
+   13336
   ],
   "text": "the rules could not all be met",
   "slots": [],
@@ -7817,7 +7849,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13304
+   13336
   ],
   "text": "{1} The solver tried {2} instead and found that {3}.",
   "slots": [
@@ -7834,7 +7866,7 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13306
+   13338
   ],
   "text": "Checked by search",
   "slots": [],
@@ -7847,7 +7879,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13307
+   13339
   ],
   "text": "{1} The solver tried every way to go on with {2} instead, and none of them works out. This is a brute-force check, so there is no short rule to quote.",
   "slots": [
@@ -7863,7 +7895,7 @@
   "kind": "message",
   "where": "stepTextsBase",
   "lines": [
-   13321
+   13353
   ],
   "text": "These tiles are in one piece: a wall here would break a rule ({1}).",
   "slots": [
@@ -7878,7 +7910,7 @@
   "kind": "message",
   "where": "stepTextsBase",
   "lines": [
-   13321
+   13353
   ],
   "text": "These tiles are in one piece.",
   "slots": [],
@@ -7891,7 +7923,7 @@
   "kind": "message",
   "where": "stepTextsBase",
   "lines": [
-   13322
+   13354
   ],
   "text": "There is a wall between these groups: joining them would break a rule ({1}).",
   "slots": [
@@ -7906,7 +7938,7 @@
   "kind": "message",
   "where": "stepTextsBase",
   "lines": [
-   13322
+   13354
   ],
   "text": "This follows from the rules already used.",
   "slots": [],
@@ -7919,7 +7951,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13326
+   13358
   ],
   "text": "open edge",
   "slots": [],
@@ -7932,7 +7964,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13326
+   13358
   ],
   "text": "open edges",
   "slots": [],
@@ -7945,7 +7977,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13326
+   13358
   ],
   "text": "This decides the outlined edges: {1} and {2}.",
   "slots": [
@@ -7961,7 +7993,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13327
+   13359
   ],
   "text": "So the outlined edge is a wall.",
   "slots": [],
@@ -7974,7 +8006,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13327
+   13359
   ],
   "text": "So the {1} outlined edges are walls.",
   "slots": [
@@ -7989,7 +8021,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13328
+   13360
   ],
   "text": "So the outlined edge is open: the two tiles are in one piece.",
   "slots": [],
@@ -8002,7 +8034,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13328
+   13360
   ],
   "text": "So the {1} outlined edges are open: their tiles are in one piece.",
   "slots": [
@@ -8017,7 +8049,7 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13331
+   13363
   ],
   "text": "Follows from the proof above",
   "slots": [],
@@ -8030,7 +8062,7 @@
   "kind": "message",
   "where": "makeFinalStep › kicker",
   "lines": [
-   13341
+   13373
   ],
   "text": "Solved",
   "slots": [],
@@ -8043,7 +8075,7 @@
   "kind": "message",
   "where": "makeFinalStep › title",
   "lines": [
-   13341
+   13373
   ],
   "text": "Every edge is decided",
   "slots": [],
@@ -8056,7 +8088,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13341
+   13373
   ],
   "text": "The rules above settled every edge, and the exact solver confirmed that no other tiling exists.",
   "slots": [],
@@ -8069,7 +8101,7 @@
   "kind": "message",
   "where": "makeFinalStep › kicker",
   "lines": [
-   13342
+   13374
   ],
   "text": "Exhaustive search",
   "slots": [],
@@ -8082,7 +8114,7 @@
   "kind": "message",
   "where": "makeFinalStep › title",
   "lines": [
-   13342
+   13374
   ],
   "text": "The rest is found by search",
   "slots": [],
@@ -8095,7 +8127,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13343
+   13375
   ],
   "text": "The rules above settle {1} of {2} edges. For the other {3} the solver switched to an exhaustive search of the remaining possibilities, and exactly one tiling survives (shown). Edges found by search are drawn in purple.",
   "slots": [
@@ -8112,7 +8144,7 @@
   "kind": "message",
   "where": "makeFinalStep › kicker",
   "lines": [
-   13345
+   13377
   ],
   "text": "Not unique",
   "slots": [],
@@ -8125,7 +8157,7 @@
   "kind": "message",
   "where": "makeFinalStep › title",
   "lines": [
-   13345
+   13377
   ],
   "text": "More than one tiling remains",
   "slots": [],
@@ -8138,7 +8170,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13346
+   13378
   ],
   "text": "at least",
   "slots": [],
@@ -8151,7 +8183,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13346
+   13378
   ],
   "text": "Everything above holds in every tiling. For the other {1} of {2} edges the rules could not decide and the solver found {3}two different tilings. They differ at the ringed tiles; switch between them below. Edges found by search are drawn in purple.",
   "slots": [
@@ -8168,8 +8200,8 @@
   "kind": "message",
   "where": "view › label",
   "lines": [
-   13434,
-   13456
+   13466,
+   13488
   ],
   "text": "Step {1} of {2}",
   "slots": [
@@ -8185,7 +8217,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13445
+   13477
   ],
   "text": "Final tiling{1}",
   "slots": [
@@ -8200,7 +8232,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13456
+   13488
   ],
   "text": "Start · {1} step{2}",
   "slots": [
@@ -8216,7 +8248,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13456
+   13488
   ],
   "text": "Result · step {1} of {2}",
   "slots": [
@@ -8232,7 +8264,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13463
+   13495
   ],
   "text": "Tiling A",
   "slots": [],
@@ -8245,7 +8277,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13463
+   13495
   ],
   "text": "Tiling B",
   "slots": [],
@@ -8258,7 +8290,7 @@
   "kind": "message",
   "where": "miniShapes",
   "lines": [
-   13501
+   13533
   ],
   "text": "shape of {1} tiles",
   "slots": [
@@ -8273,7 +8305,7 @@
   "kind": "message",
   "where": "exampleCard",
   "lines": [
-   13535
+   13567
   ],
   "text": "Here are {1} cases.",
   "slots": [
@@ -8288,8 +8320,8 @@
   "kind": "message",
   "where": "openExamplePop",
   "lines": [
-   13552,
-   13700
+   13584,
+   13732
   ],
   "text": "Close",
   "slots": [],
@@ -8302,7 +8334,7 @@
   "kind": "message",
   "where": "openExamplePop",
   "lines": [
-   13562
+   13594
   ],
   "text": "This example could not be drawn.",
   "slots": [],
@@ -8315,7 +8347,7 @@
   "kind": "message",
   "where": "openExamplePop",
   "lines": [
-   13564
+   13596
   ],
   "text": "A small example of every rule",
   "slots": [],
@@ -8328,7 +8360,7 @@
   "kind": "message",
   "where": "openExamplePop",
   "lines": [
-   13565
+   13597
   ],
   "text": "The outlined edges are the ones the rule decides.",
   "slots": [],
@@ -8341,7 +8373,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13740
+   13772
   ],
   "text": "Replaying the solver’s reasoning…",
   "slots": [],
@@ -8354,7 +8386,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13760
+   13792
   ],
   "text": "Replaying the solver’s reasoning… {1} of {2} edges decided",
   "slots": [
@@ -8370,7 +8402,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13767
+   13799
   ],
   "text": "Cancelled.",
   "slots": [],
@@ -8383,7 +8415,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13768
+   13800
   ],
   "text": "The replay stopped early: {1}",
   "slots": [
@@ -9946,9 +9978,23 @@
   "sec": "why",
   "area": "Why something is impossible",
   "kind": "message",
-  "where": "WHY_TEXT › area-region",
+  "where": "WHY_TEXT › area-pair",
   "lines": [
    2729
+  ],
+  "text": "two area numbers in one area closed in by walls need more tiles than the area has",
+  "slots": [],
+  "note": "Reason shown after \"Impossible:\" in the solver result and inside step-by-step explanations.",
+  "id": "T1224",
+  "isNew": true
+ },
+ {
+  "sec": "why",
+  "area": "Why something is impossible",
+  "kind": "message",
+  "where": "WHY_TEXT › area-region",
+  "lines": [
+   2730
   ],
   "text": "the numbered pieces of a region closed in by walls leave no other way",
   "slots": [],
@@ -9961,7 +10007,7 @@
   "kind": "message",
   "where": "WHY_TEXT › area-rel",
   "lines": [
-   2730
+   2731
   ],
   "text": "the walls that compare sizes leave a piece no size it can have",
   "slots": [],
@@ -9974,7 +10020,7 @@
   "kind": "message",
   "where": "WHY_TEXT › area-chain",
   "lines": [
-   2731
+   2732
   ],
   "text": "the pieces on a chain of walls that compare sizes need more tiles than their region has",
   "slots": [],
@@ -9987,7 +10033,7 @@
   "kind": "message",
   "where": "WHY_TEXT › area-parity",
   "lines": [
-   2732
+   2733
   ],
   "text": "the walls that differ by N need an odd and an even number of tiles on the same piece",
   "slots": [],
@@ -10000,7 +10046,7 @@
   "kind": "message",
   "where": "WHY_TEXT › size",
   "lines": [
-   2733
+   2734
   ],
   "text": "a piece can not have a size the size rules allow",
   "slots": [],
@@ -10013,7 +10059,7 @@
   "kind": "message",
   "where": "WHY_TEXT › wall-inside",
   "lines": [
-   2734
+   2735
   ],
   "text": "a wall runs inside one piece",
   "slots": [],
@@ -10026,7 +10072,7 @@
   "kind": "message",
   "where": "",
   "lines": [
-   2736
+   2737
   ],
   "text": "{1} (Heterogeneous: touching pieces differ in size too)",
   "slots": [
@@ -10041,7 +10087,7 @@
   "kind": "message",
   "where": "deduceSolve › reason",
   "lines": [
-   9682
+   9711
   ],
   "text": "contradictory walls",
   "slots": [],
@@ -10054,7 +10100,7 @@
   "kind": "message",
   "where": "deduceSolve › reason",
   "lines": [
-   11042
+   11071
   ],
   "text": "a deduction contradicted an earlier one{1}",
   "slots": [
@@ -12493,7 +12539,7 @@
   "kind": "message",
   "where": "setCustomRules",
   "lines": [
-   12208
+   12237
   ],
   "text": "Hide custom rules",
   "slots": [],
@@ -12506,7 +12552,7 @@
   "kind": "message",
   "where": "setCustomRules",
   "lines": [
-   12208
+   12237
   ],
   "text": "Show custom rules",
   "slots": [],
@@ -12519,7 +12565,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › basic.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Two tiles already known to be in different pieces have a wall between them.",
   "slots": [],
@@ -12532,7 +12578,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › size.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Two groups that are too big together get a wall between them.",
   "slots": [],
@@ -12545,7 +12591,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › grow.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A group that is still too small grows through its only way out.",
   "slots": [],
@@ -12558,7 +12604,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › reach.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A group joins the tiles it needs to reach an allowed size.",
   "slots": [],
@@ -12571,7 +12617,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › rose-grow.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A group that still misses a rose type grows through its only way out.",
   "slots": [],
@@ -12584,7 +12630,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › rose-reach.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A group goes the only way that leads to a rose it still misses.",
   "slots": [],
@@ -12597,7 +12643,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › rose-pair.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Two roses of the same type are in different pieces.",
   "slots": [],
@@ -12610,7 +12656,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › rose-cut.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "When roses are behind a narrow passage, each passage tile leads one piece to its roses.",
   "slots": [],
@@ -12623,7 +12669,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › stamp-place.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Edges outside every place the polyomino's shape fits are walls, edges inside all of them are open.",
   "slots": [],
@@ -12636,7 +12682,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › stamp-size.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A polyomino's piece is never bigger than its shape.",
   "slots": [],
@@ -12649,7 +12695,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › stamp-pair.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Two polyominoes of the same shape that one shape cannot cover are in different pieces.",
   "slots": [],
@@ -12662,7 +12708,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › shape-fit.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A group has to stay inside the polyomino's shape.",
   "slots": [],
@@ -12675,7 +12721,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › bank-fit.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A group has to stay inside one of the bank shapes.",
   "slots": [],
@@ -12688,7 +12734,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › ban-fit.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A group never becomes a shape of the Omits.",
   "slots": [],
@@ -12701,7 +12747,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › bank-place.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Edges outside every place a bank shape fits are walls, edges inside all of them are open.",
   "slots": [],
@@ -12714,7 +12760,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › bank-region.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A closed-in area can be cut into bank shapes in only one way.",
   "slots": [],
@@ -12727,7 +12773,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › bridge-count.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "At a single connection between two sides, only one choice leaves each side a number of tiles that whole pieces can cover.",
   "slots": [],
@@ -12740,7 +12786,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › area-sum.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "When the area numbers add up to every tile, each tile joins a numbered piece.",
   "slots": [],
@@ -12753,7 +12799,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › area-region.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "The area numbers of a closed-in area fit in it in only one way.",
   "slots": [],
@@ -12766,7 +12812,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › area-place.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Every place the numbered piece can take agrees on this edge.",
   "slots": [],
@@ -12779,7 +12825,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › area-rel.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A wall that compares sizes leaves only some sizes for the pieces on its two sides.",
   "slots": [],
@@ -12792,7 +12838,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › range-count.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Only some sizes can still fill the whole board, and these two groups together would have none of them.",
   "slots": [],
@@ -12805,7 +12851,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › range-region.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A closed-in area is cut into whole pieces of the allowed sizes in only one way.",
   "slots": [],
@@ -12818,7 +12864,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › euler-count.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "When only a few pieces are allowed, there are only so many walls.",
   "slots": [],
@@ -12831,7 +12877,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › colour-count.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "When only a few pieces are allowed, groups that cannot be different pieces are the same piece.",
   "slots": [],
@@ -12844,7 +12890,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › match-place.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Match, edges outside every place the one shape fits are walls, edges inside all of them are open.",
   "slots": [],
@@ -12857,7 +12903,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › match-region.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Match, a closed-in area with the size of one piece is one piece.",
   "slots": [],
@@ -12870,7 +12916,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › match-fit.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Match, one shape has to fit every group.",
   "slots": [],
@@ -12883,7 +12929,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › match-size.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Match, only some sizes can fill the whole board.",
   "slots": [],
@@ -12896,7 +12942,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › match-mismatch.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Match and Mismatch together leave one single piece.",
   "slots": [],
@@ -12909,7 +12955,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mismatch-place.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Mismatch, a group that can only become one shape follows the places that shape fits.",
   "slots": [],
@@ -12922,7 +12968,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mismatch-link.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Mismatch, two groups that can only become the same shape are one piece.",
   "slots": [],
@@ -12935,7 +12981,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mismatch-hall.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Mismatch, pieces that can only be a few shapes take them all, and the others lose those shapes.",
   "slots": [],
@@ -12948,7 +12994,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mismatch-count.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Mismatch, each size has only so many shapes, so only some sizes can fill the board.",
   "slots": [],
@@ -12961,7 +13007,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mingle-area-link.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Size Separation, two neighbours that must have the same size are one piece.",
   "slots": [],
@@ -12974,7 +13020,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mingle-shape-link.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Mingle Shape, two neighbours that must have the same shape are one piece.",
   "slots": [],
@@ -12987,7 +13033,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mingle-area-merge.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Size Separation, groups that end with different sizes are different pieces.",
   "slots": [],
@@ -13000,7 +13046,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mingle-shape-merge.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Mingle Shape, groups that end with different shapes are different pieces.",
   "slots": [],
@@ -13013,7 +13059,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mingle-area-parity.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Size Separation and only two sizes, the sizes alternate across every wall.",
   "slots": [],
@@ -13026,7 +13072,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mingle-shape-parity.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Mingle Shape and only two shapes, the shapes alternate across every wall.",
   "slots": [],
@@ -13039,7 +13085,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mingle-area-place.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Size Separation, a piece of known size only goes where it touches no piece of that size.",
   "slots": [],
@@ -13052,7 +13098,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mingle-area-single.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Size Separation and only one size possible, no two pieces can touch: the board is one piece.",
   "slots": [],
@@ -13065,7 +13111,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › mingle-shape-single.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Mingle Shape and only one shape possible, no two pieces can touch: the board is one piece.",
   "slots": [],
@@ -13078,7 +13124,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › solitude-grow.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Solitude, a group without a symbol grows through its only way out.",
   "slots": [],
@@ -13091,7 +13137,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › solitude-reach.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Solitude, a group goes the only way that leads to a symbol.",
   "slots": [],
@@ -13104,7 +13150,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › boxy-place.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Boxy, edges outside every rectangle that fits are walls, edges inside all of them are open.",
   "slots": [],
@@ -13117,7 +13163,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › boxy-line.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Boxy, a piece with a prime number of tiles is a straight strip.",
   "slots": [],
@@ -13130,7 +13176,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › boxy-corner.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Boxy, walls never bend at a corner.",
   "slots": [],
@@ -13143,7 +13189,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › boxy-fill.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Boxy, a piece fills the smallest rectangle around its tiles.",
   "slots": [],
@@ -13156,7 +13202,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › nonbox-grow.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Non-boxy, a group that is still a rectangle grows through its only way out.",
   "slots": [],
@@ -13169,7 +13215,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › pal-wall.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A palisade gets exactly its number of walls: this side has to be one.",
   "slots": [],
@@ -13182,7 +13228,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › pal-link.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A palisade gets exactly its number of walls: this side has to stay open.",
   "slots": [],
@@ -13195,7 +13241,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › pal-pair.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Two palisades side by side share a side, which counts for both.",
   "slots": [],
@@ -13208,7 +13254,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › pal-two.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "When only two pieces can exist, every wall has the same two pieces on its sides.",
   "slots": [],
@@ -13221,7 +13267,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › pal-size.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A palisade's open sides give its piece a smallest size.",
   "slots": [],
@@ -13234,7 +13280,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › wally-wall.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Wally, a tile never has three neighbours in its piece.",
   "slots": [],
@@ -13247,7 +13293,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › wally-link.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Wally, a tile keeps at most two neighbours in its piece, and here only one way is left.",
   "slots": [],
@@ -13260,7 +13306,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › wally-ends.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Wally, a piece is a path with two ends.",
   "slots": [],
@@ -13273,7 +13319,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › gemini-place.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Across a Gemini wall both sides keep the shapes they share; across a Delta wall they cannot end the same.",
   "slots": [],
@@ -13286,7 +13332,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › bri-three.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Bricky, four walls never meet at a corner: after three, the fourth edge is open.",
   "slots": [],
@@ -13299,7 +13345,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › bri-pinch.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Bricky, two tiles of one piece that touch at a corner are joined through a third tile.",
   "slots": [],
@@ -13312,7 +13358,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › loo-outline.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Loopy, no wall touches the outline.",
   "slots": [],
@@ -13325,7 +13371,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › loo-three.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Loopy, an even number of walls meets at every corner: after three, the fourth edge is a wall.",
   "slots": [],
@@ -13338,7 +13384,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › loo-corner.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Loopy, at a corner where a hole pokes in, the two other edges are both walls or both open.",
   "slots": [],
@@ -13351,7 +13397,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › loo-color.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Loopy, a wall changes the colour of a tile and an open edge keeps it.",
   "slots": [],
@@ -13364,7 +13410,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › tower-wall.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A watchtower counts the pieces around its corner: here the tiles have to be apart.",
   "slots": [],
@@ -13377,7 +13423,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › tower-link.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A watchtower counts the pieces around its corner: here the tiles have to be together.",
   "slots": [],
@@ -13390,7 +13436,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › tower-wrap.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A piece never wraps around a watchtower corner.",
   "slots": [],
@@ -13403,7 +13449,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › compass.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A compass piece goes the only way that gives it enough tiles on that side.",
   "slots": [],
@@ -13416,7 +13462,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › cmp-block.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A tile out of the compass piece's reach is cut off by a wall.",
   "slots": [],
@@ -13429,7 +13475,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › cmp-budget.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A compass number is exact, so the piece has only so many tiles to spend on its way to a rose.",
   "slots": [],
@@ -13442,7 +13488,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › cmp-wrap.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "The compass piece needs this tile to have enough tiles on one side.",
   "slots": [],
@@ -13455,7 +13501,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › cmp-place.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Tiles in every piece that fits the compass are joined, tiles in none of them are cut off.",
   "slots": [],
@@ -13468,7 +13514,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › cmp-crowd.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Several compasses share the tiles, and only one choice leaves enough for each.",
   "slots": [],
@@ -13481,7 +13527,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › cmp-excl.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A tile that breaks the compass numbers stays out of the piece.",
   "slots": [],
@@ -13494,7 +13540,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › cmp-box.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Boxy, a compass counts whole rows or columns of its rectangle.",
   "slots": [],
@@ -13507,7 +13553,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › diff-clash.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "A piece with two Difference walls of different numbers has two different neighbours.",
   "slots": [],
@@ -13520,7 +13566,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › diff-small.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Mismatch and a Maximum, Difference walls need small pieces, and there are only a few.",
   "slots": [],
@@ -13533,7 +13579,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › label.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Every tile belongs to the piece of one clue, and here only one clue is left for it.",
   "slots": [],
@@ -13546,7 +13592,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › box-hall.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Boxy and Mismatch, pieces that can only be a few rectangles take them all.",
   "slots": [],
@@ -13559,7 +13605,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › region-merge.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "In a closed-in area, the sizes the walls ask for fit only with these groups as one piece.",
   "slots": [],
@@ -13572,7 +13618,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › size-cut.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "When every piece has the same size, the tiles behind one narrow tile have to make whole pieces.",
   "slots": [],
@@ -13585,7 +13631,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › hetero-link.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Heterogeneous, two neighbours that must have the same size are one piece.",
   "slots": [],
@@ -13598,7 +13644,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › hetero-merge.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Heterogeneous, groups that end with different sizes are different pieces.",
   "slots": [],
@@ -13611,7 +13657,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › hetero-parity.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Heterogeneous and only two sizes, the sizes alternate across every wall.",
   "slots": [],
@@ -13624,7 +13670,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › hetero-place.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Heterogeneous, a piece of known size only goes where it touches no piece of that size.",
   "slots": [],
@@ -13637,7 +13683,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › hetero-single.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "With Heterogeneous and only one size possible, no two pieces can touch: the board is one piece.",
   "slots": [],
@@ -13650,7 +13696,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › fact:far-join.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Tiles that are far apart can be known to be in one piece before the way between them is known.",
   "slots": [],
@@ -13663,7 +13709,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › fact:label-join.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Tiles that can only belong to the same clue are one piece, even far apart.",
   "slots": [],
@@ -13676,7 +13722,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › fact:clue-join.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Two clues that cannot be in different pieces are in one piece.",
   "slots": [],
@@ -13689,7 +13735,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › fact:pair-join.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "Two groups that cannot be different pieces are one piece.",
   "slots": [],
@@ -13702,7 +13748,7 @@
   "kind": "message",
   "where": "RULE_EXAMPLES › fact:split-cut.d",
   "lines": [
-   13049
+   13078
   ],
   "text": "When only one way connects two tiles of a piece, that way is part of the piece.",
   "slots": [],
@@ -13715,7 +13761,7 @@
   "kind": "message",
   "where": "renderExampleCase › label",
   "lines": [
-   13492
+   13524
   ],
   "text": "Example",
   "slots": [],
@@ -13728,7 +13774,7 @@
   "kind": "message",
   "where": "FAMILY_NAMES › region",
   "lines": [
-   13521
+   13553
   ],
   "text": "Closed-in area count",
   "slots": [],
@@ -13741,7 +13787,7 @@
   "kind": "message",
   "where": "FAMILY_NAMES › place",
   "lines": [
-   13521
+   13553
   ],
   "text": "Placement",
   "slots": [],
@@ -13754,7 +13800,7 @@
   "kind": "message",
   "where": "FAMILY_NAMES › corner",
   "lines": [
-   13521
+   13553
   ],
   "text": "Corner pattern",
   "slots": [],
@@ -13767,7 +13813,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › size",
   "lines": [
-   13522
+   13554
   ],
   "text": "the sizes",
   "slots": [],
@@ -13780,7 +13826,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › minimum",
   "lines": [
-   13522
+   13554
   ],
   "text": "the Minimum",
   "slots": [],
@@ -13793,7 +13839,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › roses",
   "lines": [
-   13522
+   13554
   ],
   "text": "the roses",
   "slots": [],
@@ -13806,7 +13852,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › compasses",
   "lines": [
-   13523
+   13555
   ],
   "text": "the compasses",
   "slots": [],
@@ -13819,7 +13865,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › bank",
   "lines": [
-   13523
+   13555
   ],
   "text": "the shape bank",
   "slots": [],
@@ -13832,7 +13878,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › piece-count",
   "lines": [
-   13523
+   13555
   ],
   "text": "the number of pieces",
   "slots": [],
@@ -13845,7 +13891,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › region-count",
   "lines": [
-   13523
+   13555
   ],
   "text": "the rules of the area",
   "slots": [],
@@ -13858,7 +13904,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › area-numbers",
   "lines": [
-   13524
+   13556
   ],
   "text": "the area numbers",
   "slots": [],
@@ -13871,7 +13917,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › polyomino",
   "lines": [
-   13524
+   13556
   ],
   "text": "the polyomino",
   "slots": [],
@@ -13884,7 +13930,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › gemini",
   "lines": [
-   13524
+   13556
   ],
   "text": "Gemini",
   "slots": [],
@@ -13897,7 +13943,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › mingle-area",
   "lines": [
-   13524
+   13556
   ],
   "text": "Mingle Area",
   "slots": [],
@@ -13910,7 +13956,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › palisades",
   "lines": [
-   13525
+   13557
   ],
   "text": "the palisades",
   "slots": [],
@@ -13923,7 +13969,7 @@
   "kind": "message",
   "where": "familyTitle",
   "lines": [
-   13526
+   13558
   ],
   "text": "{1}, from {2}",
   "slots": [
@@ -13939,7 +13985,7 @@
   "kind": "message",
   "where": "first",
   "lines": [
-   13608
+   13640
   ],
   "text": "the ringed tiles in different pieces",
   "slots": [],
@@ -13952,7 +13998,7 @@
   "kind": "message",
   "where": "first",
   "lines": [
-   13608
+   13640
   ],
   "text": "a wall at the edge marked in red",
   "slots": [],
@@ -13965,7 +14011,7 @@
   "kind": "message",
   "where": "first",
   "lines": [
-   13608
+   13640
   ],
   "text": "the two tiles at the red mark in one piece",
   "slots": [],
@@ -13978,7 +14024,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13610
+   13642
   ],
   "text": "Case {1} of {2}.",
   "slots": [
@@ -13994,7 +14040,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13610
+   13642
   ],
   "text": "one more choice",
   "slots": [],
@@ -14007,7 +14053,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13610
+   13642
   ],
   "text": "{1} more choices",
   "slots": [
@@ -14022,7 +14068,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13610
+   13642
   ],
   "text": ", and {1} (marked the same way)",
   "slots": [
@@ -14037,7 +14083,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13610
+   13642
   ],
   "text": "{1}Tried: {2}{3}.",
   "slots": [
@@ -14054,8 +14100,8 @@
   "kind": "message",
   "where": "svg › label",
   "lines": [
-   13616,
-   13684
+   13648,
+   13716
   ],
   "text": "Case",
   "slots": [],
@@ -14068,7 +14114,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13622
+   13654
   ],
   "text": "From that, the rules decide the outlined edges:",
   "slots": [],
@@ -14081,7 +14127,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13626
+   13658
   ],
   "text": "and {1} more",
   "slots": [
@@ -14096,7 +14142,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13630
+   13662
   ],
   "text": "No rule is broken yet after these choices: the solver needed a longer search here.",
   "slots": [],
@@ -14109,7 +14155,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13633
+   13665
   ],
   "text": "This fails at the tiles ringed in red:",
   "slots": [],
@@ -14122,7 +14168,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13633
+   13665
   ],
   "text": "This fails:",
   "slots": [],
@@ -14135,8 +14181,8 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13634,
-   13667
+   13666,
+   13699
   ],
   "text": "the rules can not all be met",
   "slots": [],
@@ -14149,7 +14195,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13635
+   13667
   ],
   "text": "This is a count over the whole board, so there is no single place to mark.",
   "slots": [],
@@ -14162,14 +14208,13 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13639,
-   13642
+   13671,
+   13674
   ],
   "text": "Show more",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1211",
-  "isNew": true
+  "id": "T1211"
  },
  {
   "sec": "other",
@@ -14177,14 +14222,13 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13642,
-   13643
+   13674,
+   13675
   ],
   "text": "Show less",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1212",
-  "isNew": true
+  "id": "T1212"
  },
  {
   "sec": "other",
@@ -14192,13 +14236,12 @@
   "kind": "message",
   "where": "frames › title",
   "lines": [
-   13652
+   13684
   ],
   "text": "What was tried",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1213",
-  "isNew": true
+  "id": "T1213"
  },
  {
   "sec": "other",
@@ -14206,13 +14249,12 @@
   "kind": "message",
   "where": "frames › text",
   "lines": [
-   13652
+   13684
   ],
   "text": ", and the other marked choices",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1214",
-  "isNew": true
+  "id": "T1214"
  },
  {
   "sec": "other",
@@ -14220,15 +14262,14 @@
   "kind": "message",
   "where": "frames › text",
   "lines": [
-   13652
+   13684
   ],
   "text": "The solver tries the choice marked in red{1}, then lets the rules work from there.",
   "slots": [
    "c.assume.length > 1 ? ', and the other marked choices' : ''"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1215",
-  "isNew": true
+  "id": "T1215"
  },
  {
   "sec": "other",
@@ -14236,13 +14277,12 @@
   "kind": "message",
   "where": "caseWalk › title",
   "lines": [
-   13667
+   13699
   ],
   "text": "Impossible here",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1216",
-  "isNew": true
+  "id": "T1216"
  },
  {
   "sec": "other",
@@ -14250,13 +14290,12 @@
   "kind": "message",
   "where": "caseWalk › text",
   "lines": [
-   13667
+   13699
   ],
   "text": "At the tiles ringed in red,",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1217",
-  "isNew": true
+  "id": "T1217"
  },
  {
   "sec": "other",
@@ -14264,13 +14303,12 @@
   "kind": "message",
   "where": "caseWalk › text",
   "lines": [
-   13667
+   13699
   ],
   "text": "Now",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1218",
-  "isNew": true
+  "id": "T1218"
  },
  {
   "sec": "other",
@@ -14278,15 +14316,14 @@
   "kind": "message",
   "where": "caseWalk › text",
   "lines": [
-   13667
+   13699
   ],
   "text": "{1}. So the choice tried first is wrong.",
   "slots": [
    "(c.at ? 'At the tiles ringed in red, ' : 'Now ') + (why || 'the rules can not all be met')"
   ],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1219",
-  "isNew": true
+  "id": "T1219"
  },
  {
   "sec": "other",
@@ -14294,13 +14331,12 @@
   "kind": "message",
   "where": "caseWalk › title",
   "lines": [
-   13668
+   13700
   ],
   "text": "No rule is broken yet",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1220",
-  "isNew": true
+  "id": "T1220"
  },
  {
   "sec": "other",
@@ -14308,13 +14344,12 @@
   "kind": "message",
   "where": "caseWalk › text",
   "lines": [
-   13668
+   13700
   ],
   "text": "After these choices the rules still hold: the solver needed a longer search here.",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1221",
-  "isNew": true
+  "id": "T1221"
  },
  {
   "sec": "other",
@@ -14322,13 +14357,12 @@
   "kind": "message",
   "where": "caseWalk",
   "lines": [
-   13671
+   13703
   ],
   "text": "Previous step",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1222",
-  "isNew": true
+  "id": "T1222"
  },
  {
   "sec": "other",
@@ -14336,13 +14370,12 @@
   "kind": "message",
   "where": "caseWalk",
   "lines": [
-   13672
+   13704
   ],
   "text": "Next step",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1223",
-  "isNew": true
+  "id": "T1223"
  },
  {
   "sec": "other",
@@ -14350,7 +14383,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13701
+   13733
   ],
   "text": "What the solver tried, and why it fails",
   "slots": [],
@@ -14363,7 +14396,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13713
+   13745
   ],
   "text": "The cases could not be rebuilt for this step.",
   "slots": [],
@@ -14376,7 +14409,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13715
+   13747
   ],
   "text": "This step was proved by a longer search: trying the other value breaks no rule within a few choices, so there is no short list of cases to show.",
   "slots": [],
@@ -14389,7 +14422,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13716
+   13748
   ],
   "text": "One more way",
   "slots": [],
@@ -14402,7 +14435,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13716
+   13748
   ],
   "text": "{1} more ways",
   "slots": [
@@ -14417,7 +14450,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13716
+   13748
   ],
   "text": "that one",
   "slots": [],
@@ -14430,7 +14463,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13716
+   13748
   ],
   "text": "{1} to go on {2} no rule within a few choices: for {3} the solver needed a longer search. The cases below are the ones that fail.",
   "slots": [
@@ -14447,7 +14480,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13726
+   13758
   ],
   "text": "This step joins {1} pairs of tiles: the cases of the first three are shown.",
   "slots": [
@@ -14462,7 +14495,7 @@
   "kind": "message",
   "where": "FAST_SETUP_BAT",
   "lines": [
-   14308
+   14340
   ],
   "text": "@echo off rem Glimmith solver: one-click import setup (Windows). rem Makes the folder \"Glimmith puzzles\" next to this file, with two links (junctions) to the game's puzzle folders: rem downloaded = the puzzles you downloaded from the Steam workshop, made = the puzzles you made. rem Nothing is copied or moved. Deleting \"Glimmith puzzles\" deletes only the links. No administrator rights needed. setlocal set \"DEST=%~dp0Glimmith puzzles\" set \"STEAM=C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\4160210\" set \"OWN=%LOCALAPPDATA%\\Geri\\Saved\\workshop\" if not exist \"%DEST%\" mkdir \"%DEST%\" if exist \"%STEAM%\" if not exist \"%DEST%\\downloaded\" mklink /J \"%DEST%\\downloaded\" \"%STEAM%\" if not exist \"%STEAM%\" echo Not found: the workshop folder \"%STEAM%\". If Steam is somewhere else, change the STEAM line in this file. if exist \"%OWN%\" if not exist \"%DEST%\\made\" mklink /J \"%DEST%\\made\" \"%OWN%\" if not exist \"%OWN%\" echo Not found: your own puzzles folder \"%OWN%\". echo. echo Done. In the Glimmith solver, choose this folder once: \"%DEST%\" pause",
   "slots": [],
@@ -14475,7 +14508,7 @@
   "kind": "message",
   "where": "FAST_SETUP_SH",
   "lines": [
-   14309
+   14341
   ],
   "text": "#!/bin/sh # Glimmith solver: one-click import setup (Linux). # Makes the folder \"Glimmith puzzles\" next to this file, with two links (symbolic links) to the game's puzzle folders: # downloaded = the puzzles you downloaded from the Steam workshop, made = the puzzles you made. # Nothing is copied or moved. Deleting \"Glimmith puzzles\" deletes only the links. Run it with: sh glimmith-setup.sh # If Steam is somewhere else, put its folder first in the STEAMS line. STEAMS=\"$HOME/.local/share/Steam $HOME/.steam/steam $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam\" APP=4160210 DEST=\"$(cd \"$(dirname \"$0\")\" && pwd)/Glimmith puzzles\" mkdir -p \"$DEST\" link(){ # name, list of places: the first that exists name=\"$1\"; shift if [ -e \"$DEST/$name\" ]; then echo \"Already there: $DEST/$name\"; return; fi for p in \"$@\"; do if [ -d \"$p\" ]; then ln -s \"$p\" \"$DEST/$name\" && echo \"Linked $name -> $p\"; return; fi; done echo \"Not found: the $name puzzles (looked in: $*)\" } W=\"\"; O=\"\" for s in $STEAMS; do W=\"$W $s/steamapps/workshop/content/$APP\" O=\"$O $s/steamapps/compatdata/$APP/pfx/drive_c/users/steamuser/AppData/Local/Geri/Saved/workshop\" done link downloaded $W link made $O echo echo \"Done. In the Glimmith solver, choose this folder once: $DEST\"",
   "slots": [],

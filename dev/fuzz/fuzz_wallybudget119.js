@@ -2,7 +2,7 @@
 // Planted tilings that obey Wally (no tile with 3+ neighbours in its own piece), the number of pieces given as the maximum (so
 // the budget is often spent), some palisades from the planted tiling; every deduce event must agree with the planted tiling.
 //   node fuzz/fuzz_wallybudget119.js [N=300] [seed=1]
-const L = require('../fuzzlib.js'), S = require('../reference/solver-core.v121.js');
+const L = require('../fuzzlib.js'), S = require('../reference/solver-core.v122.js');
 const N = +process.argv[2] || 300, seed0 = +process.argv[3] || 1;
 const rng = s => () => { s = (s + 0x6D2B79F5) >>> 0; let t = s; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 let ran = 0, checked = 0, bad = 0, fired = 0;

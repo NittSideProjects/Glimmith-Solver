@@ -1,6 +1,6 @@
 // cores v111-v114 (refactoring steps 5-8): forced growth with Non-boxy, the box per tile (compasses, Boxy), the shared corner checks,
 // RULE_FAMILY. Synthetic planted boards only; each verdict is checked against the brute-force oracle.
-const L = require('../../fuzzlib.js'), O = require('../../oracle.js'), S = require('../../reference/solver-core.v121.js');
+const L = require('../../fuzzlib.js'), O = require('../../oracle.js'), S = require('../../reference/solver-core.v122.js');
 let pass = 0, fail = 0;
 const ok = (c, m) => { if(c) pass++; else { fail++; console.log('FAIL', m); } };
 const tags = new Set([...S.RULE_TAGS || [], 'grow', 'reach']);

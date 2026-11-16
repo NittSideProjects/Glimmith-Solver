@@ -5,7 +5,7 @@
 // holds in every tiling the exact search finds.
 // node tests/solver/test_tilesize105.js
 'use strict';
-const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v121.js'), L = require('../../fuzzlib.js');
+const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v122.js'), L = require('../../fuzzlib.js');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const board = i => L.plantedPuzzle(5000 + i, { w: 4 + (i % 3), h: 4 + (i % 2), maxPiece: 6, rich: true, clueP: 0.3, wallP: 0.1 });

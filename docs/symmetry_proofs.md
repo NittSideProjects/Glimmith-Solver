@@ -134,7 +134,19 @@ pieces. So either two neighbouring corners share a piece (band case), or the fou
      (a square): the four pieces are the four quarters.
    - One side M or T (say the top: A in the left half, B in the right half), the other three R: D = rho^3 A and C = rho^3 D =
      sigma A, which lies in the right half with B: B u C is the right half: two halves.
-6. OPEN: a side whose only motions are of the odd types W1-W4. (Type W1 with A's height h <= n/2: B fills column n - h from
+6. Box sizes. Let W >= H be the sides of the shape's box (every box is W x H or H x W, placed in its own corner).
+   - W <= n/2: W H >= n^2/4 forces W = H = n/2 and full squares: the four quarters.
+   - W > n/2 >= H: each piece is lying (W wide, H tall) or standing. Two pieces on one side that are both short along it have
+     runs <= H <= n/2 adding up to n, so H = n/2.
+     * All lying: A, B lie in rows < H <= n/2 and C, D in rows >= n/2: two halves. All standing: the same across.
+     * A, B lying, C, D standing: if H < n/2, the tile (n/2, n/2) is in no box (A, B: rows < H; C: columns >= n - H > n/2;
+       D: columns < H). So H = n/2, A, B are in the top half, and the bottom half is covered by C, D: two halves.
+     * One lying (A), three standing: the same tile gives H = n/2; then the lower-left quarter can only hold D, which is
+       then that n/2 x n/2 square, not a W x n/2 shape: impossible. Three lying, one standing: the same.
+     * A, C lying, B, D standing (pinwheel): the same tile gives H = n/2, so A is in the top half, B in the right half, C in
+       the bottom half, D in the left half; each piece has the same number of tiles in its own quarter. OPEN.
+   - H > n/2: every box contains the centre 2 x 2. OPEN.
+7. OPEN: a side whose only motions are of the odd types W1-W4 (within the two open box cases above). (Type W1 with A's height h <= n/2: B fills column n - h from
    the top to row n - h - 1, which walls A into an (n - h) x h box; area gives h = n/2 and A is a quarter: the four quarters.)
    In every enumerated tiling the odd types occur only when the piece has a symmetry of its own, and then an R motion also
    exists. Computer evidence (SAT, full

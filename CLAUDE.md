@@ -101,7 +101,7 @@ explanation and up to four tiny synthetic boards. The author's rules for them: a
 (area numbers and plain walls are the only helpers), is as small as possible, is possible in the game (one clue per tile), and a rule
 with several kinds of cases gets several tiny boards rather than one big one. The pop-up names only what the board cannot show (rules
 that are on, shape bank, Omits). Rules and boards are numbered (rule 12, boards 12.1, 12.2): the author refers to them
-by number, and the number is the rule's place in `dev/tools/examples/lines.json`, so it moves when a rule gains or loses its examples. 
+by number, and the number is the rule's place in the page's `RULE_EXAMPLES` (`exampleNumber`; not the line in `dev/tools/examples/lines.json`), so it moves when a rule gains or loses its examples. Which ones he approved, and which are left to review, is kept in `TODO.md`. 
 The author reviews the examples by number and sends remarks ("12.1: too small", "use my puzzle, step 2"). Those choices live in
 `dev/tools/examples/curated.json` (a hand-made or author-sent puzzle with the step to show, or edges of earlier steps to leave out of
 the picture) and win over the generated boards; `find.js` searches for a board under such conditions (bigger board, polyominoes of

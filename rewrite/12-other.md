@@ -2,7 +2,7 @@
 
 Messages that are not tied to one place on the page.
 
-Left here: 135 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 0.
+Left here: 146 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 2.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -630,6 +630,71 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
 - now: This is a count over the whole board, so there is no single place to mark.
 - new: 
+
+### T1211
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: Show more
+- new: 
+
+### T1212
+- what: message · caseCard · Built by the page while it runs, so it only shows in some situations.
+- now: Show less
+- new: 
+
+### T1213
+- what: message · frames › title · Built by the page while it runs, so it only shows in some situations.
+- now: What was tried
+- new: 
+
+### T1214
+- what: message · frames › text · Built by the page while it runs, so it only shows in some situations.
+- now: , and the other marked choices
+- new: 
+
+### T1215
+- what: message · frames › text · Built by the page while it runs, so it only shows in some situations.
+- now: The solver tries the choice marked in red{1}, then lets the rules work from there.
+- new: 
+
+### T1216
+- what: message · caseWalk › title · Built by the page while it runs, so it only shows in some situations.
+- now: Impossible here
+- new: 
+
+### T1217
+- what: message · caseWalk › text · Built by the page while it runs, so it only shows in some situations.
+- now: At the tiles ringed in red,
+- new: 
+
+### T1218
+- what: message · caseWalk › text · Built by the page while it runs, so it only shows in some situations.
+- now: Now
+- new: 
+
+### T1219
+- what: message · caseWalk › text · Built by the page while it runs, so it only shows in some situations.
+- now: {1}. So the choice tried first is wrong.
+- new: 
+
+### T1220
+- what: message · caseWalk › title · Built by the page while it runs, so it only shows in some situations.
+- now: No rule is broken yet
+- new: 
+
+### T1221
+- what: message · caseWalk › text · Built by the page while it runs, so it only shows in some situations.
+- now: After these choices the rules still hold: the solver needed a longer search here.
+- new: 
+
+### T1222
+- what: message · caseWalk · Built by the page while it runs, so it only shows in some situations.
+- now: Previous step
+- new: =
+
+### T1223
+- what: message · caseWalk · Built by the page while it runs, so it only shows in some situations.
+- now: Next step
+- new: =
 
 ### T1152
 - what: message · openCasesPop · Built by the page while it runs, so it only shows in some situations.

@@ -5,8 +5,8 @@ rewrite page, https://claude.ai/artifact/8zkhz8jRG1qYJM5ET2k6e2 (private), not h
 Claude refreshes whenever it works on texts (`dev/tools/rewrites/repo.js`, see `dev/tools/rewrites/README.md`): they keep the
 answers in the repository and give the count below. A change made by hand in these files is lost at the next refresh.
 
-**Left before V1.1: 653** (638 to write, 5 to check again, 4 notes for Claude, 6 written but not on the page yet).
-Done: 360 of 1013. The rewrite page lists fewer: it leaves out the notes for Claude.
+**Left before V1.1: 664** (649 to write, 5 to check again, 4 notes for Claude, 6 written but not on the page yet).
+Done: 362 of 1026. The rewrite page lists fewer: it leaves out the notes for Claude.
 
 | Part of the page | To write | To check again | Notes | To put on the page | Done |
 |---|---|---|---|---|---|
@@ -21,7 +21,7 @@ Done: 360 of 1013. The rewrite page lists fewer: it leaves out the notes for Cla
 | [Why something is impossible](09-why.md) | 115 | 0 | 0 | 0 | 13 |
 | [Rule explanations (bottom of the page)](10-footer.md) | 50 | 0 | 0 | 5 | 91 |
 | [Custom rules button](11-custom.md) | 0 | 0 | 0 | 0 | 3 |
-| [Other messages](12-other.md) | 135 | 0 | 0 | 0 | 0 |
+| [Other messages](12-other.md) | 146 | 0 | 0 | 0 | 2 |
 
 ## How to read an entry
 

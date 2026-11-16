@@ -44,7 +44,15 @@ line through c, and nu maps that half to itself: sigma(A) = mirror(nu(A)) = mirr
 ### Quarter turn about q
 q = c: then rho^2 = sigma, and from A u rho(A) = R = sigma(R) = rho^2(A) u rho^3(A) with rho^2(A) disjoint from rho(A) we get
 rho^2(A) = A, i.e. sigma(A) = A: impossible by Lemma 0.
-q != c: OPEN. Counting alone can not decide it: there are counterexamples when A may be disconnected (e.g. A = {(1,0),(1,1),
+q != c: OPEN. What is known:
+- If the claim holds here, then B = sigma(A) = rho(A), so A = psi(A) with psi = sigma*rho, a quarter turn about another point:
+  the case to exclude is "A ⊔ rho(A) half-turn symmetric about c != q, A connected, A without quarter-turn symmetry".
+- Extreme tiles: take any direction theta and the board's extreme tile in theta, theta+90, theta+180, theta+270. Each lies in
+  A or in B. The pattern A,B,A,B (or B,A,B,A) is impossible: it gives rho(t) = rho'(t) for one tile t, rho and rho' quarter turns
+  about q and 2c - q, which differ by a non-zero shift. The other patterns only say that A's extreme tiles (its outline) behave
+  as if A were quarter-turn symmetric, which does not yet give A = psi(A).
+- Exhaustive check (not a proof): every connected piece A up to 11 tiles (185,416 polyominoes), every quarter turn putting rho(A)
+  next to A: 5,276,488 placements, 136 give a half-turn symmetric board, none is a counterexample. Counting alone can not decide it: there are counterexamples when A may be disconnected (e.g. A = {(1,0),(1,1),
 (2,1),(0,2)} turned a quarter about (0.5,1.5)); with connected pieces none was found (brute force, all small boards, and about
 307,000 two-piece tilings of random half-turn symmetric boards up to 26 tiles).
 

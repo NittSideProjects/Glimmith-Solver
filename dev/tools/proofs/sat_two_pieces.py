@@ -6,13 +6,15 @@ Proved by hand for every motion A -> B except a quarter turn rho about a point q
 exhaustively for boards up to W x W: it looks for A with
   * A and B = rho(A) disjoint, both inside the W x W window centred on c,
   * R = A u B half-turn symmetric about c,
-  * A connected (lazily: a disconnected answer adds a separator clause and the solver is asked again),
+  * A connected (lazily: a disconnected answer adds a separator clause and the solver is asked again; after 200 such rounds
+    the case switches to an exact encoding: one root tile in A, reachability layers, every tile of A reached),
   * B != sigma(A).
 UNSAT for every c (4 classes up to a shift) and every q != c means: no counterexample on boards up to W x W.
 Coordinates are doubled: tile centres are (even, even).
 Usage: python3 sat_two_pieces.py W [--no-connect]"""
 import sys, time
 from pysat.solvers import Cadical153
+from pysat.card import CardEnc, EncType
 
 W = int(sys.argv[1]); CONNECT = '--no-connect' not in sys.argv; FORCE = None
 
@@ -74,6 +76,22 @@ def solve(cx, cy, qx, qy):
             comps.append(comp)
         if len(comps) == 1: s.delete(); return A, rounds
         rounds += 1
+        if rounds == 200:                                         # exact connectivity: root + reachability layers
+            rt = {z: new() for z in cells}
+            s.add_clause(list(rt.values()))
+            for cl in CardEnc.atmost(lits=list(rt.values()), bound=1, top_id=nv, encoding=EncType.seqcounter).clauses:
+                s.add_clause(cl); nv = max(nv, max(abs(l) for l in cl))
+            for z in cells: s.add_clause([-rt[z], idx[z]])
+            prev = rt
+            for _ in range(len(cells) // 2):
+                cur = {z: new() for z in cells}
+                for z in cells:
+                    x, y = z
+                    nb = [prev[w] for w in ((x + 2, y), (x - 2, y), (x, y + 2), (x, y - 2)) if w in prev]
+                    s.add_clause([-cur[z], idx[z]]); s.add_clause([-cur[z], prev[z]] + nb)
+                prev = cur
+            for z in cells: s.add_clause([-idx[z], prev[z]])
+            continue
         for i, C in enumerate(comps):                             # separator clauses: x in C, w in another part
             Cs = set(C); N = set()
             for (x, y) in C:

@@ -60,7 +60,7 @@ q != c: OPEN. What is known:
 ## half-turn symmetric about its own centre.
 
 Status: proved when two neighbouring corners are in one piece (the band case) and, in the four-corner case, when the motions
-match the corners; the rest of the four-corner case is open by hand (checked by computer up to 12 x 12, see below). Boards
+match the corners; the rest of the four-corner case is open by hand (checked by computer up to 16 x 16, see below). Boards
 with holes are not covered (the argument uses the four corner tiles). False on non-square boards: a 4x3 rectangle cut into
 four straight 3-tile pieces (three across, one down the right edge) is neither (it only has an up-down mirror).
 
@@ -121,7 +121,9 @@ pieces. So either two neighbouring corners share a piece (band case), or the fou
    so A u B = rows 0..h-1 = the top half. Two halves.
 5. OPEN: the other ways a motion can send another box corner of A to B's (or C's, D's) corner. Computer evidence (SAT, full
    square, four corners in four pieces, looking for a tiling that is neither two halves nor half-turn symmetric):
-   UNSAT for n = 4, 6, 8, 10, 12 (12: 227 s; dev/tools/proofs/sat_four_corner_case.py). Enumerating every four-corner tiling (13, 107, 2055 for
+   UNSAT for n = 4, 6, 8, 10, 12 (12: 227 s; dev/tools/proofs/sat_four_corner_case.py). Only the open part, with the proved
+   facts added (boxes smaller than n, border runs) and exact connectivity layers (dev/tools/proofs/sat_four_corner_open.py):
+   UNSAT for n = 4 to 16 (14: 20 s, 16: 120 s). Enumerating every four-corner tiling (13, 107, 2055 for
    n = 4, 6, 8): each is two halves or quarter-turn symmetric. The odd corner matchings (a diagonal mirror, or A's lower-right
    box corner) only occur when the piece has a symmetry of its own, and then a matching motion also exists.
 

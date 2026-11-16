@@ -8,18 +8,9 @@ notes become a priority order for the rules (in the step-by-step, and in the sol
 Notes so far:
 - Done in V1.0.43: "known to be different" before a watchtower wall (the watchtower took the credit); two equal area numbers that do
   not fit side by side in a closed-in area before trying the other way (new step "Two area numbers, one piece").
-- Open: a Match puzzle with a symmetric board (12x12, four pieces of 35 tiles) takes more than 15 minutes. The author's idea "the
-  solution is rotation- or mirror-symmetric" is not sound in general (its clues are not symmetric, and equal pieces can tile a
-  symmetric board without symmetry). Sound options: when the WHOLE puzzle (board, walls, clues) is symmetric, copy every proven edge to
-  its mirror image; for Match, use the four-piece structure (placements of one shape) more strongly. To look into.
-- Symmetry checked by brute force (every tiling of small symmetric boards by equal pieces):
-  * 6 or more equal pieces: tilings with no symmetry at all exist (6x4 board, six L tetrominoes: 36 of 47 tilings).
-  * 4 equal pieces: NOT "quarter-turn or a mirror": many tilings have only the half turn (6x6, four pieces of 9: 44 of 139), and some
-    have no symmetry at all (8x4, four pieces of 8: 40 of 98).
-  * 2 equal pieces on a board with half-turn symmetry: every tiling found is half-turn symmetric (all small boards, plus ~37,000
-    random boards up to 26 tiles, ~307,000 tilings). Not proved. Options: a hard rule (copy each clue to its half-turned spot; wrong
-    if the claim ever fails), a search order only (symmetric solutions first; always correct), or the hard rule plus a final check.
-    Waiting for the author's choice.
+- Open: a Match puzzle with a symmetric board (12x12, four pieces of 35 tiles) takes more than 15 minutes. The symmetry idea was
+  dropped (not sound in general). Plan: a SAT final search for Match, after the deduction steps (idea from
+  https://github.com/ham883/glimmith-solver: one case per piece size, every piece = a motion of piece 0, clause learning).
 
 **Reminder:** bring this up when the author asks what to add next, and before any V1.1: it is not done yet.
 

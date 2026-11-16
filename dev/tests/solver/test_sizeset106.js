@@ -5,7 +5,7 @@
 // and every decision holds in every tiling the exact search finds.
 // node tests/solver/test_sizeset106.js
 'use strict';
-const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v122.js'), L = require('../../fuzzlib.js');
+const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v123.js'), L = require('../../fuzzlib.js');
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 const RULES = { precision: null, min: null, max: null, mismatch: false, match: false, mingleShape: false, mingleArea: false, solitude: false, boxy: false, nonBoxy: false };

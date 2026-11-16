@@ -269,5 +269,15 @@
    "T1165",
    "<b>Two colors.</b> Since no corner has exactly three walls (a T), so every corner has 0, 2 or 4 walls. This also makes the final puzzle 2 colorable, with the outside being one of them."
   ]
+ ],
+ "V1_0_44": [
+  [
+   "T0010",
+   "Special thanks to ham for ideas as well as making the SAT solver, which this solver uses for match puzzles."
+  ],
+  [
+   "T0012",
+   "This project was made with the assistance of AI. While I did have a significant impact on the final product, if you prefer to stay away from AI in general I recommend ham's SAT solver, which you can find online (<a>https://github.com/ham883/glimmith-solver</a>)."
+  ]
  ]
 }

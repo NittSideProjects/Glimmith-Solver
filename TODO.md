@@ -8,9 +8,8 @@ notes become a priority order for the rules (in the step-by-step, and in the sol
 Notes so far:
 - Done in V1.0.43: "known to be different" before a watchtower wall (the watchtower took the credit); two equal area numbers that do
   not fit side by side in a closed-in area before trying the other way (new step "Two area numbers, one piece").
-- Open: a Match puzzle with a symmetric board (12x12, four pieces of 35 tiles) takes more than 15 minutes. The symmetry idea was
-  dropped (not sound in general). Plan: a SAT final search for Match, after the deduction steps (idea from
-  https://github.com/ham883/glimmith-solver: one case per piece size, every piece = a motion of piece 0, clause learning).
+- Done in V1.0.44: Match puzzles get a SAT final search after the deduction steps (idea from https://github.com/ham883/glimmith-solver).
+  The author's 12x12 Match puzzle (four pieces of 35 tiles, 8 solutions) went from more than 15 minutes to about 25 s.
 
 **Reminder:** bring this up when the author asks what to add next, and before any V1.1: it is not done yet.
 

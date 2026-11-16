@@ -13,7 +13,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T0010
 - what: text · #creditsDialog · In the Credits window (opens with the Credits button).
-- now: Special thanks to ham for ideas as well as making the SAT solver
+- now: Special thanks to ham for ideas as well as making the SAT solver, which this solver uses for match puzzles.
 - new: Special thanks to ham for ideas as well as making the SAT solver
 
 ### T0011
@@ -22,8 +22,8 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - new: Special thanks to the creators of the Artisan of Glimmith for making such an amazing game!
 
 ### T0012
-- what: text · #creditsDialog · In the Credits window (opens with the Credits button).
-- now: This project was made with the assistance of AI. While I did have a significant impact on the final product, if you prefer to stay away from AI in general I recommend ham's SAT solver, which you can find online.
+- what: text (keep the <b>/<i> tags or drop them) · #creditsDialog · In the Credits window (opens with the Credits button).
+- now: This project was made with the assistance of AI. While I did have a significant impact on the final product, if you prefer to stay away from AI in general I recommend ham's SAT solver, which you can find online (<a>https://github.com/ham883/glimmith-solver</a>).
 - new: =
 
 ### T0013

@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.43.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.44.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -11,6 +11,20 @@ is sent anywhere.
 * **Fast import** reads all your puzzles in one click. Set it up once: the Fast import box gives a small setup file (Windows or Linux)
   that makes a folder `Glimmith puzzles` of links to the game's puzzle folders; choose that folder once.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.44
+
+A SAT final search for Match (core v123; the idea comes from ham's solver, https://github.com/ham883/glimmith-solver):
+- The deduction steps run as before, so the step-by-step shows the same steps. When they stop on a Match puzzle, the exact final
+  search is now a SAT search (a small solver written into the page, no library, no network) instead of the piece search, which had
+  to guess a whole first piece. One case per piece size; every piece is the first piece moved by one of the 8 orientations; the
+  proved walls and links, palisades and area numbers are part of the problem; every tiling found is checked by the full rule checker
+  (one that breaks any rule is thrown out and the search goes on). On a Match puzzle the author sent (four pieces of 35 tiles,
+  8 solutions) the final search takes about 25 s instead of more than 15 minutes.
+- Boards cut into very many small pieces keep the old final search (the SAT problem would be too big).
+- New credits.
+Checked by `dev/tests/solver/test_matchsat123.js`, `dev/fuzz/fuzz_matchsat123.js` (every solution compared with the old final search,
+the exact search and the independent oracle) and the Match fuzzers.
 
 ## V1.0.43
 
@@ -412,7 +426,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.43.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.44.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |

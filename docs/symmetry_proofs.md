@@ -119,7 +119,25 @@ pieces. So either two neighbouring corners share a piece (band case), or the fou
 4. A half turn sending A's lower-left box corner to TR (A's left run is its full height h): then A and B lie in rows < h, and
    row h - 1 is A's bottom run [0, n - a) plus B's image of A's top run [n - a, n): a full row of A u B. C and D lie below it,
    so A u B = rows 0..h-1 = the top half. Two halves.
-5. OPEN: the other ways a motion can send another box corner of A to B's (or C's, D's) corner. Computer evidence (SAT, full
+5. Side types. For two pieces X, Y at neighbouring corners (Y next clockwise; picture turned so X is A at TL and Y is B at TR),
+   a motion X -> Y sends Y's corner tile to a box corner k of X that is in X and whose two box edges meet X in runs from k.
+   Its type: R (k = TL, rho), M (k = TL, mirror nu), H (k = lower-left, half turn: step 4), T (k = upper-right, shift: then X's
+   top run is its full width w, Y = X shifted by n - w, and Y's top run [w, n) gives w = n/2), and four odd types W1-W4 (k =
+   lower-left with a diagonal mirror, k = upper-right with a diagonal mirror, k = lower-right with an up-down mirror or a
+   quarter turn). M and T put X and Y on the two sides of the middle line across that side (mirror lemma / X in the first
+   n/2 columns).
+   Lemma: if every side has a motion of type R, M, T or H, the tiling is quarter-turn symmetric or two halves.
+   - A side of type H: two halves.
+   - All four R: B = rho A, C = rho B, D = rho C: quarter-turn symmetric.
+   - M or T on two opposite sides: the pieces stay on their side of one middle line: two halves.
+   - M or T on two neighbouring sides: the piece they share lies in one quarter, has n^2/4 tiles, so it is that quarter
+     (a square): the four pieces are the four quarters.
+   - One side M or T (say the top: A in the left half, B in the right half), the other three R: D = rho^3 A and C = rho^3 D =
+     sigma A, which lies in the right half with B: B u C is the right half: two halves.
+6. OPEN: a side whose only motions are of the odd types W1-W4. (Type W1 with A's height h <= n/2: B fills column n - h from
+   the top to row n - h - 1, which walls A into an (n - h) x h box; area gives h = n/2 and A is a quarter: the four quarters.)
+   In every enumerated tiling the odd types occur only when the piece has a symmetry of its own, and then an R motion also
+   exists. Computer evidence (SAT, full
    square, four corners in four pieces, looking for a tiling that is neither two halves nor half-turn symmetric):
    UNSAT for n = 4, 6, 8, 10, 12 (12: 227 s; dev/tools/proofs/sat_four_corner_case.py). Only the open part, with the proved
    facts added (boxes smaller than n, border runs) and exact connectivity layers (dev/tools/proofs/sat_four_corner_open.py):

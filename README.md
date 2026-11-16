@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.44.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.45.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -11,6 +11,14 @@ is sent anywhere.
 * **Fast import** reads all your puzzles in one click. Set it up once: the Fast import box gives a small setup file (Windows or Linux)
   that makes a folder `Glimmith puzzles` of links to the game's puzzle folders; choose that folder once.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.45
+
+A speed fix found by the full base-game run (core v124). Propagation runs passes until nothing changes. Since core v108, a trial
+inside a pass (assume a join, propagate, undo it) could leave behind the flag that says "a tile's sizes or shapes changed", so the
+pass looked changed although nothing outside the trial was, and propagation ran its cap of 1000 passes. On a base-game compass
+puzzle the first propagation took 7.9 s instead of 0.08 s. The flag is now saved and restored with the rest of the state. Only
+the passes that changed nothing are gone (checked on the fuzzers and the full base-game run).
 
 ## V1.0.44
 
@@ -426,7 +434,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.44.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.45.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |

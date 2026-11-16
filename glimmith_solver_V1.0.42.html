@@ -13220,7 +13220,8 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   function markGroupColors(list){
     const par = new Map(), grp = new Map(), held = new Array(GROUP_COLORS.length).fill(0); let born = 0;
     const find = k => { let r = k; while(par.has(r) && par.get(r) !== r) r = par.get(r); let c = k; while(par.has(c) && par.get(c) !== r){ const n = par.get(c); par.set(c, r); c = n; } return r; };
-    const take = () => { let best = 0; for(let i = 0; i < held.length; i++){ if(!held[i]) return i; if(held[i] < held[best]) best = i; } return best; };
+    let turn = -1;                                                       // V1.0.42: colours in turn, not always the first free one
+    const take = () => { let best = -1; for(let s = 1; s <= held.length; s++){ const i = (turn + s) % held.length; if(!held[i]){ turn = i; return i; } if(best < 0 || held[i] < held[best]) best = i; } turn = best; return best; };
     const join = (a, b, birth) => {
       const ra = find(a), rb = find(b);
       if(ra === rb) return;

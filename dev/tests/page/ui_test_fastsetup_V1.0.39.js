@@ -1,9 +1,9 @@
 // V1.0.38 / V1.0.39: Fast import's one-click setup, the only way since V1.0.39. (1) the setup file: glimmith-setup.bat, made next to where it runs, CRLF, junctions only;
 // (2) one folder holding both (the folder of links): chosen once, both kinds of puzzles in one click; (3) a browser that can not
 // remember folders does not see the setup (it could not use it).
-// node ui_test_fastsetup_V1.0.39.js ../glimmith_solver_V1.0.41.html   (needs fixtures/folders.zip and the unzip command)
+// node ui_test_fastsetup_V1.0.39.js ../glimmith_solver_V1.0.42.html   (needs fixtures/folders.zip and the unzip command)
 const { JSDOM } = require('jsdom'); const fs = require('fs'), path = require('path'), cp = require('child_process'), os = require('os');
-const file = process.argv[2] || '../glimmith_solver_V1.0.41.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.42.html';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

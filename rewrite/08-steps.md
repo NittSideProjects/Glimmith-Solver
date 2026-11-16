@@ -2,7 +2,7 @@
 
 The step-by-step view: step titles, explanations and captions.
 
-Left here: 326 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
+Left here: 327 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -1301,14 +1301,19 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - now: Same deduction, continued
 - new: 
 
-### T0740
-- what: message · stepTexts · Built by the page while it runs, so it only shows in some situations.
-- now: The same deduction as the steps before also decides these remaining edges.
-- new: 
-
 ### T0741
 - what: message · stepTexts · Built by the page while it runs, so it only shows in some situations.
 - now: The same deduction as the step before also settles every edge round this piece, which finishes it.
+- new: 
+
+### T1210
+- what: message · stepTexts · Built by the page while it runs, so it only shows in some situations.
+- now: The same deduction, applied again to what the steps before decided, also decides these edges.
+- new: 
+
+### T0740
+- what: message · stepTexts · Built by the page while it runs, so it only shows in some situations.
+- now: The same deduction as the steps before also decides these remaining edges.
 - new: 
 
 ### T0742

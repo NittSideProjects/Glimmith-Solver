@@ -13135,9 +13135,25 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       }
       if(left.length) parts.push(left);
       if(parts.length < 2){ out.push(st); continue; }
-      parts.forEach((edges, i) => out.push(Object.assign({}, st, { edges, shapes: i === 0 ? st.shapes : [], part: i + 1, parts: parts.length, restPart: i === parts.length - 1 && left.length > 0 })));
+      parts.forEach((edges, i) => out.push(Object.assign({}, st, { edges, shapes: i === 0 ? st.shapes : [], part: i + 1, parts: parts.length, restPart: i === parts.length - 1 && left.length > 0, finishes: !(i === parts.length - 1 && left.length > 0) })));
     }
-    return out;
+    return chainRuleRuns(out);
+  }
+  // V1.0.40: consecutive steps of the same rule are one deduction applied pass after pass: number their parts as one run
+  function chainRuleRuns(steps){
+    const key = st => st.kind === 'rule' ? st.rule : null;
+    for(let i = 0; i < steps.length; ){
+      const k = key(steps[i]); let j = i + 1;
+      if(k) while(j < steps.length && key(steps[j]) === k) j++;
+      if(k && j - i > 1) steps.slice(i, j).forEach((st, n) => {
+        const split = !!st.parts;
+        st.part = n + 1; st.parts = j - i;
+        if(!split){ st.restPart = false; st.finishes = false; }
+        st.again = n > 0 && (!split || st.part === 1 || steps[i + n - 1].pass !== st.pass);   // a new pass of the rule, not a piece of the same split
+      });
+      i = j;
+    }
+    return steps;
   }
   function allSpotKeys(){
     const out = [];
@@ -13237,8 +13253,9 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     const out = Object.assign({}, t, { title: `${t.title} (part ${st.part} of ${st.parts})` });
     if(st.part > 1){
       out.kicker = 'Same deduction, continued';
-      out.text = st.restPart ? 'The same deduction as the steps before also decides these remaining edges.'
-                             : 'The same deduction as the step before also settles every edge round this piece, which finishes it.';
+      out.text = st.finishes ? 'The same deduction as the step before also settles every edge round this piece, which finishes it.'
+               : st.again ? 'The same deduction, applied again to what the steps before decided, also decides these edges.'
+               : 'The same deduction as the steps before also decides these remaining edges.';                  // V1.0.40
     }
     return out;
   }

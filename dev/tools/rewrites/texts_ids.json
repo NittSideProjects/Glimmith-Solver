@@ -97,7 +97,7 @@
   "kind": "message",
   "where": "setSavedIndicator",
   "lines": [
-   13755
+   13772
   ],
   "text": "Saving…",
   "slots": [],
@@ -110,7 +110,7 @@
   "kind": "message",
   "where": "setSavedIndicator",
   "lines": [
-   13756
+   13773
   ],
   "text": "All changes saved",
   "slots": [],
@@ -123,7 +123,7 @@
   "kind": "message",
   "where": "setSavedIndicator",
   "lines": [
-   13757
+   13774
   ],
   "text": "Autosave unavailable",
   "slots": [],
@@ -136,7 +136,7 @@
   "kind": "message",
   "where": "paintThemeBtn",
   "lines": [
-   14654
+   14671
   ],
   "text": "Light mode",
   "slots": [],
@@ -149,7 +149,7 @@
   "kind": "message",
   "where": "paintThemeBtn",
   "lines": [
-   14654
+   14671
   ],
   "text": "Dark mode",
   "slots": [],
@@ -364,8 +364,7 @@
   "text": "Choose or forget the folder Fast import reads",
   "slots": [],
   "note": "Button that only shows once Fast import has remembered a folder. Tooltip: shows when you hover over it.",
-  "id": "T0025",
-  "changedFrom": "Choose or forget the folders Fast import reads"
+  "id": "T0025"
  },
  {
   "sec": "library",
@@ -378,8 +377,7 @@
   "text": "Folder…",
   "slots": [],
   "note": "Button that only shows once Fast import has remembered a folder.",
-  "id": "T0026",
-  "changedFrom": "Folders…"
+  "id": "T0026"
  },
  {
   "sec": "library",
@@ -496,8 +494,7 @@
   "text": "<b>Set up once.</b> Fast import reads one folder, <code>Glimmith puzzles</code>, that a small setup file makes for you. Put the setup file in any folder you like (Documents, for example) and run it: it makes <code>Glimmith puzzles</code> next to itself, holding two links. <code>downloaded</code> leads to the puzzles you downloaded from the workshop, <code>made</code> to the puzzles you made. A link only points to the game's folder: nothing is copied or moved, the game works as before, new puzzles show up in it by themselves, and deleting <code>Glimmith puzzles</code> deletes only the links. It needs no administrator rights.",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T1197",
-  "changedFrom": "<b>One-click import.</b> Chrome and Edge can remember a folder, but not the game's own folders (they are inside Program Files and AppData). The setup file gets around that: put it in any folder you like (Documents, for example) and double-click it. It makes a folder <code>Glimmith puzzles</code> next to itself, holding two links: <code>downloaded</code> leads to the puzzles you downloaded from the workshop, <code>made</code> to the puzzles you made. A link only points to the game's folder: nothing is copied or moved, the game works as before, new puzzles show up in it by themselves, and deleting <code>Glimmith puzzles</code> deletes only the links. It needs no administrator rights. Windows may warn that the file comes from the internet: choose \"More info\", then \"Run anyway\". You can open it in Notepad first, it is a few lines."
+  "id": "T1197"
  },
  {
   "sec": "library",
@@ -510,8 +507,7 @@
   "text": "<b>Windows:</b> double-click <code>glimmith-setup.bat</code>. Windows may warn that the file comes from the internet: choose \"More info\", then \"Run anyway\". You can open it in Notepad first, it is a few lines.<br><b>Linux:</b> in a terminal, in the folder where you put it, run <code>sh glimmith-setup.sh</code>. It looks for Steam in the usual places (the Flatpak one too).",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T1198",
-  "changedFrom": "Then choose the <code>Glimmith puzzles</code> folder once. After that, Fast import reads both kinds of puzzles in one click."
+  "id": "T1198"
  },
  {
   "sec": "library",
@@ -524,8 +520,7 @@
   "text": "Then choose the <code>Glimmith puzzles</code> folder below.",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T1202",
-  "changedFrom": "Steam somewhere else than <code>C:\\Program Files (x86)\\Steam</code>? Open the setup file in Notepad and change that line."
+  "id": "T1202"
  },
  {
   "sec": "library",
@@ -564,8 +559,7 @@
   "text": "Setup file for Windows",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T1201",
-  "changedFrom": "Download the setup file"
+  "id": "T1201"
  },
  {
   "sec": "library",
@@ -578,8 +572,7 @@
   "text": "Setup file for Linux",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T1205",
-  "isNew": true
+  "id": "T1205"
  },
  {
   "sec": "library",
@@ -605,8 +598,7 @@
   "text": "Steam installed somewhere else? Open the setup file in a text editor and change the line with the Steam folder.",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T1206",
-  "isNew": true
+  "id": "T1206"
  },
  {
   "sec": "library",
@@ -619,8 +611,7 @@
   "text": "Your browser refused that folder. Choose the <code>Glimmith puzzles</code> folder the setup file made, not the game's own folders.",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T1207",
-  "isNew": true
+  "id": "T1207"
  },
  {
   "sec": "library",
@@ -646,8 +637,7 @@
   "text": "Forget folder",
   "slots": [],
   "note": "In the Fast import box, which opens the first time you click Fast import, or with Folders….",
-  "id": "T0044",
-  "changedFrom": "Forget folders"
+  "id": "T0044"
  },
  {
   "sec": "library",
@@ -1198,7 +1188,7 @@
   "where": "fallback",
   "lines": [
    11509,
-   14339
+   14356
   ],
   "text": "Imported puzzle",
   "slots": [],
@@ -1237,7 +1227,7 @@
   "kind": "message",
   "where": "FILE_SOLUTION_LABEL",
   "lines": [
-   13857
+   13874
   ],
   "text": "The file's known solution",
   "slots": [],
@@ -1250,7 +1240,7 @@
   "kind": "message",
   "where": "library › items.name",
   "lines": [
-   13860
+   13877
   ],
   "text": "My puzzle",
   "slots": [],
@@ -1263,7 +1253,7 @@
   "kind": "message",
   "where": "STARTER_PUZZLES › name",
   "lines": [
-   13909
+   13926
   ],
   "text": "Example Puzzle Unique",
   "slots": [],
@@ -1276,7 +1266,7 @@
   "kind": "message",
   "where": "STARTER_PUZZLES › name",
   "lines": [
-   13909
+   13926
   ],
   "text": "Example Puzzle Non Unique",
   "slots": [],
@@ -1289,12 +1279,12 @@
   "kind": "message",
   "where": "switchPuzzle",
   "lines": [
-   13965,
-   13989,
-   14117,
-   14217,
-   14250,
-   14581
+   13982,
+   14006,
+   14134,
+   14234,
+   14267,
+   14598
   ],
   "text": "Wait for the solver to finish (or cancel it) first",
   "slots": [],
@@ -1307,7 +1297,7 @@
   "kind": "message",
   "where": "item › name",
   "lines": [
-   13993
+   14010
   ],
   "text": "Puzzle {1}",
   "slots": [
@@ -1322,7 +1312,7 @@
   "kind": "message",
   "where": "newPuzzle",
   "lines": [
-   13999
+   14016
   ],
   "text": "New empty puzzle: {1}",
   "slots": [
@@ -1337,7 +1327,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14016
+   14033
   ],
   "text": "by {1}",
   "slots": [
@@ -1352,7 +1342,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14018
+   14035
   ],
   "text": "id {1}",
   "slots": [
@@ -1367,7 +1357,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14019
+   14036
   ],
   "text": "the file's solution is stored",
   "slots": [],
@@ -1380,7 +1370,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14019
+   14036
   ],
   "text": "no solution in the file",
   "slots": [],
@@ -1393,7 +1383,7 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14020
+   14037
   ],
   "text": "{1} import note{2}: {3}",
   "slots": [
@@ -1410,8 +1400,8 @@
   "kind": "message",
   "where": "renderLibrary",
   "lines": [
-   14026,
-   14351
+   14043,
+   14368
   ],
   "text": "Delete",
   "slots": [],
@@ -1424,7 +1414,7 @@
   "kind": "message",
   "where": "join",
   "lines": [
-   14094
+   14111
   ],
   "text": "{1} and {2}",
   "slots": [
@@ -1440,7 +1430,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14097
+   14114
   ],
   "text": "those custom rules",
   "slots": [],
@@ -1453,7 +1443,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14097
+   14114
   ],
   "text": "that custom rule",
   "slots": [],
@@ -1466,7 +1456,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14097
+   14114
   ],
   "text": "“{1}” says {2} in its description, so we assumed it uses {3} and turned {4} on.",
   "slots": [
@@ -1484,7 +1474,7 @@
   "kind": "message",
   "where": "showAssumedRules",
   "lines": [
-   14100
+   14117
   ],
   "text": "{1} puzzles name a custom rule in their description, so we assumed they use it and turned it on:",
   "slots": [
@@ -1499,7 +1489,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14120
+   14137
   ],
   "text": "Reading…",
   "slots": [],
@@ -1512,7 +1502,7 @@
   "kind": "message",
   "where": "bits",
   "lines": [
-   14149
+   14166
   ],
   "text": "{1} puzzle{2} imported",
   "slots": [
@@ -1528,7 +1518,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14150
+   14167
   ],
   "text": "{1} already in the list",
   "slots": [
@@ -1543,7 +1533,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14152
+   14169
   ],
   "text": "{1} problem{2}",
   "slots": [
@@ -1559,7 +1549,7 @@
   "kind": "message",
   "where": "importFiles › text",
   "lines": [
-   14154
+   14171
   ],
   "text": "{1}: {2} switched on (named in its description)",
   "slots": [
@@ -1575,7 +1565,7 @@
   "kind": "message",
   "where": "importFiles › text",
   "lines": [
-   14155
+   14172
   ],
   "text": "No problems.",
   "slots": [],
@@ -1588,7 +1578,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14156
+   14173
   ],
   "text": "Import report: {1}",
   "slots": [
@@ -1603,7 +1593,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14158
+   14175
   ],
   "text": "Imported {1} puzzles",
   "slots": [
@@ -1618,7 +1608,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14158
+   14175
   ],
   "text": "Imported “{1}”",
   "slots": [
@@ -1633,7 +1623,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14158
+   14175
   ],
   "text": "Nothing new to import",
   "slots": [],
@@ -1646,7 +1636,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14160
+   14177
   ],
   "text": "Import failed",
   "slots": [],
@@ -1659,7 +1649,7 @@
   "kind": "message",
   "where": "importFiles",
   "lines": [
-   14162
+   14179
   ],
   "text": "Import puzzles…",
   "slots": [],
@@ -1672,13 +1662,12 @@
   "kind": "message",
   "where": "fastRender",
   "lines": [
-   14207
+   14224
   ],
   "text": "Fast import reads all your puzzles in one click, once the setup below is done.",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0833",
-  "changedFrom": "Fast import reads the folders you choose here. A folder your browser accepts is remembered, so the next imports take one click."
+  "id": "T0833"
  },
  {
   "sec": "library",
@@ -1686,13 +1675,12 @@
   "kind": "message",
   "where": "fastRender",
   "lines": [
-   14208
+   14225
   ],
   "text": "Your browser can't remember folders (Chrome and Edge can): after the setup below, it asks for the Glimmith puzzles folder each time.",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0834",
-  "changedFrom": "Choose your folder to import the puzzles. Your browser can't remember folders (Chrome and Edge can), so you will need to pick it each time."
+  "id": "T0834"
  },
  {
   "sec": "library",
@@ -1700,7 +1688,7 @@
   "kind": "message",
   "where": "fastRun",
   "lines": [
-   14222
+   14239
   ],
   "text": "{1}: reading was not allowed",
   "slots": [
@@ -1715,8 +1703,8 @@
   "kind": "message",
   "where": "fastRun",
   "lines": [
-   14226,
-   14272
+   14243,
+   14289
   ],
   "text": "Fast import: nothing read",
   "slots": [],
@@ -1729,7 +1717,7 @@
   "kind": "message",
   "where": "fastRun",
   "lines": [
-   14226
+   14243
   ],
   "text": "The folders hold no puzzle files.",
   "slots": [],
@@ -1742,7 +1730,7 @@
   "kind": "message",
   "where": "attachFastImport",
   "lines": [
-   14266
+   14283
   ],
   "text": "glimmith-setup.bat",
   "slots": [],
@@ -1755,13 +1743,12 @@
   "kind": "message",
   "where": "attachFastImport",
   "lines": [
-   14267
+   14284
   ],
   "text": "glimmith-setup.sh",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1209",
-  "isNew": true
+  "id": "T1209"
  },
  {
   "sec": "library",
@@ -1769,7 +1756,7 @@
   "kind": "message",
   "where": "attachFastImport › text",
   "lines": [
-   14272
+   14289
   ],
   "text": "The folder holds no puzzle files.",
   "slots": [],
@@ -1782,7 +1769,7 @@
   "kind": "message",
   "where": "normalizeState › error",
   "lines": [
-   14281
+   14298
   ],
   "text": "no puzzle in it",
   "slots": [],
@@ -1795,7 +1782,7 @@
   "kind": "message",
   "where": "normalizeState › error",
   "lines": [
-   14283
+   14300
   ],
   "text": "the grid size is not valid",
   "slots": [],
@@ -1808,7 +1795,7 @@
   "kind": "message",
   "where": "normalizeState › error",
   "lines": [
-   14284
+   14301
   ],
   "text": "the grid does not match its size",
   "slots": [],
@@ -1821,7 +1808,7 @@
   "kind": "message",
   "where": "normalizeState › error",
   "lines": [
-   14303
+   14320
   ],
   "text": "a clue in the puzzle isn't valid",
   "slots": [],
@@ -1835,7 +1822,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14321
+   14338
   ],
   "text": "Nothing to export",
   "slots": [],
@@ -1848,7 +1835,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14324
+   14341
   ],
   "text": "Exported “{1}”",
   "slots": [
@@ -1863,7 +1850,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14324
+   14341
   ],
   "text": "Exported {1} puzzles",
   "slots": [
@@ -1878,7 +1865,7 @@
   "kind": "message",
   "where": "exportPuzzles",
   "lines": [
-   14325
+   14342
   ],
   "text": "Export failed: {1}",
   "slots": [
@@ -1893,7 +1880,7 @@
   "kind": "message",
   "where": "readOwnExport › message",
   "lines": [
-   14333
+   14350
   ],
   "text": "this file was saved by a version of the editor not supported yet. Please verify the import went well",
   "slots": [],
@@ -1906,7 +1893,7 @@
   "kind": "message",
   "where": "readOwnExport › message",
   "lines": [
-   14334
+   14351
   ],
   "text": "the file holds no puzzles",
   "slots": [],
@@ -1919,7 +1906,7 @@
   "kind": "message",
   "where": "deleteActivePuzzle",
   "lines": [
-   14349
+   14366
   ],
   "text": "Click again to delete",
   "slots": [],
@@ -2226,7 +2213,7 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14511
+   14528
   ],
   "text": "Links are a custom rule: show custom rules first (bottom of the page)",
   "slots": [],
@@ -2239,7 +2226,7 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14524
+   14541
   ],
   "text": "← or → works on vertical walls only",
   "slots": [],
@@ -2252,7 +2239,7 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14524
+   14541
   ],
   "text": "↑ or ↓ works on horizontal walls only",
   "slots": [],
@@ -2265,7 +2252,7 @@
   "kind": "message",
   "where": "attachEvents",
   "lines": [
-   14659
+   14676
   ],
   "text": "Untitled puzzle",
   "slots": [],
@@ -2756,7 +2743,7 @@
   "where": "BOOLEAN_RULE_LABELS › mismatch",
   "lines": [
    12290,
-   13502
+   13519
   ],
   "text": "Mismatch",
   "slots": [],
@@ -2770,7 +2757,7 @@
   "where": "BOOLEAN_RULE_LABELS › match",
   "lines": [
    12290,
-   13501
+   13518
   ],
   "text": "Match",
   "slots": [],
@@ -2810,7 +2797,7 @@
   "where": "BOOLEAN_RULE_LABELS › solitude",
   "lines": [
    12290,
-   13500
+   13517
   ],
   "text": "Solitude",
   "slots": [],
@@ -2824,7 +2811,7 @@
   "where": "BOOLEAN_RULE_LABELS › boxy",
   "lines": [
    12290,
-   13502
+   13519
   ],
   "text": "Boxy",
   "slots": [],
@@ -2838,7 +2825,7 @@
   "where": "BOOLEAN_RULE_LABELS › bricky",
   "lines": [
    12290,
-   13503
+   13520
   ],
   "text": "Bricky",
   "slots": [],
@@ -2852,7 +2839,7 @@
   "where": "BOOLEAN_RULE_LABELS › loopy",
   "lines": [
    12290,
-   13503
+   13520
   ],
   "text": "Loopy",
   "slots": [],
@@ -2866,7 +2853,7 @@
   "where": "BOOLEAN_RULE_LABELS › wally",
   "lines": [
    12290,
-   13503
+   13520
   ],
   "text": "Wally",
   "slots": [],
@@ -3803,7 +3790,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14062
+   14079
   ],
   "text": "✓ It is the solution stored in the imported file.",
   "slots": [],
@@ -3816,7 +3803,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14063
+   14080
   ],
   "text": "⚠ It is NOT the solution stored in the imported file: the solver and the file disagree, so one of them is wrong. Please contact nittneuk (nittneuk on discord) about this if you think the mistake is on the solver",
   "slots": [],
@@ -3829,7 +3816,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14064
+   14081
   ],
   "text": "The solution stored in the imported file is not among the tilings shown.",
   "slots": [],
@@ -3842,7 +3829,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14065
+   14082
   ],
   "text": "The solution stored in the imported file is Solution {1}.",
   "slots": [
@@ -3857,7 +3844,7 @@
   "kind": "message",
   "where": "fileSolutionNote",
   "lines": [
-   14065
+   14082
   ],
   "text": "The solution stored in the imported file is solution {1} of these.",
   "slots": [
@@ -4153,7 +4140,7 @@
   "where": "STEP_INFO › grow",
   "lines": [
    12914,
-   13499
+   13516
   ],
   "text": "Forced growth",
   "slots": [],
@@ -4206,7 +4193,7 @@
   "where": "STEP_INFO › reach",
   "lines": [
    12916,
-   13499
+   13516
   ],
   "text": "Reach",
   "slots": [],
@@ -7350,7 +7337,7 @@
   "kind": "message",
   "where": "out › title",
   "lines": [
-   13237
+   13253
   ],
   "text": "{1} (part {2} of {3})",
   "slots": [
@@ -7367,7 +7354,7 @@
   "kind": "message",
   "where": "stepTexts",
   "lines": [
-   13239
+   13255
   ],
   "text": "Same deduction, continued",
   "slots": [],
@@ -7380,20 +7367,7 @@
   "kind": "message",
   "where": "stepTexts",
   "lines": [
-   13240
-  ],
-  "text": "The same deduction as the steps before also decides these remaining edges.",
-  "slots": [],
-  "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T0740"
- },
- {
-  "sec": "steps",
-  "area": "Step-by-step reasoning",
-  "kind": "message",
-  "where": "stepTexts",
-  "lines": [
-   13241
+   13256
   ],
   "text": "The same deduction as the step before also settles every edge round this piece, which finishes it.",
   "slots": [],
@@ -7404,9 +7378,36 @@
   "sec": "steps",
   "area": "Step-by-step reasoning",
   "kind": "message",
+  "where": "stepTexts",
+  "lines": [
+   13257
+  ],
+  "text": "The same deduction, applied again to what the steps before decided, also decides these edges.",
+  "slots": [],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T1210",
+  "isNew": true
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
+  "where": "stepTexts",
+  "lines": [
+   13258
+  ],
+  "text": "The same deduction as the steps before also decides these remaining edges.",
+  "slots": [],
+  "note": "Built by the page while it runs, so it only shows in some situations.",
+  "id": "T0740"
+ },
+ {
+  "sec": "steps",
+  "area": "Step-by-step reasoning",
+  "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13249
+   13266
   ],
   "text": "Start",
   "slots": [],
@@ -7419,7 +7420,7 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13249
+   13266
   ],
   "text": "The puzzle as given",
   "slots": [],
@@ -7432,7 +7433,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13250
+   13267
   ],
   "text": "Step through to see what the solver proves, one deduction at a time. Each step outlines the edges it decides. Teal bars are walls, blue links join two tiles of one piece, and tiles that share a colour are in one piece even before they touch. Everything proven here holds in every tiling.",
   "slots": [],
@@ -7445,7 +7446,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13251
+   13268
   ],
   "text": "For this puzzle the solver’s rules decide no edge on their own, so the last step does all the work with an exhaustive search.",
   "slots": [],
@@ -7458,7 +7459,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13257
+   13274
   ],
   "text": "same-piece link",
   "slots": [],
@@ -7471,7 +7472,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13257
+   13274
   ],
   "text": "same-piece links",
   "slots": [],
@@ -7484,7 +7485,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13257
+   13274
   ],
   "text": "edge already inside a joined group",
   "slots": [],
@@ -7497,7 +7498,7 @@
   "kind": "message",
   "where": "meta",
   "lines": [
-   13257
+   13274
   ],
   "text": "edges already inside a joined group",
   "slots": [],
@@ -7510,7 +7511,7 @@
   "kind": "message",
   "where": "mark",
   "lines": [
-   13260
+   13277
   ],
   "text": "Every tile known to be in that piece now has the same colour.",
   "slots": [],
@@ -7523,7 +7524,7 @@
   "kind": "message",
   "where": "what",
   "lines": [
-   13262
+   13279
   ],
   "text": "one symbol",
   "slots": [],
@@ -7536,7 +7537,7 @@
   "kind": "message",
   "where": "what",
   "lines": [
-   13262
+   13279
   ],
   "text": "one rose of each type",
   "slots": [],
@@ -7549,7 +7550,7 @@
   "kind": "message",
   "where": "what",
   "lines": [
-   13262
+   13279
   ],
   "text": "one of the area numbers",
   "slots": [],
@@ -7562,10 +7563,10 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13263,
-   13266,
-   13268,
-   13309
+   13280,
+   13283,
+   13285,
+   13326
   ],
   "text": "Rule",
   "slots": [],
@@ -7578,8 +7579,8 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13263,
-   13505
+   13280,
+   13522
   ],
   "text": "Only one piece it can be in",
   "slots": [],
@@ -7592,7 +7593,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13264
+   13281
   ],
   "text": "Every piece holds exactly {1}. The ringed tiles have only one piece left they can belong to, so they are in that piece, even though they do not touch yet.{2}",
   "slots": [
@@ -7608,8 +7609,8 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13266,
-   13505
+   13283,
+   13522
   ],
   "text": "The only way to connect",
   "slots": [],
@@ -7622,7 +7623,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13267
+   13284
   ],
   "text": "they belong",
   "slots": [],
@@ -7635,7 +7636,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13267
+   13284
   ],
   "text": "it belongs",
   "slots": [],
@@ -7648,7 +7649,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13267
+   13284
   ],
   "text": "The parts of one piece that do not touch yet still have to meet, and every way to connect them passes through the ringed tile{1}, so {2} to that piece.{3}",
   "slots": [
@@ -7665,9 +7666,9 @@
   "kind": "message",
   "where": "stepTextsBase › title",
   "lines": [
-   13268,
-   13270,
-   13505
+   13285,
+   13287,
+   13522
   ],
   "text": "Far apart, but one piece",
   "slots": [],
@@ -7680,7 +7681,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13269
+   13286
   ],
   "text": "The rule steps so far put the ringed tiles in one piece, even though they do not touch yet.{1}",
   "slots": [
@@ -7695,8 +7696,8 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13270,
-   13281
+   13287,
+   13298
   ],
   "text": "Checked by trying the other way",
   "slots": [],
@@ -7709,7 +7710,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13271
+   13288
   ],
   "text": "The ringed tiles are in one piece, even though they do not touch yet: the solver tried them in different pieces, and the rules could not all be met that way.{1}",
   "slots": [
@@ -7724,7 +7725,7 @@
   "kind": "message",
   "where": "title",
   "lines": [
-   13275
+   13292
   ],
   "text": "These two tiles are in one piece",
   "slots": [],
@@ -7737,7 +7738,7 @@
   "kind": "message",
   "where": "title",
   "lines": [
-   13275
+   13292
   ],
   "text": "There is a wall here",
   "slots": [],
@@ -7750,7 +7751,7 @@
   "kind": "message",
   "where": "concl",
   "lines": [
-   13276
+   13293
   ],
   "text": "The two tiles at the outlined edge are in one piece.",
   "slots": [],
@@ -7763,7 +7764,7 @@
   "kind": "message",
   "where": "concl",
   "lines": [
-   13276
+   13293
   ],
   "text": "There is a wall at the outlined edge.",
   "slots": [],
@@ -7776,7 +7777,7 @@
   "kind": "message",
   "where": "other",
   "lines": [
-   13277
+   13294
   ],
   "text": "a wall there",
   "slots": [],
@@ -7789,7 +7790,7 @@
   "kind": "message",
   "where": "other",
   "lines": [
-   13277
+   13294
   ],
   "text": "the two tiles in one piece",
   "slots": [],
@@ -7802,7 +7803,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13282
+   13299
   ],
   "text": "the rules could not all be met",
   "slots": [],
@@ -7815,7 +7816,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13282
+   13299
   ],
   "text": "{1} The solver tried {2} instead and found that {3}.",
   "slots": [
@@ -7832,7 +7833,7 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13284
+   13301
   ],
   "text": "Checked by search",
   "slots": [],
@@ -7845,7 +7846,7 @@
   "kind": "message",
   "where": "stepTextsBase › text",
   "lines": [
-   13285
+   13302
   ],
   "text": "{1} The solver tried every way to go on with {2} instead, and none of them works out. This is a brute-force check, so there is no short rule to quote.",
   "slots": [
@@ -7861,7 +7862,7 @@
   "kind": "message",
   "where": "stepTextsBase",
   "lines": [
-   13299
+   13316
   ],
   "text": "These tiles are in one piece: a wall here would break a rule ({1}).",
   "slots": [
@@ -7876,7 +7877,7 @@
   "kind": "message",
   "where": "stepTextsBase",
   "lines": [
-   13299
+   13316
   ],
   "text": "These tiles are in one piece.",
   "slots": [],
@@ -7889,7 +7890,7 @@
   "kind": "message",
   "where": "stepTextsBase",
   "lines": [
-   13300
+   13317
   ],
   "text": "There is a wall between these groups: joining them would break a rule ({1}).",
   "slots": [
@@ -7904,7 +7905,7 @@
   "kind": "message",
   "where": "stepTextsBase",
   "lines": [
-   13300
+   13317
   ],
   "text": "This follows from the rules already used.",
   "slots": [],
@@ -7917,7 +7918,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13304
+   13321
   ],
   "text": "open edge",
   "slots": [],
@@ -7930,7 +7931,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13304
+   13321
   ],
   "text": "open edges",
   "slots": [],
@@ -7943,7 +7944,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13304
+   13321
   ],
   "text": "This decides the outlined edges: {1} and {2}.",
   "slots": [
@@ -7959,7 +7960,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13305
+   13322
   ],
   "text": "So the outlined edge is a wall.",
   "slots": [],
@@ -7972,7 +7973,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13305
+   13322
   ],
   "text": "So the {1} outlined edges are walls.",
   "slots": [
@@ -7987,7 +7988,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13306
+   13323
   ],
   "text": "So the outlined edge is open: the two tiles are in one piece.",
   "slots": [],
@@ -8000,7 +8001,7 @@
   "kind": "message",
   "where": "res",
   "lines": [
-   13306
+   13323
   ],
   "text": "So the {1} outlined edges are open: their tiles are in one piece.",
   "slots": [
@@ -8015,7 +8016,7 @@
   "kind": "message",
   "where": "stepTextsBase › kicker",
   "lines": [
-   13309
+   13326
   ],
   "text": "Follows from the proof above",
   "slots": [],
@@ -8028,7 +8029,7 @@
   "kind": "message",
   "where": "makeFinalStep › kicker",
   "lines": [
-   13319
+   13336
   ],
   "text": "Solved",
   "slots": [],
@@ -8041,7 +8042,7 @@
   "kind": "message",
   "where": "makeFinalStep › title",
   "lines": [
-   13319
+   13336
   ],
   "text": "Every edge is decided",
   "slots": [],
@@ -8054,7 +8055,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13319
+   13336
   ],
   "text": "The rules above settled every edge, and the exact solver confirmed that no other tiling exists.",
   "slots": [],
@@ -8067,7 +8068,7 @@
   "kind": "message",
   "where": "makeFinalStep › kicker",
   "lines": [
-   13320
+   13337
   ],
   "text": "Exhaustive search",
   "slots": [],
@@ -8080,7 +8081,7 @@
   "kind": "message",
   "where": "makeFinalStep › title",
   "lines": [
-   13320
+   13337
   ],
   "text": "The rest is found by search",
   "slots": [],
@@ -8093,7 +8094,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13321
+   13338
   ],
   "text": "The rules above settle {1} of {2} edges. For the other {3} the solver switched to an exhaustive search of the remaining possibilities, and exactly one tiling survives (shown). Edges found by search are drawn in purple.",
   "slots": [
@@ -8110,7 +8111,7 @@
   "kind": "message",
   "where": "makeFinalStep › kicker",
   "lines": [
-   13323
+   13340
   ],
   "text": "Not unique",
   "slots": [],
@@ -8123,7 +8124,7 @@
   "kind": "message",
   "where": "makeFinalStep › title",
   "lines": [
-   13323
+   13340
   ],
   "text": "More than one tiling remains",
   "slots": [],
@@ -8136,7 +8137,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13324
+   13341
   ],
   "text": "at least",
   "slots": [],
@@ -8149,7 +8150,7 @@
   "kind": "message",
   "where": "makeFinalStep › text",
   "lines": [
-   13324
+   13341
   ],
   "text": "Everything above holds in every tiling. For the other {1} of {2} edges the rules could not decide and the solver found {3}two different tilings. They differ at the ringed tiles; switch between them below. Edges found by search are drawn in purple.",
   "slots": [
@@ -8166,8 +8167,8 @@
   "kind": "message",
   "where": "view › label",
   "lines": [
-   13412,
-   13434
+   13429,
+   13451
   ],
   "text": "Step {1} of {2}",
   "slots": [
@@ -8183,7 +8184,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13423
+   13440
   ],
   "text": "Final tiling{1}",
   "slots": [
@@ -8198,7 +8199,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13434
+   13451
   ],
   "text": "Start · {1} step{2}",
   "slots": [
@@ -8214,7 +8215,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13434
+   13451
   ],
   "text": "Result · step {1} of {2}",
   "slots": [
@@ -8230,7 +8231,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13441
+   13458
   ],
   "text": "Tiling A",
   "slots": [],
@@ -8243,7 +8244,7 @@
   "kind": "message",
   "where": "renderStepsView",
   "lines": [
-   13441
+   13458
   ],
   "text": "Tiling B",
   "slots": [],
@@ -8256,7 +8257,7 @@
   "kind": "message",
   "where": "miniShapes",
   "lines": [
-   13479
+   13496
   ],
   "text": "shape of {1} tiles",
   "slots": [
@@ -8271,7 +8272,7 @@
   "kind": "message",
   "where": "exampleCard",
   "lines": [
-   13513
+   13530
   ],
   "text": "Here are {1} cases.",
   "slots": [
@@ -8286,8 +8287,8 @@
   "kind": "message",
   "where": "openExamplePop",
   "lines": [
-   13530,
-   13624
+   13547,
+   13641
   ],
   "text": "Close",
   "slots": [],
@@ -8300,7 +8301,7 @@
   "kind": "message",
   "where": "openExamplePop",
   "lines": [
-   13540
+   13557
   ],
   "text": "This example could not be drawn.",
   "slots": [],
@@ -8313,7 +8314,7 @@
   "kind": "message",
   "where": "openExamplePop",
   "lines": [
-   13542
+   13559
   ],
   "text": "A small example of every rule",
   "slots": [],
@@ -8326,7 +8327,7 @@
   "kind": "message",
   "where": "openExamplePop",
   "lines": [
-   13543
+   13560
   ],
   "text": "The outlined edges are the ones the rule decides.",
   "slots": [],
@@ -8339,7 +8340,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13664
+   13681
   ],
   "text": "Replaying the solver’s reasoning…",
   "slots": [],
@@ -8352,7 +8353,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13684
+   13701
   ],
   "text": "Replaying the solver’s reasoning… {1} of {2} edges decided",
   "slots": [
@@ -8368,7 +8369,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13691
+   13708
   ],
   "text": "Cancelled.",
   "slots": [],
@@ -8381,7 +8382,7 @@
   "kind": "message",
   "where": "replayDeductionTrace",
   "lines": [
-   13692
+   13709
   ],
   "text": "The replay stopped early: {1}",
   "slots": [
@@ -13713,7 +13714,7 @@
   "kind": "message",
   "where": "renderExampleCase › label",
   "lines": [
-   13470
+   13487
   ],
   "text": "Example",
   "slots": [],
@@ -13726,7 +13727,7 @@
   "kind": "message",
   "where": "FAMILY_NAMES › region",
   "lines": [
-   13499
+   13516
   ],
   "text": "Closed-in area count",
   "slots": [],
@@ -13739,7 +13740,7 @@
   "kind": "message",
   "where": "FAMILY_NAMES › place",
   "lines": [
-   13499
+   13516
   ],
   "text": "Placement",
   "slots": [],
@@ -13752,7 +13753,7 @@
   "kind": "message",
   "where": "FAMILY_NAMES › corner",
   "lines": [
-   13499
+   13516
   ],
   "text": "Corner pattern",
   "slots": [],
@@ -13765,7 +13766,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › size",
   "lines": [
-   13500
+   13517
   ],
   "text": "the sizes",
   "slots": [],
@@ -13778,7 +13779,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › minimum",
   "lines": [
-   13500
+   13517
   ],
   "text": "the Minimum",
   "slots": [],
@@ -13791,7 +13792,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › roses",
   "lines": [
-   13500
+   13517
   ],
   "text": "the roses",
   "slots": [],
@@ -13804,7 +13805,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › compasses",
   "lines": [
-   13501
+   13518
   ],
   "text": "the compasses",
   "slots": [],
@@ -13817,7 +13818,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › bank",
   "lines": [
-   13501
+   13518
   ],
   "text": "the shape bank",
   "slots": [],
@@ -13830,7 +13831,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › piece-count",
   "lines": [
-   13501
+   13518
   ],
   "text": "the number of pieces",
   "slots": [],
@@ -13843,7 +13844,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › region-count",
   "lines": [
-   13501
+   13518
   ],
   "text": "the rules of the area",
   "slots": [],
@@ -13856,7 +13857,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › area-numbers",
   "lines": [
-   13502
+   13519
   ],
   "text": "the area numbers",
   "slots": [],
@@ -13869,7 +13870,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › polyomino",
   "lines": [
-   13502
+   13519
   ],
   "text": "the polyomino",
   "slots": [],
@@ -13882,7 +13883,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › gemini",
   "lines": [
-   13502
+   13519
   ],
   "text": "Gemini",
   "slots": [],
@@ -13895,7 +13896,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › mingle-area",
   "lines": [
-   13502
+   13519
   ],
   "text": "Mingle Area",
   "slots": [],
@@ -13908,7 +13909,7 @@
   "kind": "message",
   "where": "SOURCE_NAMES › palisades",
   "lines": [
-   13503
+   13520
   ],
   "text": "the palisades",
   "slots": [],
@@ -13921,7 +13922,7 @@
   "kind": "message",
   "where": "familyTitle",
   "lines": [
-   13504
+   13521
   ],
   "text": "{1}, from {2}",
   "slots": [
@@ -13937,7 +13938,7 @@
   "kind": "message",
   "where": "first",
   "lines": [
-   13586
+   13603
   ],
   "text": "the ringed tiles in different pieces",
   "slots": [],
@@ -13950,7 +13951,7 @@
   "kind": "message",
   "where": "first",
   "lines": [
-   13586
+   13603
   ],
   "text": "a wall at the edge marked in red",
   "slots": [],
@@ -13963,7 +13964,7 @@
   "kind": "message",
   "where": "first",
   "lines": [
-   13586
+   13603
   ],
   "text": "the two tiles at the red mark in one piece",
   "slots": [],
@@ -13976,7 +13977,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13588
+   13605
   ],
   "text": "Case {1} of {2}.",
   "slots": [
@@ -13992,7 +13993,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13588
+   13605
   ],
   "text": "one more choice",
   "slots": [],
@@ -14005,7 +14006,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13588
+   13605
   ],
   "text": "{1} more choices",
   "slots": [
@@ -14020,7 +14021,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13588
+   13605
   ],
   "text": ", and {1} (marked the same way)",
   "slots": [
@@ -14035,7 +14036,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13588
+   13605
   ],
   "text": "{1}Tried: {2}{3}.",
   "slots": [
@@ -14052,7 +14053,7 @@
   "kind": "message",
   "where": "svg › label",
   "lines": [
-   13594
+   13611
   ],
   "text": "Case",
   "slots": [],
@@ -14065,7 +14066,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13600
+   13617
   ],
   "text": "From that, the rules decide the outlined edges:",
   "slots": [],
@@ -14078,7 +14079,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13604
+   13621
   ],
   "text": "and {1} more",
   "slots": [
@@ -14093,7 +14094,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13608
+   13625
   ],
   "text": "No rule is broken yet after these choices: the solver needed a longer search here.",
   "slots": [],
@@ -14106,7 +14107,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13611
+   13628
   ],
   "text": "This fails at the tiles ringed in red:",
   "slots": [],
@@ -14119,7 +14120,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13611
+   13628
   ],
   "text": "This fails:",
   "slots": [],
@@ -14132,7 +14133,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13612
+   13629
   ],
   "text": "the rules can not all be met",
   "slots": [],
@@ -14145,7 +14146,7 @@
   "kind": "message",
   "where": "caseCard",
   "lines": [
-   13613
+   13630
   ],
   "text": "This is a count over the whole board, so there is no single place to mark.",
   "slots": [],
@@ -14158,7 +14159,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13625
+   13642
   ],
   "text": "What the solver tried, and why it fails",
   "slots": [],
@@ -14171,7 +14172,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13637
+   13654
   ],
   "text": "The cases could not be rebuilt for this step.",
   "slots": [],
@@ -14184,7 +14185,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13639
+   13656
   ],
   "text": "This step was proved by a longer search: trying the other value breaks no rule within a few choices, so there is no short list of cases to show.",
   "slots": [],
@@ -14197,7 +14198,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13640
+   13657
   ],
   "text": "One more way",
   "slots": [],
@@ -14210,7 +14211,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13640
+   13657
   ],
   "text": "{1} more ways",
   "slots": [
@@ -14225,7 +14226,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13640
+   13657
   ],
   "text": "that one",
   "slots": [],
@@ -14238,7 +14239,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13640
+   13657
   ],
   "text": "{1} to go on {2} no rule within a few choices: for {3} the solver needed a longer search. The cases below are the ones that fail.",
   "slots": [
@@ -14255,7 +14256,7 @@
   "kind": "message",
   "where": "openCasesPop",
   "lines": [
-   13650
+   13667
   ],
   "text": "This step joins {1} pairs of tiles: the cases of the first three are shown.",
   "slots": [
@@ -14270,13 +14271,12 @@
   "kind": "message",
   "where": "FAST_SETUP_BAT",
   "lines": [
-   14232
+   14249
   ],
   "text": "@echo off rem Glimmith solver: one-click import setup (Windows). rem Makes the folder \"Glimmith puzzles\" next to this file, with two links (junctions) to the game's puzzle folders: rem downloaded = the puzzles you downloaded from the Steam workshop, made = the puzzles you made. rem Nothing is copied or moved. Deleting \"Glimmith puzzles\" deletes only the links. No administrator rights needed. setlocal set \"DEST=%~dp0Glimmith puzzles\" set \"STEAM=C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\4160210\" set \"OWN=%LOCALAPPDATA%\\Geri\\Saved\\workshop\" if not exist \"%DEST%\" mkdir \"%DEST%\" if exist \"%STEAM%\" if not exist \"%DEST%\\downloaded\" mklink /J \"%DEST%\\downloaded\" \"%STEAM%\" if not exist \"%STEAM%\" echo Not found: the workshop folder \"%STEAM%\". If Steam is somewhere else, change the STEAM line in this file. if exist \"%OWN%\" if not exist \"%DEST%\\made\" mklink /J \"%DEST%\\made\" \"%OWN%\" if not exist \"%OWN%\" echo Not found: your own puzzles folder \"%OWN%\". echo. echo Done. In the Glimmith solver, choose this folder once: \"%DEST%\" pause",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1203",
-  "changedFrom": "@echo off rem Glimmith solver: one-click import setup. rem Makes the folder \"Glimmith puzzles\" next to this file, with two links (junctions) to the game's puzzle folders: rem downloaded = the puzzles you downloaded from the Steam workshop, made = the puzzles you made. rem Nothing is copied or moved. Deleting \"Glimmith puzzles\" deletes only the links. No administrator rights needed. setlocal set \"DEST=%~dp0Glimmith puzzles\" set \"STEAM=C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\4160210\" set \"OWN=%LOCALAPPDATA%\\Geri\\Saved\\workshop\" if not exist \"%DEST%\" mkdir \"%DEST%\" if exist \"%STEAM%\" if not exist \"%DEST%\\downloaded\" mklink /J \"%DEST%\\downloaded\" \"%STEAM%\" if not exist \"%STEAM%\" echo Not found: the workshop folder \"%STEAM%\". If Steam is somewhere else, change the STEAM line in this file. if exist \"%OWN%\" if not exist \"%DEST%\\made\" mklink /J \"%DEST%\\made\" \"%OWN%\" if not exist \"%OWN%\" echo Not found: your own puzzles folder \"%OWN%\". echo. echo Done. In the Glimmith solver, choose this folder once: \"%DEST%\" pause"
+  "id": "T1203"
  },
  {
   "sec": "other",
@@ -14284,12 +14284,11 @@
   "kind": "message",
   "where": "FAST_SETUP_SH",
   "lines": [
-   14233
+   14250
   ],
   "text": "#!/bin/sh # Glimmith solver: one-click import setup (Linux). # Makes the folder \"Glimmith puzzles\" next to this file, with two links (symbolic links) to the game's puzzle folders: # downloaded = the puzzles you downloaded from the Steam workshop, made = the puzzles you made. # Nothing is copied or moved. Deleting \"Glimmith puzzles\" deletes only the links. Run it with: sh glimmith-setup.sh # If Steam is somewhere else, put its folder first in the STEAMS line. STEAMS=\"$HOME/.local/share/Steam $HOME/.steam/steam $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam\" APP=4160210 DEST=\"$(cd \"$(dirname \"$0\")\" && pwd)/Glimmith puzzles\" mkdir -p \"$DEST\" link(){ # name, list of places: the first that exists name=\"$1\"; shift if [ -e \"$DEST/$name\" ]; then echo \"Already there: $DEST/$name\"; return; fi for p in \"$@\"; do if [ -d \"$p\" ]; then ln -s \"$p\" \"$DEST/$name\" && echo \"Linked $name -> $p\"; return; fi; done echo \"Not found: the $name puzzles (looked in: $*)\" } W=\"\"; O=\"\" for s in $STEAMS; do W=\"$W $s/steamapps/workshop/content/$APP\" O=\"$O $s/steamapps/compatdata/$APP/pfx/drive_c/users/steamuser/AppData/Local/Geri/Saved/workshop\" done link downloaded $W link made $O echo echo \"Done. In the Glimmith solver, choose this folder once: $DEST\"",
   "slots": [],
   "note": "Built by the page while it runs, so it only shows in some situations.",
-  "id": "T1208",
-  "isNew": true
+  "id": "T1208"
  }
 ]

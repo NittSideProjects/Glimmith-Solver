@@ -9,8 +9,13 @@ compass puzzle (Zone3/1402: the probes stopped at 93 open edges and the final se
 Two changes. The search starts from the first part only (tiles linked by same-piece edges); the other parts of the group are entered at no
 extra cost, like the first; and every part must be met within the budget. And the check also runs for a split group that lacks no rose (a far part
 may hold the rose the group needed: that rose then still has to be joined within the budget). opts.cmpBudgetParts === false turns the
-second change off. Sound: the piece holds a path from its first part to each
+second change off. It does not run inside the final search (searchLite; opts.cmpBudgetPartsSearch === true runs it there
+  too): there it cost more time than it saved (a base-game compass puzzle 1.2 s -> 5.7 s of final search). The check takes each group's tiles from the
+union-find's member lists instead of a pass over the whole board on every call. Sound: the piece holds a path from its first part to each
 other part and to a rose of each type it lacks, and the tiles of that path on the compass's side are at most the budget.
+Also: the first clue-search slice on a puzzle with roses of one type is 20 s instead of 10 s. A base-game rose puzzle needs about
+15 s of clue search on a slower machine; a 10 s slice ran out, and the narrow searches and slices that follow added 15 s more
+(34 s -> 19 s; the other 65 base-game puzzles with roses of one type are unchanged).
 Usage: python3 patch_core125.py <in.js> <out.js> [indent]"""
 import sys
 
@@ -76,8 +81,14 @@ def patch(src, ind):
     rpSplit = mem.length > 1;
 """), 'split var')
     src = rep(src, I("""      if(K > 0 && lack && opts.cmpBudget !== false && !cmpBudgetOk(rep, mem, blocked, closed, mask, lack)){ reachWhy = 'cmp-budget'; return false; }
-"""), I("""      if(((K > 0 && lack) || (rpSplit && opts.cmpBudgetParts !== false)) && opts.cmpBudget !== false && !cmpBudgetOk(rep, mem, blocked, closed, mask, lack)){ reachWhy = 'cmp-budget'; return false; }   // v125: also a split group
+"""), I("""      if(((K > 0 && lack) || (rpSplit && opts.cmpBudgetParts !== false && (!searchLite || opts.cmpBudgetPartsSearch === true))) && opts.cmpBudget !== false && !cmpBudgetOk(rep, mem, blocked, closed, mask, lack)){ reachWhy = 'cmp-budget'; return false; }   // v125: also a split group
 """), 'call')
+    src = rep(src, I("""    const groupTiles = new Map();
+    for(const id of activeIds){ const r = find(id); let g = groupTiles.get(r); if(!g){ g = []; groupTiles.set(r, g); } g.push(id); }
+"""), I("""    const groupTiles = members;                                                  // v125: the union-find's own lists (no pass over the board per call)
+"""), 'members')
+    src = rep(src, "(roseTypeList.length >= 2 ? 40000 : 10000);     // roses of several types: the grouping IS the puzzle",
+        "(roseTypeList.length >= 2 ? 40000 : 20000);     // roses of several types: the grouping IS the puzzle (v125: one type 10 s -> 20 s)", 'clue slice')
     return src
 
 if __name__ == '__main__':

@@ -122,6 +122,14 @@ it fails, and the tiles where it fails when a check noted them (`markAt(tag, til
 should call `markAt` when it knows the group or tiles at fault, so the pop-up can ring them. Tests:
 `tests/solver/test_explain102.js`, `tests/page/ui_test_cases_V1.0.19.js`.
 
+## The public site: only the stable version
+
+GitHub Pages serves the `main` branch. `https://nittsideprojects.github.io/Glimmith-Solver/` is `index.html` on `main`: always a copy of
+the current **stable** version (for now V1, the same file as `glimmith_solver_V1.html`, which stays as the permanent link to V1). The
+V1.0.x pages on `Dev/unstable` are not stable and never go on `main`. Only when the author calls a version stable (V1.1, after the
+rewrite is done) does it replace `index.html` on `main` (and get its own `glimmith_solver_V1.1.html` there). The author wants old
+versions kept downloadable as GitHub Releases later, but none of the V1.0.x are ready for users: make no release until he says so.
+
 ## How a new version is made
 
 Releases are not edited by hand. Each release is a pair of Python patch scripts in `dev/build/` that turn the previous page into the next one:

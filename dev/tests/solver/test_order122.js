@@ -1,6 +1,6 @@
 // core v122: (1) a wall between two groups known to be different (a wall already between two of their tiles) is a 'basic' step;
 // (2) two area numbers that add up to more than the area closed in by walls round them are one piece ('area-pair'). Synthetic boards.
-const L = require('../../fuzzlib.js'), S = require('../../reference/solver-core.v124.js');
+const L = require('../../fuzzlib.js'), S = require('../../reference/solver-core.v125.js');
 let pass = 0, fail = 0; const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL', n, x !== undefined ? JSON.stringify(x) : ''); } };
 const run = (pz, rules) => { const ctx = S.buildSolverContext(pz, [], rules || {}, null, []); return [...S.deduceSolve(pz.w, pz.h, ctx, L.collectSpecialEdges(pz.walls), { stopAtTwo: true })]; };
 const base = (w, h, extra) => Object.assign({ w, h, active: Array.from({ length: h }, () => Array(w).fill(1)), walls: new Map(), roses: new Map(), polyominoes: new Map(), areaNumbers: new Map(), palisades: new Map(), compasses: new Map(), watchtowers: new Map() }, extra);

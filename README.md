@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.45.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.46.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -11,6 +11,16 @@ is sent anywhere.
 * **Fast import** reads all your puzzles in one click. Set it up once: the Fast import box gives a small setup file (Windows or Linux)
   that makes a folder `Glimmith puzzles` of links to the game's puzzle folders; choose that folder once.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.46
+
+A deduction made stronger again, found by comparing the full base-game run with the author's last run (core v125). On compass
+puzzles, a check asks whether a piece can still reach a rose of each type it needs while adding no more tiles than its compass still
+allows on a side. It started from every tile of the piece at no cost. Since the label-join step of V1.0.6, a piece can be known to
+hold two tiles that do not touch yet, and the check then let the far tile act as a free starting point, as if the tiles linking the
+two cost nothing. The check now starts from one part, and every other part must be reached within the compass's count too (also when
+the far part already holds the rose that was needed). On a base-game compass puzzle the steps now decide every edge in 0.1 s,
+instead of stopping at 93 open edges and leaving 11 s of final search. Checked on the fuzzers and the full base-game run.
 
 ## V1.0.45
 
@@ -434,7 +444,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.45.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.46.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |

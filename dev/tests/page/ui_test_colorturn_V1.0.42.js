@@ -3,7 +3,7 @@
 //   node tests/page/ui_test_colorturn_V1.0.42.js [page.html]
 const fs = require('fs'); const { JSDOM } = require('jsdom');
 let pass = 0, fail = 0; const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
-process.argv[2] = process.argv[2] || '../glimmith_solver_V1.0.45.html';
+process.argv[2] = process.argv[2] || '../glimmith_solver_V1.0.46.html';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
   const dom = new JSDOM(fs.readFileSync(process.argv[2], 'utf8'), { runScripts: 'dangerously', pretendToBeVisual: true, url: 'http://localhost/' }), w = dom.window, store = new Map();

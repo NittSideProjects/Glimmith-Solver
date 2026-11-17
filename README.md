@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.48.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.49.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -11,6 +11,17 @@ is sent anywhere.
 * **Fast import** reads all your puzzles in one click. Set it up once: the Fast import box gives a small setup file (Windows or Linux)
   that makes a folder `Glimmith puzzles` of links to the game's puzzle folders; choose that folder once.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.49
+
+Simpler solver (core v128): ten steps that the base game never needs are gone. A rule ablation (`dev/tools/rule_ablation.js`,
+`dev/results/rule_ablation_v127.md`) turned each step off in turn on the 1,225 campaign puzzles. These ten never decided an edge that
+the other steps miss, and none of them, alone or together, makes the final search slower: areaColourReach, areaPair (the step "Two
+area numbers, one piece" and its text go with it), boxAfterRel, boxAllProbe, compassCap, reachParts, splitGrow, basicFirst,
+mingleConnect, sameLinksEarly. All 1,225 puzzles are still unique, in the same time (the differences are run-to-run noise). Six
+other steps that also decide nothing on their own stay, because without them the final search times out or is much slower on some
+puzzles (crossMark, regionMerge, matchIso, matchIsoK, matchShape, matchSplit), and so do the Wally steps (no base-game puzzle uses
+Wally).
 
 ## V1.0.48
 
@@ -465,7 +476,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.48.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.49.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |

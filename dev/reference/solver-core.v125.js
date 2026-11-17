@@ -4116,8 +4116,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     if(!comps.length) return true;
     const sideOf = (q, c, d) => { const x = q % w, y = (q - x) / w; return d === 'n' ? y < c.y : d === 's' ? y > c.y : d === 'e' ? x > c.x : x < c.x; };
     // the tiles of every group, and which groups can never join ours (a compass of either would overflow)
-    const groupTiles = new Map();
-    for(const id of activeIds){ const r = find(id); let g = groupTiles.get(r); if(!g){ g = []; groupTiles.set(r, g); } g.push(id); }
+    const groupTiles = members;                                                  // v125: the union-find's own lists (no pass over the board per call)
     const noJoin = new Map();
     const cantJoin = g => {
       if(noJoin.has(g)) return noJoin.get(g);
@@ -4265,7 +4264,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
         for(let qi = 0; qi < qn; qi++){ const q = rcQ[qi], x = q % w, y = (q - x) / w; if(y < cy) cnt.n++; else if(y > cy) cnt.s++; if(x > cx) cnt.e++; else if(x < cx) cnt.w++; }
         for(const d of DIRS) if(cp[d] != null && cnt[d] < cp[d]){ reachWhy = 'compass'; return false; }
       }
-      if(((K > 0 && lack) || (rpSplit && opts.cmpBudgetParts !== false)) && opts.cmpBudget !== false && !cmpBudgetOk(rep, mem, blocked, closed, mask, lack)){ reachWhy = 'cmp-budget'; return false; }   // v125: also a split group
+      if(((K > 0 && lack) || (rpSplit && opts.cmpBudgetParts !== false && (!searchLite || opts.cmpBudgetPartsSearch === true))) && opts.cmpBudget !== false && !cmpBudgetOk(rep, mem, blocked, closed, mask, lack)){ reachWhy = 'cmp-budget'; return false; }   // v125: also a split group
     }
     return true;
   }
@@ -10643,7 +10642,7 @@ function* deduceSolve(w, h, ctx, specialEdges, opts){
     if(tpLate && !ended && opts.pairProbe !== false && spots.some(e => e.state === 0)){ const r = yield* pairProbeStage(); if(r === 'impossible') ended = 'impossible'; }   // v87b
     if(tpLate && !ended && clueOn && spots.some(e => e.state === 0)){ const r = yield* cluePairStage(); if(r === 'impossible') ended = 'impossible'; }   // v92a
     if(tpLate && !ended && clueOn && opts.clueBranch !== false && spots.some(e => e.state === 0)){                                     // v92e: first clue search slice
-      const first = opts.clueFirstMs != null ? +opts.clueFirstMs : (roseTypeList.length >= 2 ? 40000 : 10000);     // roses of several types: the grouping IS the puzzle
+      const first = opts.clueFirstMs != null ? +opts.clueFirstMs : (roseTypeList.length >= 2 ? 40000 : 20000);     // roses of several types: the grouping IS the puzzle (v125: one type 10 s -> 20 s)
       if(first > 0){ const r = yield* runSlice('clue', first); if(r !== 'timeout') return; }
     }
   }

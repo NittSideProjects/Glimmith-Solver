@@ -14,13 +14,16 @@ is sent anywhere.
 
 ## V1.0.46
 
-A deduction made stronger again, found by comparing the full base-game run with the author's last run (core v125). On compass
-puzzles, a check asks whether a piece can still reach a rose of each type it needs while adding no more tiles than its compass still
-allows on a side. It started from every tile of the piece at no cost. Since the label-join step of V1.0.6, a piece can be known to
-hold two tiles that do not touch yet, and the check then let the far tile act as a free starting point, as if the tiles linking the
-two cost nothing. The check now starts from one part, and every other part must be reached within the compass's count too (also when
-the far part already holds the rose that was needed). On a base-game compass puzzle the steps now decide every edge in 0.1 s,
-instead of stopping at 93 open edges and leaving 11 s of final search. Checked on the fuzzers and the full base-game run.
+Speed fixes found by comparing the full base-game run with the author's last run (core v125). Checked on the fuzzers and the full
+base-game run (1225 unique; on the same machine the median puzzle is 1.09x the time of core v97, `dev/results/timing_v125.md`).
+- On compass puzzles, a check asks whether a piece can still reach a rose of each type it needs while adding no more tiles than
+  its compass still allows on a side. It started from every tile of the piece at no cost. Since the label-join step of V1.0.6, a
+  piece can be known to hold two tiles that do not touch yet, and the check let the far tile act as a free starting point, as if
+  the tiles linking the two cost nothing. It now starts from one part, and every other part must be reached within the compass's
+  count too (also when the far part already holds the rose that was needed). Not inside the final search, where it cost more than
+  it saved. On a base-game compass puzzle the steps now decide every edge in 0.1 s instead of 15 s.
+- On a puzzle with roses of one type, the clue search gets 20 s before the other searches take turns (it was 10 s). A base-game
+  rose puzzle needs about 15 s of it on a slower machine and took 34 s; now 19 s.
 
 ## V1.0.45
 

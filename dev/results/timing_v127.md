@@ -30,3 +30,5 @@ Each puzzle alone (`--jobs 1`), v97 and v127 in turn, five rounds. Best and medi
 | Zone3/0268 | 2.8 | 5.3 | 1.90 | 3.1 | 5.4 | 1.76 | the probes decide 4 more edges than v97, so the probe loop runs another round (1233 probes instead of 643) |
 
 Several puzzles swing between two times on both cores (Zone2/0864b 4.6 or 11 s on v97, 4.7 or 26 s on v127; Zone2/0850 2 or 8.5 s on v97): the final search runs in time slices, and a search that ends just after a slice boundary waits for the other searches' slices.
+
+The author accepted these remaining differences (Zone3/1137, 0268, 0262, Zone2/0866: the cost of the stronger deductions) and kept every deduction.

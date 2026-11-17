@@ -2,7 +2,7 @@
 
 The step-by-step view: step titles, explanations and captions.
 
-Left here: 329 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
+Left here: 327 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -1389,16 +1389,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0887
 - what: message · stepTextsBase › text · Built by the page while it runs, so it only shows in some situations.
 - now: Every piece holds exactly {1}. The ringed tiles have only one piece left they can belong to, so they are in that piece, even though they do not touch yet.{2}
-- new: 
-
-### T1225
-- what: message · stepTextsBase › title · Built by the page while it runs, so it only shows in some situations.
-- now: Two area numbers, one piece
-- new: 
-
-### T1226
-- what: message · stepTextsBase › text · Built by the page while it runs, so it only shows in some situations.
-- now: The ringed tiles carry the same area number, and the area closed in by walls round them has fewer tiles than two pieces of that size need. So they are one piece, even though they do not touch yet.{1}
 - new: 
 
 ### T0752

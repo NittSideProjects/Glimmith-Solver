@@ -2,7 +2,7 @@
 
 Short reasons the solver gives. They show in the solver result ("Impossible: …") and inside step-by-step explanations ("this breaks: …").
 
-Left here: 116 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 13.
+Left here: 114 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 13.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -401,11 +401,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - now: a piece of known size has no place left where it touches no other piece of that size
 - new: 
 
-### T0382
-- what: message · WHY_TEXT › mingle-area-connect · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: the tiles that share the one big piece can no longer be joined up
-- new: 
-
 ### T0383
 - what: message · WHY_TEXT › gemini-iso · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
 - now: the two pieces of a gemini wall can no longer be the same shape
@@ -599,11 +594,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0414
 - what: message · WHY_TEXT › match-iso · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
 - now: the equal pieces are mirror images / rotations of each other, which fixes which tile belongs to which piece
-- new: 
-
-### T1224
-- what: message · WHY_TEXT › area-pair · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: two area numbers in one area closed in by walls need more tiles than the area has
 - new: 
 
 ### T0415

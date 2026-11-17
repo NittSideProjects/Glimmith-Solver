@@ -61,6 +61,7 @@ if(!isMainThread){
     if(over()){ aTimeout = true; break; }
   }
   const aMs = Date.now() - t0;
+  const aSigs0 = A.map(sigOfPieces);
   const valid = ps => {                    // the full rule check of the reduced puzzle on a tiling (every edge fixed)
     const W = new Set(), id = new Map(); ps.forEach((p, i) => p.cells.forEach(([c, r]) => id.set(c + ',' + r, i)));
     const links = [];
@@ -69,6 +70,16 @@ if(!isMainThread){
     for(const ev of S.solvePuzzle(P.puzzle.w, P.puzzle.h, ctx, se, 0, { extraWalls: W, links })) if(ev.type === 'solution') return true;
     return false;
   };
+  const storedOk = sol ? valid(piecesFromWalls(P, sol)) : null;    // false: the removed clue was needed by a rule (Solitude, ...): the stored tiling no longer counts
+  {                                          // the page solver's verdict first: kept even if the exact search is killed
+    const problems = [];
+    if(!aTimeout){
+      if(A.length === 0 && storedOk) problems.push('A found no solution (the stored one is still valid)');
+      if(A.length === 1 && storedOk && aSigs0[0] !== storedSig) problems.push('A unique but not the stored solution');
+      if(A.length === 2){ if(aSigs0[0] === aSigs0[1]) problems.push('A reported the same tiling twice'); for(const ps of A) if(!valid(ps)) problems.push('a tiling of A breaks a rule of the reduced puzzle'); }
+    }
+    parentPort.postMessage({ partial: true, storedOk, verdictA: aTimeout ? 'TIMEOUT' : A.length >= 2 ? 'SEVERAL' : A.length === 1 ? 'UNIQUE' : 'NONE', aMs, verdictB: 'KILLED', problems });
+  }
   const t1 = Date.now(), B = []; let bTimeout = false;
   for(const ev of S.solvePuzzle(P.puzzle.w, P.puzzle.h, ctx, se, 0, { deadline: t1 + limitMs })){
     if(ev.type === 'solution'){ B.push(ev.pieces); if(B.length >= 2) break; }
@@ -78,7 +89,6 @@ if(!isMainThread){
   const bMs = Date.now() - t1;
   const aSigs = A.map(sigOfPieces);
   const problems = [];
-  const storedOk = sol ? valid(piecesFromWalls(P, sol)) : null;    // false: the removed clue was needed by a rule (Solitude, ...): the stored tiling no longer counts
   if(!aTimeout){
     if(A.length === 0 && storedOk) problems.push('A found no solution (the stored one is still valid)');
     if(A.length === 1 && storedOk && aSigs[0] !== storedSig) problems.push('A unique but not the stored solution');
@@ -113,9 +123,9 @@ function launch(){
   while(running < jobs && next < cases.length){
     const c = cases[next++]; running++;
     const w = new Worker(__filename, { workerData: { file: c.file, kind: c.kind, key: c.key, limitMs } });
-    let done = false;
-    const kill = setTimeout(() => { if(!done){ done = true; w.terminate(); finish(c, { verdictA: 'KILLED', verdictB: 'KILLED', problems: [] }); } }, 2 * limitMs + 20000);
-    w.on('message', m => { if(done) return; done = true; clearTimeout(kill); w.terminate(); finish(c, m); });
+    let done = false, partial = null;
+    const kill = setTimeout(() => { if(!done){ done = true; w.terminate(); finish(c, partial || { verdictA: 'KILLED', verdictB: 'KILLED', problems: [] }); } }, 2 * limitMs + 20000);
+    w.on('message', m => { if(done) return; if(m.partial){ partial = m; return; } done = true; clearTimeout(kill); w.terminate(); finish(c, m); });
     w.on('error', e => { if(done) return; done = true; clearTimeout(kill); finish(c, { verdictA: 'ERROR', verdictB: 'ERROR', problems: ['error: ' + e.message] }); });
   }
 }

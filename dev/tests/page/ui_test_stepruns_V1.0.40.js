@@ -3,7 +3,7 @@
 // puzzle solved by "walls that compare sizes" pass after pass, the author's case).
 //   node tests/page/ui_test_stepruns_V1.0.40.js [page.html]
 const fs = require('fs'); const { JSDOM } = require('jsdom'); const L = require('../../fuzzlib.js'), S = L.S;
-const file = process.argv[2] || '../glimmith_solver_V1.0.46.html';
+const file = process.argv[2] || '../glimmith_solver_V1.0.47.html';
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0; const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };
 function board(seed, mp, wp, W = 6, H = 4){                         // planted tiling, Gemini between same-shape neighbours, some plain walls

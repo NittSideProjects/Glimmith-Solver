@@ -3,7 +3,7 @@
 //  2. A planted Match puzzle (synthetic: a 6x6 board cut into four quarter-turned copies of one 9-tile piece, palisades taken from
 //     that tiling until the solver calls it unique): SAT on / off / "too big" all give the same unique solution.
 //  3. A deadline already passed: the search reports a timeout, not "no solution".
-const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v125.js'), L = require('../../fuzzlib.js');
+const S = require(process.env.GLIMMITH_CORE || '../../reference/solver-core.v126.js'), L = require('../../fuzzlib.js');
 let pass = 0, fail = 0;
 const ok = (c, m) => { if(c) pass++; else { fail++; console.log('FAIL:', m); } };
 

@@ -635,7 +635,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
   function makeGrid(w,h,val){ return Array.from({length:h}, () => Array.from({length:w}, () => val)); }
 
-  // ================= SOLVER CORE (pure, unit-tested separately; v125 (V1.0.46) = v124 + the compass budget counts the tiles that join a split group; v124 (V1.0.45) = v123 + the tile-size changed flag is rolled back with a trial; v123 (V1.0.44) = v122 + a SAT final search for Match; v122 (V1.0.43) = v121 + known-different walls first, two area numbers in one closed-in area; v121 (V1.0.37) = v120 + far joins only between groups that do not touch; v120 (V1.0.36) = v119 + the page gets the nested-pass fix of v105; v119 (V1.0.35) = v118 + Wally: the dead-end budget per wall; v118 (V1.0.34) = v117 without the Size Separation relation of v115 (step 3 dropped); v117 (V1.0.33) = v116 + the box per tile cuts the placements; v116 (V1.0.33) = v115 + Gemini shares the shape list across its walls; v115 (V1.0.33) = v114 + Size Separation walls as size relations; v114 (V1.0.31) = v113 + the shared step of every rule tag (RULE_FAMILY); v113 (V1.0.31) = v112 + one corner-pattern checker (Bricky / Loopy); v112 (V1.0.31) = v111 + a box per tile (tBx); v111 (V1.0.31) = v110 + one forced-growth step (growNeed); v110 (V1.0.30) = v109 + one count step for the closed-in areas (areaCountStep); v109 (V1.0.29) = v108 with one shared placement decision (placeDecide); v108 (V1.0.28) = v107 + tile shapes (the shapes a tile's piece is known not to be); v107 (V1.0.27) = v106 with size sets up to 15 and Non-boxy as a Minimum of 3 written once; v106 (V1.0.26) = v105 + tile size sets (the exact sizes a tile's piece can have, holes included); v105 (V1.0.25) = v104 + tile sizes (every tile keeps the size range of its piece); v104 (V1.0.24) = v103 + piece count (fewest .. most pieces, shared by every rule); v103 (V1.0.20) = v102 + more checks say where they fail (markAt); v102 (V1.0.19) = v101 + opts.explain (the cases behind a proof by contradiction); v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
+  // ================= SOLVER CORE (pure, unit-tested separately; v126 (V1.0.47) = v125 + the shape key of a finished group is cached, the reach cap and the label-join stay out of the final search; v125 (V1.0.46) = v124 + the compass budget counts the tiles that join a split group; v124 (V1.0.45) = v123 + the tile-size changed flag is rolled back with a trial; v123 (V1.0.44) = v122 + a SAT final search for Match; v122 (V1.0.43) = v121 + known-different walls first, two area numbers in one closed-in area; v121 (V1.0.37) = v120 + far joins only between groups that do not touch; v120 (V1.0.36) = v119 + the page gets the nested-pass fix of v105; v119 (V1.0.35) = v118 + Wally: the dead-end budget per wall; v118 (V1.0.34) = v117 without the Size Separation relation of v115 (step 3 dropped); v117 (V1.0.33) = v116 + the box per tile cuts the placements; v116 (V1.0.33) = v115 + Gemini shares the shape list across its walls; v115 (V1.0.33) = v114 + Size Separation walls as size relations; v114 (V1.0.31) = v113 + the shared step of every rule tag (RULE_FAMILY); v113 (V1.0.31) = v112 + one corner-pattern checker (Bricky / Loopy); v112 (V1.0.31) = v111 + a box per tile (tBx); v111 (V1.0.31) = v110 + one forced-growth step (growNeed); v110 (V1.0.30) = v109 + one count step for the closed-in areas (areaCountStep); v109 (V1.0.29) = v108 with one shared placement decision (placeDecide); v108 (V1.0.28) = v107 + tile shapes (the shapes a tile's piece is known not to be); v107 (V1.0.27) = v106 with size sets up to 15 and Non-boxy as a Minimum of 3 written once; v106 (V1.0.26) = v105 + tile size sets (the exact sizes a tile's piece can have, holes included); v105 (V1.0.25) = v104 + tile sizes (every tile keeps the size range of its piece); v104 (V1.0.24) = v103 + piece count (fewest .. most pieces, shared by every rule); v103 (V1.0.20) = v102 + more checks say where they fail (markAt); v102 (V1.0.19) = v101 + opts.explain (the cases behind a proof by contradiction); v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
 
   // ---- shape symmetry helpers ----
 
@@ -4142,7 +4142,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         const la = only(e.a); if(la >= 0 && la === only(e.b)){ e.state = 2; union(e.a, e.b); out.push({ e, value: 'same', rule: 'label' }); }
       }
       // v98: a tile whose only possible anchor is l is in the piece of anchor l, touching or not
-      if(opts.labelJoin !== false){
+      if(opts.labelJoin !== false && (!searchLite || opts.labelJoinSearch === true)){      // v126: not in the final search
         factTag = 'label-join';
         try {
           for(let l = 0; l < LB; l++){
@@ -5933,7 +5933,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
     }
     function gdCompleteStep(need, capOf){
       const keyOf = new Map(), doneOf = new Map();
-      const key = rep => { let k = keyOf.get(rep); if(k === undefined){ k = canonicalShapeKey(members.get(rep).map(id => [id % w, (id - id % w) / w])); keyOf.set(rep, k); } return k; };
+      const key = rep => { let k = keyOf.get(rep); if(k === undefined){ k = groupShapeKey(members.get(rep)); keyOf.set(rep, k); } return k; };   // v126: cached
       const done = rep => { let d = doneOf.get(rep); if(d === undefined){ d = groupComplete(rep, members.get(rep)); doneOf.set(rep, d); } return d; };
       for(const ge of gdAll){
         const ra = find(ge.a), rb = find(ge.b);
@@ -7607,9 +7607,10 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       };
       let changed = false;
       const reps = [...members.keys()];
+      const kn = new Int32Array(reps.length); for(let i = 0; i < reps.length; i++) kn[i] = known(reps[i]);   // v126: once per group (updated below)
       for(let k = 1; k < mmQ.length; k++){
         if(!mmQ[k] && mmQ[k] !== 0) continue;
-        const pinned = reps.filter(r => known(r) === k);
+        const pinned = []; for(let i = 0; i < reps.length; i++) if(kn[i] === k) pinned.push(reps[i]);
         if(pinned.length < mmQ[k]) continue;
         // the largest set of pairwise different pieces (exact for up to 24 pinned groups, else greedy)
         let set = [];
@@ -7624,12 +7625,13 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         if(set.length > mmQ[k]){ why = mmWhy; return null; }
         if(set.length < mmQ[k]) continue;
         const inSet = new Set(set), bit = 1n << BigInt(k);
-        for(const r of reps){
+        for(let ri = 0; ri < reps.length; ri++){
+          const r = reps[ri];
           if(inSet.has(r)) continue;
           let free = true; for(const s of set) if(!apart(r, s, k)){ free = false; break; }
           if(!free) continue;                                                    // could still be one of those pieces
           const d = getDom(r);
-          if(d & bit){ const nd = d & ~bit; if(nd === 0n){ why = mmWhy; return null; } dom.set(r, nd); changed = true; }
+          if(d & bit){ const nd = d & ~bit; if(nd === 0n){ why = mmWhy; return null; } dom.set(r, nd); kn[ri] = known(r); changed = true; }
         }
       }
       return changed;
@@ -9445,6 +9447,17 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         if(hi < tHi[rep]) tHi[rep] = hi;
       }
     }
+    const gskCache = new Map();                                                    // v126: sorted tile list -> canonical shape key
+    function groupShapeKey(mem){
+      const ids = mem.slice().sort((a, b) => a - b), t = ids.join(',');
+      let k = gskCache.get(t);
+      if(k === undefined){
+        k = canonicalShapeKey(ids.map(id => [id % w, (id - id % w) / w]));
+        if(gskCache.size >= 20000) gskCache.clear();
+        gskCache.set(t, k);
+      }
+      return k;
+    }
     function propagateOnce(){
       tsDirty = false;
       if(boxOn && nbOn && activeIds.length > 0){ failWhy = 'box-both'; return null; }                       // v32: Boxy and Non-boxy together
@@ -9534,7 +9547,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
           for(const [x, y] of [[ra, rb], [rb, ra]]){
             const mx = members.get(x); let kx = null;
             for(const id of mx) if(stampAt[id]){ kx = stampList[stampAt[id] - 1].key; break; }
-            if(kx === null && mx.length >= need.get(x) && groupComplete(x, mx)) kx = canonicalShapeKey(mx.map(id => [id % w, (id - id % w) / w]));
+            if(kx === null && mx.length >= need.get(x) && groupComplete(x, mx)) kx = groupShapeKey(mx);                 // v126: cached
             if(kx !== null) excludeShape(y, kx);
           }
         }
@@ -9609,7 +9622,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       }
       // v27: walls that compare sizes (lt / gt / diffN / gemini): the sizes each piece can still have
       if(relOn){
-        if(opts.reachCap !== false){                                               // v101: a piece stays inside the tiles its group can still reach
+        if(opts.reachCap !== false && (!searchLite || opts.reachCapSearch === true)){   // v101: a piece stays inside the tiles its group can still reach (v126: not in the final search)
           const seen = new Set(), none = new Set();
           for(const re of relEdges) for(const t of [re.a, re.b]){
             const rep = find(t); if(seen.has(rep)) continue; seen.add(rep);

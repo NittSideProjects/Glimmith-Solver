@@ -71,6 +71,7 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
   const colSrc = /const GROUP_COLORS = (\[[^\]]*\]);/.exec(html)[1];
   const pool = new Function(`const GROUP_COLORS = ${colSrc};
     const puzzle = { w: 60, h: 1, active: [Array(60).fill(1)], walls: new Map(), roses: new Map(), polyominoes: new Map(), areaNumbers: new Map() };
+    const solverPuzzle = () => puzzle;                              // V1.0.52: markGroupColors reads the walls through solverPuzzle()
     ${fnSrc}
     return (() => {
     const fact = i => ({ edges: [], facts: [{ a: [2 * i, 0], b: [2 * i + 1, 0] }], closed: [] });

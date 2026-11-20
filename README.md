@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.51.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.52.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -11,6 +11,15 @@ is sent anywhere.
 * **Fast import** reads all your puzzles in one click. Set it up once: the Fast import box gives a small setup file (Windows or Linux)
   that makes a folder `Glimmith puzzles` of links to the game's puzzle folders; choose that folder once.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.52
+
+Solve marks. While making a puzzle you often already know some walls and links (a part you have checked, independent of the rest).
+The **Solve marks** button (beside Clear all symbols) turns on a mode where a click on a wall spot puts a wall mark, L a link mark,
+and a second click (or Backspace) removes it; tiles can not be changed by mistake in this mode. Marks are drawn in their own colour,
+are not part of the puzzle (kept with it in the page, never exported) and **Clear solve marks** removes them all. Check Uniqueness,
+the step-by-step and Show cases take them as given, so the solver only checks the rest; the result then says how many marks it took
+as given (it holds only if they are right). New test: `dev/tests/page/browser_test_solvemarks_V1.0.52.js`.
 
 ## V1.0.51
 
@@ -492,7 +501,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.51.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.52.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |

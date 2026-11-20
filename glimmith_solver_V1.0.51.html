@@ -12844,19 +12844,18 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       return a >= 0 && b > a ? t.slice(a, b) : '';
     } catch(e){ return ''; }
   })();
-  function solverWorkerMain(){                     // runs inside the worker, after the core: 40 ms slices, one message of events per slice
+  function solverWorkerMain(){                     // runs inside the worker, after the core: each event is sent at once, 40 ms slices
     let gen = null, skip = false;
     const tick = new MessageChannel();
     const run = () => {
-      const t0 = Date.now(), events = [];
+      const t0 = Date.now();
       try {
         while(Date.now() - t0 < 40){
           const r = gen.next();
-          if(r.done){ postMessage({ events, done: true }); return; }
-          if(r.value) events.push(r.value);
+          if(r.done){ postMessage({ events: [], done: true }); return; }
+          if(r.value) postMessage({ events: [r.value] });     // at once: the next solver step may run long without an event
         }
-      } catch(err){ postMessage({ events, error: String(err && err.stack || err) }); return; }
-      postMessage({ events });
+      } catch(err){ postMessage({ events: [], error: String(err && err.stack || err) }); return; }
       tick.port2.postMessage(0);                   // the next slice, after the page's messages (Skip) have been read
     };
     tick.port1.onmessage = run;

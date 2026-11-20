@@ -7,8 +7,9 @@ no progress, no Cancel. Now the Solve run and the step-by-step replay run the sa
   * the worker is made from this page's own SOLVER CORE text (read from the page's script at load, between the SOLVER CORE and
     IMPORT CORE markers) plus a small loop (solverWorkerMain), as a blob: no other file, no network, and the page and the worker run
     the very same core;
-  * the worker runs the solver in 40 ms slices and sends each slice's events in one message; between slices it reads the page's
-    messages (Skip the narrow searches);
+  * the worker sends each solver event the moment it has it (a batch would hold events back while the next solver step runs long,
+    as on a big Solitude board: 75 walls known, 1 shown); it runs in 40 ms slices and between slices reads the page's messages
+    (Skip the narrow searches);
   * Cancel ends the worker at once (terminate), even in the middle of a long step;
   * where a worker can not be made (no Worker, as in jsdom; a browser that refuses a blob worker; an error before the first
     message) the solver runs on the page exactly as before (solverSource falls back on its own).
@@ -37,19 +38,18 @@ src = rep(src, """  const nextPaint = () => new Promise(res => { let done = fals
       return a >= 0 && b > a ? t.slice(a, b) : '';
     } catch(e){ return ''; }
   })();
-  function solverWorkerMain(){                     // runs inside the worker, after the core: 40 ms slices, one message of events per slice
+  function solverWorkerMain(){                     // runs inside the worker, after the core: each event is sent at once, 40 ms slices
     let gen = null, skip = false;
     const tick = new MessageChannel();
     const run = () => {
-      const t0 = Date.now(), events = [];
+      const t0 = Date.now();
       try {
         while(Date.now() - t0 < 40){
           const r = gen.next();
-          if(r.done){ postMessage({ events, done: true }); return; }
-          if(r.value) events.push(r.value);
+          if(r.done){ postMessage({ events: [], done: true }); return; }
+          if(r.value) postMessage({ events: [r.value] });     // at once: the next solver step may run long without an event
         }
-      } catch(err){ postMessage({ events, error: String(err && err.stack || err) }); return; }
-      postMessage({ events });
+      } catch(err){ postMessage({ events: [], error: String(err && err.stack || err) }); return; }
       tick.port2.postMessage(0);                   // the next slice, after the page's messages (Skip) have been read
     };
     tick.port1.onmessage = run;

@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.50.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.51.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -11,6 +11,16 @@ is sent anywhere.
 * **Fast import** reads all your puzzles in one click. Set it up once: the Fast import box gives a small setup file (Windows or Linux)
   that makes a folder `Glimmith puzzles` of links to the game's puzzle folders; choose that folder once.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.51
+
+The page no longer freezes while the solver works. The solver now runs in a Web Worker (its own thread), made from the page's own
+solver code (still one file, nothing downloaded), and sends each thing it finds to the page at once. Before, one long solver step
+(a propagation pass, the probes, a final-search node) blocked the page for seconds: no progress shown, Cancel only after the step.
+Measured in Chromium with the page opened as a file: the longest freeze went from 3.1 s / 3.5 s to about 30 ms on the slow
+campaign puzzles, at the same solve times; Cancel now takes under 0.1 s (was up to 5 s). Where a browser does not allow the worker,
+the page solves as before. The solver itself does not change (core v129). New test: `dev/tests/page/browser_test_worker_V1.0.51.js`
+(Playwright + Chromium).
 
 ## V1.0.50
 
@@ -482,7 +492,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.50.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.51.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |

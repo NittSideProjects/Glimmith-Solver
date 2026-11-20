@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 A single-page editor and uniqueness solver for puzzles from the game *The Artisan of Glimmith*. The whole app (editor, solver, importer, UI) is one
-self-contained HTML file, `glimmith_solver_V1.0.50.html`, with no build step and no network use. `dev/` holds the Node test suite and tools.
+self-contained HTML file, `glimmith_solver_V1.0.51.html`, with no build step and no network use. `dev/` holds the Node test suite and tools.
 
 ## This repository is public: keep game and third-party data out
 
@@ -42,11 +42,13 @@ environment: three timing checks on the live solving animation).
 
 ## Architecture
 
-- **The page is the source of truth.** Inside `glimmith_solver_V1.0.50.html` the main `<script>` contains, in order: the `SOLVER CORE`
+- **The page is the source of truth.** Inside `glimmith_solver_V1.0.51.html` the main `<script>` contains, in order: the `SOLVER CORE`
   block (pure functions; its banner comment is the full core version history), the deduction solver (`deduceSolve`: propagation steps,
   probes, narrow per-edge searches, then an exact final search; for Match that final search is a SAT search since core v123,
   `satNew` / `satMatchCases`, every tiling it finds re-checked by the full rule checker), the import core (puzzle file, zip and workshop folder parsing), then the
-  UI code.
+  UI code. Since V1.0.51 the UI runs the solver in a Web Worker made from that same `SOLVER CORE` text (`solverSource`, `solverWorkerMain`;
+  each event is posted at once), and on the page thread where no worker can be made (jsdom: the page tests run that path;
+  `tests/page/browser_test_worker_V1.0.51.js` checks the worker in a real Chromium).
 - **`dev/reference/` mirrors the page** as Node modules: `solver-core.vNN.js` is the page's `SOLVER CORE` block with the two-space indent
   removed, **character for character** (since V1.0.36 the reference core is written from the page: `patch_ui_V1.0.x.py ... --reference
   dev/reference/solver-core.vNN.js`), and `import-core.js` is the importer. Never patch the reference core on its own: a fix that lived

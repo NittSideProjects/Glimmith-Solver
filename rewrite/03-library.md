@@ -2,7 +2,7 @@
 
 The puzzle list at the top of the Puzzle Grid panel, its buttons, the Fast import box, the import report and the messages an import or export can show.
 
-Left here: 11 to write, 5 to check again, 2 notes, 0 to put on the page. Done: 103.
+Left here: 0 to write, 0 to check again, 10 notes, 3 to put on the page. Done: 108.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -54,14 +54,12 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0025
 - what: tooltip · #fastFoldersBtn · Button that only shows once Fast import has remembered a folder. Tooltip: shows when you hover over it.
 - now: Choose or forget the folder Fast import reads
-- was: Choose or forget the folders Fast import reads
-- new: =
+- new: [where]
 
 ### T0026
 - what: text · #fastFoldersBtn · Button that only shows once Fast import has remembered a folder.
 - now: Folder…
-- was: Folders…
-- new: =
+- new: [where]
 
 ### T0027
 - what: tooltip · #exportBtn · Tooltip: shows when you hover over it.
@@ -106,37 +104,37 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T1197
 - what: text (keep the <b>/<i> tags or drop them) · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: <b>Set up once.</b> Fast import reads one folder, <code>Glimmith puzzles</code>, that a small setup file makes for you. Put the setup file in any folder you like (Documents, for example) and run it: it makes <code>Glimmith puzzles</code> next to itself, holding two links. <code>downloaded</code> leads to the puzzles you downloaded from the workshop, <code>made</code> to the puzzles you made. A link only points to the game's folder: nothing is copied or moved, the game works as before, new puzzles show up in it by themselves, and deleting <code>Glimmith puzzles</code> deletes only the links. It needs no administrator rights.
-- new: 
+- new: [remove]
 
 ### T1198
 - what: text (keep the <b>/<i> tags or drop them) · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: <b>Windows:</b> double-click <code>glimmith-setup.bat</code>. Windows may warn that the file comes from the internet: choose "More info", then "Run anyway". You can open it in Notepad first, it is a few lines.<br><b>Linux:</b> in a terminal, in the folder where you put it, run <code>sh glimmith-setup.sh</code>. It looks for Steam in the usual places (the Flatpak one too).
-- new: 
+- new: <b>Windows:</b> Download the setup file for windows which is <code>glimmith-setup.bat</code> and run it in the folder of your choosing. It will create a folder containing links that points to the puzzles you made and the puzzles you downloaded. If you do not trust blind code you can open it in a text editor, it is 2 lines. After that you can open the folder created with the choose folder below and get all of the puzzles you have.<br><b>Linux:</b> Download the setup file for linux then run <code>sh glimmith-setup.sh</code> in a terminal where you put the file. Same as windows setup, after it will create a folder that you can open with the choose folder below to get all the puzzles you have.
 
 ### T1202
 - what: text (keep the <b>/<i> tags or drop them) · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Then choose the <code>Glimmith puzzles</code> folder below.
-- new: 
+- new: [remove]
 
 ### T1199
 - what: text · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: The folder the setup made
-- new: 
+- new: [remove]
 
 ### T1200
 - what: text · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Glimmith puzzles
-- new: 
+- new: [remove]
 
 ### T1201
 - what: text · #fastSetupBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Setup file for Windows
-- new: 
+- new: =
 
 ### T1205
 - what: text · #fastSetupShBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Setup file for Linux
-- new: 
+- new: =
 
 ### T0038
 - what: text · #fastPick_both · In the Fast import box, which opens the first time you click Fast import, or with Folders….
@@ -146,12 +144,12 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T1206
 - what: text · #fastSetup · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Steam installed somewhere else? Open the setup file in a text editor and change the line with the Steam folder.
-- new: 
+- new: If steam is installed somewhere else, simply open the setup file in a text editor and change the line with the Steam folder.
 
 ### T1207
 - what: text (keep the <b>/<i> tags or drop them) · #fastRefused · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Your browser refused that folder. Choose the <code>Glimmith puzzles</code> folder the setup file made, not the game's own folders.
-- new: 
+- new: =
 
 ### T0043
 - what: text · #fastRunBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
@@ -161,8 +159,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0044
 - what: text · #fastForgetBtn · In the Fast import box, which opens the first time you click Fast import, or with Folders….
 - now: Forget folder
-- was: Forget folders
-- new: =
+- new: [where]
 
 ### T0045
 - what: text · #importLogSummary · Under the puzzle list, after an import.
@@ -522,14 +519,12 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0833
 - what: message · fastRender · Built by the page while it runs, so it only shows in some situations.
 - now: Fast import reads all your puzzles in one click, once the setup below is done.
-- was: Choose each folder once. After that, Fast import reads both in one click (your browser may ask to allow it).
-- new: Choose each folder once. After that, Fast import reads both in one click (if your browser is compatible).
+- new: This fast import option exists to get all of the puzzles you made/downloaded in your game with a small setup
 
 ### T0834
 - what: message · fastRender · Built by the page while it runs, so it only shows in some situations.
 - now: Your browser can't remember folders (Chrome and Edge can): after the setup below, it asks for the Glimmith puzzles folder each time.
-- was: Choose a folder to import every puzzle in it. This browser can not remember folders (Chrome and Edge can), so you pick it each time.
-- new: Choose your folder to import the puzzles. Your browser can't remember folders (Chrome and Edge can), so you will need to pick it each time.
+- new: [where]
 
 ### T0835
 - what: message · fastRun · Built by the page while it runs, so it only shows in some situations.
@@ -549,12 +544,12 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T1204
 - what: message · attachFastImport · Built by the page while it runs, so it only shows in some situations.
 - now: glimmith-setup.bat
-- new: 
+- new: =
 
 ### T1209
 - what: message · attachFastImport · Built by the page while it runs, so it only shows in some situations.
 - now: glimmith-setup.sh
-- new: 
+- new: =
 
 ### T0838
 - what: message · attachFastImport › text · Built by the page while it runs, so it only shows in some situations.

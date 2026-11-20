@@ -2,7 +2,7 @@
 
 The "Rules with improved deduction logic" list and what each i button opens.
 
-Left here: 50 to write, 0 to check again, 0 notes, 5 to put on the page. Done: 91.
+Left here: 0 to write, 0 to check again, 34 notes, 15 to put on the page. Done: 97.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -484,7 +484,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0266
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_loopy · Shows when you click the i next to this rule.
 - now: <b>The outline is linked.</b> Every outline tile is walled from the outside, so outline tiles side by side are one piece (the same round holes), and a one-tile piece can never sit there.
-- new: 
+- new: <b>The outline is linked.</b> You must always link the outline of a loopy puzzle, putting walls would instantly break loopy.
 
 ### T0267
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_loopy · Shows when you click the i next to this rule.
@@ -494,244 +494,244 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0268
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_loopy · Shows when you click the i next to this rule.
 - now: <b>Two colours.</b> A chain of known edges tells whether two tiles have the same colour: same colour gives a link, different a wall. Three pieces that all touch each other are impossible.
-- new: 
+- new: [remove this one, change the other two color to : <b>Two colors.</b> Since no corner has exactly three walls (a T), every corner has 0, 2 or 4 walls. This also makes the final puzzle 2 colorable, with the outside being one of them. If a wall or link would force the usage of a 3rd color then it can't be used.]
 
 ### T0269
 - what: text · #improvedFooter
 - now: Combined rules
-- new: 
+- new: [Honestly putting combined rules there is just confusing, I'd remove them all]
 
 ### T0270
 - what: text · #improvedFooter
 - now: Mismatch + few shapes
-- new: 
+- new: [remove]
 
 ### T0272
 - what: text · #impInfo_combo_fewshapes · Shows when you click the i next to this rule.
 - now: With Mismatch and only a few shapes to go round (Boxy, or small pieces), the solver tracks which piece can take which shape.
-- new: 
+- new: [remove]
 
 ### T0273
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_fewshapes · Shows when you click the i next to this rule.
 - now: <b>Shapes taken.</b> Four pieces that can only be the 1x1, 1x2, 1x3 and 1x4 take all four, and every other piece loses them.
-- new: 
+- new: [remove]
 
 ### T0274
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_fewshapes · Shows when you click the i next to this rule.
 - now: <b>Size walls.</b> With few shapes available from the size limits, Difference and Inequality walls become very valuable to tell which small pieces are still available.
-- new: 
+- new: [remove]
 
 ### T0275
 - what: text · #improvedFooter
 - now: Match + pocket of knowledge
-- new: 
+- new: [remove]
 
 ### T0277
 - what: text · #impInfo_combo_matchclues · Shows when you click the i next to this rule.
 - now: With Match every piece has the same shape, so whatever a clue tells about its own piece holds for every piece.
-- new: 
+- new: [remove]
 
 ### T0278
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_matchclues · Shows when you click the i next to this rule.
 - now: <b>Small facts, big picture.</b> Testing every shape of a size one by one is too slow. Instead the solver gathers small facts about the piece from the clues and lets each one cut the list: one fact allows only straight pieces, another needs a tile with all four neighbours in the piece, and together no shape is left.
-- new: 
+- new: [remove]
 
 ### T0279
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_matchclues · Shows when you click the i next to this rule.
 - now: <b>Reducing size.</b> Some facts keep the piece in a small area, which caps its size: a compass with 0 west close to the east wall forces the shape to be thin.
-- new: 
+- new: [remove]
 
 ### T0280
 - what: text · #improvedFooter
 - now: Match + holes
-- new: 
+- new: [remove]
 
 ### T0282
 - what: text · #impInfo_combo_matchhole · Shows when you click the i next to this rule.
 - now: With Match a piece can't surround another piece: if the piece contains a hole, it would need to be a hole of the puzzle.
-- new: 
+- new: [remove]
 
 ### T0283
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_matchhole · Shows when you click the i next to this rule.
 - now: <b>A hole for every piece.</b> When tiles known to be one piece close a ring around empty tiles, the shape has a hole of that shape. A board with fewer holes than the minimum number of pieces would fail. A link that would create such a scenario is decided to be a wall. This is the reason the O heptomino can't tile a plane.
-- new: 
+- new: [remove]
 
 ### T0284
 - what: text · #improvedFooter
 - now: Compass + Boxy
-- new: 
+- new: [remove]
 
 ### T0286
 - what: text · #impInfo_combo_compassboxy · Shows when you click the i next to this rule.
 - now: A Boxy compass counts whole rows and columns.
-- new: 
+- new: [remove]
 
 ### T0287
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_compassboxy · Shows when you click the i next to this rule.
 - now: <b>Corners of the rectangle.</b> A compass with a non-0 number to the west and to the north must reach the tile directly west, directly north and diagonally north-west.
-- new: 
+- new: [remove]
 
 ### T0288
 - what: text · #improvedFooter
 - now: Compass + Roses
-- new: 
+- new: [remove]
 
 ### T0290
 - what: text · #impInfo_combo_compassrose · Shows when you click the i next to this rule.
 - now: A compass piece has only so many tiles on each side, and still has to reach every rose type.
-- new: 
+- new: [remove]
 
 ### T0291
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_compassrose · Shows when you click the i next to this rule.
 - now: <b>The way to a rose.</b> A rose that can only be reached through more tiles to the north than the north number allows is out of reach for that piece.
-- new: 
+- new: [remove]
 
 ### T0292
 - what: text · #improvedFooter
 - now: Area numbers + Roses
-- new: 
+- new: [remove]
 
 ### T0294
 - what: text · #impInfo_combo_arearose · Shows when you click the i next to this rule.
 - now: An area number fixes the size, the roses fix what the piece must hold.
-- new: 
+- new: [remove]
 
 ### T0295
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_arearose · Shows when you click the i next to this rule.
 - now: <b>Every place of the piece.</b> With few pieces the solver lists every place of the numbered piece; the rest of the board must still hold full rose sets.
-- new: 
+- new: [remove]
 
 ### T0296
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_arearose · Shows when you click the i next to this rule.
 - now: <b>Close enough.</b> A rose only counts as reachable when the piece plus the way there fits in the number.
-- new: 
+- new: [remove]
 
 ### T0297
 - what: text · #improvedFooter
 - now: Gemini + Delta
-- new: 
+- new: [remove]
 
 ### T0299
 - what: text · #impInfo_combo_gemdelta · Shows when you click the i next to this rule.
 - now: Gemini says same shape, Delta says different shape.
-- new: 
+- new: [remove]
 
 ### T0300
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_gemdelta · Shows when you click the i next to this rule.
 - now: <b>Never the same two pieces.</b> If one piece touches both a Gemini and a Delta wall, the pieces across them are different.
-- new: 
+- new: [remove]
 
 ### T0301
 - what: text · #improvedFooter
 - now: One symbol per piece
-- new: 
+- new: [remove]
 
 ### T0303
 - what: text · #impInfo_combo_labels · Shows when you click the i next to this rule.
 - now: With Solitude, roses, or all-different area numbers that fill the board, every tile belongs to exactly one symbol's piece.
-- new: 
+- new: [remove]
 
 ### T0304
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_labels · Shows when you click the i next to this rule.
 - now: <b>Who each tile belongs to.</b> Two touching tiles that can not belong to the same symbol get a wall; two that can only belong to the same one get a link. A tile too far from a symbol for its size can not belong to it.
-- new: 
+- new: [remove]
 
 ### T0305
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_labels · Shows when you click the i next to this rule.
 - now: <b>Minimums fill the board.</b> When the smallest pieces of all symbols add up to the board, every piece is that small: 20 compasses that each need 5 tiles on 100 tiles make every piece 5.
-- new: 
+- new: [remove]
 
 ### T0306
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_combo_labels · Shows when you click the i next to this rule.
 - now: <b>With Boxy.</b> Every rectangle a piece can still be must hold what it needs: a strip along the edge that does not reach all the roses it needs must grow wider to reach them. With Solitude, a rectangle with no symbol is dropped.
-- new: 
+- new: [remove]
 
 ### T0307
 - what: text · #improvedFooter · Only shows when custom rules are on (button at the bottom of the page).
 - now: Custom
-- new: 
+- new: =
 
 ### T0308
 - what: text · #improvedFooter · Only shows when custom rules are on (button at the bottom of the page).
 - now: Omits
-- new: 
+- new: =
 
 ### T0310
 - what: text · #impInfo_ban · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: No piece may contain a banned shape (turned or flipped).
-- new: 
+- new: No piece may contain a banned shape, this includes the banned shape itself.
 
 ### T0311
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_ban · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: <b>Contains means inside.</b> Banning the 2x2 bans the P pentomino too. Two groups whose union would hold a banned shape get a wall: with a banned domino every edge is a wall.
-- new: 
+- new: <b>Never create the shape.</b> If a link would create a banned shape then it is a wall. This is also true for two shapes which merging would create a banned shape.
 
 ### T0312
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_ban · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: <b>Biggest allowed piece.</b> If every shape of some size holds a banned shape, no piece can be that big: a banned domino makes every piece one tile. Bank shapes and polyominoes that hold one can not be used.
-- new: 
+- new: <b>Biggest allowed piece.</b> Since banning a piece also bans every bigger piece that contains it. If every shape of some size holds a banned shape, no piece can be that big. banning the 1x3 and the W pentomino bans every piece of size 5, so every shape is size 4 or less.
 
 ### T0313
 - what: text · #improvedFooter · Only shows when custom rules are on (button at the bottom of the page).
 - now: Wally
-- new: 
+- new: =
 
 ### T0315
 - what: text · #impInfo_wally · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: Every tile needs at least 2 neighbours that are not in its piece; the board edge and holes count as such neighbours. That is the same as: no piece may contain a T tetromino.
-- new: 
+- new: Every tile needs at least 2 neighbours that are not in its piece and the board edge and holes count as such neighbours.
 
 ### T0316
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_wally · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: <b>At most 2 neighbours inside.</b> A tile can have at most 2 neighbours in its own piece, so once it has 2 links, its other sides are walls. Pieces stay thin: no T, no plus, no 2x2 with a tile sticking out.
-- new: 
+- new: =
 
 ### T0317
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_wally · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: <b>Placements.</b> A polyomino, bank shape or rectangle that holds a T is dropped: with Boxy every piece is a strip or a 2x2 block.
-- new: 
+- new: [remove]
 
 ### T0318
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_wally · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: <b>Gemini lines.</b> The two pieces of a Gemini wall have the same straight lines. If one side holds 4 tiles in a line and the other side can not get a new line of 4 anywhere (every try is refuted), the 4 must be the twin of a line the other side already has: next to a closed line of 5, it grows by exactly one tile.
-- new: 
+- new: [this feels like a gemini rule, not a wally rule, it's mentioned in "same shape advanced"]
 
 ### T0319
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_wally · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: <b>Two ends per piece.</b> Every piece is a path with two ends (a tile with 3 walls), a ring, or a single tile. A piece never gets a third end, and once both its ends are known every other tile goes through. With two rose types and every rose a dead end (or Solitude with dead-end symbols), the ends are all used up: every piece starts and ends at its roses.
-- new: 
+- new: <b>Two ends per piece.</b> Every piece is either a ring, or has two dead ends. If we know the amount of total pieces and the amount of dead ends is exactly twice that then no other place in the puzzle can be a dead end, and any wall that would make one is a link.
 
 ### T0320
 - what: text · #improvedFooter · Only shows when custom rules are on (button at the bottom of the page).
 - now: Heterogeneous
-- new: 
+- new: =
 
 ### T0322
 - what: text · #impInfo_hetero · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: Every piece has a different size.
-- new: 
+- new: Every piece has a different size. A strickter kind of mismatch.
 
 ### T0323
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_hetero · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: <b>Fewer pieces.</b> Different sizes add up fast: 4 pieces need at least 1 + 2 + 3 + 4 = 10 tiles, so a board of 9 tiles has at most 3 pieces. A board that can not be split into different sizes (6 tiles with Precision 3) is impossible.
-- new: 
+- new: <b>Fewer pieces.</b> Different sizes add up VERY fast, if a puzzle is of size 20 we know it will at most have 5 pieces as 1+2+3+4+5+6=21. anything mismatch does is done here but amplified, once a piece is done the size is removed from the pool.
 
 ### T0324
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_hetero · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: <b>A size is used once.</b> Once a piece is finished, no other piece can have its size. Touching pieces differ in size too, so everything Size Separation finds applies as well.
-- new: 
+- new: [remove]
 
 ### T0325
 - what: text · #improvedFooter · Only shows when custom rules are on (button at the bottom of the page).
 - now: Links
-- new: 
+- new: =
 
 ### T0327
 - what: text · #impInfo_links · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: A link joins two tiles: they are in the same piece. It is the opposite of a wall.
-- new: 
+- new: A link just joins two tiles, it's a very basic mechanic that can be used in a lot of ways.
 
 ### T0328
 - what: text (keep the <b>/<i> tags or drop them) · #impInfo_links · Shows when you click the i next to this rule. Only shows when custom rules are on (button at the bottom of the page).
 - now: <b>Known from the start.</b> Linked tiles are one group before the solver starts, so every other rule uses that right away: two roses of the same type linked together are impossible, and a linked group already as big as the size limit is walled all round.
-- new: 
+- new: <b>Simply known.</b> Linked tiles are one group before the solver starts, and that's basically it for that mechanic.

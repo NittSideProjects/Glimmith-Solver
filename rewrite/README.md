@@ -5,21 +5,21 @@ rewrite page, https://claude.ai/artifact/8zkhz8jRG1qYJM5ET2k6e2 (private), not h
 Claude refreshes whenever it works on texts (`dev/tools/rewrites/repo.js`, see `dev/tools/rewrites/README.md`): they keep the
 answers in the repository and give the count below. A change made by hand in these files is lost at the next refresh.
 
-**Left before V1.1: 666** (651 to write, 5 to check again, 4 notes for Claude, 6 written but not on the page yet).
-Done: 362 of 1028. The rewrite page lists fewer: it leaves out the notes for Claude.
+**Left before V1.1: 664** (599 to write, 0 to check again, 46 notes for Claude, 19 written but not on the page yet).
+Done: 373 of 1037. The rewrite page lists fewer: it leaves out the notes for Claude.
 
 | Part of the page | To write | To check again | Notes | To put on the page | Done |
 |---|---|---|---|---|---|
 | [Top of the page](01-top.md) | 0 | 0 | 0 | 0 | 12 |
 | [Credits window](02-credits.md) | 0 | 0 | 0 | 0 | 5 |
-| [Puzzle list, import and export](03-library.md) | 11 | 5 | 2 | 0 | 103 |
-| [Grid size, tools and key](04-grid.md) | 0 | 0 | 0 | 0 | 24 |
+| [Puzzle list, import and export](03-library.md) | 0 | 0 | 10 | 3 | 108 |
+| [Grid size, tools and key](04-grid.md) | 7 | 0 | 0 | 0 | 24 |
 | [Shape editor, Shape Bank and Omits](05-shapes.md) | 0 | 0 | 0 | 1 | 16 |
 | [Rules](06-rules.md) | 0 | 0 | 1 | 0 | 41 |
-| [Solver](07-solver.md) | 0 | 0 | 1 | 0 | 46 |
+| [Solver](07-solver.md) | 2 | 0 | 1 | 0 | 46 |
 | [Step-by-step reasoning](08-steps.md) | 329 | 0 | 0 | 0 | 6 |
 | [Why something is impossible](09-why.md) | 115 | 0 | 0 | 0 | 13 |
-| [Rule explanations (bottom of the page)](10-footer.md) | 50 | 0 | 0 | 5 | 91 |
+| [Rule explanations (bottom of the page)](10-footer.md) | 0 | 0 | 34 | 15 | 97 |
 | [Custom rules button](11-custom.md) | 0 | 0 | 0 | 0 | 3 |
 | [Other messages](12-other.md) | 146 | 0 | 0 | 0 | 2 |
 

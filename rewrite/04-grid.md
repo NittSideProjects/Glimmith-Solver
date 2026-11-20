@@ -2,7 +2,7 @@
 
 Width and height, the clear buttons, the grid itself and the key of what each key draws.
 
-Left here: 0 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 24.
+Left here: 7 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 24.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -31,6 +31,26 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - now: Clear all symbols
 - new: Clear all symbols
 
+### T1227
+- what: tooltip · #solveModeBtn · Tooltip: shows when you hover over it.
+- now: Mark walls and links you have already checked yourself. They are not part of the puzzle: Check Uniqueness takes them as given and only checks the rest.
+- new: 
+
+### T1228
+- what: text · #solveModeBtn
+- now: Solve marks
+- new: 
+
+### T1229
+- what: text · #clearSolveMarksBtn
+- now: Clear solve marks
+- new: 
+
+### T1230
+- what: text · #solveHint
+- now: Solve marks: click a wall spot to mark a wall, press L on it to mark a link, click a mark again to remove it. Check Uniqueness takes your marks as given and only checks the rest of the puzzle.
+- new: 
+
 ### T0053
 - what: text · #puzzlePanel
 - now: active
@@ -45,6 +65,11 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: text · #puzzlePanel
 - now: wall
 - new: =
+
+### T1231
+- what: text · #puzzlePanel
+- now: solve mark
+- new: 
 
 ### T0056
 - what: text (keep the <b>/<i> tags or drop them) · #puzzlePanel
@@ -105,6 +130,16 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: text (keep the <b>/<i> tags or drop them) · #puzzlePanel · Only shows when custom rules are on (button at the bottom of the page).
 - now: <kbd>L</kbd>link (on a wall spot)
 - new: =
+
+### T1234
+- what: message · attachEvents · Built by the page while it runs, so it only shows in some situations.
+- now: This spot is part of the puzzle already
+- new: 
+
+### T1235
+- what: message · attachEvents · Built by the page while it runs, so it only shows in some situations.
+- now: A solve mark goes between two active tiles
+- new: 
 
 ### T0850
 - what: message · attachEvents · Built by the page while it runs, so it only shows in some situations.

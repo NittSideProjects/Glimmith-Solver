@@ -18,7 +18,7 @@ for(const b of names){
 // by hand: the known-different walls / links inside a group ('Follows from what is known', mostly) stay first; the blocks that only
 // record two groups as different pieces (their walls come from that block on the next pass) take the rank of the rule those walls show
 const HAND = { diffwall: [0, 'first: follows from what is known'], diffclash: [7, 'Difference: two numbers, two pieces'], rosecover: [17, 'Roses: who goes with whom'],
-  areapair: [21, 'Area numbers in a closed-in area'], gdclash: [70, 'Gemini and Delta: never the same two pieces'] };
+  areapair: [21, 'Area numbers in a closed-in area'], relbounds: [20.6, 'decides nothing: the sizes the walls that compare sizes leave each group, read by area numbers / area sum / growth in the same pass'], gdclash: [70, 'Gemini and Delta: never the same two pieces'] };
 for(const [b, [p, why]] of Object.entries(HAND)){ prio.set(b, p); info[b].prio = `${p} (by hand: ${why})`; }
 // blocks with no ranked decision keep their old place: the priority of the ranked block just before them (ties keep the old order)
 let last = 0;

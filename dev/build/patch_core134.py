@@ -75,7 +75,7 @@ BLOCKS = [
 ]
 NEED_FIRST = {'bricky','sizecut','areapair','areacount','loopy','wallyends','bridge','tower','mingle','rel','range','area','splitcut','areasum',
               'stamp','palisade','bankblock','mismatch','grow','reach','matchplace','box','rosecutdyn','gemplace','mhall','compass','bankplace',
-              'compassplace','areaplace','sizewall'}
+              'compassplace','areaplace','sizewall','relbounds'}
 
 def restructure(body):
     pos = []
@@ -137,17 +137,25 @@ def restructure(body):
                          "      if(pieceInfo(members.get(ra).concat(members.get(rb))) === null){ e.state = 1; changes.push({ e, value: 'wall', rule: why }); }\n"
                          "    }\n"
                          "    if(changes.length > 0) return changes;              // let the new walls spread before looking for forced growth\n")
-    # rel: the root bounds are kept after it (as before: once the pass reaches it)
-    parts['rel'] = rep(parts['rel'], "    if(!inProbe && !searchLite){ rootNeed = need; rootCap = capOf; }                                                  // v88b\n", "", 'rootNeed')
-    parts['rel'] += "    if(!inProbe && !searchLite){ rootNeed = need; rootCap = capOf; }                                                  // v88b\n"
+    # rel: split in two. relbounds = the reach cap + the sizes the walls that compare sizes leave each group (need / cap, `derived`,
+    # `relRaised`: area, area-sum, forced growth and reach read them in the same pass), deciding nothing; rel = the walls of relStep.
+    r = parts.pop('rel')
+    r = rep(r, "    if(!inProbe && !searchLite){ rootNeed = need; rootCap = capOf; }                                                  // v88b\n", "", 'rootNeed')
+    r = rep(r, "      const rl = relStep(need, capOf, dmap);\n      if(rl === null){ failWhy = why; return null; }\n      if(rl.length > 0) return rl;\n",
+               "      if(relStep(need, capOf, dmap, 'bounds') === null){ failWhy = why; return null; }   // v134: the bounds only\n", 'rel split')
+    parts['relbounds'] = r + "    if(!inProbe && !searchLite){ rootNeed = need; rootCap = capOf; }                                                  // v88b\n"
+    parts['rel'] = ("    if(relOn){                                                  // v134: the walls of relStep, from the bounds of relbounds in this pass\n"
+                    "      const rl = relStep(need, capOf, dmap, 'walls');\n      if(rl === null){ failWhy = why; return null; }\n      if(rl.length > 0) return rl;\n    }\n")
     # forced growth / reach share the exits
     g = parts['grow']
     g = rep(g, ("    const exits = new Map();\n    for(const e of spots){\n      if(e.state !== 0) continue;\n      const ra = find(e.a), rb = find(e.b);\n"
                 "      if(!exits.has(ra)) exits.set(ra, []); exits.get(ra).push(e);\n      if(!exits.has(rb)) exits.set(rb, []); exits.get(rb).push(e);\n    }\n"),
             "    getExits();\n", 'exits')
     parts['grow'] = g
+    parts['reach'] = rep(parts['reach'], "for(const e of (exits.get(rep) || [])){", "for(const e of (getExits().get(rep) || [])){", 'reach exits')
     end = parts.pop('__end')
     names = [n for n, _ in BLOCKS if not n.startswith('__')]
+    names.insert(names.index('rel'), 'relbounds')
     # diffwall / sizewall take the place of the spot loop, before bricky
     names.insert(names.index('bricky'), 'sizewall'); names.insert(names.index('sizewall'), 'diffwall')
     out = [head, "    for(let bi = 0; bi < STEP_ORDER.length; bi++){                     // v134: the steps in the author's order (see patch_core134.py)\n",
@@ -180,6 +188,19 @@ def patch(src, ind):
              f"  const STEP_NAMES = {json.dumps(names)};\n"
              f"  const STEP_ORDER = opts.ruleOrder === 'old' ? {json.dumps(list(range(len(names))))} : {json.dumps([idx[n] for n in want])};\n")
     src = src[:s0] + ad(pre + rest) + src[e0:]
+    src = rep(src, ad("  function relStep(need, capOf, dmap){\n    scRegion = null;\n    const dom = new Map(), out = [];\n    derived = new Map(); relRaised = new Set();\n"),
+              ad("  function relStep(need, capOf, dmap, part){                 // v134: part 'bounds' (the sizes, no decision) | 'walls' (from the bounds of this pass) | both\n"
+                 "    if(part === 'walls' && relPassDom === null) part = undefined;\n"
+                 "    const out = [];\n    const dom = part === 'walls' ? relPassDom : new Map();\n"
+                 "    if(part !== 'walls'){\n    scRegion = null;\n    derived = new Map(); relRaised = new Set();\n"), 'relStep head')
+    src = rep(src, ad("      keepOnly(rep, tsFromBig(d));                                             // v106\n    }\n"),
+              ad("      keepOnly(rep, tsFromBig(d));                                             // v106\n    }\n"
+                 "    }                                                                            // v134: end of the bounds\n"
+                 "    if(part === 'bounds'){ relPassDom = dom; return out; }\n"), 'relStep bounds end')
+    src = rep(src, ad("  let derived = new Map(), relRaised = new Set();"), ad("  let relPassDom = null;                                 // v134: the size domains relbounds left in this pass (relStep 'walls' reads them)\n  let derived = new Map(), relRaised = new Set();"), 'relPassDom')
+    src = rep(src, ad("  function propagateOnce(){\n    tsDirty = false;\n"),
+              ad("  function propagateOnce(){\n    tsDirty = false;\n"
+                 "    derived = new Map(); relRaised = new Set(); relPassDom = null;    // v134: per pass (read only after relbounds of this pass)\n"), 'pass reset')
     src = rep(src, ind + "  function propagateOnce(){\n", ad(table + "  let lastBlock = -1;                                   // v134: the block that ended the last pass (-1: the checks before them)\n") + ind + "  function propagateOnce(){\n    lastBlock = -1;\n".replace("\n    lastBlock", "\n" + ind + "    lastBlock"), 'table')
     src = rep(src, ind + "        if(tsOn && fr.n) keepSizes(fr.n, fr.c);                          // v105\n",
               ind + "        if(tsOn && fr.n) keepSizes(fr.n, fr.c);                          // v105\n" +

@@ -7,6 +7,7 @@
   "rosecover",
   "loopy",
   "wallyends",
+  "relbounds",
   "areapair",
   "area",
   "splitcut",
@@ -132,6 +133,10 @@
   "mingle": {
    "prio": 57.2,
    "tags": "mingle-area-parity:2356@54 mingle-area-merge:1286@79 mingle-area-place:1115@53 mingle-area-link:361@42 mingle-shape-merge:214@12 mingle-shape-link:74@39 mingle-shape-parity:50@71"
+  },
+  "relbounds": {
+   "prio": "20.6 (by hand: decides nothing: the sizes the walls that compare sizes leave each group, read by area numbers / area sum / growth in the same pass)",
+   "tags": ""
   },
   "rel": {
    "prio": 72.2,

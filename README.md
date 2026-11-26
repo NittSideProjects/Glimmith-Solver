@@ -12,6 +12,21 @@ is sent anywhere.
   that makes a folder `Glimmith puzzles` of links to the game's puzzle folders; choose that folder once.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
 
+## V1.0.57
+
+The solver's rules run in the author's order (core v134). When several rules could decide something at the same moment, the solver
+used to take the first one in the order the code was written in (cheap rules first). The author compared 235 such moments from the
+campaign on a comparison page and ranked the rules by which one a person would naturally see first (`dev/tools/rule_order/`,
+`order_2026-11-26.md`). The rules are now numbered blocks run in a table order built from that ranking
+(`dev/build/step_order_V1.0.57.json`): Bricky, the rose pairs, area numbers in closed-in areas, watchtowers and the size walls come
+early; Forced growth and Reach in the middle; the wide searches (every place a shape fits, one connection between two sides, the
+compass placements, Gemini / Delta, roses narrow passage, the walls that compare sizes, the wall budget) last. The step-by-step
+view now follows that order. On the 1,225 campaign puzzles all are still unique, every step agrees with the stored solution, the
+time is the same as V1.0.56 (680 s against 653 and 682 s in two V1.0.56 runs), and the probes leave 51 more edges (of 88,000) to
+the final search. All fuzzers agree with the oracle. One fix during the work: the sizes that the walls comparing sizes leave each
+group are now worked out before the area-number rules that read them (in the first build of this order 24 puzzles came out
+impossible; the stress test in `dev/tools/rule_order/stress.js` moves every block to the front and to the back without a problem).
+
 ## V1.0.56
 
 The proofs by contradiction try the most promising edges first (core v133). Before, every round tried the open edges by their

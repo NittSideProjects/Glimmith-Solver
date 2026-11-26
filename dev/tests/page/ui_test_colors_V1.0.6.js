@@ -34,7 +34,7 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
   check('start text explains the colours', /share a colour/.test($('stepsCapText').textContent), $('stepsCapText').textContent);
   const n = +(/(\d+) step/.exec($('stepsCounter').textContent) || [0, 0])[1];
   const tileColour = () => { const m = new Map(); doc.querySelectorAll('#stepsGrid rect[data-color]').forEach(r => m.set(`${Math.round(+r.getAttribute('x'))},${Math.round(+r.getAttribute('y'))}`, r.getAttribute('data-color'))); return m; };
-  let firstFact = null, groupBefore = 0, labelStep = 0, splitStep = 0, letters = 0, colourKept = true, ringedSame = true, maxGroups = 0;
+  let firstFact = null, groupBefore = 0, labelStep = 0, splitStep = 0, letters = 0, colourKept = true, ringedSame = true, maxGroups = 0, prevCols = null;
   for(let i = 1; i < n; i++){
     $('stepsNext').click(); await sleep(5);
     const title = $('stepsCapTitle').textContent, groups = doc.querySelectorAll('#stepsGrid rect.step-group'), cols = tileColour();
@@ -50,7 +50,16 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
       if(rc.size !== 1 || rc.has(undefined)) ringedSame = false;
       if(!firstFact) firstFact = { i, cols: new Map([...cols].filter(([k]) => rings.includes(k))) };
     } else if(!firstFact) groupBefore += groups.length;
-    if(firstFact && i > firstFact.i) for(const [k, c] of firstFact.cols) if(cols.get(k) !== c) colourKept = false;
+    // V1.0.56: the group keeps its colour, unless it meets an older coloured group: then all its tiles take that older colour,
+    // one already on the board (markGroupColors: "two coloured groups that meet keep the older colour"; the probe order of core v133 makes that happen here)
+    if(firstFact && i > firstFact.i){
+      const now = new Set([...firstFact.cols.keys()].map(k => cols.get(k)));
+      const c = [...now][0];
+      if(now.size !== 1 || c === undefined) colourKept = false;
+      else if(c !== firstFact.colour){ if(prevCols && [...prevCols.values()].includes(c)) firstFact.colour = c; else colourKept = false; }
+    }
+    if(firstFact && firstFact.colour === undefined) firstFact.colour = [...firstFact.cols.values()][0];
+    prevCols = cols;
     maxGroups = Math.max(maxGroups, new Set([...groups].map(g => g.getAttribute('data-color'))).size);
     if(process.env.SHOW) console.log(i, title, '| groups', groups.length);
   }
@@ -58,7 +67,7 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
   check('a split-cut step ("The only way to connect")', splitStep >= 1, splitStep);
   check('linked tiles are coloured before the first fact step too (V1.0.37)', groupBefore > 0, groupBefore);
   check('the ringed tiles of each fact step share one colour and the text says so', ringedSame);
-  check('the first group keeps its colour on every later step (also once finished)', colourKept);
+  check('the first group keeps its colour on every later step (also once finished), or takes the older colour of a group it meets', colourKept);
   check('no letters anywhere', letters === 0, letters);
   $('stepsLast').click(); await sleep(20);
   check('last step is the result', /Result/.test($('stepsCounter').textContent), $('stepsCounter').textContent);

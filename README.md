@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.53.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.54.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -11,6 +11,15 @@ is sent anywhere.
 * **Fast import** reads all your puzzles in one click. Set it up once: the Fast import box gives a small setup file (Windows or Linux)
   that makes a folder `Glimmith puzzles` of links to the game's puzzle folders; choose that folder once.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.54
+
+Smarter reach (core v131). The reach rule (a group must still be able to reach enough tiles for its piece) walked through the tiles of
+other groups as if they were free. A piece that holds a group and one tile of another group holds that whole group, so when the
+group, the tiles on the way and that other group together are more than the piece may have, the walk now stops there. On the
+author's "Dungoen" (precision 17) a group whose lower way out led through one free tile into finished pieces was proved by trying the
+other way; reach now sees it directly: 21 s -> 1.3 s, 76 -> 34 edges proved by trying the other way, 9 -> 0 by search. All 46 fuzzers
+agree with the oracle; the 1,225 campaign puzzles are all unique, in the same time.
 
 ## V1.0.53
 
@@ -511,7 +520,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.53.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.54.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |

@@ -643,7 +643,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
   function clamp(v,min,max){ return Math.max(min, Math.min(max, v)); }
   function makeGrid(w,h,val){ return Array.from({length:h}, () => Array.from({length:w}, () => val)); }
 
-  // ================= SOLVER CORE (pure, unit-tested separately; v133 (V1.0.56) = v132 + the probes try the most promising edges first; v132 (V1.0.55) = v131 + the reach cap of size-comparing walls uses the group-size check; v131 (V1.0.54) = v130 + reach does not walk into a group that would make the piece too big; v130 (V1.0.53) = v129 + Show cases rings the smallest closed-in area of a wrong size, whole; v129 (V1.0.50) = v128 - matchCover, reachCompass; v128 (V1.0.49) = v127 - seven steps the base game never needs (areaColourReach, boxAfterRel, boxAllProbe, compassCap, reachParts, splitGrow, mingleConnect); v127 (V1.0.48) = v126 + the compass tile probes share one time budget per solve; v126 (V1.0.47) = v125 + the shape key of a finished group is cached, the reach cap and the label-join stay out of the final search; v125 (V1.0.46) = v124 + the compass budget counts the tiles that join a split group; v124 (V1.0.45) = v123 + the tile-size changed flag is rolled back with a trial; v123 (V1.0.44) = v122 + a SAT final search for Match; v122 (V1.0.43) = v121 + known-different walls first, two area numbers in one closed-in area; v121 (V1.0.37) = v120 + far joins only between groups that do not touch; v120 (V1.0.36) = v119 + the page gets the nested-pass fix of v105; v119 (V1.0.35) = v118 + Wally: the dead-end budget per wall; v118 (V1.0.34) = v117 without the Size Separation relation of v115 (step 3 dropped); v117 (V1.0.33) = v116 + the box per tile cuts the placements; v116 (V1.0.33) = v115 + Gemini shares the shape list across its walls; v115 (V1.0.33) = v114 + Size Separation walls as size relations; v114 (V1.0.31) = v113 + the shared step of every rule tag (RULE_FAMILY); v113 (V1.0.31) = v112 + one corner-pattern checker (Bricky / Loopy); v112 (V1.0.31) = v111 + a box per tile (tBx); v111 (V1.0.31) = v110 + one forced-growth step (growNeed); v110 (V1.0.30) = v109 + one count step for the closed-in areas (areaCountStep); v109 (V1.0.29) = v108 with one shared placement decision (placeDecide); v108 (V1.0.28) = v107 + tile shapes (the shapes a tile's piece is known not to be); v107 (V1.0.27) = v106 with size sets up to 15 and Non-boxy as a Minimum of 3 written once; v106 (V1.0.26) = v105 + tile size sets (the exact sizes a tile's piece can have, holes included); v105 (V1.0.25) = v104 + tile sizes (every tile keeps the size range of its piece); v104 (V1.0.24) = v103 + piece count (fewest .. most pieces, shared by every rule); v103 (V1.0.20) = v102 + more checks say where they fail (markAt); v102 (V1.0.19) = v101 + opts.explain (the cases behind a proof by contradiction); v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
+  // ================= SOLVER CORE (pure, unit-tested separately; v134 (V1.0.57) = v133 + the propagation steps run in the author's order; v133 (V1.0.56) = v132 + the probes try the most promising edges first; v132 (V1.0.55) = v131 + the reach cap of size-comparing walls uses the group-size check; v131 (V1.0.54) = v130 + reach does not walk into a group that would make the piece too big; v130 (V1.0.53) = v129 + Show cases rings the smallest closed-in area of a wrong size, whole; v129 (V1.0.50) = v128 - matchCover, reachCompass; v128 (V1.0.49) = v127 - seven steps the base game never needs (areaColourReach, boxAfterRel, boxAllProbe, compassCap, reachParts, splitGrow, mingleConnect); v127 (V1.0.48) = v126 + the compass tile probes share one time budget per solve; v126 (V1.0.47) = v125 + the shape key of a finished group is cached, the reach cap and the label-join stay out of the final search; v125 (V1.0.46) = v124 + the compass budget counts the tiles that join a split group; v124 (V1.0.45) = v123 + the tile-size changed flag is rolled back with a trial; v123 (V1.0.44) = v122 + a SAT final search for Match; v122 (V1.0.43) = v121 + known-different walls first, two area numbers in one closed-in area; v121 (V1.0.37) = v120 + far joins only between groups that do not touch; v120 (V1.0.36) = v119 + the page gets the nested-pass fix of v105; v119 (V1.0.35) = v118 + Wally: the dead-end budget per wall; v118 (V1.0.34) = v117 without the Size Separation relation of v115 (step 3 dropped); v117 (V1.0.33) = v116 + the box per tile cuts the placements; v116 (V1.0.33) = v115 + Gemini shares the shape list across its walls; v115 (V1.0.33) = v114 + Size Separation walls as size relations; v114 (V1.0.31) = v113 + the shared step of every rule tag (RULE_FAMILY); v113 (V1.0.31) = v112 + one corner-pattern checker (Bricky / Loopy); v112 (V1.0.31) = v111 + a box per tile (tBx); v111 (V1.0.31) = v110 + one forced-growth step (growNeed); v110 (V1.0.30) = v109 + one count step for the closed-in areas (areaCountStep); v109 (V1.0.29) = v108 with one shared placement decision (placeDecide); v108 (V1.0.28) = v107 + tile shapes (the shapes a tile's piece is known not to be); v107 (V1.0.27) = v106 with size sets up to 15 and Non-boxy as a Minimum of 3 written once; v106 (V1.0.26) = v105 + tile size sets (the exact sizes a tile's piece can have, holes included); v105 (V1.0.25) = v104 + tile sizes (every tile keeps the size range of its piece); v104 (V1.0.24) = v103 + piece count (fewest .. most pieces, shared by every rule); v103 (V1.0.20) = v102 + more checks say where they fail (markAt); v102 (V1.0.19) = v101 + opts.explain (the cases behind a proof by contradiction); v101 (V1.0.18) = v100 + reach cap (a group on a size wall has at most the tiles it can reach); v100 (V1.0.17) = v99 without the experimental guess layer (sketch, guessLayer, jointTest); v99 (V1.0.9) = v98 + same-piece links at once, facts in order; v98 (V1.0.6) = v97 + label-join; v97 (V1.0.5) = v96 + gemini-anchor; v96 (V1.0.3) = v95 + wally-ends; v95 (V1.0.2) = v94 + propagation steps fastest first; v94 (V1.0.1) = v93 + wally-line; v93 = v92 + fact events; v92 = v91 + clue grouping; v91 = v90 + Wally counts the outline (no T tetromino); v90 = v89 + Links / Heterogeneous (custom rules); v89 = v88 + Wally (custom rule); v88 = v87 + cross-mark / tight-space pair probes; v87 = v86 + cross / pair probes; v86 = v85 + boxy-place after area-rel; v85 = v84 + boxy-place locks / whole sets; v84 = v83 + match-hole; v83 = v82 + match-anchor (palisades, area numbers); v82 = v78 + match-compass (v79-v81 parked); v78 = v77 + two-piece DP; v77 = v76 + area-join; v76 = v75 + gemini copy; v75 = v74 + place-probe; v74 = v73 + match-cover sees plain walls; v73 = v72 + box-shapes / box-all; v72 = v71 + closed pieces for size separation; v71 = v70 + scan time-out run; v70 = v69 + match-cover; v69 = v68 + compass half-board cap; v68 = v67 + palisade dead ends in reach; v67 = v66 + compass strip count; v66 = v65 + region-merge; v65 = v64 + exact compass minimum, minimums fill the board; v64 = v63 + gemini-place; v63 = v62 + hall cache, size 7; v62 = v61 + size count; v61 = v60 + cmp-box; v60 = v59 + mismatch-hall; v59 = v58 + box-hall; v58 = v57 + region labels; v57 = v56 + rose-cover; v56 = v55 + diff-small; v55 = v54 + diff-clash / closed-size; v54 = v53 + cmp-budget; v53 = v52 + rose-cut; v52 = v50 + mingle-area-pocket / place / connect; kept byte-identical to solver-core.js) =================
 
   // ---- shape symmetry helpers ----
 
@@ -9278,6 +9278,7 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
           let part; try { part = propagateOnce(); } finally { passFrames.pop(); }
           if(part === null){ failTrace = all; return null; }               // v102: what was decided before the contradiction
           if(tsOn && fr.n) keepSizes(fr.n, fr.c);                          // v105
+          if(opts.blockStats && !inProbe && !searchLite && part.length){ const bs = opts.blockStats, bn = lastBlock < 0 ? 'checks' : STEP_NAMES[lastBlock]; const o = bs[bn] || (bs[bn] = {}); for(const ch of part){ const t = tagOut(ch.rule) || 'basic'; o[t] = (o[t] || 0) + 1; } }   // v134
           if(part.length === 0 && !part.again && !tsDirty) break;
           for(const ch of part){ ch.pass = pass; all.push(ch); }          // v47: pass number, reported on the deduce events
         }
@@ -9304,7 +9305,12 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
       }
       return k;
     }
+    // v134: the order of the propagation blocks (numbers = the cases of propagateOnce). STEP_ORDER_OLD is the order of v133.
+    const STEP_NAMES = ["euler", "colour", "iso", "rosecut", "gdclash", "gemiso", "isok", "diffclash", "rosecover", "label", "diffsmall", "diffwall", "sizewall", "bricky", "sizecut", "areapair", "areacount", "loopy", "wallyends", "bridge", "tower", "mingle", "rel", "range", "area", "splitcut", "areasum", "stamp", "palisade", "bankblock", "mismatch", "grow", "reach", "matchplace", "box", "rosecutdyn", "gemplace", "mhall", "compass", "bankplace", "compassplace", "areaplace"];
+    const STEP_ORDER = opts.ruleOrder === 'old' ? [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41] : [11, 7, 13, 8, 17, 18, 15, 24, 25, 16, 20, 12, 31, 1, 2, 23, 38, 28, 29, 32, 10, 30, 9, 37, 39, 14, 19, 34, 40, 21, 27, 33, 41, 36, 3, 5, 6, 35, 4, 22, 26, 0];
+    let lastBlock = -1;                                   // v134: the block that ended the last pass (-1: the checks before them)
     function propagateOnce(){
+      lastBlock = -1;
       tsDirty = false;
       if(boxOn && nbOn && activeIds.length > 0){ failWhy = 'box-both'; return null; }                       // v32: Boxy and Non-boxy together
       if(solDouble){ failWhy = 'solitude-count'; return null; }
@@ -9352,308 +9358,444 @@ In the opposite manner, if a tile needs to be part of two compasses, mostly from
         if(ra === rb){ failWhy = ft || 'forbidden'; markAt(failWhy, [fa, fb]); return null; }                // two tiles that cannot share a piece were forced together
         addDiff(ra, rb, ft);
       }
-      if(eulerBudget !== null){ const eu = eulerStep(); if(eu === null){ failWhy = why; return null; } if(eu.length > 0) return eu; }      // v42
-      { const cl = colourStep(dmap); if(cl === null){ failWhy = why; return null; } if(cl.length > 0) return cl; }      // v44
-      if(isoCase){ const io = isoStep(); if(io === null){ failWhy = why; return null; } if(io.length > 0) return io; }                      // v46
-      if(rcOn){ const rc = roseCutStep(dmap); if(rc === null){ failWhy = why; return null; } if(rc.length > 0) return rc; }     // v53
-      if(gdPairs.length > 0){ const gc = gdClashStep(dmap); if(gc === null){ failWhy = why; return null; } if(gc.again) return gc; }       // v53d
       if(opts.crossCheck !== false && !searchLite && !crossOk(dmap)){ failWhy = 'cross'; return null; }                        // v87a
       if(ruleMatch && opts.matchHole !== false && !staticWhy && !matchHoleOk()){ failWhy = 'match-hole'; return null; }        // v84
-      if(gemIso){ const gi = gemIsoStep(dmap); if(gi === null){ failWhy = why; return null; } if(gi.length > 0 || gi.again) return gi; }      // v52
-      if(isoK){ const ik = isoKStep(dmap); if(ik === null){ failWhy = why; return null; } if(ik.length > 0 || ik.again) return ik; }          // v48
-      if(dcPairs.length > 0){ const dc = diffClashStep(dmap); if(dc === null){ failWhy = why; return null; } if(dc.again) return dc; }       // v55
-      if(rcvOn && !inProbe && !searchLite){ const cv = roseCoverStep(dmap); if(cv === null){ failWhy = why; return null; } if(cv.again) return cv; }     // v57
-      if(lbOn && (lbSized || (!inProbe && !searchLite)) && (!searchLite || opts.labelSearch !== false) && (!inProbe || opts.labelProbe !== false)){ const lb = labelStep(dmap); if(lb === null){ failWhy = why; return null; } if(lb.length > 0 || lb.again) return lb; }     // v58
-      if(dsOn && !inProbe && !searchLite){ const ds = diffSmallStep(dmap); if(ds === null){ failWhy = why; return null; } if(ds.length > 0) return ds; }     // v56
       const changes = [];
-      // every group must still be able to be a piece
-      const need = new Map(), capOf = new Map(), maskOf = new Map();
-      if(passFrames.length){ const fr = passFrames[passFrames.length - 1]; fr.n = need; fr.c = capOf; }   // v105: this pass's bounds (its own frame: a step may run a nested propagate)
-      for(const [rep, mem] of members){
-        const nd = pieceInfo(mem);
-        if(nd === null){ failWhy = why; markAt(failWhy, mem); return null; }       // v102: this group breaks a rule of its own (roses, polyomino, palisade size, compass, ...)
-        need.set(rep, nd.need); capOf.set(rep, nd.cap); maskOf.set(rep, nd.mask);
-        if((relOn || mingleModes.length > 0) && opts.closedSize !== false && mem.length >= nd.need && mem.length < nd.cap && groupComplete(rep, mem)){ need.set(rep, mem.length); capOf.set(rep, mem.length); }   // v55b, v72: + Size Separation / Mingle Shape
-      }
-      if(ruleMatch && !matchRefine(need, capOf)){ failWhy = why; return null; }          // v25: every group gets the common size range
-      if(gdAll.length > 0 && opts.gdComplete !== false && !gdCompleteStep(need, capOf)){ failWhy = why; return null; }   // v52
-      if(tsOn && gdAll.length > 0 && opts.deltaSmall !== false){                          // v106: Delta and the sizes with one shape
-        for(const ge of gdAll){
-          if(ge.gem) continue;
-          const ra = find(ge.a), rb = find(ge.b); if(ra === rb) continue;
-          for(const [x, y] of [[ra, rb], [rb, ra]]){
-            const k = need.get(x); if(k !== capOf.get(x) || shapesOfSize(k) !== 1) continue;
-            if(need.get(y) === k && capOf.get(y) === k){ failWhy = 'delta-shape'; markAt(failWhy, members.get(y)); return null; }
-            if(k <= TS_CAP) keepOnly(y, ~(1 << k));
+      let need = null, capOf = null, maskOf = null, needBase = null, needOk = 0, exits = null;   // v134: worked out when a block first needs them
+      const ensureNeed = () => {
+        if(needOk !== 0) return needOk > 0;
+        needOk = -1;
+        // every group must still be able to be a piece
+        need = new Map(); capOf = new Map(); maskOf = new Map();
+        if(passFrames.length){ const fr = passFrames[passFrames.length - 1]; fr.n = need; fr.c = capOf; }   // v105: this pass's bounds (its own frame: a step may run a nested propagate)
+        for(const [rep, mem] of members){
+          const nd = pieceInfo(mem);
+          if(nd === null){ failWhy = why; markAt(failWhy, mem); return false; }       // v102: this group breaks a rule of its own (roses, polyomino, palisade size, compass, ...)
+          need.set(rep, nd.need); capOf.set(rep, nd.cap); maskOf.set(rep, nd.mask);
+          if((relOn || mingleModes.length > 0) && opts.closedSize !== false && mem.length >= nd.need && mem.length < nd.cap && groupComplete(rep, mem)){ need.set(rep, mem.length); capOf.set(rep, mem.length); }   // v55b, v72: + Size Separation / Mingle Shape
+        }
+        if(ruleMatch && !matchRefine(need, capOf)){ failWhy = why; return false; }          // v25: every group gets the common size range
+        if(gdAll.length > 0 && opts.gdComplete !== false && !gdCompleteStep(need, capOf)){ failWhy = why; return false; }   // v52
+        if(tsOn && gdAll.length > 0 && opts.deltaSmall !== false){                          // v106: Delta and the sizes with one shape
+          for(const ge of gdAll){
+            if(ge.gem) continue;
+            const ra = find(ge.a), rb = find(ge.b); if(ra === rb) continue;
+            for(const [x, y] of [[ra, rb], [rb, ra]]){
+              const k = need.get(x); if(k !== capOf.get(x) || shapesOfSize(k) !== 1) continue;
+              if(need.get(y) === k && capOf.get(y) === k){ failWhy = 'delta-shape'; markAt(failWhy, members.get(y)); return false; }
+              if(k <= TS_CAP) keepOnly(y, ~(1 << k));
+            }
+          }
+          for(const ge of gdAll){                                                        // v108: the known shape of one side is ruled out on the other
+            if(ge.gem) continue;
+            const ra = find(ge.a), rb = find(ge.b); if(ra === rb) continue;
+            for(const [x, y] of [[ra, rb], [rb, ra]]){
+              const mx = members.get(x); let kx = null;
+              for(const id of mx) if(stampAt[id]){ kx = stampList[stampAt[id] - 1].key; break; }
+              if(kx === null && mx.length >= need.get(x) && groupComplete(x, mx)) kx = groupShapeKey(mx);                 // v126: cached
+              if(kx !== null) excludeShape(y, kx);
+            }
+          }
+          for(const ge of gdAll){                                                        // v116: Gemini = the same shape: the two lists are shared
+            if(!ge.gem) continue;
+            const ra = find(ge.a), rb = find(ge.b); if(ra === rb) continue;
+            const ma = members.get(ra), mb = members.get(rb);
+            const na = notOfIds(ma), nb = notOfIds(mb);
+            if(nb) for(const k of nb) excludeShape(ra, k);
+            if(na) for(const k of na) excludeShape(rb, k);
+            const sa = setOfIds(ma), sb = setOfIds(mb);
+            if(sb !== -1) keepOnly(ra, sb);
+            if(sa !== -1) keepOnly(rb, sa);
           }
         }
-        for(const ge of gdAll){                                                        // v108: the known shape of one side is ruled out on the other
-          if(ge.gem) continue;
-          const ra = find(ge.a), rb = find(ge.b); if(ra === rb) continue;
-          for(const [x, y] of [[ra, rb], [rb, ra]]){
-            const mx = members.get(x); let kx = null;
-            for(const id of mx) if(stampAt[id]){ kx = stampList[stampAt[id] - 1].key; break; }
-            if(kx === null && mx.length >= need.get(x) && groupComplete(x, mx)) kx = groupShapeKey(mx);                 // v126: cached
-            if(kx !== null) excludeShape(y, kx);
+        if(heteroOn && !heteroStep(need, capOf)){ failWhy = why; return false; }            // v90
+        // v26: every piece has at least the Minimum (smallest size that occurs in a cover): forced growth and reachability use it
+        needBase = null;
+        if(minOn){
+          needBase = new Map(need);                                                          // what the other rules alone ask for (for the rule names)
+          if(rangeSet){ const sv = rangeSet; rangeSet = null; for(const [rep, mem] of members){ const r = pieceInfo(mem); if(r) needBase.set(rep, r.need); } rangeSet = sv; }
+          for(const rep of members.keys()){
+            if(need.get(rep) < rLo) need.set(rep, rLo);
+            if(need.get(rep) > capOf.get(rep)){ failWhy = 'size'; markAt(failWhy, members.get(rep)); return false; }
           }
         }
-        for(const ge of gdAll){                                                        // v116: Gemini = the same shape: the two lists are shared
-          if(!ge.gem) continue;
-          const ra = find(ge.a), rb = find(ge.b); if(ra === rb) continue;
-          const ma = members.get(ra), mb = members.get(rb);
-          const na = notOfIds(ma), nb = notOfIds(mb);
-          if(nb) for(const k of nb) excludeShape(ra, k);
-          if(na) for(const k of na) excludeShape(rb, k);
-          const sa = setOfIds(ma), sb = setOfIds(mb);
-          if(sb !== -1) keepOnly(ra, sb);
-          if(sa !== -1) keepOnly(rb, sa);
-        }
-      }
-      if(heteroOn && !heteroStep(need, capOf)){ failWhy = why; return null; }            // v90
-      // v26: every piece has at least the Minimum (smallest size that occurs in a cover): forced growth and reachability use it
-      let needBase = null;
-      if(minOn){
-        needBase = new Map(need);                                                          // what the other rules alone ask for (for the rule names)
-        if(rangeSet){ const sv = rangeSet; rangeSet = null; for(const [rep, mem] of members){ const r = pieceInfo(mem); if(r) needBase.set(rep, r.need); } rangeSet = sv; }
-        for(const rep of members.keys()){
-          if(need.get(rep) < rLo) need.set(rep, rLo);
-          if(need.get(rep) > capOf.get(rep)){ failWhy = 'size'; markAt(failWhy, members.get(rep)); return null; }
-        }
-      }
-      for(const e of spots){
-        if(e.state !== 0) continue;
-        const ra = find(e.a), rb = find(e.b);
-        const dk = ra < rb ? ra * N + rb : rb * N + ra;
-        if(ra === rb){ e.state = 2; changes.push({ e, value: 'same' }); }
-        else if(diff.has(dk)){ e.state = 1; changes.push({ e, value: 'wall', rule: diffWhy.get(dk) }); }
-        else if(pieceInfo(members.get(ra).concat(members.get(rb))) === null){ e.state = 1; changes.push({ e, value: 'wall', rule: why }); }
-      }
-      if(changes.length > 0) return changes;              // let the new walls spread before looking for forced growth
-      // v36: bricky
-      if(briOn){
-        const br = briVertexStep(dmap);
-        if(br === null){ failWhy = why; return null; }
-        if(br.length > 0) return br;
-      }
-      { const sc = sizeCutStep(); if(sc === null){ failWhy = why; return null; } if(sc.length > 0) return sc; }       // v69c
-      if(areaPairOn){ const ap = areaPairStep(dmap); if(ap === null){ failWhy = why; return null; } if(ap.again) return ap; }      // v122
-      // v110: how many pieces each area closed in by walls holds (roses / Solitude, Match, sizes, the board's count)
-      if(K > 0 || ruleMatch || (pcOn && !inProbe)){
-        const ac = areaCountStep();
-        if(ac === null){ failWhy = why; return null; }
-        if(ac.length > 0 || ac.again) return ac;
-      }
-      // v37: loopy
-      if(looOn){
-        const lp = loopyStep(dmap);
-        if(lp === null){ failWhy = why; return null; }
-        if(lp.length > 0) return lp;
-      }
-      // v96: wally-ends (a Wally piece is a path with two ends, a ring or a single tile)
-      if(weOn){ const we = wallyEndsStep(); if(we === null){ failWhy = why; return null; } if(we.length > 0) return we; }
-      { const br = bridgeStep();
-        if(br === null){ failWhy = why; return null; }
-        if(br.length > 0) return br; }
-      // v33: watchtowers, shape bank
-      if(towerOn){
-        const tw = towerStep(capOf, dmap);
-        if(tw === null){ failWhy = why; return null; }
-        if(tw.length > 0) return tw;
-      }
-      // Size Separation / Mingle Shape: neighbouring pieces differ (tightens need / capOf, may decide edges)
-      if(mingleModes.length > 0){
-        const mg = mingleStep(need, capOf);
-        if(mg === null){ failWhy = why; return null; }
-        if(mg.length > 0) return mg;
-      }
-      // v27: walls that compare sizes (lt / gt / diffN / gemini): the sizes each piece can still have
-      if(relOn){
-        if(opts.reachCap !== false && (!searchLite || opts.reachCapSearch === true)){   // v101: a piece stays inside the tiles its group can still reach (v126: not in the final search)
-          const seen = new Set(), none = new Set();
-          for(const re of relEdges) for(const t of [re.a, re.b]){
-            const rep = find(t); if(seen.has(rep)) continue; seen.add(rep);
-            const cap = capOf.get(rep), lim = Math.min(cap, 24) + 1;
-            const n = reachCount(rep, members.get(rep), dmap.get(rep) || none, null, lim, cap);      // v132: with the cap
-            if(n >= lim) continue;                                               // it reaches as many tiles as it may have (or too many to matter)
-            if(n < need.get(rep)){ failWhy = 'reach'; markAt(failWhy, members.get(rep)); return null; }
-            capOf.set(rep, n);
-          }
-        }
-        const rl = relStep(need, capOf, dmap);
-        if(rl === null){ failWhy = why; return null; }
-        if(rl.length > 0) return rl;
-      }
-      if(!inProbe && !searchLite){ rootNeed = need; rootCap = capOf; }                                                  // v88b
-      // v26: regions closed in by walls must be coverable by pieces of the allowed sizes
-      if(RI){
-        const rg = rangeStep(need, capOf);
-        if(rg === null){ failWhy = why; return null; }
-        if(rg.length > 0 || rg.again) return rg;
-      }
-      // v27: area numbers (and stamps): how many pieces do the numbers need in each region closed in by walls?
-      if((areaOn || relOn) && !inProbe){
-        const ar = areaStep(dmap, addDiff);
-        if(ar === null){ failWhy = why; return null; }
-        if(ar.length > 0 || ar.again) return ar;
-      }
-      // v92c: split-cut. The parts of a split group must meet through tiles that may still join it (not across walls, not through groups known
-      // to be other pieces or holding a rose type it already has). A group that every such connection passes through belongs to its piece.
-      if(opts.splitCut !== false && (!searchLite || opts.splitCutSearch !== false)) for(const [rep, mem] of members){
-        if(mem.length < 2) continue;
-        const part = new Map(); let np = 0;
-        for(const s0 of mem){
-          if(part.has(s0)) continue;
-          const q = [s0]; part.set(s0, np);
-          for(let i = 0; i < q.length; i++) for(const { e, o } of adjE[q[i]]) if(e.state === 2 && !part.has(o)){ part.set(o, np); q.push(o); }
-          np++;
-        }
-        if(np < 2) continue;
-        const blocked = dmap.get(rep), mask = K > 0 ? maskOf.get(rep) : 0;
-        const nodeOf = new Map(), gOf = [];                                  // other groups -> node np + k
-        const node = t => { const g = find(t); if(g === rep) return part.get(t);
-          let n = nodeOf.get(g);
-          if(n === undefined){ n = ((blocked && blocked.has(g)) || (mask && (maskOf.get(g) & mask))) ? -1 : np + gOf.length; if(n >= 0) gOf.push(g); nodeOf.set(g, n); }
-          return n; };
-        const adj = [];
-        const link = (a, b) => { (adj[a] || (adj[a] = new Set())).add(b); (adj[b] || (adj[b] = new Set())).add(a); };
-        for(const e of edges){ if(e.state === 1) continue; const a = node(e.a), b = node(e.b); if(a >= 0 && b >= 0 && a !== b) link(a, b); }
-        const nn = np + gOf.length, disc = new Int32Array(nn).fill(-1), low = new Int32Array(nn), term = new Int32Array(nn), must = [];
-        let clock = 0;
-        const dfs = (v, par) => {
-          disc[v] = low[v] = clock++; term[v] = v < np ? 1 : 0;
-          if(adj[v]) for(const c of adj[v]){
-            if(c === par) continue;
-            if(disc[c] >= 0){ if(disc[c] < low[v]) low[v] = disc[c]; continue; }
-            dfs(c, v);
-            if(low[c] < low[v]) low[v] = low[c];
-            term[v] += term[c];
-            if(v >= np && low[c] >= disc[v] && term[c] > 0 && must.indexOf(v) < 0) must.push(v);
-          }
-        };
-        dfs(0, -1);
-        if(term[0] < np){ failWhy = 'grow'; markAt(failWhy, mem); return null; }                   // a part can not be reached at all
-        if(must.length){
-          for(const v of must){ const fr = factRec; if(fr) factLog.push([mem[0], members.get(gOf[v - np])[0], 'split-cut', propPos]); factRec = false; union(rep, gOf[v - np]); factRec = fr; }
-          bump('split-cut'); changes.again = true; return changes;
-        }
-      }
-      // v40: area numbers that exactly fill a region (no piece without a number can exist)
-      if(areaOn){
-        const as = areaSumStep(dmap);
-        if(as === null){ failWhy = why; return null; }
-        if(as.length > 0 || as.again) return as;                                     // v77: .again after area-join
-      }
-      // stamps: where can each one still go?
-      if(stampTiles.length > 0){
-        const st = stampStep(dmap);
-        if(st === null){ failWhy = why; return null; }
-        if(st.length > 0 || st.again) return st;
-      }
-      // v35: palisades
-      if(palOn){
-        const pl = palisadeStep(dmap);
-        if(pl === null){ failWhy = why; return null; }
-        if(pl.length > 0) return pl;
-      }
-      if(bankOn && (bankAllBlock || bankAllBend)){ if(bankBlockStep(capOf, dmap) === null){ failWhy = why; return null; } }      // v95: own step
-      // Mismatch: all pieces differ (same-shape stamps / pinned shapes are one piece; pinned shapes leave the others), Match: closed regions
-      if(ruleMismatch){
-        const mm = mismatchStep(need, capOf, dmap);
-        if(mm === null){ failWhy = why; return null; }
-        if(mm.length > 0 || mm.again) return mm;
-      }
-      // forced growth: a group smaller than the piece it must become -- or lacking a rose type -- that has exactly one open edge out has to use it
-      const exits = new Map();
-      for(const e of spots){
-        if(e.state !== 0) continue;
-        const ra = find(e.a), rb = find(e.b);
-        if(!exits.has(ra)) exits.set(ra, []); exits.get(ra).push(e);
-        if(!exits.has(rb)) exits.set(rb, []); exits.get(rb).push(e);
-      }
-      // v111: what a group still lacks before it can be a finished piece (null = nothing): one answer per rule
-      const growNeed = (rep, mem) => {
-        if(K > 0 && maskOf.get(rep) !== FULL) return roseTag('grow');                       // roses / Solitude: a type is missing
-        if(mem.length < need.get(rep)){
-          if(needBase !== null && mem.length >= needBase.get(rep)) return relRaised.has(rep) ? 'area-rel' : 'min-grow';   // v26: it is the Minimum that asks for more tiles
-          return relRaised.has(rep) ? 'area-rel' : 'grow';
-        }
-        if(nbOn && capOf.get(rep) > mem.length){ const b = groupBox(mem); if(b.bw * b.bh === mem.length) return 'nonbox-grow'; }   // Non-boxy: a rectangle must grow
-        return null;
+        needOk = 1; return true;
       };
-      for(const [rep, mem] of members){
-        const tag = growNeed(rep, mem);
-        if(tag === null) continue;
-        const ex = exits.get(rep) || [];
-        if(ex.length === 0){ failWhy = (tag === 'grow' || tag === 'area-rel' || tag === 'min-grow') ? ((needBase !== null && mem.length >= needBase.get(rep)) ? 'min-reach' : 'no-exit') : tag; markAt(failWhy, mem); return null; }   // nowhere to grow
-        if(ex.length === 1){ const e = ex[0]; e.state = 2; union(e.a, e.b); changes.push({ e, value: 'same', rule: tag }); return changes; }
-      }
-      // reachability look-ahead (groups that still have to grow, lack a rose, or carry a compass)
-      for(const [rep, mem] of members){
-        const compassIn = hasCompass && mem.some(id => { const x = id % w; return ctx.compasses.has(`${x},${(id - x) / w}`); });
-        const lacks = K > 0 && maskOf.get(rep) !== FULL;
-        if(mem.length >= need.get(rep) && !compassIn && !lacks) continue;
-        const blocked = dmap.get(rep) || new Set(), nd = need.get(rep), cp = capOf.get(rep);
-        const fast = K === 0 && !compassIn;                  // v26: without roses / compasses only the NUMBER of reachable tiles matters: count with early exit
-        const baseNd = needBase !== null ? needBase.get(rep) : nd;
-        let reachCnt = 0;
-        boxOf(rep, mem, cp);                                 // v112
-        const reachFails = closed => {
-          if(fast){ reachCnt = reachCount(rep, mem, blocked, closed, nd, cp); reachWhy = 'reach'; return reachCnt < nd; }
-          return !reachOk(rep, mem, blocked, closed, nd, cp);
-        };
-        const reachTag = closed => {                         // the Minimum alone made it fail: the group could still reach what its other rules need
-          if(reachWhy !== 'reach' || nd === baseNd) return reachWhy;
-          return (fast ? reachCnt >= baseNd : reachOk(rep, mem, blocked, closed, baseNd, cp)) ? (relRaised.has(rep) ? 'area-rel' : 'min-reach') : reachWhy;   // v101
-        };
-        if(reachFails(null)){ failWhy = reachTag(null); markAt(failWhy, mem); return null; }
-        for(const e of (exits.get(rep) || [])){
-          if(reachFails(e)){ e.state = 2; union(e.a, e.b); changes.push({ e, value: 'same', rule: reachTag(e) }); return changes; }
+      const getExits = () => {                                     // v134: the open edges out of each group (forced growth, reach)
+        if(exits) return exits;
+        exits = new Map();
+        for(const e of spots){
+          if(e.state !== 0) continue;
+          const ra = find(e.a), rb = find(e.b);
+          if(!exits.has(ra)) exits.set(ra, []); exits.get(ra).push(e);
+          if(!exits.has(rb)) exits.set(rb, []); exits.get(rb).push(e);
         }
-      }
-      // Match with one shape left: where can it still go, for every group?
-      if(ruleMatch && matchList && matchList.length === 1){
-        const mp = matchPlaceStep(dmap);
-        if(mp === null){ failWhy = why; return null; }
-        if(mp.length > 0 || mp.again) return mp;
-      }
-      // v32: Boxy / Non-boxy
-      if(boxOn || nbOn){
-        const bx = boxStep(need, capOf, dmap);
-        if(bx === null){ failWhy = why; return null; }
-        if(bx.length > 0 || bx.again) return bx;
-      }
-      if(rcDyn && (!inProbe || opts.roseCutProbe !== false) && (!searchLite || opts.roseCutSearch === true)){      // v53: rose-cut again, with the walls decided so far (not inside the final search: too slow there)
-        const rd = roseCutDynStep(dmap);
-        if(rd === null){ failWhy = why; return null; }
-        if(rd.length > 0 || rd.again) return rd;
-      }
-      if(gpOn && !inProbe && !searchLite){ const gp = gemPlaceStep(need, capOf, dmap); if(gp === null){ failWhy = why; return null; } if(gp.length > 0) return gp; }     // v64 (after relStep: gemini sizes shared)
-      if(mhOn && !inProbe && !searchLite){ const mh = boxHallStep(need, capOf, dmap, polyCands, 'mismatch-hall'); if(mh === null){ failWhy = why; return null; } if(mh.length > 0) return mh; }     // v60 (needs need / capOf of this pass)
-      // v38: compass
-      if(hasCompass){
-        const cm = compassStep(need, capOf, maskOf, dmap);
-        if(cm === null){ failWhy = why; return null; }
-        if(cm.length > 0 || cm.again) return cm;
-      }
-      if(bankOn){
-        const bp = bankPlaceStep(need, capOf, dmap);
-        if(bp === null){ failWhy = why; return null; }
-        if(bp.length > 0) return bp;
-      }
-      if(hasCompass && (!inProbe || globalThis.__CMP_PROBE)){                          // v38: where can each compass piece still go?
-        const cpl = compassPlaceStep(need, capOf, maskOf, dmap);
-        if(cpl === null){ failWhy = why; return null; }
-        if(cpl.length > 0 || cpl.again) return cpl;
-        const crd = compassCrowdStep(need, capOf, maskOf, dmap);
-        if(crd === null){ failWhy = why; return null; }
-        if(crd.length > 0 || crd.again) return crd;
-        const tpr = compassTileProbeStep(need, capOf, maskOf, dmap);
-        if(tpr.length > 0 || tpr.again) return tpr;
-      }
-      if(areaOn && apSmallK && !searchLite){                                 // v53b: where can each area-number piece go? (few pieces only)
-        const ap = areaPlaceStep(dmap);
-        if(ap === null){ failWhy = why; return null; }
-        if(ap.length > 0 || ap.again) return ap;
+        return exits;
+      };
+      for(let bi = 0; bi < STEP_ORDER.length; bi++){                     // v134: the steps in the author's order (see patch_core134.py)
+        lastBlock = STEP_ORDER[bi];
+        switch(lastBlock){
+          case 0: {                                                // euler
+          if(eulerBudget !== null){ const eu = eulerStep(); if(eu === null){ failWhy = why; return null; } if(eu.length > 0) return eu; }      // v42
+          } break;
+          case 1: {                                                // colour
+          { const cl = colourStep(dmap); if(cl === null){ failWhy = why; return null; } if(cl.length > 0) return cl; }      // v44
+          } break;
+          case 2: {                                                // iso
+          if(isoCase){ const io = isoStep(); if(io === null){ failWhy = why; return null; } if(io.length > 0) return io; }                      // v46
+          } break;
+          case 3: {                                                // rosecut
+          if(rcOn){ const rc = roseCutStep(dmap); if(rc === null){ failWhy = why; return null; } if(rc.length > 0) return rc; }     // v53
+          } break;
+          case 4: {                                                // gdclash
+          if(gdPairs.length > 0){ const gc = gdClashStep(dmap); if(gc === null){ failWhy = why; return null; } if(gc.again) return gc; }       // v53d
+          } break;
+          case 5: {                                                // gemiso
+          if(gemIso){ const gi = gemIsoStep(dmap); if(gi === null){ failWhy = why; return null; } if(gi.length > 0 || gi.again) return gi; }      // v52
+          } break;
+          case 6: {                                                // isok
+          if(isoK){ const ik = isoKStep(dmap); if(ik === null){ failWhy = why; return null; } if(ik.length > 0 || ik.again) return ik; }          // v48
+          } break;
+          case 7: {                                                // diffclash
+          if(dcPairs.length > 0){ const dc = diffClashStep(dmap); if(dc === null){ failWhy = why; return null; } if(dc.again) return dc; }       // v55
+          } break;
+          case 8: {                                                // rosecover
+          if(rcvOn && !inProbe && !searchLite){ const cv = roseCoverStep(dmap); if(cv === null){ failWhy = why; return null; } if(cv.again) return cv; }     // v57
+          } break;
+          case 9: {                                                // label
+          if(lbOn && (lbSized || (!inProbe && !searchLite)) && (!searchLite || opts.labelSearch !== false) && (!inProbe || opts.labelProbe !== false)){ const lb = labelStep(dmap); if(lb === null){ failWhy = why; return null; } if(lb.length > 0 || lb.again) return lb; }     // v58
+          } break;
+          case 10: {                                                // diffsmall
+          if(dsOn && !inProbe && !searchLite){ const ds = diffSmallStep(dmap); if(ds === null){ failWhy = why; return null; } if(ds.length > 0) return ds; }     // v56
+          } break;
+          case 11: {                                                // diffwall
+          for(const e of spots){                             // v134: links inside a group, walls between groups known to differ
+            if(e.state !== 0) continue;
+            const ra = find(e.a), rb = find(e.b);
+            const dk = ra < rb ? ra * N + rb : rb * N + ra;
+            if(ra === rb){ e.state = 2; changes.push({ e, value: 'same' }); }
+            else if(diff.has(dk)){ e.state = 1; changes.push({ e, value: 'wall', rule: diffWhy.get(dk) }); }
+          }
+          if(changes.length > 0) return changes;
+          } break;
+          case 12: {                                                // sizewall
+            if(!ensureNeed()) return null;
+          for(const e of spots){                             // v134: walls between groups that would break a rule together (size, ...)
+            if(e.state !== 0) continue;
+            const ra = find(e.a), rb = find(e.b);
+            if(ra === rb || diff.has(ra < rb ? ra * N + rb : rb * N + ra)) continue;
+            if(pieceInfo(members.get(ra).concat(members.get(rb))) === null){ e.state = 1; changes.push({ e, value: 'wall', rule: why }); }
+          }
+          if(changes.length > 0) return changes;              // let the new walls spread before looking for forced growth
+          } break;
+          case 13: {                                                // bricky
+            if(!ensureNeed()) return null;
+          // v36: bricky
+          if(briOn){
+            const br = briVertexStep(dmap);
+            if(br === null){ failWhy = why; return null; }
+            if(br.length > 0) return br;
+          }
+          } break;
+          case 14: {                                                // sizecut
+            if(!ensureNeed()) return null;
+          { const sc = sizeCutStep(); if(sc === null){ failWhy = why; return null; } if(sc.length > 0) return sc; }       // v69c
+          } break;
+          case 15: {                                                // areapair
+            if(!ensureNeed()) return null;
+          if(areaPairOn){ const ap = areaPairStep(dmap); if(ap === null){ failWhy = why; return null; } if(ap.again) return ap; }      // v122
+          } break;
+          case 16: {                                                // areacount
+            if(!ensureNeed()) return null;
+          // v110: how many pieces each area closed in by walls holds (roses / Solitude, Match, sizes, the board's count)
+          if(K > 0 || ruleMatch || (pcOn && !inProbe)){
+            const ac = areaCountStep();
+            if(ac === null){ failWhy = why; return null; }
+            if(ac.length > 0 || ac.again) return ac;
+          }
+          } break;
+          case 17: {                                                // loopy
+            if(!ensureNeed()) return null;
+          // v37: loopy
+          if(looOn){
+            const lp = loopyStep(dmap);
+            if(lp === null){ failWhy = why; return null; }
+            if(lp.length > 0) return lp;
+          }
+          } break;
+          case 18: {                                                // wallyends
+            if(!ensureNeed()) return null;
+          // v96: wally-ends (a Wally piece is a path with two ends, a ring or a single tile)
+          if(weOn){ const we = wallyEndsStep(); if(we === null){ failWhy = why; return null; } if(we.length > 0) return we; }
+          } break;
+          case 19: {                                                // bridge
+            if(!ensureNeed()) return null;
+          { const br = bridgeStep();
+            if(br === null){ failWhy = why; return null; }
+            if(br.length > 0) return br; }
+          } break;
+          case 20: {                                                // tower
+            if(!ensureNeed()) return null;
+          // v33: watchtowers, shape bank
+          if(towerOn){
+            const tw = towerStep(capOf, dmap);
+            if(tw === null){ failWhy = why; return null; }
+            if(tw.length > 0) return tw;
+          }
+          } break;
+          case 21: {                                                // mingle
+            if(!ensureNeed()) return null;
+          // Size Separation / Mingle Shape: neighbouring pieces differ (tightens need / capOf, may decide edges)
+          if(mingleModes.length > 0){
+            const mg = mingleStep(need, capOf);
+            if(mg === null){ failWhy = why; return null; }
+            if(mg.length > 0) return mg;
+          }
+          } break;
+          case 22: {                                                // rel
+            if(!ensureNeed()) return null;
+          // v27: walls that compare sizes (lt / gt / diffN / gemini): the sizes each piece can still have
+          if(relOn){
+            if(opts.reachCap !== false && (!searchLite || opts.reachCapSearch === true)){   // v101: a piece stays inside the tiles its group can still reach (v126: not in the final search)
+              const seen = new Set(), none = new Set();
+              for(const re of relEdges) for(const t of [re.a, re.b]){
+                const rep = find(t); if(seen.has(rep)) continue; seen.add(rep);
+                const cap = capOf.get(rep), lim = Math.min(cap, 24) + 1;
+                const n = reachCount(rep, members.get(rep), dmap.get(rep) || none, null, lim, cap);      // v132: with the cap
+                if(n >= lim) continue;                                               // it reaches as many tiles as it may have (or too many to matter)
+                if(n < need.get(rep)){ failWhy = 'reach'; markAt(failWhy, members.get(rep)); return null; }
+                capOf.set(rep, n);
+              }
+            }
+            const rl = relStep(need, capOf, dmap);
+            if(rl === null){ failWhy = why; return null; }
+            if(rl.length > 0) return rl;
+          }
+          if(!inProbe && !searchLite){ rootNeed = need; rootCap = capOf; }                                                  // v88b
+          } break;
+          case 23: {                                                // range
+            if(!ensureNeed()) return null;
+          // v26: regions closed in by walls must be coverable by pieces of the allowed sizes
+          if(RI){
+            const rg = rangeStep(need, capOf);
+            if(rg === null){ failWhy = why; return null; }
+            if(rg.length > 0 || rg.again) return rg;
+          }
+          } break;
+          case 24: {                                                // area
+            if(!ensureNeed()) return null;
+          // v27: area numbers (and stamps): how many pieces do the numbers need in each region closed in by walls?
+          if((areaOn || relOn) && !inProbe){
+            const ar = areaStep(dmap, addDiff);
+            if(ar === null){ failWhy = why; return null; }
+            if(ar.length > 0 || ar.again) return ar;
+          }
+          } break;
+          case 25: {                                                // splitcut
+            if(!ensureNeed()) return null;
+          // v92c: split-cut. The parts of a split group must meet through tiles that may still join it (not across walls, not through groups known
+          // to be other pieces or holding a rose type it already has). A group that every such connection passes through belongs to its piece.
+          if(opts.splitCut !== false && (!searchLite || opts.splitCutSearch !== false)) for(const [rep, mem] of members){
+            if(mem.length < 2) continue;
+            const part = new Map(); let np = 0;
+            for(const s0 of mem){
+              if(part.has(s0)) continue;
+              const q = [s0]; part.set(s0, np);
+              for(let i = 0; i < q.length; i++) for(const { e, o } of adjE[q[i]]) if(e.state === 2 && !part.has(o)){ part.set(o, np); q.push(o); }
+              np++;
+            }
+            if(np < 2) continue;
+            const blocked = dmap.get(rep), mask = K > 0 ? maskOf.get(rep) : 0;
+            const nodeOf = new Map(), gOf = [];                                  // other groups -> node np + k
+            const node = t => { const g = find(t); if(g === rep) return part.get(t);
+              let n = nodeOf.get(g);
+              if(n === undefined){ n = ((blocked && blocked.has(g)) || (mask && (maskOf.get(g) & mask))) ? -1 : np + gOf.length; if(n >= 0) gOf.push(g); nodeOf.set(g, n); }
+              return n; };
+            const adj = [];
+            const link = (a, b) => { (adj[a] || (adj[a] = new Set())).add(b); (adj[b] || (adj[b] = new Set())).add(a); };
+            for(const e of edges){ if(e.state === 1) continue; const a = node(e.a), b = node(e.b); if(a >= 0 && b >= 0 && a !== b) link(a, b); }
+            const nn = np + gOf.length, disc = new Int32Array(nn).fill(-1), low = new Int32Array(nn), term = new Int32Array(nn), must = [];
+            let clock = 0;
+            const dfs = (v, par) => {
+              disc[v] = low[v] = clock++; term[v] = v < np ? 1 : 0;
+              if(adj[v]) for(const c of adj[v]){
+                if(c === par) continue;
+                if(disc[c] >= 0){ if(disc[c] < low[v]) low[v] = disc[c]; continue; }
+                dfs(c, v);
+                if(low[c] < low[v]) low[v] = low[c];
+                term[v] += term[c];
+                if(v >= np && low[c] >= disc[v] && term[c] > 0 && must.indexOf(v) < 0) must.push(v);
+              }
+            };
+            dfs(0, -1);
+            if(term[0] < np){ failWhy = 'grow'; markAt(failWhy, mem); return null; }                   // a part can not be reached at all
+            if(must.length){
+              for(const v of must){ const fr = factRec; if(fr) factLog.push([mem[0], members.get(gOf[v - np])[0], 'split-cut', propPos]); factRec = false; union(rep, gOf[v - np]); factRec = fr; }
+              bump('split-cut'); changes.again = true; return changes;
+            }
+          }
+          } break;
+          case 26: {                                                // areasum
+            if(!ensureNeed()) return null;
+          // v40: area numbers that exactly fill a region (no piece without a number can exist)
+          if(areaOn){
+            const as = areaSumStep(dmap);
+            if(as === null){ failWhy = why; return null; }
+            if(as.length > 0 || as.again) return as;                                     // v77: .again after area-join
+          }
+          } break;
+          case 27: {                                                // stamp
+            if(!ensureNeed()) return null;
+          // stamps: where can each one still go?
+          if(stampTiles.length > 0){
+            const st = stampStep(dmap);
+            if(st === null){ failWhy = why; return null; }
+            if(st.length > 0 || st.again) return st;
+          }
+          } break;
+          case 28: {                                                // palisade
+            if(!ensureNeed()) return null;
+          // v35: palisades
+          if(palOn){
+            const pl = palisadeStep(dmap);
+            if(pl === null){ failWhy = why; return null; }
+            if(pl.length > 0) return pl;
+          }
+          } break;
+          case 29: {                                                // bankblock
+            if(!ensureNeed()) return null;
+          if(bankOn && (bankAllBlock || bankAllBend)){ if(bankBlockStep(capOf, dmap) === null){ failWhy = why; return null; } }      // v95: own step
+          } break;
+          case 30: {                                                // mismatch
+            if(!ensureNeed()) return null;
+          // Mismatch: all pieces differ (same-shape stamps / pinned shapes are one piece; pinned shapes leave the others), Match: closed regions
+          if(ruleMismatch){
+            const mm = mismatchStep(need, capOf, dmap);
+            if(mm === null){ failWhy = why; return null; }
+            if(mm.length > 0 || mm.again) return mm;
+          }
+          } break;
+          case 31: {                                                // grow
+            if(!ensureNeed()) return null;
+          // forced growth: a group smaller than the piece it must become -- or lacking a rose type -- that has exactly one open edge out has to use it
+          getExits();
+          // v111: what a group still lacks before it can be a finished piece (null = nothing): one answer per rule
+          const growNeed = (rep, mem) => {
+            if(K > 0 && maskOf.get(rep) !== FULL) return roseTag('grow');                       // roses / Solitude: a type is missing
+            if(mem.length < need.get(rep)){
+              if(needBase !== null && mem.length >= needBase.get(rep)) return relRaised.has(rep) ? 'area-rel' : 'min-grow';   // v26: it is the Minimum that asks for more tiles
+              return relRaised.has(rep) ? 'area-rel' : 'grow';
+            }
+            if(nbOn && capOf.get(rep) > mem.length){ const b = groupBox(mem); if(b.bw * b.bh === mem.length) return 'nonbox-grow'; }   // Non-boxy: a rectangle must grow
+            return null;
+          };
+          for(const [rep, mem] of members){
+            const tag = growNeed(rep, mem);
+            if(tag === null) continue;
+            const ex = exits.get(rep) || [];
+            if(ex.length === 0){ failWhy = (tag === 'grow' || tag === 'area-rel' || tag === 'min-grow') ? ((needBase !== null && mem.length >= needBase.get(rep)) ? 'min-reach' : 'no-exit') : tag; markAt(failWhy, mem); return null; }   // nowhere to grow
+            if(ex.length === 1){ const e = ex[0]; e.state = 2; union(e.a, e.b); changes.push({ e, value: 'same', rule: tag }); return changes; }
+          }
+          } break;
+          case 32: {                                                // reach
+            if(!ensureNeed()) return null;
+          // reachability look-ahead (groups that still have to grow, lack a rose, or carry a compass)
+          for(const [rep, mem] of members){
+            const compassIn = hasCompass && mem.some(id => { const x = id % w; return ctx.compasses.has(`${x},${(id - x) / w}`); });
+            const lacks = K > 0 && maskOf.get(rep) !== FULL;
+            if(mem.length >= need.get(rep) && !compassIn && !lacks) continue;
+            const blocked = dmap.get(rep) || new Set(), nd = need.get(rep), cp = capOf.get(rep);
+            const fast = K === 0 && !compassIn;                  // v26: without roses / compasses only the NUMBER of reachable tiles matters: count with early exit
+            const baseNd = needBase !== null ? needBase.get(rep) : nd;
+            let reachCnt = 0;
+            boxOf(rep, mem, cp);                                 // v112
+            const reachFails = closed => {
+              if(fast){ reachCnt = reachCount(rep, mem, blocked, closed, nd, cp); reachWhy = 'reach'; return reachCnt < nd; }
+              return !reachOk(rep, mem, blocked, closed, nd, cp);
+            };
+            const reachTag = closed => {                         // the Minimum alone made it fail: the group could still reach what its other rules need
+              if(reachWhy !== 'reach' || nd === baseNd) return reachWhy;
+              return (fast ? reachCnt >= baseNd : reachOk(rep, mem, blocked, closed, baseNd, cp)) ? (relRaised.has(rep) ? 'area-rel' : 'min-reach') : reachWhy;   // v101
+            };
+            if(reachFails(null)){ failWhy = reachTag(null); markAt(failWhy, mem); return null; }
+            for(const e of (exits.get(rep) || [])){
+              if(reachFails(e)){ e.state = 2; union(e.a, e.b); changes.push({ e, value: 'same', rule: reachTag(e) }); return changes; }
+            }
+          }
+          } break;
+          case 33: {                                                // matchplace
+            if(!ensureNeed()) return null;
+          // Match with one shape left: where can it still go, for every group?
+          if(ruleMatch && matchList && matchList.length === 1){
+            const mp = matchPlaceStep(dmap);
+            if(mp === null){ failWhy = why; return null; }
+            if(mp.length > 0 || mp.again) return mp;
+          }
+          } break;
+          case 34: {                                                // box
+            if(!ensureNeed()) return null;
+          // v32: Boxy / Non-boxy
+          if(boxOn || nbOn){
+            const bx = boxStep(need, capOf, dmap);
+            if(bx === null){ failWhy = why; return null; }
+            if(bx.length > 0 || bx.again) return bx;
+          }
+          } break;
+          case 35: {                                                // rosecutdyn
+            if(!ensureNeed()) return null;
+          if(rcDyn && (!inProbe || opts.roseCutProbe !== false) && (!searchLite || opts.roseCutSearch === true)){      // v53: rose-cut again, with the walls decided so far (not inside the final search: too slow there)
+            const rd = roseCutDynStep(dmap);
+            if(rd === null){ failWhy = why; return null; }
+            if(rd.length > 0 || rd.again) return rd;
+          }
+          } break;
+          case 36: {                                                // gemplace
+            if(!ensureNeed()) return null;
+          if(gpOn && !inProbe && !searchLite){ const gp = gemPlaceStep(need, capOf, dmap); if(gp === null){ failWhy = why; return null; } if(gp.length > 0) return gp; }     // v64 (after relStep: gemini sizes shared)
+          } break;
+          case 37: {                                                // mhall
+            if(!ensureNeed()) return null;
+          if(mhOn && !inProbe && !searchLite){ const mh = boxHallStep(need, capOf, dmap, polyCands, 'mismatch-hall'); if(mh === null){ failWhy = why; return null; } if(mh.length > 0) return mh; }     // v60 (needs need / capOf of this pass)
+          } break;
+          case 38: {                                                // compass
+            if(!ensureNeed()) return null;
+          // v38: compass
+          if(hasCompass){
+            const cm = compassStep(need, capOf, maskOf, dmap);
+            if(cm === null){ failWhy = why; return null; }
+            if(cm.length > 0 || cm.again) return cm;
+          }
+          } break;
+          case 39: {                                                // bankplace
+            if(!ensureNeed()) return null;
+          if(bankOn){
+            const bp = bankPlaceStep(need, capOf, dmap);
+            if(bp === null){ failWhy = why; return null; }
+            if(bp.length > 0) return bp;
+          }
+          } break;
+          case 40: {                                                // compassplace
+            if(!ensureNeed()) return null;
+          if(hasCompass && (!inProbe || globalThis.__CMP_PROBE)){                          // v38: where can each compass piece still go?
+            const cpl = compassPlaceStep(need, capOf, maskOf, dmap);
+            if(cpl === null){ failWhy = why; return null; }
+            if(cpl.length > 0 || cpl.again) return cpl;
+            const crd = compassCrowdStep(need, capOf, maskOf, dmap);
+            if(crd === null){ failWhy = why; return null; }
+            if(crd.length > 0 || crd.again) return crd;
+            const tpr = compassTileProbeStep(need, capOf, maskOf, dmap);
+            if(tpr.length > 0 || tpr.again) return tpr;
+          }
+          } break;
+          case 41: {                                                // areaplace
+            if(!ensureNeed()) return null;
+          if(areaOn && apSmallK && !searchLite){                                 // v53b: where can each area-number piece go? (few pieces only)
+            const ap = areaPlaceStep(dmap);
+            if(ap === null){ failWhy = why; return null; }
+            if(ap.length > 0 || ap.again) return ap;
+          }
+          } break;
+        }
       }
       return changes;
     }

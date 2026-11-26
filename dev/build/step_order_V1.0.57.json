@@ -1,0 +1,217 @@
+{
+ "about": "v134 block order: mean author rank (order_2026-11-26.md) of the rule tags each block decided on the 1225 campaign puzzles (deduction phase, outside the probes), weighted by count",
+ "order": [
+  "diffwall",
+  "diffclash",
+  "bricky",
+  "rosecover",
+  "loopy",
+  "wallyends",
+  "areapair",
+  "area",
+  "splitcut",
+  "areacount",
+  "tower",
+  "sizewall",
+  "grow",
+  "colour",
+  "iso",
+  "range",
+  "compass",
+  "palisade",
+  "bankblock",
+  "reach",
+  "diffsmall",
+  "mismatch",
+  "label",
+  "mhall",
+  "bankplace",
+  "sizecut",
+  "bridge",
+  "box",
+  "compassplace",
+  "mingle",
+  "stamp",
+  "matchplace",
+  "areaplace",
+  "gemplace",
+  "rosecut",
+  "gemiso",
+  "isok",
+  "rosecutdyn",
+  "gdclash",
+  "rel",
+  "areasum",
+  "euler"
+ ],
+ "blocks": {
+  "euler": {
+   "prio": 80,
+   "tags": "euler-count:1638@80"
+  },
+  "colour": {
+   "prio": 31,
+   "tags": "colour-count:355@31"
+  },
+  "iso": {
+   "prio": "(31.0: kept after the block before it)",
+   "tags": ""
+  },
+  "rosecut": {
+   "prio": 63,
+   "tags": "rose-cut:788@63"
+  },
+  "gdclash": {
+   "prio": "70 (by hand: Gemini and Delta: never the same two pieces)",
+   "tags": ""
+  },
+  "gemiso": {
+   "prio": "(63.0: kept after the block before it)",
+   "tags": ""
+  },
+  "isok": {
+   "prio": "(63.0: kept after the block before it)",
+   "tags": ""
+  },
+  "diffclash": {
+   "prio": "7 (by hand: Difference: two numbers, two pieces)",
+   "tags": ""
+  },
+  "rosecover": {
+   "prio": "17 (by hand: Roses: who goes with whom)",
+   "tags": ""
+  },
+  "label": {
+   "prio": 45,
+   "tags": "label:5435@45"
+  },
+  "diffsmall": {
+   "prio": 38,
+   "tags": "diff-small:26@38"
+  },
+  "diffwall": {
+   "prio": "0 (by hand: first: follows from what is known)",
+   "tags": "basic:1416 tower-wall:242@24 rose-cut:69@63 diff-clash:62@7 gd-clash:61@70 cmp-excl:51@69 stamp-size:12@4 stamp-pair:6@19 rose-cover:5@17 pair-probe:4 cross:1"
+  },
+  "sizewall": {
+   "prio": 29.3,
+   "tags": "size:4453@26 size-range:1568@52 compass:925@29 bank-fit:601@22 stamp-size:591@4 rose-pair:520@2 shape-fit:437@14 shape-range:298@76 pal-size:166@74 match-fit:82@11 stamp-shape:5@15 cmp-crowd:1@61"
+  },
+  "bricky": {
+   "prio": 7.1,
+   "tags": "bri-three:2797@1 bri-pinch:284@67"
+  },
+  "sizecut": {
+   "prio": 50,
+   "tags": "size-cut:3817@50"
+  },
+  "areapair": {
+   "prio": "21 (by hand: Area numbers in a closed-in area)",
+   "tags": ""
+  },
+  "areacount": {
+   "prio": 22.6,
+   "tags": "match-region:8@10 piece-region:2@73"
+  },
+  "loopy": {
+   "prio": 20.5,
+   "tags": "loo-outline:1819@8 loo-corner:1389@3 loo-color:1306@59 loo-three:263@9"
+  },
+  "wallyends": {
+   "prio": "(20.5: kept after the block before it)",
+   "tags": ""
+  },
+  "bridge": {
+   "prio": 51,
+   "tags": "bridge-count:4044@51"
+  },
+  "tower": {
+   "prio": 23.9,
+   "tags": "tower-link:2482@24 tower-wall:843@24 tower-wrap:60@20"
+  },
+  "mingle": {
+   "prio": 57.2,
+   "tags": "mingle-area-parity:2356@54 mingle-area-merge:1286@79 mingle-area-place:1115@53 mingle-area-link:361@42 mingle-shape-merge:214@12 mingle-shape-link:74@39 mingle-shape-parity:50@71"
+  },
+  "rel": {
+   "prio": 72.2,
+   "tags": "area-rel:454@81 region-merge:246@56"
+  },
+  "range": {
+   "prio": 31.9,
+   "tags": "range-region:299@34 bank-region:93@25 cmp-crowd:1@61"
+  },
+  "area": {
+   "prio": 21,
+   "tags": "area-region:32@21"
+  },
+  "splitcut": {
+   "prio": "(21.0: kept after the block before it)",
+   "tags": ""
+  },
+  "areasum": {
+   "prio": 77,
+   "tags": "area-sum:492@77"
+  },
+  "stamp": {
+   "prio": 58,
+   "tags": "stamp-place:5566@58"
+  },
+  "palisade": {
+   "prio": 32.7,
+   "tags": "pal-link:1701@27 pal-wall:1027@27 pal-pair:320@75 pal-two:225@41"
+  },
+  "bankblock": {
+   "prio": "(32.7: kept after the block before it)",
+   "tags": ""
+  },
+  "mismatch": {
+   "prio": 44.2,
+   "tags": "mismatch-place:108@44 mismatch-link:2@72 mismatch-stamp:1@13"
+  },
+  "grow": {
+   "prio": 30.2,
+   "tags": "grow:2775@28 rose-grow:378@30 solitude-grow:191@23 nonbox-grow:123@40 area-rel:121@81 min-grow:47@33"
+  },
+  "reach": {
+   "prio": 37.4,
+   "tags": "reach:1679@36 compass:851@29 min-reach:700@35 rose-reach:511@55 solitude-reach:67@47 cmp-budget:29@78 area-rel:7@81"
+  },
+  "matchplace": {
+   "prio": 60,
+   "tags": "match-place:336@60"
+  },
+  "box": {
+   "prio": 51.8,
+   "tags": "boxy-place:2681@66 cmp-box:602@6 box-hall:495@64 boxy-corner:389@5 boxy-line:120@65 box-all:47"
+  },
+  "rosecutdyn": {
+   "prio": 63,
+   "tags": "rose-cut:12@63"
+  },
+  "gemplace": {
+   "prio": 62,
+   "tags": "gemini-place:1540@62"
+  },
+  "mhall": {
+   "prio": 46,
+   "tags": "mismatch-hall:1428@46"
+  },
+  "compass": {
+   "prio": 32,
+   "tags": "cmp-wrap:401@32"
+  },
+  "bankplace": {
+   "prio": 49,
+   "tags": "bank-place:9512@49"
+  },
+  "compassplace": {
+   "prio": 57,
+   "tags": "cmp-place:205@57 cmp-crowd:1@61"
+  },
+  "areaplace": {
+   "prio": 61,
+   "tags": "area-place:28 cmp-crowd:3@61"
+  }
+ }
+}

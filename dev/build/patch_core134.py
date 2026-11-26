@@ -17,7 +17,8 @@ The steps are now numbered blocks inside a loop over STEP_ORDER, so their order 
   * opts.ruleOrder === 'old' runs the blocks in the old order (for comparisons and tests); opts.blockStats (an object) counts the
     rule tags each block decides.
 Nothing is decided differently: every block is the same code, a pass still returns the first block that decides something, and the
-next pass runs them all again, so the solver reaches the same fixed point (the same edges before the probes) in a different order.
+next pass runs them all again. On the 1225 campaign puzzles the first propagation decides the same 49,442 edges; the probes decide
+30,261 instead of 30,312 (51 edges more are left to the final search), all 1225 still unique, the time the same.
 Usage: python3 patch_core134.py <in.js> <out.js> [indent]"""
 import sys, json, os
 

@@ -13,3 +13,9 @@ Tools behind the author's "Which rule comes first?" page (a private claude.ai ar
 
 First run (core v133, all 1225 campaign puzzles): 204,837 positions where two rules could both fire, 1,605 pairs of step titles,
 81 titles; the page shows 232 pairs.
+
+**Known limit of the analysis core:** its trial passes roll back with the probes' snapshot, which does not hold every cache of every step
+(Size Separation's two-size colouring above all). In 28 of the 1225 puzzles the run went wrong after that (positions or decisions that
+disagree with the stored solution; `verify.js` counts them). `select.js` leaves those puzzles out entirely, and every example shown is
+checked against the solution. The real solver is not affected (`tools/check_deductions.js`).
+`rank.js` is the page's ordering, runnable on a dump of the answers.

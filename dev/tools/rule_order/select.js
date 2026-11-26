@@ -4,11 +4,16 @@ const titles = require(process.env.TITLES || './titles.json');
 const idx = JSON.parse(fs.readFileSync('/home/user/Glimmith-Solver/dev/game_puzzles_converted/index.json', 'utf8')).puzzles;
 const byId = new Map(idx.map(r => [r.id, r]));
 const T = t => titles[t] || t;
-const best = new Map(), seen = new Map();
+const best = new Map(), seen = new Map(); let dropped = 0;
 for(const line of fs.readFileSync(process.env.IN || 'alt_all.jsonl', 'utf8').split('\n')){
   if(!line.trim()) continue;
   let j; try { j = JSON.parse(line); } catch(e){ continue; }
   const r = byId.get(j.id); if(!r) continue;
+  // the analysis core can leak state between its trial passes: a puzzle where any recorded position or any rule's decision disagrees
+  // with the stored solution is left out entirely
+  const sw = new Set(JSON.parse(fs.readFileSync('/home/user/Glimmith-Solver/dev/game_puzzles_converted/' + r.file, 'utf8')).puzzles[0].solutionWalls || []);
+  const kk = (c1, r1, c2, r2) => r1 === r2 ? `v:${Math.min(c1, c2)},${r1}` : `h:${c1},${Math.min(r1, r2)}`;
+  if(j.rec.some(rec => rec.st.some(([c1, r1, c2, r2, s]) => sw.has(kk(c1, r1, c2, r2)) !== (s === 1)) || rec.alts.some(a => a.ch.some(([c1, r1, c2, r2, v]) => sw.has(kk(c1, r1, c2, r2)) !== (v === 'wall'))))){ dropped++; continue; }
   for(const rec of j.rec){
     // each alternative = one rule title with its deductions (an alternative with two tags is split per tag)
     const opts = [];
@@ -35,7 +40,7 @@ const LIMIT = +(process.env.LIMIT || 200);
 const byCount = [...best.values()].sort((a, b) => seen.get(b.key) - seen.get(a.key) || (a.key < b.key ? -1 : 1));
 const chosen = byCount.slice(0, LIMIT), covered = new Set(chosen.flatMap(c => [c.A.t, c.B.t]));
 for(const c of byCount.slice(LIMIT)) if(!covered.has(c.A.t) || !covered.has(c.B.t)){ chosen.push(c); covered.add(c.A.t); covered.add(c.B.t); }
-console.log('all pairs', byCount.length, 'positions', [...seen.values()].reduce((a, b) => a + b, 0));
+console.log('puzzles left out', dropped, 'all pairs', byCount.length, 'positions', [...seen.values()].reduce((a, b) => a + b, 0));
 const comps = chosen.map((c, n) => {
   const p = JSON.parse(fs.readFileSync('/home/user/Glimmith-Solver/dev/game_puzzles_converted/' + c.file, 'utf8')).puzzles[0].state;
   const flip = (n * 7919) % 2 === 1;                                   // left / right shuffled, so the solver's choice is not always on one side

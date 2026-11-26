@@ -97,7 +97,7 @@ kbd{font-family:var(--mono); font-size:.75rem; border:1px solid var(--line); bor
 
   <section class="card">
     <h2>The order so far</h2>
-    <p class="sub">Rules sorted by how often you picked them first (wins − losses, ties by name). This list is what the solver's step order would follow.</p>
+    <p class="sub">A rule is never placed below a rule you picked it over. Between rules you have not compared directly, the one with the better record comes first: wins + 1 out of answers + 2 (the % shown), so 5–0 (86%) comes before 9–2 (77%). Only a loop in your answers can break a direct answer; those are listed below the order.</p>
     <ol class="order" id="order"></ol><p class="empty" id="orderEmpty">No answers yet.</p>
     <div id="conflicts"></div>
   </section>
@@ -240,7 +240,7 @@ kbd{font-family:var(--mono); font-size:.75rem; border:1px solid var(--line); bor
   const explain = (tag, ch) => {
     const i = info[tag]; if(!i) return '';
     const walls = ch.some(x => x[4] === 'wall'), links = ch.some(x => x[4] !== 'wall');
-    return i[1] || (walls && !links ? i[2] : links && !walls ? i[3] : (i[2] || i[3])) || '';
+    return i[1] || (walls && !links ? i[2] : links && !walls ? i[3] : null) || i[2] || i[3] || '';
   };
 
   // ---------- one comparison ----------
@@ -314,25 +314,38 @@ kbd{font-family:var(--mono); font-size:.75rem; border:1px solid var(--line); bor
   }
 
   // ---------- the order ----------
-  function renderOrder(){
-    const score = new Map(), beat = new Map();
-    const add = t => { if(!score.has(t)) score.set(t, { w: 0, l: 0, e: 0 }); };
+  // V3: the order respects your direct answers first (a rule is never placed below a rule you picked it over), then the win rate
+  // (wins + 1) / (wins + losses + 2), so 5-0 comes before 9-2. Only a loop in your answers (A over B, B over C, C over A) can break a direct answer.
+  function rankRules(){
+    const sc = new Map(), beat = new Map();
+    const add = t => { if(!sc.has(t)){ sc.set(t, { w: 0, l: 0, e: 0 }); beat.set(t, new Set()); } };
     for(const a of answers.values()){
       add(a.a); add(a.b);
-      if(a.first === 'equal'){ score.get(a.a).e++; score.get(a.b).e++; continue; }
-      if(a.first === 'skip') continue;
-      const loser = a.first === a.a ? a.b : a.a;
-      score.get(a.first).w++; score.get(loser).l++;
-      if(!beat.has(a.first)) beat.set(a.first, new Set()); beat.get(a.first).add(loser);
+      if(a.first === 'equal'){ sc.get(a.a).e++; sc.get(a.b).e++; continue; }
+      if(a.first !== a.a && a.first !== a.b) continue;
+      const lo = a.first === a.a ? a.b : a.a;
+      sc.get(a.first).w++; sc.get(lo).l++; beat.get(a.first).add(lo);
     }
-    const list = [...score.entries()].sort((x, y) => (y[1].w - y[1].l) - (x[1].w - x[1].l) || x[0].localeCompare(y[0]));
-    const ol = $('order');
-    $('orderEmpty').hidden = list.length > 0;
-    ol.innerHTML = list.map(([t, s]) => `<li><span>${esc(t)}</span><span class="wl">${s.w}–${s.l}${s.e ? ' =' + s.e : ''}</span></li>`).join('');
-    // answers that go against the order (A before B, but B is ranked higher)
-    const pos = new Map(list.map(([t], i) => [t, i])), bad = [];
-    for(const [wn, ls] of beat) for(const l of ls) if(pos.get(l) < pos.get(wn)) bad.push(`${wn} before ${l}`);
-    $('conflicts').innerHTML = bad.length ? `<p class="sub" style="margin:10px 0 4px">${bad.length} answer${bad.length > 1 ? 's go' : ' goes'} against this order (a loop, or a rule that is strong elsewhere):</p><ul class="conf">${bad.slice(0, 30).map(b => `<li>${esc(b)}</li>`).join('')}</ul>` : '';
+    const rate = t => { const v = sc.get(t); return (v.w + 1) / (v.w + v.l + 2); };
+    const left = new Set(sc.keys()), out = [];
+    while(left.size){
+      let best = null, bd = 0, br = 0;
+      for(const t of left){
+        let d = 0; for(const u of left) if(u !== t && beat.get(u).has(t)) d++;
+        const r = rate(t);
+        if(best === null || d < bd || (d === bd && (r > br || (r === br && t < best)))){ best = t; bd = d; br = r; }
+      }
+      out.push({ t: best, s: sc.get(best), rate: br, loop: bd > 0 }); left.delete(best);
+    }
+    const pos = new Map(out.map((x, i) => [x.t, i])), bad = [];
+    for(const [w, ls] of beat) for(const l of ls) if(pos.get(l) < pos.get(w)) bad.push(`${w} before ${l}`);
+    return { out, bad };
+  }
+  function renderOrder(){
+    const { out, bad } = rankRules();
+    $('orderEmpty').hidden = out.length > 0;
+    $('order').innerHTML = out.map(x => `<li><span>${esc(x.t)}</span><span class="wl">${x.s.w}–${x.s.l}${x.s.e ? ' =' + x.s.e : ''} · ${Math.round(100 * x.rate)}%</span></li>`).join('');
+    $('conflicts').innerHTML = bad.length ? `<p class="sub" style="margin:10px 0 4px">${bad.length} answer${bad.length > 1 ? 's' : ''} could not be kept, because your answers make a loop:</p><ul class="conf">${bad.slice(0, 30).map(b => `<li>${esc(b)}</li>`).join('')}</ul>` : '';
     updateProgress();
   }
 

@@ -19,7 +19,8 @@ distance to a clue. Now each edge gets a score: a clue on one of its tiles, a sp
 whose piece size is known, a decided wall or link beside it, or a watchtower at one of its ends all raise it, and a clue on both
 tiles lowers it. The weights were tuned on 150 campaign puzzles (10 per zone and difficulty 1 to 5) and then checked on all 1,225:
 the same answers, 5% fewer proofs by contradiction (4,314 to 4,108, most of the gain on difficulty 4 and 5), and about the same
-time. Only the order changes: every edge is still tried until a round decides nothing, so the solver finds what it found before.
+time. The corpus run on core v133: all 1,225 unique, 13.9 min of solver time (13.7 min on v132). All fuzzers agree with the
+oracle. Only the order changes: every edge is still tried until a round decides nothing, so the solver finds what it found before.
 
 ## V1.0.55
 

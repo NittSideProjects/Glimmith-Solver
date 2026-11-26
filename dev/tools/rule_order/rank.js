@@ -1,33 +1,22 @@
-// the ranking used by the page: direct answers first (a rule is never placed below one it beat), then the win rate (w+1)/(w+l+2)
+// the author's ordering: ratio wins / (wins + losses), a tie ("no order") counts as one win and one loss for both;
+// equal ratios: above half, more answers first (2-0 before 1-0); below half, fewer answers first (0-1 before 0-2)
 function rank(answers){
-  const sc = new Map(), beat = new Map();
-  const add = t => { if(!sc.has(t)){ sc.set(t, { w: 0, l: 0, e: 0 }); beat.set(t, new Set()); } };
+  const sc = new Map(); const add = t => { if(!sc.has(t)) sc.set(t, { w: 0, l: 0, e: 0 }); };
   for(const a of answers){
     add(a.a); add(a.b);
-    if(a.first === 'equal'){ sc.get(a.a).e++; sc.get(a.b).e++; continue; }
+    if(a.first === 'equal'){ for(const t of [a.a, a.b]){ sc.get(t).w++; sc.get(t).l++; sc.get(t).e++; } continue; }
     if(a.first !== a.a && a.first !== a.b) continue;
-    const lo = a.first === a.a ? a.b : a.a;
-    sc.get(a.first).w++; sc.get(lo).l++; beat.get(a.first).add(lo);
+    sc.get(a.first).w++; sc.get(a.first === a.a ? a.b : a.a).l++;
   }
-  const rate = t => { const s = sc.get(t); return (s.w + 1) / (s.w + s.l + 2); };
-  const left = new Set(sc.keys()), out = [];
-  while(left.size){
-    const inDeg = t => { let n = 0; for(const u of left) if(u !== t && beat.get(u).has(t)) n++; return n; };
-    let best = null, bk = null;
-    for(const t of left){ const k = [inDeg(t), -rate(t), t]; if(!bk || k[0] < bk[0] || (k[0] === bk[0] && (k[1] < bk[1] || (k[1] === bk[1] && k[2] < bk[2])))){ best = t; bk = k; } }
-    out.push({ t: best, ...sc.get(best), rate: rate(best), forced: bk[0] > 0 }); left.delete(best);
-  }
-  const pos = new Map(out.map((x, i) => [x.t, i])), bad = [];
-  for(const [w, ls] of beat) for(const l of ls) if(pos.get(l) < pos.get(w)) bad.push([w, l]);
-  return { out, bad };
+  const out = [...sc].map(([t, s]) => ({ t, ...s, n: s.w + s.l, r: s.w + s.l ? s.w / (s.w + s.l) : 0.5 }));
+  out.sort((x, y) => y.r - x.r || (x.r > 0.5 ? y.n - x.n : x.r < 0.5 ? x.n - y.n : y.n - x.n) || (x.t < y.t ? -1 : 1));
+  return out;
 }
 module.exports = rank;
 if(require.main === module){
-  const fs = require('fs'), dir = 'answers/choices';
-  const ans = fs.readdirSync(dir).map(f => JSON.parse(fs.readFileSync(dir + '/' + f)).data || JSON.parse(fs.readFileSync(dir + '/' + f)));
-  const { out, bad } = rank(ans);
-  out.forEach((x, i) => console.log(String(i + 1).padStart(2), x.t, `${x.w}-${x.l}${x.e ? ' =' + x.e : ''}`, x.rate.toFixed(2), x.forced ? '(loop)' : ''));
-  console.log('against the order:', bad.map(b => b.join(' > ')).join('; '));
-  console.log('skips', ans.filter(a => a.first === 'skip').length, 'equal', ans.filter(a => a.first === 'equal').length, 'agree with solver', ans.filter(a => a.first === a.solverFirst).length, 'disagree', ans.filter(a => a.first !== a.solverFirst && a.first !== 'skip' && a.first !== 'equal').length);
+  const fs = require('fs'), dir = process.argv[2] || 'answers2/choices';
+  const ans = fs.readdirSync(dir).map(f => JSON.parse(fs.readFileSync(dir + '/' + f)));
+  rank(ans).forEach((x, i) => console.log(String(i + 1).padStart(2), x.t, `| ${x.w - x.e}-${x.l - x.e}${x.e ? ' =' + x.e : ''} | ${Math.round(100 * x.r)}%`));
+  console.log('answers', ans.length, 'skips', ans.filter(a => a.first === 'skip').length, 'equal', ans.filter(a => a.first === 'equal').length, 'agree with solver', ans.filter(a => a.first === a.solverFirst).length, 'disagree', ans.filter(a => a.first !== a.solverFirst && a.first !== 'skip' && a.first !== 'equal').length);
   for(const a of ans) if(a.note) console.log('NOTE', a.pair, '->', a.first, ':', a.note);
 }

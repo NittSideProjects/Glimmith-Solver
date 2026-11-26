@@ -18,4 +18,4 @@ First run (core v133, all 1225 campaign puzzles): 204,837 positions where two ru
 (Size Separation's two-size colouring above all). In 28 of the 1225 puzzles the run went wrong after that (positions or decisions that
 disagree with the stored solution; `verify.js` counts them). `select.js` leaves those puzzles out entirely, and every example shown is
 checked against the solution. The real solver is not affected (`tools/check_deductions.js`).
-`rank.js` is the page's ordering, runnable on a dump of the answers.
+`rank.js` is the page's ordering (the author's method), runnable on a dump of the answers; `order_2026-11-26.md` is the result of his 235 answers.

@@ -9,7 +9,7 @@
 'use strict';
 const path = require('path'), fs = require('fs'), os = require('os');
 const { chromium } = require('playwright');
-const page_ = path.resolve(process.argv[2] || path.join(__dirname, '../../../glimmith_solver_V1.0.51.html'));
+const page_ = path.resolve(process.argv[2] || require('../../pagepath.js')());
 let pass = 0, fail = 0;
 const check = (ok, what, info) => { if(ok) pass++; else { fail++; console.log('FAIL:', what, info !== undefined ? '-> ' + JSON.stringify(info) : ''); } };
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'glw-'));

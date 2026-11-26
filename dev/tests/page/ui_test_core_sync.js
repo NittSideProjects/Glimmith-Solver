@@ -3,7 +3,7 @@
 // impossible. This test fails on ANY difference (comments and texts included), so the reference is always the page's core.
 //   node tests/page/ui_test_core_sync.js [page.html]
 const fs = require('fs'), path = require('path');
-const page = process.argv[2] || '../glimmith_solver_V1.0.48.html';
+const page = process.argv[2] || require('../../pagepath.js')();
 const html = fs.readFileSync(page, 'utf8');
 const a = html.indexOf('  // ================= SOLVER CORE (pure'), b = html.indexOf('  // ================= IMPORT CORE (pure');
 const core = html.slice(a, b).split(/(?<=\n)/).map(l => l.startsWith('  ') ? l.slice(2) : l).join('');

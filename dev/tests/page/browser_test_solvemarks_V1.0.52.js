@@ -11,7 +11,7 @@
 'use strict';
 const path = require('path'), fs = require('fs');
 const { chromium } = require('playwright');
-const page_ = path.resolve(process.argv[2] || path.join(__dirname, '../../../glimmith_solver_V1.0.52.html'));
+const page_ = path.resolve(process.argv[2] || require('../../pagepath.js')());
 const fixture = path.join(__dirname, '../../fixtures/compass_V1.0.17.glimmith.json');
 let pass = 0, fail = 0;
 const check = (ok, what, info) => { if(ok) pass++; else { fail++; console.log('FAIL:', what, info !== undefined ? '-> ' + JSON.stringify(info) : ''); } };

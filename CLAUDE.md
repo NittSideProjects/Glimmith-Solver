@@ -143,5 +143,11 @@ Releases are not edited by hand. Each release is a pair of Python patch scripts 
   `--import-core dev/reference/import-core.js` patches the reference importer in place.
 
 Each replacement anchors on an exact substring and aborts if it is not found exactly once. A release produces the new
-`glimmith_solver_V1.0.x.html`, a new `dev/reference/solver-core.vNN.js` and a README section. Version names go V1.0.1, V1.0.2, and so on
+`glimmith_solver_V1.0.x.html`, a new `dev/reference/solver-core.vNN.js` and a README section.
+
+**Only the newest page is kept in the repository** (the author's rule): a release that adds `glimmith_solver_V1.0.x.html` removes the
+previous one (`git rm`) in the same commit. Git history keeps every version (`git show <commit>:glimmith_solver_V1.0.y.html > old.html`
+to get one back, e.g. as the input of a patch script or to compare). The tests default to the newest page through `dev/pagepath.js`,
+so a new version needs no test edits. `glimmith_solver_V1.html` (the stable V1) stays. The reference cores in `dev/reference/` all
+stay: fuzzers and tests pin some of them. Version names go V1.0.1, V1.0.2, and so on
 for each change. Use V1.1 and up only when the author says a version is a big step, and never before the rewrite list is done (see above). The core number (`vNN`) increments independently.

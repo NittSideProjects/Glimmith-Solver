@@ -94,6 +94,8 @@ kbd{font-family:var(--mono); font-size:.75rem; border:1px solid var(--line); bor
   </section>
 </div>
 
+<script type="application/json" id="comps-data">[]</script>
+<script type="application/json" id="info-data">{}</script>
 <script>
 (() => {
   const $ = id => document.getElementById(id);
@@ -299,9 +301,9 @@ kbd{font-family:var(--mono); font-size:.75rem; border:1px solid var(--line); bor
   // ---------- start ----------
   async function start(){
     try {
-      const [cr, ir] = await Promise.all([fetch('comps.json'), fetch('info.json')]);
-      comps = await cr.json(); info = await ir.json();
-    } catch(e){ $('card').innerHTML = '<p class="empty">The comparisons could not be loaded. Reload the page to try again.</p>'; return; }
+      comps = JSON.parse(document.getElementById('comps-data').textContent);
+      info = JSON.parse(document.getElementById('info-data').textContent);
+    } catch(e){ $('card').innerHTML = '<p class="empty">The comparisons could not be read: ' + esc(e && e.message || e) + '</p>'; return; }
     $('jump').innerHTML = comps.map((c, i) => `<option value="${i}"></option>`).join('');
     try { const k = +localStorage.getItem('rule-order-cur'); if(k >= 0 && k < comps.length) cur = k; } catch(e){}
     render(); renderOrder();
@@ -318,6 +320,6 @@ kbd{font-family:var(--mono); font-size:.75rem; border:1px solid var(--line); bor
       renderOrder();
     }, err => { clearTimeout(timer); const s = $('status'); if(s) s.textContent = 'Could not read saved answers: ' + (err && err.message || err); });
   }
-  start();
+  start().catch(e => { $('card').innerHTML = '<p class="empty">The page failed to start: ' + esc(e && e.message || e) + '</p>'; });
 })();
 </script>

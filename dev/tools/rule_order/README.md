@@ -8,7 +8,7 @@ Tools behind the author's "Which rule comes first?" page (a private claude.ai ar
 2. `GLIMMITH_CORE=core_alt.js node run1.js <id> <puzzle file>` per puzzle (one JSON line each) -> `alt_all.jsonl`.
 3. `node select.js` (`IN=`, `LIMIT=` default 200, `titles.json` = the page's step titles): one example per pair of step titles, the pairs met
    most often first, plus one pair for every title not met yet -> `comps.json` (holds game boards: keep it out of the repository).
-4. `rule_order.html` + `comps.json` + `info.json` (the page's STEP_INFO) are published together; answers go to the page's database
+4. `comps.json` and `info.json` (the page's STEP_INFO) are pasted into the two `<script type="application/json">` blocks of `rule_order.html` (empty here; fetching them beside the page did not load in the viewer) and the page is published; answers go to the page's database
    (collection `choices`: pair, a, b, first = a title | "equal" | "skip", note, solverFirst).
 
 First run (core v133, all 1225 campaign puzzles): 204,837 positions where two rules could both fire, 1,605 pairs of step titles,

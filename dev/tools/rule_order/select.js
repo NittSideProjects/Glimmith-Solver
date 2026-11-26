@@ -42,7 +42,7 @@ const comps = chosen.map((c, n) => {
   const L = flip ? c.B : c.A, R = flip ? c.A : c.B;
   return { pair: c.key, count: seen.get(c.key), id: c.id, zone: c.zone, difficulty: c.difficulty, solverFirst: c.A.t,
     left: { title: L.t, tag: L.tag, ch: L.ch.map(x => x.slice(0, 5)) }, right: { title: R.t, tag: R.tag, ch: R.ch.map(x => x.slice(0, 5)) },
-    st: c.st, puzzle: p.puzzle, bank: p.shapeBank || [], rules: p.sizeRules };
+    st: c.st, puzzle: p.puzzle, bank: p.shapeBank || [], ban: p.banShapes || [], rules: p.sizeRules };
 });
 fs.writeFileSync('comps.json', JSON.stringify(comps));
 const tl = new Set(); for(const c of comps){ tl.add(c.left.title); tl.add(c.right.title); }

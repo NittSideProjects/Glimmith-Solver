@@ -53,6 +53,15 @@ select{font:inherit; background:var(--panel); color:var(--ink); border:1px solid
 .choices button{flex:1 1 auto}
 .extra{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
 textarea{font:inherit; width:100%; min-height:54px; border:1px solid var(--line); border-radius:8px; background:var(--panel); color:var(--ink); padding:8px}
+.about{display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:14px 24px; background:var(--bg); border-radius:10px; padding:14px 16px}
+@media (max-width:760px){ .about{grid-template-columns:1fr} }
+.about h3{font-size:.8rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:0 0 6px}
+.about dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:4px 12px; font-size:.9rem}
+.about dt{font-weight:600}
+.about dd{margin:0; color:var(--muted)}
+.shapes{display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end}
+.shapes svg{display:block}
+.shapes figure{margin:0; display:flex; flex-direction:column; align-items:center; gap:2px; font-family:var(--mono); font-size:.72rem; color:var(--muted)}
 .legend{display:flex; flex-wrap:wrap; gap:4px 16px; font-size:.82rem; color:var(--muted)}
 .legend span{display:inline-flex; align-items:center; gap:6px}
 .sw{display:inline-block; width:18px; height:5px; border-radius:2px}
@@ -186,6 +195,48 @@ kbd{font-family:var(--mono); font-size:.75rem; border:1px solid var(--line); bor
     if(c.bank && c.bank.length) out.push('Bank of ' + c.bank.length + ' shape' + (c.bank.length > 1 ? 's' : ''));
     return out;
   }
+  const RULE_TEXT = {
+    precision: n => ['Precision ' + n, 'Every piece has exactly ' + n + ' tiles.'],
+    min: n => ['Minimum ' + n, 'Every piece has at least ' + n + ' tiles.'],
+    max: n => ['Maximum ' + n, 'Every piece has at most ' + n + ' tiles.'],
+    match: () => ['Match', 'Every piece has the same shape.'],
+    mismatch: () => ['Mismatch', 'No two pieces have the same shape.'],
+    mingleShape: () => ['Mingle Shape', 'Two pieces that touch never have the same shape.'],
+    mingleArea: () => ['Size Separation', 'Two pieces that touch never have the same size.'],
+    solitude: () => ['Solitude', 'Every piece holds exactly one symbol.'],
+    boxy: () => ['Boxy', 'Every piece is a rectangle.'],
+    nonBoxy: () => ['Non-boxy', 'No piece is a rectangle.'],
+    bricky: () => ['Bricky', 'Four walls never meet at a corner.'],
+    loopy: () => ['Loopy', 'An even number of walls meets at every corner (0, 2 or 4).'],
+  };
+  function shapeSvg(cells, u){
+    const mw = Math.max(...cells.map(q => q[0])) + 1, mh = Math.max(...cells.map(q => q[1])) + 1;
+    return `<svg viewBox="0 0 ${mw * u + 2} ${mh * u + 2}" width="${mw * u + 2}" height="${mh * u + 2}" aria-hidden="true">` +
+      cells.map(([a, b]) => `<rect x="${1 + a * u}" y="${1 + b * u}" width="${u}" height="${u}" fill="var(--tile)" stroke="var(--ink)" stroke-width="1.2"/>`).join('') + '</svg>';
+  }
+  function aboutPuzzle(c){
+    const r = c.rules || {}, p = c.puzzle, rules = [];
+    for(const k of Object.keys(RULE_TEXT)) if(r[k] !== null && r[k] !== undefined && r[k] !== false) rules.push(RULE_TEXT[k](r[k]));
+    const sym = [];
+    if(p.areaNumbers.length) sym.push(['Area number', 'The piece holding it has that many tiles.']);
+    if(p.roses.length) sym.push(['Rose (coloured dot)', 'Every piece holds exactly one rose of each type (the number is the type).']);
+    if(p.polyominoes.length) sym.push(['Polyomino (small grey shape)', 'The piece holding it has exactly that shape (turned or flipped).']);
+    if(p.palisades.length) sym.push(['Palisade (dashed square)', 'That many sides of the tile are walls; ∟ = two sides at a corner, ‖ = two opposite sides.']);
+    if(p.compasses.length) sym.push(['Compass (circle)', 'Each number counts the tiles of its piece in that direction (north, east, south, west of the compass).']);
+    if(p.watchtowers.length) sym.push(['Watchtower (dark dot on a corner)', 'That many pieces meet at that corner.']);
+    const kinds = new Set(p.walls.map(w => w[1]));
+    if(kinds.has('gemini')) sym.push(['= wall', 'The pieces on both sides have the same shape.']);
+    if(kinds.has('delta')) sym.push(['Δ wall', 'The pieces on both sides have different shapes.']);
+    if(kinds.has('lt') || kinds.has('gt')) sym.push(['< > wall', 'The piece on the small side of the sign has fewer tiles than the other.']);
+    if([...kinds].some(k => /^diff/.test(k))) sym.push(['Number on a wall', 'The sizes of the two pieces differ by exactly that number.']);
+    const dl = list => '<dl>' + list.map(([a, b]) => `<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join('') + '</dl>';
+    const shapes = (list, label) => list && list.length ? `<h3 style="margin-top:12px">${label}</h3><div class="shapes">${list.map(sh => `<figure>${shapeSvg(sh.cells || sh, 12)}<figcaption>${(sh.cells || sh).length}</figcaption></figure>`).join('')}</div>` : '';
+    return `<div class="about">
+      <div><h3>Rules of this puzzle</h3>${rules.length ? dl(rules) : (c.bank && c.bank.length) || (c.ban && c.ban.length) ? '' : '<p class="sub" style="margin:0">No size or shape rule: any piece size is allowed.</p>'}
+        ${shapes(c.bank, 'Shape bank: every piece is one of these (turned or flipped)')}${shapes(c.ban, 'Omits: no piece contains one of these')}</div>
+      <div><h3>Symbols on the board</h3>${sym.length ? dl(sym) : '<p class="sub" style="margin:0">No symbols: only walls and the rules.</p>'}</div>
+    </div>`;
+  }
   const explain = (tag, ch) => {
     const i = info[tag]; if(!i) return '';
     const walls = ch.some(x => x[4] === 'wall'), links = ch.some(x => x[4] !== 'wall');
@@ -209,11 +260,11 @@ kbd{font-family:var(--mono); font-size:.75rem; border:1px solid var(--line); bor
       <div class="meta">
         <span class="chip ${a ? 'done' : ''}">#${cur + 1}${a ? ' · answered' : ''}</span>
         <span>${esc(c.id)} · difficulty ${c.difficulty}</span>
-        ${rulesLine(c).map(t => `<span class="chip">${esc(t)}</span>`).join('')}
         <span>seen together in ${c.count} position${c.count > 1 ? 's' : ''}</span>
         ${same ? '<span class="chip">both decide the same edge</span>' : ''}
         ${a ? `<span>the solver does <b>${esc(c.solverFirst)}</b> first today</span>` : ''}
       </div>
+      ${aboutPuzzle(c)}
       <div class="legend"><span><i class="sw" style="background:var(--hot)"></i>decided by this rule</span><span><i class="sw" style="background:var(--wall)"></i>known wall</span><span><i class="sw" style="background:var(--link)"></i>known link</span><span><i class="sw" style="background:var(--accent)"></i>special wall</span></div>
       <div class="duel">${side(c.left, 'left')}${side(c.right, 'right')}</div>
       <div class="extra">

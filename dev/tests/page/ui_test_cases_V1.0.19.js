@@ -41,7 +41,7 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
     check(`step ${i}: the pop-up opens`, !!pop && /What the solver tried/.test(pop.querySelector('h3').textContent));
     const cards = pop ? pop.querySelectorAll('.ex-card') : [];
     check(`step ${i}: at least one case, each with a board`, cards.length >= 1 && [...cards].every(c => c.querySelector('svg')), cards.length);
-    check(`step ${i}: the tried value is marked on the board`, [...cards].every(c => c.querySelector('svg .ded-probe')));
+    check(`step ${i}: the tried value is marked on the board`, [...cards].every(c => c.querySelector('svg .case-try rect[fill="#e5534b"]')));
     check(`step ${i}: what the rules then decide is outlined and listed`, [...cards].every(c => c.querySelector('svg .ded-new') && c.querySelectorAll('.case-list li').length >= 1));
     check(`step ${i}: the case says what was tried`, [...cards].every(c => /^(Case \d+ of \d+\. )?Tried: /.test(c.querySelector('.case-tried').textContent)));
     check(`step ${i}: the case says why it fails`, [...cards].every(c => /This fails/.test(c.querySelector('.case-fail').textContent) && c.querySelector('.case-fail').textContent.length > 25), [...cards].map(c => c.querySelector('.case-fail').textContent));

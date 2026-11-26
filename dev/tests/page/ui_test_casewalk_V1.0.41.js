@@ -41,7 +41,7 @@ const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n
     const cnt = () => walk.querySelector('.cw-count').textContent, title = () => walk.querySelector('.cw-title').textContent, [prevB, nextB] = walk.querySelectorAll('.cw-nav button');
     const total = +cnt().split(' / ')[1];
     check(`step ${i}: what was tried, one frame per rule run, then the impossible moment`, total === runs + 2 && cnt() === '1 / ' + total, [cnt(), runs]);
-    check(`step ${i}: frame 1 shows what was tried, marked`, title() === 'What was tried' && !!walk.querySelector('svg .ded-probe') && !walk.querySelector('svg .ded-new') && prevB.disabled);
+    check(`step ${i}: frame 1 shows what was tried, marked`, title() === 'What was tried' && !!walk.querySelector('svg .case-try rect[fill="#e5534b"]') && !walk.querySelector('svg .ded-new') && prevB.disabled);
     const titles = [title()]; let outlined = true;
     for(let k = 1; k < total; k++){ nextB.click(); await sleep(5); titles.push(title()); if(k < total - 1 && !walk.querySelector('svg .ded-new')) outlined = false; }
     check(`step ${i}: each rule frame outlines what that rule decides`, outlined);

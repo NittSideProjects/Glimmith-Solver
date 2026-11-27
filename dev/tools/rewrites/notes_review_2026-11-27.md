@@ -93,3 +93,20 @@ edge that is the same in all of them.
   shape, so the same straight lines), and it is sound without Wally. Today it only runs when Wally is on, because it has a time budget
   of up to 4 s per solve. Turning it on for every Gemini wall is a solver change: I can measure what it costs and gains on the campaign
   first.
+
+## "Useless / redundant?": each rule switched off on the 1225 campaign puzzles
+
+Deduction phase (everything before the final search), each rule off in turn, compared with all on. Zone3/1085a moves by ±1 to 3
+edges with machine load in every run (time-limited probes), so it counts as noise.
+
+| Rule (your note) | Edges left open without it | Time without it |
+|---|---|---|
+| Palisade: only two pieces (T0668, T0669, "redundant with colour count") | **158 more on Zone3/1249**: it is needed | 84 s slower |
+| Palisades side by side (T0666, T0667, "redundant with the palisade rule") | none | 12 s slower (noise level) |
+| Two polyominoes of the same shape, two pieces (T0586, T0587, "covered by every placement") | none | 14 s faster (noise level) |
+| Must still fit the shape (T0588, T0589, "covered by every placement") | none | same |
+
+So on the campaign, "Palisades side by side", "Two polyominoes of the same shape" and "Must still fit the shape" never decide
+anything that the other rules do not decide anyway: you are right that they are covered. "Palisade: only two pieces" is not: one
+puzzle needs it. Removing the three is your call: they may still matter on hand-made or workshop puzzles (the fuzzers would tell,
+and I would run them before removing anything).

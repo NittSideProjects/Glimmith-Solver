@@ -61,6 +61,7 @@ main { padding-block: 18px 40px; display: flex; flex-direction: column; gap: 14p
 .area-head p { margin: 0; font-size: 13px; color: var(--muted); max-width: 70ch; }
 .where-note { margin: 0; font-size: 13px; color: var(--muted); }
 .where-note b { color: var(--fg); font-weight: 600; }
+.claude-note { padding: 8px 10px; border-radius: 6px; background: var(--accent-soft); color: var(--fg); }
 .chip.new { background: var(--accent-soft); color: var(--accent); }
 .was { margin: 0; font-size: 12.5px; color: var(--muted); }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
@@ -155,6 +156,7 @@ button.keep[aria-pressed="true"] { background: var(--kept-soft); color: var(--ke
     const a = answers.get(id);
     if(!a) return 'todo';
     if(a.kept) return 'kept';
+    if(/\[.*\]/.test(a.text || '')) return 'todo';                 // a [..] note is not a rewrite yet
     return a.text && a.text.trim() ? 'changed' : 'todo';
   }
   function warningFor(t, text){
@@ -235,6 +237,7 @@ button.keep[aria-pressed="true"] { background: var(--kept-soft); color: var(--ke
     card.innerHTML = `
       <div class="meta"><span class="id">${t.id}</span><span>${esc(t.kind)}</span>${t.where ? `<span class="where">${esc(t.where)}</span>` : ''}<span>line ${lines}${t.lines.length > 1 ? ` (used ${t.lines.length}×)` : ''}</span>${t.isNew ? '<span class="chip new">New</span>' : ''}${t.changedFrom && t.reason === 'changed' ? '<span class="chip new">Changed</span>' : ''}<span class="chip status-chip todo">To do</span></div>
       ${t.note ? `<p class="where-note"><b>Where it shows:</b> ${esc(t.note)}</p>` : ''}
+      ${t.claude ? `<p class="where-note claude-note"><b>Claude:</b> ${esc(t.claude)}</p>` : ''}
       <p class="orig">${showOrig(t)}</p>
       ${t.changedFrom && t.reason === 'changed' ? `<p class="was">It used to say: ${esc(t.changedFrom)}</p>` : ''}
       ${t.slots && t.slots.length ? `<ul class="slots">${t.slots.map((s, i) => `<li><span class="slot">{${i + 1}}</span> = <code>${esc(s.length > 140 ? s.slice(0, 140) + '…' : s)}</code></li>`).join('')}</ul>` : ''}

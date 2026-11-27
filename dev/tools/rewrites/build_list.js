@@ -13,6 +13,9 @@ const all = JSON.parse(fs.readFileSync(textsPath, 'utf8'));
 const dir = path.join(answersDir, 'rewrites');
 const answers = new Map(fs.readdirSync(dir).filter(f => f.endsWith('.json')).map(f => { const d = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')); return [f.slice(0, -5), d.data || d]; }));
 const keepIds = new Set((keepArg || '').split(',').filter(Boolean));
+// CLAUDE_NOTES=<json file> {id: text}: texts put back on the list with Claude's answer to the author's [..] note shown on the card
+const claudeNotes = process.env.CLAUDE_NOTES ? JSON.parse(fs.readFileSync(process.env.CLAUDE_NOTES, 'utf8')) : {};
+for(const id of Object.keys(claudeNotes)) keepIds.add(id);
 const norm = s => String(s || '').replace(/\s+/g, ' ').trim();
 const authorTexts = new Set([...answers.values()].filter(a => !a.kept && a.text && !/\[.*\]/.test(a.text)).map(a => norm(a.text)));
 // the author's rewrites already on the page (typos fixed, so not letter for letter his answer): done (applied.json, one list per release)
@@ -20,7 +23,7 @@ try { const ap = JSON.parse(fs.readFileSync(path.join(__dirname, 'applied.json')
 const onScreen = t => !/Never shown|Not shown on screen/.test(t.note || '');
 const out = [], why = {};
 for(const t of all){
-  if(!onScreen(t)) continue;
+  if(!onScreen(t) && !keepIds.has(t.id)) continue;
   const a = answers.get(t.id), answered = a && (a.kept || norm(a.text));
   let reason = null;
   if(keepIds.has(t.id)) reason = 'unfinished';
@@ -30,7 +33,7 @@ for(const t of all){
   if(!reason) continue;
   why[reason] = (why[reason] || 0) + 1;
   const { id, area, kind, where, lines, text, slots, note, isNew, changedFrom } = t;
-  out.push({ id, area, kind, where, lines, text, slots, note, isNew, changedFrom, reason });
+  out.push({ id, area, kind, where, lines, text, slots, note, isNew, changedFrom, reason, claude: claudeNotes[id] });
 }
 const enc = x => JSON.stringify(x).replace(/</g, '\\u003c');
 const sections = JSON.parse(fs.readFileSync(sectionsPath, 'utf8'));

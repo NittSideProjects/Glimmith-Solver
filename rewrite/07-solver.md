@@ -2,7 +2,7 @@
 
 The Solver panel: buttons, options, progress and the result after a solve.
 
-Left here: 2 to write, 0 to check again, 1 notes, 0 to put on the page. Done: 46.
+Left here: 0 to write, 0 to check again, 1 notes, 2 to put on the page. Done: 46.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -119,12 +119,12 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T1232
 - what: message · runDeduce · Built by the page while it runs, so it only shows in some situations.
 - now: Your solve mark was taken as given: this holds if it is right.
-- new: 
+- new: The solver considered your solve mark as true, if you were correct then this holds properly.
 
 ### T1233
 - what: message · runDeduce · Built by the page while it runs, so it only shows in some situations.
 - now: Your {1} solve marks were taken as given: this holds if they are right.
-- new: 
+- new: The solver considered your {1} solve mark as true, if you were correct then this holds properly.
 
 ### T0522
 - what: message · runDeduce · Built by the page while it runs, so it only shows in some situations.

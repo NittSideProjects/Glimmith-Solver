@@ -2,7 +2,7 @@
 
 The step-by-step view: step titles, explanations and captions.
 
-Left here: 329 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 6.
+Left here: 185 to write, 0 to check again, 37 notes, 104 to put on the page. Done: 11.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -34,17 +34,17 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T1179
 - what: tooltip · #stepsViewer · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve). Tooltip: shows when you hover over it.
 - now: Title each step by the shared logic it uses, and the rule that gave the fact
-- new: 
+- new: Shows the reasoning the solver had in proving uniqueness, or non uniqueness.
 
 ### T1180
 - what: text · #stepsViewer · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve).
 - now: Name steps by logic
-- new: 
+- new: [where]
 
 ### T1136
 - what: text · #stepsCasesBtn · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve).
 - now: Show cases
-- new: 
+- new: =
 
 ### T0922
 - what: text · #stepsExampleBtn · In the step-by-step view (opens with "Show the step-by-step reasoning" after a solve).
@@ -54,712 +54,712 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0560
 - what: message · STEP_INFO › basic · Title or explanation of a step in the step-by-step view.
 - now: Follows from what is known
-- new: 
+- new: Already known
 
 ### T0561
 - what: message · STEP_INFO › basic · Title or explanation of a step in the step-by-step view.
 - now: These two groups already have a wall between them somewhere else, so they are different pieces: every edge between them is a wall.
-- new: 
+- new: These two shapes are known to be different pieces, so every edge between the both of them must be a wall.
 
 ### T0562
 - what: message · STEP_INFO › basic · Title or explanation of a step in the step-by-step view.
 - now: These two tiles are already known to be in one piece, so the edge between them is open.
-- new: 
+- new: These two shapes are known to be the same, so this edge between them must link them together.
 
 ### T0563
 - what: message · STEP_INFO › size · Title or explanation of a step in the step-by-step view.
 - now: Too big for the size rules
-- new: 
+- new: Too big!
 
 ### T0564
 - what: message · STEP_INFO › size · Title or explanation of a step in the step-by-step view.
 - now: Joined, these two groups would have more tiles than the size rules allow, so there is a wall between them.
-- new: 
+- new: If those two shape were to be joined they would break the size rule, so they need to be walled off.
 
 ### T0565
 - what: message · STEP_INFO › grow · Title or explanation of a step in the step-by-step view.
 - now: Forced growth
-- new: 
+- new: Too small!
 
 ### T0566
 - what: message · STEP_INFO › grow · Title or explanation of a step in the step-by-step view.
 - now: This group is too small to be a whole piece yet, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.
-- new: 
+- new: This shape is too small currently, since it has only one way out it expands through there
 
 ### T0567
 - what: message · STEP_INFO › min-grow · Title or explanation of a step in the step-by-step view.
 - now: Forced growth (Minimum)
-- new: 
+- new: [merge this with the other too small]
 
 ### T0568
 - what: message · STEP_INFO › min-grow · Title or explanation of a step in the step-by-step view.
 - now: This group has fewer tiles than the Minimum, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.
-- new: 
+- new: [merge this with the other too small]
 
 ### T0569
 - what: message · STEP_INFO › reach · Title or explanation of a step in the step-by-step view.
 - now: Reach
-- new: 
+- new: =
 
 ### T0570
 - what: message · STEP_INFO › reach · Title or explanation of a step in the step-by-step view.
 - now: This group needs this edge to reach enough tiles for a piece of an allowed size, so the two tiles are in one piece.
-- new: 
+- new: This piece isn't big enough for now and no matter what it will need to go this way to have enough space, the others path are dead ends too soon to have the size requirement.
 
 ### T0571
 - what: message · STEP_INFO › min-reach · Title or explanation of a step in the step-by-step view.
 - now: Reach (Minimum)
-- new: 
+- new: [merge with the other reach]
 
 ### T0572
 - what: message · STEP_INFO › min-reach · Title or explanation of a step in the step-by-step view.
 - now: This group needs this edge to reach the Minimum number of tiles, so the two tiles are in one piece.
-- new: 
+- new: [merge with the other reach]
 
 ### T0573
 - what: message · STEP_INFO › rose-grow · Title or explanation of a step in the step-by-step view.
 - now: Roses: keep growing
-- new: 
+- new: Missing a rose
 
 ### T0574
 - what: message · STEP_INFO › rose-grow · Title or explanation of a step in the step-by-step view.
 - now: This group still misses a rose type, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.
-- new: 
+- new: This shape doesn't have a rose type it needs, this is the only path it can take to get it, so it can't be walled off and is a link.
 
 ### T0575
 - what: message · STEP_INFO › rose-reach · Title or explanation of a step in the step-by-step view.
 - now: Roses: the way to a missing rose
-- new: 
+- new: [merge with Missing a rose]
 
 ### T0898
 - what: message · STEP_INFO › rose-reach · Title or explanation of a step in the step-by-step view.
 - now: This group still misses a rose type, and every rose of that type it can reach within the size limit is through this edge. So the two tiles are in one piece.
-- new: 
+- new: [merge with Missing a rose]
 
 ### T0576
 - what: message · STEP_INFO › rose-pair · Title or explanation of a step in the step-by-step view.
 - now: Roses: one of each type per piece
-- new: 
+- new: Can't have two roses
 
 ### T0577
 - what: message · STEP_INFO › rose-pair · Title or explanation of a step in the step-by-step view.
 - now: Each side holds a rose of the same type, and a piece holds only one rose of each type. So they are different pieces, with a wall between them.
-- new: 
+- new: Those two shapes both hold the same rose type, so they must be walled off.
 
 ### T0578
 - what: message · STEP_INFO › rose-cut · Title or explanation of a step in the step-by-step view.
 - now: Roses: narrow passage
-- new: 
+- new: Choke point
 
 ### T1024
 - what: message · STEP_INFO › rose-cut · Title or explanation of a step in the step-by-step view.
 - now: A few tiles are the only way into one part of the board. The roses in that part need as many different pieces to leave it as the passage has tiles, so each passage tile belongs to its own one of those pieces, and each of those pieces gets the roses it needs inside the part.
-- new: 
+- new: There are as many roses that needs to go outward as tiles that allows them to. so each of them must belong to one rose and extend to allow the passage.
 
 ### T0579
 - what: message · STEP_INFO › rose-region · Title or explanation of a step in the step-by-step view.
 - now: Roses: closed-in area
-- new: 
+- new: Finished piece
 
 ### T0580
 - what: message · STEP_INFO › rose-region · Title or explanation of a step in the step-by-step view.
 - now: An area closed in by walls holds, for each rose type, one rose per piece. So its roses give the number of pieces in it: with one rose of each type it is a single piece.
-- new: 
+- new: There is one of each rose needed in this area closed in by walls, it must be a single piece.
 
 ### T0581
 - what: message · STEP_INFO › stamp-place · Title or explanation of a step in the step-by-step view.
 - now: Polyomino: every place the shape fits
-- new: 
+- new: Tried every placement
 
 ### T0582
 - what: message · STEP_INFO › stamp-place · Title or explanation of a step in the step-by-step view.
 - now: The solver listed every place where the polyomino's shape still fits. This edge is outside all of them, so it is a wall.
-- new: 
+- new: The solver just blindly checked every way to place this polyomino. Every single one that worked had this wall in common so it must be in a solution.
 
 ### T0583
 - what: message · STEP_INFO › stamp-place · Title or explanation of a step in the step-by-step view.
 - now: The solver listed every place where the polyomino's shape still fits. This edge is inside all of them, so the two tiles are in one piece.
-- new: 
+- new: The solver just blindly checked every way to place this polyomino. Every single one that worked had those two tiles linked, so they must be in the solution.
 
 ### T0584
 - what: message · STEP_INFO › stamp-size · Title or explanation of a step in the step-by-step view.
 - now: Joined, these two groups would have more tiles than the polyomino's shape, so there is a wall between them.
-- new: 
+- new: If those two groups are joined they would be too big for the polynomio, they must be different and walled off.
 
 ### T0585
 - what: message · STEP_INFO › stamp-shape · Title or explanation of a step in the step-by-step view.
 - now: Joined, these two groups would fit no turn or flip of the polyomino's shape, so there is a wall between them.
-- new: 
+- new: If those two groups are joined they would form a shape that would never work for the polyomino, so they are walled off.
 
 ### T0586
 - what: message · STEP_INFO › stamp-pair · Title or explanation of a step in the step-by-step view.
 - now: Two polyominoes of the same shape, two pieces
-- new: 
+- new: [this feels useless/covered by the tried every placement rule]
 
 ### T0587
 - what: message · STEP_INFO › stamp-pair · Title or explanation of a step in the step-by-step view.
 - now: Two polyominoes of the same shape share a piece only when one placement of the shape covers both. Every placement leaves one of them out, so they are different pieces, with a wall between them.
-- new: 
+- new: [this feels useless/covered by the tried every placement rule]
 
 ### T0588
 - what: message · STEP_INFO › shape-fit · Title or explanation of a step in the step-by-step view.
 - now: Must still fit the shape
-- new: 
+- new: [this feels useless/covered by the tried every placement rule]
 
 ### T0589
 - what: message · STEP_INFO › shape-fit · Title or explanation of a step in the step-by-step view.
 - now: Joined, these two groups would no longer fit inside the polyomino's shape, so there is a wall between them.
-- new: 
+- new: [this feels useless/covered by the tried every placement rule]
 
 ### T0590
 - what: message · STEP_INFO › bank-fit · Title or explanation of a step in the step-by-step view.
 - now: Must still fit a bank shape
-- new: 
+- new: Not in bank
 
 ### T0591
 - what: message · STEP_INFO › bank-fit · Title or explanation of a step in the step-by-step view.
 - now: Joined, these two groups would fit in none of the bank shapes (in any turn or flip), so there is a wall between them.
-- new: 
+- new: If those two shapes are together they make a shape that fit in none of the bank shapes, so they are different.
 
 ### T0592
 - what: message · STEP_INFO › bank-place · Title or explanation of a step in the step-by-step view.
 - now: Shape bank: every place a shape fits
-- new: 
+- new: Tried every placement
 
 ### T0593
 - what: message · STEP_INFO › bank-place · Title or explanation of a step in the step-by-step view.
 - now: The solver listed every placement of every bank shape (all turns and flips) that still fits around this group. This edge is outside all of them, so it is a wall.
-- new: 
+- new: The solver just blindly tried every placement of the bank shape for this group. In every one this needs to be a wall.
 
 ### T0594
 - what: message · STEP_INFO › bank-place · Title or explanation of a step in the step-by-step view.
 - now: The solver listed every placement of every bank shape (all turns and flips) that still fits around this group. This edge is inside all of them, so the two tiles are in one piece.
-- new: 
+- new: The solver just blindly tried every placement of the bank shape for this group. In every one this needs to be together.
 
 ### T0595
 - what: message · STEP_INFO › bank-region · Title or explanation of a step in the step-by-step view.
 - now: Shape bank: closed-in area
-- new: 
+- new: Closed in
 
 ### T0596
 - what: message · STEP_INFO › bank-region · Title or explanation of a step in the step-by-step view.
 - now: An area closed in by walls is covered by whole pieces with the sizes of the bank shapes, and only one way to do that is left.
-- new: 
+- new: This area is closed in by walls, it must be covered by piece with sizes available in the shape bank. luckily there is only one way to do that left.
 
 ### T0597
 - what: message · STEP_INFO › bank-bend · Title or explanation of a step in the step-by-step view.
 - now: Shape bank: every shape has a bend
-- new: 
+- new: Oops all bends!
 
 ### T0598
 - what: message · STEP_INFO › bank-bend · Title or explanation of a step in the step-by-step view.
 - now: Every bank shape has a bend, so every piece has one.
-- new: 
+- new: Every piece in the shape bank has a bend, this shape is no exception.
 
 ### T0599
 - what: message · STEP_INFO › bank-block · Title or explanation of a step in the step-by-step view.
 - now: Shape bank: every shape has a 2x2 block
-- new: 
+- new: Oops all 2x2!
 
 ### T0600
 - what: message · STEP_INFO › bank-block · Title or explanation of a step in the step-by-step view.
 - now: Every bank shape contains a 2x2 block, so every piece contains one.
-- new: 
+- new: Every piece in the shape bank has 2x2 block, this shape is no exception.
 
 ### T0601
 - what: message · STEP_INFO › bridge-count · Title or explanation of a step in the step-by-step view.
 - now: One connection between two sides
-- new: 
+- new: Choke point
 
 ### T0602
 - what: message · STEP_INFO › bridge-count · Title or explanation of a step in the step-by-step view.
 - now: The board is held together here by a single connection. With one piece crossing it, the tiles left on each side could only be covered by pieces of sizes the rules forbid. So it is a wall.
-- new: 
+- new: The board has a choke point here, if it wasn't a wall it would make the remaining area impossible with the size of the pieces
 
 ### T0603
 - what: message · STEP_INFO › bridge-count · Title or explanation of a step in the step-by-step view.
 - now: The board is held together here by a single connection. With a wall here, each side would need to be covered by whole pieces on its own, and its number of tiles makes that impossible. So one piece crosses it: the two tiles are in one piece.
-- new: 
+- new: The board has a choke point here, it can't be walled off or the remaining area would be impossible knowing the size of the pieces
 
 ### T0604
 - what: message · STEP_INFO › area-sum · Title or explanation of a step in the step-by-step view.
 - now: Area numbers cover every tile
-- new: 
+- new: Sum just fits
 
 ### T0605
 - what: message · STEP_INFO › area-sum · Title or explanation of a step in the step-by-step view.
 - now: The area numbers of this region add up to all its tiles, so every tile belongs to a numbered piece.
-- new: 
+- new: The area numbers in this region are exactly the size of the region. This means every tile must belong to an area number
 
 ### T0606
 - what: message · STEP_INFO › area-region · Title or explanation of a step in the step-by-step view.
 - now: Area numbers in a closed-in area
-- new: 
+- new: Closed in
 
 ### T0607
 - what: message · STEP_INFO › area-region · Title or explanation of a step in the step-by-step view.
 - now: This area is closed in by walls, and its area numbers fit in it in only one way.
-- new: 
+- new: This space is closed in and there is only one way to fit the pieces inside
 
 ### T0608
 - what: message · STEP_INFO › area-rel · Title or explanation of a step in the step-by-step view.
 - now: Walls that compare sizes
-- new: 
+- new: Size from walls
 
 ### T0609
 - what: message · STEP_INFO › area-rel · Title or explanation of a step in the step-by-step view.
 - now: The walls that compare sizes (<, >, ±N, same) leave only some sizes for the pieces on each side.
-- new: 
+- new: There is a wall that compare sizes, it allows us to know information on the size of the piece here
 
 ### T0610
 - what: message · STEP_INFO › range-region · Title or explanation of a step in the step-by-step view.
 - now: Closed-in area: whole pieces only
-- new: 
+- new: [copy from closed in]
 
 ### T0611
 - what: message · STEP_INFO › range-region · Title or explanation of a step in the step-by-step view.
 - now: An area closed in by walls is covered by whole pieces of the allowed sizes, and only one choice for this edge allows that.
-- new: 
+- new: [copy from closed in]
 
 ### T0612
 - what: message · STEP_INFO › euler-count · Title or explanation of a step in the step-by-step view.
 - now: Wall budget
-- new: 
+- new: =
 
 ### T0613
 - what: message · STEP_INFO › euler-count · Title or explanation of a step in the step-by-step view.
 - now: Few pieces are allowed, and that limits the walls: every wall end on the outline and every corner where walls branch costs one, and the walls already placed use the whole budget. A wall here would cost one more, so the two tiles are in one piece.
-- new: 
+- new: [explain]
 
 ### T0614
 - what: message · STEP_INFO › colour-count · Title or explanation of a step in the step-by-step view.
 - now: Colour count
-- new: 
+- new: Color count
 
 ### T0615
 - what: message · STEP_INFO › colour-count · Title or explanation of a step in the step-by-step view.
 - now: Few pieces are allowed, so the groups can be coloured with that many colours, with different colours for groups known to be different pieces. Two groups that always get the same colour are one piece; two that always get different colours have a wall between them.
-- new: 
+- new: We know the total amount of piece, and it’s very low. We can use this by assigning colors to each tile, where one color = one piece. If two pieces are the same color they are the same piece, and vice versa.
 
 ### T0616
 - what: message · STEP_INFO › match-iso · Title or explanation of a step in the step-by-step view.
 - now: Match: equal pieces
-- new: 
+- new: [explain]
 
 ### T0617
 - what: message · STEP_INFO › match-iso · Title or explanation of a step in the step-by-step view.
 - now: Every piece has the same shape, so a wall inside one piece has its copy in the other.
-- new: 
+- new: [explain]
 
 ### T0618
 - what: message · STEP_INFO › match-place · Title or explanation of a step in the step-by-step view.
 - now: Match: every place the shape fits
-- new: 
+- new: Tried every placement
 
 ### T0619
 - what: message · STEP_INFO › match-place · Title or explanation of a step in the step-by-step view.
 - now: Every piece has the same shape, and one shape is left. The solver listed every place it still fits around this group. This edge is outside all of them, so it is a wall.
-- new: 
+- new: We already know the match shape. The solver just blindly checked every way to place this piece. Every single one that worked had this wall in common so it must be in a solution.
 
 ### T0620
 - what: message · STEP_INFO › match-place · Title or explanation of a step in the step-by-step view.
 - now: Every piece has the same shape, and one shape is left. The solver listed every place it still fits around this group. This edge is inside all of them, so the two tiles are in one piece.
-- new: 
+- new: We already know the match shape. The solver just blindly checked every way to place this piece. Every single one that worked had this link in common so it must be in a solution.
 
 ### T0621
 - what: message · STEP_INFO › match-region · Title or explanation of a step in the step-by-step view.
 - now: Match: closed-in area
-- new: 
+- new: [copy form closed in]
 
 ### T0622
 - what: message · STEP_INFO › match-region · Title or explanation of a step in the step-by-step view.
 - now: Every piece has the same size, and this area closed in by walls holds exactly that many tiles. So it is a single piece, and every edge inside it is open.
-- new: 
+- new: [copy form closed in]
 
 ### T0623
 - what: message · STEP_INFO › match-fit · Title or explanation of a step in the step-by-step view.
 - now: Match: one shape for every group
-- new: 
+- new: Can't merge
 
 ### T0624
 - what: message · STEP_INFO › match-fit · Title or explanation of a step in the step-by-step view.
 - now: Every piece has the same shape, so that shape has to fit every group. Joined, these two groups would leave no shape that fits all the groups, so there is a wall between them.
-- new: 
+- new: If those two groups are joined they would form a shape that would never work for the match, so they are walled off.
 
 ### T0625
 - what: message · STEP_INFO › match-mismatch · Title or explanation of a step in the step-by-step view.
 - now: Match and Mismatch together
-- new: 
+- new: Trivial Match+Mismatch
 
 ### T0626
 - what: message · STEP_INFO › match-mismatch · Title or explanation of a step in the step-by-step view.
 - now: Match makes every piece the same and Mismatch makes every piece different. Both hold only with a single piece, so the whole board is one piece.
-- new: 
+- new: You though you were clever by making a puzzle with match and mismatch weren't you...
 
 ### T0627
 - what: message · STEP_INFO › mismatch-place · Title or explanation of a step in the step-by-step view.
 - now: Mismatch: every place for the only shape left
-- new: 
+- new: Tried every placement
 
 ### T0628
 - what: message · STEP_INFO › mismatch-place · Title or explanation of a step in the step-by-step view.
 - now: This group can only become one shape. The solver listed every place where that shape still fits. This edge is outside all of them, so it is a wall.
-- new: 
+- new: This group can only be one shape. The solver just blindly checked every way to place this piece. Every single one that worked had this wall in common so it must be in a solution.
 
 ### T0629
 - what: message · STEP_INFO › mismatch-place · Title or explanation of a step in the step-by-step view.
 - now: This group can only become one shape. The solver listed every place where that shape still fits. This edge is inside all of them, so the two tiles are in one piece.
-- new: 
+- new: This group can only be one shape. The solver just blindly checked every way to place this piece. Every single one that worked had this link in common so it must be in a solution.
 
 ### T0630
 - what: message · STEP_INFO › mismatch-stamp · Title or explanation of a step in the step-by-step view.
 - now: Mismatch: same polyomino, one piece
-- new: 
+- new: Never different
 
 ### T0631
 - what: message · STEP_INFO › mismatch-stamp · Title or explanation of a step in the step-by-step view.
 - now: No two pieces share a shape, and these two polyominoes have the same shape, so they are in one piece.
-- new: 
+- new: Those two tiles can only be the exact the shape as each other. since mismatch prevent duplicate they must be one piece
 
 ### T0632
 - what: message · STEP_INFO › mismatch-link · Title or explanation of a step in the step-by-step view.
 - now: Mismatch: same shape, one piece
-- new: 
+- new: [merge with never different]
 
 ### T0633
 - what: message · STEP_INFO › mismatch-link · Title or explanation of a step in the step-by-step view.
 - now: No two pieces share a shape, and these two groups can only become the same shape, so they are one piece.
-- new: 
+- new: [merge with never different]
 
 ### T0634
 - what: message · STEP_INFO › mingle-area-link · Title or explanation of a step in the step-by-step view.
 - now: Size Separation: same size side by side
-- new: 
+- new: Same size
 
 ### T0635
 - what: message · STEP_INFO › mingle-area-link · Title or explanation of a step in the step-by-step view.
 - now: Touching pieces always have different sizes. The pieces of these two neighbouring tiles are both pinned to the same size, so they are one piece.
-- new: 
+- new: Those two group have the same size and they are touching, since we have size separation they must be together
 
 ### T0636
 - what: message · STEP_INFO › mingle-shape-link · Title or explanation of a step in the step-by-step view.
 - now: Mingle Shape: same shape side by side
-- new: 
+- new: Same shape
 
 ### T0637
 - what: message · STEP_INFO › mingle-shape-link · Title or explanation of a step in the step-by-step view.
 - now: Touching pieces always have different shapes. The pieces of these two neighbouring tiles are both pinned to the same shape, so they are one piece.
-- new: 
+- new: Those two group have the same shape and they are touching, since we have mingle shape they must be together
 
 ### T0638
 - what: message · STEP_INFO › mingle-area-merge · Title or explanation of a step in the step-by-step view.
 - now: Size Separation: different sizes
-- new: 
+- new: Different sizes
 
 ### T0639
 - what: message · STEP_INFO › mingle-area-merge · Title or explanation of a step in the step-by-step view.
 - now: These two groups can only end up with different sizes, so they are different pieces, with a wall between them.
-- new: 
+- new: Those two group will end with different sizes, they are different pieces, so we can wall them off.
 
 ### T0640
 - what: message · STEP_INFO › mingle-shape-merge · Title or explanation of a step in the step-by-step view.
 - now: Mingle Shape: different shapes
-- new: 
+- new: Different shapes
 
 ### T0641
 - what: message · STEP_INFO › mingle-shape-merge · Title or explanation of a step in the step-by-step view.
 - now: These two groups can only end up with different shapes, so they are different pieces, with a wall between them.
-- new: 
+- new: Those two group will end with different shapes, they are different pieces, so we can wall them off.
 
 ### T0642
 - what: message · STEP_INFO › mingle-area-parity · Title or explanation of a step in the step-by-step view.
 - now: Size Separation: two sizes alternate
-- new: 
+- new: Exactly two sizes
 
 ### T0643
 - what: message · STEP_INFO › mingle-area-parity · Title or explanation of a step in the step-by-step view.
 - now: Only two sizes are possible, and touching pieces have different sizes, so the sizes alternate across every wall like a chessboard. Counting the walls on the chain between these tiles shows whether their pieces have the same size.
-- new: 
+- new: Only two sizes are possible, and touching pieces have different sizes, so the sizes alternate across every wall like a chessboard.
 
 ### T0644
 - what: message · STEP_INFO › mingle-shape-parity · Title or explanation of a step in the step-by-step view.
 - now: Mingle Shape: two shapes alternate
-- new: 
+- new: Exactly two shapes
 
 ### T0645
 - what: message · STEP_INFO › mingle-shape-parity · Title or explanation of a step in the step-by-step view.
 - now: Only two shapes are possible, and touching pieces have different shapes, so the shapes alternate across every wall like a chessboard. Counting the walls on the chain between these tiles shows whether their pieces have the same shape.
-- new: 
+- new: Only two shapes are possible, and touching pieces have different shapes, so the shapes alternate across every wall like a chessboard.
 
 ### T0646
 - what: message · STEP_INFO › solitude-grow · Title or explanation of a step in the step-by-step view.
 - now: Solitude: keep growing
-- new: 
+- new: Missing a symbol
 
 ### T0647
 - what: message · STEP_INFO › solitude-grow · Title or explanation of a step in the step-by-step view.
 - now: This group has no symbol yet, and this edge is its only way out. The piece grows through it, so the two tiles are in one piece.
-- new: 
+- new: This shape doesn't have a symbol, this is the only path it can take to get one, so it can't be walled off and is a link.
 
 ### T0648
 - what: message · STEP_INFO › solitude-reach · Title or explanation of a step in the step-by-step view.
 - now: Solitude: the way to a symbol
-- new: 
+- new: [merge with missing a symbol]
 
 ### T0899
 - what: message · STEP_INFO › solitude-reach · Title or explanation of a step in the step-by-step view.
 - now: Every symbol this group can still reach is through this edge, so the two tiles are in one piece.
-- new: 
+- new: [merge with missing a symbol]
 
 ### T0649
 - what: message · STEP_INFO › solitude-pair · Title or explanation of a step in the step-by-step view.
 - now: Solitude: one symbol per piece
-- new: 
+- new: Can't have two symbol
 
 ### T0650
 - what: message · STEP_INFO › solitude-pair · Title or explanation of a step in the step-by-step view.
 - now: Each piece holds exactly one symbol, so these two symbols are in different pieces, with a wall between them.
-- new: 
+- new: Those two shapes both already contain a symbol, so they must be walled off.
 
 ### T0651
 - what: message · STEP_INFO › solitude-region · Title or explanation of a step in the step-by-step view.
 - now: Solitude: closed-in area
-- new: 
+- new: Finished piece
 
 ### T0652
 - what: message · STEP_INFO › solitude-region · Title or explanation of a step in the step-by-step view.
 - now: Each piece holds exactly one symbol, so an area closed in by walls has as many pieces as symbols: with one symbol it is a single piece.
-- new: 
+- new: There is one symbol in this area closed in by walls, it must be a single piece.
 
 ### T0653
 - what: message · STEP_INFO › boxy-place · Title or explanation of a step in the step-by-step view.
 - now: Boxy: every rectangle that fits
-- new: 
+- new: Tried every placement
 
 ### T0654
 - what: message · STEP_INFO › boxy-place · Title or explanation of a step in the step-by-step view.
 - now: Every piece is a rectangle. The solver listed every rectangle of an allowed size that holds this group's tiles. This edge is outside all of them, so it is a wall.
-- new: 
+- new: The solver just blindly checked every way to place this piece. Every single one that worked had this wall in common so it must be in a solution.
 
 ### T0655
 - what: message · STEP_INFO › boxy-place · Title or explanation of a step in the step-by-step view.
 - now: Every piece is a rectangle. The solver listed every rectangle of an allowed size that holds this group's tiles. This edge is inside all of them, so the two tiles are in one piece.
-- new: 
+- new: The solver just blindly checked every way to place this piece. Every single one that worked had this link in common so it must be in a solution.
 
 ### T0656
 - what: message · STEP_INFO › boxy-line · Title or explanation of a step in the step-by-step view.
 - now: Boxy: a prime size is a strip
-- new: 
+- new: Prime size
 
 ### T0909
 - what: message · STEP_INFO › boxy-line · Title or explanation of a step in the step-by-step view.
 - now: Every piece is a rectangle, and a rectangle with a prime number of tiles is a straight strip. These tiles are already in a row, so their strip runs along that row.
-- new: 
+- new: Since every piece is a rectangle from boxy, an area of size a prime number must be a strip (1xn). we already know which way the strip goes so it must continue along that row.
 
 ### T0657
 - what: message · STEP_INFO › boxy-corner · Title or explanation of a step in the step-by-step view.
 - now: Boxy: walls run straight
-- new: 
+- new: Can't bend outwards
 
 ### T0658
 - what: message · STEP_INFO › boxy-corner · Title or explanation of a step in the step-by-step view.
 - now: Every piece is a rectangle, so at every inner corner the walls run straight through, make a T or a cross, or there are none. The walls already at this corner leave one choice.
-- new: 
+- new: A shape can't bend outward around a wall with boxy. It would break it's rectangle shape
 
 ### T0659
 - what: message · STEP_INFO › boxy-fill · Title or explanation of a step in the step-by-step view.
 - now: Boxy: fill the rectangle
-- new: 
+- new: Filling
 
 ### T0660
 - what: message · STEP_INFO › boxy-fill · Title or explanation of a step in the step-by-step view.
 - now: Every piece is a rectangle, so everything inside the smallest rectangle around these tiles belongs to their piece.
-- new: 
+- new: We know this piece is a rectangle, we can already fill places that it must have (filling the smallest rectangle that fit those pieces).
 
 ### T0661
 - what: message · STEP_INFO › nonbox-grow · Title or explanation of a step in the step-by-step view.
 - now: Non-boxy: keep growing
-- new: 
+- new: Need to bend
 
 ### T0662
 - what: message · STEP_INFO › nonbox-grow · Title or explanation of a step in the step-by-step view.
 - now: No piece is a rectangle. This group is still a rectangle, and this edge is its only way out, so the piece grows through it: the two tiles are in one piece.
-- new: 
+- new: This shape is currently a rectangle, this is the only path it can take to get a bend, so it can't be walled off and is a link.
 
 ### T0663
 - what: message · STEP_INFO › pal-wall · Title or explanation of a step in the step-by-step view.
 - now: Palisade
-- new: 
+- new: =
 
 ### T0664
 - what: message · STEP_INFO › pal-wall · Title or explanation of a step in the step-by-step view.
 - now: The solver tried every way to give this palisade its number of walls, with the walls and links already known. In all of them this side is a wall.
-- new: 
+- new: The solver tried to satisfy this palisade and it always needs this wall
 
 ### T0665
 - what: message · STEP_INFO › pal-link · Title or explanation of a step in the step-by-step view.
 - now: The solver tried every way to give this palisade its number of walls, with the walls and links already known. In all of them this side is open, so the two tiles are in one piece.
-- new: 
+- new: The solver tried to satisfy this palisade and it always needs this link
 
 ### T0666
 - what: message · STEP_INFO › pal-pair · Title or explanation of a step in the step-by-step view.
 - now: Palisades side by side
-- new: 
+- new: [seems useless/redundant with the palisade rule]
 
 ### T0667
 - what: message · STEP_INFO › pal-pair · Title or explanation of a step in the step-by-step view.
 - now: Two palisades side by side share one side, which counts for both numbers. Counting both numbers together leaves one choice for this edge.
-- new: 
+- new: [seems useless/redundant with the palisade rule]
 
 ### T0668
 - what: message · STEP_INFO › pal-two · Title or explanation of a step in the step-by-step view.
 - now: Palisade: only two pieces
-- new: 
+- new: [seems useless/redundant with the color count rule]
 
 ### T0669
 - what: message · STEP_INFO › pal-two · Title or explanation of a step in the step-by-step view.
 - now: Only two pieces can exist, so every wall has the same two pieces on its sides. Counting the walls around the tiles with that in mind leaves one choice for this edge.
-- new: 
+- new: [seems useless/redundant with the color count rule]
 
 ### T0670
 - what: message · STEP_INFO › wally-wall · Title or explanation of a step in the step-by-step view.
 - now: Wally: no T shape
-- new: 
+- new: No T
 
 ### T0671
 - what: message · STEP_INFO › wally-wall · Title or explanation of a step in the step-by-step view.
 - now: With Wally no piece contains a T. This tile already has 2 neighbours in its piece (or keeps 2 walls), and a third neighbour would make a T, so this side is a wall.
-- new: 
+- new: Wally is exactly like forbidding T shapes, making this link would create one so it's a wall.
 
 ### T0672
 - what: message · STEP_INFO › wally-link · Title or explanation of a step in the step-by-step view.
 - now: With Wally no piece contains a T. The solver tried every way this tile keeps at most 2 neighbours in its piece. In all of them this side is open, so the two tiles are in one piece.
-- new: 
+- new: Wally is exactly like forbidding T shapes, making this wall would force it to create one down the line, so it's a link.
 
 ### T0673
 - what: message · STEP_INFO › wally-ends · Title or explanation of a step in the step-by-step view.
 - now: Wally: two ends per piece
-- new: 
+- new: Two dead ends per piece
 
 ### T0674
 - what: message · STEP_INFO › wally-ends · Title or explanation of a step in the step-by-step view.
 - now: With Wally every piece is a path with two ends (an end is a tile with 3 walls), a ring, or a single tile. So a piece has at most two ends, a piece whose two ends are known runs straight through all its other tiles, and when every rose (or Solitude symbol) is a dead end, the pieces start and end at them.
-- new: 
+- new: When wally is active, every piece has at MOST 2 dead ends. if we know two dead ends are part of the same piece or the total amount of dead end is exactly twice the amount of piece, we know they must run straight everywhere else.
 
 ### T0675
 - what: message · STEP_INFO › wally-ends · Title or explanation of a step in the step-by-step view.
 - now: With Wally every piece is a path with two ends. The piece on one side already has both its ends, so joining the other side would give it a third end (or the piece is already whole). So this is a wall.
-- new: 
+- new: [remove/replace with explanation above]
 
 ### T0676
 - what: message · STEP_INFO › wally-ends · Title or explanation of a step in the step-by-step view.
 - now: With Wally every piece is a path with two ends. All the ends are known already, so this tile is a middle tile: it has two ways on and takes both.
-- new: 
+- new: [remove/replace with explanation above]
 
 ### T0677
 - what: message · STEP_INFO › wally-line · Title or explanation of a step in the step-by-step view.
 - now: Wally + Gemini: lines of the same length
-- new: 
+- new: [this needs change, this doesn't need wally to check]
 
 ### T0678
 - what: message · STEP_INFO › wally-line · Title or explanation of a step in the step-by-step view.
 - now: The two pieces of a Gemini wall have the same shape, so a straight line in one has a twin of the same length in the other. The solver checked every place where the twin could still have a line that long. The lengths left say this line ends here, so this edge is a wall.
-- new: 
+- new: [this needs change, this doesn't need wally to check]
 
 ### T0679
 - what: message · STEP_INFO › wally-line · Title or explanation of a step in the step-by-step view.
 - now: The two pieces of a Gemini wall have the same shape, so a straight line in one has a twin of the same length in the other. The solver checked every place where the twin could still have a line that long. The lengths left say this line goes on through this edge, so the two tiles are in one piece.
-- new: 
+- new: [this needs change, this doesn't need wally to check]
 
 ### T0680
 - what: message · STEP_INFO › gemini-line · Title or explanation of a step in the step-by-step view.
 - now: Gemini: lines of the same length
-- new: 
+- new: [no explaination?]
 
 ### T0681
 - what: message · STEP_INFO › wally-two · Title or explanation of a step in the step-by-step view.
 - now: Wally: only two pieces
-- new: 
+- new: [no explaination?]
 
 ### T0682
 - what: message · STEP_INFO › pal-size · Title or explanation of a step in the step-by-step view.
 - now: Palisade: how big the piece is
-- new: 
+- new: Palisade size minimum
 
 ### T0910
 - what: message · STEP_INFO › pal-size · Title or explanation of a step in the step-by-step view.
 - now: The open sides of this tile put it in a piece of at least a certain size. Joined, these two groups would break a size limit, so there is a wall between them.
-- new: 
+- new: Palisade are forced to have a certain amount of link, so a minimum size. grouping those shape together would break a size limit so they are walled off.
 
 ### T0683
 - what: message · STEP_INFO › bri-three · Title or explanation of a step in the step-by-step view.
 - now: Bricky: three walls, the fourth is open
-- new: 
+- new: Can't have 4 walls
 
 ### T0684
 - what: message · STEP_INFO › bri-three · Title or explanation of a step in the step-by-step view.
 - now: With Bricky, four walls never meet at a corner. Three of the four segments at this corner are walls, so the fourth is open: the two tiles are in one piece.
-- new: 
+- new: We have bricky, and putting a wall here would make the 4th wall, so it's a link.
 
 ### T0685
 - what: message · STEP_INFO › bri-pinch · Title or explanation of a step in the step-by-step view.
 - now: Bricky: tiles that touch at a corner
-- new: 
+- new: [explain]
 
 ### T0686
 - what: message · STEP_INFO › bri-pinch · Title or explanation of a step in the step-by-step view.
 - now: Two tiles that meet only at a corner are in one piece, so one of the other two tiles at that corner joins them.
-- new: 
+- new: [explain]
 
 ### T0687
 - what: message · STEP_INFO › bri-vertex · Title or explanation of a step in the step-by-step view.
 - now: Bricky: no four walls at a corner
-- new: 
+- new: Corner case
 
 ### T0688
 - what: message · STEP_INFO › bri-vertex · Title or explanation of a step in the step-by-step view.
 - now: With Bricky, four walls never meet at a corner. The solver tried every way to split the four tiles around this corner into pieces, and in all of them this edge is the same.
-- new: 
+- new: When an inward corner is decided, we know the tile diagonal of that must link one way or the other near that corner. and in this case this edge is needed.
 
 ### T0689
 - what: message · STEP_INFO › loo-outline · Title or explanation of a step in the step-by-step view.
 - now: Loopy: the outline is linked
-- new: 
+- new: Outline is linked
 
 ### T0690
 - what: message · STEP_INFO › loo-outline · Title or explanation of a step in the step-by-step view.
 - now: Every tile on the outline has a wall to the outside, so two outline tiles side by side are one piece.
-- new: 
+- new: Loopy always forces the outline to be fully connected
 
 ### T0691
 - what: message · STEP_INFO › loo-three · Title or explanation of a step in the step-by-step view.
 - now: Loopy: three walls, the fourth is a wall
-- new: 
+- new: Can't have 3 walls
 
 ### T0692
 - what: message · STEP_INFO › loo-three · Title or explanation of a step in the step-by-step view.
 - now: With Loopy an even number of walls meets at every corner. Three of the four segments at this corner are walls, so the fourth is a wall too.
-- new: 
+- new: If a link or a wall would make the corner have exactly 3 walls, then we must do the opposite.
 
 ### T0693
 - what: message · STEP_INFO › loo-corner · Title or explanation of a step in the step-by-step view.
 - now: Loopy: poking-in corner
-- new: 
+- new: [merge with Can't have 3 walls]
 
 ### T0694
 - what: message · STEP_INFO › loo-corner · Title or explanation of a step in the step-by-step view.
 - now: At a corner where an empty tile pokes in, two walls are already there, so the other two segments are both walls or both open. One of them is known, so the other is the same.
-- new: 
+- new: [merge with Can't have 3 walls]
 
 ### T0695
 - what: message · STEP_INFO › loo-color · Title or explanation of a step in the step-by-step view.
 - now: Loopy: two colours
-- new: 
+- new: 2-colorable
 
 ### T0911
 - what: message · STEP_INFO › loo-color · Title or explanation of a step in the step-by-step view.
 - now: With Loopy the tiles get two colours: a wall changes the colour and an open edge keeps it. The chain of decided edges between these two tiles shows whether they have the same colour.
-- new: 
+- new: Loopy puzzle are always 2 colorable, we can use this to always wall of different colors, and merge similar ones.
 
 ### T0696
 - what: message · STEP_INFO › tower-wall · Title or explanation of a step in the step-by-step view.
@@ -1024,7 +1024,7 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T1172
 - what: message · Built by the page while it runs, so it only shows in some situations.
 - now: Different sizes
-- new: 
+- new: =
 
 ### T1173
 - what: message · Built by the page while it runs, so it only shows in some situations.
@@ -1329,6 +1329,16 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0744
 - what: message · stepTextsBase › text · Built by the page while it runs, so it only shows in some situations.
 - now: Step through to see what the solver proves, one deduction at a time. Each step outlines the edges it decides. Teal bars are walls, blue links join two tiles of one piece, and tiles that share a colour are in one piece even before they touch. Everything proven here holds in every tiling.
+- new: 
+
+### T1236
+- what: message · stepTextsBase › text · Built by the page while it runs, so it only shows in some situations.
+- now: With Loopy the walls form loops, so every tile is one of two colours: blue for the tiles next to the outside, orange for the others. A wall changes the colour, a link keeps it. A tile is coloured as soon as a chain of known walls and links ties it to the outline. Step through to see what the solver proves, one deduction at a time. Each step outlines the edges it decides. Teal bars are walls, and blue links join two tiles of one piece. Everything proven here holds in every tiling.
+- new: 
+
+### T1237
+- what: message · stepTextsBase › text · Built by the page while it runs, so it only shows in some situations.
+- now: This puzzle has two pieces at most, so every tile belongs to the blue piece or the orange one. A wall changes the colour, a link keeps it. A tile is coloured as soon as a chain of known walls and links ties it to the first coloured group. Step through to see what the solver proves, one deduction at a time. Each step outlines the edges it decides. Teal bars are walls, blue links join two tiles of one piece, and tiles that share a colour are in one piece even before they touch. Everything proven here holds in every tiling.
 - new: 
 
 ### T0745

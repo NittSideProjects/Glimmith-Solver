@@ -1,10 +1,10 @@
 // V1.0.6 page: tiles known to be in one piece share a colour in the step-by-step view (replaces the v94 letters).
-// Runs on a synthetic rose puzzle (fixtures/colors_V1.0.6.glimmith.json; since V1.0.57 a planted board, fuzzlib plantedPuzzle seed 96, 6x6,
+// Runs on a synthetic rose puzzle (fixtures/colors_V1.0.57.glimmith.json, own fixture since V1.0.57: a planted board, fuzzlib plantedPuzzle seed 96, 6x6,
 // roses and plain walls, because the author's step order of core v134 solved the old one without those facts) whose steps include a label join (core v98) and a split cut,
 // then checks the colour pool itself (25 colours, reuse only when all are held, a finished piece gives its colour back).
 // node ui_test_colors_V1.0.6.js [page.html]
 const { JSDOM } = require('jsdom'); const fs = require('fs'); const path = require('path');
-const file = process.argv[2] || require('../../pagepath.js')(), pz = path.join(__dirname, '..', '..', 'fixtures', 'colors_V1.0.6.glimmith.json');
+const file = process.argv[2] || require('../../pagepath.js')(), pz = path.join(__dirname, '..', '..', 'fixtures', 'colors_V1.0.57.glimmith.json');
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 let pass = 0, fail = 0;
 const check = (n, c, x) => { if(c) pass++; else { fail++; console.log('FAIL:', n, x !== undefined ? '-> ' + JSON.stringify(x) : ''); } };

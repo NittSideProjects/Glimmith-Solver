@@ -2,7 +2,7 @@
 
 Messages that are not tied to one place on the page.
 
-Left here: 146 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 2.
+Left here: 143 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 2.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -54,16 +54,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T1042
 - what: message · RULE_EXAMPLES › stamp-size.d · Built by the page while it runs, so it only shows in some situations.
 - now: A polyomino's piece is never bigger than its shape.
-- new: 
-
-### T1044
-- what: message · RULE_EXAMPLES › stamp-pair.d · Built by the page while it runs, so it only shows in some situations.
-- now: Two polyominoes of the same shape that one shape cannot cover are in different pieces.
-- new: 
-
-### T1045
-- what: message · RULE_EXAMPLES › shape-fit.d · Built by the page while it runs, so it only shows in some situations.
-- now: A group has to stay inside the polyomino's shape.
 - new: 
 
 ### T1046
@@ -264,11 +254,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T1085
 - what: message · RULE_EXAMPLES › pal-link.d · Built by the page while it runs, so it only shows in some situations.
 - now: A palisade gets exactly its number of walls: this side has to stay open.
-- new: 
-
-### T1086
-- what: message · RULE_EXAMPLES › pal-pair.d · Built by the page while it runs, so it only shows in some situations.
-- now: Two palisades side by side share a side, which counts for both.
 - new: 
 
 ### T1087

@@ -2,7 +2,7 @@
 
 Versions: V1.0.1, V1.0.2, ... for each change; V1.1 and up only when the author says a version is a big step.
 
-A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.58.html` in a browser; nothing to install, nothing
+A single-page editor and uniqueness solver for Glimmith puzzles. Open `glimmith_solver_V1.0.59.html` in a browser; nothing to install, nothing
 is sent anywhere.
 
 * **Draw or import a puzzle**, press Solve, and the solver tells you whether it is unique, not unique or impossible.
@@ -11,6 +11,18 @@ is sent anywhere.
 * **Fast import** reads all your puzzles in one click. Set it up once: the Fast import box gives a small setup file (Windows or Linux)
   that makes a folder `Glimmith puzzles` of links to the game's puzzle folders; choose that folder once.
 * **Custom rules** (button at the bottom of the page): Omits, Wally, Heterogeneous and Links are not in the base game.
+
+## V1.0.59
+
+Three steps the author found redundant are removed (core v135): "Palisades side by side", "Two polyominoes of the same shape, two
+pieces" and "Must still fit the shape". Switched off on the 1,225 campaign puzzles, none of them decides an edge the other steps do
+not decide anyway. (On hand-made boards with two palisades corner to corner, the first one decided a few edges before the probes;
+the probes now find them.) Their step texts and "Show example" boards go with them, so the example numbers after them move up.
+
+The two-colour step view of V1.0.58 now follows the author's wish: nothing is coloured before the solver knows something. A tile is
+coloured once a link puts it in a group, as on every puzzle, and the group takes blue or orange as soon as known walls and links tie
+it to the outline (Loopy) or to the first group (two pieces); until then it has a colour of its own. With Loopy most colours appear
+at "the outline is linked".
 
 ## V1.0.58
 
@@ -560,7 +572,7 @@ The solver has been run on the 1,225 base game puzzles: it took under 10 min to 
 
 | Path | What |
 |---|---|
-| `glimmith_solver_V1.0.58.html` | The whole application (editor, solver, importer) in one file. |
+| `glimmith_solver_V1.0.59.html` | The whole application (editor, solver, importer) in one file. |
 | `dev/reference/solver-core.v103.js` | The solver core as a Node module, used by the tests and tools: the same code as in the page (four comment lines differ). |
 | `dev/reference/import-core.js` | The puzzle-file reader, same code as in the page. |
 | `dev/tests/solver/`, `dev/fuzz/` | Solver tests and fuzzers. The fuzzers compare the solver with an independent brute force (`oracle.js`) on small boards. |

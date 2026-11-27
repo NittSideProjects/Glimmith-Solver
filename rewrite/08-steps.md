@@ -2,7 +2,7 @@
 
 The step-by-step view: step titles, explanations and captions.
 
-Left here: 185 to write, 0 to check again, 37 notes, 104 to put on the page. Done: 11.
+Left here: 185 to write, 0 to check again, 31 notes, 104 to put on the page. Done: 11.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -190,26 +190,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: message · STEP_INFO › stamp-shape · Title or explanation of a step in the step-by-step view.
 - now: Joined, these two groups would fit no turn or flip of the polyomino's shape, so there is a wall between them.
 - new: If those two groups are joined they would form a shape that would never work for the polyomino, so they are walled off.
-
-### T0586
-- what: message · STEP_INFO › stamp-pair · Title or explanation of a step in the step-by-step view.
-- now: Two polyominoes of the same shape, two pieces
-- new: [this feels useless/covered by the tried every placement rule]
-
-### T0587
-- what: message · STEP_INFO › stamp-pair · Title or explanation of a step in the step-by-step view.
-- now: Two polyominoes of the same shape share a piece only when one placement of the shape covers both. Every placement leaves one of them out, so they are different pieces, with a wall between them.
-- new: [this feels useless/covered by the tried every placement rule]
-
-### T0588
-- what: message · STEP_INFO › shape-fit · Title or explanation of a step in the step-by-step view.
-- now: Must still fit the shape
-- new: [this feels useless/covered by the tried every placement rule]
-
-### T0589
-- what: message · STEP_INFO › shape-fit · Title or explanation of a step in the step-by-step view.
-- now: Joined, these two groups would no longer fit inside the polyomino's shape, so there is a wall between them.
-- new: [this feels useless/covered by the tried every placement rule]
 
 ### T0590
 - what: message · STEP_INFO › bank-fit · Title or explanation of a step in the step-by-step view.
@@ -600,16 +580,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - what: message · STEP_INFO › pal-link · Title or explanation of a step in the step-by-step view.
 - now: The solver tried every way to give this palisade its number of walls, with the walls and links already known. In all of them this side is open, so the two tiles are in one piece.
 - new: The solver tried to satisfy this palisade and it always needs this link
-
-### T0666
-- what: message · STEP_INFO › pal-pair · Title or explanation of a step in the step-by-step view.
-- now: Palisades side by side
-- new: [seems useless/redundant with the palisade rule]
-
-### T0667
-- what: message · STEP_INFO › pal-pair · Title or explanation of a step in the step-by-step view.
-- now: Two palisades side by side share one side, which counts for both numbers. Counting both numbers together leaves one choice for this edge.
-- new: [seems useless/redundant with the palisade rule]
 
 ### T0668
 - what: message · STEP_INFO › pal-two · Title or explanation of a step in the step-by-step view.
@@ -1333,12 +1303,12 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 
 ### T1236
 - what: message · stepTextsBase › text · Built by the page while it runs, so it only shows in some situations.
-- now: With Loopy the walls form loops, so every tile is one of two colours: blue for the tiles next to the outside, orange for the others. A wall changes the colour, a link keeps it. A tile is coloured as soon as a chain of known walls and links ties it to the outline. Step through to see what the solver proves, one deduction at a time. Each step outlines the edges it decides. Teal bars are walls, and blue links join two tiles of one piece. Everything proven here holds in every tiling.
+- now: With Loopy the walls form loops, so every tile is one of two colours: blue for the tiles next to the outside, orange for the others. A wall changes the colour, a link keeps it. A group of linked tiles turns blue or orange as soon as known walls and links tie it to the outline; until then it has a colour of its own. Step through to see what the solver proves, one deduction at a time. Each step outlines the edges it decides. Teal bars are walls, and blue links join two tiles of one piece. Everything proven here holds in every tiling.
 - new: 
 
 ### T1237
 - what: message · stepTextsBase › text · Built by the page while it runs, so it only shows in some situations.
-- now: This puzzle has two pieces at most, so every tile belongs to the blue piece or the orange one. A wall changes the colour, a link keeps it. A tile is coloured as soon as a chain of known walls and links ties it to the first coloured group. Step through to see what the solver proves, one deduction at a time. Each step outlines the edges it decides. Teal bars are walls, blue links join two tiles of one piece, and tiles that share a colour are in one piece even before they touch. Everything proven here holds in every tiling.
+- now: This puzzle has two pieces at most, so every tile belongs to the blue piece or the orange one. A wall changes the colour, a link keeps it. A group of linked tiles turns blue or orange as soon as known walls and links tie it to the first group that got a colour; until then it has a colour of its own. Step through to see what the solver proves, one deduction at a time. Each step outlines the edges it decides. Teal bars are walls, blue links join two tiles of one piece, and tiles that share a colour are in one piece even before they touch. Everything proven here holds in every tiling.
 - new: 
 
 ### T0745

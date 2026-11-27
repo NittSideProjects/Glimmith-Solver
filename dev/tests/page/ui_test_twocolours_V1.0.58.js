@@ -1,5 +1,6 @@
-// V1.0.58 page: with Loopy, or when the puzzle has two pieces at most, the step view colours every tile with one of two colours (a wall
-// changes it, a link keeps it) as soon as known walls / links tie it to a tile of known colour. Two synthetic boards
+// V1.0.58 page: with Loopy, or when the puzzle has two pieces at most, the step view uses two colours (a wall changes it, a link keeps it).
+// V1.0.59: only tiles a link has put in a group are coloured (nothing at the start); a group is blue / orange once known walls and
+// links tie it to the outline (Loopy) or to the first group (two pieces), a colour of its own until then. Two synthetic boards
 // (fixtures/twocolours_V1.0.58.glimmith.json: a planted Loopy 5x5, fuzzlib plantedPuzzle seed 1; a 4x3 board with Precision 6).
 // node ui_test_twocolours_V1.0.58.js [page.html]
 const { JSDOM } = require('jsdom'); const fs = require('fs'); const path = require('path');
@@ -32,24 +33,26 @@ const BLUE = '#3f8fd2', ORANGE = '#e39a3b';
     check(`${mode}: solved, unique`, /^Unique/.test($('solverStatus').textContent), $('solverStatus').textContent);
     $('stepsBtn').click();
     for(let i = 0; i < 1500; i++){ await sleep(100); if(!$('stepsViewer').hidden) break; }
-    check(`${mode}: the start text explains the two colours`, mode === 'loopy' ? /two colours: blue for the tiles next to the outside/.test($('stepsCapText').textContent) : /two pieces at most/.test($('stepsCapText').textContent), $('stepsCapText').textContent.slice(0, 120));
+    check(`${mode}: the start text explains the two colours`, mode === 'loopy' ? /blue for the tiles next to the outside/.test($('stepsCapText').textContent) : /two pieces at most/.test($('stepsCapText').textContent), $('stepsCapText').textContent.slice(0, 120));
     if(mode === 'loopy') check('loopy: the start text does not say that one colour is one piece', !/share a colour are in one piece/.test($('stepsCapText').textContent));
     const n = +(/(\d+) step/.exec($('stepsCounter').textContent) || [0, 0])[1];
     const tiles = () => { const m = new Map(); doc.querySelectorAll('#stepsGrid rect[data-color]').forEach(r => m.set(`${Math.round(+r.getAttribute('x'))},${Math.round(+r.getAttribute('y'))}`, r.getAttribute('data-color'))); return m; };
-    let onlyTwo = true, grows = true, prev = 0, most = 0;
+    let grows = true, prev = 0, most = 0, startPlain = tiles().size === 0, last = null;
     for(let i = 1; i < n; i++){
       $('stepsNext').click(); await sleep(5);
       const t = tiles();
-      for(const c of t.values()) if(c !== BLUE && c !== ORANGE) onlyTwo = false;
-      if(t.size < prev) grows = false; prev = t.size; most = Math.max(most, t.size);
+      if(t.size < prev && i < n - 1) grows = false; prev = t.size; most = Math.max(most, t.size);
+      if(i === n - 1) last = t;
     }
-    check(`${mode}: only the two colours`, onlyTwo);
+    check(`${mode}: no colour at the start`, startPlain);
+    const onlyTwo = !!last && [...last.values()].every(c => c === BLUE || c === ORANGE);
+    check(`${mode}: at the last step every coloured tile has one of the two colours`, onlyTwo, last && [...new Set(last.values())]);
     check(`${mode}: tiles get coloured, and stay coloured`, most > 0 && grows, { most });
     // the last rule step against the stored tiling: same piece = same colour (two pieces); Loopy: a wall changes the colour, the outline is blue
     const st = J.puzzles.find(p => p.name.includes(name)).state.puzzle, W = st.w, H = st.h;
-    const t = tiles(), px = [...t.keys()].map(k => k.split(',').map(Number));
+    const t = last || new Map(), px = [...t.keys()].map(k => k.split(',').map(Number));
     const xs = [...new Set(px.map(p => p[0]))].sort((a, b) => a - b), ys = [...new Set(px.map(p => p[1]))].sort((a, b) => a - b);
-    check(`${mode}: every tile is coloured before the result`, t.size === W * H, t.size);
+    check(`${mode}: every tile is coloured at the last step`, t.size === W * H, t.size);
     if(mode === 'loopy'){
       const col = (c, r) => t.get(`${xs[c]},${ys[r]}`);
       let outlineBlue = true; for(let r = 0; r < H; r++) for(let c = 0; c < W; c++) if((r === 0 || c === 0 || r === H - 1 || c === W - 1) && col(c, r) !== BLUE) outlineBlue = false;
@@ -57,6 +60,6 @@ const BLUE = '#3f8fd2', ORANGE = '#e39a3b';
     }
   }
   check('no script errors', errors.length === 0, errors);
-  console.log(`two colours V1.0.58 UI: ${pass} passed, ${fail} failed`);
+  console.log(`two colours V1.0.58/59 UI: ${pass} passed, ${fail} failed`);
   process.exit(fail ? 1 : 0);
 })();

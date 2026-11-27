@@ -2,7 +2,7 @@
 
 Short reasons the solver gives. They show in the solver result ("Impossible: …") and inside step-by-step explanations ("this breaks: …").
 
-Left here: 115 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 13.
+Left here: 113 to write, 0 to check again, 0 notes, 0 to put on the page. Done: 13.
 
 A copy of the answers on the rewrite page (see README.md): `- new:` empty = not done yet, `=` = keep the text as it is, `[..]` = a note for Claude.
 
@@ -266,11 +266,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 - now: a palisade can not get its number of walls from the sides it has left
 - new: 
 
-### T0363
-- what: message · WHY_TEXT › pal-pair · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: palisades next to each other can not all get their number of walls
-- new: 
-
 ### T1006
 - what: message · WHY_TEXT › pal-size · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
 - now: a palisade needs a bigger piece than the size rules allow (or a 4 that is not alone)
@@ -369,11 +364,6 @@ A copy of the answers on the rewrite page (see README.md): `- new:` empty = not 
 ### T0378
 - what: message · WHY_TEXT › ban-size · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
 - now: every shape of a size the rules need contains a banned shape
-- new: 
-
-### T0379
-- what: message · WHY_TEXT › stamp-pair · Reason shown after "Impossible:" in the solver result and inside step-by-step explanations.
-- now: two polyominoes that cannot share a piece are forced together
 - new: 
 
 ### T1011
